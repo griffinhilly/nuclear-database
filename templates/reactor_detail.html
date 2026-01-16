@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reactor Details - Global Nuclear Database</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet for maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-bottom: 2px solid #0f3460;
+        }
+
+        .back-link {
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        .status-operational {
+            background: #00c853;
+            color: #000;
+        }
+
+        .status-construction {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .status-shutdown {
+            background: #616161;
+            color: #fff;
+        }
+
+        /* Grid layout */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .detail-grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .card h2 {
+            color: #00d4ff;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #2a2a4a;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #1a1a2e;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: #888;
+        }
+
+        .stat-value {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .stat-value.highlight {
+            color: #00d4ff;
+        }
+
+        /* Stats cards */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mini-stat {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mini-stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .mini-stat-label {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        /* Map */
+        #reactor-map {
+            height: 300px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* Chart */
+        .chart-container {
+            height: 250px;
+            margin-top: 15px;
+        }
+
+        /* Generation table */
+        .gen-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .gen-table th, .gen-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #2a2a4a;
+        }
+
+        .gen-table th {
+            color: #00d4ff;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #888;
+        }
+
+        .spinner {
+            border: 3px solid #2a2a4a;
+            border-top: 3px solid #00d4ff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            text-align: center;
+            padding: 60px;
+            color: #ff5252;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #2a2a4a;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="back-link">&larr; Back to Dashboard</a>
+            <h1 id="reactor-name">Loading...</h1>
+            <p class="subtitle" id="reactor-location"></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            Loading reactor data...
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            Reactor not found. <a href="/">Return to dashboard</a>
+        </div>
+
+        <div id="content" style="display: none;">
+            <!-- Quick Stats -->
+            <div class="stats-row" id="quick-stats">
+            </div>
+
+            <!-- Main Grid -->
+            <div class="detail-grid">
+                <!-- Reactor Info -->
+                <div class="card">
+                    <h2>Reactor Information</h2>
+                    <div id="reactor-info">
+                    </div>
+                </div>
+
+                <!-- Location Map -->
+                <div class="card">
+                    <h2>Location</h2>
+                    <div id="reactor-map"></div>
+                </div>
+
+                <!-- Lifetime Statistics -->
+                <div class="card">
+                    <h2>Lifetime Statistics</h2>
+                    <div id="lifetime-stats">
+                    </div>
+                </div>
+
+                <!-- Generation Chart -->
+                <div class="card">
+                    <h2>Recent Generation History</h2>
+                    <div class="chart-container">
+                        <canvas id="generation-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generation History Table -->
+            <div class="card" style="margin-top: 30px;">
+                <h2>Annual Generation Data</h2>
+                <table class="gen-table">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Generation (GWh)</th>
+                            <th>Capacity Factor (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="generation-table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Data sources: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
+           <a href="/">Return to Dashboard</a></p>
+    </footer>
+
+    <script>
+        const API_KEY = 'demo-key-12345';
+        const REACTOR_ID = {{ reactor_id }};
+
+        async function loadReactorDetails() {
+            try {
+                const response = await fetch(`/api/reactors/${REACTOR_ID}?api_key=${API_KEY}`);
+                if (!response.ok) {
+                    throw new Error('Reactor not found');
+                }
+                const data = await response.json();
+                renderReactorDetails(data);
+            } catch (error) {
+                console.error('Failed to load reactor:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        function renderReactorDetails(data) {
+            const reactor = data.reactor;
+            const stats = data.lifetime_stats;
+            const history = data.generation_history;
+
+            // Update header
+            document.getElementById('reactor-name').innerHTML = `
+                ${reactor.plant_name}-${reactor.unit_number}
+                <span class="status-badge status-${reactor.status === 'Operational' ? 'operational' : reactor.status === 'Under Construction' ? 'construction' : 'shutdown'}">${reactor.status}</span>
+            `;
+            document.getElementById('reactor-location').textContent = `${reactor.country} | ${reactor.technology} (${reactor.technology_name || reactor.technology})`;
+
+            // Quick stats
+            document.getElementById('quick-stats').innerHTML = `
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${reactor.gross_capacity_mw ? reactor.gross_capacity_mw.toLocaleString() : '--'}</div>
+                    <div class="mini-stat-label">Capacity (MW)</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${reactor.age_years || '--'}</div>
+                    <div class="mini-stat-label">Age (Years)</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${stats.total_generation_twh || '--'}</div>
+                    <div class="mini-stat-label">Lifetime TWh</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${stats.avg_capacity_factor ? stats.avg_capacity_factor + '%' : '--'}</div>
+                    <div class="mini-stat-label">Avg Capacity Factor</div>
+                </div>
+            `;
+
+            // Reactor info
+            document.getElementById('reactor-info').innerHTML = `
+                <div class="stat-row">
+                    <span class="stat-label">Plant Name</span>
+                    <span class="stat-value">${reactor.plant_name}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Unit Number</span>
+                    <span class="stat-value">${reactor.unit_number}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Country</span>
+                    <span class="stat-value">${reactor.country}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Technology</span>
+                    <span class="stat-value">${reactor.technology_name || reactor.technology}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Gross Capacity</span>
+                    <span class="stat-value highlight">${reactor.gross_capacity_mw ? reactor.gross_capacity_mw.toLocaleString() + ' MW' : '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Commercial Operation</span>
+                    <span class="stat-value">${reactor.commercial_operation || '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Status</span>
+                    <span class="stat-value">${reactor.status}</span>
+                </div>
+            `;
+
+            // Lifetime stats
+            document.getElementById('lifetime-stats').innerHTML = `
+                <div class="stat-row">
+                    <span class="stat-label">Total Generation</span>
+                    <span class="stat-value highlight">${stats.total_generation_twh ? stats.total_generation_twh + ' TWh' : '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Average Annual Generation</span>
+                    <span class="stat-value">${stats.avg_annual_gwh ? stats.avg_annual_gwh.toLocaleString() + ' GWh' : '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Average Capacity Factor</span>
+                    <span class="stat-value">${stats.avg_capacity_factor ? stats.avg_capacity_factor + '%' : '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Years of Operation</span>
+                    <span class="stat-value">${stats.years_operating || '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Data Range</span>
+                    <span class="stat-value">${stats.first_year && stats.last_year ? stats.first_year + ' - ' + stats.last_year : '--'}</span>
+                </div>
+            `;
+
+            // Map
+            if (reactor.latitude && reactor.longitude) {
+                const map = L.map('reactor-map').setView([reactor.latitude, reactor.longitude], 8);
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; OpenStreetMap, &copy; CARTO'
+                }).addTo(map);
+
+                const statusColors = {
+                    'Operational': '#00c853',
+                    'Under Construction': '#ffc107',
+                    'Permanent Shutdown': '#616161'
+                };
+
+                L.circleMarker([reactor.latitude, reactor.longitude], {
+                    radius: 12,
+                    fillColor: statusColors[reactor.status] || '#00d4ff',
+                    color: '#fff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map);
+            } else {
+                document.getElementById('reactor-map').innerHTML = '<p style="text-align: center; color: #888; padding: 100px 0;">Location data not available</p>';
+            }
+
+            // Generation chart
+            if (history && history.length > 0) {
+                const sortedHistory = [...history].sort((a, b) => a.year - b.year);
+                new Chart(document.getElementById('generation-chart'), {
+                    type: 'bar',
+                    data: {
+                        labels: sortedHistory.map(h => h.year),
+                        datasets: [{
+                            label: 'Generation (GWh)',
+                            data: sortedHistory.map(h => h.electricity_gwh),
+                            backgroundColor: '#00d4ff',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: '#2a2a4a' },
+                                ticks: { color: '#888' }
+                            },
+                            y: {
+                                grid: { color: '#2a2a4a' },
+                                ticks: {
+                                    color: '#888',
+                                    callback: (val) => val.toLocaleString()
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // Generation table
+                document.getElementById('generation-table').innerHTML = history.map(h => `
+                    <tr>
+                        <td>${h.year}</td>
+                        <td>${h.electricity_gwh ? h.electricity_gwh.toLocaleString() : '--'}</td>
+                        <td>${h.capacity_factor ? h.capacity_factor.toFixed(1) + '%' : '--'}</td>
+                    </tr>
+                `).join('');
+            } else {
+                document.getElementById('generation-chart').parentElement.innerHTML = '<p style="text-align: center; color: #888; padding: 80px 0;">No generation data available</p>';
+                document.getElementById('generation-table').innerHTML = '<tr><td colspan="3" style="text-align: center; color: #888;">No data available</td></tr>';
+            }
+
+            // Show content
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadReactorDetails);
+    </script>
+</body>
+</html>

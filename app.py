@@ -207,7 +207,7 @@ def reactor_counts():
 def list_reactors():
     """List reactors with pagination and filters."""
     page = request.args.get('page', 1, type=int)
-    per_page = min(request.args.get('per_page', 50, type=int), 100)
+    per_page = min(request.args.get('per_page', 50, type=int), 500)  # Increased limit to 500
     status = request.args.get('status')
     technology = request.args.get('technology')
     country = request.args.get('country')
@@ -255,6 +255,66 @@ def list_reactors():
         'reactors': reactors,
         'pagination': {'page': page, 'per_page': per_page, 'total': total, 'pages': (total + per_page - 1) // per_page}
     })
+
+@app.route('/api/reactors/<int:reactor_id>')
+@require_api_key('paid')
+def get_reactor(reactor_id):
+    """Get detailed information for a single reactor."""
+    reactor = query_db("""
+        SELECT r.id, r.plant_name, r.unit_number, c.name as country,
+               t.code as technology, t.name as technology_name,
+               r.gross_capacity_mw, r.status, r.commercial_operation,
+               r.age_years, r.latitude, r.longitude
+        FROM reactors r
+        LEFT JOIN countries c ON r.country_id = c.id
+        LEFT JOIN technologies t ON r.technology_id = t.id
+        WHERE r.id = ?
+    """, (reactor_id,))
+
+    if not reactor:
+        return jsonify({'error': 'Reactor not found'}), 404
+
+    r = reactor[0]
+
+    # Get generation history
+    generation = query_db("""
+        SELECT year, electricity_gwh, capacity_factor
+        FROM generation_annual
+        WHERE reactor_id = ?
+        ORDER BY year DESC
+        LIMIT 10
+    """, (reactor_id,))
+
+    # Get lifetime stats
+    lifetime_stats = query_db("""
+        SELECT
+            SUM(electricity_gwh) as total_gwh,
+            AVG(electricity_gwh) as avg_annual_gwh,
+            AVG(capacity_factor) as avg_capacity_factor,
+            MIN(year) as first_year,
+            MAX(year) as last_year,
+            COUNT(*) as years_operating
+        FROM generation_annual
+        WHERE reactor_id = ?
+    """, (reactor_id,))[0]
+
+    return jsonify({
+        'reactor': r,
+        'generation_history': generation,
+        'lifetime_stats': {
+            'total_generation_twh': round(lifetime_stats['total_gwh'] / 1000, 2) if lifetime_stats['total_gwh'] else None,
+            'avg_annual_gwh': round(lifetime_stats['avg_annual_gwh'], 1) if lifetime_stats['avg_annual_gwh'] else None,
+            'avg_capacity_factor': round(lifetime_stats['avg_capacity_factor'], 1) if lifetime_stats['avg_capacity_factor'] else None,
+            'years_operating': lifetime_stats['years_operating'],
+            'first_year': lifetime_stats['first_year'],
+            'last_year': lifetime_stats['last_year']
+        }
+    })
+
+@app.route('/reactor/<int:reactor_id>')
+def reactor_detail_page(reactor_id):
+    """Serve the reactor detail page."""
+    return render_template('reactor_detail.html', reactor_id=reactor_id)
 
 @app.route('/api/reactors/search')
 @require_api_key('paid')
@@ -340,7 +400,7 @@ def map_data():
     status = request.args.get('status')
 
     sql = """
-        SELECT r.plant_name, r.unit_number, c.name as country,
+        SELECT r.id, r.plant_name, r.unit_number, c.name as country,
                t.code as technology, r.gross_capacity_mw, r.status,
                r.latitude, r.longitude
         FROM reactors r
@@ -359,6 +419,7 @@ def map_data():
         'type': 'Feature',
         'geometry': {'type': 'Point', 'coordinates': [r['longitude'], r['latitude']]},
         'properties': {
+            'id': r['id'],
             'name': f"{r['plant_name']}-{r['unit_number']}",
             'country': r['country'],
             'technology': r['technology'],
