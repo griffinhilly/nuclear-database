@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv/
+venv/
+*.log
+.DS_Store
+pris_cache.json
+
+# Data processing files (not needed for deployment)
+*.xlsx
+web_export/
+data_processor.py
+pris_scraper.py
+fetch_pris_generation.py
+reactor_coordinates.py
+query_cli.py
+api.py

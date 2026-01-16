@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Nuclear Database</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet for maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-bottom: 2px solid #0f3460;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: #00d4ff;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Charts Section */
+        .charts-section {
+            margin: 40px 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0f3460;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+        }
+
+        .chart-card {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .chart-card h3 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        /* Map Section */
+        .map-section {
+            margin: 40px 0;
+        }
+
+        #reactor-map {
+            height: 500px;
+            border-radius: 12px;
+            border: 1px solid #2a2a4a;
+        }
+
+        /* Data Table */
+        .table-section {
+            margin: 40px 0;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .search-box input, .search-box select {
+            padding: 12px 16px;
+            border: 1px solid #2a2a4a;
+            border-radius: 8px;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            font-size: 1rem;
+        }
+
+        .search-box input {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input:focus, .search-box select:focus {
+            outline: none;
+            border-color: #00d4ff;
+        }
+
+        .search-box button {
+            padding: 12px 24px;
+            background: #00d4ff;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-box button:hover {
+            background: #00b8e6;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #1a1a2e;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .data-table th, .data-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #2a2a4a;
+        }
+
+        .data-table th {
+            background: #0f0f1a;
+            color: #00d4ff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table tr:hover {
+            background: #252540;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-operational {
+            background: #00c853;
+            color: #000;
+        }
+
+        .status-construction {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .status-shutdown {
+            background: #616161;
+            color: #fff;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #2a2a4a;
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: transparent;
+            color: #888;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            color: #00d4ff;
+        }
+
+        .tab-btn.active {
+            border-bottom: 2px solid #00d4ff;
+            margin-bottom: -12px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #2a2a4a;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+
+        .spinner {
+            border: 3px solid #2a2a4a;
+            border-top: 3px solid #00d4ff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .charts-grid { grid-template-columns: 1fr; }
+            .chart-container { height: 250px; }
+            #reactor-map { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Global Nuclear Database</h1>
+        <p class="subtitle">Comprehensive data on 688 nuclear reactors worldwide</p>
+    </header>
+
+    <div class="container">
+        <!-- Stats Cards -->
+        <div class="stats-grid" id="stats-cards">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-operational">--</div>
+                <div class="stat-label">Operational Reactors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-capacity">--</div>
+                <div class="stat-label">Capacity (GW)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-construction">--</div>
+                <div class="stat-label">Under Construction</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-generation">--</div>
+                <div class="stat-label">2023 Generation (TWh)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-countries">--</div>
+                <div class="stat-label">Countries</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-age">--</div>
+                <div class="stat-label">Average Age (years)</div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <h2 class="section-title">Fleet Analytics</h2>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Capacity by Technology</h3>
+                    <div class="chart-container">
+                        <canvas id="tech-chart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Top 10 Countries by Capacity</h3>
+                    <div class="chart-container">
+                        <canvas id="country-chart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Global Nuclear Generation by Decade</h3>
+                    <div class="chart-container">
+                        <canvas id="generation-chart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Reactor Status Distribution</h3>
+                    <div class="chart-container">
+                        <canvas id="status-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <h2 class="section-title">Reactor Locations</h2>
+            <div id="reactor-map"></div>
+        </section>
+
+        <!-- Data Table Section -->
+        <section class="table-section">
+            <h2 class="section-title">Reactor Database</h2>
+
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="operational">Operational</button>
+                <button class="tab-btn" data-tab="construction">Under Construction</button>
+                <button class="tab-btn" data-tab="planned">Planned</button>
+                <button class="tab-btn" data-tab="search">Search</button>
+            </div>
+
+            <div class="search-box" id="search-controls" style="display: none;">
+                <input type="text" id="search-input" placeholder="Search reactors (e.g., Vogtle, Hinkley)...">
+                <button onclick="searchReactors()">Search</button>
+            </div>
+
+            <div class="search-box" id="filter-controls">
+                <select id="country-filter">
+                    <option value="">All Countries</option>
+                </select>
+                <select id="tech-filter">
+                    <option value="">All Technologies</option>
+                </select>
+            </div>
+
+            <div id="table-loading" class="loading">
+                <div class="spinner"></div>
+                Loading data...
+            </div>
+
+            <table class="data-table" id="reactor-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Reactor</th>
+                        <th>Country</th>
+                        <th>Technology</th>
+                        <th>Capacity (MW)</th>
+                        <th>Status</th>
+                        <th>Online Date</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <footer>
+        <p>Data sources: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
+           Generation data: 1954-2024 | Last updated: December 2024</p>
+        <p style="margin-top: 10px;">Nuclear Reactor Database API v1.0</p>
+    </footer>
+
+    <script>
+        // API Configuration
+        const API_BASE = '';  // Same origin
+        const API_KEY = 'demo-key-12345';  // Demo key for development
+
+        // Color palette
+        const colors = {
+            primary: '#00d4ff',
+            secondary: '#0f3460',
+            success: '#00c853',
+            warning: '#ffc107',
+            danger: '#ff5252',
+            chart: [
+                '#00d4ff', '#ff6384', '#36a2eb', '#ffce56', '#4bc0c0',
+                '#9966ff', '#ff9f40', '#c9cbcf', '#7cb342', '#ec407a'
+            ]
+        };
+
+        // Fetch helper
+        async function fetchAPI(endpoint, requiresAuth = false) {
+            const url = requiresAuth
+                ? `${API_BASE}${endpoint}${endpoint.includes('?') ? '&' : '?'}api_key=${API_KEY}`
+                : `${API_BASE}${endpoint}`;
+
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`API error: ${response.status}`);
+            return response.json();
+        }
+
+        // Initialize dashboard
+        async function initDashboard() {
+            try {
+                // Load global stats
+                const stats = await fetchAPI('/api/stats');
+                document.getElementById('stat-operational').textContent = stats.global_statistics.operational.count;
+                document.getElementById('stat-capacity').textContent = stats.global_statistics.operational.capacity_gw;
+                document.getElementById('stat-construction').textContent = stats.global_statistics.under_construction;
+                document.getElementById('stat-generation').textContent = stats.global_statistics.generation_2023_twh || '--';
+                document.getElementById('stat-countries').textContent = stats.data_coverage.countries;
+                document.getElementById('stat-age').textContent = stats.global_statistics.average_fleet_age_years;
+
+                // Load charts
+                await Promise.all([
+                    loadTechChart(),
+                    loadCountryChart(),
+                    loadGenerationChart(),
+                    loadStatusChart(),
+                    loadMap(),
+                    loadFilters(),
+                    loadTable('operational')
+                ]);
+
+            } catch (error) {
+                console.error('Failed to initialize dashboard:', error);
+            }
+        }
+
+        // Technology chart
+        async function loadTechChart() {
+            const data = await fetchAPI('/api/technologies');
+
+            const chartData = data.technologies
+                .filter(t => t.capacity_gw > 0)
+                .sort((a, b) => b.capacity_gw - a.capacity_gw);
+
+            new Chart(document.getElementById('tech-chart'), {
+                type: 'doughnut',
+                data: {
+                    labels: chartData.map(t => t.code),
+                    datasets: [{
+                        data: chartData.map(t => t.capacity_gw),
+                        backgroundColor: colors.chart,
+                        borderColor: '#1a1a2e',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { color: '#e0e0e0', padding: 15 }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => `${ctx.label}: ${ctx.raw} GW`
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Country chart
+        async function loadCountryChart() {
+            const data = await fetchAPI('/api/countries');
+
+            const top10 = data.countries
+                .sort((a, b) => b.operational - a.operational)
+                .slice(0, 10);
+
+            new Chart(document.getElementById('country-chart'), {
+                type: 'bar',
+                data: {
+                    labels: top10.map(c => c.name),
+                    datasets: [{
+                        label: 'Operational Reactors',
+                        data: top10.map(c => c.operational),
+                        backgroundColor: colors.primary,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: '#2a2a4a' },
+                            ticks: { color: '#888' }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: '#e0e0e0' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Generation chart (using pre-calculated data)
+        async function loadGenerationChart() {
+            // Decade data from the database
+            const decadeData = [
+                { decade: '1970s', twh: 3012 },
+                { decade: '1980s', twh: 12175 },
+                { decade: '1990s', twh: 21473 },
+                { decade: '2000s', twh: 25680 },
+                { decade: '2010s', twh: 24896 },
+                { decade: '2020s', twh: 5158 }
+            ];
+
+            new Chart(document.getElementById('generation-chart'), {
+                type: 'line',
+                data: {
+                    labels: decadeData.map(d => d.decade),
+                    datasets: [{
+                        label: 'Generation (TWh)',
+                        data: decadeData.map(d => d.twh),
+                        borderColor: colors.primary,
+                        backgroundColor: 'rgba(0, 212, 255, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 6,
+                        pointBackgroundColor: colors.primary
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => `${ctx.raw.toLocaleString()} TWh`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: '#2a2a4a' },
+                            ticks: { color: '#888' }
+                        },
+                        y: {
+                            grid: { color: '#2a2a4a' },
+                            ticks: {
+                                color: '#888',
+                                callback: (val) => val.toLocaleString()
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Status chart
+        async function loadStatusChart() {
+            const data = await fetchAPI('/api/reactors/count');
+
+            const statusColors = {
+                'Operational': '#00c853',
+                'Under Construction': '#ffc107',
+                'Permanent Shutdown': '#616161',
+                'Long-term Shutdown': '#9e9e9e',
+                'Unknown': '#424242'
+            };
+
+            new Chart(document.getElementById('status-chart'), {
+                type: 'pie',
+                data: {
+                    labels: data.by_status.map(s => s.status),
+                    datasets: [{
+                        data: data.by_status.map(s => s.count),
+                        backgroundColor: data.by_status.map(s => statusColors[s.status] || '#666'),
+                        borderColor: '#1a1a2e',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { color: '#e0e0e0', padding: 15 }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Map
+        async function loadMap() {
+            const map = L.map('reactor-map').setView([30, 0], 2);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap, &copy; CARTO'
+            }).addTo(map);
+
+            try {
+                const data = await fetchAPI('/api/map?status=Operational', true);
+
+                const statusColors = {
+                    'Operational': '#00c853',
+                    'Under Construction': '#ffc107',
+                    'Permanent Shutdown': '#616161'
+                };
+
+                data.features.forEach(feature => {
+                    const coords = feature.geometry.coordinates;
+                    const props = feature.properties;
+                    const color = statusColors[props.status] || '#00d4ff';
+
+                    L.circleMarker([coords[1], coords[0]], {
+                        radius: Math.max(4, Math.sqrt(props.capacity_mw / 100)),
+                        fillColor: color,
+                        color: '#fff',
+                        weight: 1,
+                        opacity: 0.8,
+                        fillOpacity: 0.7
+                    })
+                    .bindPopup(`
+                        <strong>${props.name}</strong><br>
+                        ${props.country}<br>
+                        ${props.technology} - ${props.capacity_mw} MW<br>
+                        <span style="color: ${color}">${props.status}</span>
+                    `)
+                    .addTo(map);
+                });
+            } catch (error) {
+                console.error('Failed to load map data:', error);
+            }
+        }
+
+        // Load filter dropdowns
+        async function loadFilters() {
+            const [countries, technologies] = await Promise.all([
+                fetchAPI('/api/countries'),
+                fetchAPI('/api/technologies')
+            ]);
+
+            const countrySelect = document.getElementById('country-filter');
+            countries.countries.forEach(c => {
+                const option = document.createElement('option');
+                option.value = c.name;
+                option.textContent = `${c.name} (${c.operational})`;
+                countrySelect.appendChild(option);
+            });
+
+            const techSelect = document.getElementById('tech-filter');
+            technologies.technologies.filter(t => t.operational > 0).forEach(t => {
+                const option = document.createElement('option');
+                option.value = t.code;
+                option.textContent = `${t.code} (${t.operational})`;
+                techSelect.appendChild(option);
+            });
+
+            // Add filter event listeners
+            countrySelect.addEventListener('change', () => loadTable(currentTab));
+            techSelect.addEventListener('change', () => loadTable(currentTab));
+        }
+
+        // Table loading
+        let currentTab = 'operational';
+
+        async function loadTable(tab) {
+            currentTab = tab;
+            const loading = document.getElementById('table-loading');
+            const table = document.getElementById('reactor-table');
+            const tbody = document.getElementById('table-body');
+            const searchControls = document.getElementById('search-controls');
+            const filterControls = document.getElementById('filter-controls');
+
+            loading.style.display = 'block';
+            table.style.display = 'none';
+
+            // Toggle search/filter controls
+            searchControls.style.display = tab === 'search' ? 'flex' : 'none';
+            filterControls.style.display = tab !== 'search' ? 'flex' : 'none';
+
+            if (tab === 'search') {
+                loading.style.display = 'none';
+                table.style.display = 'none';
+                return;
+            }
+
+            try {
+                let data;
+                const country = document.getElementById('country-filter').value;
+                const tech = document.getElementById('tech-filter').value;
+
+                if (tab === 'planned') {
+                    data = await fetchAPI('/api/planned', true);
+                    renderPlannedTable(data.planned_reactors);
+                } else {
+                    const status = tab === 'operational' ? 'Operational' : 'Under Construction';
+                    let url = `/api/reactors?status=${status}&per_page=100`;
+                    if (country) url += `&country=${country}`;
+                    if (tech) url += `&technology=${tech}`;
+
+                    data = await fetchAPI(url, true);
+                    renderReactorTable(data.reactors);
+                }
+
+                loading.style.display = 'none';
+                table.style.display = 'table';
+
+            } catch (error) {
+                console.error('Failed to load table:', error);
+                loading.innerHTML = 'Failed to load data. Please try again.';
+            }
+        }
+
+        function renderReactorTable(reactors) {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = reactors.map(r => `
+                <tr>
+                    <td><strong>${r.plant_name}-${r.unit_number}</strong></td>
+                    <td>${r.country}</td>
+                    <td>${r.technology || '-'}</td>
+                    <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
+                    <td><span class="status-badge status-${r.status === 'Operational' ? 'operational' : 'construction'}">${r.status}</span></td>
+                    <td>${r.commercial_operation || '-'}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderPlannedTable(reactors) {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = reactors.map(r => `
+                <tr>
+                    <td><strong>${r.project_name}-${r.unit_number || '?'}</strong></td>
+                    <td>${r.country || '-'}</td>
+                    <td>${r.technology || '-'}</td>
+                    <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
+                    <td><span class="status-badge" style="background: #9c27b0; color: #fff">${r.likelihood || 'Planned'}</span></td>
+                    <td>${r.expected_online || '-'}</td>
+                </tr>
+            `).join('');
+        }
+
+        async function searchReactors() {
+            const query = document.getElementById('search-input').value;
+            if (query.length < 2) return;
+
+            const loading = document.getElementById('table-loading');
+            const table = document.getElementById('reactor-table');
+
+            loading.style.display = 'block';
+            table.style.display = 'none';
+
+            try {
+                const data = await fetchAPI(`/api/reactors/search?q=${encodeURIComponent(query)}`, true);
+                renderReactorTable(data.results);
+                loading.style.display = 'none';
+                table.style.display = 'table';
+            } catch (error) {
+                loading.innerHTML = 'Search failed. Please try again.';
+            }
+        }
+
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                loadTable(e.target.dataset.tab);
+            });
+        });
+
+        // Search on Enter
+        document.getElementById('search-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') searchReactors();
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initDashboard);
+    </script>
+</body>
+</html>
