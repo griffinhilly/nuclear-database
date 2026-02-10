@@ -320,6 +320,13 @@
         const API_KEY = 'demo-key-12345';
         const REACTOR_ID = {{ reactor_id }};
 
+        function formatAge(ageYears) {
+            if (!ageYears) return '--';
+            const years = Math.floor(ageYears);
+            const days = Math.round((ageYears - years) * 365.25);
+            return `${years} Years, ${days} Days`;
+        }
+
         async function loadReactorDetails() {
             try {
                 const response = await fetch(`/api/reactors/${REACTOR_ID}?api_key=${API_KEY}`);
@@ -354,8 +361,8 @@
                     <div class="mini-stat-label">Capacity (MW)</div>
                 </div>
                 <div class="mini-stat">
-                    <div class="mini-stat-value">${reactor.age_years || '--'}</div>
-                    <div class="mini-stat-label">Age (Years)</div>
+                    <div class="mini-stat-value">${formatAge(reactor.age_years)}</div>
+                    <div class="mini-stat-label">Age</div>
                 </div>
                 <div class="mini-stat">
                     <div class="mini-stat-value">${stats.total_generation_twh || '--'}</div>
@@ -386,8 +393,16 @@
                     <span class="stat-value">${reactor.technology_name || reactor.technology}</span>
                 </div>
                 <div class="stat-row">
+                    <span class="stat-label">Thermal Capacity</span>
+                    <span class="stat-value">${reactor.thermal_capacity_mw ? reactor.thermal_capacity_mw.toLocaleString() + ' MW' : '--'}</span>
+                </div>
+                <div class="stat-row">
                     <span class="stat-label">Gross Capacity</span>
                     <span class="stat-value highlight">${reactor.gross_capacity_mw ? reactor.gross_capacity_mw.toLocaleString() + ' MW' : '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Net Capacity</span>
+                    <span class="stat-value highlight">${reactor.net_capacity_mw ? reactor.net_capacity_mw.toLocaleString() + ' MW' : '--'}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Commercial Operation</span>
@@ -414,7 +429,7 @@
                     <span class="stat-value">${stats.avg_capacity_factor ? stats.avg_capacity_factor + '%' : '--'}</span>
                 </div>
                 <div class="stat-row">
-                    <span class="stat-label">Years of Operation</span>
+                    <span class="stat-label">Years with Generation Data</span>
                     <span class="stat-value">${stats.years_operating || '--'}</span>
                 </div>
                 <div class="stat-row">

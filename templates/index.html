@@ -221,6 +221,16 @@
             background: #252540;
         }
 
+        .data-table a.reactor-link {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .data-table a.reactor-link:hover {
+            text-decoration: underline;
+        }
+
         .status-badge {
             display: inline-block;
             padding: 4px 10px;
@@ -576,31 +586,42 @@
             });
         }
 
-        // Generation chart (using pre-calculated data)
+        // Generation chart (fetched from API with coverage adjustment)
         async function loadGenerationChart() {
-            // Decade data from the database
-            const decadeData = [
-                { decade: '1970s', twh: 3012 },
-                { decade: '1980s', twh: 12175 },
-                { decade: '1990s', twh: 21473 },
-                { decade: '2000s', twh: 25680 },
-                { decade: '2010s', twh: 24896 },
-                { decade: '2020s', twh: 5158 }
-            ];
+            const data = await fetchAPI('/api/generation/decades');
+            const decades = data.decades;
+
+            // Separate styling for partial (2020s) vs full decades
+            const pointStyles = decades.map(d => d.is_partial ? 'rectRot' : 'circle');
+            const pointRadii = decades.map(d => d.is_partial ? 8 : 6);
+            const pointColors = decades.map(d => d.is_partial ? '#ffc107' : colors.primary);
+            const borderDash = [];
+
+            // Build segment styling: dashed line leading to last (partial) point
+            const segmentBorderDash = (ctx) => {
+                if (ctx.p1DataIndex === decades.length - 1 && decades[decades.length - 1].is_partial) {
+                    return [6, 4];
+                }
+                return undefined;
+            };
 
             new Chart(document.getElementById('generation-chart'), {
                 type: 'line',
                 data: {
-                    labels: decadeData.map(d => d.decade),
+                    labels: decades.map(d => d.decade),
                     datasets: [{
-                        label: 'Generation (TWh)',
-                        data: decadeData.map(d => d.twh),
+                        label: 'Avg Annual Generation (TWh)',
+                        data: decades.map(d => d.avg_annual_twh),
                         borderColor: colors.primary,
                         backgroundColor: 'rgba(0, 212, 255, 0.1)',
                         fill: true,
                         tension: 0.3,
-                        pointRadius: 6,
-                        pointBackgroundColor: colors.primary
+                        pointRadius: pointRadii,
+                        pointBackgroundColor: pointColors,
+                        pointStyle: pointStyles,
+                        segment: {
+                            borderDash: segmentBorderDash
+                        }
                     }]
                 },
                 options: {
@@ -608,9 +629,25 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { display: false },
+                        subtitle: {
+                            display: true,
+                            text: 'Adjusted for reporting coverage. 2020s projected at current annual rate.',
+                            color: '#888',
+                            font: { size: 11 },
+                            padding: { bottom: 10 }
+                        },
                         tooltip: {
                             callbacks: {
-                                label: (ctx) => `${ctx.raw.toLocaleString()} TWh`
+                                label: (ctx) => {
+                                    const d = decades[ctx.dataIndex];
+                                    let label = `${Math.round(d.avg_annual_twh).toLocaleString()} TWh/yr`;
+                                    if (d.is_partial) label += ' (projected)';
+                                    return label;
+                                },
+                                afterLabel: (ctx) => {
+                                    const d = decades[ctx.dataIndex];
+                                    return `${d.years_with_data}/${d.total_years} years of data`;
+                                }
                             }
                         }
                     },
@@ -624,6 +661,11 @@
                             ticks: {
                                 color: '#888',
                                 callback: (val) => val.toLocaleString()
+                            },
+                            title: {
+                                display: true,
+                                text: 'Avg Annual TWh',
+                                color: '#888'
                             }
                         }
                     }
@@ -684,13 +726,30 @@
                     'Permanent Shutdown': '#616161'
                 };
 
+                // Group reactors by location so multi-unit plants get one marker
+                const sites = {};
                 data.features.forEach(feature => {
                     const coords = feature.geometry.coordinates;
-                    const props = feature.properties;
-                    const color = statusColors[props.status] || '#00d4ff';
+                    const key = `${coords[1].toFixed(4)},${coords[0].toFixed(4)}`;
+                    if (!sites[key]) {
+                        sites[key] = { lat: coords[1], lng: coords[0], reactors: [] };
+                    }
+                    sites[key].reactors.push(feature.properties);
+                });
 
-                    L.circleMarker([coords[1], coords[0]], {
-                        radius: Math.max(4, Math.sqrt(props.capacity_mw / 100)),
+                Object.values(sites).forEach(site => {
+                    const totalCapacity = site.reactors.reduce((sum, r) => sum + (r.capacity_mw || 0), 0);
+                    const color = statusColors[site.reactors[0].status] || '#00d4ff';
+
+                    const popupLines = site.reactors.map(r => {
+                        const rColor = statusColors[r.status] || '#00d4ff';
+                        return `<a href="/reactor/${r.id}" style="color: #00d4ff; text-decoration: none; font-weight: 600;">${r.name}</a> - ${r.technology} - ${r.capacity_mw} MW`;
+                    }).join('<br>');
+
+                    const siteName = site.reactors[0].name.replace(/-\d+$/, '');
+
+                    L.circleMarker([site.lat, site.lng], {
+                        radius: Math.max(4, Math.sqrt(totalCapacity / 100)),
                         fillColor: color,
                         color: '#fff',
                         weight: 1,
@@ -698,11 +757,9 @@
                         fillOpacity: 0.7
                     })
                     .bindPopup(`
-                        <strong>${props.name}</strong><br>
-                        ${props.country}<br>
-                        ${props.technology} - ${props.capacity_mw} MW<br>
-                        <span style="color: ${color}">${props.status}</span><br>
-                        <a href="/reactor/${props.id}" style="color: #00d4ff; text-decoration: none; font-weight: 600;">View Details &rarr;</a>
+                        <strong>${siteName}</strong> (${site.reactors.length} unit${site.reactors.length > 1 ? 's' : ''})<br>
+                        ${site.reactors[0].country}<br><br>
+                        ${popupLines}
                     `)
                     .addTo(map);
                 });
@@ -884,7 +941,7 @@
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = reactors.map(r => `
                 <tr>
-                    <td><strong>${r.plant_name}-${r.unit_number}</strong></td>
+                    <td><a href="/reactor/${r.id}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
                     <td>${r.country}</td>
                     <td>${r.technology || '-'}</td>
                     <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
