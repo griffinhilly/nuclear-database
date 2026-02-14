@@ -13,9 +13,9 @@
 
 ## Remaining
 
-### 7. Generation Data Gaps
-- Generation data post-2020 is incomplete (~114/436 reactors reporting for 2022-2024, ~26% coverage). The decade chart and home page stats use coverage adjustment to estimate full-fleet output.
-- `KNOWN_PRIS_IDS` dictionary in `fetch_pris_generation.py` only covers 267 reactors (explicitly incomplete for China, Japan, France). 178 operational reactors have no PRIS ID mapped.
-- `pris_scraper.py` has untapped country-level discovery that could expand PRIS ID coverage.
-- Alternative data sources (US EIA, ENTSO-E, WNA, national regulators) have not been explored.
-- Automated validation endpoint exists at `/api/data/validation`. `fetch_missing_generation.py` partially addresses 2021.
+### 7. Generation Data Gaps — Largely Resolved
+- **PRIS ID coverage**: 389/430 operational reactors (90.5%), up from 252 (58.6%). `backfill_pris_coverage.py` discovers IDs via ASP.NET postbacks from all 38 PRIS countries.
+- **2024 generation coverage**: 404/430 reactors (94.0%), up from 108 (25.1%). 1,133 new generation records inserted.
+- **Year coverage (2020+)**: 2020: 98.8%, 2021: 96.0%, 2022: 90.5%, 2023: 92.1%, 2024: 94.0%.
+- **Remaining gaps**: 41 reactors without PRIS ID are mostly Japanese units idle since Fukushima (listed as Operational but not generating), 3 German reactors shut down in 2023, and Taiwan units PRIS lists as non-operational. 29 reactors have no post-2020 data for the same reasons.
+- Alternative data sources (US EIA, ENTSO-E, WNA, national regulators) have not been explored but are less critical now.
