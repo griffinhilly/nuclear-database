@@ -9,11 +9,12 @@ Flask web app serving a global nuclear reactor database with 688 reactors across
 - **`app.py`** — Main Flask app. All routes, API endpoints, and validation logic. Runs on port 5001.
 - **`templates/index.html`** — Dashboard with stat cards, Chart.js charts, Leaflet map, and data tables.
 - **`templates/reactor_detail.html`** — Individual reactor page with generation history chart and specs.
+- **`templates/country_detail.html`** — Country detail page with fleet overview, generation history chart, reactor list, and map.
 - **`nuclear_reactors.db`** — SQLite database. Key tables: `reactors`, `generation_annual`, `countries`, `technologies`, `planned_reactors`.
 
 ## API Tiers
 
-- **Free (no key)**: `/api/stats`, `/api/countries`, `/api/technologies`, `/api/reactors/count`, `/api/generation/decades`, `/api/data/validation`
+- **Free (no key)**: `/api/stats`, `/api/countries`, `/api/countries/<country>/summary`, `/api/countries/<country>/detail`, `/api/technologies`, `/api/reactors/count`, `/api/generation/decades`, `/api/data/validation`
 - **Paid (requires `X-API-Key` header or `?api_key=`)**: `/api/reactors`, `/api/reactors/<id>`, `/api/reactors/search`, `/api/query`, `/api/planned`, `/api/map`
 - Demo key for development: `demo-key-12345`
 

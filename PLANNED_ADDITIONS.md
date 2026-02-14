@@ -6,23 +6,16 @@
 - ~~**2. Operating Life Display Format**~~ — Done. Shows "X Years, Y Days" format.
 - ~~**3. Map Marker Selection for Multi-Unit Plants**~~ — Done. Multi-unit plants grouped into single markers with popup listing all units.
 - ~~**4. Average Capacity Factor Not Populated**~~ — Done. Computed at query time from generation and capacity data.
+- ~~**5. Erroneous Generation Data (Braidwood-2)**~~ — Done. Erroneous 2025/2030 entries already removed from database.
 - ~~**6. Display Max Capacity**~~ — Done. Thermal, gross, and net capacity shown on detail page.
+- ~~**8. Country Detail Pages**~~ — Done. Fleet overview, generation chart, reactor list with links, and map zoomed to country.
+- ~~**9. Show 2024 Generation Data on Home Page**~~ — Done. Stats card dynamically shows most recent year with coverage-adjusted estimate and reporting percentage.
 
 ## Remaining
 
-### 5. Erroneous Generation Data (Braidwood-2)
-- There are 4 GWh of generation listed for both 2025 and 2030. These erroneous values should be removed and the data re-pulled from the source.
-
 ### 7. Generation Data Gaps
-- Generation data post-2020 is incomplete (~112/430 reactors reporting for 2022-2024). The decade chart uses coverage adjustment, but underlying data should be improved.
+- Generation data post-2020 is incomplete (~114/436 reactors reporting for 2022-2024, ~26% coverage). The decade chart and home page stats use coverage adjustment to estimate full-fleet output.
+- `KNOWN_PRIS_IDS` dictionary in `fetch_pris_generation.py` only covers 267 reactors (explicitly incomplete for China, Japan, France). 178 operational reactors have no PRIS ID mapped.
+- `pris_scraper.py` has untapped country-level discovery that could expand PRIS ID coverage.
+- Alternative data sources (US EIA, ENTSO-E, WNA, national regulators) have not been explored.
 - Automated validation endpoint exists at `/api/data/validation`. `fetch_missing_generation.py` partially addresses 2021.
-
-### 8. Country Detail Pages
-Create detail pages for individual countries (similar to reactor detail pages). Should include:
-- Country overview stats (operational reactors, total capacity, avg fleet age)
-- Generation history chart for the country
-- List of all reactors in the country with links to reactor detail pages
-- Map zoomed to the country's reactor locations
-
-### 9. Show 2024 Generation Data on Home Page
-Update the home page stats cards to display 2024 generation data instead of 2023. The "2023 Generation (TWh)" card should pull the most recent year with sufficient data coverage, or show coverage-adjusted 2024 figures.

@@ -350,7 +350,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-value" id="stat-generation">--</div>
-                <div class="stat-label">2023 Generation (TWh)</div>
+                <div class="stat-label" id="stat-generation-label">Generation (TWh)</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value" id="stat-countries">--</div>
@@ -489,7 +489,17 @@
                 document.getElementById('stat-operational').textContent = stats.global_statistics.operational.count;
                 document.getElementById('stat-capacity').textContent = stats.global_statistics.operational.capacity_gw;
                 document.getElementById('stat-construction').textContent = stats.global_statistics.under_construction;
-                document.getElementById('stat-generation').textContent = stats.global_statistics.generation_2023_twh || '--';
+                const gen = stats.global_statistics.generation;
+                if (gen && gen.adjusted_twh) {
+                    const value = gen.is_estimated ? `~${gen.adjusted_twh.toLocaleString()}` : gen.adjusted_twh.toLocaleString();
+                    document.getElementById('stat-generation').textContent = value;
+                    const label = gen.is_estimated
+                        ? `${gen.year} Generation (TWh est, ${gen.coverage_pct}% reporting)`
+                        : `${gen.year} Generation (TWh)`;
+                    document.getElementById('stat-generation-label').textContent = label;
+                } else {
+                    document.getElementById('stat-generation').textContent = '--';
+                }
                 document.getElementById('stat-countries').textContent = stats.data_coverage.countries;
                 document.getElementById('stat-age').textContent = stats.global_statistics.average_fleet_age_years;
 
@@ -554,7 +564,7 @@
                 .sort((a, b) => b.operational - a.operational)
                 .slice(0, 10);
 
-            new Chart(document.getElementById('country-chart'), {
+            const countryChart = new Chart(document.getElementById('country-chart'), {
                 type: 'bar',
                 data: {
                     labels: top10.map(c => c.name),
@@ -581,6 +591,16 @@
                             grid: { display: false },
                             ticks: { color: '#e0e0e0' }
                         }
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const index = elements[0].index;
+                            const countryName = top10[index].name;
+                            window.location.href = `/country/${encodeURIComponent(countryName)}`;
+                        }
+                    },
+                    onHover: (event, elements) => {
+                        event.native.target.style.cursor = elements.length > 0 ? 'pointer' : 'default';
                     }
                 }
             });
@@ -942,7 +962,7 @@
             tbody.innerHTML = reactors.map(r => `
                 <tr>
                     <td><a href="/reactor/${r.id}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
-                    <td>${r.country}</td>
+                    <td><a href="/country/${encodeURIComponent(r.country)}" class="reactor-link">${r.country}</a></td>
                     <td>${r.technology || '-'}</td>
                     <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
                     <td><span class="status-badge status-${r.status === 'Operational' ? 'operational' : 'construction'}">${r.status}</span></td>

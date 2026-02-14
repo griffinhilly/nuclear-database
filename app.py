@@ -110,7 +110,44 @@ def global_stats():
         FROM reactors
     """)[0]
 
-    gen_2023 = query_db("SELECT SUM(electricity_gwh) as total FROM generation_annual WHERE year = 2023")
+    # Get the most recent year with generation data and compute coverage-adjusted estimate
+    gen_latest = query_db("""
+        SELECT
+            g.year,
+            SUM(g.electricity_gwh) as raw_total,
+            COUNT(DISTINCT g.reactor_id) as reporting
+        FROM generation_annual g
+        WHERE g.year = (SELECT MAX(year) FROM generation_annual)
+        GROUP BY g.year
+    """)
+
+    generation_info = {}
+    if gen_latest and gen_latest[0]['raw_total']:
+        year = gen_latest[0]['year']
+        raw_twh = gen_latest[0]['raw_total'] / 1000
+        reporting = gen_latest[0]['reporting']
+
+        # Count reactors operational during that year
+        operational_that_year = query_db("""
+            SELECT COUNT(*) as count FROM reactors
+            WHERE commercial_operation IS NOT NULL
+              AND commercial_operation <= ?
+              AND (permanent_shutdown IS NULL OR permanent_shutdown >= ?)
+        """, (f'{year}-12-31', f'{year}-01-01'))[0]['count']
+
+        coverage_pct = round(reporting / operational_that_year * 100, 1) if operational_that_year else 0
+        adjustment = operational_that_year / reporting if reporting < operational_that_year else 1.0
+        adjusted_twh = round(raw_twh * adjustment, 1)
+
+        generation_info = {
+            'year': year,
+            'adjusted_twh': adjusted_twh,
+            'raw_twh': round(raw_twh, 1),
+            'reporting_reactors': reporting,
+            'operational_reactors': operational_that_year,
+            'coverage_pct': coverage_pct,
+            'is_estimated': coverage_pct < 90
+        }
 
     return jsonify({
         'global_statistics': {
@@ -122,7 +159,7 @@ def global_stats():
             'under_construction': stats['under_construction'],
             'permanently_shutdown': stats['shutdown'],
             'average_fleet_age_years': stats['avg_age'],
-            'generation_2023_twh': round(gen_2023[0]['total'] / 1000, 1) if gen_2023[0]['total'] else None
+            'generation': generation_info
         },
         'data_coverage': {
             'countries': 38,
@@ -169,6 +206,81 @@ def country_summary(country):
     if not stats:
         return jsonify({'error': f'Country not found: {country}'}), 404
     return jsonify(stats[0])
+
+@app.route('/api/countries/<country>/detail')
+@require_api_key('free')
+def country_detail(country):
+    """Detailed country page data: fleet info, generation history, reactor list, tech mix."""
+    # Country summary stats
+    stats = query_db("""
+        SELECT
+            c.name as country,
+            COUNT(*) as total_reactors,
+            SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
+            SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
+            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+        FROM reactors r
+        JOIN countries c ON r.country_id = c.id
+        WHERE LOWER(c.name) = LOWER(?)
+        GROUP BY c.name
+    """, (country,))
+
+    if not stats:
+        return jsonify({'error': f'Country not found: {country}'}), 404
+
+    # Generation history: sum by year across all reactors in this country
+    generation_history = query_db("""
+        SELECT
+            g.year,
+            ROUND(SUM(g.electricity_gwh) / 1000.0, 2) as total_twh,
+            COUNT(DISTINCT g.reactor_id) as reactor_count
+        FROM generation_annual g
+        JOIN reactors r ON g.reactor_id = r.id
+        JOIN countries c ON r.country_id = c.id
+        WHERE LOWER(c.name) = LOWER(?)
+        GROUP BY g.year
+        ORDER BY g.year
+    """, (country,))
+
+    # All reactors for this country
+    reactors = query_db("""
+        SELECT r.id, r.plant_name, r.unit_number, t.code as technology,
+               r.gross_capacity_mw, r.status, r.commercial_operation,
+               r.latitude, r.longitude
+        FROM reactors r
+        JOIN countries c ON r.country_id = c.id
+        LEFT JOIN technologies t ON r.technology_id = t.id
+        WHERE LOWER(c.name) = LOWER(?)
+        ORDER BY
+            CASE r.status
+                WHEN 'Operational' THEN 1
+                WHEN 'Under Construction' THEN 2
+                WHEN 'Permanent Shutdown' THEN 3
+                ELSE 4
+            END,
+            r.plant_name, r.unit_number
+    """, (country,))
+
+    # Technology mix (operational only)
+    technology_mix = query_db("""
+        SELECT t.code as technology, COUNT(*) as count,
+               ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
+        FROM reactors r
+        JOIN countries c ON r.country_id = c.id
+        LEFT JOIN technologies t ON r.technology_id = t.id
+        WHERE LOWER(c.name) = LOWER(?) AND r.status = 'Operational'
+        GROUP BY t.code
+        ORDER BY count DESC
+    """, (country,))
+
+    return jsonify({
+        'country': stats[0],
+        'generation_history': generation_history,
+        'reactors': reactors,
+        'technology_mix': technology_mix
+    })
 
 @app.route('/api/technologies')
 @require_api_key('free')
@@ -323,6 +435,11 @@ def get_reactor(reactor_id):
 def reactor_detail_page(reactor_id):
     """Serve the reactor detail page."""
     return render_template('reactor_detail.html', reactor_id=reactor_id)
+
+@app.route('/country/<country>')
+def country_detail_page(country):
+    """Serve the country detail page."""
+    return render_template('country_detail.html', country_name=country)
 
 @app.route('/api/reactors/search')
 @require_api_key('paid')
