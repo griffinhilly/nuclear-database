@@ -177,6 +177,7 @@
             letter-spacing: 0.5px;
             cursor: pointer;
             user-select: none;
+            position: relative;
         }
 
         .data-table th:hover {
@@ -227,6 +228,110 @@
         .status-shutdown {
             background: #616161;
             color: #fff;
+        }
+
+        /* Column Filter Popover */
+        .filter-icon {
+            margin-left: 5px;
+            opacity: 0.4;
+            cursor: pointer;
+            font-size: 0.7rem;
+        }
+
+        .filter-icon:hover {
+            opacity: 0.8;
+        }
+
+        .filter-icon.active {
+            color: #00d4ff;
+            opacity: 1;
+        }
+
+        .filter-popover {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            background: #0f0f1a;
+            border: 1px solid #2a2a4a;
+            border-radius: 8px;
+            padding: 12px;
+            min-width: 220px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            text-transform: none;
+            letter-spacing: normal;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .filter-popover input[type="text"],
+        .filter-popover input[type="number"] {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #2a2a4a;
+            border-radius: 6px;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .filter-popover input:focus {
+            outline: none;
+            border-color: #00d4ff;
+        }
+
+        .filter-popover .filter-actions {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+        }
+
+        .filter-popover .filter-actions a {
+            color: #00d4ff;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .filter-popover .filter-actions a:hover {
+            text-decoration: underline;
+        }
+
+        .filter-popover .filter-checkbox-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 4px;
+        }
+
+        .filter-popover .filter-checkbox-list label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+            cursor: pointer;
+            color: #ccc;
+            font-size: 0.85rem;
+        }
+
+        .filter-popover .filter-checkbox-list label:hover {
+            color: #fff;
+        }
+
+        .filter-popover .filter-range {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .filter-popover .filter-range input {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .filter-popover .filter-range span {
+            color: #888;
+            font-size: 0.8rem;
         }
 
         /* Loading */
@@ -323,11 +428,11 @@
                 <table class="data-table" id="reactor-table">
                     <thead>
                         <tr>
-                            <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span></th>
-                            <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span></th>
-                            <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span></th>
-                            <th data-sort="status">Status <span class="sort-icon">&#8597;</span></th>
-                            <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span></th>
+                            <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
+                            <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
+                            <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
+                            <th data-sort="status">Status <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="status">&#9698;</span></th>
+                            <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="date">&#9698;</span></th>
                         </tr>
                     </thead>
                     <tbody id="table-body"></tbody>
@@ -346,6 +451,199 @@
 
         let currentReactors = [];
         let currentSort = { column: null, ascending: true };
+        let currentFilters = {};
+
+        const filterConfig = {
+            name:       { type: 'text',     field: r => `${r.plant_name}-${r.unit_number}` },
+            technology: { type: 'checkbox', field: r => r.technology || '-' },
+            capacity:   { type: 'range',    field: r => r.gross_capacity_mw || 0 },
+            status:     { type: 'checkbox', field: r => r.status || '-' },
+            date:       { type: 'text',     field: r => r.commercial_operation || r.permanent_shutdown || '' }
+        };
+
+        function applyFilters(reactors) {
+            return reactors.filter(r => {
+                for (const [column, filter] of Object.entries(currentFilters)) {
+                    const config = filterConfig[column];
+                    if (!config) continue;
+                    const value = config.field(r);
+                    if (filter.type === 'text') {
+                        if (filter.value && !String(value).toLowerCase().includes(filter.value.toLowerCase())) return false;
+                    } else if (filter.type === 'checkbox') {
+                        if (filter.selected.size > 0 && !filter.selected.has(value)) return false;
+                    } else if (filter.type === 'range') {
+                        const num = parseFloat(value) || 0;
+                        if (filter.min !== null && num < filter.min) return false;
+                        if (filter.max !== null && num > filter.max) return false;
+                    }
+                }
+                return true;
+            });
+        }
+
+        function applyFiltersAndSort() {
+            let filtered = applyFilters(currentReactors);
+            if (currentSort.column) {
+                filtered = [...filtered].sort((a, b) => {
+                    let valA, valB;
+                    switch (currentSort.column) {
+                        case 'name':
+                            valA = `${a.plant_name}-${a.unit_number}`.toLowerCase();
+                            valB = `${b.plant_name}-${b.unit_number}`.toLowerCase();
+                            break;
+                        case 'technology':
+                            valA = (a.technology || '').toLowerCase();
+                            valB = (b.technology || '').toLowerCase();
+                            break;
+                        case 'capacity':
+                            valA = a.gross_capacity_mw || 0;
+                            valB = b.gross_capacity_mw || 0;
+                            break;
+                        case 'status':
+                            valA = (a.status || '').toLowerCase();
+                            valB = (b.status || '').toLowerCase();
+                            break;
+                        case 'date':
+                            valA = a.commercial_operation || '';
+                            valB = b.commercial_operation || '';
+                            break;
+                        default:
+                            return 0;
+                    }
+                    if (valA < valB) return currentSort.ascending ? -1 : 1;
+                    if (valA > valB) return currentSort.ascending ? 1 : -1;
+                    return 0;
+                });
+            }
+            renderReactorTable(filtered);
+            updateSortIndicators();
+            updateFilterIcons();
+        }
+
+        function toggleFilterPopover(column) {
+            const icon = document.querySelector(`.filter-icon[data-filter="${column}"]`);
+            const th = icon.closest('th');
+            const existing = th.querySelector('.filter-popover');
+            closeAllPopovers();
+            if (existing) return;
+
+            const config = filterConfig[column];
+            if (!config) return;
+            const popover = document.createElement('div');
+            popover.className = 'filter-popover';
+            popover.addEventListener('click', e => e.stopPropagation());
+
+            if (config.type === 'text') {
+                const currentValue = currentFilters[column]?.value || '';
+                popover.innerHTML = `<input type="text" placeholder="Filter..." value="${currentValue}">`;
+                const input = popover.querySelector('input');
+                let debounceTimer;
+                input.addEventListener('input', () => {
+                    clearTimeout(debounceTimer);
+                    debounceTimer = setTimeout(() => {
+                        const val = input.value.trim();
+                        if (val) {
+                            currentFilters[column] = { type: 'text', value: val };
+                        } else {
+                            delete currentFilters[column];
+                        }
+                        applyFiltersAndSort();
+                    }, 200);
+                });
+                setTimeout(() => input.focus(), 0);
+            } else if (config.type === 'checkbox') {
+                const allValues = [...new Set(currentReactors.map(r => config.field(r)))].sort();
+                const selected = currentFilters[column]?.selected || new Set();
+                popover.innerHTML = `
+                    <input type="text" placeholder="Search..." class="filter-search">
+                    <div class="filter-actions">
+                        <a class="select-all">Select All</a>
+                        <a class="clear-all">Clear All</a>
+                    </div>
+                    <div class="filter-checkbox-list">
+                        ${allValues.map(v => `
+                            <label>
+                                <input type="checkbox" value="${v}" ${selected.size === 0 || selected.has(v) ? 'checked' : ''}>
+                                ${v}
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                const searchInput = popover.querySelector('.filter-search');
+                searchInput.addEventListener('input', () => {
+                    const q = searchInput.value.toLowerCase();
+                    popover.querySelectorAll('.filter-checkbox-list label').forEach(label => {
+                        label.style.display = label.textContent.toLowerCase().includes(q) ? '' : 'none';
+                    });
+                });
+                popover.querySelector('.select-all').addEventListener('click', () => {
+                    popover.querySelectorAll('.filter-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = true);
+                    delete currentFilters[column];
+                    applyFiltersAndSort();
+                });
+                popover.querySelector('.clear-all').addEventListener('click', () => {
+                    popover.querySelectorAll('.filter-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = false);
+                    currentFilters[column] = { type: 'checkbox', selected: new Set() };
+                    applyFiltersAndSort();
+                });
+                popover.querySelectorAll('.filter-checkbox-list input[type="checkbox"]').forEach(cb => {
+                    cb.addEventListener('change', () => {
+                        const checkedValues = new Set();
+                        popover.querySelectorAll('.filter-checkbox-list input[type="checkbox"]:checked').forEach(c => checkedValues.add(c.value));
+                        if (checkedValues.size === allValues.length) {
+                            delete currentFilters[column];
+                        } else {
+                            currentFilters[column] = { type: 'checkbox', selected: checkedValues };
+                        }
+                        applyFiltersAndSort();
+                    });
+                });
+                setTimeout(() => searchInput.focus(), 0);
+            } else if (config.type === 'range') {
+                const currentMin = currentFilters[column]?.min ?? '';
+                const currentMax = currentFilters[column]?.max ?? '';
+                popover.innerHTML = `
+                    <div class="filter-range">
+                        <input type="number" placeholder="Min" value="${currentMin}">
+                        <span>-</span>
+                        <input type="number" placeholder="Max" value="${currentMax}">
+                    </div>
+                `;
+                const [minInput, maxInput] = popover.querySelectorAll('input');
+                const updateRange = () => {
+                    const min = minInput.value !== '' ? parseFloat(minInput.value) : null;
+                    const max = maxInput.value !== '' ? parseFloat(maxInput.value) : null;
+                    if (min !== null || max !== null) {
+                        currentFilters[column] = { type: 'range', min, max };
+                    } else {
+                        delete currentFilters[column];
+                    }
+                    applyFiltersAndSort();
+                };
+                minInput.addEventListener('input', updateRange);
+                maxInput.addEventListener('input', updateRange);
+                setTimeout(() => minInput.focus(), 0);
+            }
+            th.appendChild(popover);
+        }
+
+        function updateFilterIcons() {
+            document.querySelectorAll('.filter-icon').forEach(icon => {
+                const column = icon.dataset.filter;
+                const filter = currentFilters[column];
+                let active = false;
+                if (filter) {
+                    if (filter.type === 'text' && filter.value) active = true;
+                    else if (filter.type === 'checkbox' && filter.selected.size > 0) active = true;
+                    else if (filter.type === 'range' && (filter.min !== null || filter.max !== null)) active = true;
+                }
+                icon.classList.toggle('active', active);
+            });
+        }
+
+        function closeAllPopovers() {
+            document.querySelectorAll('.filter-popover').forEach(p => p.remove());
+        }
 
         async function loadCountryDetails() {
             try {
@@ -534,7 +832,7 @@
             // Reactor table
             document.getElementById('reactor-table-title').textContent =
                 `Reactors (${reactors.length})`;
-            renderReactorTable(reactors);
+            applyFiltersAndSort();
 
             // Show content
             document.getElementById('loading').style.display = 'none';
@@ -566,40 +864,7 @@
                 currentSort.column = column;
                 currentSort.ascending = true;
             }
-
-            const sorted = [...currentReactors].sort((a, b) => {
-                let valA, valB;
-                switch (column) {
-                    case 'name':
-                        valA = `${a.plant_name}-${a.unit_number}`.toLowerCase();
-                        valB = `${b.plant_name}-${b.unit_number}`.toLowerCase();
-                        break;
-                    case 'technology':
-                        valA = (a.technology || '').toLowerCase();
-                        valB = (b.technology || '').toLowerCase();
-                        break;
-                    case 'capacity':
-                        valA = a.gross_capacity_mw || 0;
-                        valB = b.gross_capacity_mw || 0;
-                        break;
-                    case 'status':
-                        valA = (a.status || '').toLowerCase();
-                        valB = (b.status || '').toLowerCase();
-                        break;
-                    case 'date':
-                        valA = a.commercial_operation || '';
-                        valB = b.commercial_operation || '';
-                        break;
-                    default:
-                        return 0;
-                }
-                if (valA < valB) return currentSort.ascending ? -1 : 1;
-                if (valA > valB) return currentSort.ascending ? 1 : -1;
-                return 0;
-            });
-
-            renderReactorTable(sorted);
-            updateSortIndicators();
+            applyFiltersAndSort();
         }
 
         function updateSortIndicators() {
@@ -619,7 +884,28 @@
         }
 
         document.querySelectorAll('.data-table th[data-sort]').forEach(th => {
-            th.addEventListener('click', () => sortTable(th.dataset.sort));
+            th.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-icon')) return;
+                sortTable(th.dataset.sort);
+            });
+        });
+
+        // Filter icon click handlers
+        document.querySelectorAll('.filter-icon').forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleFilterPopover(icon.dataset.filter);
+            });
+        });
+
+        // Close popovers on outside click or Escape
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.filter-popover') && !e.target.classList.contains('filter-icon')) {
+                closeAllPopovers();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeAllPopovers();
         });
 
         document.addEventListener('DOMContentLoaded', loadCountryDetails);

@@ -19,3 +19,9 @@
 - **Year coverage (2020+)**: 2020: 98.8%, 2021: 96.0%, 2022: 90.5%, 2023: 92.1%, 2024: 94.0%.
 - **Remaining gaps**: 41 reactors without PRIS ID are mostly Japanese units idle since Fukushima (listed as Operational but not generating), 3 German reactors shut down in 2023, and Taiwan units PRIS lists as non-operational. 29 reactors have no post-2020 data for the same reasons.
 - Alternative data sources (US EIA, ENTSO-E, WNA, national regulators) have not been explored but are less critical now.
+
+### 10. Visual Design Refresh
+- Update the website's visual design to look less drab — modernize colors, typography, card styles, and overall aesthetic.
+
+### 11. Hosting Migration
+- Move off Render to a hosting provider with better uptime that doesn't require cold-start reboots after periods of inactivity. Evaluate options like Fly.io, Railway, or a VPS.
