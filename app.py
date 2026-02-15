@@ -353,7 +353,7 @@ def list_reactors():
     sql = f"""
         SELECT r.id, r.plant_name, r.unit_number, c.name as country,
                t.code as technology, r.gross_capacity_mw, r.status,
-               r.commercial_operation, r.latitude, r.longitude
+               r.commercial_operation, r.permanent_shutdown, r.latitude, r.longitude
         FROM reactors r
         LEFT JOIN countries c ON r.country_id = c.id
         LEFT JOIN technologies t ON r.technology_id = t.id
@@ -440,6 +440,89 @@ def reactor_detail_page(reactor_id):
 def country_detail_page(country):
     """Serve the country detail page."""
     return render_template('country_detail.html', country_name=country)
+
+@app.route('/technology/<tech_code>')
+def technology_detail_page(tech_code):
+    """Serve the technology detail page."""
+    return render_template('technology_detail.html', tech_code=tech_code)
+
+@app.route('/api/technologies/<tech_code>/detail')
+@require_api_key('free')
+def technology_detail(tech_code):
+    """Detailed technology page data: fleet info, generation history, reactor list, country breakdown."""
+    # Technology summary stats
+    stats = query_db("""
+        SELECT
+            t.code,
+            t.name as full_name,
+            t.description,
+            COUNT(*) as total,
+            SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
+            SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
+            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+        FROM technologies t
+        LEFT JOIN reactors r ON t.id = r.technology_id
+        WHERE UPPER(t.code) = UPPER(?)
+        GROUP BY t.code, t.name, t.description
+    """, (tech_code,))
+
+    if not stats:
+        return jsonify({'error': f'Technology not found: {tech_code}'}), 404
+
+    # Generation history: sum by year across all reactors with this technology
+    generation_history = query_db("""
+        SELECT
+            g.year,
+            ROUND(SUM(g.electricity_gwh) / 1000.0, 2) as total_twh,
+            COUNT(DISTINCT g.reactor_id) as reactor_count
+        FROM generation_annual g
+        JOIN reactors r ON g.reactor_id = r.id
+        JOIN technologies t ON r.technology_id = t.id
+        WHERE UPPER(t.code) = UPPER(?)
+        GROUP BY g.year
+        ORDER BY g.year
+    """, (tech_code,))
+
+    # All reactors with this technology
+    reactors = query_db("""
+        SELECT r.id, r.plant_name, r.unit_number, c.name as country,
+               r.gross_capacity_mw, r.status, r.commercial_operation,
+               r.permanent_shutdown, r.latitude, r.longitude
+        FROM reactors r
+        JOIN technologies t ON r.technology_id = t.id
+        LEFT JOIN countries c ON r.country_id = c.id
+        WHERE UPPER(t.code) = UPPER(?)
+        ORDER BY
+            CASE r.status
+                WHEN 'Operational' THEN 1
+                WHEN 'Under Construction' THEN 2
+                WHEN 'Long-term Shutdown' THEN 3
+                WHEN 'Permanent Shutdown' THEN 4
+                ELSE 5
+            END,
+            c.name, r.plant_name, r.unit_number
+    """, (tech_code,))
+
+    # Country breakdown (all statuses)
+    country_breakdown = query_db("""
+        SELECT c.name as country, COUNT(*) as count,
+               ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
+        FROM reactors r
+        JOIN technologies t ON r.technology_id = t.id
+        LEFT JOIN countries c ON r.country_id = c.id
+        WHERE UPPER(t.code) = UPPER(?)
+        GROUP BY c.name
+        ORDER BY count DESC
+    """, (tech_code,))
+
+    return jsonify({
+        'technology': stats[0],
+        'generation_history': generation_history,
+        'reactors': reactors,
+        'country_breakdown': country_breakdown
+    })
 
 @app.route('/api/reactors/search')
 @require_api_key('paid')

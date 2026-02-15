@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Details - Global Nuclear Database</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet for maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-bottom: 2px solid #0f3460;
+        }
+
+        .back-link {
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        .description {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            max-width: 800px;
+        }
+
+        /* Stats cards */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mini-stat {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mini-stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .mini-stat-label {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        /* Grid layout */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .detail-grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .card h2 {
+            color: #00d4ff;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #2a2a4a;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #1a1a2e;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: #888;
+        }
+
+        .stat-value {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .stat-value.highlight {
+            color: #00d4ff;
+        }
+
+        /* Map */
+        #tech-map {
+            height: 300px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* Chart */
+        .chart-container {
+            height: 300px;
+            margin-top: 15px;
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #1a1a2e;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .data-table th, .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #2a2a4a;
+        }
+
+        .data-table th {
+            background: #0f0f1a;
+            color: #00d4ff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .data-table th:hover {
+            background: #1a1a2e;
+        }
+
+        .data-table th .sort-icon {
+            margin-left: 5px;
+            opacity: 0.5;
+        }
+
+        .data-table th.sorted .sort-icon {
+            opacity: 1;
+        }
+
+        .data-table tr:hover {
+            background: #252540;
+        }
+
+        .data-table a.reactor-link {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .data-table a.reactor-link:hover {
+            text-decoration: underline;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-operational {
+            background: #00c853;
+            color: #000;
+        }
+
+        .status-construction {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .status-shutdown {
+            background: #616161;
+            color: #fff;
+        }
+
+        .status-longterm {
+            background: #9e9e9e;
+            color: #000;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #888;
+        }
+
+        .spinner {
+            border: 3px solid #2a2a4a;
+            border-top: 3px solid #00d4ff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            text-align: center;
+            padding: 60px;
+            color: #ff5252;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #2a2a4a;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="back-link">&larr; Back to Dashboard</a>
+            <h1 id="tech-name">Loading...</h1>
+            <p class="subtitle" id="tech-subtitle"></p>
+            <p class="description" id="tech-description"></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            Loading technology data...
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            Technology not found. <a href="/">Return to dashboard</a>
+        </div>
+
+        <div id="content" style="display: none;">
+            <!-- Quick Stats -->
+            <div class="stats-row" id="quick-stats"></div>
+
+            <!-- Main Grid -->
+            <div class="detail-grid">
+                <!-- Fleet Information -->
+                <div class="card">
+                    <h2>Fleet Information</h2>
+                    <div id="fleet-info"></div>
+                </div>
+
+                <!-- Map -->
+                <div class="card">
+                    <h2>Reactor Locations</h2>
+                    <div id="tech-map"></div>
+                </div>
+            </div>
+
+            <!-- Country Breakdown Chart -->
+            <div class="card" style="margin-top: 30px;">
+                <h2>Country Breakdown (Top 15 by Capacity)</h2>
+                <div class="chart-container">
+                    <canvas id="country-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Generation History Chart -->
+            <div class="card" style="margin-top: 30px;">
+                <h2>Generation History</h2>
+                <div class="chart-container">
+                    <canvas id="generation-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Reactor Table -->
+            <div class="card" style="margin-top: 30px;">
+                <h2 id="reactor-table-title">Reactors</h2>
+                <table class="data-table" id="reactor-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span></th>
+                            <th data-sort="country">Country <span class="sort-icon">&#8597;</span></th>
+                            <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span></th>
+                            <th data-sort="status">Status <span class="sort-icon">&#8597;</span></th>
+                            <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Data sources: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
+           <a href="/">Return to Dashboard</a></p>
+    </footer>
+
+    <script>
+        const TECH_CODE = "{{ tech_code }}";
+
+        let currentReactors = [];
+        let currentSort = { column: null, ascending: true };
+
+        async function loadTechnologyDetails() {
+            try {
+                const response = await fetch(`/api/technologies/${encodeURIComponent(TECH_CODE)}/detail`);
+                if (!response.ok) throw new Error('Technology not found');
+                const data = await response.json();
+                renderTechnologyDetails(data);
+            } catch (error) {
+                console.error('Failed to load technology:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        function renderTechnologyDetails(data) {
+            const tech = data.technology;
+            const history = data.generation_history;
+            const reactors = data.reactors;
+            const countryBreakdown = data.country_breakdown;
+
+            currentReactors = reactors;
+
+            // Header
+            document.getElementById('tech-name').textContent = `${tech.code} - ${tech.full_name}`;
+            document.getElementById('tech-subtitle').textContent =
+                `${tech.operational} operational reactors | ${tech.capacity_gw} GW capacity`;
+            if (tech.description) {
+                document.getElementById('tech-description').textContent = tech.description;
+            }
+
+            // Count unique countries
+            const countries = new Set(reactors.map(r => r.country).filter(Boolean));
+
+            // Quick stats
+            document.getElementById('quick-stats').innerHTML = `
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${tech.operational}</div>
+                    <div class="mini-stat-label">Operational</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${tech.capacity_gw}</div>
+                    <div class="mini-stat-label">Capacity (GW)</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${tech.avg_age || '--'}</div>
+                    <div class="mini-stat-label">Avg Age (yrs)</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${countries.size}</div>
+                    <div class="mini-stat-label">Countries</div>
+                </div>
+            `;
+
+            // Fleet info
+            const operationalReactors = reactors.filter(r => r.commercial_operation);
+            const firstOnline = operationalReactors
+                .map(r => r.commercial_operation)
+                .sort()[0];
+            const lastOnline = operationalReactors
+                .filter(r => r.status === 'Operational')
+                .map(r => r.commercial_operation)
+                .sort()
+                .pop();
+
+            document.getElementById('fleet-info').innerHTML = `
+                <div class="stat-row">
+                    <span class="stat-label">Total Reactors (all status)</span>
+                    <span class="stat-value">${tech.total}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Operational</span>
+                    <span class="stat-value highlight">${tech.operational}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Under Construction</span>
+                    <span class="stat-value">${tech.under_construction}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Permanently Shutdown</span>
+                    <span class="stat-value">${tech.shutdown}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">First Commercial Operation</span>
+                    <span class="stat-value">${firstOnline || '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Most Recent Online</span>
+                    <span class="stat-value">${lastOnline || '--'}</span>
+                </div>
+            `;
+
+            // Map
+            const reactorsWithCoords = reactors.filter(r => r.latitude && r.longitude);
+            if (reactorsWithCoords.length > 0) {
+                const map = L.map('tech-map');
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; OpenStreetMap, &copy; CARTO'
+                }).addTo(map);
+
+                const statusColors = {
+                    'Operational': '#00c853',
+                    'Under Construction': '#ffc107',
+                    'Long-term Shutdown': '#9e9e9e',
+                    'Permanent Shutdown': '#616161'
+                };
+
+                const bounds = [];
+                reactorsWithCoords.forEach(r => {
+                    const color = statusColors[r.status] || '#00d4ff';
+                    bounds.push([r.latitude, r.longitude]);
+                    L.circleMarker([r.latitude, r.longitude], {
+                        radius: 8,
+                        fillColor: color,
+                        color: '#fff',
+                        weight: 1,
+                        opacity: 0.8,
+                        fillOpacity: 0.7
+                    })
+                    .bindPopup(`
+                        <strong><a href="/reactor/${r.id}" style="color: #00d4ff;">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color: #ccc;">${r.country}</a> | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
+                        <span style="color: ${color};">${r.status}</span>
+                    `)
+                    .addTo(map);
+                });
+
+                map.fitBounds(bounds, { padding: [20, 20] });
+            } else {
+                document.getElementById('tech-map').innerHTML =
+                    '<p style="text-align: center; color: #888; padding: 100px 0;">Location data not available</p>';
+            }
+
+            // Country breakdown chart
+            if (countryBreakdown && countryBreakdown.length > 0) {
+                const top15 = countryBreakdown.slice(0, 15);
+                new Chart(document.getElementById('country-chart'), {
+                    type: 'bar',
+                    data: {
+                        labels: top15.map(c => c.country),
+                        datasets: [{
+                            label: 'Capacity (GW)',
+                            data: top15.map(c => c.capacity_gw),
+                            backgroundColor: '#00d4ff',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: (ctx) => {
+                                        return `${top15[ctx.dataIndex].count} reactors`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: '#2a2a4a' },
+                                ticks: { color: '#888' },
+                                title: {
+                                    display: true,
+                                    text: 'GW',
+                                    color: '#888'
+                                }
+                            },
+                            y: {
+                                grid: { display: false },
+                                ticks: { color: '#e0e0e0' }
+                            }
+                        },
+                        onClick: (event, elements) => {
+                            if (elements.length > 0) {
+                                const index = elements[0].index;
+                                const countryName = top15[index].country;
+                                window.location.href = `/country/${encodeURIComponent(countryName)}`;
+                            }
+                        },
+                        onHover: (event, elements) => {
+                            event.native.target.style.cursor = elements.length > 0 ? 'pointer' : 'default';
+                        }
+                    }
+                });
+            } else {
+                document.getElementById('country-chart').parentElement.innerHTML =
+                    '<p style="text-align: center; color: #888; padding: 80px 0;">No country data available</p>';
+            }
+
+            // Generation chart
+            if (history && history.length > 0) {
+                new Chart(document.getElementById('generation-chart'), {
+                    type: 'bar',
+                    data: {
+                        labels: history.map(h => h.year),
+                        datasets: [{
+                            label: 'Generation (TWh)',
+                            data: history.map(h => h.total_twh),
+                            backgroundColor: '#00d4ff',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: (ctx) => {
+                                        const h = history[ctx.dataIndex];
+                                        return `${h.reactor_count} reactors reporting`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: '#2a2a4a' },
+                                ticks: { color: '#888', maxTicksLimit: 20 }
+                            },
+                            y: {
+                                grid: { color: '#2a2a4a' },
+                                ticks: {
+                                    color: '#888',
+                                    callback: (val) => val.toLocaleString()
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'TWh',
+                                    color: '#888'
+                                }
+                            }
+                        }
+                    }
+                });
+            } else {
+                document.getElementById('generation-chart').parentElement.innerHTML =
+                    '<p style="text-align: center; color: #888; padding: 80px 0;">No generation data available</p>';
+            }
+
+            // Reactor table
+            document.getElementById('reactor-table-title').textContent =
+                `Reactors (${reactors.length})`;
+            renderReactorTable(reactors);
+
+            // Show content
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        function renderReactorTable(reactors) {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = reactors.map(r => {
+                let statusClass;
+                if (r.status === 'Operational') statusClass = 'operational';
+                else if (r.status === 'Under Construction') statusClass = 'construction';
+                else if (r.status === 'Long-term Shutdown') statusClass = 'longterm';
+                else statusClass = 'shutdown';
+
+                const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
+                    ? `<span style="color:#888">Shut down:</span> ${r.permanent_shutdown}`
+                    : (r.commercial_operation || '-');
+
+                return `
+                    <tr>
+                        <td><a href="/reactor/${r.id}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
+                        <td><a href="/country/${encodeURIComponent(r.country)}" class="reactor-link">${r.country}</a></td>
+                        <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
+                        <td><span class="status-badge status-${statusClass}">${r.status}</span></td>
+                        <td>${dateCol}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Sorting
+        function sortTable(column) {
+            if (currentSort.column === column) {
+                currentSort.ascending = !currentSort.ascending;
+            } else {
+                currentSort.column = column;
+                currentSort.ascending = true;
+            }
+
+            const sorted = [...currentReactors].sort((a, b) => {
+                let valA, valB;
+                switch (column) {
+                    case 'name':
+                        valA = `${a.plant_name}-${a.unit_number}`.toLowerCase();
+                        valB = `${b.plant_name}-${b.unit_number}`.toLowerCase();
+                        break;
+                    case 'country':
+                        valA = (a.country || '').toLowerCase();
+                        valB = (b.country || '').toLowerCase();
+                        break;
+                    case 'capacity':
+                        valA = a.gross_capacity_mw || 0;
+                        valB = b.gross_capacity_mw || 0;
+                        break;
+                    case 'status':
+                        valA = (a.status || '').toLowerCase();
+                        valB = (b.status || '').toLowerCase();
+                        break;
+                    case 'date':
+                        valA = a.commercial_operation || '';
+                        valB = b.commercial_operation || '';
+                        break;
+                    default:
+                        return 0;
+                }
+                if (valA < valB) return currentSort.ascending ? -1 : 1;
+                if (valA > valB) return currentSort.ascending ? 1 : -1;
+                return 0;
+            });
+
+            renderReactorTable(sorted);
+            updateSortIndicators();
+        }
+
+        function updateSortIndicators() {
+            document.querySelectorAll('.data-table th').forEach(th => {
+                th.classList.remove('sorted');
+                const icon = th.querySelector('.sort-icon');
+                if (icon) icon.innerHTML = '&#8597;';
+            });
+            if (currentSort.column) {
+                const th = document.querySelector(`.data-table th[data-sort="${currentSort.column}"]`);
+                if (th) {
+                    th.classList.add('sorted');
+                    const icon = th.querySelector('.sort-icon');
+                    if (icon) icon.innerHTML = currentSort.ascending ? '&#8593;' : '&#8595;';
+                }
+            }
+        }
+
+        document.querySelectorAll('.data-table th[data-sort]').forEach(th => {
+            th.addEventListener('click', () => sortTable(th.dataset.sort));
+        });
+
+        document.addEventListener('DOMContentLoaded', loadTechnologyDetails);
+    </script>
+</body>
+</html>

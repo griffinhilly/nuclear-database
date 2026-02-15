@@ -407,6 +407,8 @@
                 <button class="tab-btn active" data-tab="operational">Operational</button>
                 <button class="tab-btn" data-tab="construction">Under Construction</button>
                 <button class="tab-btn" data-tab="planned">Planned</button>
+                <button class="tab-btn" data-tab="shutdown">Permanent Shutdown</button>
+                <button class="tab-btn" data-tab="longterm">Long-term Shutdown</button>
                 <button class="tab-btn" data-tab="search">Search</button>
             </div>
 
@@ -551,6 +553,16 @@
                                 label: (ctx) => `${ctx.label}: ${ctx.raw} GW`
                             }
                         }
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const index = elements[0].index;
+                            const techCode = chartData[index].code;
+                            window.location.href = `/technology/${encodeURIComponent(techCode)}`;
+                        }
+                    },
+                    onHover: (event, elements) => {
+                        event.native.target.style.cursor = elements.length > 0 ? 'pointer' : 'default';
                     }
                 }
             });
@@ -852,10 +864,16 @@
                     currentReactors = data.planned_reactors;
                     renderPlannedTable(currentReactors);
                 } else {
-                    const status = tab === 'operational' ? 'Operational' : 'Under Construction';
-                    let url = `/api/reactors?status=${status}&per_page=500`;
-                    if (country) url += `&country=${country}`;
-                    if (tech) url += `&technology=${tech}`;
+                    const statusMap = {
+                        'operational': 'Operational',
+                        'construction': 'Under Construction',
+                        'shutdown': 'Permanent Shutdown',
+                        'longterm': 'Long-term Shutdown'
+                    };
+                    const status = statusMap[tab];
+                    let url = `/api/reactors?status=${encodeURIComponent(status)}&per_page=500`;
+                    if (country) url += `&country=${encodeURIComponent(country)}`;
+                    if (tech) url += `&technology=${encodeURIComponent(tech)}`;
 
                     data = await fetchAPI(url, true);
                     currentReactors = data.reactors;
@@ -959,16 +977,32 @@
 
         function renderReactorTable(reactors) {
             const tbody = document.getElementById('table-body');
-            tbody.innerHTML = reactors.map(r => `
-                <tr>
-                    <td><a href="/reactor/${r.id}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
-                    <td><a href="/country/${encodeURIComponent(r.country)}" class="reactor-link">${r.country}</a></td>
-                    <td>${r.technology || '-'}</td>
-                    <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
-                    <td><span class="status-badge status-${r.status === 'Operational' ? 'operational' : 'construction'}">${r.status}</span></td>
-                    <td>${r.commercial_operation || '-'}</td>
-                </tr>
-            `).join('');
+            tbody.innerHTML = reactors.map(r => {
+                let statusClass;
+                if (r.status === 'Operational') statusClass = 'operational';
+                else if (r.status === 'Under Construction') statusClass = 'construction';
+                else statusClass = 'shutdown';
+
+                const techLink = r.technology
+                    ? `<a href="/technology/${encodeURIComponent(r.technology)}" class="reactor-link">${r.technology}</a>`
+                    : '-';
+
+                let dateCol = r.commercial_operation || '-';
+                if (r.status === 'Permanent Shutdown' && r.permanent_shutdown) {
+                    dateCol = `<span style="color:#888">Shut down:</span> ${r.permanent_shutdown}`;
+                }
+
+                return `
+                    <tr>
+                        <td><a href="/reactor/${r.id}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
+                        <td><a href="/country/${encodeURIComponent(r.country)}" class="reactor-link">${r.country}</a></td>
+                        <td>${techLink}</td>
+                        <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
+                        <td><span class="status-badge status-${statusClass}">${r.status}</span></td>
+                        <td>${dateCol}</td>
+                    </tr>
+                `;
+            }).join('');
         }
 
         function renderPlannedTable(reactors) {
