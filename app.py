@@ -377,8 +377,8 @@ def get_reactor(reactor_id):
         SELECT r.id, r.plant_name, r.unit_number, c.name as country,
                t.code as technology, t.name as technology_name,
                r.thermal_capacity_mw, r.gross_capacity_mw, r.net_capacity_mw,
-               r.status, r.commercial_operation,
-               ROUND(JULIANDAY('now') - JULIANDAY(r.commercial_operation)) / 365.25 as age_years,
+               r.status, r.commercial_operation, r.permanent_shutdown,
+               ROUND((JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(r.commercial_operation)) / 365.25, 2) as age_years,
                r.latitude, r.longitude
         FROM reactors r
         LEFT JOIN countries c ON r.country_id = c.id
@@ -400,7 +400,6 @@ def get_reactor(reactor_id):
         WHERE g.reactor_id = ?
           AND r.gross_capacity_mw > 0
         ORDER BY g.year DESC
-        LIMIT 10
     """, (reactor_id,))
 
     # Get lifetime stats (calculate avg capacity factor from generation and capacity)
@@ -600,6 +599,95 @@ def planned_reactors():
         ORDER BY p.expected_online
     """)
     return jsonify({'planned_reactors': reactors, 'count': len(reactors)})
+
+@app.route('/api/stats/history')
+@require_api_key('free')
+def stats_history():
+    """Year-by-year historical stats for dashboard stat cards."""
+    conn = get_db()
+    cursor = conn.cursor()
+
+    # Get year range from commercial_operation dates
+    cursor.execute("""
+        SELECT MIN(CAST(substr(commercial_operation, 1, 4) AS INTEGER)),
+               MAX(CAST(substr(commercial_operation, 1, 4) AS INTEGER))
+        FROM reactors WHERE commercial_operation IS NOT NULL
+    """)
+    min_year, max_year = cursor.fetchone()
+    if not min_year:
+        conn.close()
+        return jsonify({'years': []})
+
+    years = []
+    for year in range(min_year, max_year + 1):
+        year_end = f'{year}-12-31'
+        year_start = f'{year}-01-01'
+
+        # Operational reactors and capacity at end of year
+        cursor.execute("""
+            SELECT COUNT(*) as count,
+                   ROUND(COALESCE(SUM(gross_capacity_mw), 0) / 1000.0, 1) as capacity_gw,
+                   COUNT(DISTINCT country_id) as countries
+            FROM reactors
+            WHERE commercial_operation IS NOT NULL
+              AND commercial_operation <= ?
+              AND (permanent_shutdown IS NULL OR permanent_shutdown >= ?)
+        """, (year_end, year_start))
+        row = dict(cursor.fetchone())
+
+        # Under construction at end of year (reactors that had not yet started operating)
+        cursor.execute("""
+            SELECT COUNT(*) as count
+            FROM reactors
+            WHERE commercial_operation IS NOT NULL
+              AND commercial_operation > ?
+              AND (permanent_shutdown IS NULL OR permanent_shutdown >= ?)
+        """, (year_end, year_start))
+        uc = cursor.fetchone()[0]
+
+        # Generation for this year
+        cursor.execute("""
+            SELECT ROUND(COALESCE(SUM(electricity_gwh), 0) / 1000.0, 1) as twh,
+                   COUNT(DISTINCT reactor_id) as reporting
+            FROM generation_annual
+            WHERE year = ?
+        """, (year,))
+        gen_row = cursor.fetchone()
+        gen_twh = gen_row[0] if gen_row else 0
+        gen_reporting = gen_row[1] if gen_row else 0
+
+        # Coverage-adjust generation if needed
+        operational_count = row['count']
+        if gen_reporting > 0 and gen_reporting < operational_count:
+            gen_twh = round(gen_twh * (operational_count / gen_reporting), 1)
+
+        years.append({
+            'year': year,
+            'operational': row['count'],
+            'capacity_gw': row['capacity_gw'],
+            'countries': row['countries'],
+            'under_construction': uc,
+            'generation_twh': gen_twh
+        })
+
+    conn.close()
+
+    # Compute average age per year
+    for entry in years:
+        y = entry['year']
+        ages = query_db("""
+            SELECT ROUND(AVG(
+                (JULIANDAY(? || '-12-31') - JULIANDAY(commercial_operation)) / 365.25
+            ), 1) as avg_age
+            FROM reactors
+            WHERE commercial_operation IS NOT NULL
+              AND commercial_operation <= ?
+              AND (permanent_shutdown IS NULL OR permanent_shutdown >= ?)
+        """, (str(y), f'{y}-12-31', f'{y}-01-01'))
+        entry['avg_age'] = ages[0]['avg_age'] if ages and ages[0]['avg_age'] else 0
+
+    return jsonify({'years': years})
+
 
 @app.route('/api/generation/decades')
 @require_api_key('free')

@@ -286,7 +286,7 @@
 
                 <!-- Generation Chart -->
                 <div class="card">
-                    <h2>Recent Generation History</h2>
+                    <h2>Generation History</h2>
                     <div class="chart-container">
                         <canvas id="generation-chart"></canvas>
                     </div>
@@ -412,6 +412,11 @@
                     <span class="stat-label">Status</span>
                     <span class="stat-value">${reactor.status}</span>
                 </div>
+                ${reactor.permanent_shutdown ? `
+                <div class="stat-row">
+                    <span class="stat-label">Permanent Shutdown</span>
+                    <span class="stat-value">${reactor.permanent_shutdown}</span>
+                </div>` : ''}
             `;
 
             // Lifetime stats
@@ -437,6 +442,10 @@
                     <span class="stat-value">${stats.first_year && stats.last_year ? stats.first_year + ' - ' + stats.last_year : '--'}</span>
                 </div>
             `;
+
+            // Show content before map init (Leaflet needs visible container)
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
 
             // Map
             if (reactor.latitude && reactor.longitude) {
@@ -512,9 +521,6 @@
                 document.getElementById('generation-table').innerHTML = '<tr><td colspan="3" style="text-align: center; color: #888;">No data available</td></tr>';
             }
 
-            // Show content
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
         }
 
         document.addEventListener('DOMContentLoaded', loadReactorDetails);

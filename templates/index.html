@@ -273,9 +273,7 @@
         }
 
         .filter-popover {
-            position: absolute;
-            top: 100%;
-            left: 0;
+            position: fixed;
             z-index: 1000;
             background: #0f0f1a;
             border: 1px solid #2a2a4a;
@@ -357,6 +355,64 @@
         .filter-popover .filter-range span {
             color: #888;
             font-size: 0.8rem;
+        }
+
+        /* Stat Detail Modal */
+        .stat-card {
+            cursor: pointer;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 30px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            position: relative;
+        }
+
+        .modal-content h2 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .modal-chart-container {
+            height: 400px;
         }
 
         /* Tabs */
@@ -441,27 +497,27 @@
     <div class="container">
         <!-- Stats Cards -->
         <div class="stats-grid" id="stats-cards">
-            <div class="stat-card">
+            <div class="stat-card" data-stat="operational">
                 <div class="stat-value" id="stat-operational">--</div>
                 <div class="stat-label">Operational Reactors</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card" data-stat="capacity">
                 <div class="stat-value" id="stat-capacity">--</div>
                 <div class="stat-label">Capacity (GW)</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card" data-stat="construction">
                 <div class="stat-value" id="stat-construction">--</div>
                 <div class="stat-label">Under Construction</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card" data-stat="generation">
                 <div class="stat-value" id="stat-generation">--</div>
                 <div class="stat-label" id="stat-generation-label">Generation (TWh)</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card" data-stat="countries">
                 <div class="stat-value" id="stat-countries">--</div>
                 <div class="stat-label">Countries</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card" data-stat="age">
                 <div class="stat-value" id="stat-age">--</div>
                 <div class="stat-label">Average Age (years)</div>
             </div>
@@ -559,6 +615,17 @@
         <p style="margin-top: 10px;">Nuclear Reactor Database API v1.0</p>
     </footer>
 
+    <!-- Stat Detail Modal -->
+    <div class="modal-overlay" id="stat-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <h2 id="modal-title"></h2>
+            <div class="modal-chart-container">
+                <canvas id="modal-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
     <script>
         // API Configuration
         const API_BASE = '';  // Same origin
@@ -598,7 +665,8 @@
                 document.getElementById('stat-construction').textContent = stats.global_statistics.under_construction;
                 const gen = stats.global_statistics.generation;
                 if (gen && gen.adjusted_twh) {
-                    const value = gen.is_estimated ? `~${gen.adjusted_twh.toLocaleString()}` : gen.adjusted_twh.toLocaleString();
+                    const roundedTwh = Math.round(gen.adjusted_twh);
+                    const value = gen.is_estimated ? `~${roundedTwh.toLocaleString()}` : roundedTwh.toLocaleString();
                     document.getElementById('stat-generation').textContent = value;
                     const label = gen.is_estimated
                         ? `${gen.year} Generation (TWh est, ${gen.coverage_pct}% reporting)`
@@ -1018,15 +1086,21 @@
         function toggleFilterPopover(column) {
             const icon = document.querySelector(`.filter-icon[data-filter="${column}"]`);
             const th = icon.closest('th');
-            const existing = th.querySelector('.filter-popover');
+            const wasOpen = document.querySelector(`.filter-popover[data-column="${column}"]`);
             closeAllPopovers();
-            if (existing) return;
+            if (wasOpen) return;
 
             const config = filterConfig[column];
             if (!config) return;
             const popover = document.createElement('div');
             popover.className = 'filter-popover';
+            popover.dataset.column = column;
             popover.addEventListener('click', e => e.stopPropagation());
+
+            // Position below the th using fixed positioning
+            const rect = th.getBoundingClientRect();
+            popover.style.top = rect.bottom + 'px';
+            popover.style.left = rect.left + 'px';
 
             if (config.type === 'text') {
                 const currentValue = currentFilters[column]?.value || '';
@@ -1119,7 +1193,7 @@
                 maxInput.addEventListener('input', updateRange);
                 setTimeout(() => minInput.focus(), 0);
             }
-            th.appendChild(popover);
+            document.body.appendChild(popover);
         }
 
         function updateFilterIcons() {
@@ -1333,6 +1407,102 @@
         // Search on Enter
         document.getElementById('search-input').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') searchReactors();
+        });
+
+        // Stat card detail modals
+        let modalChart = null;
+        let statsHistoryCache = null;
+
+        const statConfig = {
+            operational:  { title: 'Operational Reactors Over Time', field: 'operational', color: '#00d4ff', unit: '' },
+            capacity:     { title: 'Total Operational Capacity Over Time', field: 'capacity_gw', color: '#00d4ff', unit: ' GW' },
+            construction: { title: 'Reactors Under Construction Over Time', field: 'under_construction', color: '#ffc107', unit: '' },
+            generation:   { title: 'Annual Nuclear Generation Over Time', field: 'generation_twh', color: '#00c853', unit: ' TWh' },
+            countries:    { title: 'Countries with Nuclear Power Over Time', field: 'countries', color: '#9966ff', unit: '' },
+            age:          { title: 'Average Fleet Age Over Time', field: 'avg_age', color: '#ff9f40', unit: ' yrs' }
+        };
+
+        async function openStatModal(statKey) {
+            const config = statConfig[statKey];
+            if (!config) return;
+
+            const modal = document.getElementById('stat-modal');
+            document.getElementById('modal-title').textContent = config.title;
+            modal.classList.add('active');
+
+            if (!statsHistoryCache) {
+                statsHistoryCache = await fetchAPI('/api/stats/history');
+            }
+            const data = statsHistoryCache.years;
+
+            // Filter out years with zero values for cleaner charts
+            const filtered = statKey === 'generation'
+                ? data.filter(d => d[config.field] > 0)
+                : data.filter(d => d.operational > 0);
+
+            if (modalChart) modalChart.destroy();
+            modalChart = new Chart(document.getElementById('modal-chart'), {
+                type: statKey === 'generation' ? 'bar' : 'line',
+                data: {
+                    labels: filtered.map(d => d.year),
+                    datasets: [{
+                        label: config.title,
+                        data: filtered.map(d => d[config.field]),
+                        borderColor: config.color,
+                        backgroundColor: statKey === 'generation' ? config.color : `${config.color}22`,
+                        fill: statKey !== 'generation',
+                        tension: 0.3,
+                        pointRadius: 2,
+                        borderRadius: statKey === 'generation' ? 2 : 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => `${ctx.raw.toLocaleString()}${config.unit}`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: '#2a2a4a' },
+                            ticks: { color: '#888', maxTicksLimit: 15 }
+                        },
+                        y: {
+                            grid: { color: '#2a2a4a' },
+                            ticks: {
+                                color: '#888',
+                                callback: (val) => val.toLocaleString()
+                            },
+                            beginAtZero: statKey !== 'age'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Stat card click handlers
+        document.querySelectorAll('.stat-card[data-stat]').forEach(card => {
+            card.addEventListener('click', () => openStatModal(card.dataset.stat));
+        });
+
+        // Modal close handlers
+        document.getElementById('modal-close').addEventListener('click', () => {
+            document.getElementById('stat-modal').classList.remove('active');
+        });
+        document.getElementById('stat-modal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                e.currentTarget.classList.remove('active');
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('stat-modal').classList.remove('active');
+            }
         });
 
         // Initialize on load

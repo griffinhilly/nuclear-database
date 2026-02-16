@@ -248,9 +248,7 @@
         }
 
         .filter-popover {
-            position: absolute;
-            top: 100%;
-            left: 0;
+            position: fixed;
             z-index: 1000;
             background: #0f0f1a;
             border: 1px solid #2a2a4a;
@@ -523,15 +521,20 @@
         function toggleFilterPopover(column) {
             const icon = document.querySelector(`.filter-icon[data-filter="${column}"]`);
             const th = icon.closest('th');
-            const existing = th.querySelector('.filter-popover');
+            const wasOpen = document.querySelector(`.filter-popover[data-column="${column}"]`);
             closeAllPopovers();
-            if (existing) return;
+            if (wasOpen) return;
 
             const config = filterConfig[column];
             if (!config) return;
             const popover = document.createElement('div');
             popover.className = 'filter-popover';
+            popover.dataset.column = column;
             popover.addEventListener('click', e => e.stopPropagation());
+
+            const rect = th.getBoundingClientRect();
+            popover.style.top = rect.bottom + 'px';
+            popover.style.left = rect.left + 'px';
 
             if (config.type === 'text') {
                 const currentValue = currentFilters[column]?.value || '';
@@ -624,7 +627,7 @@
                 maxInput.addEventListener('input', updateRange);
                 setTimeout(() => minInput.focus(), 0);
             }
-            th.appendChild(popover);
+            document.body.appendChild(popover);
         }
 
         function updateFilterIcons() {
@@ -737,6 +740,10 @@
                 </div>
             `;
 
+            // Show content before map init (Leaflet needs visible container)
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
             // Map
             const reactorsWithCoords = reactors.filter(r => r.latitude && r.longitude);
             if (reactorsWithCoords.length > 0) {
@@ -833,10 +840,6 @@
             document.getElementById('reactor-table-title').textContent =
                 `Reactors (${reactors.length})`;
             applyFiltersAndSort();
-
-            // Show content
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
         }
 
         function renderReactorTable(reactors) {

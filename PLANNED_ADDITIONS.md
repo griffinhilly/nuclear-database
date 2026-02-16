@@ -25,3 +25,6 @@
 
 ### 11. Hosting Migration
 - Move off Render to a hosting provider with better uptime that doesn't require cold-start reboots after periods of inactivity. Evaluate options like Fly.io, Railway, or a VPS.
+
+### 12. Global Nuclear Countries Map
+- Add a choropleth or highlighted world map to the countries overview showing which countries have nuclear power programs. Color-code by operational reactor count or capacity, similar to the existing reactor location map but at the country level.
