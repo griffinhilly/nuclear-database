@@ -358,7 +358,7 @@ def list_reactors():
         LEFT JOIN countries c ON r.country_id = c.id
         LEFT JOIN technologies t ON r.technology_id = t.id
         {where_sql}
-        ORDER BY c.name, r.plant_name, r.unit_number
+        ORDER BY c.name COLLATE NOCASE, r.plant_name, r.unit_number
         LIMIT ? OFFSET ?
     """
     params.extend([per_page, offset])
@@ -501,7 +501,7 @@ def technology_detail(tech_code):
                 WHEN 'Permanent Shutdown' THEN 4
                 ELSE 5
             END,
-            c.name, r.plant_name, r.unit_number
+            c.name COLLATE NOCASE, r.plant_name, r.unit_number
     """, (tech_code,))
 
     # Country breakdown (all statuses)
