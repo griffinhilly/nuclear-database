@@ -576,7 +576,7 @@
                 });
                 setTimeout(() => input.focus(), 0);
             } else if (config.type === 'checkbox') {
-                const allValues = [...new Set(currentReactors.map(r => config.field(r)))].sort();
+                const allValues = [...new Set(currentReactors.map(r => config.field(r)))].sort((a, b) => a.localeCompare(b));
                 const selected = currentFilters[column]?.selected || new Set();
                 popover.innerHTML = `
                     <input type="text" placeholder="Search..." class="filter-search">
