@@ -12,7 +12,31 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+    <!-- TopoJSON for choropleth -->
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+
     <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-card: #f8fafc;
+            --bg-card-alt: #f1f5f9;
+            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            --bg-hover: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent: #2563eb;
+            --accent-light: rgba(37, 99, 235, 0.1);
+            --border: #e2e8f0;
+            --border-header: #2563eb;
+            --success: #16a34a;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --chart-grid: #e2e8f0;
+            --chart-text: #64748b;
+            --chart-legend: #1e293b;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -21,8 +45,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
         }
 
@@ -35,18 +59,18 @@
         header {
             text-align: center;
             padding: 40px 20px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border-bottom: 2px solid #0f3460;
+            background: var(--bg-header);
+            border-bottom: 2px solid var(--border-header);
         }
 
         h1 {
             font-size: 2.5rem;
-            color: #00d4ff;
+            color: var(--accent);
             margin-bottom: 10px;
         }
 
         .subtitle {
-            color: #888;
+            color: var(--text-secondary);
             font-size: 1.1rem;
         }
 
@@ -59,27 +83,28 @@
         }
 
         .stat-card {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
-            border: 1px solid #2a2a4a;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 25px;
             text-align: center;
-            transition: transform 0.2s, border-color 0.2s;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
         }
 
         .stat-card:hover {
             transform: translateY(-3px);
-            border-color: #00d4ff;
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
         }
 
         .stat-value {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #00d4ff;
+            color: var(--accent);
         }
 
         .stat-label {
-            color: #888;
+            color: var(--text-secondary);
             font-size: 0.9rem;
             margin-top: 5px;
         }
@@ -91,10 +116,10 @@
 
         .section-title {
             font-size: 1.5rem;
-            color: #fff;
+            color: var(--text-primary);
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #0f3460;
+            border-bottom: 2px solid var(--border);
         }
 
         .charts-grid {
@@ -104,14 +129,14 @@
         }
 
         .chart-card {
-            background: #1a1a2e;
-            border: 1px solid #2a2a4a;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 25px;
         }
 
         .chart-card h3 {
-            color: #fff;
+            color: var(--text-primary);
             margin-bottom: 20px;
             font-size: 1.1rem;
         }
@@ -129,7 +154,7 @@
         #reactor-map {
             height: 500px;
             border-radius: 12px;
-            border: 1px solid #2a2a4a;
+            border: 1px solid var(--border);
         }
 
         /* Data Table */
@@ -146,10 +171,10 @@
 
         .search-box input, .search-box select {
             padding: 12px 16px;
-            border: 1px solid #2a2a4a;
+            border: 1px solid var(--border);
             border-radius: 8px;
-            background: #1a1a2e;
-            color: #e0e0e0;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             font-size: 1rem;
         }
 
@@ -160,13 +185,13 @@
 
         .search-box input:focus, .search-box select:focus {
             outline: none;
-            border-color: #00d4ff;
+            border-color: var(--accent);
         }
 
         .search-box button {
             padding: 12px 24px;
-            background: #00d4ff;
-            color: #000;
+            background: var(--accent);
+            color: #fff;
             border: none;
             border-radius: 8px;
             font-weight: 600;
@@ -175,13 +200,13 @@
         }
 
         .search-box button:hover {
-            background: #00b8e6;
+            background: #1d4ed8;
         }
 
         .data-table {
             width: 100%;
             border-collapse: collapse;
-            background: #1a1a2e;
+            background: var(--bg-card);
             border-radius: 12px;
             overflow: hidden;
         }
@@ -189,12 +214,12 @@
         .data-table th, .data-table td {
             padding: 15px;
             text-align: left;
-            border-bottom: 1px solid #2a2a4a;
+            border-bottom: 1px solid var(--border);
         }
 
         .data-table th {
-            background: #0f0f1a;
-            color: #00d4ff;
+            background: var(--bg-card-alt);
+            color: var(--accent);
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.8rem;
@@ -206,7 +231,7 @@
         }
 
         .data-table th:hover {
-            background: #1a1a2e;
+            background: var(--bg-hover);
         }
 
         .data-table th .sort-icon {
@@ -219,11 +244,11 @@
         }
 
         .data-table tr:hover {
-            background: #252540;
+            background: var(--bg-hover);
         }
 
         .data-table a.reactor-link {
-            color: #00d4ff;
+            color: var(--accent);
             text-decoration: none;
             font-weight: 600;
         }
@@ -241,17 +266,17 @@
         }
 
         .status-operational {
-            background: #00c853;
-            color: #000;
+            background: var(--success);
+            color: #fff;
         }
 
         .status-construction {
-            background: #ffc107;
+            background: var(--warning);
             color: #000;
         }
 
         .status-shutdown {
-            background: #616161;
+            background: #9ca3af;
             color: #fff;
         }
 
@@ -268,19 +293,19 @@
         }
 
         .filter-icon.active {
-            color: #00d4ff;
+            color: var(--accent);
             opacity: 1;
         }
 
         .filter-popover {
             position: fixed;
             z-index: 1000;
-            background: #0f0f1a;
-            border: 1px solid #2a2a4a;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 12px;
             min-width: 220px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             text-transform: none;
             letter-spacing: normal;
             font-size: 0.9rem;
@@ -291,17 +316,17 @@
         .filter-popover input[type="number"] {
             width: 100%;
             padding: 8px 10px;
-            border: 1px solid #2a2a4a;
+            border: 1px solid var(--border);
             border-radius: 6px;
-            background: #1a1a2e;
-            color: #e0e0e0;
+            background: var(--bg-card);
+            color: var(--text-primary);
             font-size: 0.85rem;
             margin-bottom: 8px;
         }
 
         .filter-popover input:focus {
             outline: none;
-            border-color: #00d4ff;
+            border-color: var(--accent);
         }
 
         .filter-popover .filter-actions {
@@ -312,7 +337,7 @@
         }
 
         .filter-popover .filter-actions a {
-            color: #00d4ff;
+            color: var(--accent);
             cursor: pointer;
             text-decoration: none;
         }
@@ -333,12 +358,12 @@
             gap: 8px;
             padding: 4px 0;
             cursor: pointer;
-            color: #ccc;
+            color: var(--text-secondary);
             font-size: 0.85rem;
         }
 
         .filter-popover .filter-checkbox-list label:hover {
-            color: #fff;
+            color: var(--text-primary);
         }
 
         .filter-popover .filter-range {
@@ -353,7 +378,7 @@
         }
 
         .filter-popover .filter-range span {
-            color: #888;
+            color: var(--text-secondary);
             font-size: 0.8rem;
         }
 
@@ -369,7 +394,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.4);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -380,18 +405,20 @@
         }
 
         .modal-content {
-            background: #1a1a2e;
-            border: 1px solid #2a2a4a;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 30px;
             width: 90%;
             max-width: 800px;
             max-height: 80vh;
             position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow-y: auto;
         }
 
         .modal-content h2 {
-            color: #00d4ff;
+            color: var(--accent);
             margin-bottom: 20px;
             font-size: 1.3rem;
         }
@@ -402,13 +429,19 @@
             right: 20px;
             background: none;
             border: none;
-            color: #888;
+            color: var(--text-secondary);
             font-size: 1.5rem;
             cursor: pointer;
         }
 
         .modal-close:hover {
-            color: #fff;
+            color: var(--text-primary);
+        }
+
+        .modal-map-container {
+            height: 450px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
         }
 
         .modal-chart-container {
@@ -420,14 +453,14 @@
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
-            border-bottom: 2px solid #2a2a4a;
+            border-bottom: 2px solid var(--border);
             padding-bottom: 10px;
         }
 
         .tab-btn {
             padding: 10px 20px;
             background: transparent;
-            color: #888;
+            color: var(--text-secondary);
             border: none;
             cursor: pointer;
             font-size: 1rem;
@@ -435,11 +468,11 @@
         }
 
         .tab-btn:hover, .tab-btn.active {
-            color: #00d4ff;
+            color: var(--accent);
         }
 
         .tab-btn.active {
-            border-bottom: 2px solid #00d4ff;
+            border-bottom: 2px solid var(--accent);
             margin-bottom: -12px;
         }
 
@@ -447,13 +480,13 @@
         footer {
             text-align: center;
             padding: 30px;
-            color: #666;
-            border-top: 1px solid #2a2a4a;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
             margin-top: 50px;
         }
 
         footer a {
-            color: #00d4ff;
+            color: var(--accent);
             text-decoration: none;
         }
 
@@ -461,12 +494,12 @@
         .loading {
             text-align: center;
             padding: 40px;
-            color: #888;
+            color: var(--text-secondary);
         }
 
         .spinner {
-            border: 3px solid #2a2a4a;
-            border-top: 3px solid #00d4ff;
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--accent);
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -615,7 +648,7 @@
         <p style="margin-top: 10px;">Nuclear Reactor Database API v1.0</p>
     </footer>
 
-    <!-- Stat Detail Modal -->
+    <!-- Stat Detail Modal (time-series) -->
     <div class="modal-overlay" id="stat-modal">
         <div class="modal-content">
             <button class="modal-close" id="modal-close">&times;</button>
@@ -626,21 +659,50 @@
         </div>
     </div>
 
+    <!-- Construction Map Modal -->
+    <div class="modal-overlay" id="construction-modal">
+        <div class="modal-content" style="max-width: 950px;">
+            <button class="modal-close" onclick="closeModal('construction-modal')">&times;</button>
+            <h2>Reactors Under Construction</h2>
+            <div id="construction-map" class="modal-map-container"></div>
+        </div>
+    </div>
+
+    <!-- Countries Choropleth Modal -->
+    <div class="modal-overlay" id="countries-modal">
+        <div class="modal-content" style="max-width: 950px;">
+            <button class="modal-close" onclick="closeModal('countries-modal')">&times;</button>
+            <h2>Nuclear Power Countries</h2>
+            <div id="countries-map" class="modal-map-container"></div>
+        </div>
+    </div>
+
+    <!-- Age Distribution Modal -->
+    <div class="modal-overlay" id="age-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('age-modal')">&times;</button>
+            <h2>Reactor Age Distribution</h2>
+            <div class="modal-chart-container">
+                <canvas id="age-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
     <script>
         // API Configuration
         const API_BASE = '';  // Same origin
         const API_KEY = 'demo-key-12345';  // Demo key for development
 
-        // Color palette
+        // Color palette (light theme)
         const colors = {
-            primary: '#00d4ff',
-            secondary: '#0f3460',
-            success: '#00c853',
-            warning: '#ffc107',
-            danger: '#ff5252',
+            primary: '#2563eb',
+            secondary: '#1e40af',
+            success: '#16a34a',
+            warning: '#d97706',
+            danger: '#dc2626',
             chart: [
-                '#00d4ff', '#ff6384', '#36a2eb', '#ffce56', '#4bc0c0',
-                '#9966ff', '#ff9f40', '#c9cbcf', '#7cb342', '#ec407a'
+                '#2563eb', '#dc2626', '#2563eb', '#d97706', '#0d9488',
+                '#7c3aed', '#ea580c', '#6b7280', '#65a30d', '#db2777'
             ]
         };
 
@@ -709,7 +771,7 @@
                     datasets: [{
                         data: chartData.map(t => t.capacity_gw),
                         backgroundColor: colors.chart,
-                        borderColor: '#1a1a2e',
+                        borderColor: '#ffffff',
                         borderWidth: 2
                     }]
                 },
@@ -719,7 +781,7 @@
                     plugins: {
                         legend: {
                             position: 'right',
-                            labels: { color: '#e0e0e0', padding: 15 }
+                            labels: { color: '#1e293b', padding: 15 }
                         },
                         tooltip: {
                             callbacks: {
@@ -769,12 +831,12 @@
                     },
                     scales: {
                         x: {
-                            grid: { color: '#2a2a4a' },
-                            ticks: { color: '#888' }
+                            grid: { color: '#e2e8f0' },
+                            ticks: { color: '#64748b' }
                         },
                         y: {
                             grid: { display: false },
-                            ticks: { color: '#e0e0e0' }
+                            ticks: { color: '#1e293b' }
                         }
                     },
                     onClick: (event, elements) => {
@@ -799,7 +861,7 @@
             // Separate styling for partial (2020s) vs full decades
             const pointStyles = decades.map(d => d.is_partial ? 'rectRot' : 'circle');
             const pointRadii = decades.map(d => d.is_partial ? 8 : 6);
-            const pointColors = decades.map(d => d.is_partial ? '#ffc107' : colors.primary);
+            const pointColors = decades.map(d => d.is_partial ? '#d97706' : colors.primary);
             const borderDash = [];
 
             // Build segment styling: dashed line leading to last (partial) point
@@ -837,7 +899,7 @@
                         subtitle: {
                             display: true,
                             text: 'Adjusted for reporting coverage. 2020s projected at current annual rate.',
-                            color: '#888',
+                            color: '#64748b',
                             font: { size: 11 },
                             padding: { bottom: 10 }
                         },
@@ -858,19 +920,19 @@
                     },
                     scales: {
                         x: {
-                            grid: { color: '#2a2a4a' },
-                            ticks: { color: '#888' }
+                            grid: { color: '#e2e8f0' },
+                            ticks: { color: '#64748b' }
                         },
                         y: {
-                            grid: { color: '#2a2a4a' },
+                            grid: { color: '#e2e8f0' },
                             ticks: {
-                                color: '#888',
+                                color: '#64748b',
                                 callback: (val) => val.toLocaleString()
                             },
                             title: {
                                 display: true,
                                 text: 'Avg Annual TWh',
-                                color: '#888'
+                                color: '#64748b'
                             }
                         }
                     }
@@ -883,11 +945,11 @@
             const data = await fetchAPI('/api/reactors/count');
 
             const statusColors = {
-                'Operational': '#00c853',
-                'Under Construction': '#ffc107',
-                'Permanent Shutdown': '#616161',
-                'Long-term Shutdown': '#9e9e9e',
-                'Unknown': '#424242'
+                'Operational': '#16a34a',
+                'Under Construction': '#d97706',
+                'Permanent Shutdown': '#9ca3af',
+                'Long-term Shutdown': '#d1d5db',
+                'Unknown': '#e5e7eb'
             };
 
             new Chart(document.getElementById('status-chart'), {
@@ -896,8 +958,8 @@
                     labels: data.by_status.map(s => s.status),
                     datasets: [{
                         data: data.by_status.map(s => s.count),
-                        backgroundColor: data.by_status.map(s => statusColors[s.status] || '#666'),
-                        borderColor: '#1a1a2e',
+                        backgroundColor: data.by_status.map(s => statusColors[s.status] || '#9ca3af'),
+                        borderColor: '#ffffff',
                         borderWidth: 2
                     }]
                 },
@@ -907,7 +969,7 @@
                     plugins: {
                         legend: {
                             position: 'right',
-                            labels: { color: '#e0e0e0', padding: 15 }
+                            labels: { color: '#1e293b', padding: 15 }
                         }
                     }
                 }
@@ -918,7 +980,7 @@
         async function loadMap() {
             const map = L.map('reactor-map').setView([30, 0], 2);
 
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; OpenStreetMap, &copy; CARTO'
             }).addTo(map);
 
@@ -926,9 +988,9 @@
                 const data = await fetchAPI('/api/map?status=Operational', true);
 
                 const statusColors = {
-                    'Operational': '#00c853',
-                    'Under Construction': '#ffc107',
-                    'Permanent Shutdown': '#616161'
+                    'Operational': '#16a34a',
+                    'Under Construction': '#d97706',
+                    'Permanent Shutdown': '#9ca3af'
                 };
 
                 // Group reactors by location so multi-unit plants get one marker
@@ -944,11 +1006,10 @@
 
                 Object.values(sites).forEach(site => {
                     const totalCapacity = site.reactors.reduce((sum, r) => sum + (r.capacity_mw || 0), 0);
-                    const color = statusColors[site.reactors[0].status] || '#00d4ff';
+                    const color = statusColors[site.reactors[0].status] || '#2563eb';
 
                     const popupLines = site.reactors.map(r => {
-                        const rColor = statusColors[r.status] || '#00d4ff';
-                        return `<a href="/reactor/${r.id}" style="color: #00d4ff; text-decoration: none; font-weight: 600;">${r.name}</a> - ${r.technology} - ${r.capacity_mw} MW`;
+                        return `<a href="/reactor/${r.id}" style="color: #2563eb; text-decoration: none; font-weight: 600;">${r.name}</a> - ${r.technology} - ${r.capacity_mw} MW`;
                     }).join('<br>');
 
                     const siteName = site.reactors[0].name.replace(/-\d+$/, '');
@@ -1414,14 +1475,12 @@
         let statsHistoryCache = null;
 
         const statConfig = {
-            operational:  { title: 'Operational Reactors Over Time', field: 'operational', color: '#00d4ff', unit: '' },
-            capacity:     { title: 'Total Operational Capacity Over Time', field: 'capacity_gw', color: '#00d4ff', unit: ' GW' },
-            construction: { title: 'Reactors Under Construction Over Time', field: 'under_construction', color: '#ffc107', unit: '' },
-            generation:   { title: 'Annual Nuclear Generation Over Time', field: 'generation_twh', color: '#00c853', unit: ' TWh' },
-            countries:    { title: 'Countries with Nuclear Power Over Time', field: 'countries', color: '#9966ff', unit: '' },
-            age:          { title: 'Average Fleet Age Over Time', field: 'avg_age', color: '#ff9f40', unit: ' yrs' }
+            operational:  { title: 'Operational Reactors Over Time', field: 'operational', color: '#2563eb', unit: '' },
+            capacity:     { title: 'Total Operational Capacity Over Time', field: 'capacity_gw', color: '#2563eb', unit: ' GW' },
+            generation:   { title: 'Annual Nuclear Generation Over Time', field: 'generation_twh', color: '#16a34a', unit: ' TWh' }
         };
 
+        // Generic time-series modal (operational, capacity, generation)
         async function openStatModal(statKey) {
             const config = statConfig[statKey];
             if (!config) return;
@@ -1435,7 +1494,6 @@
             }
             const data = statsHistoryCache.years;
 
-            // Filter out years with zero values for cleaner charts
             const filtered = statKey === 'generation'
                 ? data.filter(d => d[config.field] > 0)
                 : data.filter(d => d.operational > 0);
@@ -1469,39 +1527,243 @@
                     },
                     scales: {
                         x: {
-                            grid: { color: '#2a2a4a' },
-                            ticks: { color: '#888', maxTicksLimit: 15 }
+                            grid: { color: '#e2e8f0' },
+                            ticks: { color: '#64748b', maxTicksLimit: 15 }
                         },
                         y: {
-                            grid: { color: '#2a2a4a' },
+                            grid: { color: '#e2e8f0' },
                             ticks: {
-                                color: '#888',
+                                color: '#64748b',
                                 callback: (val) => val.toLocaleString()
                             },
-                            beginAtZero: statKey !== 'age'
+                            beginAtZero: true
                         }
                     }
                 }
             });
         }
 
-        // Stat card click handlers
+        // Construction map modal
+        let constructionMap = null;
+        async function openConstructionModal() {
+            const modal = document.getElementById('construction-modal');
+            modal.classList.add('active');
+
+            if (constructionMap) {
+                constructionMap.invalidateSize();
+                return;
+            }
+
+            setTimeout(async () => {
+                constructionMap = L.map('construction-map').setView([30, 20], 2);
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; OpenStreetMap, &copy; CARTO'
+                }).addTo(constructionMap);
+
+                try {
+                    const data = await fetchAPI('/api/construction-map');
+                    data.sites.forEach(site => {
+                        const radius = Math.max(6, Math.sqrt(site.total_capacity_mw / 50));
+                        const reactorList = site.reactors.map(r =>
+                            `${r.name} - ${r.technology} - ${r.capacity_mw} MW`
+                        ).join('<br>');
+
+                        L.circleMarker([site.latitude, site.longitude], {
+                            radius: radius,
+                            fillColor: '#d97706',
+                            color: '#92400e',
+                            weight: 2,
+                            fillOpacity: 0.8
+                        })
+                        .bindPopup(`<strong>${site.site_name}</strong><br>${site.country}<br><br>${reactorList}<br><br><strong>Total: ${site.total_capacity_mw.toLocaleString()} MW</strong>`)
+                        .addTo(constructionMap);
+                    });
+                } catch (e) {
+                    console.error('Failed to load construction map:', e);
+                }
+            }, 100);
+        }
+
+        // Countries choropleth modal
+        let countriesMap = null;
+        async function openCountriesModal() {
+            const modal = document.getElementById('countries-modal');
+            modal.classList.add('active');
+
+            if (countriesMap) {
+                countriesMap.invalidateSize();
+                return;
+            }
+
+            setTimeout(async () => {
+                countriesMap = L.map('countries-map').setView([30, 20], 2);
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; OpenStreetMap, &copy; CARTO'
+                }).addTo(countriesMap);
+
+                try {
+                    const [countriesData, topoResponse] = await Promise.all([
+                        fetchAPI('/api/countries'),
+                        fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r => r.json())
+                    ]);
+
+                    // Build lookup: ISO alpha3 → country data
+                    const countryLookup = {};
+                    countriesData.countries.forEach(c => {
+                        if (c.iso_code) countryLookup[c.iso_code] = c;
+                    });
+
+                    // ISO alpha3 to numeric mapping for topojson
+                    const alpha3ToNumeric = {
+                        'ARG':'032','ARM':'051','BGD':'050','BLR':'112','BEL':'056',
+                        'BRA':'076','BGR':'100','CAN':'124','CHN':'156','CZE':'203',
+                        'EGY':'818','FIN':'246','FRA':'250','DEU':'276','HUN':'348',
+                        'IND':'356','IDN':'360','IRN':'364','ITA':'380','JPN':'392',
+                        'JOR':'400','KAZ':'398','LTU':'440','MEX':'484','NLD':'528',
+                        'PRK':'408','PAK':'586','PHL':'608','POL':'616','ROU':'642',
+                        'RUS':'643','SVK':'703','SVN':'705','ZAF':'710','KOR':'410',
+                        'ESP':'724','SWE':'752','CHE':'756','TWN':'158','TUR':'792',
+                        'UKR':'804','ARE':'784','GBR':'826','USA':'840'
+                    };
+
+                    // Build numeric → country data lookup
+                    const numericLookup = {};
+                    for (const [a3, num] of Object.entries(alpha3ToNumeric)) {
+                        if (countryLookup[a3]) numericLookup[num] = countryLookup[a3];
+                    }
+
+                    const geojson = topojson.feature(topoResponse, topoResponse.objects.countries);
+
+                    L.geoJSON(geojson, {
+                        style: (feature) => {
+                            const id = feature.id;
+                            const country = numericLookup[id];
+                            return {
+                                fillColor: country ? '#2563eb' : '#f1f5f9',
+                                weight: 1,
+                                color: '#cbd5e1',
+                                fillOpacity: country ? 0.6 : 0.3
+                            };
+                        },
+                        onEachFeature: (feature, layer) => {
+                            const country = numericLookup[feature.id];
+                            if (country) {
+                                layer.bindTooltip(
+                                    `<strong>${country.name}</strong><br>` +
+                                    `Operational: ${country.operational}<br>` +
+                                    `Capacity: ${country.capacity_gw} GW`,
+                                    { sticky: true }
+                                );
+                                layer.on('click', () => {
+                                    window.location.href = `/country/${encodeURIComponent(country.name)}`;
+                                });
+                                layer.on('mouseover', function() {
+                                    this.setStyle({ fillOpacity: 0.85, weight: 2 });
+                                });
+                                layer.on('mouseout', function() {
+                                    this.setStyle({ fillOpacity: 0.6, weight: 1 });
+                                });
+                            }
+                        }
+                    }).addTo(countriesMap);
+                } catch (e) {
+                    console.error('Failed to load choropleth:', e);
+                }
+            }, 100);
+        }
+
+        // Age distribution modal
+        let ageChart = null;
+        async function openAgeModal() {
+            const modal = document.getElementById('age-modal');
+            modal.classList.add('active');
+
+            try {
+                const data = await fetchAPI('/api/reactors/age-distribution');
+
+                if (ageChart) ageChart.destroy();
+                ageChart = new Chart(document.getElementById('age-chart'), {
+                    type: 'bar',
+                    data: {
+                        labels: data.brackets.map(b => b.bracket + ' years'),
+                        datasets: [{
+                            label: 'Reactors',
+                            data: data.brackets.map(b => b.count),
+                            backgroundColor: '#2563eb',
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: (ctx) => {
+                                        const b = data.brackets[ctx.dataIndex];
+                                        return `Capacity: ${b.capacity_gw} GW`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: '#64748b' }
+                            },
+                            y: {
+                                grid: { color: '#e2e8f0' },
+                                ticks: { color: '#64748b' },
+                                title: {
+                                    display: true,
+                                    text: 'Number of Reactors',
+                                    color: '#64748b'
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('Failed to load age distribution:', e);
+            }
+        }
+
+        // Close any modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Stat card click handlers — route 3 cards to specialized modals
         document.querySelectorAll('.stat-card[data-stat]').forEach(card => {
-            card.addEventListener('click', () => openStatModal(card.dataset.stat));
+            card.addEventListener('click', () => {
+                const stat = card.dataset.stat;
+                if (stat === 'construction') {
+                    openConstructionModal();
+                } else if (stat === 'countries') {
+                    openCountriesModal();
+                } else if (stat === 'age') {
+                    openAgeModal();
+                } else {
+                    openStatModal(stat);
+                }
+            });
         });
 
         // Modal close handlers
         document.getElementById('modal-close').addEventListener('click', () => {
             document.getElementById('stat-modal').classList.remove('active');
         });
-        document.getElementById('stat-modal').addEventListener('click', (e) => {
-            if (e.target === e.currentTarget) {
-                e.currentTarget.classList.remove('active');
-            }
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) {
+                    e.currentTarget.classList.remove('active');
+                }
+            });
         });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                document.getElementById('stat-modal').classList.remove('active');
+                document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
             }
         });
 

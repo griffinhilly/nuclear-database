@@ -13,6 +13,22 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-card: #f8fafc;
+            --bg-card-alt: #f1f5f9;
+            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+            --border-header: #2563eb;
+            --success: #16a34a;
+            --warning: #d97706;
+            --bg-hover: #e2e8f0;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -21,8 +37,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
         }
 
@@ -34,12 +50,12 @@
 
         header {
             padding: 30px 20px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border-bottom: 2px solid #0f3460;
+            background: var(--bg-header);
+            border-bottom: 2px solid var(--border-header);
         }
 
         .back-link {
-            color: #00d4ff;
+            color: var(--accent);
             text-decoration: none;
             font-size: 0.9rem;
             display: inline-block;
@@ -52,17 +68,17 @@
 
         h1 {
             font-size: 2.2rem;
-            color: #00d4ff;
+            color: var(--accent);
             margin-bottom: 5px;
         }
 
         .subtitle {
-            color: #888;
+            color: var(--text-secondary);
             font-size: 1.1rem;
         }
 
         .description {
-            color: #aaa;
+            color: var(--text-secondary);
             font-size: 0.95rem;
             margin-top: 10px;
             max-width: 800px;
@@ -77,8 +93,8 @@
         }
 
         .mini-stat {
-            background: #1a1a2e;
-            border: 1px solid #2a2a4a;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 10px;
             padding: 20px;
             text-align: center;
@@ -87,11 +103,11 @@
         .mini-stat-value {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #00d4ff;
+            color: var(--accent);
         }
 
         .mini-stat-label {
-            color: #888;
+            color: var(--text-secondary);
             font-size: 0.85rem;
             margin-top: 5px;
         }
@@ -109,25 +125,25 @@
         }
 
         .card {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
-            border: 1px solid #2a2a4a;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 25px;
         }
 
         .card h2 {
-            color: #00d4ff;
+            color: var(--accent);
             font-size: 1.1rem;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 1px solid #2a2a4a;
+            border-bottom: 1px solid var(--border);
         }
 
         .stat-row {
             display: flex;
             justify-content: space-between;
             padding: 12px 0;
-            border-bottom: 1px solid #1a1a2e;
+            border-bottom: 1px solid var(--border);
         }
 
         .stat-row:last-child {
@@ -135,16 +151,16 @@
         }
 
         .stat-label {
-            color: #888;
+            color: var(--text-secondary);
         }
 
         .stat-value {
-            color: #fff;
+            color: var(--text-primary);
             font-weight: 600;
         }
 
         .stat-value.highlight {
-            color: #00d4ff;
+            color: var(--accent);
         }
 
         /* Map */
@@ -164,7 +180,7 @@
         .data-table {
             width: 100%;
             border-collapse: collapse;
-            background: #1a1a2e;
+            background: var(--bg-card);
             border-radius: 12px;
             overflow: hidden;
         }
@@ -172,12 +188,12 @@
         .data-table th, .data-table td {
             padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid #2a2a4a;
+            border-bottom: 1px solid var(--border);
         }
 
         .data-table th {
-            background: #0f0f1a;
-            color: #00d4ff;
+            background: var(--bg-card-alt);
+            color: var(--accent);
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.8rem;
@@ -188,7 +204,7 @@
         }
 
         .data-table th:hover {
-            background: #1a1a2e;
+            background: var(--bg-card);
         }
 
         .data-table th .sort-icon {
@@ -201,11 +217,11 @@
         }
 
         .data-table tr:hover {
-            background: #252540;
+            background: var(--bg-hover);
         }
 
         .data-table a.reactor-link {
-            color: #00d4ff;
+            color: var(--accent);
             text-decoration: none;
             font-weight: 600;
         }
@@ -223,23 +239,23 @@
         }
 
         .status-operational {
-            background: #00c853;
-            color: #000;
+            background: var(--success);
+            color: #fff;
         }
 
         .status-construction {
-            background: #ffc107;
-            color: #000;
+            background: var(--warning);
+            color: #fff;
         }
 
         .status-shutdown {
-            background: #616161;
+            background: #9ca3af;
             color: #fff;
         }
 
         .status-longterm {
-            background: #9e9e9e;
-            color: #000;
+            background: #9ca3af;
+            color: #fff;
         }
 
         /* Column Filter Popover */
@@ -255,19 +271,19 @@
         }
 
         .filter-icon.active {
-            color: #00d4ff;
+            color: var(--accent);
             opacity: 1;
         }
 
         .filter-popover {
             position: fixed;
             z-index: 1000;
-            background: #0f0f1a;
-            border: 1px solid #2a2a4a;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 12px;
             min-width: 220px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             text-transform: none;
             letter-spacing: normal;
             font-size: 0.9rem;
@@ -278,17 +294,17 @@
         .filter-popover input[type="number"] {
             width: 100%;
             padding: 8px 10px;
-            border: 1px solid #2a2a4a;
+            border: 1px solid var(--border);
             border-radius: 6px;
-            background: #1a1a2e;
-            color: #e0e0e0;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             font-size: 0.85rem;
             margin-bottom: 8px;
         }
 
         .filter-popover input:focus {
             outline: none;
-            border-color: #00d4ff;
+            border-color: var(--accent);
         }
 
         .filter-popover .filter-actions {
@@ -299,7 +315,7 @@
         }
 
         .filter-popover .filter-actions a {
-            color: #00d4ff;
+            color: var(--accent);
             cursor: pointer;
             text-decoration: none;
         }
@@ -320,12 +336,12 @@
             gap: 8px;
             padding: 4px 0;
             cursor: pointer;
-            color: #ccc;
+            color: var(--text-secondary);
             font-size: 0.85rem;
         }
 
         .filter-popover .filter-checkbox-list label:hover {
-            color: #fff;
+            color: var(--text-primary);
         }
 
         .filter-popover .filter-range {
@@ -340,7 +356,7 @@
         }
 
         .filter-popover .filter-range span {
-            color: #888;
+            color: var(--text-secondary);
             font-size: 0.8rem;
         }
 
@@ -348,12 +364,12 @@
         .loading {
             text-align: center;
             padding: 60px;
-            color: #888;
+            color: var(--text-secondary);
         }
 
         .spinner {
-            border: 3px solid #2a2a4a;
-            border-top: 3px solid #00d4ff;
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--accent);
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -375,13 +391,13 @@
         footer {
             text-align: center;
             padding: 30px;
-            color: #666;
-            border-top: 1px solid #2a2a4a;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
             margin-top: 50px;
         }
 
         footer a {
-            color: #00d4ff;
+            color: var(--accent);
             text-decoration: none;
         }
     </style>
@@ -767,20 +783,20 @@
             const reactorsWithCoords = reactors.filter(r => r.latitude && r.longitude);
             if (reactorsWithCoords.length > 0) {
                 const map = L.map('tech-map');
-                L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                     attribution: '&copy; OpenStreetMap, &copy; CARTO'
                 }).addTo(map);
 
                 const statusColors = {
-                    'Operational': '#00c853',
-                    'Under Construction': '#ffc107',
-                    'Long-term Shutdown': '#9e9e9e',
-                    'Permanent Shutdown': '#616161'
+                    'Operational': '#16a34a',
+                    'Under Construction': '#d97706',
+                    'Long-term Shutdown': '#9ca3af',
+                    'Permanent Shutdown': '#9ca3af'
                 };
 
                 const bounds = [];
                 reactorsWithCoords.forEach(r => {
-                    const color = statusColors[r.status] || '#00d4ff';
+                    const color = statusColors[r.status] || '#2563eb';
                     bounds.push([r.latitude, r.longitude]);
                     L.circleMarker([r.latitude, r.longitude], {
                         radius: 8,
@@ -791,8 +807,8 @@
                         fillOpacity: 0.7
                     })
                     .bindPopup(`
-                        <strong><a href="/reactor/${r.id}" style="color: #00d4ff;">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        <a href="/country/${encodeURIComponent(r.country)}" style="color: #ccc;">${r.country}</a> | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
+                        <strong><a href="/reactor/${r.id}" style="color: #2563eb;">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color: #64748b;">${r.country}</a> | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
                         <span style="color: ${color};">${r.status}</span>
                     `)
                     .addTo(map);
@@ -801,7 +817,7 @@
                 map.fitBounds(bounds, { padding: [20, 20] });
             } else {
                 document.getElementById('tech-map').innerHTML =
-                    '<p style="text-align: center; color: #888; padding: 100px 0;">Location data not available</p>';
+                    '<p style="text-align: center; color: #64748b; padding: 100px 0;">Location data not available</p>';
             }
 
             // Country breakdown chart
@@ -814,7 +830,7 @@
                         datasets: [{
                             label: 'Capacity (GW)',
                             data: top15.map(c => c.capacity_gw),
-                            backgroundColor: '#00d4ff',
+                            backgroundColor: '#2563eb',
                             borderRadius: 4
                         }]
                     },
@@ -834,17 +850,17 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#2a2a4a' },
-                                ticks: { color: '#888' },
+                                grid: { color: '#e2e8f0' },
+                                ticks: { color: '#64748b' },
                                 title: {
                                     display: true,
                                     text: 'GW',
-                                    color: '#888'
+                                    color: '#64748b'
                                 }
                             },
                             y: {
                                 grid: { display: false },
-                                ticks: { color: '#e0e0e0' }
+                                ticks: { color: '#1e293b' }
                             }
                         },
                         onClick: (event, elements) => {
@@ -861,7 +877,7 @@
                 });
             } else {
                 document.getElementById('country-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #888; padding: 80px 0;">No country data available</p>';
+                    '<p style="text-align: center; color: #64748b; padding: 80px 0;">No country data available</p>';
             }
 
             // Generation chart
@@ -873,7 +889,7 @@
                         datasets: [{
                             label: 'Generation (TWh)',
                             data: history.map(h => h.total_twh),
-                            backgroundColor: '#00d4ff',
+                            backgroundColor: '#2563eb',
                             borderRadius: 4
                         }]
                     },
@@ -893,19 +909,19 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#2a2a4a' },
-                                ticks: { color: '#888', maxTicksLimit: 20 }
+                                grid: { color: '#e2e8f0' },
+                                ticks: { color: '#64748b', maxTicksLimit: 20 }
                             },
                             y: {
-                                grid: { color: '#2a2a4a' },
+                                grid: { color: '#e2e8f0' },
                                 ticks: {
-                                    color: '#888',
+                                    color: '#64748b',
                                     callback: (val) => val.toLocaleString()
                                 },
                                 title: {
                                     display: true,
                                     text: 'TWh',
-                                    color: '#888'
+                                    color: '#64748b'
                                 }
                             }
                         }
@@ -913,7 +929,7 @@
                 });
             } else {
                 document.getElementById('generation-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #888; padding: 80px 0;">No generation data available</p>';
+                    '<p style="text-align: center; color: #64748b; padding: 80px 0;">No generation data available</p>';
             }
 
             // Reactor table
@@ -932,7 +948,7 @@
                 else statusClass = 'shutdown';
 
                 const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
-                    ? `<span style="color:#888">Shut down:</span> ${r.permanent_shutdown}`
+                    ? `<span style="color:#64748b">Shut down:</span> ${r.permanent_shutdown}`
                     : (r.commercial_operation || '-');
 
                 return `

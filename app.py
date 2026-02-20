@@ -162,7 +162,11 @@ def global_stats():
             'generation': generation_info
         },
         'data_coverage': {
-            'countries': 38,
+            'countries': query_db("""
+                SELECT COUNT(DISTINCT c.id) as cnt FROM countries c
+                JOIN reactors r ON c.id = r.country_id
+                WHERE r.status IN ('Operational', 'Under Construction')
+            """)[0]['cnt'],
             'generation_years': '1954-2024',
             'last_updated': '2024-12'
         }
@@ -175,11 +179,13 @@ def list_countries():
     countries = query_db("""
         SELECT
             c.name,
+            c.code as iso_code,
             COUNT(CASE WHEN r.status = 'Operational' THEN 1 END) as operational,
-            COUNT(CASE WHEN r.status = 'Under Construction' THEN 1 END) as under_construction
+            COUNT(CASE WHEN r.status = 'Under Construction' THEN 1 END) as under_construction,
+            ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw
         FROM countries c
         LEFT JOIN reactors r ON c.id = r.country_id
-        GROUP BY c.name
+        GROUP BY c.name, c.code
         HAVING operational > 0 OR under_construction > 0
         ORDER BY operational DESC
     """)
@@ -299,6 +305,69 @@ def list_technologies():
         ORDER BY capacity_gw DESC
     """)
     return jsonify({'technologies': techs, 'count': len(techs)})
+
+@app.route('/api/reactors/age-distribution')
+@require_api_key('free')
+def age_distribution():
+    """Operational reactor count by age bracket."""
+    brackets = query_db("""
+        SELECT
+            CASE
+                WHEN age_years < 10 THEN '0-9'
+                WHEN age_years < 20 THEN '10-19'
+                WHEN age_years < 30 THEN '20-29'
+                WHEN age_years < 40 THEN '30-39'
+                WHEN age_years < 50 THEN '40-49'
+                ELSE '50+'
+            END as bracket,
+            COUNT(*) as count,
+            ROUND(SUM(gross_capacity_mw) / 1000.0, 1) as capacity_gw
+        FROM reactors
+        WHERE status = 'Operational' AND age_years IS NOT NULL
+        GROUP BY bracket
+        ORDER BY MIN(age_years)
+    """)
+    return jsonify({'brackets': brackets})
+
+
+@app.route('/api/construction-map')
+@require_api_key('free')
+def construction_map():
+    """Under-construction reactor sites for mapping."""
+    reactors = query_db("""
+        SELECT r.plant_name, r.unit_number, c.name as country,
+               t.code as technology, r.gross_capacity_mw,
+               r.latitude, r.longitude
+        FROM reactors r
+        LEFT JOIN countries c ON r.country_id = c.id
+        LEFT JOIN technologies t ON r.technology_id = t.id
+        WHERE r.status = 'Under Construction'
+          AND r.latitude IS NOT NULL AND r.longitude IS NOT NULL
+        ORDER BY r.plant_name, r.unit_number
+    """)
+
+    # Group by site (plant_name)
+    sites = {}
+    for r in reactors:
+        key = r['plant_name']
+        if key not in sites:
+            sites[key] = {
+                'site_name': key,
+                'country': r['country'],
+                'latitude': r['latitude'],
+                'longitude': r['longitude'],
+                'reactors': [],
+                'total_capacity_mw': 0
+            }
+        sites[key]['reactors'].append({
+            'name': f"{r['plant_name']}-{r['unit_number']}",
+            'technology': r['technology'],
+            'capacity_mw': r['gross_capacity_mw']
+        })
+        sites[key]['total_capacity_mw'] += r['gross_capacity_mw'] or 0
+
+    return jsonify({'sites': list(sites.values()), 'count': len(sites)})
+
 
 @app.route('/api/reactors/count')
 @require_api_key('free')
