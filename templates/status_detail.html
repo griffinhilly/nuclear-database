@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Details - Global Nuclear Database</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet for maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-card: #f8fafc;
+            --bg-card-alt: #f1f5f9;
+            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+            --border-header: #2563eb;
+            --success: #16a34a;
+            --warning: #d97706;
+            --bg-hover: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 30px 20px;
+            background: var(--bg-header);
+            border-bottom: 2px solid var(--border-header);
+        }
+
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .header-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--accent);
+        }
+
+        .status-badge-lg {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Stats cards */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mini-stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mini-stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .mini-stat-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        /* Grid layout */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .detail-grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .card h2 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+        }
+
+        .stat-value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .stat-value.highlight {
+            color: var(--accent);
+        }
+
+        /* Map */
+        #status-map {
+            height: 300px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* Chart */
+        .chart-container {
+            height: 300px;
+            margin-top: 15px;
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .data-table th, .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table th {
+            background: var(--bg-card-alt);
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        .data-table th:hover {
+            background: var(--bg-card);
+        }
+
+        .data-table th .sort-icon {
+            margin-left: 5px;
+            opacity: 0.5;
+        }
+
+        .data-table th.sorted .sort-icon {
+            opacity: 1;
+        }
+
+        .data-table tr:hover {
+            background: var(--bg-hover);
+        }
+
+        .data-table a.reactor-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .data-table a.reactor-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Column Filter Popover */
+        .filter-icon {
+            margin-left: 5px;
+            opacity: 0.4;
+            cursor: pointer;
+            font-size: 0.7rem;
+        }
+
+        .filter-icon:hover {
+            opacity: 0.8;
+        }
+
+        .filter-icon.active {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        .filter-popover {
+            position: fixed;
+            z-index: 1000;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            min-width: 220px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            text-transform: none;
+            letter-spacing: normal;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .filter-popover input[type="text"],
+        .filter-popover input[type="number"] {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .filter-popover input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .filter-popover .filter-actions {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+        }
+
+        .filter-popover .filter-actions a {
+            color: var(--accent);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .filter-popover .filter-actions a:hover {
+            text-decoration: underline;
+        }
+
+        .filter-popover .filter-checkbox-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 4px;
+        }
+
+        .filter-popover .filter-checkbox-list label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .filter-popover .filter-checkbox-list label:hover {
+            color: var(--text-primary);
+        }
+
+        .filter-popover .filter-range {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .filter-popover .filter-range input {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .filter-popover .filter-range span {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            text-align: center;
+            padding: 60px;
+            color: #ff5252;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="back-link">&larr; Back to Dashboard</a>
+            <div class="header-row">
+                <h1 id="status-name">Loading...</h1>
+                <span class="status-badge-lg" id="status-badge"></span>
+            </div>
+            <p class="subtitle" id="status-subtitle"></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            Loading status data...
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            Status not found. <a href="/">Return to dashboard</a>
+        </div>
+
+        <div id="content" style="display: none;">
+            <!-- Quick Stats -->
+            <div class="stats-row" id="quick-stats"></div>
+
+            <!-- Main Grid -->
+            <div class="detail-grid">
+                <!-- Fleet Information -->
+                <div class="card">
+                    <h2>Fleet Information</h2>
+                    <div id="fleet-info"></div>
+                </div>
+
+                <!-- Map -->
+                <div class="card">
+                    <h2>Reactor Locations</h2>
+                    <div id="status-map"></div>
+                </div>
+            </div>
+
+            <!-- Country Breakdown Chart -->
+            <div class="card" style="margin-top: 30px;">
+                <h2>Country Breakdown (Top 15 by Capacity)</h2>
+                <div class="chart-container">
+                    <canvas id="country-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Technology Mix Chart -->
+            <div class="card" style="margin-top: 30px;">
+                <h2>Technology Mix</h2>
+                <div class="chart-container">
+                    <canvas id="tech-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Generation History Chart (conditional) -->
+            <div class="card" style="margin-top: 30px;" id="generation-card">
+                <h2>Generation History</h2>
+                <div class="chart-container">
+                    <canvas id="generation-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Reactor Table -->
+            <div class="card" style="margin-top: 30px;">
+                <h2 id="reactor-table-title">Reactors</h2>
+                <table class="data-table" id="reactor-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
+                            <th data-sort="country">Country <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="country">&#9698;</span></th>
+                            <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
+                            <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
+                            <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="date">&#9698;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Data sources: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
+           <a href="/">Return to Dashboard</a></p>
+    </footer>
+
+    <script>
+        const STATUS_NAME = "{{ status_name }}";
+
+        const statusColors = {
+            'Operational': '#16a34a',
+            'Under Construction': '#d97706',
+            'Permanent Shutdown': '#9ca3af',
+            'Long-term Shutdown': '#d1d5db',
+            'Unknown': '#e5e7eb'
+        };
+
+        const statusTextColors = {
+            'Operational': '#fff',
+            'Under Construction': '#000',
+            'Permanent Shutdown': '#fff',
+            'Long-term Shutdown': '#000',
+            'Unknown': '#000'
+        };
+
+        // Statuses that have meaningful generation data
+        const hasGeneration = ['Operational', 'Permanent Shutdown'];
+
+        let currentReactors = [];
+        let currentSort = { column: null, ascending: true };
+        let currentFilters = {};
+
+        const filterConfig = {
+            name:       { type: 'text',     field: r => `${r.plant_name}-${r.unit_number}` },
+            country:    { type: 'checkbox', field: r => r.country || '-' },
+            technology: { type: 'checkbox', field: r => r.technology || '-' },
+            capacity:   { type: 'range',    field: r => r.gross_capacity_mw || 0 },
+            date:       { type: 'text',     field: r => r.commercial_operation || r.permanent_shutdown || '' }
+        };
+
+        function applyFilters(reactors) {
+            return reactors.filter(r => {
+                for (const [column, filter] of Object.entries(currentFilters)) {
+                    const config = filterConfig[column];
+                    if (!config) continue;
+                    const value = config.field(r);
+                    if (filter.type === 'text') {
+                        if (filter.value && !String(value).toLowerCase().includes(filter.value.toLowerCase())) return false;
+                    } else if (filter.type === 'checkbox') {
+                        if (filter.selected.size > 0 && !filter.selected.has(value)) return false;
+                    } else if (filter.type === 'range') {
+                        const num = parseFloat(value) || 0;
+                        if (filter.min !== null && num < filter.min) return false;
+                        if (filter.max !== null && num > filter.max) return false;
+                    }
+                }
+                return true;
+            });
+        }
+
+        function applyFiltersAndSort() {
+            let filtered = applyFilters(currentReactors);
+            if (currentSort.column) {
+                filtered = [...filtered].sort((a, b) => {
+                    let valA, valB;
+                    switch (currentSort.column) {
+                        case 'name':
+                            valA = `${a.plant_name}-${a.unit_number}`.toLowerCase();
+                            valB = `${b.plant_name}-${b.unit_number}`.toLowerCase();
+                            break;
+                        case 'country':
+                            valA = (a.country || '').toLowerCase();
+                            valB = (b.country || '').toLowerCase();
+                            break;
+                        case 'technology':
+                            valA = (a.technology || '').toLowerCase();
+                            valB = (b.technology || '').toLowerCase();
+                            break;
+                        case 'capacity':
+                            valA = a.gross_capacity_mw || 0;
+                            valB = b.gross_capacity_mw || 0;
+                            break;
+                        case 'date':
+                            valA = a.commercial_operation || '';
+                            valB = b.commercial_operation || '';
+                            break;
+                        default:
+                            return 0;
+                    }
+                    if (valA < valB) return currentSort.ascending ? -1 : 1;
+                    if (valA > valB) return currentSort.ascending ? 1 : -1;
+                    return 0;
+                });
+            }
+            renderReactorTable(filtered);
+            updateSortIndicators();
+            updateFilterIcons();
+        }
+
+        function toggleFilterPopover(column) {
+            const icon = document.querySelector(`.filter-icon[data-filter="${column}"]`);
+            const th = icon.closest('th');
+            const wasOpen = document.querySelector(`.filter-popover[data-column="${column}"]`);
+            closeAllPopovers();
+            if (wasOpen) return;
+
+            const config = filterConfig[column];
+            if (!config) return;
+            const popover = document.createElement('div');
+            popover.className = 'filter-popover';
+            popover.dataset.column = column;
+            popover.addEventListener('click', e => e.stopPropagation());
+
+            const rect = th.getBoundingClientRect();
+            popover.style.top = rect.bottom + 'px';
+            popover.style.left = rect.left + 'px';
+
+            if (config.type === 'text') {
+                const currentValue = currentFilters[column]?.value || '';
+                popover.innerHTML = `<input type="text" placeholder="Filter..." value="${currentValue}">`;
+                const input = popover.querySelector('input');
+                let debounceTimer;
+                input.addEventListener('input', () => {
+                    clearTimeout(debounceTimer);
+                    debounceTimer = setTimeout(() => {
+                        const val = input.value.trim();
+                        if (val) {
+                            currentFilters[column] = { type: 'text', value: val };
+                        } else {
+                            delete currentFilters[column];
+                        }
+                        applyFiltersAndSort();
+                    }, 200);
+                });
+                setTimeout(() => input.focus(), 0);
+            } else if (config.type === 'checkbox') {
+                const allValues = [...new Set(currentReactors.map(r => config.field(r)))].sort((a, b) => a.localeCompare(b));
+                const selected = currentFilters[column]?.selected || new Set();
+                popover.innerHTML = `
+                    <input type="text" placeholder="Search..." class="filter-search">
+                    <div class="filter-actions">
+                        <a class="select-all">Select All</a>
+                        <a class="clear-all">Clear All</a>
+                    </div>
+                    <div class="filter-checkbox-list">
+                        ${allValues.map(v => `
+                            <label>
+                                <input type="checkbox" value="${v}" ${selected.size === 0 || selected.has(v) ? 'checked' : ''}>
+                                ${v}
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                const searchInput = popover.querySelector('.filter-search');
+                searchInput.addEventListener('input', () => {
+                    const q = searchInput.value.toLowerCase();
+                    popover.querySelectorAll('.filter-checkbox-list label').forEach(label => {
+                        label.style.display = label.textContent.toLowerCase().includes(q) ? '' : 'none';
+                    });
+                });
+                popover.querySelector('.select-all').addEventListener('click', () => {
+                    popover.querySelectorAll('.filter-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = true);
+                    delete currentFilters[column];
+                    applyFiltersAndSort();
+                });
+                popover.querySelector('.clear-all').addEventListener('click', () => {
+                    popover.querySelectorAll('.filter-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = false);
+                    currentFilters[column] = { type: 'checkbox', selected: new Set() };
+                    applyFiltersAndSort();
+                });
+                popover.querySelectorAll('.filter-checkbox-list input[type="checkbox"]').forEach(cb => {
+                    cb.addEventListener('change', () => {
+                        const checkedValues = new Set();
+                        popover.querySelectorAll('.filter-checkbox-list input[type="checkbox"]:checked').forEach(c => checkedValues.add(c.value));
+                        if (checkedValues.size === allValues.length) {
+                            delete currentFilters[column];
+                        } else {
+                            currentFilters[column] = { type: 'checkbox', selected: checkedValues };
+                        }
+                        applyFiltersAndSort();
+                    });
+                });
+                setTimeout(() => searchInput.focus(), 0);
+            } else if (config.type === 'range') {
+                const currentMin = currentFilters[column]?.min ?? '';
+                const currentMax = currentFilters[column]?.max ?? '';
+                popover.innerHTML = `
+                    <div class="filter-range">
+                        <input type="number" placeholder="Min" value="${currentMin}">
+                        <span>-</span>
+                        <input type="number" placeholder="Max" value="${currentMax}">
+                    </div>
+                `;
+                const [minInput, maxInput] = popover.querySelectorAll('input');
+                const updateRange = () => {
+                    const min = minInput.value !== '' ? parseFloat(minInput.value) : null;
+                    const max = maxInput.value !== '' ? parseFloat(maxInput.value) : null;
+                    if (min !== null || max !== null) {
+                        currentFilters[column] = { type: 'range', min, max };
+                    } else {
+                        delete currentFilters[column];
+                    }
+                    applyFiltersAndSort();
+                };
+                minInput.addEventListener('input', updateRange);
+                maxInput.addEventListener('input', updateRange);
+                setTimeout(() => minInput.focus(), 0);
+            }
+            document.body.appendChild(popover);
+        }
+
+        function updateFilterIcons() {
+            document.querySelectorAll('.filter-icon').forEach(icon => {
+                const column = icon.dataset.filter;
+                const filter = currentFilters[column];
+                let active = false;
+                if (filter) {
+                    if (filter.type === 'text' && filter.value) active = true;
+                    else if (filter.type === 'checkbox' && filter.selected.size > 0) active = true;
+                    else if (filter.type === 'range' && (filter.min !== null || filter.max !== null)) active = true;
+                }
+                icon.classList.toggle('active', active);
+            });
+        }
+
+        function closeAllPopovers() {
+            document.querySelectorAll('.filter-popover').forEach(p => p.remove());
+        }
+
+        async function loadStatusDetails() {
+            try {
+                const response = await fetch(`/api/statuses/${encodeURIComponent(STATUS_NAME)}/detail`);
+                if (!response.ok) throw new Error('Status not found');
+                const data = await response.json();
+                renderStatusDetails(data);
+            } catch (error) {
+                console.error('Failed to load status:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        function renderStatusDetails(data) {
+            const status = data.status;
+            const history = data.generation_history;
+            const reactors = data.reactors;
+            const countryBreakdown = data.country_breakdown;
+            const technologyMix = data.technology_mix;
+
+            currentReactors = reactors;
+
+            const bgColor = statusColors[status.name] || '#9ca3af';
+            const txtColor = statusTextColors[status.name] || '#fff';
+
+            // Header
+            document.getElementById('status-name').textContent = status.name;
+            const badge = document.getElementById('status-badge');
+            badge.textContent = `${status.total_count} reactors`;
+            badge.style.background = bgColor;
+            badge.style.color = txtColor;
+
+            const countryCount = status.countries || new Set(reactors.map(r => r.country).filter(Boolean)).size;
+            document.getElementById('status-subtitle').textContent =
+                `${status.total_count} reactors across ${countryCount} countries | ${status.capacity_gw} GW total capacity`;
+
+            // Quick stats
+            document.getElementById('quick-stats').innerHTML = `
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${status.total_count}</div>
+                    <div class="mini-stat-label">Reactors</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${status.capacity_gw}</div>
+                    <div class="mini-stat-label">Total Capacity (GW)</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${status.avg_age || '--'}</div>
+                    <div class="mini-stat-label">Avg Age (yrs)</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${countryCount}</div>
+                    <div class="mini-stat-label">Countries</div>
+                </div>
+            `;
+
+            // Fleet info
+            const techCounts = {};
+            reactors.forEach(r => {
+                const t = r.technology || 'Unknown';
+                techCounts[t] = (techCounts[t] || 0) + 1;
+            });
+            const topTech = Object.entries(techCounts).sort((a, b) => b[1] - a[1]);
+            const topCountries = countryBreakdown.slice(0, 3).map(c => `${c.country} (${c.count})`).join(', ');
+
+            const operationalReactors = reactors.filter(r => r.commercial_operation);
+            const firstOnline = operationalReactors.map(r => r.commercial_operation).sort()[0];
+            const lastOnline = operationalReactors.map(r => r.commercial_operation).sort().pop();
+
+            document.getElementById('fleet-info').innerHTML = `
+                <div class="stat-row">
+                    <span class="stat-label">Total Reactors</span>
+                    <span class="stat-value highlight">${status.total_count}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Total Capacity</span>
+                    <span class="stat-value">${status.capacity_gw} GW</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Top Technology</span>
+                    <span class="stat-value">${topTech.length > 0 ? `${topTech[0][0]} (${topTech[0][1]})` : '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Top Countries</span>
+                    <span class="stat-value">${topCountries || '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Earliest Online</span>
+                    <span class="stat-value">${firstOnline || '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Most Recent Online</span>
+                    <span class="stat-value">${lastOnline || '--'}</span>
+                </div>
+            `;
+
+            // Show content before map init
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
+            // Map
+            const reactorsWithCoords = reactors.filter(r => r.latitude && r.longitude);
+            if (reactorsWithCoords.length > 0) {
+                const map = L.map('status-map');
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; OpenStreetMap, &copy; CARTO'
+                }).addTo(map);
+
+                const bounds = [];
+                reactorsWithCoords.forEach(r => {
+                    bounds.push([r.latitude, r.longitude]);
+                    L.circleMarker([r.latitude, r.longitude], {
+                        radius: 8,
+                        fillColor: bgColor,
+                        color: '#fff',
+                        weight: 1,
+                        opacity: 0.8,
+                        fillOpacity: 0.7
+                    })
+                    .bindPopup(`
+                        <strong><a href="/reactor/${r.id}" style="color: #2563eb;">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color: #64748b;">${r.country}</a> |
+                        ${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" style="color: #64748b;">${r.technology}</a> | ` : ''}
+                        ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}
+                    `)
+                    .addTo(map);
+                });
+
+                map.fitBounds(bounds, { padding: [20, 20] });
+            } else {
+                document.getElementById('status-map').innerHTML =
+                    '<p style="text-align: center; color: #64748b; padding: 100px 0;">Location data not available</p>';
+            }
+
+            // Country breakdown chart
+            if (countryBreakdown && countryBreakdown.length > 0) {
+                const top15 = countryBreakdown.slice(0, 15);
+                new Chart(document.getElementById('country-chart'), {
+                    type: 'bar',
+                    data: {
+                        labels: top15.map(c => c.country),
+                        datasets: [{
+                            label: 'Capacity (GW)',
+                            data: top15.map(c => c.capacity_gw),
+                            backgroundColor: bgColor,
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: (ctx) => {
+                                        return `${top15[ctx.dataIndex].count} reactors`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: '#e2e8f0' },
+                                ticks: { color: '#64748b' },
+                                title: { display: true, text: 'GW', color: '#64748b' }
+                            },
+                            y: {
+                                grid: { display: false },
+                                ticks: { color: '#1e293b' }
+                            }
+                        },
+                        onClick: (event, elements) => {
+                            if (elements.length > 0) {
+                                const index = elements[0].index;
+                                window.location.href = `/country/${encodeURIComponent(top15[index].country)}`;
+                            }
+                        },
+                        onHover: (event, elements) => {
+                            event.native.target.style.cursor = elements.length > 0 ? 'pointer' : 'default';
+                        }
+                    }
+                });
+            } else {
+                document.getElementById('country-chart').parentElement.innerHTML =
+                    '<p style="text-align: center; color: #64748b; padding: 80px 0;">No country data available</p>';
+            }
+
+            // Technology mix chart
+            if (technologyMix && technologyMix.length > 0) {
+                const techColors = ['#2563eb', '#16a34a', '#d97706', '#dc2626', '#7c3aed', '#0891b2', '#65a30d', '#ea580c', '#4f46e5', '#0d9488'];
+                new Chart(document.getElementById('tech-chart'), {
+                    type: 'bar',
+                    data: {
+                        labels: technologyMix.map(t => t.technology || 'Unknown'),
+                        datasets: [{
+                            label: 'Capacity (GW)',
+                            data: technologyMix.map(t => t.capacity_gw),
+                            backgroundColor: technologyMix.map((_, i) => techColors[i % techColors.length]),
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: (ctx) => {
+                                        return `${technologyMix[ctx.dataIndex].count} reactors`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: '#e2e8f0' },
+                                ticks: { color: '#64748b' },
+                                title: { display: true, text: 'GW', color: '#64748b' }
+                            },
+                            y: {
+                                grid: { display: false },
+                                ticks: { color: '#1e293b' }
+                            }
+                        },
+                        onClick: (event, elements) => {
+                            if (elements.length > 0) {
+                                const index = elements[0].index;
+                                const tech = technologyMix[index].technology;
+                                if (tech) window.location.href = `/technology/${encodeURIComponent(tech)}`;
+                            }
+                        },
+                        onHover: (event, elements) => {
+                            event.native.target.style.cursor = elements.length > 0 ? 'pointer' : 'default';
+                        }
+                    }
+                });
+            } else {
+                document.getElementById('tech-chart').parentElement.innerHTML =
+                    '<p style="text-align: center; color: #64748b; padding: 80px 0;">No technology data available</p>';
+            }
+
+            // Generation chart — only for Operational / Permanent Shutdown
+            if (!hasGeneration.includes(STATUS_NAME)) {
+                document.getElementById('generation-card').style.display = 'none';
+            } else if (history && history.length > 0) {
+                new Chart(document.getElementById('generation-chart'), {
+                    type: 'bar',
+                    data: {
+                        labels: history.map(h => h.year),
+                        datasets: [{
+                            label: 'Generation (TWh)',
+                            data: history.map(h => h.total_twh),
+                            backgroundColor: bgColor,
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: (ctx) => {
+                                        return `${history[ctx.dataIndex].reactor_count} reactors reporting`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: '#e2e8f0' },
+                                ticks: { color: '#64748b', maxTicksLimit: 20 }
+                            },
+                            y: {
+                                grid: { color: '#e2e8f0' },
+                                ticks: {
+                                    color: '#64748b',
+                                    callback: (val) => val.toLocaleString()
+                                },
+                                title: { display: true, text: 'TWh', color: '#64748b' }
+                            }
+                        }
+                    }
+                });
+            } else {
+                document.getElementById('generation-chart').parentElement.innerHTML =
+                    '<p style="text-align: center; color: #64748b; padding: 80px 0;">No generation data available</p>';
+            }
+
+            // Reactor table
+            document.getElementById('reactor-table-title').textContent =
+                `Reactors (${reactors.length})`;
+            applyFiltersAndSort();
+        }
+
+        function renderReactorTable(reactors) {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = reactors.map(r => {
+                const techLink = r.technology
+                    ? `<a href="/technology/${encodeURIComponent(r.technology)}" class="reactor-link">${r.technology}</a>`
+                    : '-';
+
+                const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
+                    ? `<span style="color:#64748b">Shut down:</span> ${r.permanent_shutdown}`
+                    : (r.commercial_operation || '-');
+
+                return `
+                    <tr>
+                        <td><a href="/reactor/${r.id}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
+                        <td><a href="/country/${encodeURIComponent(r.country)}" class="reactor-link">${r.country}</a></td>
+                        <td>${techLink}</td>
+                        <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
+                        <td>${dateCol}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Sorting
+        function sortTable(column) {
+            if (currentSort.column === column) {
+                currentSort.ascending = !currentSort.ascending;
+            } else {
+                currentSort.column = column;
+                currentSort.ascending = true;
+            }
+            applyFiltersAndSort();
+        }
+
+        function updateSortIndicators() {
+            document.querySelectorAll('.data-table th').forEach(th => {
+                th.classList.remove('sorted');
+                const icon = th.querySelector('.sort-icon');
+                if (icon) icon.innerHTML = '&#8597;';
+            });
+            if (currentSort.column) {
+                const th = document.querySelector(`.data-table th[data-sort="${currentSort.column}"]`);
+                if (th) {
+                    th.classList.add('sorted');
+                    const icon = th.querySelector('.sort-icon');
+                    if (icon) icon.innerHTML = currentSort.ascending ? '&#8593;' : '&#8595;';
+                }
+            }
+        }
+
+        document.querySelectorAll('.data-table th[data-sort]').forEach(th => {
+            th.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-icon')) return;
+                sortTable(th.dataset.sort);
+            });
+        });
+
+        // Filter icon click handlers
+        document.querySelectorAll('.filter-icon').forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleFilterPopover(icon.dataset.filter);
+            });
+        });
+
+        // Close popovers on outside click or Escape
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.filter-popover') && !e.target.classList.contains('filter-icon')) {
+                closeAllPopovers();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeAllPopovers();
+        });
+
+        document.addEventListener('DOMContentLoaded', loadStatusDetails);
+    </script>
+</body>
+</html>

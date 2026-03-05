@@ -952,7 +952,7 @@
                 'Unknown': '#e5e7eb'
             };
 
-            new Chart(document.getElementById('status-chart'), {
+            const statusChart = new Chart(document.getElementById('status-chart'), {
                 type: 'pie',
                 data: {
                     labels: data.by_status.map(s => s.status),
@@ -971,6 +971,16 @@
                             position: 'right',
                             labels: { color: '#1e293b', padding: 15 }
                         }
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const index = elements[0].index;
+                            const statusName = data.by_status[index].status;
+                            window.location.href = `/status/${encodeURIComponent(statusName)}`;
+                        }
+                    },
+                    onHover: (event, elements) => {
+                        event.native.target.style.cursor = elements.length > 0 ? 'pointer' : 'default';
                     }
                 }
             });
@@ -1415,7 +1425,7 @@
                         <td><a href="/country/${encodeURIComponent(r.country)}" class="reactor-link">${r.country}</a></td>
                         <td>${techLink}</td>
                         <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
-                        <td><span class="status-badge status-${statusClass}">${r.status}</span></td>
+                        <td><a href="/status/${encodeURIComponent(r.status)}" style="text-decoration: none;"><span class="status-badge status-${statusClass}">${r.status}</span></a></td>
                         <td>${dateCol}</td>
                     </tr>
                 `;
