@@ -257,6 +257,7 @@
     <header>
         <div class="container">
             <a href="/" class="back-link">&larr; Back to Dashboard</a>
+            <span id="plant-back-link"></span>
             <h1 id="reactor-name">Loading...</h1>
             <p class="subtitle" id="reactor-location"></p>
         </div>
@@ -368,6 +369,8 @@
                 <span class="status-badge status-${reactor.status === 'Operational' ? 'operational' : reactor.status === 'Under Construction' ? 'construction' : 'shutdown'}">${reactor.status}</span>
             `;
             document.getElementById('reactor-location').textContent = `${reactor.country} | ${reactor.technology} (${reactor.technology_name || reactor.technology})`;
+            document.getElementById('plant-back-link').innerHTML =
+                `<a href="/plant/${encodeURIComponent(reactor.plant_name)}" class="back-link" style="margin-left: 15px;">&larr; ${reactor.plant_name} Plant</a>`;
 
             // Quick stats
             document.getElementById('quick-stats').innerHTML = `

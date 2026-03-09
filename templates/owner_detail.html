@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Country Details - Global Nuclear Database</title>
+    <title>Owner Details - Global Nuclear Database</title>
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -156,8 +156,17 @@
             color: var(--accent);
         }
 
+        .stat-value a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .stat-value a:hover {
+            text-decoration: underline;
+        }
+
         /* Map */
-        #country-map {
+        #owner-map {
             height: 300px;
             border-radius: 8px;
             margin-top: 15px;
@@ -197,7 +206,7 @@
         }
 
         .data-table th:hover {
-            background: var(--bg-hover);
+            background: var(--bg-card);
         }
 
         .data-table th .sort-icon {
@@ -246,6 +255,11 @@
             color: #fff;
         }
 
+        .status-longterm {
+            background: #9ca3af;
+            color: #fff;
+        }
+
         /* Column Filter Popover */
         .filter-icon {
             margin-left: 5px;
@@ -266,7 +280,7 @@
         .filter-popover {
             position: fixed;
             z-index: 1000;
-            background: var(--bg-primary);
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 12px;
@@ -284,7 +298,7 @@
             padding: 8px 10px;
             border: 1px solid var(--border);
             border-radius: 6px;
-            background: var(--bg-card);
+            background: var(--bg-primary);
             color: var(--text-primary);
             font-size: 0.85rem;
             margin-bottom: 8px;
@@ -394,19 +408,19 @@
     <header>
         <div class="container">
             <a href="/" class="back-link">&larr; Back to Dashboard</a>
-            <h1 id="country-name">Loading...</h1>
-            <p class="subtitle" id="country-subtitle"></p>
+            <h1 id="owner-name">Loading...</h1>
+            <p class="subtitle" id="owner-subtitle">Nuclear Fleet Operator</p>
         </div>
     </header>
 
     <div class="container">
         <div id="loading" class="loading">
             <div class="spinner"></div>
-            Loading country data...
+            Loading owner data...
         </div>
 
         <div id="error" class="error" style="display: none;">
-            Country not found. <a href="/">Return to dashboard</a>
+            Owner not found. <a href="/">Return to dashboard</a>
         </div>
 
         <div id="content" style="display: none;">
@@ -421,10 +435,10 @@
                     <div id="fleet-info"></div>
                 </div>
 
-                <!-- Country Map -->
+                <!-- Map -->
                 <div class="card">
                     <h2>Reactor Locations</h2>
-                    <div id="country-map"></div>
+                    <div id="owner-map"></div>
                 </div>
             </div>
 
@@ -443,6 +457,7 @@
                     <thead>
                         <tr>
                             <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
+                            <th data-sort="country">Country <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="country">&#9698;</span></th>
                             <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
                             <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
                             <th data-sort="status">Status <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="status">&#9698;</span></th>
@@ -461,7 +476,7 @@
     </footer>
 
     <script>
-        const COUNTRY_NAME = "{{ country_name }}";
+        const OWNER_NAME = "{{ owner_name }}";
 
         let currentReactors = [];
         let currentSort = { column: null, ascending: true };
@@ -469,6 +484,7 @@
 
         const filterConfig = {
             name:       { type: 'text',     field: r => `${r.plant_name}-${r.unit_number}` },
+            country:    { type: 'checkbox', field: r => r.country || '-' },
             technology: { type: 'checkbox', field: r => r.technology || '-' },
             capacity:   { type: 'range',    field: r => r.gross_capacity_mw || 0 },
             status:     { type: 'checkbox', field: r => r.status || '-' },
@@ -504,6 +520,10 @@
                         case 'name':
                             valA = `${a.plant_name}-${a.unit_number}`.toLowerCase();
                             valB = `${b.plant_name}-${b.unit_number}`.toLowerCase();
+                            break;
+                        case 'country':
+                            valA = (a.country || '').toLowerCase();
+                            valB = (b.country || '').toLowerCase();
                             break;
                         case 'technology':
                             valA = (a.technology || '').toLowerCase();
@@ -664,87 +684,98 @@
             document.querySelectorAll('.filter-popover').forEach(p => p.remove());
         }
 
-        async function loadCountryDetails() {
+        async function loadOwnerDetails() {
             try {
-                const response = await fetch(`/api/countries/${encodeURIComponent(COUNTRY_NAME)}/detail`);
-                if (!response.ok) throw new Error('Country not found');
+                const response = await fetch(`/api/owners/${encodeURIComponent(OWNER_NAME)}/detail`);
+                if (!response.ok) throw new Error('Owner not found');
                 const data = await response.json();
-                renderCountryDetails(data);
+                renderOwnerDetails(data);
             } catch (error) {
-                console.error('Failed to load country:', error);
+                console.error('Failed to load owner:', error);
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('error').style.display = 'block';
             }
         }
 
-        function renderCountryDetails(data) {
-            const country = data.country;
+        function renderOwnerDetails(data) {
+            const owner = data.owner;
             const history = data.generation_history;
             const reactors = data.reactors;
-            const techMix = data.technology_mix;
+            const countryBreakdown = data.country_breakdown;
+            const technologyBreakdown = data.technology_breakdown;
 
             currentReactors = reactors;
 
             // Header
-            document.getElementById('country-name').textContent = country.country;
-            document.getElementById('country-subtitle').textContent =
-                `${country.operational} operational reactors | ${country.capacity_gw} GW capacity`;
+            document.getElementById('owner-name').textContent = owner.name;
+            document.getElementById('owner-subtitle').textContent =
+                `Nuclear Fleet Operator | ${owner.operational} operational reactors | ${owner.capacity_gw} GW capacity`;
 
             // Quick stats
             document.getElementById('quick-stats').innerHTML = `
                 <div class="mini-stat">
-                    <div class="mini-stat-value">${country.operational}</div>
-                    <div class="mini-stat-label">Operational Reactors</div>
+                    <div class="mini-stat-value">${owner.total}</div>
+                    <div class="mini-stat-label">Total Reactors</div>
                 </div>
                 <div class="mini-stat">
-                    <div class="mini-stat-value">${country.capacity_gw}</div>
-                    <div class="mini-stat-label">Total Capacity (GW)</div>
+                    <div class="mini-stat-value">${owner.operational}</div>
+                    <div class="mini-stat-label">Operational</div>
                 </div>
                 <div class="mini-stat">
-                    <div class="mini-stat-value">${country.avg_age || '--'}</div>
-                    <div class="mini-stat-label">Avg Fleet Age (yrs)</div>
+                    <div class="mini-stat-value">${owner.capacity_gw}</div>
+                    <div class="mini-stat-label">Capacity (GW)</div>
                 </div>
                 <div class="mini-stat">
-                    <div class="mini-stat-value">${country.under_construction}</div>
-                    <div class="mini-stat-label">Under Construction</div>
+                    <div class="mini-stat-value">${owner.avg_age || '--'}</div>
+                    <div class="mini-stat-label">Avg Age (yrs)</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${owner.countries}</div>
+                    <div class="mini-stat-label">Countries</div>
                 </div>
             `;
 
-            // Fleet info
-            const firstOnline = reactors
-                .filter(r => r.commercial_operation)
+            // Fleet info card: technology breakdown + country list
+            const techRows = technologyBreakdown.map(t =>
+                `<div class="stat-row">
+                    <span class="stat-label"><a href="/technology/${encodeURIComponent(t.technology)}">${t.technology || 'Unknown'}</a></span>
+                    <span class="stat-value">${t.count} reactor${t.count !== 1 ? 's' : ''}</span>
+                </div>`
+            ).join('');
+
+            const countryRows = countryBreakdown.map(c =>
+                `<div class="stat-row">
+                    <span class="stat-label"><a href="/country/${encodeURIComponent(c.country)}">${c.country}</a></span>
+                    <span class="stat-value">${c.count} reactors | ${c.capacity_gw} GW</span>
+                </div>`
+            ).join('');
+
+            const operationalReactors = reactors.filter(r => r.commercial_operation);
+            const firstOnline = operationalReactors
                 .map(r => r.commercial_operation)
                 .sort()[0];
-            const lastOnline = reactors
-                .filter(r => r.commercial_operation && r.status === 'Operational')
+            const lastOnline = operationalReactors
+                .filter(r => r.status === 'Operational')
                 .map(r => r.commercial_operation)
                 .sort()
                 .pop();
 
-            const techBreakdown = techMix.map(t =>
-                `${t.technology}: ${t.count} (${t.capacity_gw} GW)`
-            ).join(', ') || '--';
-
             document.getElementById('fleet-info').innerHTML = `
                 <div class="stat-row">
                     <span class="stat-label">Total Reactors (all status)</span>
-                    <span class="stat-value">${country.total_reactors}</span>
+                    <span class="stat-value">${owner.total}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Operational</span>
-                    <span class="stat-value highlight">${country.operational}</span>
+                    <span class="stat-value highlight">${owner.operational}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Under Construction</span>
-                    <span class="stat-value">${country.under_construction}</span>
+                    <span class="stat-value">${owner.under_construction}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Permanently Shutdown</span>
-                    <span class="stat-value">${country.shutdown}</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-label">Technology Breakdown</span>
-                    <span class="stat-value">${techBreakdown}</span>
+                    <span class="stat-value">${owner.shutdown}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">First Commercial Operation</span>
@@ -754,6 +785,14 @@
                     <span class="stat-label">Most Recent Online</span>
                     <span class="stat-value">${lastOnline || '--'}</span>
                 </div>
+                <div style="margin-top: 15px; padding-top: 10px; border-top: 1px solid var(--border);">
+                    <strong style="color: var(--accent); font-size: 0.9rem;">Technology Mix</strong>
+                </div>
+                ${techRows}
+                <div style="margin-top: 15px; padding-top: 10px; border-top: 1px solid var(--border);">
+                    <strong style="color: var(--accent); font-size: 0.9rem;">Countries</strong>
+                </div>
+                ${countryRows}
             `;
 
             // Show content before map init (Leaflet needs visible container)
@@ -763,7 +802,7 @@
             // Map
             const reactorsWithCoords = reactors.filter(r => r.latitude && r.longitude);
             if (reactorsWithCoords.length > 0) {
-                const map = L.map('country-map');
+                const map = L.map('owner-map');
                 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                     attribution: '&copy; OpenStreetMap, &copy; CARTO'
                 }).addTo(map);
@@ -771,6 +810,7 @@
                 const statusColors = {
                     'Operational': '#16a34a',
                     'Under Construction': '#d97706',
+                    'Long-term Shutdown': '#9ca3af',
                     'Permanent Shutdown': '#9ca3af'
                 };
 
@@ -788,7 +828,8 @@
                     })
                     .bindPopup(`
                         <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #2563eb;">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        ${r.technology || ''} | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color: #64748b;">${r.country}</a> | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
+                        <a href="/technology/${encodeURIComponent(r.technology)}" style="color: #64748b;">${r.technology || ''}</a><br>
                         <span style="color: ${color};">${r.status}</span>
                     `)
                     .addTo(map);
@@ -796,7 +837,7 @@
 
                 map.fitBounds(bounds, { padding: [20, 20] });
             } else {
-                document.getElementById('country-map').innerHTML =
+                document.getElementById('owner-map').innerHTML =
                     '<p style="text-align: center; color: #64748b; padding: 100px 0;">Location data not available</p>';
             }
 
@@ -861,15 +902,24 @@
         function renderReactorTable(reactors) {
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = reactors.map(r => {
-                const statusClass = r.status === 'Operational' ? 'operational'
-                    : r.status === 'Under Construction' ? 'construction' : 'shutdown';
+                let statusClass;
+                if (r.status === 'Operational') statusClass = 'operational';
+                else if (r.status === 'Under Construction') statusClass = 'construction';
+                else if (r.status === 'Long-term Shutdown') statusClass = 'longterm';
+                else statusClass = 'shutdown';
+
+                const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
+                    ? `<span style="color:#64748b">Shut down:</span> ${r.permanent_shutdown}`
+                    : (r.commercial_operation || '-');
+
                 return `
                     <tr>
                         <td><a href="/plant/${encodeURIComponent(r.plant_name)}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
-                        <td>${r.technology || '-'}</td>
+                        <td><a href="/country/${encodeURIComponent(r.country)}" class="reactor-link">${r.country}</a></td>
+                        <td><a href="/technology/${encodeURIComponent(r.technology)}" class="reactor-link">${r.technology || '-'}</a></td>
                         <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
                         <td><span class="status-badge status-${statusClass}">${r.status}</span></td>
-                        <td>${r.commercial_operation || '-'}</td>
+                        <td>${dateCol}</td>
                     </tr>
                 `;
             }).join('');
@@ -927,7 +977,7 @@
             if (e.key === 'Escape') closeAllPopovers();
         });
 
-        document.addEventListener('DOMContentLoaded', loadCountryDetails);
+        document.addEventListener('DOMContentLoaded', loadOwnerDetails);
     </script>
 </body>
 </html>

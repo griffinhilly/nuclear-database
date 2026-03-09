@@ -1,0 +1,15 @@
+.git
+__pycache__
+*.pyc
+*.pyo
+render.yaml
+.dockerignore
+Dockerfile
+fly.toml
+*.md
+.claude/
+backfill_pris_coverage.py
+build_pris_mapping.py
+fetch_missing_generation.py
+status_audit.py
+database.py

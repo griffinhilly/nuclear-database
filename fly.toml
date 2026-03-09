@@ -1,0 +1,37 @@
+app = 'nuclear-database'
+primary_region = 'ord'
+
+[build]
+
+[env]
+  DATABASE_PATH = '/data/nuclear_reactors.db'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'suspend'
+  auto_start_machines = true
+  min_machines_running = 1
+  [http_service.concurrency]
+    type = 'connections'
+    soft_limit = 25
+    hard_limit = 35
+
+[checks]
+  [checks.health]
+    port = 8080
+    type = 'http'
+    interval = '30s'
+    timeout = '5s'
+    grace_period = '10s'
+    method = 'GET'
+    path = '/api/stats'
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '256mb'
+  count = 3
+
+[mounts]
+  source = 'nuclear_data'
+  destination = '/data'

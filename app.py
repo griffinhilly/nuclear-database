@@ -16,7 +16,7 @@ from pathlib import Path
 # =============================================================================
 
 BASE_DIR = Path(__file__).parent
-DB_PATH = BASE_DIR / "nuclear_reactors.db"
+DB_PATH = Path(os.environ.get('DATABASE_PATH', BASE_DIR / "nuclear_reactors.db"))
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['JSON_SORT_KEYS'] = False
@@ -225,6 +225,7 @@ def country_detail(country):
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
             SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            SUM(CASE WHEN r.status = 'Long-term Shutdown' THEN 1 ELSE 0 END) as long_term_shutdown,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
             ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
         FROM reactors r
@@ -269,14 +270,14 @@ def country_detail(country):
             r.plant_name, r.unit_number
     """, (country,))
 
-    # Technology mix (operational only)
+    # Technology mix (all statuses)
     technology_mix = query_db("""
         SELECT t.code as technology, COUNT(*) as count,
                ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
         FROM reactors r
         JOIN countries c ON r.country_id = c.id
         LEFT JOIN technologies t ON r.technology_id = t.id
-        WHERE LOWER(c.name) = LOWER(?) AND r.status = 'Operational'
+        WHERE LOWER(c.name) = LOWER(?)
         GROUP BY t.code
         ORDER BY count DESC
     """, (country,))
@@ -504,6 +505,183 @@ def reactor_detail_page(reactor_id):
     """Serve the reactor detail page."""
     return render_template('reactor_detail.html', reactor_id=reactor_id)
 
+@app.route('/plant/<plant_name>')
+def plant_detail_page(plant_name):
+    """Serve the plant detail page."""
+    return render_template('plant_detail.html', plant_name=plant_name)
+
+@app.route('/api/plants/<plant_name>')
+@require_api_key('free')
+def plant_detail(plant_name):
+    """Plant-level detail: all reactors at a plant, aggregate stats, combined generation."""
+    # All reactors at this plant
+    reactors = query_db("""
+        SELECT r.id, r.plant_name, r.unit_number, c.name as country,
+               t.code as technology, t.name as technology_name,
+               r.thermal_capacity_mw, r.gross_capacity_mw, r.net_capacity_mw,
+               r.status, r.commercial_operation, r.permanent_shutdown,
+               ROUND((JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(r.commercial_operation)) / 365.25, 2) as age_years,
+               r.latitude, r.longitude, r.owner, r.operator,
+               m.name as model, s.name as supplier
+        FROM reactors r
+        LEFT JOIN countries c ON r.country_id = c.id
+        LEFT JOIN technologies t ON r.technology_id = t.id
+        LEFT JOIN models m ON r.model_id = m.id
+        LEFT JOIN suppliers s ON r.supplier_id = s.id
+        WHERE r.plant_name = ?
+        ORDER BY CAST(r.unit_number AS INTEGER), r.unit_number
+    """, (plant_name,))
+
+    if not reactors:
+        return jsonify({'error': f'Plant not found: {plant_name}'}), 404
+
+    # Aggregate stats
+    operational = [r for r in reactors if r['status'] == 'Operational']
+    total_capacity = sum(r['gross_capacity_mw'] or 0 for r in operational)
+
+    # Per-reactor lifetime stats (generation totals per unit)
+    reactor_ids = [r['id'] for r in reactors]
+    placeholders = ','.join('?' * len(reactor_ids))
+    unit_stats = query_db(f"""
+        SELECT g.reactor_id,
+               ROUND(SUM(g.electricity_gwh) / 1000.0, 2) as total_twh,
+               ROUND(AVG(g.electricity_gwh), 1) as avg_annual_gwh,
+               ROUND(AVG(g.electricity_gwh / (r.gross_capacity_mw / 1000.0 * 8760) * 100), 1) as avg_capacity_factor,
+               MIN(g.year) as first_year, MAX(g.year) as last_year,
+               COUNT(*) as years_operating
+        FROM generation_annual g
+        JOIN reactors r ON g.reactor_id = r.id
+        WHERE g.reactor_id IN ({placeholders})
+          AND r.gross_capacity_mw > 0
+        GROUP BY g.reactor_id
+    """, reactor_ids)
+    unit_stats_map = {s['reactor_id']: s for s in unit_stats}
+
+    # Combined generation history (sum across all units by year)
+    generation_history = query_db(f"""
+        SELECT g.year,
+               ROUND(SUM(g.electricity_gwh), 2) as total_gwh,
+               COUNT(DISTINCT g.reactor_id) as units_reporting
+        FROM generation_annual g
+        WHERE g.reactor_id IN ({placeholders})
+        GROUP BY g.year
+        ORDER BY g.year
+    """, reactor_ids)
+
+    # Plant-level aggregate lifetime stats
+    plant_total_gwh = sum(s.get('total_twh', 0) or 0 for s in unit_stats) * 1000
+    plant_years = set()
+    for h in generation_history:
+        plant_years.add(h['year'])
+
+    return jsonify({
+        'plant': {
+            'name': plant_name,
+            'country': reactors[0]['country'],
+            'total_units': len(reactors),
+            'operational_units': len(operational),
+            'total_capacity_mw': total_capacity,
+            'latitude': reactors[0]['latitude'],
+            'longitude': reactors[0]['longitude'],
+        },
+        'reactors': [{
+            **r,
+            'lifetime_stats': unit_stats_map.get(r['id'], {})
+        } for r in reactors],
+        'generation_history': generation_history,
+        'plant_stats': {
+            'total_generation_twh': round(plant_total_gwh / 1000, 2) if plant_total_gwh else None,
+            'years_with_data': len(plant_years),
+            'first_year': min(plant_years) if plant_years else None,
+            'last_year': max(plant_years) if plant_years else None,
+        }
+    })
+
+@app.route('/model/<model_name>')
+def model_detail_page(model_name):
+    """Serve the model detail page."""
+    return render_template('model_detail.html', model_name=model_name)
+
+@app.route('/api/models/<model_name>/detail')
+@require_api_key('free')
+def model_detail(model_name):
+    """Detailed model page data: summary stats, generation history, reactor list, country breakdown."""
+    # Model summary stats
+    stats = query_db("""
+        SELECT
+            m.name,
+            t.code as technology_code,
+            COUNT(*) as total,
+            SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
+            SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
+            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+        FROM models m
+        LEFT JOIN reactors r ON m.id = r.model_id
+        LEFT JOIN technologies t ON m.technology_id = t.id
+        WHERE LOWER(m.name) = LOWER(?)
+        GROUP BY m.name, t.code
+    """, (model_name,))
+
+    if not stats:
+        return jsonify({'error': f'Model not found: {model_name}'}), 404
+
+    # Generation history: sum by year across all reactors with this model
+    generation_history = query_db("""
+        SELECT
+            g.year,
+            ROUND(SUM(g.electricity_gwh) / 1000.0, 2) as total_twh,
+            COUNT(DISTINCT g.reactor_id) as reactor_count
+        FROM generation_annual g
+        JOIN reactors r ON g.reactor_id = r.id
+        JOIN models m ON r.model_id = m.id
+        WHERE LOWER(m.name) = LOWER(?)
+        GROUP BY g.year
+        ORDER BY g.year
+    """, (model_name,))
+
+    # All reactors with this model
+    reactors = query_db("""
+        SELECT r.id, r.plant_name, r.unit_number, c.name as country,
+               t.code as technology,
+               r.gross_capacity_mw, r.status, r.commercial_operation,
+               r.permanent_shutdown, r.latitude, r.longitude
+        FROM reactors r
+        JOIN models m ON r.model_id = m.id
+        LEFT JOIN countries c ON r.country_id = c.id
+        LEFT JOIN technologies t ON r.technology_id = t.id
+        WHERE LOWER(m.name) = LOWER(?)
+        ORDER BY
+            CASE r.status
+                WHEN 'Operational' THEN 1
+                WHEN 'Under Construction' THEN 2
+                WHEN 'Long-term Shutdown' THEN 3
+                WHEN 'Permanent Shutdown' THEN 4
+                ELSE 5
+            END,
+            c.name COLLATE NOCASE, r.plant_name, r.unit_number
+    """, (model_name,))
+
+    # Country breakdown
+    country_breakdown = query_db("""
+        SELECT c.name as country, COUNT(*) as count,
+               ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
+        FROM reactors r
+        JOIN models m ON r.model_id = m.id
+        LEFT JOIN countries c ON r.country_id = c.id
+        WHERE LOWER(m.name) = LOWER(?)
+        GROUP BY c.name
+        ORDER BY count DESC
+    """, (model_name,))
+
+    return jsonify({
+        'model': stats[0],
+        'generation_history': generation_history,
+        'reactors': reactors,
+        'country_breakdown': country_breakdown
+    })
+
 @app.route('/country/<country>')
 def country_detail_page(country):
     """Serve the country detail page."""
@@ -592,6 +770,98 @@ def technology_detail(tech_code):
         'country_breakdown': country_breakdown
     })
 
+@app.route('/owner/<owner_name>')
+def owner_detail_page(owner_name):
+    """Serve the owner detail page."""
+    return render_template('owner_detail.html', owner_name=owner_name)
+
+@app.route('/api/owners/<owner_name>/detail')
+@require_api_key('free')
+def owner_detail(owner_name):
+    """Detailed owner page data: summary stats, generation history, reactor list, country/technology breakdowns."""
+    # Owner summary stats
+    stats = query_db("""
+        SELECT
+            r.owner as name,
+            COUNT(*) as total,
+            SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
+            SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
+            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age,
+            COUNT(DISTINCT r.country_id) as countries
+        FROM reactors r
+        WHERE r.owner COLLATE NOCASE = ?
+        GROUP BY r.owner
+    """, (owner_name,))
+
+    if not stats:
+        return jsonify({'error': f'Owner not found: {owner_name}'}), 404
+
+    # Generation history: sum by year across all reactors owned by this owner
+    generation_history = query_db("""
+        SELECT
+            g.year,
+            ROUND(SUM(g.electricity_gwh) / 1000.0, 2) as total_twh,
+            COUNT(DISTINCT g.reactor_id) as reactor_count
+        FROM generation_annual g
+        JOIN reactors r ON g.reactor_id = r.id
+        WHERE r.owner COLLATE NOCASE = ?
+        GROUP BY g.year
+        ORDER BY g.year
+    """, (owner_name,))
+
+    # All reactors owned by this owner
+    reactors = query_db("""
+        SELECT r.id, r.plant_name, r.unit_number, c.name as country,
+               t.code as technology, m.name as model_name,
+               r.gross_capacity_mw, r.status, r.commercial_operation,
+               r.permanent_shutdown, r.latitude, r.longitude
+        FROM reactors r
+        LEFT JOIN countries c ON r.country_id = c.id
+        LEFT JOIN technologies t ON r.technology_id = t.id
+        LEFT JOIN models m ON r.model_id = m.id
+        WHERE r.owner COLLATE NOCASE = ?
+        ORDER BY
+            CASE r.status
+                WHEN 'Operational' THEN 1
+                WHEN 'Under Construction' THEN 2
+                WHEN 'Long-term Shutdown' THEN 3
+                WHEN 'Permanent Shutdown' THEN 4
+                ELSE 5
+            END,
+            c.name COLLATE NOCASE, r.plant_name, r.unit_number
+    """, (owner_name,))
+
+    # Country breakdown
+    country_breakdown = query_db("""
+        SELECT c.name as country, COUNT(*) as count,
+               ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
+        FROM reactors r
+        LEFT JOIN countries c ON r.country_id = c.id
+        WHERE r.owner COLLATE NOCASE = ?
+        GROUP BY c.name
+        ORDER BY count DESC
+    """, (owner_name,))
+
+    # Technology breakdown
+    technology_breakdown = query_db("""
+        SELECT t.code as technology, COUNT(*) as count
+        FROM reactors r
+        LEFT JOIN technologies t ON r.technology_id = t.id
+        WHERE r.owner COLLATE NOCASE = ?
+        GROUP BY t.code
+        ORDER BY count DESC
+    """, (owner_name,))
+
+    return jsonify({
+        'owner': stats[0],
+        'generation_history': generation_history,
+        'reactors': reactors,
+        'country_breakdown': country_breakdown,
+        'technology_breakdown': technology_breakdown
+    })
+
 @app.route('/status/<status>')
 def status_detail_page(status):
     """Serve the status detail page."""
@@ -671,6 +941,102 @@ def status_detail(status):
         'reactors': reactors,
         'country_breakdown': country_breakdown,
         'technology_mix': technology_mix
+    })
+
+@app.route('/supplier/<supplier_name>')
+def supplier_detail_page(supplier_name):
+    """Serve the supplier detail page."""
+    return render_template('supplier_detail.html', supplier_name=supplier_name)
+
+@app.route('/api/suppliers/<supplier_name>/detail')
+@require_api_key('free')
+def supplier_detail(supplier_name):
+    """Detailed supplier page data: summary, generation history, reactor list, country/technology breakdowns."""
+    # Supplier summary stats
+    stats = query_db("""
+        SELECT
+            s.name,
+            COUNT(*) as total,
+            SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
+            SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw,
+            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+        FROM suppliers s
+        LEFT JOIN reactors r ON s.id = r.supplier_id
+        WHERE LOWER(s.name) = LOWER(?)
+        GROUP BY s.name
+    """, (supplier_name,))
+
+    if not stats:
+        return jsonify({'error': f'Supplier not found: {supplier_name}'}), 404
+
+    # Generation history: sum by year across all reactors built by this supplier
+    generation_history = query_db("""
+        SELECT
+            g.year,
+            ROUND(SUM(g.electricity_gwh) / 1000.0, 2) as total_twh,
+            COUNT(DISTINCT g.reactor_id) as reactor_count
+        FROM generation_annual g
+        JOIN reactors r ON g.reactor_id = r.id
+        JOIN suppliers s ON r.supplier_id = s.id
+        WHERE LOWER(s.name) = LOWER(?)
+        GROUP BY g.year
+        ORDER BY g.year
+    """, (supplier_name,))
+
+    # All reactors by this supplier
+    reactors = query_db("""
+        SELECT r.id, r.plant_name, r.unit_number, c.name as country,
+               t.code as technology, m.name as model_name,
+               r.gross_capacity_mw, r.status, r.commercial_operation,
+               r.permanent_shutdown, r.latitude, r.longitude
+        FROM reactors r
+        JOIN suppliers s ON r.supplier_id = s.id
+        LEFT JOIN countries c ON r.country_id = c.id
+        LEFT JOIN technologies t ON r.technology_id = t.id
+        LEFT JOIN models m ON r.model_id = m.id
+        WHERE LOWER(s.name) = LOWER(?)
+        ORDER BY
+            CASE r.status
+                WHEN 'Operational' THEN 1
+                WHEN 'Under Construction' THEN 2
+                WHEN 'Long-term Shutdown' THEN 3
+                WHEN 'Permanent Shutdown' THEN 4
+                ELSE 5
+            END,
+            c.name COLLATE NOCASE, r.plant_name, r.unit_number
+    """, (supplier_name,))
+
+    # Country breakdown
+    country_breakdown = query_db("""
+        SELECT c.name as country, COUNT(*) as count,
+               ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
+        FROM reactors r
+        JOIN suppliers s ON r.supplier_id = s.id
+        LEFT JOIN countries c ON r.country_id = c.id
+        WHERE LOWER(s.name) = LOWER(?)
+        GROUP BY c.name
+        ORDER BY count DESC
+    """, (supplier_name,))
+
+    # Technology breakdown
+    technology_breakdown = query_db("""
+        SELECT t.code as technology, COUNT(*) as count
+        FROM reactors r
+        JOIN suppliers s ON r.supplier_id = s.id
+        LEFT JOIN technologies t ON r.technology_id = t.id
+        WHERE LOWER(s.name) = LOWER(?)
+        GROUP BY t.code
+        ORDER BY count DESC
+    """, (supplier_name,))
+
+    return jsonify({
+        'supplier': stats[0],
+        'generation_history': generation_history,
+        'reactors': reactors,
+        'country_breakdown': country_breakdown,
+        'technology_breakdown': technology_breakdown
     })
 
 @app.route('/api/reactors/search')

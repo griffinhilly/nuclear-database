@@ -813,7 +813,7 @@
                         fillOpacity: 0.7
                     })
                     .bindPopup(`
-                        <strong><a href="/reactor/${r.id}" style="color: #2563eb;">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #2563eb;">${r.plant_name}-${r.unit_number}</a></strong><br>
                         <a href="/country/${encodeURIComponent(r.country)}" style="color: #64748b;">${r.country}</a> |
                         ${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" style="color: #64748b;">${r.technology}</a> | ` : ''}
                         ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}
@@ -1006,7 +1006,7 @@
 
                 return `
                     <tr>
-                        <td><a href="/reactor/${r.id}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
+                        <td><a href="/plant/${encodeURIComponent(r.plant_name)}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
                         <td><a href="/country/${encodeURIComponent(r.country)}" class="reactor-link">${r.country}</a></td>
                         <td>${techLink}</td>
                         <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>

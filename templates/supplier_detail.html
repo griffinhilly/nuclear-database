@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Country Details - Global Nuclear Database</title>
+    <title>Supplier Details - Global Nuclear Database</title>
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -157,7 +157,7 @@
         }
 
         /* Map */
-        #country-map {
+        #supplier-map {
             height: 300px;
             border-radius: 8px;
             margin-top: 15px;
@@ -197,7 +197,7 @@
         }
 
         .data-table th:hover {
-            background: var(--bg-hover);
+            background: var(--bg-card);
         }
 
         .data-table th .sort-icon {
@@ -246,6 +246,11 @@
             color: #fff;
         }
 
+        .status-longterm {
+            background: #9ca3af;
+            color: #fff;
+        }
+
         /* Column Filter Popover */
         .filter-icon {
             margin-left: 5px;
@@ -266,7 +271,7 @@
         .filter-popover {
             position: fixed;
             z-index: 1000;
-            background: var(--bg-primary);
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 12px;
@@ -284,7 +289,7 @@
             padding: 8px 10px;
             border: 1px solid var(--border);
             border-radius: 6px;
-            background: var(--bg-card);
+            background: var(--bg-primary);
             color: var(--text-primary);
             font-size: 0.85rem;
             margin-bottom: 8px;
@@ -394,19 +399,19 @@
     <header>
         <div class="container">
             <a href="/" class="back-link">&larr; Back to Dashboard</a>
-            <h1 id="country-name">Loading...</h1>
-            <p class="subtitle" id="country-subtitle"></p>
+            <h1 id="supplier-name">Loading...</h1>
+            <p class="subtitle" id="supplier-subtitle"></p>
         </div>
     </header>
 
     <div class="container">
         <div id="loading" class="loading">
             <div class="spinner"></div>
-            Loading country data...
+            Loading supplier data...
         </div>
 
         <div id="error" class="error" style="display: none;">
-            Country not found. <a href="/">Return to dashboard</a>
+            Supplier not found. <a href="/">Return to dashboard</a>
         </div>
 
         <div id="content" style="display: none;">
@@ -415,16 +420,16 @@
 
             <!-- Main Grid -->
             <div class="detail-grid">
-                <!-- Fleet Information -->
+                <!-- Supplier Information -->
                 <div class="card">
-                    <h2>Fleet Information</h2>
-                    <div id="fleet-info"></div>
+                    <h2>Supplier Information</h2>
+                    <div id="supplier-info"></div>
                 </div>
 
-                <!-- Country Map -->
+                <!-- Map -->
                 <div class="card">
                     <h2>Reactor Locations</h2>
-                    <div id="country-map"></div>
+                    <div id="supplier-map"></div>
                 </div>
             </div>
 
@@ -443,6 +448,7 @@
                     <thead>
                         <tr>
                             <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
+                            <th data-sort="country">Country <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="country">&#9698;</span></th>
                             <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
                             <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
                             <th data-sort="status">Status <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="status">&#9698;</span></th>
@@ -451,6 +457,14 @@
                     </thead>
                     <tbody id="table-body"></tbody>
                 </table>
+            </div>
+
+            <!-- Country Breakdown -->
+            <div class="card" style="margin-top: 30px;">
+                <h2>Country Breakdown</h2>
+                <div class="chart-container">
+                    <canvas id="country-chart"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -461,7 +475,7 @@
     </footer>
 
     <script>
-        const COUNTRY_NAME = "{{ country_name }}";
+        const SUPPLIER_NAME = "{{ supplier_name }}";
 
         let currentReactors = [];
         let currentSort = { column: null, ascending: true };
@@ -469,6 +483,7 @@
 
         const filterConfig = {
             name:       { type: 'text',     field: r => `${r.plant_name}-${r.unit_number}` },
+            country:    { type: 'checkbox', field: r => r.country || '-' },
             technology: { type: 'checkbox', field: r => r.technology || '-' },
             capacity:   { type: 'range',    field: r => r.gross_capacity_mw || 0 },
             status:     { type: 'checkbox', field: r => r.status || '-' },
@@ -504,6 +519,10 @@
                         case 'name':
                             valA = `${a.plant_name}-${a.unit_number}`.toLowerCase();
                             valB = `${b.plant_name}-${b.unit_number}`.toLowerCase();
+                            break;
+                        case 'country':
+                            valA = (a.country || '').toLowerCase();
+                            valB = (b.country || '').toLowerCase();
                             break;
                         case 'technology':
                             valA = (a.technology || '').toLowerCase();
@@ -664,87 +683,95 @@
             document.querySelectorAll('.filter-popover').forEach(p => p.remove());
         }
 
-        async function loadCountryDetails() {
+        async function loadSupplierDetails() {
             try {
-                const response = await fetch(`/api/countries/${encodeURIComponent(COUNTRY_NAME)}/detail`);
-                if (!response.ok) throw new Error('Country not found');
+                const response = await fetch(`/api/suppliers/${encodeURIComponent(SUPPLIER_NAME)}/detail`);
+                if (!response.ok) throw new Error('Supplier not found');
                 const data = await response.json();
-                renderCountryDetails(data);
+                renderSupplierDetails(data);
             } catch (error) {
-                console.error('Failed to load country:', error);
+                console.error('Failed to load supplier:', error);
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('error').style.display = 'block';
             }
         }
 
-        function renderCountryDetails(data) {
-            const country = data.country;
+        function renderSupplierDetails(data) {
+            const supplier = data.supplier;
             const history = data.generation_history;
             const reactors = data.reactors;
-            const techMix = data.technology_mix;
+            const countryBreakdown = data.country_breakdown;
+            const technologyBreakdown = data.technology_breakdown;
 
             currentReactors = reactors;
 
             // Header
-            document.getElementById('country-name').textContent = country.country;
-            document.getElementById('country-subtitle').textContent =
-                `${country.operational} operational reactors | ${country.capacity_gw} GW capacity`;
+            document.getElementById('supplier-name').textContent = supplier.name;
+            document.getElementById('supplier-subtitle').textContent =
+                `${supplier.operational} operational reactors | ${supplier.capacity_gw} GW total capacity`;
+
+            // Count unique countries
+            const countries = new Set(reactors.map(r => r.country).filter(Boolean));
 
             // Quick stats
             document.getElementById('quick-stats').innerHTML = `
                 <div class="mini-stat">
-                    <div class="mini-stat-value">${country.operational}</div>
-                    <div class="mini-stat-label">Operational Reactors</div>
+                    <div class="mini-stat-value">${supplier.total}</div>
+                    <div class="mini-stat-label">Total Reactors</div>
                 </div>
                 <div class="mini-stat">
-                    <div class="mini-stat-value">${country.capacity_gw}</div>
-                    <div class="mini-stat-label">Total Capacity (GW)</div>
+                    <div class="mini-stat-value">${supplier.operational}</div>
+                    <div class="mini-stat-label">Operational</div>
                 </div>
                 <div class="mini-stat">
-                    <div class="mini-stat-value">${country.avg_age || '--'}</div>
-                    <div class="mini-stat-label">Avg Fleet Age (yrs)</div>
+                    <div class="mini-stat-value">${supplier.capacity_gw}</div>
+                    <div class="mini-stat-label">Capacity (GW)</div>
                 </div>
                 <div class="mini-stat">
-                    <div class="mini-stat-value">${country.under_construction}</div>
-                    <div class="mini-stat-label">Under Construction</div>
+                    <div class="mini-stat-value">${supplier.avg_age || '--'}</div>
+                    <div class="mini-stat-label">Avg Age (yrs)</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${countries.size}</div>
+                    <div class="mini-stat-label">Countries</div>
                 </div>
             `;
 
-            // Fleet info
-            const firstOnline = reactors
-                .filter(r => r.commercial_operation)
+            // Supplier info card
+            const operationalReactors = reactors.filter(r => r.commercial_operation);
+            const firstOnline = operationalReactors
                 .map(r => r.commercial_operation)
                 .sort()[0];
-            const lastOnline = reactors
-                .filter(r => r.commercial_operation && r.status === 'Operational')
+            const lastOnline = operationalReactors
+                .filter(r => r.status === 'Operational')
                 .map(r => r.commercial_operation)
                 .sort()
                 .pop();
 
-            const techBreakdown = techMix.map(t =>
-                `${t.technology}: ${t.count} (${t.capacity_gw} GW)`
-            ).join(', ') || '--';
+            const techList = technologyBreakdown.map(t =>
+                `<a href="/technology/${encodeURIComponent(t.technology)}" style="color: var(--accent); text-decoration: none;">${t.technology}</a> (${t.count})`
+            ).join(', ');
 
-            document.getElementById('fleet-info').innerHTML = `
+            document.getElementById('supplier-info').innerHTML = `
                 <div class="stat-row">
                     <span class="stat-label">Total Reactors (all status)</span>
-                    <span class="stat-value">${country.total_reactors}</span>
+                    <span class="stat-value">${supplier.total}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Operational</span>
-                    <span class="stat-value highlight">${country.operational}</span>
+                    <span class="stat-value highlight">${supplier.operational}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Under Construction</span>
-                    <span class="stat-value">${country.under_construction}</span>
+                    <span class="stat-value">${supplier.under_construction}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Permanently Shutdown</span>
-                    <span class="stat-value">${country.shutdown}</span>
+                    <span class="stat-value">${supplier.shutdown}</span>
                 </div>
                 <div class="stat-row">
-                    <span class="stat-label">Technology Breakdown</span>
-                    <span class="stat-value">${techBreakdown}</span>
+                    <span class="stat-label">Technologies</span>
+                    <span class="stat-value">${techList || '--'}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">First Commercial Operation</span>
@@ -763,7 +790,7 @@
             // Map
             const reactorsWithCoords = reactors.filter(r => r.latitude && r.longitude);
             if (reactorsWithCoords.length > 0) {
-                const map = L.map('country-map');
+                const map = L.map('supplier-map');
                 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                     attribution: '&copy; OpenStreetMap, &copy; CARTO'
                 }).addTo(map);
@@ -771,6 +798,7 @@
                 const statusColors = {
                     'Operational': '#16a34a',
                     'Under Construction': '#d97706',
+                    'Long-term Shutdown': '#9ca3af',
                     'Permanent Shutdown': '#9ca3af'
                 };
 
@@ -788,7 +816,8 @@
                     })
                     .bindPopup(`
                         <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #2563eb;">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        ${r.technology || ''} | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color: #64748b;">${r.country}</a> | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
+                        <a href="/technology/${encodeURIComponent(r.technology)}" style="color: #64748b;">${r.technology || ''}</a><br>
                         <span style="color: ${color};">${r.status}</span>
                     `)
                     .addTo(map);
@@ -796,7 +825,7 @@
 
                 map.fitBounds(bounds, { padding: [20, 20] });
             } else {
-                document.getElementById('country-map').innerHTML =
+                document.getElementById('supplier-map').innerHTML =
                     '<p style="text-align: center; color: #64748b; padding: 100px 0;">Location data not available</p>';
             }
 
@@ -852,6 +881,66 @@
                     '<p style="text-align: center; color: #64748b; padding: 80px 0;">No generation data available</p>';
             }
 
+            // Country breakdown chart
+            if (countryBreakdown && countryBreakdown.length > 0) {
+                const top15 = countryBreakdown.slice(0, 15);
+                new Chart(document.getElementById('country-chart'), {
+                    type: 'bar',
+                    data: {
+                        labels: top15.map(c => c.country),
+                        datasets: [{
+                            label: 'Capacity (GW)',
+                            data: top15.map(c => c.capacity_gw),
+                            backgroundColor: '#2563eb',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: (ctx) => {
+                                        return `${top15[ctx.dataIndex].count} reactors`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: '#e2e8f0' },
+                                ticks: { color: '#64748b' },
+                                title: {
+                                    display: true,
+                                    text: 'GW',
+                                    color: '#64748b'
+                                }
+                            },
+                            y: {
+                                grid: { display: false },
+                                ticks: { color: '#1e293b' }
+                            }
+                        },
+                        onClick: (event, elements) => {
+                            if (elements.length > 0) {
+                                const index = elements[0].index;
+                                const countryName = top15[index].country;
+                                window.location.href = `/country/${encodeURIComponent(countryName)}`;
+                            }
+                        },
+                        onHover: (event, elements) => {
+                            event.native.target.style.cursor = elements.length > 0 ? 'pointer' : 'default';
+                        }
+                    }
+                });
+            } else {
+                document.getElementById('country-chart').parentElement.innerHTML =
+                    '<p style="text-align: center; color: #64748b; padding: 80px 0;">No country data available</p>';
+            }
+
             // Reactor table
             document.getElementById('reactor-table-title').textContent =
                 `Reactors (${reactors.length})`;
@@ -861,15 +950,24 @@
         function renderReactorTable(reactors) {
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = reactors.map(r => {
-                const statusClass = r.status === 'Operational' ? 'operational'
-                    : r.status === 'Under Construction' ? 'construction' : 'shutdown';
+                let statusClass;
+                if (r.status === 'Operational') statusClass = 'operational';
+                else if (r.status === 'Under Construction') statusClass = 'construction';
+                else if (r.status === 'Long-term Shutdown') statusClass = 'longterm';
+                else statusClass = 'shutdown';
+
+                const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
+                    ? `<span style="color:#64748b">Shut down:</span> ${r.permanent_shutdown}`
+                    : (r.commercial_operation || '-');
+
                 return `
                     <tr>
                         <td><a href="/plant/${encodeURIComponent(r.plant_name)}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
-                        <td>${r.technology || '-'}</td>
+                        <td><a href="/country/${encodeURIComponent(r.country)}" class="reactor-link">${r.country}</a></td>
+                        <td>${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" class="reactor-link">${r.technology}</a>` : '-'}</td>
                         <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
                         <td><span class="status-badge status-${statusClass}">${r.status}</span></td>
-                        <td>${r.commercial_operation || '-'}</td>
+                        <td>${dateCol}</td>
                     </tr>
                 `;
             }).join('');
@@ -927,7 +1025,7 @@
             if (e.key === 'Escape') closeAllPopovers();
         });
 
-        document.addEventListener('DOMContentLoaded', loadCountryDetails);
+        document.addEventListener('DOMContentLoaded', loadSupplierDetails);
     </script>
 </body>
 </html>

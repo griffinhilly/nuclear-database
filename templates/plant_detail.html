@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Details - Global Nuclear Database</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet for maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-card: #f8fafc;
+            --bg-card-alt: #f1f5f9;
+            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+            --border-header: #2563eb;
+            --success: #16a34a;
+            --warning: #d97706;
+            --bg-hover: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 30px 20px;
+            background: var(--bg-header);
+            border-bottom: 2px solid var(--border-header);
+        }
+
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .subtitle a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .subtitle a:hover {
+            text-decoration: underline;
+        }
+
+        /* Stats cards */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mini-stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mini-stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .mini-stat-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        /* Grid layout */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .detail-grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .card h2 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+        }
+
+        .stat-value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .stat-value.highlight {
+            color: var(--accent);
+        }
+
+        /* Map */
+        #plant-map {
+            height: 300px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* Chart */
+        .chart-container {
+            height: 300px;
+            margin-top: 15px;
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .data-table th, .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table th {
+            background: var(--bg-card-alt);
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table tr:hover {
+            background: var(--bg-hover);
+        }
+
+        .data-table a.reactor-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .data-table a.reactor-link:hover {
+            text-decoration: underline;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-operational {
+            background: var(--success);
+            color: #fff;
+        }
+
+        .status-construction {
+            background: var(--warning);
+            color: #fff;
+        }
+
+        .status-shutdown {
+            background: #9ca3af;
+            color: #fff;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            text-align: center;
+            padding: 60px;
+            color: #dc2626;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="back-link">&larr; Back to Dashboard</a>
+            <h1 id="plant-name">Loading...</h1>
+            <p class="subtitle" id="plant-subtitle"></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            Loading plant data...
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            Plant not found. <a href="/">Return to dashboard</a>
+        </div>
+
+        <div id="content" style="display: none;">
+            <!-- Quick Stats -->
+            <div class="stats-row" id="quick-stats"></div>
+
+            <!-- Main Grid -->
+            <div class="detail-grid">
+                <!-- Plant Information -->
+                <div class="card">
+                    <h2>Plant Information</h2>
+                    <div id="plant-info"></div>
+                </div>
+
+                <!-- Location Map -->
+                <div class="card">
+                    <h2>Location</h2>
+                    <div id="plant-map"></div>
+                </div>
+            </div>
+
+            <!-- Reactor Units Table -->
+            <div class="card" style="margin-top: 30px;">
+                <h2 id="units-title">Reactor Units</h2>
+                <table class="data-table" id="units-table">
+                    <thead>
+                        <tr>
+                            <th>Unit</th>
+                            <th>Technology</th>
+                            <th>Model</th>
+                            <th>Capacity (MW)</th>
+                            <th>Status</th>
+                            <th>Online Date</th>
+                            <th>Lifetime TWh</th>
+                            <th>Avg Cap. Factor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="units-body"></tbody>
+                </table>
+            </div>
+
+            <!-- Combined Generation Chart -->
+            <div class="card" style="margin-top: 30px;">
+                <h2>Combined Generation History</h2>
+                <div class="chart-container">
+                    <canvas id="generation-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Data sources: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
+           <a href="/">Return to Dashboard</a></p>
+    </footer>
+
+    <script>
+        const PLANT_NAME = "{{ plant_name }}";
+
+        function formatAge(ageYears) {
+            if (!ageYears) return '--';
+            const years = Math.floor(ageYears);
+            const days = Math.round((ageYears - years) * 365.25);
+            return `${years}y ${days}d`;
+        }
+
+        async function loadPlantDetails() {
+            try {
+                const response = await fetch(`/api/plants/${encodeURIComponent(PLANT_NAME)}`);
+                if (!response.ok) throw new Error('Plant not found');
+                const data = await response.json();
+                renderPlantDetails(data);
+            } catch (error) {
+                console.error('Failed to load plant:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        function renderPlantDetails(data) {
+            const plant = data.plant;
+            const reactors = data.reactors;
+            const history = data.generation_history;
+            const stats = data.plant_stats;
+
+            // Header
+            document.getElementById('plant-name').textContent = plant.name;
+            document.getElementById('plant-subtitle').innerHTML =
+                `<a href="/country/${encodeURIComponent(plant.country)}">${plant.country}</a> | ${plant.total_units} unit${plant.total_units !== 1 ? 's' : ''}`;
+
+            // Quick stats
+            const operational = reactors.filter(r => r.status === 'Operational');
+            const avgAge = operational.length > 0
+                ? (operational.reduce((s, r) => s + (r.age_years || 0), 0) / operational.length).toFixed(1)
+                : '--';
+
+            document.getElementById('quick-stats').innerHTML = `
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${plant.total_units}</div>
+                    <div class="mini-stat-label">Total Units</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${plant.operational_units}</div>
+                    <div class="mini-stat-label">Operational</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${plant.total_capacity_mw ? plant.total_capacity_mw.toLocaleString() : '--'}</div>
+                    <div class="mini-stat-label">Total Capacity (MW)</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${stats.total_generation_twh || '--'}</div>
+                    <div class="mini-stat-label">Lifetime TWh</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${avgAge}</div>
+                    <div class="mini-stat-label">Avg Age (yrs)</div>
+                </div>
+            `;
+
+            // Plant info card
+            const technologies = [...new Set(reactors.map(r => r.technology).filter(Boolean))];
+            const models = [...new Set(reactors.map(r => r.model).filter(Boolean))];
+            const owners = [...new Set(reactors.map(r => r.owner).filter(Boolean))];
+            const suppliers = [...new Set(reactors.map(r => r.supplier).filter(Boolean))];
+            const statuses = {};
+            reactors.forEach(r => { statuses[r.status] = (statuses[r.status] || 0) + 1; });
+            const statusSummary = Object.entries(statuses).map(([s, c]) => `${s}: ${c}`).join(', ');
+
+            const firstOnline = reactors
+                .filter(r => r.commercial_operation)
+                .map(r => r.commercial_operation)
+                .sort()[0];
+
+            document.getElementById('plant-info').innerHTML = `
+                <div class="stat-row">
+                    <span class="stat-label">Country</span>
+                    <span class="stat-value"><a href="/country/${encodeURIComponent(plant.country)}" style="color: var(--accent); text-decoration: none;">${plant.country}</a></span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Technology</span>
+                    <span class="stat-value">${technologies.join(', ') || '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Model</span>
+                    <span class="stat-value">${models.length > 0 ? models.map(m => `<a href="/model/${encodeURIComponent(m)}" style="color: var(--accent); text-decoration: none;">${m}</a>`).join(', ') : '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Owner</span>
+                    <span class="stat-value">${owners.length > 0 ? owners.map(o => `<a href="/owner/${encodeURIComponent(o)}" style="color: var(--accent); text-decoration: none;">${o}</a>`).join(', ') : '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Supplier / Builder</span>
+                    <span class="stat-value">${suppliers.length > 0 ? suppliers.map(s => `<a href="/supplier/${encodeURIComponent(s)}" style="color: var(--accent); text-decoration: none;">${s}</a>`).join(', ') : '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Units by Status</span>
+                    <span class="stat-value">${statusSummary}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">First Commercial Operation</span>
+                    <span class="stat-value">${firstOnline || '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Data Range</span>
+                    <span class="stat-value">${stats.first_year && stats.last_year ? stats.first_year + ' - ' + stats.last_year : '--'}</span>
+                </div>
+            `;
+
+            // Show content before map init
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
+            // Map
+            if (plant.latitude && plant.longitude) {
+                const map = L.map('plant-map').setView([plant.latitude, plant.longitude], 12);
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; OpenStreetMap, &copy; CARTO'
+                }).addTo(map);
+
+                const statusColors = {
+                    'Operational': '#16a34a',
+                    'Under Construction': '#d97706',
+                    'Permanent Shutdown': '#9ca3af'
+                };
+
+                // Single marker for the plant site
+                const primaryStatus = reactors.find(r => r.status === 'Operational')?.status || reactors[0].status;
+                L.circleMarker([plant.latitude, plant.longitude], {
+                    radius: 14,
+                    fillColor: statusColors[primaryStatus] || '#2563eb',
+                    color: '#fff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map);
+            } else {
+                document.getElementById('plant-map').innerHTML =
+                    '<p style="text-align: center; color: #64748b; padding: 100px 0;">Location data not available</p>';
+            }
+
+            // Reactor units table
+            document.getElementById('units-title').textContent = `Reactor Units (${reactors.length})`;
+            const tbody = document.getElementById('units-body');
+            tbody.innerHTML = reactors.map(r => {
+                const statusClass = r.status === 'Operational' ? 'operational'
+                    : r.status === 'Under Construction' ? 'construction' : 'shutdown';
+                const ls = r.lifetime_stats || {};
+                return `
+                    <tr>
+                        <td><a href="/reactor/${r.id}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
+                        <td>${r.technology || '-'}</td>
+                        <td>${r.model ? `<a href="/model/${encodeURIComponent(r.model)}" class="reactor-link">${r.model}</a>` : '-'}</td>
+                        <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
+                        <td><span class="status-badge status-${statusClass}">${r.status}</span></td>
+                        <td>${r.commercial_operation || '-'}</td>
+                        <td>${ls.total_twh || '-'}</td>
+                        <td>${ls.avg_capacity_factor ? ls.avg_capacity_factor + '%' : '-'}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            // Combined generation chart
+            if (history && history.length > 0) {
+                new Chart(document.getElementById('generation-chart'), {
+                    type: 'bar',
+                    data: {
+                        labels: history.map(h => h.year),
+                        datasets: [{
+                            label: 'Generation (GWh)',
+                            data: history.map(h => h.total_gwh),
+                            backgroundColor: '#2563eb',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: (ctx) => {
+                                        const h = history[ctx.dataIndex];
+                                        return `${h.units_reporting} unit${h.units_reporting !== 1 ? 's' : ''} reporting`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: '#e2e8f0' },
+                                ticks: { color: '#64748b', maxTicksLimit: 20 }
+                            },
+                            y: {
+                                grid: { color: '#e2e8f0' },
+                                ticks: {
+                                    color: '#64748b',
+                                    callback: (val) => val.toLocaleString()
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'GWh',
+                                    color: '#64748b'
+                                }
+                            }
+                        }
+                    }
+                });
+            } else {
+                document.getElementById('generation-chart').parentElement.innerHTML =
+                    '<p style="text-align: center; color: #64748b; padding: 80px 0;">No generation data available</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPlantDetails);
+    </script>
+</body>
+</html>

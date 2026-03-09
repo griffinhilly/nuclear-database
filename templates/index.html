@@ -1018,11 +1018,14 @@
                     const totalCapacity = site.reactors.reduce((sum, r) => sum + (r.capacity_mw || 0), 0);
                     const color = statusColors[site.reactors[0].status] || '#2563eb';
 
-                    const popupLines = site.reactors.map(r => {
-                        return `<a href="/reactor/${r.id}" style="color: #2563eb; text-decoration: none; font-weight: 600;">${r.name}</a> - ${r.technology} - ${r.capacity_mw} MW`;
-                    }).join('<br>');
+                    // Group by plant name within the site
+                    const plantNames = [...new Set(site.reactors.map(r => r.name.replace(/-\d+$/, '')))];
 
-                    const siteName = site.reactors[0].name.replace(/-\d+$/, '');
+                    const popupLines = plantNames.map(pn => {
+                        const units = site.reactors.filter(r => r.name.replace(/-\d+$/, '') === pn);
+                        const unitList = units.map(r => `${r.name} - ${r.technology} - ${r.capacity_mw} MW`).join('<br>');
+                        return `<strong><a href="/plant/${encodeURIComponent(pn)}" style="color: #2563eb; text-decoration: none;">${pn}</a></strong> (${units.length} unit${units.length !== 1 ? 's' : ''})<br>${unitList}`;
+                    }).join('<br><br>');
 
                     L.circleMarker([site.lat, site.lng], {
                         radius: Math.max(4, Math.sqrt(totalCapacity / 100)),
@@ -1033,7 +1036,6 @@
                         fillOpacity: 0.7
                     })
                     .bindPopup(`
-                        <strong>${siteName}</strong> (${site.reactors.length} unit${site.reactors.length > 1 ? 's' : ''})<br>
                         ${site.reactors[0].country}<br><br>
                         ${popupLines}
                     `)
@@ -1421,7 +1423,7 @@
 
                 return `
                     <tr>
-                        <td><a href="/reactor/${r.id}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
+                        <td><a href="/plant/${encodeURIComponent(r.plant_name)}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
                         <td><a href="/country/${encodeURIComponent(r.country)}" class="reactor-link">${r.country}</a></td>
                         <td>${techLink}</td>
                         <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
