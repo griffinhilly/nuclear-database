@@ -611,8 +611,8 @@
                 <button class="tab-btn active" data-tab="operational">Operational</button>
                 <button class="tab-btn" data-tab="construction">Under Construction</button>
                 <button class="tab-btn" data-tab="planned">Planned</button>
+                <button class="tab-btn" data-tab="suspended">Suspended</button>
                 <button class="tab-btn" data-tab="shutdown">Permanent Shutdown</button>
-                <button class="tab-btn" data-tab="longterm">Long-term Shutdown</button>
                 <button class="tab-btn" data-tab="search">Search</button>
             </div>
 
@@ -1333,8 +1333,8 @@
                     const statusMap = {
                         'operational': 'Operational',
                         'construction': 'Under Construction',
-                        'shutdown': 'Permanent Shutdown',
-                        'longterm': 'Long-term Shutdown'
+                        'suspended': 'Suspended',
+                        'shutdown': 'Permanent Shutdown'
                     };
                     const status = statusMap[tab];
                     let url = `/api/reactors?status=${encodeURIComponent(status)}&per_page=500`;
