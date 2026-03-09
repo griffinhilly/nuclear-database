@@ -476,21 +476,23 @@
         const statusColors = {
             'Operational': '#16a34a',
             'Under Construction': '#d97706',
-            'Permanent Shutdown': '#9ca3af',
+            'Suspended': '#6366f1',
             'Long-term Shutdown': '#d1d5db',
+            'Permanent Shutdown': '#9ca3af',
             'Unknown': '#e5e7eb'
         };
 
         const statusTextColors = {
             'Operational': '#fff',
             'Under Construction': '#000',
+            'Suspended': '#fff',
             'Permanent Shutdown': '#fff',
             'Long-term Shutdown': '#000',
             'Unknown': '#000'
         };
 
         // Statuses that have meaningful generation data
-        const hasGeneration = ['Operational', 'Permanent Shutdown'];
+        const hasGeneration = ['Operational', 'Permanent Shutdown', 'Suspended'];
 
         let currentReactors = [];
         let currentSort = { column: null, ascending: true };

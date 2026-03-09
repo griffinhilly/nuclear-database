@@ -255,6 +255,16 @@
             color: #fff;
         }
 
+        .status-suspended {
+            background: #6366f1;
+            color: #fff;
+        }
+
+        .status-longterm {
+            background: #d1d5db;
+            color: #374151;
+        }
+
         .status-longterm {
             background: #9ca3af;
             color: #fff;
@@ -810,7 +820,8 @@
                 const statusColors = {
                     'Operational': '#16a34a',
                     'Under Construction': '#d97706',
-                    'Long-term Shutdown': '#9ca3af',
+                    'Suspended': '#6366f1',
+                    'Long-term Shutdown': '#d1d5db',
                     'Permanent Shutdown': '#9ca3af'
                 };
 
@@ -905,6 +916,7 @@
                 let statusClass;
                 if (r.status === 'Operational') statusClass = 'operational';
                 else if (r.status === 'Under Construction') statusClass = 'construction';
+                else if (r.status === 'Suspended') statusClass = 'suspended';
                 else if (r.status === 'Long-term Shutdown') statusClass = 'longterm';
                 else statusClass = 'shutdown';
 

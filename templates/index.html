@@ -280,6 +280,16 @@
             color: #fff;
         }
 
+        .status-suspended {
+            background: #6366f1;
+            color: #fff;
+        }
+
+        .status-longterm {
+            background: #d1d5db;
+            color: #374151;
+        }
+
         /* Column Filter Popover */
         .filter-icon {
             margin-left: 5px;
@@ -947,8 +957,9 @@
             const statusColors = {
                 'Operational': '#16a34a',
                 'Under Construction': '#d97706',
-                'Permanent Shutdown': '#9ca3af',
+                'Suspended': '#6366f1',
                 'Long-term Shutdown': '#d1d5db',
+                'Permanent Shutdown': '#9ca3af',
                 'Unknown': '#e5e7eb'
             };
 
@@ -1000,6 +1011,8 @@
                 const statusColors = {
                     'Operational': '#16a34a',
                     'Under Construction': '#d97706',
+                    'Suspended': '#6366f1',
+                    'Long-term Shutdown': '#d1d5db',
                     'Permanent Shutdown': '#9ca3af'
                 };
 
@@ -1410,6 +1423,8 @@
                 let statusClass;
                 if (r.status === 'Operational') statusClass = 'operational';
                 else if (r.status === 'Under Construction') statusClass = 'construction';
+                else if (r.status === 'Suspended') statusClass = 'suspended';
+                else if (r.status === 'Long-term Shutdown') statusClass = 'longterm';
                 else statusClass = 'shutdown';
 
                 const techLink = r.technology

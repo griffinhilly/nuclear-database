@@ -105,6 +105,8 @@ def global_stats():
             SUM(CASE WHEN status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
             SUM(CASE WHEN status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            SUM(CASE WHEN status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
+            SUM(CASE WHEN status = 'Long-term Shutdown' THEN 1 ELSE 0 END) as long_term_shutdown,
             ROUND(SUM(CASE WHEN status = 'Operational' THEN gross_capacity_mw ELSE 0 END) / 1000, 1) as operational_gw,
             ROUND(AVG(CASE WHEN status = 'Operational' THEN age_years END), 1) as avg_age
         FROM reactors
@@ -225,6 +227,7 @@ def country_detail(country):
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
             SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
             SUM(CASE WHEN r.status = 'Long-term Shutdown' THEN 1 ELSE 0 END) as long_term_shutdown,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
             ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
@@ -264,8 +267,10 @@ def country_detail(country):
             CASE r.status
                 WHEN 'Operational' THEN 1
                 WHEN 'Under Construction' THEN 2
-                WHEN 'Permanent Shutdown' THEN 3
-                ELSE 4
+                WHEN 'Suspended' THEN 3
+                WHEN 'Long-term Shutdown' THEN 4
+                WHEN 'Permanent Shutdown' THEN 5
+                ELSE 6
             END,
             r.plant_name, r.unit_number
     """, (country,))
@@ -656,9 +661,10 @@ def model_detail(model_name):
             CASE r.status
                 WHEN 'Operational' THEN 1
                 WHEN 'Under Construction' THEN 2
-                WHEN 'Long-term Shutdown' THEN 3
-                WHEN 'Permanent Shutdown' THEN 4
-                ELSE 5
+                WHEN 'Suspended' THEN 3
+                WHEN 'Long-term Shutdown' THEN 4
+                WHEN 'Permanent Shutdown' THEN 5
+                ELSE 6
             END,
             c.name COLLATE NOCASE, r.plant_name, r.unit_number
     """, (model_name,))
@@ -744,9 +750,10 @@ def technology_detail(tech_code):
             CASE r.status
                 WHEN 'Operational' THEN 1
                 WHEN 'Under Construction' THEN 2
-                WHEN 'Long-term Shutdown' THEN 3
-                WHEN 'Permanent Shutdown' THEN 4
-                ELSE 5
+                WHEN 'Suspended' THEN 3
+                WHEN 'Long-term Shutdown' THEN 4
+                WHEN 'Permanent Shutdown' THEN 5
+                ELSE 6
             END,
             c.name COLLATE NOCASE, r.plant_name, r.unit_number
     """, (tech_code,))
@@ -826,9 +833,10 @@ def owner_detail(owner_name):
             CASE r.status
                 WHEN 'Operational' THEN 1
                 WHEN 'Under Construction' THEN 2
-                WHEN 'Long-term Shutdown' THEN 3
-                WHEN 'Permanent Shutdown' THEN 4
-                ELSE 5
+                WHEN 'Suspended' THEN 3
+                WHEN 'Long-term Shutdown' THEN 4
+                WHEN 'Permanent Shutdown' THEN 5
+                ELSE 6
             END,
             c.name COLLATE NOCASE, r.plant_name, r.unit_number
     """, (owner_name,))
@@ -1001,9 +1009,10 @@ def supplier_detail(supplier_name):
             CASE r.status
                 WHEN 'Operational' THEN 1
                 WHEN 'Under Construction' THEN 2
-                WHEN 'Long-term Shutdown' THEN 3
-                WHEN 'Permanent Shutdown' THEN 4
-                ELSE 5
+                WHEN 'Suspended' THEN 3
+                WHEN 'Long-term Shutdown' THEN 4
+                WHEN 'Permanent Shutdown' THEN 5
+                ELSE 6
             END,
             c.name COLLATE NOCASE, r.plant_name, r.unit_number
     """, (supplier_name,))

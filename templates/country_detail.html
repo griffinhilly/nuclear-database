@@ -246,6 +246,16 @@
             color: #fff;
         }
 
+        .status-suspended {
+            background: #6366f1;
+            color: #fff;
+        }
+
+        .status-longterm {
+            background: #d1d5db;
+            color: #374151;
+        }
+
         /* Column Filter Popover */
         .filter-icon {
             margin-left: 5px;
@@ -771,6 +781,8 @@
                 const statusColors = {
                     'Operational': '#16a34a',
                     'Under Construction': '#d97706',
+                    'Suspended': '#6366f1',
+                    'Long-term Shutdown': '#d1d5db',
                     'Permanent Shutdown': '#9ca3af'
                 };
 
@@ -862,7 +874,9 @@
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = reactors.map(r => {
                 const statusClass = r.status === 'Operational' ? 'operational'
-                    : r.status === 'Under Construction' ? 'construction' : 'shutdown';
+                    : r.status === 'Under Construction' ? 'construction'
+                    : r.status === 'Suspended' ? 'suspended'
+                    : r.status === 'Long-term Shutdown' ? 'longterm' : 'shutdown';
                 return `
                     <tr>
                         <td><a href="/plant/${encodeURIComponent(r.plant_name)}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>

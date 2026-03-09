@@ -100,6 +100,16 @@
             color: #fff;
         }
 
+        .status-suspended {
+            background: #6366f1;
+            color: #fff;
+        }
+
+        .status-longterm {
+            background: #d1d5db;
+            color: #374151;
+        }
+
         /* Grid layout */
         .detail-grid {
             display: grid;
@@ -366,7 +376,7 @@
             // Update header
             document.getElementById('reactor-name').innerHTML = `
                 ${reactor.plant_name}-${reactor.unit_number}
-                <span class="status-badge status-${reactor.status === 'Operational' ? 'operational' : reactor.status === 'Under Construction' ? 'construction' : 'shutdown'}">${reactor.status}</span>
+                <span class="status-badge status-${reactor.status === 'Operational' ? 'operational' : reactor.status === 'Under Construction' ? 'construction' : reactor.status === 'Suspended' ? 'suspended' : reactor.status === 'Long-term Shutdown' ? 'longterm' : 'shutdown'}">${reactor.status}</span>
             `;
             document.getElementById('reactor-location').textContent = `${reactor.country} | ${reactor.technology} (${reactor.technology_name || reactor.technology})`;
             document.getElementById('plant-back-link').innerHTML =
@@ -475,6 +485,8 @@
                 const statusColors = {
                     'Operational': '#16a34a',
                     'Under Construction': '#d97706',
+                    'Suspended': '#6366f1',
+                    'Long-term Shutdown': '#d1d5db',
                     'Permanent Shutdown': '#9ca3af'
                 };
 
