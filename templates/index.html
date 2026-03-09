@@ -109,6 +109,21 @@
             margin-top: 5px;
         }
 
+        .stat-source {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            margin-top: 3px;
+        }
+
+        .stat-source a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .stat-source a:hover {
+            color: var(--accent);
+        }
+
         /* Charts Section */
         .charts-section {
             margin: 40px 0;
@@ -555,6 +570,7 @@
             <div class="stat-card" data-stat="generation">
                 <div class="stat-value" id="stat-generation">--</div>
                 <div class="stat-label" id="stat-generation-label">Generation (TWh)</div>
+                <div class="stat-source" id="stat-generation-source"></div>
             </div>
             <div class="stat-card" data-stat="countries">
                 <div class="stat-value" id="stat-countries">--</div>
@@ -660,9 +676,11 @@
     </div>
 
     <footer>
-        <p>Data sources: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
-           Generation data: 1954-2024 | Last updated: December 2024</p>
-        <p style="margin-top: 10px;">Nuclear Reactor Database API v1.0</p>
+        <p>Data: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
+           <a href="https://world-nuclear.org" target="_blank">WNA</a> |
+           <a href="https://www.energyinst.org/statistical-review" target="_blank">EI Statistical Review</a> |
+           <a href="/sources">Sources & Methodology</a></p>
+        <p style="margin-top: 10px;">Last updated: March 2026 | Nuclear Reactor Database API v1.0</p>
     </footer>
 
     <!-- Stat Detail Modal (time-series) -->
@@ -751,6 +769,8 @@
                         ? `${gen.year} Generation (TWh est, ${gen.coverage_pct}% reporting)`
                         : `${gen.year} Generation (TWh)`;
                     document.getElementById('stat-generation-label').textContent = label;
+                    document.getElementById('stat-generation-source').innerHTML =
+                        '<a href="/sources">PRIS</a>';
                 } else {
                     document.getElementById('stat-generation').textContent = '--';
                 }
@@ -898,7 +918,7 @@
                         legend: { display: false },
                         subtitle: {
                             display: true,
-                            text: 'Source: IAEA PRIS (coverage-adjusted) / IEA',
+                            text: 'Sources: [PRIS] nuclear generation (coverage-adjusted), [EI-SR] global electricity',
                             color: '#64748b',
                             font: { size: 11 },
                             padding: { bottom: 10 }

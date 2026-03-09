@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Sources - Global Nuclear Database</title>
+
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-card: #f8fafc;
+            --bg-card-alt: #f1f5f9;
+            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+            --border-header: #2563eb;
+            --success: #16a34a;
+            --warning: #d97706;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-header);
+            border-bottom: 2px solid var(--border-header);
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .source-section {
+            margin-top: 30px;
+        }
+
+        .source-section h2 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .source-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .source-card .source-code {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 2px 10px;
+            border-radius: 4px;
+            margin-right: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .source-card .source-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .source-card .source-url {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        .source-card .source-url a {
+            color: var(--accent);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .source-card .source-url a:hover {
+            text-decoration: underline;
+        }
+
+        .source-card .source-desc {
+            margin-top: 8px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .source-card .source-covers {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .source-card .source-covers strong {
+            color: var(--text-primary);
+        }
+
+        .methodology-section {
+            margin-top: 40px;
+        }
+
+        .methodology-section h2 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .methodology-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .methodology-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .methodology-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .methodology-card code {
+            background: var(--bg-card-alt);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+
+        .source-legend {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--bg-card-alt);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .source-legend h3 {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .source-legend table {
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        .source-legend td {
+            padding: 4px 10px;
+            vertical-align: top;
+        }
+
+        .source-legend td:first-child {
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            white-space: nowrap;
+            color: var(--accent);
+            width: 80px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="back-link">&larr; Back to Dashboard</a>
+            <h1>Data Sources & Methodology</h1>
+            <p class="subtitle">All data sources and calculation methods used in the Global Nuclear Database</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Quick Reference -->
+        <div class="source-legend">
+            <h3>Source Code Quick Reference</h3>
+            <table>
+                <tr><td>[PRIS]</td><td>IAEA Power Reactor Information System &mdash; primary source for reactor specifications, status, and generation data</td></tr>
+                <tr><td>[WNA]</td><td>World Nuclear Association country and technology profiles &mdash; supplementary reactor data, planned projects</td></tr>
+                <tr><td>[EI-SR]</td><td>Energy Institute Statistical Review of World Energy &mdash; global electricity generation totals</td></tr>
+                <tr><td>[WP]</td><td>Wikipedia &mdash; cross-reference for reactor histories, shutdown dates, ownership</td></tr>
+                <tr><td>[NRC]</td><td>U.S. Nuclear Regulatory Commission &mdash; U.S. reactor licensing and status</td></tr>
+                <tr><td>[CNEA]</td><td>China Nuclear Energy Association &mdash; Chinese reactor fleet data</td></tr>
+            </table>
+        </div>
+
+        <!-- Primary Sources -->
+        <div class="source-section">
+            <h2>Primary Sources</h2>
+
+            <div class="source-card">
+                <span class="source-code">PRIS</span>
+                <span class="source-name">IAEA Power Reactor Information System</span>
+                <div class="source-url"><a href="https://pris.iaea.org" target="_blank">https://pris.iaea.org</a></div>
+                <div class="source-desc">
+                    The PRIS database, maintained by the International Atomic Energy Agency, is the authoritative global reference
+                    for nuclear power reactor data. It is the primary source for this database.
+                </div>
+                <div class="source-covers">
+                    <strong>Covers:</strong> Reactor name, type, model, capacity (gross/net MW), status, construction start,
+                    grid connection, commercial operation date, permanent shutdown date, geographic coordinates,
+                    country, owner, operator, annual electricity generation (GWh), reference unit power (MWe net).
+                </div>
+            </div>
+
+            <div class="source-card">
+                <span class="source-code">WNA</span>
+                <span class="source-name">World Nuclear Association</span>
+                <div class="source-url"><a href="https://world-nuclear.org/information-library" target="_blank">https://world-nuclear.org/information-library</a></div>
+                <div class="source-desc">
+                    Country profiles and technology pages from WNA provide supplementary context on reactor fleet status,
+                    planned and proposed reactors, and national nuclear energy policies.
+                </div>
+                <div class="source-covers">
+                    <strong>Covers:</strong> Planned and proposed reactors, under-construction project details,
+                    country nuclear energy profiles, vendor/export project information.
+                    Key page: <a href="https://world-nuclear.org/information-library/current-and-future-generation/plans-for-new-reactors-worldwide" target="_blank">Plans for New Reactors Worldwide</a>.
+                </div>
+            </div>
+
+            <div class="source-card">
+                <span class="source-code">EI-SR</span>
+                <span class="source-name">Energy Institute Statistical Review of World Energy</span>
+                <div class="source-url"><a href="https://www.energyinst.org/statistical-review" target="_blank">https://www.energyinst.org/statistical-review</a></div>
+                <div class="source-desc">
+                    Formerly the BP Statistical Review of World Energy, now published by the Energy Institute.
+                    Used for global total electricity generation figures (TWh) to compute nuclear's share of global electricity.
+                </div>
+                <div class="source-covers">
+                    <strong>Covers:</strong> Global electricity generation by year (1970&ndash;2024), used in the
+                    "Nuclear Share of Global Electricity" chart.
+                </div>
+            </div>
+        </div>
+
+        <!-- Secondary Sources -->
+        <div class="source-section">
+            <h2>Secondary & Cross-Reference Sources</h2>
+
+            <div class="source-card">
+                <span class="source-code">WP</span>
+                <span class="source-name">Wikipedia</span>
+                <div class="source-url"><a href="https://en.wikipedia.org" target="_blank">https://en.wikipedia.org</a></div>
+                <div class="source-desc">
+                    Wikipedia articles on individual reactors, nuclear power plants, and country nuclear programs are used
+                    as cross-references to verify data from primary sources. Particularly useful for historical shutdown dates,
+                    ownership changes, and reactor construction timelines.
+                </div>
+                <div class="source-covers">
+                    <strong>Covers:</strong> Reactor histories, shutdown dates, ownership transfers, construction milestones,
+                    country nuclear fleet summaries (e.g., "Nuclear power in France").
+                </div>
+            </div>
+
+            <div class="source-card">
+                <span class="source-code">NRC</span>
+                <span class="source-name">U.S. Nuclear Regulatory Commission</span>
+                <div class="source-url"><a href="https://www.nrc.gov/reactors" target="_blank">https://www.nrc.gov/reactors</a></div>
+                <div class="source-desc">
+                    Official U.S. nuclear regulatory body. Used to verify status, ownership, and licensing details
+                    for all U.S. commercial reactors.
+                </div>
+                <div class="source-covers">
+                    <strong>Covers:</strong> U.S. reactor operating status, license holders, decommissioning status.
+                </div>
+            </div>
+
+            <div class="source-card">
+                <span class="source-code">CNEA</span>
+                <span class="source-name">China Nuclear Energy Association</span>
+                <div class="source-url"><a href="https://en.china-nea.cn" target="_blank">https://en.china-nea.cn</a></div>
+                <div class="source-desc">
+                    Provides data on China's rapidly expanding nuclear fleet, including new construction starts
+                    and grid connections that may not yet be reflected in IAEA PRIS.
+                </div>
+                <div class="source-covers">
+                    <strong>Covers:</strong> Chinese reactor construction starts, grid connections, fleet status updates.
+                </div>
+            </div>
+        </div>
+
+        <!-- Methodology -->
+        <div class="methodology-section">
+            <h2>Methodology Notes</h2>
+
+            <div class="methodology-card">
+                <h3>Generation Data Coverage Adjustment</h3>
+                <p>
+                    Annual electricity generation data comes from IAEA PRIS <span style="color: var(--accent); font-weight: 600;">[PRIS]</span>.
+                    However, not all operational reactors report generation data for every year. For recent years
+                    (particularly 2022&ndash;2024), only a subset of the global fleet reports.
+                </p>
+                <p>
+                    To estimate total global nuclear generation, we apply a <strong>coverage adjustment</strong>:
+                </p>
+                <p style="padding-left: 20px;">
+                    <code>Adjusted TWh = Raw TWh x (Operational Reactors / Reporting Reactors)</code>
+                </p>
+                <p>
+                    This assumes non-reporting reactors generate at the same average rate as reporting ones.
+                    The dashboard displays the coverage percentage and raw vs. adjusted figures for transparency.
+                </p>
+            </div>
+
+            <div class="methodology-card">
+                <h3>Nuclear Share of Global Electricity</h3>
+                <p>
+                    The annual share chart divides coverage-adjusted nuclear generation
+                    <span style="color: var(--accent); font-weight: 600;">[PRIS]</span>
+                    by total global electricity generation
+                    <span style="color: var(--accent); font-weight: 600;">[EI-SR]</span>
+                    for each year from 1970 to 2024.
+                </p>
+                <p>
+                    Global electricity totals are from the Energy Institute Statistical Review of World Energy
+                    (formerly BP Statistical Review). Nuclear generation uses PRIS data with coverage adjustment
+                    as described above.
+                </p>
+            </div>
+
+            <div class="methodology-card">
+                <h3>Capacity Factor Calculation</h3>
+                <p>
+                    Capacity factors are computed at query time from PRIS generation data:
+                </p>
+                <p style="padding-left: 20px;">
+                    <code>CF = Electricity (GWh) / (Gross Capacity (MW) / 1000 x 8760) x 100%</code>
+                </p>
+                <p>
+                    This uses gross capacity and assumes a full calendar year (8,760 hours). First-year and
+                    final-year capacity factors may be low due to partial-year operation.
+                </p>
+            </div>
+
+            <div class="methodology-card">
+                <h3>Reactor Status Definitions</h3>
+                <p>Reactor statuses follow IAEA PRIS conventions:</p>
+                <p><strong>Operational</strong> &mdash; Connected to grid and available for electricity generation.</p>
+                <p><strong>Under Construction</strong> &mdash; First concrete pour for the reactor building base mat has occurred
+                    <span style="color: var(--accent); font-weight: 600;">[PRIS]</span>.
+                    Site preparation work alone does not qualify.</p>
+                <p><strong>Suspended</strong> &mdash; Reactor has been shut down for an extended period but has not been
+                    permanently closed. May be undergoing regulatory review for restart (e.g., post-Fukushima Japanese reactors)
+                    or in suspended construction/operation
+                    <span style="color: var(--accent); font-weight: 600;">[PRIS]</span>.</p>
+                <p><strong>Permanent Shutdown</strong> &mdash; Reactor has been permanently closed with no plans for restart.
+                    Includes reactors in active decommissioning.</p>
+                <p><strong>Planned</strong> &mdash; Announced or approved but first concrete has not been poured. Includes
+                    projects with site licenses, vendor selections, or government commitments
+                    <span style="color: var(--accent); font-weight: 600;">[WNA]</span>
+                    <span style="color: var(--accent); font-weight: 600;">[PRIS]</span>.</p>
+            </div>
+
+            <div class="methodology-card">
+                <h3>Reactor Age</h3>
+                <p>
+                    Reactor age is computed from the <strong>commercial operation date</strong> recorded in PRIS,
+                    not the grid connection date or construction start date. Ages are computed dynamically
+                    at query time.
+                </p>
+            </div>
+
+            <div class="methodology-card">
+                <h3>Plant Grouping on Maps</h3>
+                <p>
+                    Multi-unit sites are grouped into a single map marker by matching coordinates rounded to
+                    4 decimal places (~11m precision). The marker color reflects the "best" status at the plant:
+                    green if any reactor is operational, yellow for under construction only, etc.
+                    Clicking a marker shows all reactors at the plant regardless of filter.
+                </p>
+            </div>
+        </div>
+
+        <!-- Data Currency -->
+        <div class="source-section" style="margin-top: 40px;">
+            <h2>Data Currency</h2>
+
+            <div class="source-card">
+                <div class="source-desc">
+                    <p><strong>Reactor specifications and status:</strong> Verified against IAEA PRIS, WNA, and Wikipedia as of March 2026.</p>
+                    <p style="margin-top: 6px;"><strong>Generation data:</strong> IAEA PRIS annual electricity generation, 1954&ndash;2024.</p>
+                    <p style="margin-top: 6px;"><strong>Global electricity totals:</strong> Energy Institute Statistical Review, 1970&ndash;2024.</p>
+                    <p style="margin-top: 6px;"><strong>Planned reactors:</strong> WNA, IAEA PRIS, and news sources as of March 2026.</p>
+                    <p style="margin-top: 6px;"><strong>Under construction:</strong> 66 reactors verified against IAEA PRIS (March 2026).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><a href="/">Back to Dashboard</a></p>
+        <p style="margin-top: 10px;">Nuclear Reactor Database API v1.0</p>
+    </footer>
+</body>
+</html>
