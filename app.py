@@ -1330,6 +1330,7 @@ def map_data():
         'properties': {
             'id': r['id'],
             'name': f"{r['plant_name']}-{r['unit_number']}",
+            'plant_name': r['plant_name'],
             'country': r['country'],
             'technology': r['technology'],
             'capacity_mw': r['gross_capacity_mw'],

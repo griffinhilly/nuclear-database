@@ -600,6 +600,13 @@
         <!-- Map Section -->
         <section class="map-section">
             <h2 class="section-title">Reactor Locations</h2>
+            <div style="margin-bottom: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="map-filter-btn active" data-filter="all" style="padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: #1e293b; color: #fff; cursor: pointer; font-size: 0.85rem;">All</button>
+                <button class="map-filter-btn" data-filter="Operational" style="padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: #fff; color: #333; cursor: pointer; font-size: 0.85rem;">Operational</button>
+                <button class="map-filter-btn" data-filter="Under Construction" style="padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: #fff; color: #333; cursor: pointer; font-size: 0.85rem;">Under Construction</button>
+                <button class="map-filter-btn" data-filter="Suspended" style="padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: #fff; color: #333; cursor: pointer; font-size: 0.85rem;">Suspended</button>
+                <button class="map-filter-btn" data-filter="Permanent Shutdown" style="padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: #fff; color: #333; cursor: pointer; font-size: 0.85rem;">Permanent Shutdown</button>
+            </div>
             <div id="reactor-map"></div>
         </section>
 
@@ -998,65 +1005,117 @@
         }
 
         // Map
+        let mapInstance = null;
+        let mapMarkers = null;
+        let allMapData = null;
+
+        const statusColors = {
+            'Operational': '#16a34a',
+            'Under Construction': '#d97706',
+            'Suspended': '#6366f1',
+            'Long-term Shutdown': '#d1d5db',
+            'Permanent Shutdown': '#9ca3af'
+        };
+
+        const statusPriority = {
+            'Operational': 1,
+            'Under Construction': 2,
+            'Suspended': 3,
+            'Long-term Shutdown': 4,
+            'Permanent Shutdown': 5
+        };
+
         async function loadMap() {
-            const map = L.map('reactor-map').setView([30, 0], 2);
+            mapInstance = L.map('reactor-map').setView([30, 0], 2);
 
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; OpenStreetMap, &copy; CARTO'
-            }).addTo(map);
+            }).addTo(mapInstance);
+
+            mapMarkers = L.layerGroup().addTo(mapInstance);
 
             try {
-                const data = await fetchAPI('/api/map?status=Operational', true);
-
-                const statusColors = {
-                    'Operational': '#16a34a',
-                    'Under Construction': '#d97706',
-                    'Suspended': '#6366f1',
-                    'Long-term Shutdown': '#d1d5db',
-                    'Permanent Shutdown': '#9ca3af'
-                };
-
-                // Group reactors by location so multi-unit plants get one marker
-                const sites = {};
-                data.features.forEach(feature => {
-                    const coords = feature.geometry.coordinates;
-                    const key = `${coords[1].toFixed(4)},${coords[0].toFixed(4)}`;
-                    if (!sites[key]) {
-                        sites[key] = { lat: coords[1], lng: coords[0], reactors: [] };
-                    }
-                    sites[key].reactors.push(feature.properties);
-                });
-
-                Object.values(sites).forEach(site => {
-                    const totalCapacity = site.reactors.reduce((sum, r) => sum + (r.capacity_mw || 0), 0);
-                    const color = statusColors[site.reactors[0].status] || '#2563eb';
-
-                    // Group by plant name within the site
-                    const plantNames = [...new Set(site.reactors.map(r => r.name.replace(/-\d+$/, '')))];
-
-                    const popupLines = plantNames.map(pn => {
-                        const units = site.reactors.filter(r => r.name.replace(/-\d+$/, '') === pn);
-                        const unitList = units.map(r => `${r.name} - ${r.technology} - ${r.capacity_mw} MW`).join('<br>');
-                        return `<strong><a href="/plant/${encodeURIComponent(pn)}" style="color: #2563eb; text-decoration: none;">${pn}</a></strong> (${units.length} unit${units.length !== 1 ? 's' : ''})<br>${unitList}`;
-                    }).join('<br><br>');
-
-                    L.circleMarker([site.lat, site.lng], {
-                        radius: Math.max(4, Math.sqrt(totalCapacity / 100)),
-                        fillColor: color,
-                        color: '#fff',
-                        weight: 1,
-                        opacity: 0.8,
-                        fillOpacity: 0.7
-                    })
-                    .bindPopup(`
-                        ${site.reactors[0].country}<br><br>
-                        ${popupLines}
-                    `)
-                    .addTo(map);
-                });
+                // Load ALL reactors (no status filter)
+                allMapData = await fetchAPI('/api/map', true);
+                renderMapMarkers('all');
             } catch (error) {
                 console.error('Failed to load map data:', error);
             }
+
+            // Map filter button handlers
+            document.querySelectorAll('.map-filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.map-filter-btn').forEach(b => {
+                        b.classList.remove('active');
+                        b.style.background = '#fff';
+                        b.style.color = '#333';
+                    });
+                    btn.classList.add('active');
+                    btn.style.background = '#1e293b';
+                    btn.style.color = '#fff';
+                    renderMapMarkers(btn.dataset.filter);
+                });
+            });
+        }
+
+        function renderMapMarkers(filter) {
+            mapMarkers.clearLayers();
+            if (!allMapData) return;
+
+            // Group ALL reactors by location
+            const sites = {};
+            allMapData.features.forEach(feature => {
+                const coords = feature.geometry.coordinates;
+                const key = `${coords[1].toFixed(4)},${coords[0].toFixed(4)}`;
+                if (!sites[key]) {
+                    sites[key] = { lat: coords[1], lng: coords[0], reactors: [] };
+                }
+                sites[key].reactors.push(feature.properties);
+            });
+
+            Object.values(sites).forEach(site => {
+                // Determine if this site should show based on filter
+                const matchingReactors = filter === 'all'
+                    ? site.reactors
+                    : site.reactors.filter(r => r.status === filter);
+                if (matchingReactors.length === 0) return;
+
+                // Color based on best status at plant (operational = green even if some shutdown)
+                const bestStatus = site.reactors.reduce((best, r) => {
+                    return (statusPriority[r.status] || 99) < (statusPriority[best] || 99) ? r.status : best;
+                }, site.reactors[0].status);
+                const color = statusColors[bestStatus] || '#2563eb';
+
+                // Capacity of matching reactors for marker size
+                const totalCapacity = matchingReactors.reduce((sum, r) => sum + (r.capacity_mw || 0), 0);
+
+                // Group ALL reactors by plant name for popup (always show everything)
+                const plants = {};
+                site.reactors.forEach(r => {
+                    const pn = r.plant_name || r.name.replace(/-\d+$/, '');
+                    if (!plants[pn]) plants[pn] = [];
+                    plants[pn].push(r);
+                });
+
+                const popupLines = Object.entries(plants).map(([pn, units]) => {
+                    const unitList = units.map(r => {
+                        const statusDot = `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${statusColors[r.status] || '#999'};margin-right:4px;"></span>`;
+                        return `${statusDot}${r.name} - ${r.technology || '?'} - ${r.capacity_mw || '?'} MW`;
+                    }).join('<br>');
+                    return `<strong><a href="/plant/${encodeURIComponent(pn)}" style="color: #2563eb; text-decoration: none;">${pn}</a></strong> (${units.length} unit${units.length !== 1 ? 's' : ''})<br>${unitList}`;
+                }).join('<br><br>');
+
+                L.circleMarker([site.lat, site.lng], {
+                    radius: Math.max(4, Math.sqrt(totalCapacity / 100)),
+                    fillColor: color,
+                    color: '#fff',
+                    weight: 1,
+                    opacity: 0.8,
+                    fillOpacity: 0.7
+                })
+                .bindPopup(`${site.reactors[0].country}<br><br>${popupLines}`)
+                .addTo(mapMarkers);
+            });
         }
 
         // Load filter dropdowns
