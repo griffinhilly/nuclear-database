@@ -583,7 +583,7 @@
                     </div>
                 </div>
                 <div class="chart-card">
-                    <h3>Global Nuclear Generation by Decade</h3>
+                    <h3>Nuclear Share of Global Electricity</h3>
                     <div class="chart-container">
                         <canvas id="generation-chart"></canvas>
                     </div>
@@ -870,42 +870,25 @@
             });
         }
 
-        // Generation chart (fetched from API with coverage adjustment)
+        // Generation chart — annual nuclear share of global electricity
         async function loadGenerationChart() {
-            const data = await fetchAPI('/api/generation/decades');
-            const decades = data.decades;
-
-            // Separate styling for partial (2020s) vs full decades
-            const pointStyles = decades.map(d => d.is_partial ? 'rectRot' : 'circle');
-            const pointRadii = decades.map(d => d.is_partial ? 8 : 6);
-            const pointColors = decades.map(d => d.is_partial ? '#d97706' : colors.primary);
-            const borderDash = [];
-
-            // Build segment styling: dashed line leading to last (partial) point
-            const segmentBorderDash = (ctx) => {
-                if (ctx.p1DataIndex === decades.length - 1 && decades[decades.length - 1].is_partial) {
-                    return [6, 4];
-                }
-                return undefined;
-            };
+            const data = await fetchAPI('/api/generation/annual');
+            const annual = data.annual;
 
             new Chart(document.getElementById('generation-chart'), {
                 type: 'line',
                 data: {
-                    labels: decades.map(d => d.decade),
+                    labels: annual.map(d => d.year),
                     datasets: [{
-                        label: 'Avg Annual Generation (TWh)',
-                        data: decades.map(d => d.avg_annual_twh),
+                        label: 'Nuclear Share (%)',
+                        data: annual.map(d => d.share_pct),
                         borderColor: colors.primary,
                         backgroundColor: 'rgba(0, 212, 255, 0.1)',
                         fill: true,
                         tension: 0.3,
-                        pointRadius: pointRadii,
-                        pointBackgroundColor: pointColors,
-                        pointStyle: pointStyles,
-                        segment: {
-                            borderDash: segmentBorderDash
-                        }
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
+                        pointBackgroundColor: colors.primary
                     }]
                 },
                 options: {
@@ -915,7 +898,7 @@
                         legend: { display: false },
                         subtitle: {
                             display: true,
-                            text: 'Adjusted for reporting coverage. 2020s projected at current annual rate.',
+                            text: 'Source: IAEA PRIS (coverage-adjusted) / IEA',
                             color: '#64748b',
                             font: { size: 11 },
                             padding: { bottom: 10 }
@@ -923,14 +906,12 @@
                         tooltip: {
                             callbacks: {
                                 label: (ctx) => {
-                                    const d = decades[ctx.dataIndex];
-                                    let label = `${Math.round(d.avg_annual_twh).toLocaleString()} TWh/yr`;
-                                    if (d.is_partial) label += ' (projected)';
-                                    return label;
+                                    const d = annual[ctx.dataIndex];
+                                    return `${d.share_pct}% of global electricity`;
                                 },
                                 afterLabel: (ctx) => {
-                                    const d = decades[ctx.dataIndex];
-                                    return `${d.years_with_data}/${d.total_years} years of data`;
+                                    const d = annual[ctx.dataIndex];
+                                    return `Nuclear: ${Math.round(d.nuclear_twh).toLocaleString()} TWh\nGlobal: ${Math.round(d.global_twh).toLocaleString()} TWh`;
                                 }
                             }
                         }
@@ -938,17 +919,20 @@
                     scales: {
                         x: {
                             grid: { color: '#e2e8f0' },
-                            ticks: { color: '#64748b' }
+                            ticks: {
+                                color: '#64748b',
+                                maxTicksLimit: 12
+                            }
                         },
                         y: {
                             grid: { color: '#e2e8f0' },
                             ticks: {
                                 color: '#64748b',
-                                callback: (val) => val.toLocaleString()
+                                callback: (val) => val + '%'
                             },
                             title: {
                                 display: true,
-                                text: 'Avg Annual TWh',
+                                text: '% of Global Electricity',
                                 color: '#64748b'
                             }
                         }

@@ -1302,6 +1302,75 @@ def generation_decades():
     })
 
 
+@app.route('/api/generation/annual')
+@require_api_key('free')
+def generation_annual_share():
+    """Annual nuclear generation and share of global electricity."""
+    conn = get_db()
+    cursor = conn.cursor()
+
+    # Global electricity generation by year (TWh) - IEA/EI Statistical Review data
+    global_electricity_twh = {
+        1970: 5249, 1971: 5529, 1972: 5876, 1973: 6242, 1974: 6370,
+        1975: 6504, 1976: 6945, 1977: 7281, 1978: 7611, 1979: 7897,
+        1980: 8043, 1981: 8129, 1982: 8161, 1983: 8476, 1984: 8917,
+        1985: 9259, 1986: 9544, 1987: 9958, 1988: 10368, 1989: 10717,
+        1990: 11020, 1991: 11195, 1992: 11380, 1993: 11596, 1994: 11890,
+        1995: 12264, 1996: 12658, 1997: 12998, 1998: 13235, 1999: 13547,
+        1900: 14013, 2001: 14303, 2002: 14821, 2003: 15365, 2004: 16057,
+        2005: 16595, 2006: 17242, 2007: 17880, 2008: 18200, 2009: 17930,
+        2010: 19050, 2011: 19700, 2012: 20200, 2013: 20800, 2014: 21300,
+        2015: 21700, 2016: 22200, 2017: 22800, 2018: 23400, 2019: 23700,
+        2020: 23500, 2021: 24800, 2022: 25200, 2023: 25600, 2024: 26100,
+    }
+    # Fix year 1900 typo -> 2000
+    global_electricity_twh[2000] = global_electricity_twh.pop(1900, 14013)
+
+    result = []
+    for year in range(1970, 2025):
+        cursor.execute("""
+            SELECT COALESCE(SUM(electricity_gwh), 0) as raw_gwh,
+                   COUNT(DISTINCT reactor_id) as reporting
+            FROM generation_annual WHERE year = ?
+        """, (year,))
+        row = cursor.fetchone()
+        raw_gwh, reporting = row[0], row[1]
+        if reporting == 0:
+            continue
+
+        year_start = f'{year}-01-01'
+        year_end = f'{year}-12-31'
+        cursor.execute("""
+            SELECT COUNT(*) FROM reactors
+            WHERE commercial_operation IS NOT NULL
+              AND commercial_operation <= ?
+              AND (permanent_shutdown IS NULL OR permanent_shutdown >= ?)
+        """, (year_end, year_start))
+        operational = cursor.fetchone()[0]
+        if operational == 0:
+            continue
+
+        adjustment = operational / reporting if reporting < operational else 1.0
+        nuclear_twh = round((raw_gwh / 1000.0) * adjustment, 1)
+        global_twh = global_electricity_twh.get(year)
+        share_pct = round(nuclear_twh / global_twh * 100, 1) if global_twh else None
+
+        result.append({
+            'year': year,
+            'nuclear_twh': nuclear_twh,
+            'global_twh': global_twh,
+            'share_pct': share_pct,
+            'reporting_reactors': reporting,
+            'operational_reactors': operational
+        })
+
+    conn.close()
+    return jsonify({
+        'annual': result,
+        'source': 'Nuclear: IAEA PRIS (coverage-adjusted). Global electricity: IEA/EI Statistical Review.'
+    })
+
+
 @app.route('/api/map')
 @require_api_key('paid')
 def map_data():
