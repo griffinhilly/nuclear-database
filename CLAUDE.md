@@ -2,7 +2,7 @@
 
 ## Overview
 
-Flask web app serving a global nuclear reactor database with 688 reactors across 38 countries. Backed by a SQLite database (`nuclear_reactors.db`) with reactor specs, generation history (1954-2024), and geographic coordinates. Data sourced from IAEA PRIS.
+Flask web app serving a global nuclear reactor database with 729 reactors across 39 countries. Backed by a SQLite database (`nuclear_reactors.db`) with reactor specs, generation history (1954-2024), and geographic coordinates. Data sourced from IAEA PRIS.
 
 ## Architecture
 
@@ -33,7 +33,7 @@ Generation data post-2020 is incomplete — only ~112 of ~430 operational reacto
 
 ## Key Decisions
 
-- **Generation chart shows avg annual TWh/yr per decade** (not total decade sums) to make decades with different year counts comparable. The 2020s uses a dashed line and diamond marker to indicate it's a projection.
+- **Generation chart shows annual nuclear share of global electricity** (%) from 1970-2024. Nuclear TWh from PRIS (coverage-adjusted), global TWh from EI Statistical Review.
 - **Map groups multi-unit plant markers** by rounding coordinates to 4 decimal places. Popup lists all units with links.
 - **Capacity factor is computed at query time** from `electricity_gwh / (gross_capacity_mw / 1000 * 8760)` rather than relying on stored values.
 - **Reactor age is computed live** via `JULIANDAY('now') - JULIANDAY(commercial_operation)`.
@@ -47,4 +47,21 @@ See `PLANNED_ADDITIONS.md` for the backlog. Items 1-4 and 6 have been addressed.
 ## Git / Deployment
 
 - Remote: `git@github.com:griffinhilly/nuclear-database.git` (SSH)
-- Deployment config: `render.yaml` (Render)
+- **Primary deployment: Fly.io** (`fly.toml`, app name: `nuclear-database`, region: `ord`)
+- Fly.io uses a persistent volume mounted at `/data` for the SQLite database.
+
+### Deploy Process
+
+After pushing code changes to main, deploy to Fly.io:
+
+```bash
+fly deploy
+```
+
+If the database file (`nuclear_reactors.db`) was modified, also copy it to the persistent volume:
+
+```bash
+fly ssh console -C "cp /app/nuclear_reactors.db /data/nuclear_reactors.db"
+```
+
+**Always deploy after pushing changes that affect the live site.** Code-only changes need just `fly deploy`. Database changes need both `fly deploy` and the `cp` command above.
