@@ -799,9 +799,10 @@
             const reactorsWithCoords = reactors.filter(r => r.latitude && r.longitude);
             if (reactorsWithCoords.length > 0) {
                 const map = L.map('tech-map');
-                L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-                    attribution: '&copy; OpenStreetMap, &copy; CARTO'
+                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+                    attribution: 'Esri, HERE, Garmin, &copy; OpenStreetMap'
                 }).addTo(map);
+                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
                     'Operational': '#16a34a',

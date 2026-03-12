@@ -1046,9 +1046,10 @@
         async function loadMap() {
             mapInstance = L.map('reactor-map').setView([30, 0], 2);
 
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; OpenStreetMap, &copy; CARTO'
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Esri, HERE, Garmin, &copy; OpenStreetMap'
             }).addTo(mapInstance);
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(mapInstance);
 
             mapMarkers = L.layerGroup().addTo(mapInstance);
 
@@ -1660,9 +1661,10 @@
 
             setTimeout(async () => {
                 constructionMap = L.map('construction-map').setView([30, 20], 2);
-                L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-                    attribution: '&copy; OpenStreetMap, &copy; CARTO'
+                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+                    attribution: 'Esri, HERE, Garmin, &copy; OpenStreetMap'
                 }).addTo(constructionMap);
+                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(constructionMap);
 
                 try {
                     const data = await fetchAPI('/api/construction-map');
@@ -1701,8 +1703,8 @@
 
             setTimeout(async () => {
                 countriesMap = L.map('countries-map').setView([30, 20], 2);
-                L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
-                    attribution: '&copy; OpenStreetMap, &copy; CARTO'
+                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+                    attribution: 'Esri, HERE, Garmin, &copy; OpenStreetMap'
                 }).addTo(countriesMap);
 
                 try {
