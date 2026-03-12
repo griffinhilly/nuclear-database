@@ -776,7 +776,7 @@
             const reactorsWithCoords = reactors.filter(r => r.latitude && r.longitude);
             if (reactorsWithCoords.length > 0) {
                 const map = L.map('country-map');
-                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
                     attribution: '&copy; OpenStreetMap, &copy; CARTO'
                 }).addTo(map);
 

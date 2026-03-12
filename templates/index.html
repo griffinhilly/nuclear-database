@@ -1046,7 +1046,7 @@
         async function loadMap() {
             mapInstance = L.map('reactor-map').setView([30, 0], 2);
 
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; OpenStreetMap, &copy; CARTO'
             }).addTo(mapInstance);
 
@@ -1660,7 +1660,7 @@
 
             setTimeout(async () => {
                 constructionMap = L.map('construction-map').setView([30, 20], 2);
-                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
                     attribution: '&copy; OpenStreetMap, &copy; CARTO'
                 }).addTo(constructionMap);
 
@@ -1701,7 +1701,7 @@
 
             setTimeout(async () => {
                 countriesMap = L.map('countries-map').setView([30, 20], 2);
-                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
                     attribution: '&copy; OpenStreetMap, &copy; CARTO'
                 }).addTo(countriesMap);
 
