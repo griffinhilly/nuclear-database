@@ -459,10 +459,19 @@ def get_reactor(reactor_id):
                r.thermal_capacity_mw, r.gross_capacity_mw, r.net_capacity_mw,
                r.status, r.commercial_operation, r.permanent_shutdown,
                ROUND((JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(r.commercial_operation)) / 365.25, 2) as age_years,
-               r.latitude, r.longitude
+               r.latitude, r.longitude,
+               r.design_series, r.containment_type,
+               m.name as model, s.name as supplier,
+               r.owner, r.operator,
+               r.construction_start, r.first_criticality, r.grid_connection,
+               dl.slug as lineage_slug, dl.name as lineage_name
         FROM reactors r
         LEFT JOIN countries c ON r.country_id = c.id
         LEFT JOIN technologies t ON r.technology_id = t.id
+        LEFT JOIN models m ON r.model_id = m.id
+        LEFT JOIN suppliers s ON r.supplier_id = s.id
+        LEFT JOIN design_series_info dsi ON r.design_series = dsi.design_series
+        LEFT JOIN design_lineages dl ON dsi.lineage_id = dl.id
         WHERE r.id = ?
     """, (reactor_id,))
 
@@ -1567,6 +1576,117 @@ def print_validation_report():
 
     print("\n" + "=" * 70)
 
+
+# =============================================================================
+# LINEAGE ROUTES & API
+# =============================================================================
+
+@app.route('/lineages')
+def lineages_page():
+    """Serve the lineage listing page."""
+    return render_template('lineages.html')
+
+@app.route('/lineage/<slug>')
+def lineage_detail_page(slug):
+    """Serve the lineage detail page."""
+    return render_template('lineage_detail.html', lineage_slug=slug)
+
+@app.route('/api/lineages')
+@require_api_key('free')
+def lineages_list():
+    """All design lineages with reactor counts and status breakdown."""
+    lineages = query_db("""
+        SELECT dl.id, dl.name, dl.slug, dl.description, dl.origin_country,
+               dl.original_designer, dl.technology_type,
+               COUNT(r.id) as reactor_count,
+               SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
+               SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+               SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
+               SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+               ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
+               COUNT(DISTINCT dsi.id) as series_count
+        FROM design_lineages dl
+        JOIN design_series_info dsi ON dsi.lineage_id = dl.id
+        JOIN reactors r ON r.design_series = dsi.design_series
+        GROUP BY dl.id
+        ORDER BY COUNT(r.id) DESC
+    """)
+    return jsonify({'lineages': lineages})
+
+@app.route('/api/lineages/<slug>/detail')
+@require_api_key('free')
+def lineage_detail(slug):
+    """Full lineage detail: info, series tree, and reactor list."""
+    lineage = query_db("SELECT * FROM design_lineages WHERE slug = ?", (slug,))
+    if not lineage:
+        return jsonify({'error': 'Lineage not found'}), 404
+    lineage = lineage[0]
+
+    # Series in this lineage with reactor counts
+    series = query_db("""
+        SELECT dsi.design_series, dsi.generation_order, dsi.generation_label,
+               dsi.typical_capacity_mwe, dsi.first_commercial_year, dsi.predecessor,
+               dsi.description,
+               COUNT(r.id) as reactor_count,
+               SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
+               SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+               SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+               SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended
+        FROM design_series_info dsi
+        LEFT JOIN reactors r ON r.design_series = dsi.design_series
+        WHERE dsi.lineage_id = ?
+        GROUP BY dsi.id
+        ORDER BY dsi.generation_order
+    """, (lineage['id'],))
+
+    # All reactors in this lineage
+    reactors = query_db("""
+        SELECT r.id, r.plant_name, r.unit_number, c.name as country, r.status,
+               r.gross_capacity_mw, r.commercial_operation, r.permanent_shutdown,
+               r.design_series, r.latitude, r.longitude
+        FROM reactors r
+        JOIN design_series_info dsi ON r.design_series = dsi.design_series
+        LEFT JOIN countries c ON r.country_id = c.id
+        WHERE dsi.lineage_id = ?
+        ORDER BY r.design_series, c.name, r.plant_name, r.unit_number
+    """, (lineage['id'],))
+
+    # Aggregate stats
+    stats = query_db("""
+        SELECT
+            COUNT(r.id) as total,
+            SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
+            SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+            SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
+            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
+            COUNT(DISTINCT c.name) as countries
+        FROM reactors r
+        JOIN design_series_info dsi ON r.design_series = dsi.design_series
+        LEFT JOIN countries c ON r.country_id = c.id
+        WHERE dsi.lineage_id = ?
+    """, (lineage['id'],))[0]
+
+    # Country breakdown
+    country_breakdown = query_db("""
+        SELECT c.name as country,
+               COUNT(r.id) as count,
+               ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
+        FROM reactors r
+        JOIN design_series_info dsi ON r.design_series = dsi.design_series
+        LEFT JOIN countries c ON r.country_id = c.id
+        WHERE dsi.lineage_id = ? AND r.status = 'Operational'
+        GROUP BY c.name
+        ORDER BY SUM(r.gross_capacity_mw) DESC
+    """, (lineage['id'],))
+
+    return jsonify({
+        'lineage': lineage,
+        'series': series,
+        'reactors': reactors,
+        'stats': stats,
+        'country_breakdown': country_breakdown
+    })
 
 # =============================================================================
 # MAIN

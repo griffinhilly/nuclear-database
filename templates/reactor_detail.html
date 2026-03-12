@@ -297,6 +297,13 @@
                     </div>
                 </div>
 
+                <!-- Design & Safety -->
+                <div class="card">
+                    <h2>Design & Safety</h2>
+                    <div id="design-info">
+                    </div>
+                </div>
+
                 <!-- Location Map -->
                 <div class="card">
                     <h2>Location</h2>
@@ -311,7 +318,7 @@
                 </div>
 
                 <!-- Generation Chart -->
-                <div class="card">
+                <div class="card" style="grid-column: 1 / -1;">
                     <h2>Generation History</h2>
                     <div class="chart-container">
                         <canvas id="generation-chart"></canvas>
@@ -418,9 +425,19 @@
                     <span class="stat-value">${reactor.country}</span>
                 </div>
                 <div class="stat-row">
-                    <span class="stat-label">Technology</span>
-                    <span class="stat-value">${reactor.technology_name || reactor.technology}</span>
+                    <span class="stat-label">Status</span>
+                    <span class="stat-value">${reactor.status}</span>
                 </div>
+                ${reactor.owner ? `
+                <div class="stat-row">
+                    <span class="stat-label">Owner</span>
+                    <span class="stat-value">${reactor.owner}</span>
+                </div>` : ''}
+                ${reactor.operator ? `
+                <div class="stat-row">
+                    <span class="stat-label">Operator</span>
+                    <span class="stat-value">${reactor.operator}</span>
+                </div>` : ''}
                 <div class="stat-row">
                     <span class="stat-label">Thermal Capacity</span>
                     <span class="stat-value">${reactor.thermal_capacity_mw ? reactor.thermal_capacity_mw.toLocaleString() + ' MW' : '--'}</span>
@@ -433,18 +450,62 @@
                     <span class="stat-label">Net Capacity</span>
                     <span class="stat-value highlight">${reactor.net_capacity_mw ? reactor.net_capacity_mw.toLocaleString() + ' MW' : '--'}</span>
                 </div>
+                ${reactor.construction_start ? `
+                <div class="stat-row">
+                    <span class="stat-label">Construction Start</span>
+                    <span class="stat-value">${reactor.construction_start}</span>
+                </div>` : ''}
+                ${reactor.first_criticality ? `
+                <div class="stat-row">
+                    <span class="stat-label">First Criticality</span>
+                    <span class="stat-value">${reactor.first_criticality}</span>
+                </div>` : ''}
+                ${reactor.grid_connection ? `
+                <div class="stat-row">
+                    <span class="stat-label">Grid Connection</span>
+                    <span class="stat-value">${reactor.grid_connection}</span>
+                </div>` : ''}
                 <div class="stat-row">
                     <span class="stat-label">Commercial Operation</span>
                     <span class="stat-value">${reactor.commercial_operation || '--'}</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-label">Status</span>
-                    <span class="stat-value">${reactor.status}</span>
                 </div>
                 ${reactor.permanent_shutdown ? `
                 <div class="stat-row">
                     <span class="stat-label">Permanent Shutdown</span>
                     <span class="stat-value">${reactor.permanent_shutdown}</span>
+                </div>` : ''}
+            `;
+
+            // Design & Safety info
+            document.getElementById('design-info').innerHTML = `
+                <div class="stat-row">
+                    <span class="stat-label">Technology</span>
+                    <span class="stat-value">${reactor.technology_name || reactor.technology || '--'}</span>
+                </div>
+                ${reactor.design_series ? `
+                <div class="stat-row">
+                    <span class="stat-label">Design Series</span>
+                    <span class="stat-value highlight">${reactor.design_series}</span>
+                </div>` : ''}
+                ${reactor.lineage_slug ? `
+                <div class="stat-row">
+                    <span class="stat-label">Design Lineage</span>
+                    <span class="stat-value"><a href="/lineage/${reactor.lineage_slug}" style="color: var(--accent); text-decoration: none;">${reactor.lineage_name}</a></span>
+                </div>` : ''}
+                ${reactor.supplier ? `
+                <div class="stat-row">
+                    <span class="stat-label">Supplier</span>
+                    <span class="stat-value">${reactor.supplier}</span>
+                </div>` : ''}
+                ${reactor.model ? `
+                <div class="stat-row">
+                    <span class="stat-label">Reactor Model</span>
+                    <span class="stat-value">${reactor.model}</span>
+                </div>` : ''}
+                ${reactor.containment_type ? `
+                <div class="stat-row">
+                    <span class="stat-label">Containment Type</span>
+                    <span class="stat-value">${reactor.containment_type}</span>
                 </div>` : ''}
             `;
 

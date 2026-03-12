@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lineage Details - Global Nuclear Database</title>
+
+    <!-- D3.js for tree visualization -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-card: #f8fafc;
+            --bg-card-alt: #f1f5f9;
+            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+            --border-header: #2563eb;
+            --success: #16a34a;
+            --warning: #d97706;
+            --bg-hover: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        header {
+            padding: 30px 20px;
+            background: var(--bg-header);
+            border-bottom: 2px solid var(--border-header);
+        }
+
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            margin-right: 15px;
+        }
+
+        .back-link:hover { text-decoration: underline; }
+
+        h1 { font-size: 2.2rem; color: var(--accent); margin-bottom: 5px; }
+
+        .subtitle { color: var(--text-secondary); font-size: 1.1rem; }
+
+        .description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 10px;
+            max-width: 800px;
+        }
+
+        /* Stats row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mini-stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mini-stat-value { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+        .mini-stat-label { color: var(--text-secondary); font-size: 0.85rem; margin-top: 5px; }
+
+        /* Grid */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .card h2 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-row:last-child { border-bottom: none; }
+        .stat-label { color: var(--text-secondary); }
+        .stat-value { color: var(--text-primary); font-weight: 600; }
+        .stat-value.highlight { color: var(--accent); }
+
+        /* Tree visualization */
+        .tree-card {
+            grid-column: 1 / -1;
+        }
+
+        #tree-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        #tree-container svg {
+            display: block;
+        }
+
+        .tree-node rect {
+            stroke: var(--border);
+            stroke-width: 1.5px;
+            cursor: pointer;
+            transition: stroke 0.15s;
+        }
+
+        .tree-node rect:hover {
+            stroke: var(--accent);
+            stroke-width: 2px;
+        }
+
+        .tree-node text {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            fill: var(--text-primary);
+        }
+
+        .tree-link {
+            fill: none;
+            stroke: var(--border);
+            stroke-width: 2px;
+        }
+
+        .tree-legend {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .tree-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .tree-legend-swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            border: 1px solid var(--border);
+        }
+
+        /* Tooltip */
+        .tree-tooltip {
+            position: absolute;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            pointer-events: none;
+            z-index: 100;
+            max-width: 300px;
+            line-height: 1.5;
+        }
+
+        .tree-tooltip strong { color: var(--accent); }
+
+        /* Map */
+        #lineage-map {
+            height: 300px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* Chart */
+        .chart-container {
+            height: 300px;
+            margin-top: 15px;
+        }
+
+        /* Data table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .data-table th, .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table th {
+            background: var(--bg-card-alt);
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .data-table th:hover { background: var(--bg-card); }
+
+        .data-table th .sort-icon { margin-left: 5px; opacity: 0.5; }
+        .data-table th.sorted .sort-icon { opacity: 1; }
+
+        .data-table tr:hover { background: var(--bg-hover); }
+
+        .data-table a.reactor-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .data-table a.reactor-link:hover { text-decoration: underline; }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-operational { background: var(--success); color: #fff; }
+        .status-construction { background: var(--warning); color: #fff; }
+        .status-shutdown { background: #9ca3af; color: #fff; }
+        .status-suspended { background: #6366f1; color: #fff; }
+
+        /* Loading */
+        .loading { text-align: center; padding: 60px; color: var(--text-secondary); }
+
+        .spinner {
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error { text-align: center; padding: 60px; color: #dc2626; }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+        }
+
+        footer a { color: var(--accent); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="back-link">&larr; Dashboard</a>
+            <a href="/lineages" class="back-link">&larr; All Lineages</a>
+            <h1 id="lineage-name">Loading...</h1>
+            <p class="subtitle" id="lineage-subtitle"></p>
+            <p class="description" id="lineage-description"></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            Loading lineage data...
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            Lineage not found. <a href="/lineages">Return to lineages</a>
+        </div>
+
+        <div id="content" style="display: none;">
+            <div class="stats-row" id="quick-stats"></div>
+
+            <!-- Family Tree -->
+            <div class="card tree-card">
+                <h2>Design Evolution Tree</h2>
+                <div id="tree-container"></div>
+                <div class="tree-legend" id="tree-legend"></div>
+            </div>
+
+            <div class="detail-grid" style="margin-top: 30px;">
+                <!-- Lineage Info -->
+                <div class="card">
+                    <h2>Lineage Information</h2>
+                    <div id="lineage-info"></div>
+                </div>
+
+                <!-- Map -->
+                <div class="card">
+                    <h2>Reactor Locations</h2>
+                    <div id="lineage-map"></div>
+                </div>
+            </div>
+
+            <!-- Country Breakdown -->
+            <div class="card" style="margin-top: 30px;">
+                <h2>Country Breakdown (Operational Fleet)</h2>
+                <div class="chart-container">
+                    <canvas id="country-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Reactor Table -->
+            <div class="card" style="margin-top: 30px;">
+                <h2 id="reactor-table-title">Reactors</h2>
+                <table class="data-table" id="reactor-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span></th>
+                            <th data-sort="series">Design Series <span class="sort-icon">&#8597;</span></th>
+                            <th data-sort="country">Country <span class="sort-icon">&#8597;</span></th>
+                            <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span></th>
+                            <th data-sort="status">Status <span class="sort-icon">&#8597;</span></th>
+                            <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Data: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
+           <a href="/sources">Sources & Methodology</a> |
+           <a href="/">Dashboard</a></p>
+    </footer>
+
+    <script>
+        const SLUG = "{{ lineage_slug }}";
+
+        // Generation colors
+        const genColors = {
+            'Gen I':   '#94a3b8',
+            'Gen II':  '#60a5fa',
+            'Gen III': '#2563eb',
+            'Gen III+':'#1d4ed8',
+            'Gen IV':  '#7c3aed'
+        };
+
+        let currentReactors = [];
+        let currentSort = { column: null, ascending: true };
+
+        async function load() {
+            try {
+                const res = await fetch(`/api/lineages/${encodeURIComponent(SLUG)}/detail`);
+                if (!res.ok) throw new Error('Not found');
+                const data = await res.json();
+                renderPage(data);
+            } catch (e) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        function renderPage(data) {
+            const { lineage, series, reactors, stats, country_breakdown } = data;
+            currentReactors = reactors;
+
+            // Header
+            document.getElementById('lineage-name').textContent = lineage.name;
+            document.getElementById('lineage-subtitle').textContent =
+                `${lineage.origin_country} | ${lineage.original_designer} | ${lineage.technology_type}`;
+            document.getElementById('lineage-description').textContent = lineage.description || '';
+
+            // Quick stats
+            document.getElementById('quick-stats').innerHTML = `
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${stats.total}</div>
+                    <div class="mini-stat-label">Total Reactors</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${stats.operational}</div>
+                    <div class="mini-stat-label">Operational</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${stats.under_construction}</div>
+                    <div class="mini-stat-label">Under Construction</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${stats.capacity_gw}</div>
+                    <div class="mini-stat-label">Capacity (GW)</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${series.length}</div>
+                    <div class="mini-stat-label">Design Series</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${stats.countries}</div>
+                    <div class="mini-stat-label">Countries</div>
+                </div>
+            `;
+
+            // Show content
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
+            // Build tree
+            renderTree(series);
+
+            // Lineage info
+            document.getElementById('lineage-info').innerHTML = `
+                <div class="stat-row">
+                    <span class="stat-label">Technology Type</span>
+                    <span class="stat-value">${lineage.technology_type}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Origin Country</span>
+                    <span class="stat-value">${lineage.origin_country}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Original Designer</span>
+                    <span class="stat-value">${lineage.original_designer}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Operational</span>
+                    <span class="stat-value highlight">${stats.operational}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Under Construction</span>
+                    <span class="stat-value">${stats.under_construction}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Suspended</span>
+                    <span class="stat-value">${stats.suspended}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Permanent Shutdown</span>
+                    <span class="stat-value">${stats.shutdown}</span>
+                </div>
+            `;
+
+            // Map
+            const withCoords = reactors.filter(r => r.latitude && r.longitude);
+            if (withCoords.length > 0) {
+                const map = L.map('lineage-map');
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; OpenStreetMap, &copy; CARTO'
+                }).addTo(map);
+
+                const statusColors = {
+                    'Operational': '#16a34a',
+                    'Under Construction': '#d97706',
+                    'Suspended': '#6366f1',
+                    'Permanent Shutdown': '#9ca3af'
+                };
+
+                const bounds = [];
+                withCoords.forEach(r => {
+                    const color = statusColors[r.status] || '#2563eb';
+                    bounds.push([r.latitude, r.longitude]);
+                    L.circleMarker([r.latitude, r.longitude], {
+                        radius: 6,
+                        fillColor: color,
+                        color: '#fff',
+                        weight: 1,
+                        opacity: 0.8,
+                        fillOpacity: 0.7
+                    })
+                    .bindPopup(`
+                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color:#2563eb">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        ${r.country} | ${r.design_series}<br>
+                        <span style="color:${color}">${r.status}</span>
+                    `)
+                    .addTo(map);
+                });
+                map.fitBounds(bounds, { padding: [20, 20] });
+            } else {
+                document.getElementById('lineage-map').innerHTML =
+                    '<p style="text-align:center;color:#64748b;padding:100px 0;">No location data</p>';
+            }
+
+            // Country chart
+            if (country_breakdown && country_breakdown.length > 0) {
+                const top15 = country_breakdown.slice(0, 15);
+                new Chart(document.getElementById('country-chart'), {
+                    type: 'bar',
+                    data: {
+                        labels: top15.map(c => c.country),
+                        datasets: [{
+                            label: 'Capacity (GW)',
+                            data: top15.map(c => c.capacity_gw),
+                            backgroundColor: '#2563eb',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: (ctx) => `${top15[ctx.dataIndex].count} reactors`
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: '#e2e8f0' },
+                                ticks: { color: '#64748b' },
+                                title: { display: true, text: 'GW', color: '#64748b' }
+                            },
+                            y: {
+                                grid: { display: false },
+                                ticks: { color: '#1e293b' }
+                            }
+                        },
+                        onClick: (event, elements) => {
+                            if (elements.length > 0) {
+                                const country = top15[elements[0].index].country;
+                                window.location.href = `/country/${encodeURIComponent(country)}`;
+                            }
+                        },
+                        onHover: (event, elements) => {
+                            event.native.target.style.cursor = elements.length > 0 ? 'pointer' : 'default';
+                        }
+                    }
+                });
+            } else {
+                document.getElementById('country-chart').parentElement.innerHTML =
+                    '<p style="text-align:center;color:#64748b;padding:80px 0;">No operational reactors</p>';
+            }
+
+            // Reactor table
+            document.getElementById('reactor-table-title').textContent = `Reactors (${reactors.length})`;
+            renderTable(reactors);
+        }
+
+        // =====================================================================
+        // D3 Family Tree
+        // =====================================================================
+
+        function renderTree(series) {
+            const container = document.getElementById('tree-container');
+
+            // Build hierarchy from predecessor links
+            const byName = {};
+            series.forEach(s => { byName[s.design_series] = { ...s, children: [] }; });
+
+            const roots = [];
+            series.forEach(s => {
+                const node = byName[s.design_series];
+                if (s.predecessor && byName[s.predecessor]) {
+                    byName[s.predecessor].children.push(node);
+                } else {
+                    roots.push(node);
+                }
+            });
+
+            // If multiple roots, wrap in a virtual root
+            let treeData;
+            if (roots.length === 1) {
+                treeData = roots[0];
+            } else {
+                treeData = { design_series: '', children: roots, _virtual: true };
+            }
+
+            // Dimensions
+            const nodeW = 160;
+            const nodeH = 70;
+            const marginLeft = 20;
+            const marginTop = 20;
+            const marginRight = 40;
+            const marginBottom = 20;
+
+            // Count total leaf depth for height
+            const hierarchy = d3.hierarchy(treeData);
+            const treeLayout = d3.tree().nodeSize([nodeH + 20, nodeW + 60]);
+            treeLayout(hierarchy);
+
+            // Get bounding box
+            let minY = Infinity, maxY = -Infinity, minX = Infinity, maxX = -Infinity;
+            hierarchy.each(d => {
+                if (d.x < minX) minX = d.x;
+                if (d.x > maxX) maxX = d.x;
+                if (d.y < minY) minY = d.y;
+                if (d.y > maxY) maxY = d.y;
+            });
+
+            const svgW = (maxY - minY) + nodeW + marginLeft + marginRight + 60;
+            const svgH = (maxX - minX) + nodeH + marginTop + marginBottom + 40;
+
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', svgW)
+                .attr('height', svgH);
+
+            const g = svg.append('g')
+                .attr('transform', `translate(${marginLeft - minY + 30}, ${marginTop - minX + 20})`);
+
+            // Tooltip
+            const tooltip = d3.select('body').append('div')
+                .attr('class', 'tree-tooltip')
+                .style('display', 'none');
+
+            // Links (curved)
+            g.selectAll('.tree-link')
+                .data(hierarchy.links().filter(d => !d.source.data._virtual))
+                .join('path')
+                .attr('class', 'tree-link')
+                .attr('d', d => {
+                    const sx = d.source.y + nodeW;
+                    const sy = d.source.x + nodeH / 2;
+                    const tx = d.target.y;
+                    const ty = d.target.x + nodeH / 2;
+                    const mx = (sx + tx) / 2;
+                    return `M${sx},${sy} C${mx},${sy} ${mx},${ty} ${tx},${ty}`;
+                });
+
+            // For virtual root, draw links from edge
+            if (treeData._virtual) {
+                g.selectAll('.tree-link-virtual')
+                    .data(hierarchy.links().filter(d => d.source.data._virtual))
+                    .join('path')
+                    .attr('class', 'tree-link')
+                    .attr('d', d => {
+                        const tx = d.target.y;
+                        const ty = d.target.x + nodeH / 2;
+                        return `M0,${ty} L${tx},${ty}`;
+                    });
+            }
+
+            // Nodes
+            const nodes = g.selectAll('.tree-node')
+                .data(hierarchy.descendants().filter(d => !d.data._virtual))
+                .join('g')
+                .attr('class', 'tree-node')
+                .attr('transform', d => `translate(${d.y}, ${d.x})`);
+
+            // Node rectangles
+            nodes.append('rect')
+                .attr('width', nodeW)
+                .attr('height', nodeH)
+                .attr('rx', 8)
+                .attr('ry', 8)
+                .attr('fill', d => genColors[d.data.generation_label] || '#e2e8f0');
+
+            // Series name
+            nodes.append('text')
+                .attr('x', nodeW / 2)
+                .attr('y', 22)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '13px')
+                .attr('font-weight', '700')
+                .attr('fill', d => {
+                    const label = d.data.generation_label || '';
+                    return (label === 'Gen I' || !label) ? '#1e293b' : '#fff';
+                })
+                .text(d => d.data.design_series);
+
+            // Reactor count + year
+            nodes.append('text')
+                .attr('x', nodeW / 2)
+                .attr('y', 40)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '11px')
+                .attr('fill', d => {
+                    const label = d.data.generation_label || '';
+                    return (label === 'Gen I' || !label) ? '#64748b' : 'rgba(255,255,255,0.85)';
+                })
+                .text(d => `${d.data.reactor_count} reactor${d.data.reactor_count !== 1 ? 's' : ''}`);
+
+            nodes.append('text')
+                .attr('x', nodeW / 2)
+                .attr('y', 56)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '10px')
+                .attr('fill', d => {
+                    const label = d.data.generation_label || '';
+                    return (label === 'Gen I' || !label) ? '#94a3b8' : 'rgba(255,255,255,0.7)';
+                })
+                .text(d => {
+                    const parts = [];
+                    if (d.data.first_commercial_year) parts.push(d.data.first_commercial_year);
+                    if (d.data.typical_capacity_mwe) parts.push(d.data.typical_capacity_mwe + ' MWe');
+                    return parts.join(' | ');
+                });
+
+            // Tooltip on hover
+            nodes
+                .on('mouseenter', (event, d) => {
+                    const s = d.data;
+                    tooltip
+                        .style('display', 'block')
+                        .html(`
+                            <strong>${s.design_series}</strong> (${s.generation_label || '?'})<br>
+                            ${s.reactor_count} reactors: ${s.operational} op, ${s.under_construction} UC, ${s.shutdown} shut<br>
+                            ${s.typical_capacity_mwe ? 'Capacity: ' + s.typical_capacity_mwe + ' MWe<br>' : ''}
+                            ${s.first_commercial_year ? 'First commercial: ' + s.first_commercial_year + '<br>' : ''}
+                            ${s.description ? '<br><em>' + s.description + '</em>' : ''}
+                        `);
+                })
+                .on('mousemove', (event) => {
+                    tooltip
+                        .style('left', (event.pageX + 15) + 'px')
+                        .style('top', (event.pageY - 10) + 'px');
+                })
+                .on('mouseleave', () => {
+                    tooltip.style('display', 'none');
+                });
+
+            // Legend
+            const usedGens = [...new Set(series.map(s => s.generation_label).filter(Boolean))];
+            const genOrder = ['Gen I', 'Gen II', 'Gen III', 'Gen III+', 'Gen IV'];
+            const sortedGens = genOrder.filter(g => usedGens.includes(g));
+
+            document.getElementById('tree-legend').innerHTML = sortedGens.map(gen => `
+                <div class="tree-legend-item">
+                    <div class="tree-legend-swatch" style="background:${genColors[gen]}"></div>
+                    ${gen}
+                </div>
+            `).join('');
+        }
+
+        // =====================================================================
+        // Reactor Table
+        // =====================================================================
+
+        function renderTable(reactors) {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = reactors.map(r => {
+                let statusClass;
+                if (r.status === 'Operational') statusClass = 'operational';
+                else if (r.status === 'Under Construction') statusClass = 'construction';
+                else if (r.status === 'Suspended') statusClass = 'suspended';
+                else statusClass = 'shutdown';
+
+                const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
+                    ? `<span style="color:#64748b">Shut:</span> ${r.permanent_shutdown}`
+                    : (r.commercial_operation || '-');
+
+                return `
+                    <tr>
+                        <td><a href="/plant/${encodeURIComponent(r.plant_name)}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
+                        <td>${r.design_series}</td>
+                        <td><a href="/country/${encodeURIComponent(r.country)}" class="reactor-link">${r.country}</a></td>
+                        <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
+                        <td><span class="status-badge status-${statusClass}">${r.status}</span></td>
+                        <td>${dateCol}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Sorting
+        function sortTable(column) {
+            if (currentSort.column === column) {
+                currentSort.ascending = !currentSort.ascending;
+            } else {
+                currentSort.column = column;
+                currentSort.ascending = true;
+            }
+
+            const sorted = [...currentReactors].sort((a, b) => {
+                let valA, valB;
+                switch (column) {
+                    case 'name':
+                        valA = `${a.plant_name}-${a.unit_number}`.toLowerCase();
+                        valB = `${b.plant_name}-${b.unit_number}`.toLowerCase();
+                        break;
+                    case 'series':
+                        valA = (a.design_series || '').toLowerCase();
+                        valB = (b.design_series || '').toLowerCase();
+                        break;
+                    case 'country':
+                        valA = (a.country || '').toLowerCase();
+                        valB = (b.country || '').toLowerCase();
+                        break;
+                    case 'capacity':
+                        valA = a.gross_capacity_mw || 0;
+                        valB = b.gross_capacity_mw || 0;
+                        break;
+                    case 'status':
+                        valA = (a.status || '').toLowerCase();
+                        valB = (b.status || '').toLowerCase();
+                        break;
+                    case 'date':
+                        valA = a.commercial_operation || '';
+                        valB = b.commercial_operation || '';
+                        break;
+                    default: return 0;
+                }
+                if (valA < valB) return currentSort.ascending ? -1 : 1;
+                if (valA > valB) return currentSort.ascending ? 1 : -1;
+                return 0;
+            });
+            renderTable(sorted);
+
+            // Update sort indicators
+            document.querySelectorAll('.data-table th').forEach(th => {
+                th.classList.remove('sorted');
+                const icon = th.querySelector('.sort-icon');
+                if (icon) icon.innerHTML = '&#8597;';
+            });
+            if (currentSort.column) {
+                const th = document.querySelector(`.data-table th[data-sort="${currentSort.column}"]`);
+                if (th) {
+                    th.classList.add('sorted');
+                    const icon = th.querySelector('.sort-icon');
+                    if (icon) icon.innerHTML = currentSort.ascending ? '&#8593;' : '&#8595;';
+                }
+            }
+        }
+
+        document.querySelectorAll('.data-table th[data-sort]').forEach(th => {
+            th.addEventListener('click', () => sortTable(th.dataset.sort));
+        });
+
+        document.addEventListener('DOMContentLoaded', load);
+    </script>
+</body>
+</html>

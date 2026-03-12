@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Lineages - Global Nuclear Database</title>
+
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-card: #f8fafc;
+            --bg-card-alt: #f1f5f9;
+            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+            --border-header: #2563eb;
+            --success: #16a34a;
+            --warning: #d97706;
+            --bg-hover: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        header {
+            padding: 30px 20px;
+            background: var(--bg-header);
+            border-bottom: 2px solid var(--border-header);
+        }
+
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .back-link:hover { text-decoration: underline; }
+
+        h1 { font-size: 2.2rem; color: var(--accent); margin-bottom: 5px; }
+
+        .subtitle { color: var(--text-secondary); font-size: 1.1rem; }
+
+        /* Stats row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mini-stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mini-stat-value { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+        .mini-stat-label { color: var(--text-secondary); font-size: 0.85rem; margin-top: 5px; }
+
+        /* Filter tabs */
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 6px 16px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.15s;
+        }
+
+        .filter-btn:hover { background: var(--bg-hover); }
+
+        .filter-btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* Lineage grid */
+        .lineage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .lineage-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            text-decoration: none;
+            color: inherit;
+            transition: box-shadow 0.15s, border-color 0.15s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lineage-card:hover {
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1);
+            border-color: var(--accent);
+        }
+
+        .lineage-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .lineage-card h3 {
+            color: var(--accent);
+            font-size: 1.15rem;
+            margin: 0;
+        }
+
+        .lineage-card .tech-badge {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: var(--bg-card-alt);
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .lineage-card .origin {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .lineage-card .description {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .lineage-card .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .lineage-card .stat {
+            text-align: center;
+        }
+
+        .lineage-card .stat-num {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .lineage-card .stat-num.op { color: var(--success); }
+        .lineage-card .stat-num.uc { color: var(--warning); }
+
+        .lineage-card .stat-lbl {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Loading */
+        .loading { text-align: center; padding: 60px; color: var(--text-secondary); }
+
+        .spinner {
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+        }
+
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .lineage-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="back-link">&larr; Back to Dashboard</a>
+            <h1>Reactor Design Lineages</h1>
+            <p class="subtitle">24 design families spanning 70 years of nuclear engineering</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            Loading lineage data...
+        </div>
+
+        <div id="content" style="display: none;">
+            <div class="stats-row" id="quick-stats"></div>
+
+            <div class="filter-bar" id="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="PWR">PWR</button>
+                <button class="filter-btn" data-filter="BWR">BWR</button>
+                <button class="filter-btn" data-filter="PHWR">PHWR</button>
+                <button class="filter-btn" data-filter="GCR">GCR</button>
+                <button class="filter-btn" data-filter="other">Other</button>
+            </div>
+
+            <div class="lineage-grid" id="lineage-grid"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Data: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
+           <a href="/sources">Sources & Methodology</a> |
+           <a href="/">Dashboard</a></p>
+    </footer>
+
+    <script>
+        let allLineages = [];
+        const mainTypes = ['PWR', 'BWR', 'PHWR', 'GCR'];
+
+        async function load() {
+            try {
+                const res = await fetch('/api/lineages');
+                const data = await res.json();
+                allLineages = data.lineages;
+                render(allLineages);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } catch (e) {
+                document.getElementById('loading').innerHTML = 'Failed to load data. <a href="/">Return to dashboard</a>';
+            }
+        }
+
+        function render(lineages) {
+            // Quick stats
+            const totalReactors = lineages.reduce((s, l) => s + l.reactor_count, 0);
+            const totalOp = lineages.reduce((s, l) => s + l.operational, 0);
+            const totalGW = lineages.reduce((s, l) => s + l.capacity_gw, 0);
+            const totalSeries = lineages.reduce((s, l) => s + l.series_count, 0);
+
+            document.getElementById('quick-stats').innerHTML = `
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${lineages.length}</div>
+                    <div class="mini-stat-label">Design Families</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${totalSeries}</div>
+                    <div class="mini-stat-label">Design Series</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${totalReactors.toLocaleString()}</div>
+                    <div class="mini-stat-label">Total Reactors</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${totalOp.toLocaleString()}</div>
+                    <div class="mini-stat-label">Operational</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${totalGW.toFixed(1)}</div>
+                    <div class="mini-stat-label">Capacity (GW)</div>
+                </div>
+            `;
+
+            // Grid
+            document.getElementById('lineage-grid').innerHTML = lineages.map(l => `
+                <a href="/lineage/${l.slug}" class="lineage-card" data-tech="${l.technology_type}">
+                    <div class="lineage-card-header">
+                        <h3>${l.name}</h3>
+                        <span class="tech-badge">${l.technology_type}</span>
+                    </div>
+                    <div class="origin">${l.origin_country} &middot; ${l.original_designer}</div>
+                    <div class="description">${l.description || ''}</div>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-num">${l.reactor_count}</div>
+                            <div class="stat-lbl">Reactors</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num op">${l.operational}</div>
+                            <div class="stat-lbl">Operating</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num uc">${l.under_construction}</div>
+                            <div class="stat-lbl">Building</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num">${l.capacity_gw}</div>
+                            <div class="stat-lbl">GW</div>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Filter
+        document.getElementById('filter-bar').addEventListener('click', (e) => {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.dataset.filter;
+            if (filter === 'all') {
+                render(allLineages);
+            } else if (filter === 'other') {
+                render(allLineages.filter(l => !mainTypes.includes(l.technology_type)));
+            } else {
+                render(allLineages.filter(l => l.technology_type === filter));
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', load);
+    </script>
+</body>
+</html>
