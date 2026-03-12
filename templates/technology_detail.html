@@ -489,6 +489,7 @@
     <footer>
         <p>Data: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
            <a href="/sources">Sources & Methodology</a> |
+           <a href="/lineages">Design Lineages</a> |
            <a href="/">Dashboard</a></p>
     </footer>
 
@@ -783,6 +784,10 @@
                 <div class="stat-row">
                     <span class="stat-label">Most Recent Online</span>
                     <span class="stat-value">${lastOnline || '--'}</span>
+                </div>
+                <div class="stat-row" style="margin-top: 8px; padding-top: 16px; border-top: 1px solid var(--border);">
+                    <span class="stat-label">Design Lineages</span>
+                    <span class="stat-value"><a href="/lineages" style="color: var(--accent); text-decoration: none;">View family trees &rarr;</a></span>
                 </div>
             `;
 
