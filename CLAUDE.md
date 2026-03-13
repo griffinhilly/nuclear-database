@@ -2,7 +2,7 @@
 
 ## Overview
 
-Flask web app serving a global nuclear reactor database with 729 reactors across 39 countries, plus 122 planned reactors. Backed by SQLite (`nuclear_reactors.db`) with reactor specs, generation history (1954-2024), and geographic coordinates. All reactor data verified against IAEA PRIS (March 2026).
+Flask web app serving a global nuclear reactor database with 733 reactors across 39 countries, plus 122 planned reactors. Backed by SQLite (`nuclear_reactors.db`) with reactor specs, generation history (1954-2024), and geographic coordinates. All reactor data verified against IAEA PRIS (March 2026).
 
 ## Architecture
 
@@ -38,7 +38,8 @@ Generation data post-2020 is incomplete — only ~112 of ~430 operational reacto
 - **Capacity factor**: Computed at query time from `electricity_gwh / (gross_capacity_mw / 1000 * 8760)`.
 - **Reactor age**: Computed live via `JULIANDAY('now') - JULIANDAY(commercial_operation)`.
 - **Sources**: All data attributed via coded references [PRIS], [WNA], [EI-SR]. Methodology documented at `/sources`.
-- **Design lineages**: 24 lineage families (e.g., "GE BWR", "Framatome PWR", "VVER") in `design_lineages` table. Each of 123 unique `design_series` values mapped to a lineage with generation order, predecessor links, and Gen I/II/III/III+/IV labels in `design_series_info` table. Predecessor chains form tree structures (no cycles). All 729 reactors have `design_series` (100% coverage).
+- **Design lineages**: 24 lineage families (e.g., "GE BWR", "Framatome PWR", "VVER") in `design_lineages` table. Each of 123 unique `design_series` values mapped to a lineage with generation order, predecessor links, and Gen I/II/III/III+/IV labels in `design_series_info` table. Predecessor chains form tree structures (no cycles). All 733 reactors have `design_series` (100% coverage).
+- **Coordinates**: All 733 reactors verified against Wikipedia article coordinates (GeoData/External Maps). Wikipedia is the gold standard — always use article coordinates, never dismiss small discrepancies. ~15 plants unmatched by automated tools need manual Wikipedia lookup. Multi-site complexes (Kursk, Leningrad, Novovoronezh, Hanul) have per-site coords.
 
 ## Git / Deployment
 

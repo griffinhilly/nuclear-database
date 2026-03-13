@@ -3,7 +3,7 @@
 ## Completed
 
 ### Core App
-- Flask app with SQLite backend (729 reactors, 39 countries)
+- Flask app with SQLite backend (733 reactors, 39 countries)
 - Dashboard with stat cards, charts, Leaflet map, data tables
 - 8 detail pages: reactor, plant, country, technology, status, model, supplier, owner
 - Sources & Methodology page (`/sources`) with coded references
@@ -16,8 +16,15 @@
 - Added "Suspended" status (22 reactors, mostly post-Fukushima Japan)
 - Added 41 missing under-construction reactors (28 -> 66)
 - Cleaned planned_reactors table (removed UC duplicates, 122 entries)
-- Added coordinates for all 729 reactors (zero missing)
+- Added coordinates for all 733 reactors (zero missing)
 - Fixed Germany, Belgium, Japan, Russia, Canada, USA, France, Pakistan, India, China status errors
+
+### Coordinate & Name Verification (Mar 12, 2026)
+- 19 plant name corrections (46 reactors): umlauts, transliterations, misspellings, official names, diacritics
+- Chinese data overhaul: Shidaowan rebuilt, 37 reactors fixed, 4 new reactors added (733 total)
+- Multi-phase coordinate verification: 137 auto-fixes + 28 manual + 8 user-verified + 10 unmatched + 74 Wikidata-adopted + 100 Wikipedia GeoData scraped
+- Wikipedia GeoData established as gold standard for all coordinates
+- EL-4 renamed to Brennilis
 
 ### Map & Charts
 - Map status filter toggles (All/Operational/UC/Suspended/Shutdown)
@@ -53,10 +60,16 @@
 - Display on reactor and plant detail pages (timeline or table)
 - Aggregate into country/technology/global capacity history charts
 
+### Coordinate Remaining
+- ~15 plants unmatched by automated Wikipedia scraper (bad name matches) — most already verified manually
+- Multi-site consolidation decision (Madi): treat Kursk 1/2, Leningrad 1/2, Novovoronezh 1/2, Hanul/Shin-Hanul as single plants?
+- Duplicate planned_reactors entries to clean up: Xudabao 3-4 (ids 187,188) and San'ao 3 (id 176)
+
 ### Data Quality
 - #5 from PLANNED_ADDITIONS: Erroneous generation data for Braidwood-2 (2025/2030 entries need removal)
 - Generation data gap monitoring (41 reactors without PRIS ID, mostly idle Japanese units)
 - Data freshness: re-run backfill scripts when 2025 PRIS data becomes available
+- Non-Chinese countries haven't been WNA-audited for reactor specs (capacity, dates, status)
 
 ### Ownership Audit (#4, #5 from revisions)
 - Verify ownership for all reactors (Exelon->Constellation, decommissioning transfers)
