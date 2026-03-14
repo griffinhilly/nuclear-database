@@ -77,6 +77,13 @@
             font-size: 1.1rem;
         }
 
+        .description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 10px;
+            max-width: 800px;
+        }
+
         /* Stats cards */
         .stats-row {
             display: grid;
@@ -406,6 +413,7 @@
             <a href="/" class="back-link">&larr; Back to Dashboard</a>
             <h1 id="country-name">Loading...</h1>
             <p class="subtitle" id="country-subtitle"></p>
+            <p class="description" id="country-description"></p>
         </div>
     </header>
 
@@ -701,6 +709,10 @@
             document.getElementById('country-name').textContent = country.country;
             document.getElementById('country-subtitle').textContent =
                 `${country.operational} operational reactors | ${country.capacity_gw} GW capacity`;
+
+            if (data.description) {
+                document.getElementById('country-description').textContent = data.description;
+            }
 
             // Quick stats
             document.getElementById('quick-stats').innerHTML = `

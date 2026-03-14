@@ -49,6 +49,14 @@ def query_db(sql, params=None):
     conn.close()
     return results
 
+def get_entity_description(entity_type, entity_name):
+    """Look up description from entity_descriptions table."""
+    result = query_db(
+        "SELECT description FROM entity_descriptions WHERE entity_type = ? AND LOWER(entity_name) = LOWER(?)",
+        (entity_type, entity_name)
+    )
+    return result[0]['description'] if result else None
+
 # =============================================================================
 # AUTHENTICATION
 # =============================================================================
@@ -292,8 +300,11 @@ def country_detail(country):
         ORDER BY count DESC
     """, (country,))
 
+    description = get_entity_description('country', country)
+
     return jsonify({
         'country': stats[0],
+        'description': description,
         'generation_history': generation_history,
         'reactors': reactors,
         'technology_mix': technology_mix
@@ -593,6 +604,8 @@ def plant_detail(plant_name):
     for h in generation_history:
         plant_years.add(h['year'])
 
+    description = get_entity_description('plant', plant_name)
+
     return jsonify({
         'plant': {
             'name': plant_name,
@@ -603,6 +616,7 @@ def plant_detail(plant_name):
             'latitude': reactors[0]['latitude'],
             'longitude': reactors[0]['longitude'],
         },
+        'description': description,
         'reactors': [{
             **r,
             'lifetime_stats': unit_stats_map.get(r['id'], {})
@@ -726,6 +740,8 @@ def model_detail(model_name):
     """, (model_name,))
     if ds_info:
         result['design_series'] = ds_info[0]['design_series']
+
+    result['description'] = get_entity_description('model', model_name)
 
     return jsonify(result)
 
@@ -903,8 +919,11 @@ def owner_detail(owner_name):
         ORDER BY count DESC
     """, (owner_name,))
 
+    description = get_entity_description('owner', owner_name)
+
     return jsonify({
         'owner': stats[0],
+        'description': description,
         'generation_history': generation_history,
         'reactors': reactors,
         'country_breakdown': country_breakdown,
@@ -984,8 +1003,11 @@ def status_detail(status):
         ORDER BY count DESC
     """, (status,))
 
+    description = get_entity_description('status', status)
+
     return jsonify({
         'status': stats[0],
+        'description': description,
         'generation_history': generation_history,
         'reactors': reactors,
         'country_breakdown': country_breakdown,
@@ -1081,8 +1103,11 @@ def supplier_detail(supplier_name):
         ORDER BY count DESC
     """, (supplier_name,))
 
+    description = get_entity_description('supplier', supplier_name)
+
     return jsonify({
         'supplier': stats[0],
+        'description': description,
         'generation_history': generation_history,
         'reactors': reactors,
         'country_breakdown': country_breakdown,
@@ -1800,8 +1825,11 @@ def containment_detail(containment_type):
         ORDER BY count DESC
     """, (containment_type,))
 
+    description = get_entity_description('containment', containment_type)
+
     return jsonify({
         'containment_type': containment_type,
+        'description': description,
         'stats': stats[0],
         'generation_history': generation_history,
         'reactors': reactors,

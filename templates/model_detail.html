@@ -89,6 +89,13 @@
             text-decoration: underline;
         }
 
+        .description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 10px;
+            max-width: 800px;
+        }
+
         /* Stats cards */
         .stats-row {
             display: grid;
@@ -500,6 +507,7 @@
             <a href="/" class="back-link">&larr; Back to Dashboard</a>
             <h1 id="model-name">Loading...</h1>
             <p class="subtitle" id="model-subtitle"></p>
+            <p class="description" id="model-description"></p>
         </div>
     </header>
 
@@ -823,6 +831,10 @@
             document.getElementById('model-subtitle').innerHTML =
                 `${model.operational} operational reactors | ${model.capacity_gw} GW capacity` +
                 (techLink ? ` | Technology: ${techLink}` : '');
+
+            if (data.description) {
+                document.getElementById('model-description').textContent = data.description;
+            }
 
             // Count unique countries
             const countries = new Set(reactors.map(r => r.country).filter(Boolean));

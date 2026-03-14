@@ -46,6 +46,11 @@
 
 ## Remaining
 
+### Entity Descriptions — COMPLETE (Mar 14, 2026)
+- 688 descriptions across 7 entity types, all wired to API endpoints and templates
+- Enriched 12 technology and 24 lineage descriptions in-place
+- Next improvement: review template-generated descriptions (plants, owners) for accuracy; replace with manual descriptions for important entities over time
+
 ### Design Lineages — Visualization (next session)
 - Lineage listing page (`/lineages`) — overview of all 24 families with reactor counts, status breakdown
 - Lineage detail page (`/lineage/<slug>`) — interactive family tree diagram (inspired by PDF Ch.2 diagrams: timeline-based trees with branching, order dates, commercial operation, capacity, containment)

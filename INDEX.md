@@ -20,6 +20,9 @@
 | `templates/status_detail.html` | Status group detail page |
 | `templates/owner_detail.html` | Owner/operator detail page |
 | `templates/supplier_detail.html` | Supplier/vendor detail page |
+| `templates/containment_detail.html` | Containment type detail page |
+| `templates/lineages.html` | Design lineages overview page |
+| `templates/lineage_detail.html` | Individual design lineage detail page |
 | `templates/sources.html` | Data Sources & Methodology page |
 
 ## Deployment
@@ -42,6 +45,13 @@
 | `update_planned_mar2026_patch.py` | Patch script for planned reactor cleanup |
 | `add_design_fields.py` | Populate design_series and containment_type from model names |
 | `add_lineages.py` | Create design_lineages + design_series_info tables, fill design_series gaps |
+| `add_descriptions.py` | Create entity_descriptions table, insert containment/status descriptions |
+| `insert_country_descriptions.py` | Insert 39 country descriptions into entity_descriptions |
+| `enrich_tech_lineage_descriptions.py` | Enrich technology (12) and lineage (24) descriptions in-place |
+| `insert_model_descriptions.py` | Insert 154 model descriptions into entity_descriptions |
+| `insert_supplier_descriptions.py` | Insert 33 supplier descriptions into entity_descriptions |
+| `insert_plant_descriptions.py` | Insert 315 plant descriptions (61 manual + 254 template) |
+| `insert_owner_descriptions.py` | Insert 134 owner descriptions (35 manual + 99 template) |
 
 ## Coordinate Verification Scripts
 | File | Description |

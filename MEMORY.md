@@ -10,6 +10,17 @@
 
 ## Recent Sessions
 
+### Mar 14, 2026 — Entity Descriptions (ALL 6 PHASES COMPLETE)
+- **688 total descriptions** across 7 entity types in `entity_descriptions` table
+- **Phase 1**: Infrastructure — created `entity_descriptions` table, `get_entity_description()` helper, updated all 7 API endpoints and templates
+- **Phase 2**: 39 country descriptions (2-3 paragraphs each, nuclear program history)
+- **Phase 3**: Enriched 12 technology descriptions (1-2 sentences → 1-2 paragraphs) and 24 lineage descriptions (2-4 sentences → 2-3 paragraphs) in their native tables
+- **Phase 4**: 154 model descriptions (1-2 paragraphs each)
+- **Phase 5**: 315 plant descriptions (61 manual + 254 template-generated) and 33 supplier descriptions
+- **Phase 6**: 134 owner descriptions (35 manual + 99 template-generated)
+- Entity descriptions by type: plant (315), model (154), owner (134), country (39), supplier (33), containment (9), status (4)
+- Migration scripts: `add_descriptions.py`, `insert_country_descriptions.py`, `enrich_tech_lineage_descriptions.py`, `insert_model_descriptions.py`, `insert_supplier_descriptions.py`, `insert_plant_descriptions.py`, `insert_owner_descriptions.py`
+
 ### Mar 12, 2026 — Coordinate & Name Verification + Chinese Data Overhaul
 - **Name corrections** (19 changes, 46 reactors): German umlauts (Krümmel, Gösgen, Mühleberg), Ukrainian transliterations (Zaporizhzhia, Rivne, Khmelnytskyi), misspellings (Fukushima-Daiichi, Niederaichbach), official names (Chasnupp→Chashma, Kanupp→Karachi, Xudapu→Xudabao), diacritics (Krško, Cernavodă, Barsebäck, Ågesta)
 - **Coordinate verification pipeline**: Multi-phase verification across entire fleet:

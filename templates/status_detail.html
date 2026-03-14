@@ -91,6 +91,13 @@
             font-size: 1.1rem;
         }
 
+        .description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 10px;
+            max-width: 800px;
+        }
+
         /* Stats cards */
         .stats-row {
             display: grid;
@@ -390,6 +397,7 @@
                 <span class="status-badge-lg" id="status-badge"></span>
             </div>
             <p class="subtitle" id="status-subtitle"></p>
+            <p class="description" id="status-description"></p>
         </div>
     </header>
 
@@ -732,6 +740,10 @@
             const countryCount = status.countries || new Set(reactors.map(r => r.country).filter(Boolean)).size;
             document.getElementById('status-subtitle').textContent =
                 `${status.total_count} reactors across ${countryCount} countries | ${status.capacity_gw} GW total capacity`;
+
+            if (data.description) {
+                document.getElementById('status-description').textContent = data.description;
+            }
 
             // Quick stats
             document.getElementById('quick-stats').innerHTML = `
