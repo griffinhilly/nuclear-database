@@ -506,7 +506,7 @@
                 ${reactor.containment_type ? `
                 <div class="stat-row">
                     <span class="stat-label">Containment Type</span>
-                    <span class="stat-value"><a href="/containment/${encodeURIComponent(reactor.containment_type)}" style="color: var(--accent); text-decoration: none;">${reactor.containment_type}</a></span>
+                    <span class="stat-value"><a href="/containment?type=${encodeURIComponent(reactor.containment_type)}" style="color: var(--accent); text-decoration: none;">${reactor.containment_type}</a></span>
                 </div>` : ''}
             `;
 

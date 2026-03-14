@@ -7,7 +7,7 @@ Main entry point for deployment.
 import os
 import sys
 import sqlite3
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, redirect
 from functools import wraps
 from pathlib import Path
 
@@ -1741,46 +1741,63 @@ def lineage_detail(slug):
     })
 
 # =============================================================================
-# CONTAINMENT TYPE DETAIL
+# CONTAINMENT TYPES
 # =============================================================================
+
+@app.route('/containment')
+def containment_page():
+    """Serve the containment types overview page."""
+    return render_template('containment_detail.html')
 
 @app.route('/containment/<containment_type>')
 def containment_detail_page(containment_type):
-    """Serve the containment type detail page."""
-    return render_template('containment_detail.html', containment_type=containment_type)
+    """Redirect old per-type URLs to overview page with filter."""
+    return redirect(f'/containment?type={containment_type}')
 
-@app.route('/api/containment/<containment_type>/detail')
+@app.route('/api/containment/overview')
 @require_api_key('free')
-def containment_detail(containment_type):
-    """Detailed containment type data: summary stats, reactor list, country/technology breakdown."""
-    stats = query_db("""
-        SELECT
+def containment_overview():
+    """All containment types with stats, descriptions, and reactor list."""
+    types = query_db("""
+        SELECT r.containment_type,
             COUNT(*) as total,
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
             SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
             SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
-            ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
-            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age,
-            COUNT(DISTINCT c.name) as countries
+            ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw
         FROM reactors r
-        LEFT JOIN countries c ON r.country_id = c.id
-        WHERE LOWER(r.containment_type) = LOWER(?)
-    """, (containment_type,))
+        WHERE r.containment_type IS NOT NULL AND r.containment_type != ''
+        GROUP BY r.containment_type
+        ORDER BY COUNT(*) DESC
+    """)
 
-    if not stats or stats[0]['total'] == 0:
-        return jsonify({'error': f'Containment type not found: {containment_type}'}), 404
+    # Attach descriptions
+    type_list = []
+    for t in types:
+        desc = get_entity_description('containment', t['containment_type'])
+        type_list.append({
+            'name': t['containment_type'],
+            'description': desc,
+            'total': t['total'],
+            'operational': t['operational'],
+            'under_construction': t['under_construction'],
+            'shutdown': t['shutdown'],
+            'suspended': t['suspended'],
+            'capacity_gw': t['capacity_gw']
+        })
 
     reactors = query_db("""
         SELECT r.id, r.plant_name, r.unit_number, c.name as country,
                t.code as technology, m.name as model,
-               r.gross_capacity_mw, r.status, r.commercial_operation,
-               r.permanent_shutdown, r.latitude, r.longitude
+               r.containment_type, r.gross_capacity_mw, r.status,
+               r.commercial_operation, r.permanent_shutdown,
+               r.latitude, r.longitude
         FROM reactors r
         LEFT JOIN countries c ON r.country_id = c.id
         LEFT JOIN technologies t ON r.technology_id = t.id
         LEFT JOIN models m ON r.model_id = m.id
-        WHERE LOWER(r.containment_type) = LOWER(?)
+        WHERE r.containment_type IS NOT NULL AND r.containment_type != ''
         ORDER BY
             CASE r.status
                 WHEN 'Operational' THEN 1
@@ -1791,50 +1808,11 @@ def containment_detail(containment_type):
                 ELSE 6
             END,
             c.name COLLATE NOCASE, r.plant_name, r.unit_number
-    """, (containment_type,))
-
-    generation_history = query_db("""
-        SELECT
-            g.year,
-            ROUND(SUM(g.electricity_gwh) / 1000.0, 2) as total_twh,
-            COUNT(DISTINCT g.reactor_id) as reactor_count
-        FROM generation_annual g
-        JOIN reactors r ON g.reactor_id = r.id
-        WHERE LOWER(r.containment_type) = LOWER(?)
-        GROUP BY g.year
-        ORDER BY g.year
-    """, (containment_type,))
-
-    country_breakdown = query_db("""
-        SELECT c.name as country, COUNT(*) as count,
-               ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
-        FROM reactors r
-        LEFT JOIN countries c ON r.country_id = c.id
-        WHERE LOWER(r.containment_type) = LOWER(?) AND r.status = 'Operational'
-        GROUP BY c.name
-        ORDER BY count DESC
-    """, (containment_type,))
-
-    technology_breakdown = query_db("""
-        SELECT t.code as technology, COUNT(*) as count,
-               ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
-        FROM reactors r
-        LEFT JOIN technologies t ON r.technology_id = t.id
-        WHERE LOWER(r.containment_type) = LOWER(?)
-        GROUP BY t.code
-        ORDER BY count DESC
-    """, (containment_type,))
-
-    description = get_entity_description('containment', containment_type)
+    """)
 
     return jsonify({
-        'containment_type': containment_type,
-        'description': description,
-        'stats': stats[0],
-        'generation_history': generation_history,
-        'reactors': reactors,
-        'country_breakdown': country_breakdown,
-        'technology_breakdown': technology_breakdown
+        'types': type_list,
+        'reactors': reactors
     })
 
 # =============================================================================
