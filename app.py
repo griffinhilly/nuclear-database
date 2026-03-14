@@ -742,15 +742,26 @@ def model_detail(model_name):
         ORDER BY count DESC
     """, (where_param,))
 
-    # Lineage info
-    lineage_info = query_db("""
-        SELECT dl.slug as lineage_slug, dl.name as lineage_name
-        FROM reactors r
-        JOIN design_series_info dsi ON r.design_series = dsi.design_series
-        JOIN design_lineages dl ON dsi.lineage_id = dl.id
-        WHERE LOWER(r.design_series) = LOWER(?)
-        LIMIT 1
-    """, (model_name,))
+    # Lineage info — join through models for exact match, direct for design_series
+    if is_design_series:
+        lineage_info = query_db("""
+            SELECT dl.slug as lineage_slug, dl.name as lineage_name
+            FROM reactors r
+            JOIN design_series_info dsi ON r.design_series = dsi.design_series
+            JOIN design_lineages dl ON dsi.lineage_id = dl.id
+            WHERE LOWER(r.design_series) = LOWER(?)
+            LIMIT 1
+        """, (model_name,))
+    else:
+        lineage_info = query_db("""
+            SELECT dl.slug as lineage_slug, dl.name as lineage_name
+            FROM reactors r
+            JOIN models m ON r.model_id = m.id
+            JOIN design_series_info dsi ON r.design_series = dsi.design_series
+            JOIN design_lineages dl ON dsi.lineage_id = dl.id
+            WHERE LOWER(m.name) = LOWER(?)
+            LIMIT 1
+        """, (model_name,))
 
     result = {
         'model': stats[0],
