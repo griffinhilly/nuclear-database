@@ -450,7 +450,7 @@
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Technology</span>
-                    <span class="stat-value">${technologies.join(', ') || '--'}</span>
+                    <span class="stat-value">${technologies.length > 0 ? technologies.map(t => `<a href="/technology/${encodeURIComponent(t)}" style="color: var(--accent); text-decoration: none;">${t}</a>`).join(', ') : '--'}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Model</span>
@@ -525,10 +525,10 @@
                 return `
                     <tr>
                         <td><a href="/reactor/${r.id}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
-                        <td>${r.technology || '-'}</td>
+                        <td>${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" class="reactor-link">${r.technology}</a>` : '-'}</td>
                         <td>${r.model ? `<a href="/model/${encodeURIComponent(r.model)}" class="reactor-link">${r.model}</a>` : '-'}</td>
                         <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
-                        <td><span class="status-badge status-${statusClass}">${r.status}</span></td>
+                        <td><a href="/status/${encodeURIComponent(r.status)}" style="text-decoration: none;"><span class="status-badge status-${statusClass}">${r.status}</span></a></td>
                         <td>${r.commercial_operation || '-'}</td>
                         <td>${ls.total_twh || '-'}</td>
                         <td>${ls.avg_capacity_factor ? ls.avg_capacity_factor + '%' : '-'}</td>

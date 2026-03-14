@@ -844,7 +844,7 @@
                         <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #2563eb;">${r.plant_name}-${r.unit_number}</a></strong><br>
                         <a href="/country/${encodeURIComponent(r.country)}" style="color: #64748b;">${r.country}</a> | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
                         <a href="/technology/${encodeURIComponent(r.technology)}" style="color: #64748b;">${r.technology || ''}</a><br>
-                        <span style="color: ${color};">${r.status}</span>
+                        <a href="/status/${encodeURIComponent(r.status)}" style="color: ${color}; text-decoration: none;">${r.status}</a>
                     `)
                     .addTo(map);
                 });
@@ -933,7 +933,7 @@
                         <td><a href="/country/${encodeURIComponent(r.country)}" class="reactor-link">${r.country}</a></td>
                         <td><a href="/technology/${encodeURIComponent(r.technology)}" class="reactor-link">${r.technology || '-'}</a></td>
                         <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
-                        <td><span class="status-badge status-${statusClass}">${r.status}</span></td>
+                        <td><a href="/status/${encodeURIComponent(r.status)}" style="text-decoration: none;"><span class="status-badge status-${statusClass}">${r.status}</span></a></td>
                         <td>${dateCol}</td>
                     </tr>
                 `;

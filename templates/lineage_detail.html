@@ -514,8 +514,8 @@
                     })
                     .bindPopup(`
                         <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color:#2563eb">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        ${r.country} | ${r.design_series}<br>
-                        <span style="color:${color}">${r.status}</span>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color:#64748b">${r.country}</a> | ${r.design_series}<br>
+                        <a href="/status/${encodeURIComponent(r.status)}" style="color:${color}; text-decoration:none">${r.status}</a>
                     `)
                     .addTo(map);
                 });

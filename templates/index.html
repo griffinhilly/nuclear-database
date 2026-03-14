@@ -1132,7 +1132,7 @@
                     opacity: 0.8,
                     fillOpacity: 0.7
                 })
-                .bindPopup(`${site.reactors[0].country}<br><br>${popupLines}`)
+                .bindPopup(`<a href="/country/${encodeURIComponent(site.reactors[0].country)}" style="color: #64748b;">${site.reactors[0].country}</a><br><br>${popupLines}`)
                 .addTo(mapMarkers);
             });
         }

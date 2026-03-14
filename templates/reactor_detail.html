@@ -387,7 +387,7 @@
                 ${reactor.plant_name}-${reactor.unit_number}
                 <span class="status-badge status-${reactor.status === 'Operational' ? 'operational' : reactor.status === 'Under Construction' ? 'construction' : reactor.status === 'Suspended' ? 'suspended' : reactor.status === 'Long-term Shutdown' ? 'longterm' : 'shutdown'}">${reactor.status}</span>
             `;
-            document.getElementById('reactor-location').textContent = `${reactor.country} | ${reactor.technology} (${reactor.technology_name || reactor.technology})`;
+            document.getElementById('reactor-location').innerHTML = `<a href="/country/${encodeURIComponent(reactor.country)}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted #94a3b8;">${reactor.country}</a> | <a href="/technology/${encodeURIComponent(reactor.technology)}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted #94a3b8;">${reactor.technology_name || reactor.technology}</a>`;
             document.getElementById('plant-back-link').innerHTML =
                 `<a href="/plant/${encodeURIComponent(reactor.plant_name)}" class="back-link" style="margin-left: 15px;">&larr; ${reactor.plant_name} Plant</a>`;
 
@@ -423,16 +423,16 @@
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Country</span>
-                    <span class="stat-value">${reactor.country}</span>
+                    <span class="stat-value"><a href="/country/${encodeURIComponent(reactor.country)}" style="color: var(--accent); text-decoration: none;">${reactor.country}</a></span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Status</span>
-                    <span class="stat-value">${reactor.status}</span>
+                    <span class="stat-value"><a href="/status/${encodeURIComponent(reactor.status)}" style="text-decoration: none;"><span class="status-badge status-${reactor.status === 'Operational' ? 'operational' : reactor.status === 'Under Construction' ? 'construction' : reactor.status === 'Suspended' ? 'suspended' : reactor.status === 'Long-term Shutdown' ? 'longterm' : 'shutdown'}">${reactor.status}</span></a></span>
                 </div>
                 ${reactor.owner ? `
                 <div class="stat-row">
                     <span class="stat-label">Owner</span>
-                    <span class="stat-value">${reactor.owner}</span>
+                    <span class="stat-value"><a href="/owner/${encodeURIComponent(reactor.owner)}" style="color: var(--accent); text-decoration: none;">${reactor.owner}</a></span>
                 </div>` : ''}
                 ${reactor.operator ? `
                 <div class="stat-row">
@@ -481,7 +481,7 @@
             document.getElementById('design-info').innerHTML = `
                 <div class="stat-row">
                     <span class="stat-label">Technology</span>
-                    <span class="stat-value">${reactor.technology_name || reactor.technology || '--'}</span>
+                    <span class="stat-value">${reactor.technology ? `<a href="/technology/${encodeURIComponent(reactor.technology)}" style="color: var(--accent); text-decoration: none;">${reactor.technology_name || reactor.technology}</a>` : '--'}</span>
                 </div>
                 ${reactor.design_series ? `
                 <div class="stat-row">
@@ -496,12 +496,12 @@
                 ${reactor.supplier ? `
                 <div class="stat-row">
                     <span class="stat-label">Supplier</span>
-                    <span class="stat-value">${reactor.supplier}</span>
+                    <span class="stat-value"><a href="/supplier/${encodeURIComponent(reactor.supplier)}" style="color: var(--accent); text-decoration: none;">${reactor.supplier}</a></span>
                 </div>` : ''}
                 ${reactor.model ? `
                 <div class="stat-row">
                     <span class="stat-label">Reactor Model</span>
-                    <span class="stat-value">${reactor.model}</span>
+                    <span class="stat-value"><a href="/model/${encodeURIComponent(reactor.model)}" style="color: var(--accent); text-decoration: none;">${reactor.model}</a></span>
                 </div>` : ''}
                 ${reactor.containment_type ? `
                 <div class="stat-row">

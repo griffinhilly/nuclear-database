@@ -734,7 +734,7 @@
                 .pop();
 
             const techBreakdown = techMix.map(t =>
-                `${t.technology}: ${t.count} (${t.capacity_gw} GW)`
+                `<a href="/technology/${encodeURIComponent(t.technology)}" style="color: var(--accent); text-decoration: none;">${t.technology}</a>: ${t.count} (${t.capacity_gw} GW)`
             ).join(', ') || '--';
 
             document.getElementById('fleet-info').innerHTML = `
@@ -803,8 +803,8 @@
                     })
                     .bindPopup(`
                         <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #2563eb;">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        ${r.technology || ''} | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
-                        <span style="color: ${color};">${r.status}</span>
+                        ${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" style="color: #64748b;">${r.technology}</a>` : ''} | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
+                        <a href="/status/${encodeURIComponent(r.status)}" style="color: ${color}; text-decoration: none;">${r.status}</a>
                     `)
                     .addTo(map);
                 });
@@ -890,9 +890,9 @@
                 return `
                     <tr>
                         <td><a href="/plant/${encodeURIComponent(r.plant_name)}" class="reactor-link">${r.plant_name}-${r.unit_number}</a></td>
-                        <td>${r.technology || '-'}</td>
+                        <td>${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" class="reactor-link">${r.technology}</a>` : '-'}</td>
                         <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
-                        <td><span class="status-badge status-${statusClass}">${r.status}</span></td>
+                        <td><a href="/status/${encodeURIComponent(r.status)}" style="text-decoration: none;"><span class="status-badge status-${statusClass}">${r.status}</span></a></td>
                         <td>${r.commercial_operation || '-'}</td>
                     </tr>
                 `;
