@@ -1215,6 +1215,12 @@
                     return parts.join(' | ');
                 });
 
+            nodes.on('click', (event, d) => {
+                if (d.data.design_series) {
+                    window.location.href = `/model/${encodeURIComponent(d.data.design_series)}`;
+                }
+            });
+
             nodes
                 .on('mouseenter', (event, d) => {
                     const s = d.data;

@@ -733,6 +733,13 @@
                     return parts.join(' | ');
                 });
 
+            // Click to navigate to model page
+            nodes.on('click', (event, d) => {
+                if (d.data.design_series) {
+                    window.location.href = `/model/${encodeURIComponent(d.data.design_series)}`;
+                }
+            });
+
             // Tooltip on hover
             nodes
                 .on('mouseenter', (event, d) => {
