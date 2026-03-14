@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Model Details - Global Nuclear Database</title>
 
+    <!-- D3.js for tree visualization -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -164,6 +167,83 @@
         .stat-value.highlight {
             color: var(--accent);
         }
+
+        /* Tree visualization */
+        .tree-card { grid-column: 1 / -1; }
+
+        #tree-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        #tree-container svg { display: block; }
+
+        .tree-node rect {
+            stroke: var(--border);
+            stroke-width: 1.5px;
+            cursor: pointer;
+            transition: stroke 0.15s;
+        }
+
+        .tree-node rect:hover {
+            stroke: var(--accent);
+            stroke-width: 2px;
+        }
+
+        .tree-node.highlighted rect {
+            stroke: var(--accent);
+            stroke-width: 3px;
+            filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.4));
+        }
+
+        .tree-node text {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            fill: var(--text-primary);
+        }
+
+        .tree-link {
+            fill: none;
+            stroke: var(--border);
+            stroke-width: 2px;
+        }
+
+        .tree-legend {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .tree-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .tree-legend-swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            border: 1px solid var(--border);
+        }
+
+        .tree-tooltip {
+            position: absolute;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            pointer-events: none;
+            z-index: 100;
+            max-width: 300px;
+            line-height: 1.5;
+        }
+
+        .tree-tooltip strong { color: var(--accent); }
 
         /* Map */
         #model-map {
@@ -452,6 +532,14 @@
                 </div>
             </div>
 
+            <!-- Design Lineage Tree -->
+            <div id="lineage-section" class="card tree-card" style="margin-top: 30px; display: none;">
+                <h2 id="lineage-title">Design Lineage</h2>
+                <div id="tree-container"></div>
+                <div class="tree-legend" id="tree-legend"></div>
+                <p id="lineage-link" style="margin-top: 15px; text-align: right;"></p>
+            </div>
+
             <!-- Generation History Chart -->
             <div class="card" style="margin-top: 30px;">
                 <h2>Generation History</h2>
@@ -496,6 +584,14 @@
 
     <script>
         const MODEL_NAME = "{{ model_name }}";
+
+        const genColors = {
+            'Gen I':   '#94a3b8',
+            'Gen II':  '#60a5fa',
+            'Gen III': '#2563eb',
+            'Gen III+':'#1d4ed8',
+            'Gen IV':  '#7c3aed'
+        };
 
         let currentReactors = [];
         let currentSort = { column: null, ascending: true };
@@ -901,6 +997,11 @@
                 `Reactors (${reactors.length})`;
             applyFiltersAndSort();
 
+            // Lineage tree
+            if (data.lineage_slug) {
+                loadLineageTree(data.lineage_slug, data.lineage_name, data.design_series);
+            }
+
             // Country breakdown chart
             if (countryBreakdown && countryBreakdown.length > 0) {
                 const top15 = countryBreakdown.slice(0, 15);
@@ -960,6 +1061,192 @@
                 document.getElementById('country-chart').parentElement.innerHTML =
                     '<p style="text-align: center; color: #64748b; padding: 80px 0;">No country data available</p>';
             }
+        }
+
+        async function loadLineageTree(slug, lineageName, designSeries) {
+            try {
+                const response = await fetch(`/api/lineages/${encodeURIComponent(slug)}/detail`);
+                if (!response.ok) return;
+                const data = await response.json();
+
+                document.getElementById('lineage-section').style.display = 'block';
+                document.getElementById('lineage-title').innerHTML =
+                    `Design Lineage: <a href="/lineage/${slug}" style="color: var(--accent); text-decoration: none;">${lineageName}</a>`;
+                document.getElementById('lineage-link').innerHTML =
+                    `<a href="/lineage/${slug}" style="color: var(--accent); text-decoration: none;">View full ${lineageName} lineage &rarr;</a>`;
+
+                renderTree(data.series, designSeries);
+            } catch (e) {
+                console.error('Failed to load lineage tree:', e);
+            }
+        }
+
+        function renderTree(series, highlightSeries) {
+            const container = document.getElementById('tree-container');
+
+            const byName = {};
+            series.forEach(s => { byName[s.design_series] = { ...s, children: [] }; });
+
+            const roots = [];
+            series.forEach(s => {
+                const node = byName[s.design_series];
+                if (s.predecessor && byName[s.predecessor]) {
+                    byName[s.predecessor].children.push(node);
+                } else {
+                    roots.push(node);
+                }
+            });
+
+            let treeData;
+            if (roots.length === 1) {
+                treeData = roots[0];
+            } else {
+                treeData = { design_series: '', children: roots, _virtual: true };
+            }
+
+            const nodeW = 160;
+            const nodeH = 70;
+            const marginLeft = 20;
+            const marginTop = 20;
+            const marginRight = 40;
+            const marginBottom = 20;
+
+            const hierarchy = d3.hierarchy(treeData);
+            const treeLayout = d3.tree().nodeSize([nodeH + 20, nodeW + 60]);
+            treeLayout(hierarchy);
+
+            let minY = Infinity, maxY = -Infinity, minX = Infinity, maxX = -Infinity;
+            hierarchy.each(d => {
+                if (d.x < minX) minX = d.x;
+                if (d.x > maxX) maxX = d.x;
+                if (d.y < minY) minY = d.y;
+                if (d.y > maxY) maxY = d.y;
+            });
+
+            const svgW = (maxY - minY) + nodeW + marginLeft + marginRight + 60;
+            const svgH = (maxX - minX) + nodeH + marginTop + marginBottom + 40;
+
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', svgW)
+                .attr('height', svgH);
+
+            const g = svg.append('g')
+                .attr('transform', `translate(${marginLeft - minY + 30}, ${marginTop - minX + 20})`);
+
+            const tooltip = d3.select('body').append('div')
+                .attr('class', 'tree-tooltip')
+                .style('display', 'none');
+
+            g.selectAll('.tree-link')
+                .data(hierarchy.links().filter(d => !d.source.data._virtual))
+                .join('path')
+                .attr('class', 'tree-link')
+                .attr('d', d => {
+                    const sx = d.source.y + nodeW;
+                    const sy = d.source.x + nodeH / 2;
+                    const tx = d.target.y;
+                    const ty = d.target.x + nodeH / 2;
+                    const mx = (sx + tx) / 2;
+                    return `M${sx},${sy} C${mx},${sy} ${mx},${ty} ${tx},${ty}`;
+                });
+
+            if (treeData._virtual) {
+                g.selectAll('.tree-link-virtual')
+                    .data(hierarchy.links().filter(d => d.source.data._virtual))
+                    .join('path')
+                    .attr('class', 'tree-link')
+                    .attr('d', d => {
+                        const tx = d.target.y;
+                        const ty = d.target.x + nodeH / 2;
+                        return `M0,${ty} L${tx},${ty}`;
+                    });
+            }
+
+            const nodes = g.selectAll('.tree-node')
+                .data(hierarchy.descendants().filter(d => !d.data._virtual))
+                .join('g')
+                .attr('class', d => `tree-node${d.data.design_series === highlightSeries ? ' highlighted' : ''}`)
+                .attr('transform', d => `translate(${d.y}, ${d.x})`);
+
+            nodes.append('rect')
+                .attr('width', nodeW)
+                .attr('height', nodeH)
+                .attr('rx', 8)
+                .attr('ry', 8)
+                .attr('fill', d => genColors[d.data.generation_label] || '#e2e8f0');
+
+            nodes.append('text')
+                .attr('x', nodeW / 2)
+                .attr('y', 22)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '13px')
+                .attr('font-weight', '700')
+                .attr('fill', d => {
+                    const label = d.data.generation_label || '';
+                    return (label === 'Gen I' || !label) ? '#1e293b' : '#fff';
+                })
+                .text(d => d.data.design_series);
+
+            nodes.append('text')
+                .attr('x', nodeW / 2)
+                .attr('y', 40)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '11px')
+                .attr('fill', d => {
+                    const label = d.data.generation_label || '';
+                    return (label === 'Gen I' || !label) ? '#64748b' : 'rgba(255,255,255,0.85)';
+                })
+                .text(d => `${d.data.reactor_count} reactor${d.data.reactor_count !== 1 ? 's' : ''}`);
+
+            nodes.append('text')
+                .attr('x', nodeW / 2)
+                .attr('y', 56)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '10px')
+                .attr('fill', d => {
+                    const label = d.data.generation_label || '';
+                    return (label === 'Gen I' || !label) ? '#94a3b8' : 'rgba(255,255,255,0.7)';
+                })
+                .text(d => {
+                    const parts = [];
+                    if (d.data.first_commercial_year) parts.push(d.data.first_commercial_year);
+                    if (d.data.typical_capacity_mwe) parts.push(d.data.typical_capacity_mwe + ' MWe');
+                    return parts.join(' | ');
+                });
+
+            nodes
+                .on('mouseenter', (event, d) => {
+                    const s = d.data;
+                    tooltip
+                        .style('display', 'block')
+                        .html(`
+                            <strong>${s.design_series}</strong> (${s.generation_label || '?'})<br>
+                            ${s.reactor_count} reactors: ${s.operational} op, ${s.under_construction} UC, ${s.shutdown} shut<br>
+                            ${s.typical_capacity_mwe ? 'Capacity: ' + s.typical_capacity_mwe + ' MWe<br>' : ''}
+                            ${s.first_commercial_year ? 'First commercial: ' + s.first_commercial_year + '<br>' : ''}
+                            ${s.description ? '<br><em>' + s.description + '</em>' : ''}
+                        `);
+                })
+                .on('mousemove', (event) => {
+                    tooltip
+                        .style('left', (event.pageX + 15) + 'px')
+                        .style('top', (event.pageY - 10) + 'px');
+                })
+                .on('mouseleave', () => {
+                    tooltip.style('display', 'none');
+                });
+
+            const usedGens = [...new Set(series.map(s => s.generation_label).filter(Boolean))];
+            const genOrder = ['Gen I', 'Gen II', 'Gen III', 'Gen III+', 'Gen IV'];
+            const sortedGens = genOrder.filter(g => usedGens.includes(g));
+
+            document.getElementById('tree-legend').innerHTML = sortedGens.map(gen => `
+                <div class="tree-legend-item">
+                    <div class="tree-legend-swatch" style="background:${genColors[gen]}"></div>
+                    ${gen}
+                </div>
+            `).join('');
         }
 
         function renderReactorTable(reactors) {

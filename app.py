@@ -695,12 +695,39 @@ def model_detail(model_name):
         ORDER BY count DESC
     """, (model_name,))
 
-    return jsonify({
+    # Lineage info for this model's design series
+    lineage_info = query_db("""
+        SELECT dl.slug as lineage_slug, dl.name as lineage_name
+        FROM reactors r
+        JOIN models m ON r.model_id = m.id
+        JOIN design_series_info dsi ON r.design_series = dsi.design_series
+        JOIN design_lineages dl ON dsi.lineage_id = dl.id
+        WHERE LOWER(m.name) = LOWER(?)
+        LIMIT 1
+    """, (model_name,))
+
+    result = {
         'model': stats[0],
         'generation_history': generation_history,
         'reactors': reactors,
         'country_breakdown': country_breakdown
-    })
+    }
+    if lineage_info:
+        result['lineage_slug'] = lineage_info[0]['lineage_slug']
+        result['lineage_name'] = lineage_info[0]['lineage_name']
+
+    # Get primary design_series for this model
+    ds_info = query_db("""
+        SELECT r.design_series
+        FROM reactors r
+        JOIN models m ON r.model_id = m.id
+        WHERE LOWER(m.name) = LOWER(?) AND r.design_series IS NOT NULL
+        LIMIT 1
+    """, (model_name,))
+    if ds_info:
+        result['design_series'] = ds_info[0]['design_series']
+
+    return jsonify(result)
 
 @app.route('/country/<country>')
 def country_detail_page(country):
@@ -1686,6 +1713,100 @@ def lineage_detail(slug):
         'reactors': reactors,
         'stats': stats,
         'country_breakdown': country_breakdown
+    })
+
+# =============================================================================
+# CONTAINMENT TYPE DETAIL
+# =============================================================================
+
+@app.route('/containment/<containment_type>')
+def containment_detail_page(containment_type):
+    """Serve the containment type detail page."""
+    return render_template('containment_detail.html', containment_type=containment_type)
+
+@app.route('/api/containment/<containment_type>/detail')
+@require_api_key('free')
+def containment_detail(containment_type):
+    """Detailed containment type data: summary stats, reactor list, country/technology breakdown."""
+    stats = query_db("""
+        SELECT
+            COUNT(*) as total,
+            SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
+            SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
+            ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
+            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age,
+            COUNT(DISTINCT c.name) as countries
+        FROM reactors r
+        LEFT JOIN countries c ON r.country_id = c.id
+        WHERE LOWER(r.containment_type) = LOWER(?)
+    """, (containment_type,))
+
+    if not stats or stats[0]['total'] == 0:
+        return jsonify({'error': f'Containment type not found: {containment_type}'}), 404
+
+    reactors = query_db("""
+        SELECT r.id, r.plant_name, r.unit_number, c.name as country,
+               t.code as technology, m.name as model,
+               r.gross_capacity_mw, r.status, r.commercial_operation,
+               r.permanent_shutdown, r.latitude, r.longitude
+        FROM reactors r
+        LEFT JOIN countries c ON r.country_id = c.id
+        LEFT JOIN technologies t ON r.technology_id = t.id
+        LEFT JOIN models m ON r.model_id = m.id
+        WHERE LOWER(r.containment_type) = LOWER(?)
+        ORDER BY
+            CASE r.status
+                WHEN 'Operational' THEN 1
+                WHEN 'Under Construction' THEN 2
+                WHEN 'Suspended' THEN 3
+                WHEN 'Long-term Shutdown' THEN 4
+                WHEN 'Permanent Shutdown' THEN 5
+                ELSE 6
+            END,
+            c.name COLLATE NOCASE, r.plant_name, r.unit_number
+    """, (containment_type,))
+
+    generation_history = query_db("""
+        SELECT
+            g.year,
+            ROUND(SUM(g.electricity_gwh) / 1000.0, 2) as total_twh,
+            COUNT(DISTINCT g.reactor_id) as reactor_count
+        FROM generation_annual g
+        JOIN reactors r ON g.reactor_id = r.id
+        WHERE LOWER(r.containment_type) = LOWER(?)
+        GROUP BY g.year
+        ORDER BY g.year
+    """, (containment_type,))
+
+    country_breakdown = query_db("""
+        SELECT c.name as country, COUNT(*) as count,
+               ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
+        FROM reactors r
+        LEFT JOIN countries c ON r.country_id = c.id
+        WHERE LOWER(r.containment_type) = LOWER(?) AND r.status = 'Operational'
+        GROUP BY c.name
+        ORDER BY count DESC
+    """, (containment_type,))
+
+    technology_breakdown = query_db("""
+        SELECT t.code as technology, COUNT(*) as count,
+               ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
+        FROM reactors r
+        LEFT JOIN technologies t ON r.technology_id = t.id
+        WHERE LOWER(r.containment_type) = LOWER(?)
+        GROUP BY t.code
+        ORDER BY count DESC
+    """, (containment_type,))
+
+    return jsonify({
+        'containment_type': containment_type,
+        'stats': stats[0],
+        'generation_history': generation_history,
+        'reactors': reactors,
+        'country_breakdown': country_breakdown,
+        'technology_breakdown': technology_breakdown
     })
 
 # =============================================================================
