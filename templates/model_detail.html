@@ -903,6 +903,13 @@
                     <span class="stat-label">Most Recent Online</span>
                     <span class="stat-value">${lastOnline || '--'}</span>
                 </div>
+                ${data.model_variants && data.model_variants.length > 1 ? `
+                <div class="stat-row">
+                    <span class="stat-label">Model Variants</span>
+                    <span class="stat-value">${data.model_variants.map(v =>
+                        `<a href="/model/${encodeURIComponent(v)}" style="color: var(--accent); text-decoration: none;">${v}</a>`
+                    ).join(', ')}</span>
+                </div>` : ''}
             `;
 
             // Show content before map init (Leaflet needs visible container)

@@ -630,16 +630,17 @@ def plant_detail(plant_name):
         }
     })
 
-@app.route('/model/<model_name>')
+@app.route('/model/<path:model_name>')
 def model_detail_page(model_name):
     """Serve the model detail page."""
     return render_template('model_detail.html', model_name=model_name)
 
-@app.route('/api/models/<model_name>/detail')
+@app.route('/api/models/<path:model_name>/detail')
 @require_api_key('free')
 def model_detail(model_name):
-    """Detailed model page data: summary stats, generation history, reactor list, country breakdown."""
-    # Model summary stats
+    """Detailed model page data: summary stats, generation history, reactor list, country breakdown.
+    Falls back to design_series lookup if no exact model name match (for lineage tree links)."""
+    # Try exact model name first
     stats = query_db("""
         SELECT
             m.name,
@@ -657,34 +658,66 @@ def model_detail(model_name):
         GROUP BY m.name, t.code
     """, (model_name,))
 
+    # If no model match, try design_series lookup (aggregates all model variants)
+    is_design_series = False
+    if not stats:
+        ds_check = query_db("SELECT 1 FROM reactors WHERE LOWER(design_series) = LOWER(?) LIMIT 1", (model_name,))
+        if not ds_check:
+            return jsonify({'error': f'Model not found: {model_name}'}), 404
+        is_design_series = True
+        stats = query_db("""
+            SELECT
+                ? as name,
+                t.code as technology_code,
+                COUNT(*) as total,
+                SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
+                SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+                SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+                ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
+                ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+            FROM reactors r
+            LEFT JOIN technologies t ON r.technology_id = t.id
+            WHERE LOWER(r.design_series) = LOWER(?)
+            GROUP BY t.code
+        """, (model_name, model_name))
+
     if not stats:
         return jsonify({'error': f'Model not found: {model_name}'}), 404
 
-    # Generation history: sum by year across all reactors with this model
-    generation_history = query_db("""
+    # Build WHERE clause based on lookup type
+    if is_design_series:
+        where_clause = "LOWER(r.design_series) = LOWER(?)"
+        where_param = model_name
+    else:
+        where_clause = "LOWER(m.name) = LOWER(?)"
+        where_param = model_name
+
+    # Generation history
+    gen_join = "JOIN models m ON r.model_id = m.id" if not is_design_series else ""
+    generation_history = query_db(f"""
         SELECT
             g.year,
             ROUND(SUM(g.electricity_gwh) / 1000.0, 2) as total_twh,
             COUNT(DISTINCT g.reactor_id) as reactor_count
         FROM generation_annual g
         JOIN reactors r ON g.reactor_id = r.id
-        JOIN models m ON r.model_id = m.id
-        WHERE LOWER(m.name) = LOWER(?)
+        {gen_join}
+        WHERE {where_clause}
         GROUP BY g.year
         ORDER BY g.year
-    """, (model_name,))
+    """, (where_param,))
 
-    # All reactors with this model
-    reactors = query_db("""
+    # All reactors
+    reactors = query_db(f"""
         SELECT r.id, r.plant_name, r.unit_number, c.name as country,
-               t.code as technology,
+               t.code as technology, m.name as model,
                r.gross_capacity_mw, r.status, r.commercial_operation,
                r.permanent_shutdown, r.latitude, r.longitude
         FROM reactors r
         JOIN models m ON r.model_id = m.id
         LEFT JOIN countries c ON r.country_id = c.id
         LEFT JOIN technologies t ON r.technology_id = t.id
-        WHERE LOWER(m.name) = LOWER(?)
+        WHERE {where_clause}
         ORDER BY
             CASE r.status
                 WHEN 'Operational' THEN 1
@@ -695,28 +728,27 @@ def model_detail(model_name):
                 ELSE 6
             END,
             c.name COLLATE NOCASE, r.plant_name, r.unit_number
-    """, (model_name,))
+    """, (where_param,))
 
     # Country breakdown
-    country_breakdown = query_db("""
+    country_breakdown = query_db(f"""
         SELECT c.name as country, COUNT(*) as count,
                ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
         FROM reactors r
-        JOIN models m ON r.model_id = m.id
+        {"JOIN models m ON r.model_id = m.id" if not is_design_series else ""}
         LEFT JOIN countries c ON r.country_id = c.id
-        WHERE LOWER(m.name) = LOWER(?)
+        WHERE {where_clause}
         GROUP BY c.name
         ORDER BY count DESC
-    """, (model_name,))
+    """, (where_param,))
 
-    # Lineage info for this model's design series
+    # Lineage info
     lineage_info = query_db("""
         SELECT dl.slug as lineage_slug, dl.name as lineage_name
         FROM reactors r
-        JOIN models m ON r.model_id = m.id
         JOIN design_series_info dsi ON r.design_series = dsi.design_series
         JOIN design_lineages dl ON dsi.lineage_id = dl.id
-        WHERE LOWER(m.name) = LOWER(?)
+        WHERE LOWER(r.design_series) = LOWER(?)
         LIMIT 1
     """, (model_name,))
 
@@ -730,18 +762,31 @@ def model_detail(model_name):
         result['lineage_slug'] = lineage_info[0]['lineage_slug']
         result['lineage_name'] = lineage_info[0]['lineage_name']
 
-    # Get primary design_series for this model
-    ds_info = query_db("""
-        SELECT r.design_series
-        FROM reactors r
-        JOIN models m ON r.model_id = m.id
-        WHERE LOWER(m.name) = LOWER(?) AND r.design_series IS NOT NULL
-        LIMIT 1
-    """, (model_name,))
-    if ds_info:
-        result['design_series'] = ds_info[0]['design_series']
-
-    result['description'] = get_entity_description('model', model_name)
+    # Design series
+    if is_design_series:
+        result['design_series'] = model_name
+        # Use design_series_info description as fallback
+        dsi_desc = query_db("SELECT description FROM design_series_info WHERE LOWER(design_series) = LOWER(?)", (model_name,))
+        result['description'] = dsi_desc[0]['description'] if dsi_desc and dsi_desc[0]['description'] else None
+        # List model variants under this series
+        variants = query_db("""
+            SELECT DISTINCT m.name FROM reactors r
+            JOIN models m ON r.model_id = m.id
+            WHERE LOWER(r.design_series) = LOWER(?)
+            ORDER BY m.name
+        """, (model_name,))
+        result['model_variants'] = [v['name'] for v in variants]
+    else:
+        ds_info = query_db("""
+            SELECT r.design_series
+            FROM reactors r
+            JOIN models m ON r.model_id = m.id
+            WHERE LOWER(m.name) = LOWER(?) AND r.design_series IS NOT NULL
+            LIMIT 1
+        """, (model_name,))
+        if ds_info:
+            result['design_series'] = ds_info[0]['design_series']
+        result['description'] = get_entity_description('model', model_name)
 
     return jsonify(result)
 
