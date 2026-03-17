@@ -304,6 +304,24 @@
                     </div>
                 </div>
 
+                <!-- Capacity History (shown only when data exists) -->
+                <div class="card" id="capacity-history-card" style="display: none;">
+                    <h2>Capacity History</h2>
+                    <table class="gen-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Gross (MW)</th>
+                                <th>Net (MW)</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="capacity-history-table">
+                        </tbody>
+                    </table>
+                </div>
+
                 <!-- Location Map -->
                 <div class="card">
                     <h2>Location</h2>
@@ -335,6 +353,7 @@
                             <th>Year</th>
                             <th>Generation (GWh)</th>
                             <th>Capacity Factor (%)</th>
+                            <th id="ref-capacity-header" style="display: none;">Reference Capacity (MW)</th>
                         </tr>
                     </thead>
                     <tbody id="generation-table">
@@ -381,6 +400,7 @@
             const reactor = data.reactor;
             const stats = data.lifetime_stats;
             const history = data.generation_history;
+            const capacityChanges = data.capacity_changes || [];
 
             // Update header
             document.getElementById('reactor-name').innerHTML = `
@@ -534,6 +554,22 @@
                 </div>
             `;
 
+            // Capacity history
+            if (capacityChanges.length > 0) {
+                const typeLabels = {initial: 'Initial', uprate: 'Uprate', derate: 'Derate', restart: 'Restart'};
+                const typeColors = {initial: '#64748b', uprate: '#16a34a', derate: '#dc2626', restart: '#2563eb'};
+                document.getElementById('capacity-history-table').innerHTML = capacityChanges.map(cc => `
+                    <tr>
+                        <td>${cc.effective_date}</td>
+                        <td><span style="color: ${typeColors[cc.change_type] || '#64748b'}; font-weight: 600;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
+                        <td>${cc.gross_capacity_mw.toLocaleString()}</td>
+                        <td>${cc.net_capacity_mw ? cc.net_capacity_mw.toLocaleString() : '--'}</td>
+                        <td style="color: var(--text-secondary); font-size: 0.85rem;">${cc.notes || ''}</td>
+                    </tr>
+                `).join('');
+                document.getElementById('capacity-history-card').style.display = 'block';
+            }
+
             // Show content before map init (Leaflet needs visible container)
             document.getElementById('loading').style.display = 'none';
             document.getElementById('content').style.display = 'block';
@@ -602,12 +638,17 @@
                     }
                 });
 
-                // Generation table
+                // Generation table (show reference capacity column if capacity changes exist)
+                const hasCapChanges = capacityChanges.length > 0;
+                if (hasCapChanges) {
+                    document.getElementById('ref-capacity-header').style.display = '';
+                }
                 document.getElementById('generation-table').innerHTML = history.map(h => `
                     <tr>
                         <td>${h.year}</td>
                         <td>${h.electricity_gwh ? h.electricity_gwh.toLocaleString() : '--'}</td>
                         <td>${h.capacity_factor ? h.capacity_factor.toFixed(1) + '%' : '--'}</td>
+                        ${hasCapChanges ? `<td>${h.effective_capacity_mw ? h.effective_capacity_mw.toLocaleString() : '--'}</td>` : ''}
                     </tr>
                 `).join('');
             } else {

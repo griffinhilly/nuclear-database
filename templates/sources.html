@@ -386,10 +386,12 @@
                     Capacity factors are computed at query time from PRIS generation data:
                 </p>
                 <p style="padding-left: 20px;">
-                    <code>CF = Electricity (GWh) / (Gross Capacity (MW) / 1000 x 8760) x 100%</code>
+                    <code>CF = Electricity (GWh) / (Effective Gross Capacity (MW) / 1000 x 8760) x 100%</code>
                 </p>
                 <p>
-                    This uses gross capacity and assumes a full calendar year (8,760 hours). First-year and
+                    For reactors with documented capacity changes (uprates or derates), the effective gross capacity
+                    for each year is the most recent capacity in effect at year-end. For all other reactors, the
+                    current gross capacity is used. This assumes a full calendar year (8,760 hours). First-year and
                     final-year capacity factors may be low due to partial-year operation.
                 </p>
             </div>

@@ -52,6 +52,18 @@
 | `insert_supplier_descriptions.py` | Insert 33 supplier descriptions into entity_descriptions |
 | `insert_plant_descriptions.py` | Insert 315 plant descriptions (61 manual + 254 template) |
 | `insert_owner_descriptions.py` | Insert 134 owner descriptions (35 manual + 99 template) |
+| `update_model_descriptions.py` | De-emphasize containment in 29 model descriptions |
+| `update_plant_descriptions.py` | Replace 41 template plant descriptions with manual ones |
+| `update_owner_descriptions.py` | Replace 41 template owner descriptions with manual ones |
+| `add_new_owner_descriptions.py` | Add 20 entity descriptions for newly assigned owners |
+| `fix_generation_data.py` | Fix incorrect generation data by re-fetching from IAEA PRIS (uses curl) |
+| `add_uprates.py` | Create capacity_changes table, populate historical uprates/derates, clean bad generation data |
+| `fix_remaining_cf.py` | Fix CF > 102% entries: Cook 2 gross, Turkey Point gross, Russian VVER uprates, Wolsong 2 derate, bad generation data |
+| `update_remaining_descriptions.py` | Replace 91 template plant descriptions (prototypes, experimental, shutdown, international) |
+| `update_all_owner_descriptions.py` | Replace all 66 template owner descriptions with manual ones |
+| `apply_all_updates.py` | Batch apply: 121 agent-written plant descriptions + data quality fixes + ownership updates |
+| `fix_last_templates.py` | Fix 25 name-mismatched template descriptions (diacritics, parenthetical names) |
+| `fix_owners.py` | Fill 90 NULL reactor owners across 15 countries |
 
 ## Coordinate Verification Scripts
 | File | Description |
@@ -86,6 +98,7 @@
 | `INDEX.md` | This file — complete file listing |
 | `MEMORY.md` | Working notes across sessions |
 | `PLAN.md` | Project roadmap and next steps |
+| `STATE.md` | Session-scoped snapshot of what's in flight |
 | `PLANNED_ADDITIONS.md` | Original backlog of planned features |
 | `Nuclear_DB_Revisions.md` | User's 13-item revision list (untracked) |
 

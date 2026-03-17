@@ -454,6 +454,14 @@
                 </div>
             </div>
 
+            <!-- Capacity History Chart -->
+            <div class="card" style="margin-top: 30px;">
+                <h2>Installed Capacity History</h2>
+                <div class="chart-container">
+                    <canvas id="capacity-chart"></canvas>
+                </div>
+            </div>
+
             <!-- Reactor Table -->
             <div class="card" style="margin-top: 30px;">
                 <h2 id="reactor-table-title">Reactors</h2>
@@ -697,7 +705,7 @@
             }
         }
 
-        function renderCountryDetails(data) {
+        async function renderCountryDetails(data) {
             const country = data.country;
             const history = data.generation_history;
             const reactors = data.reactors;
@@ -885,6 +893,52 @@
                 document.getElementById('generation-chart').parentElement.innerHTML =
                     '<p style="text-align: center; color: #64748b; padding: 80px 0;">No generation data available</p>';
             }
+
+            // Capacity history chart
+            try {
+                const capResp = await fetch(`/api/capacity/history?country=${encodeURIComponent(COUNTRY_NAME)}`);
+                const capData = await capResp.json();
+                const capHistory = capData.history;
+                if (capHistory && capHistory.length > 0) {
+                    new Chart(document.getElementById('capacity-chart'), {
+                        type: 'line',
+                        data: {
+                            labels: capHistory.map(d => d.year),
+                            datasets: [{
+                                label: 'Installed Capacity (GW)',
+                                data: capHistory.map(d => d.capacity_gw),
+                                borderColor: '#16a34a',
+                                backgroundColor: 'rgba(22, 163, 106, 0.1)',
+                                fill: true,
+                                tension: 0.3,
+                                pointRadius: 0,
+                                pointHoverRadius: 5,
+                                pointBackgroundColor: '#16a34a'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: {
+                                    callbacks: {
+                                        label: (ctx) => `${capHistory[ctx.dataIndex].capacity_gw} GW`,
+                                        afterLabel: (ctx) => `${capHistory[ctx.dataIndex].reactor_count} reactors`
+                                    }
+                                }
+                            },
+                            scales: {
+                                x: { grid: { color: '#e2e8f0' }, ticks: { color: '#64748b', maxTicksLimit: 12 } },
+                                y: { grid: { color: '#e2e8f0' }, ticks: { color: '#64748b', callback: (val) => val + ' GW' } }
+                            }
+                        }
+                    });
+                } else {
+                    document.getElementById('capacity-chart').parentElement.innerHTML =
+                        '<p style="text-align: center; color: #64748b; padding: 80px 0;">No capacity data available</p>';
+                }
+            } catch (e) { console.error('Capacity chart error:', e); }
 
             // Reactor table
             document.getElementById('reactor-table-title').textContent =

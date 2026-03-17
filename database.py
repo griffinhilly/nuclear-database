@@ -195,6 +195,25 @@ def create_database():
     """)
 
     # =========================================================================
+    # CAPACITY CHANGES (Historical uprates/derates)
+    # =========================================================================
+
+    cursor.execute("""
+        CREATE TABLE capacity_changes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            reactor_id INTEGER NOT NULL,
+            effective_date DATE NOT NULL,
+            gross_capacity_mw REAL NOT NULL,
+            net_capacity_mw REAL,
+            change_type TEXT NOT NULL,
+            source TEXT,
+            notes TEXT,
+            FOREIGN KEY (reactor_id) REFERENCES reactors(id),
+            UNIQUE(reactor_id, effective_date)
+        )
+    """)
+
+    # =========================================================================
     # INDEXES for fast querying
     # =========================================================================
 
@@ -206,6 +225,7 @@ def create_database():
     cursor.execute("CREATE INDEX idx_generation_year ON generation_annual(year)")
     cursor.execute("CREATE INDEX idx_generation_reactor_year ON generation_annual(reactor_id, year)")
     cursor.execute("CREATE INDEX idx_planned_country ON planned_reactors(country_id)")
+    cursor.execute("CREATE INDEX idx_capacity_changes_reactor_date ON capacity_changes(reactor_id, effective_date)")
 
     # =========================================================================
     # VIEWS for common queries

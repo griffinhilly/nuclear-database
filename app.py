@@ -49,6 +49,20 @@ def query_db(sql, params=None):
     conn.close()
     return results
 
+# SQL subquery: effective gross capacity for a (reactor, year) pair.
+# Uses capacity_changes table when available, falls back to reactors.gross_capacity_mw.
+# Requires 'r' aliased to reactors and 'g' aliased to generation_annual.
+EFFECTIVE_CAPACITY = """
+    COALESCE(
+        (SELECT cc.gross_capacity_mw
+         FROM capacity_changes cc
+         WHERE cc.reactor_id = r.id
+           AND cc.effective_date <= (g.year || '-12-31')
+         ORDER BY cc.effective_date DESC
+         LIMIT 1),
+        r.gross_capacity_mw
+    )"""
+
 def get_entity_description(entity_type, entity_name):
     """Look up description from entity_descriptions table."""
     result = query_db(
@@ -491,10 +505,11 @@ def get_reactor(reactor_id):
 
     r = reactor[0]
 
-    # Get generation history (calculate capacity factor from generation and capacity)
-    generation = query_db("""
+    # Get generation history (calculate capacity factor using historical capacity)
+    generation = query_db(f"""
         SELECT g.year, g.electricity_gwh,
-               ROUND(g.electricity_gwh / (r.gross_capacity_mw / 1000.0 * 8760) * 100, 1) as capacity_factor
+               ROUND(g.electricity_gwh / ({EFFECTIVE_CAPACITY} / 1000.0 * 8760) * 100, 1) as capacity_factor,
+               ROUND({EFFECTIVE_CAPACITY}, 0) as effective_capacity_mw
         FROM generation_annual g
         JOIN reactors r ON g.reactor_id = r.id
         WHERE g.reactor_id = ?
@@ -502,12 +517,12 @@ def get_reactor(reactor_id):
         ORDER BY g.year DESC
     """, (reactor_id,))
 
-    # Get lifetime stats (calculate avg capacity factor from generation and capacity)
-    lifetime_stats = query_db("""
+    # Get lifetime stats (calculate avg capacity factor using historical capacity)
+    lifetime_stats = query_db(f"""
         SELECT
             SUM(g.electricity_gwh) as total_gwh,
             AVG(g.electricity_gwh) as avg_annual_gwh,
-            ROUND(AVG(g.electricity_gwh / (r.gross_capacity_mw / 1000.0 * 8760) * 100), 1) as avg_capacity_factor,
+            ROUND(AVG(g.electricity_gwh / ({EFFECTIVE_CAPACITY} / 1000.0 * 8760) * 100), 1) as avg_capacity_factor,
             MIN(g.year) as first_year,
             MAX(g.year) as last_year,
             COUNT(*) as years_operating
@@ -516,6 +531,15 @@ def get_reactor(reactor_id):
         WHERE g.reactor_id = ?
           AND r.gross_capacity_mw > 0
     """, (reactor_id,))[0]
+
+    # Get capacity changes (uprates/derates) if any
+    capacity_changes = query_db("""
+        SELECT effective_date, gross_capacity_mw, net_capacity_mw,
+               change_type, source, notes
+        FROM capacity_changes
+        WHERE reactor_id = ?
+        ORDER BY effective_date
+    """, (reactor_id,))
 
     return jsonify({
         'reactor': r,
@@ -527,7 +551,8 @@ def get_reactor(reactor_id):
             'years_operating': lifetime_stats['years_operating'],
             'first_year': lifetime_stats['first_year'],
             'last_year': lifetime_stats['last_year']
-        }
+        },
+        'capacity_changes': capacity_changes
     })
 
 @app.route('/reactor/<int:reactor_id>')
@@ -576,7 +601,7 @@ def plant_detail(plant_name):
         SELECT g.reactor_id,
                ROUND(SUM(g.electricity_gwh) / 1000.0, 2) as total_twh,
                ROUND(AVG(g.electricity_gwh), 1) as avg_annual_gwh,
-               ROUND(AVG(g.electricity_gwh / (r.gross_capacity_mw / 1000.0 * 8760) * 100), 1) as avg_capacity_factor,
+               ROUND(AVG(g.electricity_gwh / ({EFFECTIVE_CAPACITY} / 1000.0 * 8760) * 100), 1) as avg_capacity_factor,
                MIN(g.year) as first_year, MAX(g.year) as last_year,
                COUNT(*) as years_operating
         FROM generation_annual g
@@ -606,6 +631,17 @@ def plant_detail(plant_name):
 
     description = get_entity_description('plant', plant_name)
 
+    # Get capacity changes for all reactors at this plant
+    capacity_changes = query_db(f"""
+        SELECT cc.reactor_id, r.unit_number, cc.effective_date,
+               cc.gross_capacity_mw, cc.net_capacity_mw,
+               cc.change_type, cc.notes
+        FROM capacity_changes cc
+        JOIN reactors r ON cc.reactor_id = r.id
+        WHERE cc.reactor_id IN ({placeholders})
+        ORDER BY r.unit_number, cc.effective_date
+    """, reactor_ids)
+
     return jsonify({
         'plant': {
             'name': plant_name,
@@ -622,6 +658,7 @@ def plant_detail(plant_name):
             'lifetime_stats': unit_stats_map.get(r['id'], {})
         } for r in reactors],
         'generation_history': generation_history,
+        'capacity_changes': capacity_changes,
         'plant_stats': {
             'total_generation_twh': round(plant_total_gwh / 1000, 2) if plant_total_gwh else None,
             'years_with_data': len(plant_years),
@@ -1615,7 +1652,84 @@ def run_validation():
     """)[0]
     results['pris_coverage'] = pris_coverage
 
+    # 5. Capacity factor anomalies (CF > 100% using historical capacity)
+    cf_anomalies = query_db(f"""
+        SELECT r.id, r.plant_name, r.unit_number, c.name as country,
+               g.year, g.electricity_gwh,
+               ROUND({EFFECTIVE_CAPACITY}, 0) as effective_capacity_mw,
+               ROUND(g.electricity_gwh / ({EFFECTIVE_CAPACITY} / 1000.0 * 8760) * 100, 1) as capacity_factor
+        FROM generation_annual g
+        JOIN reactors r ON g.reactor_id = r.id
+        JOIN countries c ON r.country_id = c.id
+        WHERE r.gross_capacity_mw > 0
+          AND g.electricity_gwh / ({EFFECTIVE_CAPACITY} / 1000.0 * 8760) * 100 > 105
+        ORDER BY g.electricity_gwh / ({EFFECTIVE_CAPACITY} / 1000.0 * 8760) * 100 DESC
+    """)
+    results['cf_anomalies'] = cf_anomalies
+
     return results
+
+
+@app.route('/api/capacity/history')
+@require_api_key('free')
+def capacity_history():
+    """Installed nuclear capacity by year, optionally filtered by country or technology."""
+    country = request.args.get('country')
+    technology = request.args.get('technology')
+
+    conn = get_db()
+    cursor = conn.cursor()
+
+    # Build filter clauses
+    joins = ""
+    where_extra = ""
+    filter_params = []
+    if country:
+        joins += " JOIN countries c ON r.country_id = c.id"
+        where_extra += " AND LOWER(c.name) = LOWER(?)"
+        filter_params.append(country)
+    if technology:
+        joins += " JOIN technologies t ON r.technology_id = t.id"
+        where_extra += " AND UPPER(t.code) = UPPER(?)"
+        filter_params.append(technology)
+
+    result = []
+    for year in range(1954, 2027):
+        year_end = f'{year}-12-31'
+        year_start = f'{year}-01-01'
+
+        sql = f"""
+            SELECT COUNT(*) as reactor_count,
+                   ROUND(SUM(
+                       COALESCE(
+                           (SELECT cc.gross_capacity_mw
+                            FROM capacity_changes cc
+                            WHERE cc.reactor_id = r.id
+                              AND cc.effective_date <= ?
+                            ORDER BY cc.effective_date DESC
+                            LIMIT 1),
+                           r.gross_capacity_mw
+                       )
+                   ) / 1000.0, 1) as capacity_gw
+            FROM reactors r
+            {joins}
+            WHERE r.commercial_operation IS NOT NULL
+              AND r.commercial_operation <= ?
+              AND (r.permanent_shutdown IS NULL OR r.permanent_shutdown >= ?)
+              {where_extra}
+        """
+        params = [year_end, year_end, year_start] + filter_params
+        cursor.execute(sql, params)
+        row = cursor.fetchone()
+        if row['reactor_count'] > 0:
+            result.append({
+                'year': year,
+                'reactor_count': row['reactor_count'],
+                'capacity_gw': row['capacity_gw']
+            })
+
+    conn.close()
+    return jsonify({'history': result})
 
 
 @app.route('/api/data/validation')
@@ -1681,6 +1795,19 @@ def print_validation_report():
             print(f"  {name:<35} {r['country']:<15} last data: {last}")
         if len(results['no_recent_data']) > 20:
             print(f"  ... and {len(results['no_recent_data']) - 20} more")
+
+    # CF anomalies
+    anomalies = results.get('cf_anomalies', [])
+    print(f"\n--- Capacity Factor Anomalies (CF > 105%) ---")
+    print(f"Count: {len(anomalies)}")
+    if anomalies:
+        for a in anomalies[:20]:
+            name = f"{a['plant_name']}-{a['unit_number']}"
+            print(f"  {name:<35} {a['country']:<15} {a['year']}  CF={a['capacity_factor']}%  ({a['effective_capacity_mw']:.0f} MW)")
+        if len(anomalies) > 20:
+            print(f"  ... and {len(anomalies) - 20} more")
+    else:
+        print("  No anomalies found.")
 
     print("\n" + "=" * 70)
 

@@ -357,6 +357,24 @@
                 </table>
             </div>
 
+            <!-- Capacity History (shown only when data exists) -->
+            <div class="card" id="capacity-history-card" style="margin-top: 30px; display: none;">
+                <h2>Capacity History</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Unit</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Gross (MW)</th>
+                            <th>Net (MW)</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="capacity-history-body"></tbody>
+                </table>
+            </div>
+
             <!-- Combined Generation Chart -->
             <div class="card" style="margin-top: 30px;">
                 <h2>Combined Generation History</h2>
@@ -547,6 +565,24 @@
                     </tr>
                 `;
             }).join('');
+
+            // Capacity history
+            const capacityChanges = data.capacity_changes || [];
+            if (capacityChanges.length > 0) {
+                const typeLabels = {initial: 'Initial', uprate: 'Uprate', derate: 'Derate', restart: 'Restart'};
+                const typeColors = {initial: '#64748b', uprate: '#16a34a', derate: '#dc2626', restart: '#2563eb'};
+                document.getElementById('capacity-history-body').innerHTML = capacityChanges.map(cc => `
+                    <tr>
+                        <td><a href="/reactor/${cc.reactor_id}" class="reactor-link">${plant.name}-${cc.unit_number}</a></td>
+                        <td>${cc.effective_date}</td>
+                        <td><span style="color: ${typeColors[cc.change_type] || '#64748b'}; font-weight: 600;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
+                        <td>${cc.gross_capacity_mw.toLocaleString()}</td>
+                        <td>${cc.net_capacity_mw ? cc.net_capacity_mw.toLocaleString() : '--'}</td>
+                        <td style="color: var(--text-secondary); font-size: 0.85rem;">${cc.notes || ''}</td>
+                    </tr>
+                `).join('');
+                document.getElementById('capacity-history-card').style.display = 'block';
+            }
 
             // Combined generation chart
             if (history && history.length > 0) {
