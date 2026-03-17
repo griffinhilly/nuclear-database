@@ -1,6 +1,6 @@
 # Global Nuclear Database
 
-A comprehensive web application tracking the world's nuclear reactor fleet — 733 reactors across 39 countries with specifications, generation history, geographic data, and planned projects. All reactor coordinates verified against Wikipedia.
+A comprehensive web application tracking the world's nuclear reactor fleet — 739 reactors across 39 countries with specifications, generation history, geographic data, and planned projects. All reactor coordinates verified against Wikipedia. Capacity and status cross-checked with WNA.
 
 **Live site:** [nuclear-database.fly.dev](https://nuclear-database.fly.dev/)
 
@@ -21,7 +21,7 @@ A comprehensive web application tracking the world's nuclear reactor fleet — 7
 | Code | Source | Covers |
 |------|--------|--------|
 | [PRIS] | IAEA Power Reactor Information System | Reactor specs, status, generation data |
-| [WNA] | World Nuclear Association | Planned reactors, country profiles |
+| [WNA] | World Nuclear Association | Planned reactors, country profiles, capacity cross-check |
 | [EI-SR] | Energy Institute Statistical Review | Global electricity totals |
 
 All reactor statuses verified against IAEA PRIS as of March 2026.

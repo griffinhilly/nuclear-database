@@ -4,7 +4,7 @@
 | File | Description |
 |------|-------------|
 | `app.py` | Main Flask app — all routes, API endpoints, validation logic |
-| `nuclear_reactors.db` | SQLite database (733 reactors, generation data, planned reactors) |
+| `nuclear_reactors.db` | SQLite database (739 reactors, generation data, planned reactors) |
 | `requirements.txt` | Python dependencies (flask, gunicorn) |
 | `database.py` | Database schema creation and initial data loading script |
 
@@ -64,6 +64,15 @@
 | `apply_all_updates.py` | Batch apply: 121 agent-written plant descriptions + data quality fixes + ownership updates |
 | `fix_last_templates.py` | Fix 25 name-mismatched template descriptions (diacritics, parenthetical names) |
 | `fix_owners.py` | Fill 90 NULL reactor owners across 15 countries |
+| `wna_audit.py` | WNA audit — scrape 38 countries, match reactors, compare specs, generate discrepancy report |
+| `wna_phase1_updates.py` | WNA Phase 1 — add missing reactors, fill dates, fix statuses |
+| `wna_phase2_capacity.py` | WNA Phase 2 — update operational/UC net capacities (>20 MWe threshold) |
+
+## WNA Audit Data (generated, not committed)
+| File | Description |
+|------|-------------|
+| `wna_scraped_data.json` | Cached WNA reactor data (640 reactors from 38 countries) |
+| `wna_audit_report.txt` | Full discrepancy report |
 
 ## Coordinate Verification Scripts
 | File | Description |

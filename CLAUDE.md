@@ -2,7 +2,7 @@
 
 ## Overview
 
-Flask web app serving a global nuclear reactor database with 733 reactors across 39 countries, plus 122 planned reactors. Backed by SQLite (`nuclear_reactors.db`) with reactor specs, generation history (1954-2024), and geographic coordinates. All reactor data verified against IAEA PRIS (March 2026).
+Flask web app serving a global nuclear reactor database with 739 reactors across 39 countries, plus 122 planned reactors. Backed by SQLite (`nuclear_reactors.db`) with reactor specs, generation history (1954-2024), and geographic coordinates. Reactor data verified against IAEA PRIS and cross-checked with WNA (March 2026).
 
 ## Architecture
 
@@ -47,4 +47,5 @@ fly deploy
 
 - When modifying map, charts, capacity factor, or design lineage pages → read `guides/feature-decisions.md`
 - When adding or verifying reactor data → read `guides/data-quality.md`
+- When re-running or extending the WNA audit → read `wna_audit.py` header comments and `MEMORY.md` decisions
 - When debugging issues that may trace to prior work → read `guides/session-log.md`

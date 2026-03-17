@@ -3,7 +3,7 @@
 ## Completed
 
 ### Core App
-- Flask app with SQLite backend (733 reactors, 39 countries)
+- Flask app with SQLite backend (739 reactors, 39 countries)
 - Dashboard with stat cards, charts, Leaflet map, data tables
 - 9 detail pages: reactor, plant, country, technology, status, model, supplier, owner, containment
 - Sources & Methodology page (`/sources`) with coded references
@@ -39,7 +39,7 @@
 - GitHub remote at griffinhilly/nuclear-database
 
 ### Design Lineages (Mar 11-12, 2026)
-- All 729 reactors have `design_series` (100% coverage)
+- All 739 reactors have `design_series` (100% coverage)
 - `design_lineages` table: 24 families with slug, description, origin country, designer, technology type
 - `design_series_info` table: 123 series with lineage FK, generation order/label, capacity, year, predecessor, description
 - Lineage listing page (`/lineages`) — overview of all 24 families with filter tabs
