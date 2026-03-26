@@ -15,17 +15,17 @@
     <style>
         :root {
             --bg-primary: #ffffff;
-            --bg-card: #F7F7F6;
-            --bg-card-alt: #efeeec;
-            --bg-header: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
-            --text-primary: #1a1a1a;
-            --text-secondary: #535252;
-            --text-muted: #9a9999;
-            --accent: #02ACBF;
-            --border: #e2e0de;
-            --border-header: #FFC002;
-            --success: #00A16E;
-            --warning: #EE8009;
+            --bg-card: #f8fafc;
+            --bg-card-alt: #f1f5f9;
+            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+            --border-header: #2563eb;
+            --success: #16a34a;
+            --warning: #d97706;
         }
 
         * {
@@ -101,7 +101,7 @@
         }
 
         .status-suspended {
-            background: #B8CD25;
+            background: #6366f1;
             color: #fff;
         }
 
@@ -261,6 +261,45 @@
             color: var(--accent);
             text-decoration: none;
         }
+
+        /* Collapsible cards */
+        .card-collapsible h2 {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-collapsible h2::after {
+            content: '\25B8';
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .card-collapsible.expanded h2::after {
+            content: '\25BE';
+        }
+
+        .card-collapsible .card-body {
+            display: none;
+        }
+
+        .card-collapsible.expanded .card-body {
+            display: block;
+        }
+
+        .spec-note {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .spec-note a {
+            color: var(--text-muted);
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -301,6 +340,27 @@
                 <div class="card">
                     <h2>Design & Safety</h2>
                     <div id="design-info">
+                    </div>
+                </div>
+
+                <!-- Core & Primary System (design specs, collapsed by default) -->
+                <div class="card card-collapsible" id="core-primary-card" style="display: none;">
+                    <h2>Core & Primary System</h2>
+                    <div class="card-body" id="core-primary-info">
+                    </div>
+                </div>
+
+                <!-- Steam & Secondary System (design specs, collapsed by default) -->
+                <div class="card card-collapsible" id="steam-secondary-card" style="display: none;">
+                    <h2>Steam & Secondary System</h2>
+                    <div class="card-body" id="steam-secondary-info">
+                    </div>
+                </div>
+
+                <!-- Reactor Details: cooling type, vendors (collapsed by default) -->
+                <div class="card card-collapsible" id="reactor-details-card" style="display: none;">
+                    <h2>Plant Details</h2>
+                    <div class="card-body" id="reactor-details-info">
                     </div>
                 </div>
 
@@ -557,17 +617,90 @@
             // Capacity history
             if (capacityChanges.length > 0) {
                 const typeLabels = {initial: 'Initial', uprate: 'Uprate', derate: 'Derate', restart: 'Restart'};
-                const typeColors = {initial: '#6e6d6d', uprate: '#00A16E', derate: '#dc2626', restart: '#02ACBF'};
+                const typeColors = {initial: '#64748b', uprate: '#16a34a', derate: '#dc2626', restart: '#2563eb'};
                 document.getElementById('capacity-history-table').innerHTML = capacityChanges.map(cc => `
                     <tr>
                         <td>${cc.effective_date}</td>
-                        <td><span style="color: ${typeColors[cc.change_type] || '#6e6d6d'}; font-weight: 600;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
+                        <td><span style="color: ${typeColors[cc.change_type] || '#64748b'}; font-weight: 600;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
                         <td>${cc.gross_capacity_mw.toLocaleString()}</td>
                         <td>${cc.net_capacity_mw ? cc.net_capacity_mw.toLocaleString() : '--'}</td>
                         <td style="color: var(--text-secondary); font-size: 0.85rem;">${cc.notes || ''}</td>
                     </tr>
                 `).join('');
                 document.getElementById('capacity-history-card').style.display = 'block';
+            }
+
+            // Design series technical specs
+            if (data.design_specs) {
+                const ds = data.design_specs;
+
+                // Helper to build a stat row, returns empty string if value is null/undefined
+                function specRow(label, value, suffix) {
+                    if (value == null) return '';
+                    let display = value;
+                    if (suffix) display = value.toLocaleString() + ' ' + suffix;
+                    return `<div class="stat-row">
+                        <span class="stat-label">${label}</span>
+                        <span class="stat-value">${display}</span>
+                    </div>`;
+                }
+
+                // Source note HTML
+                const sourceNote = `<div class="spec-note">Typical values for ${ds.design_series} design` +
+                    (ds.source ? ` — ${ds.source}` : '') +
+                    `</div>`;
+
+                // Card 1: Core & Primary System
+                const coreRows =
+                    specRow('Thermal Power', ds.thermal_power_mwth, 'MWth') +
+                    specRow('Fuel Type', ds.fuel_type) +
+                    specRow('Moderator', ds.moderator) +
+                    specRow('Coolant', ds.coolant) +
+                    specRow('Coolant Loops', ds.number_of_coolant_loops) +
+                    specRow('Operating Pressure', ds.operating_pressure_bar, 'bar') +
+                    specRow('Enrichment', ds.enrichment_pct, '%') +
+                    specRow('Core Height', ds.core_height_m, 'm') +
+                    specRow('Core Diameter', ds.core_diameter_m, 'm') +
+                    specRow('Fuel Assemblies', ds.number_of_fuel_assemblies) +
+                    specRow('Fuel Assembly Type', ds.fuel_assembly_type) +
+                    specRow('Control Elements', ds.number_of_control_elements) +
+                    specRow('Avg. Burnup', ds.average_burnup_mwd_per_t, 'MWd/t');
+
+                if (coreRows) {
+                    document.getElementById('core-primary-info').innerHTML = coreRows + sourceNote;
+                    document.getElementById('core-primary-card').style.display = 'block';
+                }
+
+                // Card 2: Steam & Secondary System (includes turbine specs)
+                const steamRows =
+                    specRow('Steam Generators', ds.number_of_steam_generators) +
+                    specRow('Outlet Temperature', ds.outlet_temperature_c, '\u00B0C') +
+                    specRow('Inlet Temperature', ds.inlet_temperature_c, '\u00B0C') +
+                    specRow('Turbines', ds.number_of_turbines) +
+                    specRow('Turbine Speed', ds.turbine_speed_rpm, 'RPM') +
+                    specRow('LP Sections', ds.low_pressure_sections) +
+                    specRow('Live Steam Pressure', ds.live_steam_pressure_bar, 'bar');
+
+                if (steamRows) {
+                    document.getElementById('steam-secondary-info').innerHTML = steamRows + sourceNote;
+                    document.getElementById('steam-secondary-card').style.display = 'block';
+                }
+            }
+
+            // Card 3: Reactor-specific details (cooling type, vendors)
+            if (data.reactor_details) {
+                const rd = data.reactor_details;
+                const detailRows =
+                    specRow('Cooling System', rd.cooling_type) +
+                    specRow('Constructor', rd.constructor) +
+                    specRow('Architect-Engineer', rd.architect_engineer) +
+                    specRow('Turbine Supplier', rd.turbine_supplier) +
+                    specRow('Pressure Vessel', rd.pressure_vessel_manufacturer);
+
+                if (detailRows) {
+                    document.getElementById('reactor-details-info').innerHTML = detailRows;
+                    document.getElementById('reactor-details-card').style.display = 'block';
+                }
             }
 
             // Show content before map init (Leaflet needs visible container)
@@ -583,23 +716,23 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#00A16E',
-                    'Under Construction': '#EE8009',
-                    'Suspended': '#B8CD25',
+                    'Operational': '#16a34a',
+                    'Under Construction': '#d97706',
+                    'Suspended': '#6366f1',
                     'Long-term Shutdown': '#d1d5db',
                     'Permanent Shutdown': '#9ca3af'
                 };
 
                 L.circleMarker([reactor.latitude, reactor.longitude], {
                     radius: 12,
-                    fillColor: statusColors[reactor.status] || '#02ACBF',
+                    fillColor: statusColors[reactor.status] || '#2563eb',
                     color: '#fff',
                     weight: 2,
                     opacity: 1,
                     fillOpacity: 0.8
                 }).addTo(map);
             } else {
-                document.getElementById('reactor-map').innerHTML = '<p style="text-align: center; color: #6e6d6d; padding: 100px 0;">Location data not available</p>';
+                document.getElementById('reactor-map').innerHTML = '<p style="text-align: center; color: #64748b; padding: 100px 0;">Location data not available</p>';
             }
 
             // Generation chart
@@ -612,7 +745,7 @@
                         datasets: [{
                             label: 'Generation (GWh)',
                             data: sortedHistory.map(h => h.electricity_gwh),
-                            backgroundColor: '#02ACBF',
+                            backgroundColor: '#2563eb',
                             borderRadius: 4
                         }]
                     },
@@ -624,13 +757,13 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#e2e0de' },
-                                ticks: { color: '#1a1a1a' }
+                                grid: { color: '#e2e8f0' },
+                                ticks: { color: '#64748b' }
                             },
                             y: {
-                                grid: { color: '#e2e0de' },
+                                grid: { color: '#e2e8f0' },
                                 ticks: {
-                                    color: '#535252',
+                                    color: '#64748b',
                                     callback: (val) => val.toLocaleString()
                                 }
                             }
@@ -652,9 +785,16 @@
                     </tr>
                 `).join('');
             } else {
-                document.getElementById('generation-chart').parentElement.innerHTML = '<p style="text-align: center; color: #6e6d6d; padding: 80px 0;">No generation data available</p>';
-                document.getElementById('generation-table').innerHTML = '<tr><td colspan="3" style="text-align: center; color: #6e6d6d;">No data available</td></tr>';
+                document.getElementById('generation-chart').parentElement.innerHTML = '<p style="text-align: center; color: #64748b; padding: 80px 0;">No generation data available</p>';
+                document.getElementById('generation-table').innerHTML = '<tr><td colspan="3" style="text-align: center; color: #64748b;">No data available</td></tr>';
             }
+
+            // Toggle collapsible cards
+            document.querySelectorAll('.card-collapsible h2').forEach(h2 => {
+                h2.addEventListener('click', () => {
+                    h2.closest('.card-collapsible').classList.toggle('expanded');
+                });
+            });
 
         }
 

@@ -541,7 +541,32 @@ def get_reactor(reactor_id):
         ORDER BY effective_date
     """, (reactor_id,))
 
-    return jsonify({
+    # Get design series technical specs (table may not exist yet)
+    design_specs = None
+    if r.get('design_series'):
+        try:
+            specs = query_db("""
+                SELECT * FROM design_series_specs WHERE design_series = ?
+            """, (r['design_series'],))
+            if specs:
+                design_specs = specs[0]
+        except Exception:
+            pass
+
+    # Get reactor-specific details (cooling type, vendors)
+    reactor_details = None
+    try:
+        details = query_db("""
+            SELECT cooling_type, constructor, architect_engineer,
+                   turbine_supplier, pressure_vessel_manufacturer
+            FROM reactor_details WHERE reactor_id = ?
+        """, (reactor_id,))
+        if details:
+            reactor_details = details[0]
+    except Exception:
+        pass
+
+    response = {
         'reactor': r,
         'generation_history': generation,
         'lifetime_stats': {
@@ -553,7 +578,13 @@ def get_reactor(reactor_id):
             'last_year': lifetime_stats['last_year']
         },
         'capacity_changes': capacity_changes
-    })
+    }
+    if design_specs:
+        response['design_specs'] = design_specs
+    if reactor_details:
+        response['reactor_details'] = reactor_details
+
+    return jsonify(response)
 
 @app.route('/reactor/<int:reactor_id>')
 def reactor_detail_page(reactor_id):
