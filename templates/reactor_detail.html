@@ -15,17 +15,17 @@
     <style>
         :root {
             --bg-primary: #ffffff;
-            --bg-card: #f8fafc;
-            --bg-card-alt: #f1f5f9;
-            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --accent: #2563eb;
-            --border: #e2e8f0;
-            --border-header: #2563eb;
-            --success: #16a34a;
-            --warning: #d97706;
+            --bg-card: #F7F7F6;
+            --bg-card-alt: #efeeec;
+            --bg-header: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            --text-primary: #1a1a1a;
+            --text-secondary: #535252;
+            --text-muted: #9a9999;
+            --accent: #02ACBF;
+            --border: #e2e0de;
+            --border-header: #FFC002;
+            --success: #00A16E;
+            --warning: #EE8009;
         }
 
         * {
@@ -101,7 +101,7 @@
         }
 
         .status-suspended {
-            background: #6366f1;
+            background: #B8CD25;
             color: #fff;
         }
 
@@ -557,11 +557,11 @@
             // Capacity history
             if (capacityChanges.length > 0) {
                 const typeLabels = {initial: 'Initial', uprate: 'Uprate', derate: 'Derate', restart: 'Restart'};
-                const typeColors = {initial: '#64748b', uprate: '#16a34a', derate: '#dc2626', restart: '#2563eb'};
+                const typeColors = {initial: '#6e6d6d', uprate: '#00A16E', derate: '#dc2626', restart: '#02ACBF'};
                 document.getElementById('capacity-history-table').innerHTML = capacityChanges.map(cc => `
                     <tr>
                         <td>${cc.effective_date}</td>
-                        <td><span style="color: ${typeColors[cc.change_type] || '#64748b'}; font-weight: 600;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
+                        <td><span style="color: ${typeColors[cc.change_type] || '#6e6d6d'}; font-weight: 600;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
                         <td>${cc.gross_capacity_mw.toLocaleString()}</td>
                         <td>${cc.net_capacity_mw ? cc.net_capacity_mw.toLocaleString() : '--'}</td>
                         <td style="color: var(--text-secondary); font-size: 0.85rem;">${cc.notes || ''}</td>
@@ -583,23 +583,23 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#16a34a',
-                    'Under Construction': '#d97706',
-                    'Suspended': '#6366f1',
+                    'Operational': '#00A16E',
+                    'Under Construction': '#EE8009',
+                    'Suspended': '#B8CD25',
                     'Long-term Shutdown': '#d1d5db',
                     'Permanent Shutdown': '#9ca3af'
                 };
 
                 L.circleMarker([reactor.latitude, reactor.longitude], {
                     radius: 12,
-                    fillColor: statusColors[reactor.status] || '#2563eb',
+                    fillColor: statusColors[reactor.status] || '#02ACBF',
                     color: '#fff',
                     weight: 2,
                     opacity: 1,
                     fillOpacity: 0.8
                 }).addTo(map);
             } else {
-                document.getElementById('reactor-map').innerHTML = '<p style="text-align: center; color: #64748b; padding: 100px 0;">Location data not available</p>';
+                document.getElementById('reactor-map').innerHTML = '<p style="text-align: center; color: #6e6d6d; padding: 100px 0;">Location data not available</p>';
             }
 
             // Generation chart
@@ -612,7 +612,7 @@
                         datasets: [{
                             label: 'Generation (GWh)',
                             data: sortedHistory.map(h => h.electricity_gwh),
-                            backgroundColor: '#2563eb',
+                            backgroundColor: '#02ACBF',
                             borderRadius: 4
                         }]
                     },
@@ -624,13 +624,13 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#e2e8f0' },
-                                ticks: { color: '#64748b' }
+                                grid: { color: '#e2e0de' },
+                                ticks: { color: '#1a1a1a' }
                             },
                             y: {
-                                grid: { color: '#e2e8f0' },
+                                grid: { color: '#e2e0de' },
                                 ticks: {
-                                    color: '#64748b',
+                                    color: '#535252',
                                     callback: (val) => val.toLocaleString()
                                 }
                             }
@@ -652,8 +652,8 @@
                     </tr>
                 `).join('');
             } else {
-                document.getElementById('generation-chart').parentElement.innerHTML = '<p style="text-align: center; color: #64748b; padding: 80px 0;">No generation data available</p>';
-                document.getElementById('generation-table').innerHTML = '<tr><td colspan="3" style="text-align: center; color: #64748b;">No data available</td></tr>';
+                document.getElementById('generation-chart').parentElement.innerHTML = '<p style="text-align: center; color: #6e6d6d; padding: 80px 0;">No generation data available</p>';
+                document.getElementById('generation-table').innerHTML = '<tr><td colspan="3" style="text-align: center; color: #6e6d6d;">No data available</td></tr>';
             }
 
         }

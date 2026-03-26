@@ -1,10 +1,11 @@
 """Fix the last 25 template plant descriptions with name-corrected keys."""
 import sqlite3
 import sys
+from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-DB_PATH = 'C:/Users/griff/nuclear-database/nuclear_reactors.db'
+DB_PATH = str(Path(__file__).parent / 'nuclear_reactors.db')
 
 FIXES = {
     'Almaraz': "Spain's largest nuclear power station operates two Westinghouse three-loop PWRs in the remote Extremadura region. Commissioned in 1981 and 1983, Almaraz's 2074 MW of combined capacity has made it the single largest source of carbon-free electricity on the Iberian Peninsula for over four decades.",

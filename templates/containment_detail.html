@@ -15,18 +15,18 @@
     <style>
         :root {
             --bg-primary: #ffffff;
-            --bg-card: #f8fafc;
-            --bg-card-alt: #f1f5f9;
-            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --accent: #2563eb;
-            --border: #e2e8f0;
-            --border-header: #2563eb;
-            --success: #16a34a;
-            --warning: #d97706;
-            --bg-hover: #e2e8f0;
+            --bg-card: #F7F7F6;
+            --bg-card-alt: #efeeec;
+            --bg-header: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            --text-primary: #1a1a1a;
+            --text-secondary: #535252;
+            --text-muted: #9a9999;
+            --accent: #02ACBF;
+            --border: #e2e0de;
+            --border-header: #FFC002;
+            --success: #00A16E;
+            --warning: #EE8009;
+            --bg-hover: #e9e8e6;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -76,13 +76,13 @@
         }
 
         .type-card:hover {
-            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 4px 16px rgba(2, 172, 191, 0.1);
             border-color: var(--accent);
         }
 
         .type-card.active {
             border-color: var(--accent);
-            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 0 0 2px rgba(2, 172, 191, 0.2);
         }
 
         .type-card-header {
@@ -238,7 +238,7 @@
         .status-operational { background: var(--success); color: #fff; }
         .status-construction { background: var(--warning); color: #fff; }
         .status-shutdown { background: #9ca3af; color: #fff; }
-        .status-suspended { background: #6366f1; color: #fff; }
+        .status-suspended { background: #B8CD25; color: #fff; }
 
         .filter-icon { margin-left: 5px; opacity: 0.4; cursor: pointer; font-size: 0.7rem; }
         .filter-icon:hover { opacity: 0.8; }
@@ -340,21 +340,21 @@
         let currentFilters = {};
 
         const typeColors = {
-            'Large Dry': '#2563eb',
-            'Large Dry (Double)': '#1d4ed8',
-            'Mark I': '#dc2626',
-            'Mark II': '#ea580c',
-            'Mark III': '#f59e0b',
-            'Spherical Double': '#7c3aed',
-            'Pressure Suppression': '#0891b2',
-            'Ice Condenser': '#06b6d4',
-            'Subatmospheric': '#059669'
+            'Large Dry': '#02ACBF',
+            'Large Dry (Double)': '#028a97',
+            'Mark I': '#EA6421',
+            'Mark II': '#EE8009',
+            'Mark III': '#FFC002',
+            'Spherical Double': '#535252',
+            'Pressure Suppression': '#00A16E',
+            'Ice Condenser': '#B8CD25',
+            'Subatmospheric': '#9a9999'
         };
 
         const statusColors = {
-            'Operational': '#16a34a',
-            'Under Construction': '#d97706',
-            'Suspended': '#6366f1',
+            'Operational': '#00A16E',
+            'Under Construction': '#EE8009',
+            'Suspended': '#B8CD25',
             'Permanent Shutdown': '#9ca3af'
         };
 
@@ -562,18 +562,18 @@
 
             const bounds = [];
             reactorsWithCoords.forEach(r => {
-                const color = activeType ? (statusColors[r.status] || '#2563eb') : (typeColors[r.containment_type] || '#2563eb');
+                const color = activeType ? (statusColors[r.status] || '#02ACBF') : (typeColors[r.containment_type] || '#02ACBF');
                 bounds.push([r.latitude, r.longitude]);
                 L.circleMarker([r.latitude, r.longitude], {
                     radius: 7, fillColor: color, color: '#fff', weight: 1, opacity: 0.8, fillOpacity: 0.7
                 })
                 .bindPopup(`
-                    <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #2563eb;">${r.plant_name}-${r.unit_number}</a></strong><br>
-                    <a href="/country/${encodeURIComponent(r.country)}" style="color: #64748b;">${r.country}</a> |
+                    <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #02ACBF;">${r.plant_name}-${r.unit_number}</a></strong><br>
+                    <a href="/country/${encodeURIComponent(r.country)}" style="color: #6e6d6d;">${r.country}</a> |
                     ${r.containment_type}<br>
-                    ${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" style="color: #64748b;">${r.technology}</a> | ` : ''}
+                    ${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" style="color: #6e6d6d;">${r.technology}</a> | ` : ''}
                     ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
-                    <span style="color: ${statusColors[r.status] || '#64748b'};">${r.status}</span>
+                    <span style="color: ${statusColors[r.status] || '#6e6d6d'};">${r.status}</span>
                 `)
                 .addTo(markerLayer);
             });

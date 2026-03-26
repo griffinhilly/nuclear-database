@@ -18,23 +18,23 @@
     <style>
         :root {
             --bg-primary: #ffffff;
-            --bg-card: #f8fafc;
-            --bg-card-alt: #f1f5f9;
-            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            --bg-hover: #e2e8f0;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --accent: #2563eb;
-            --accent-light: rgba(37, 99, 235, 0.1);
-            --border: #e2e8f0;
-            --border-header: #2563eb;
-            --success: #16a34a;
-            --warning: #d97706;
+            --bg-card: #F7F7F6;
+            --bg-card-alt: #efeeec;
+            --bg-header: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            --bg-hover: #e9e8e6;
+            --text-primary: #1a1a1a;
+            --text-secondary: #535252;
+            --text-muted: #9a9999;
+            --accent: #02ACBF;
+            --accent-light: rgba(2, 172, 191, 0.1);
+            --border: #e2e0de;
+            --border-header: #FFC002;
+            --success: #00A16E;
+            --warning: #EE8009;
             --danger: #dc2626;
-            --chart-grid: #e2e8f0;
-            --chart-text: #64748b;
-            --chart-legend: #1e293b;
+            --chart-grid: #e2e0de;
+            --chart-text: #6e6d6d;
+            --chart-legend: #1a1a1a;
         }
 
         * {
@@ -94,7 +94,7 @@
         .stat-card:hover {
             transform: translateY(-3px);
             border-color: var(--accent);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 4px 12px rgba(2, 172, 191, 0.1);
         }
 
         .stat-value {
@@ -215,7 +215,7 @@
         }
 
         .search-box button:hover {
-            background: #1d4ed8;
+            background: #028a97;
         }
 
         .data-table {
@@ -296,7 +296,7 @@
         }
 
         .status-suspended {
-            background: #6366f1;
+            background: #B8CD25;
             color: #fff;
         }
 
@@ -622,7 +622,7 @@
         <!-- Design Lineages CTA -->
         <section style="margin: 40px 0;">
             <a href="/lineages" style="display: block; text-decoration: none; color: inherit;">
-                <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid var(--accent); border-radius: 12px; padding: 30px 35px; display: flex; justify-content: space-between; align-items: center; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 16px rgba(37,99,235,0.15)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='none'">
+                <div style="background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 1px solid var(--accent); border-radius: 12px; padding: 30px 35px; display: flex; justify-content: space-between; align-items: center; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 16px rgba(2,172,191,0.15)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='none'">
                     <div>
                         <h2 style="color: var(--accent); font-size: 1.4rem; margin-bottom: 6px;">Reactor Design Lineages</h2>
                         <p style="color: var(--text-secondary); font-size: 0.95rem;">Explore 24 design families and 123 reactor series &mdash; from the first prototypes to Gen III+ and Gen IV. Interactive family tree visualizations trace the evolution of each design.</p>
@@ -636,7 +636,7 @@
         <section class="map-section">
             <h2 class="section-title">Reactor Locations</h2>
             <div style="margin-bottom: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
-                <button class="map-filter-btn active" data-filter="all" style="padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: #1e293b; color: #fff; cursor: pointer; font-size: 0.85rem;">All</button>
+                <button class="map-filter-btn active" data-filter="all" style="padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: #535252; color: #fff; cursor: pointer; font-size: 0.85rem;">All</button>
                 <button class="map-filter-btn" data-filter="Operational" style="padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: #fff; color: #333; cursor: pointer; font-size: 0.85rem;">Operational</button>
                 <button class="map-filter-btn" data-filter="Under Construction" style="padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: #fff; color: #333; cursor: pointer; font-size: 0.85rem;">Under Construction</button>
                 <button class="map-filter-btn" data-filter="Suspended" style="padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: #fff; color: #333; cursor: pointer; font-size: 0.85rem;">Suspended</button>
@@ -750,14 +750,14 @@
 
         // Color palette (light theme)
         const colors = {
-            primary: '#2563eb',
-            secondary: '#1e40af',
-            success: '#16a34a',
-            warning: '#d97706',
+            primary: '#02ACBF',
+            secondary: '#535252',
+            success: '#00A16E',
+            warning: '#EE8009',
             danger: '#dc2626',
             chart: [
-                '#2563eb', '#dc2626', '#2563eb', '#d97706', '#0d9488',
-                '#7c3aed', '#ea580c', '#6b7280', '#65a30d', '#db2777'
+                '#02ACBF', '#FFC002', '#EA6421', '#00A16E',
+                '#535252', '#B8CD25', '#EE8009', '#9a9999'
             ]
         };
 
@@ -839,7 +839,7 @@
                     plugins: {
                         legend: {
                             position: 'right',
-                            labels: { color: '#1e293b', padding: 15 }
+                            labels: { color: '#1a1a1a', padding: 15 }
                         },
                         tooltip: {
                             callbacks: {
@@ -889,12 +889,12 @@
                     },
                     scales: {
                         x: {
-                            grid: { color: '#e2e8f0' },
-                            ticks: { color: '#64748b' }
+                            grid: { color: '#e2e0de' },
+                            ticks: { color: '#535252' }
                         },
                         y: {
                             grid: { display: false },
-                            ticks: { color: '#1e293b' }
+                            ticks: { color: '#1a1a1a' }
                         }
                     },
                     onClick: (event, elements) => {
@@ -924,7 +924,7 @@
                         label: 'Nuclear Share (%)',
                         data: annual.map(d => d.share_pct),
                         borderColor: colors.primary,
-                        backgroundColor: 'rgba(0, 212, 255, 0.1)',
+                        backgroundColor: 'rgba(2, 172, 191, 0.1)',
                         fill: true,
                         tension: 0.3,
                         pointRadius: 0,
@@ -940,7 +940,7 @@
                         subtitle: {
                             display: true,
                             text: 'Sources: [PRIS] nuclear generation (coverage-adjusted), [EI-SR] global electricity',
-                            color: '#64748b',
+                            color: '#535252',
                             font: { size: 11 },
                             padding: { bottom: 10 }
                         },
@@ -959,22 +959,22 @@
                     },
                     scales: {
                         x: {
-                            grid: { color: '#e2e8f0' },
+                            grid: { color: '#e2e0de' },
                             ticks: {
-                                color: '#64748b',
+                                color: '#535252',
                                 maxTicksLimit: 12
                             }
                         },
                         y: {
-                            grid: { color: '#e2e8f0' },
+                            grid: { color: '#e2e0de' },
                             ticks: {
-                                color: '#64748b',
+                                color: '#535252',
                                 callback: (val) => val + '%'
                             },
                             title: {
                                 display: true,
                                 text: '% of Global Electricity',
-                                color: '#64748b'
+                                color: '#6e6d6d'
                             }
                         }
                     }
@@ -987,9 +987,9 @@
             const data = await fetchAPI('/api/reactors/count');
 
             const statusColors = {
-                'Operational': '#16a34a',
-                'Under Construction': '#d97706',
-                'Suspended': '#6366f1',
+                'Operational': '#00A16E',
+                'Under Construction': '#EE8009',
+                'Suspended': '#B8CD25',
                 'Long-term Shutdown': '#d1d5db',
                 'Permanent Shutdown': '#9ca3af',
                 'Unknown': '#e5e7eb'
@@ -1012,7 +1012,7 @@
                     plugins: {
                         legend: {
                             position: 'right',
-                            labels: { color: '#1e293b', padding: 15 }
+                            labels: { color: '#1a1a1a', padding: 15 }
                         }
                     },
                     onClick: (event, elements) => {
@@ -1041,13 +1041,13 @@
                     datasets: [{
                         label: 'Installed Capacity (GW)',
                         data: history.map(d => d.capacity_gw),
-                        borderColor: '#16a34a',
-                        backgroundColor: 'rgba(22, 163, 106, 0.1)',
+                        borderColor: '#00A16E',
+                        backgroundColor: 'rgba(0, 161, 110, 0.1)',
                         fill: true,
                         tension: 0.3,
                         pointRadius: 0,
                         pointHoverRadius: 5,
-                        pointBackgroundColor: '#16a34a'
+                        pointBackgroundColor: '#00A16E'
                     }]
                 },
                 options: {
@@ -1071,13 +1071,13 @@
                     },
                     scales: {
                         x: {
-                            grid: { color: '#e2e8f0' },
-                            ticks: { color: '#64748b', maxTicksLimit: 12 }
+                            grid: { color: '#e2e0de' },
+                            ticks: { color: '#535252', maxTicksLimit: 12 }
                         },
                         y: {
-                            grid: { color: '#e2e8f0' },
+                            grid: { color: '#e2e0de' },
                             ticks: {
-                                color: '#64748b',
+                                color: '#535252',
                                 callback: (val) => val + ' GW'
                             }
                         }
@@ -1092,9 +1092,9 @@
         let allMapData = null;
 
         const statusColors = {
-            'Operational': '#16a34a',
-            'Under Construction': '#d97706',
-            'Suspended': '#6366f1',
+            'Operational': '#00A16E',
+            'Under Construction': '#EE8009',
+            'Suspended': '#B8CD25',
             'Long-term Shutdown': '#d1d5db',
             'Permanent Shutdown': '#9ca3af'
         };
@@ -1134,7 +1134,7 @@
                         b.style.color = '#333';
                     });
                     btn.classList.add('active');
-                    btn.style.background = '#1e293b';
+                    btn.style.background = '#535252';
                     btn.style.color = '#fff';
                     renderMapMarkers(btn.dataset.filter);
                 });
@@ -1167,7 +1167,7 @@
                 const bestStatus = site.reactors.reduce((best, r) => {
                     return (statusPriority[r.status] || 99) < (statusPriority[best] || 99) ? r.status : best;
                 }, site.reactors[0].status);
-                const color = statusColors[bestStatus] || '#2563eb';
+                const color = statusColors[bestStatus] || '#02ACBF';
 
                 // Capacity of matching reactors for marker size
                 const totalCapacity = matchingReactors.reduce((sum, r) => sum + (r.capacity_mw || 0), 0);
@@ -1185,7 +1185,7 @@
                         const statusDot = `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${statusColors[r.status] || '#999'};margin-right:4px;"></span>`;
                         return `${statusDot}${r.name} - ${r.technology || '?'} - ${r.capacity_mw || '?'} MW`;
                     }).join('<br>');
-                    return `<strong><a href="/plant/${encodeURIComponent(pn)}" style="color: #2563eb; text-decoration: none;">${pn}</a></strong> (${units.length} unit${units.length !== 1 ? 's' : ''})<br>${unitList}`;
+                    return `<strong><a href="/plant/${encodeURIComponent(pn)}" style="color: #02ACBF; text-decoration: none;">${pn}</a></strong> (${units.length} unit${units.length !== 1 ? 's' : ''})<br>${unitList}`;
                 }).join('<br><br>');
 
                 L.circleMarker([site.lat, site.lng], {
@@ -1196,7 +1196,7 @@
                     opacity: 0.8,
                     fillOpacity: 0.7
                 })
-                .bindPopup(`<a href="/country/${encodeURIComponent(site.reactors[0].country)}" style="color: #64748b;">${site.reactors[0].country}</a><br><br>${popupLines}`)
+                .bindPopup(`<a href="/country/${encodeURIComponent(site.reactors[0].country)}" style="color: #6e6d6d;">${site.reactors[0].country}</a><br><br>${popupLines}`)
                 .addTo(mapMarkers);
             });
         }
@@ -1644,9 +1644,9 @@
         let statsHistoryCache = null;
 
         const statConfig = {
-            operational:  { title: 'Operational Reactors Over Time', field: 'operational', color: '#2563eb', unit: '' },
-            capacity:     { title: 'Total Operational Capacity Over Time', field: 'capacity_gw', color: '#2563eb', unit: ' GW' },
-            generation:   { title: 'Annual Nuclear Generation Over Time', field: 'generation_twh', color: '#16a34a', unit: ' TWh' }
+            operational:  { title: 'Operational Reactors Over Time', field: 'operational', color: '#02ACBF', unit: '' },
+            capacity:     { title: 'Total Operational Capacity Over Time', field: 'capacity_gw', color: '#02ACBF', unit: ' GW' },
+            generation:   { title: 'Annual Nuclear Generation Over Time', field: 'generation_twh', color: '#00A16E', unit: ' TWh' }
         };
 
         // Generic time-series modal (operational, capacity, generation)
@@ -1696,13 +1696,13 @@
                     },
                     scales: {
                         x: {
-                            grid: { color: '#e2e8f0' },
-                            ticks: { color: '#64748b', maxTicksLimit: 15 }
+                            grid: { color: '#e2e0de' },
+                            ticks: { color: '#535252', maxTicksLimit: 15 }
                         },
                         y: {
-                            grid: { color: '#e2e8f0' },
+                            grid: { color: '#e2e0de' },
                             ticks: {
-                                color: '#64748b',
+                                color: '#535252',
                                 callback: (val) => val.toLocaleString()
                             },
                             beginAtZero: true
@@ -1740,7 +1740,7 @@
 
                         L.circleMarker([site.latitude, site.longitude], {
                             radius: radius,
-                            fillColor: '#d97706',
+                            fillColor: '#EE8009',
                             color: '#92400e',
                             weight: 2,
                             fillOpacity: 0.8
@@ -1823,7 +1823,7 @@
                             const id = feature.id;
                             const country = numericLookup[id];
                             return {
-                                fillColor: country ? '#2563eb' : '#f1f5f9',
+                                fillColor: country ? '#02ACBF' : '#efeeec',
                                 weight: 1,
                                 color: '#cbd5e1',
                                 fillOpacity: country ? 0.6 : 0.3
@@ -1873,7 +1873,7 @@
                         datasets: [{
                             label: 'Reactors',
                             data: data.brackets.map(b => b.count),
-                            backgroundColor: '#2563eb',
+                            backgroundColor: '#02ACBF',
                             borderRadius: 6
                         }]
                     },
@@ -1894,15 +1894,15 @@
                         scales: {
                             x: {
                                 grid: { display: false },
-                                ticks: { color: '#64748b' }
+                                ticks: { color: '#535252' }
                             },
                             y: {
-                                grid: { color: '#e2e8f0' },
-                                ticks: { color: '#64748b' },
+                                grid: { color: '#e2e0de' },
+                                ticks: { color: '#535252' },
                                 title: {
                                     display: true,
                                     text: 'Number of Reactors',
-                                    color: '#64748b'
+                                    color: '#6e6d6d'
                                 }
                             }
                         }

@@ -1,5 +1,14 @@
 # Nuclear Database — Plan
 
+## Current State
+
+Post-core development. Capacity alignment audit in progress.
+
+- **Last worked**: Mar 26 — net_capacity_mw convention established (= PRIS Reference Unit Power). Fixed 23 reactors across Belgium (7), China AP1000 (4), Germany (12). Model page design_series promotion fix.
+- **Uncommitted**: All rebrand changes + Wylfa 2/Kuosheng 2/Khmelnytskyi 3/4 fixes + capacity alignment + model page fix
+- **Known issue**: Ghost process can linger on port 5001 — use 5002 or `taskkill`
+- **Next**: Continue capacity alignment audit (208 reactors remaining: US 50, UK 28, South Korea 24, others). Then 2025 PRIS data backfill when available.
+
 ## Completed
 
 ### Core App
@@ -109,7 +118,7 @@
 
 ### 5. Uprates / Capacity Additions
 - [x] Schema: `capacity_changes` table with reactor_id, effective_date, gross/net capacity, change_type, source, notes
-- [x] Schema: 55 capacity change records for 23 reactors (5 original + US EPU/MUR + Russian VVER thermal + Korean derates)
+- [x] 105 capacity change records for 46 reactors (original 23 + Belgium 7 + Germany 12 + AP1000 corrections)
 - [x] CF calculation in app.py uses historical capacity via COALESCE subquery (3 locations updated)
 - [x] CF > 102%: 0 (was 15 at >110%). 41 bad generation entries deleted. Gross capacity corrected for 23 reactors.
 - [x] Display: Capacity History card on reactor + plant detail pages, Reference Capacity column in generation table
@@ -117,3 +126,22 @@
 - [x] PRIS-verified: Cook 2 (1231), Turkey Point 3&4 (879 est.), Russian VVERs (1040/1067), Wolsong 2 derate (593)
 - [x] Phase 3: Aggregate capacity history charts — `/api/capacity/history` endpoint + charts on dashboard, country, and technology pages
 - [ ] 11 entries at CF 100-102% remain — confirmed plausible by industry contact
+
+### 7. Net Capacity Alignment Audit (Mar 26, 2026) — IN PROGRESS
+Convention: `net_capacity_mw` = PRIS Reference Unit Power (current/final operating capacity).
+Original design values preserved in `capacity_changes` initial records.
+
+**Completed (23 reactors):**
+- [x] Belgium (7): Doel 1-4, Tihange 1-3. SG replacement + uprate history documented for Doel 1-3, Tihange 1-2.
+- [x] Chinese AP1000 (4): Haiyang 1/2, Sanmen 1/2. Data correction — 1000 MWe was placeholder from model name.
+- [x] German PWR (12): All shutdown. Multi-step thermal stretch + MUR (VDI 2048) uprate timelines from PRIS.
+- [x] Model detail page: design_series promotion fix (app.py)
+
+**Remaining (208 reactors with >5 MWe gap):**
+- [ ] USA PWR (31) + BWR (19) — mixed direction, well-documented NRC EPU/MUR records
+- [ ] UK GCR (28) — AGR/Magnox fleet, mostly net > ref (derating over time)
+- [ ] South Korea PWR (20) + PHWR (4) — systematic small uprates
+- [ ] Sweden BWR (6) + PWR (3) — known significant uprates
+- [ ] Czech Republic PWR (6), France PWR/GCR (10), Russia PWR/FBR (6)
+- [ ] 15 reactors with existing capacity_changes that don't match net_capacity (Layer 1 remnants)
+- [ ] ~30 other countries with 1-4 reactor discrepancies each

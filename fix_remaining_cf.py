@@ -6,10 +6,11 @@ NRC Info Finder, Rosatom publications.
 """
 import sqlite3
 import sys
+from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-DB_PATH = 'C:/Users/griff/nuclear-database/nuclear_reactors.db'
+DB_PATH = str(Path(__file__).parent / 'nuclear_reactors.db')
 
 
 def main():

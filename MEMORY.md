@@ -9,7 +9,7 @@
 - **Design lineages**: 24 families, 123 series, 100% coverage
 - **Entity descriptions**: 708 total across 7 entity types. **All manual** — 0 template plant descriptions, 0 template owner descriptions remaining
 - **Generation data**: 19,818 entries, 0 CF > 102%, 11 entries at 100-102% (plausible per industry contacts)
-- **Capacity changes**: 55 records for 23 reactors
+- **Capacity changes**: 105 records for 46 reactors
 - Live at https://nuclear-database.fly.dev/
 
 Session history: see `guides/session-log.md`
@@ -41,3 +41,5 @@ Data quality notes: see `guides/data-quality.md`
 - Multi-site complexes (Kursk, Leningrad, Novovoronezh, Hanul/Shin-Hanul) have per-site coordinates. **Decision (Madi, Mar 16): treat as separate plants.** Old and new generations are physically separate construction sites 1-2 km apart.
 - WNA audit capacity strategy: update operational/UC reactor net capacities from WNA (>20 MWe threshold), leave shutdown reactors at PRIS values. WNA is more current for operating plants; PRIS is authoritative for shutdown capacity.
 - Korean "Saeul" renaming (Shin-Kori 3-6 → Saeul 1-4) not applied — keeping PRIS naming for DB consistency. WNA audit script has name overrides for matching.
+- **`net_capacity_mw` = PRIS Reference Unit Power** (current/final operating capacity), not Design Net Capacity. Original design values preserved in `capacity_changes` initial records. Decision made Mar 26 after discovering systematic design-vs-operating discrepancy across 229 reactors.
+- **Model detail page uses design_series grouping** when a model name is a subset of a broader series (e.g., "W (2-loop)" promotes to "W 2-Loop" showing all 19 reactors). Guard prevents promotion when a model spans multiple design_series.

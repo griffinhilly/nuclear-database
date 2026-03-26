@@ -18,18 +18,18 @@
     <style>
         :root {
             --bg-primary: #ffffff;
-            --bg-card: #f8fafc;
-            --bg-card-alt: #f1f5f9;
-            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --accent: #2563eb;
-            --border: #e2e8f0;
-            --border-header: #2563eb;
-            --success: #16a34a;
-            --warning: #d97706;
-            --bg-hover: #e2e8f0;
+            --bg-card: #F7F7F6;
+            --bg-card-alt: #efeeec;
+            --bg-header: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            --text-primary: #1a1a1a;
+            --text-secondary: #535252;
+            --text-muted: #9a9999;
+            --accent: #02ACBF;
+            --border: #e2e0de;
+            --border-header: #FFC002;
+            --success: #00A16E;
+            --warning: #EE8009;
+            --bg-hover: #e9e8e6;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -268,7 +268,7 @@
         .status-operational { background: var(--success); color: #fff; }
         .status-construction { background: var(--warning); color: #fff; }
         .status-shutdown { background: #9ca3af; color: #fff; }
-        .status-suspended { background: #6366f1; color: #fff; }
+        .status-suspended { background: #B8CD25; color: #fff; }
 
         /* Loading */
         .loading { text-align: center; padding: 60px; color: var(--text-secondary); }
@@ -385,11 +385,11 @@
 
         // Generation colors
         const genColors = {
-            'Gen I':   '#94a3b8',
-            'Gen II':  '#60a5fa',
-            'Gen III': '#2563eb',
-            'Gen III+':'#1d4ed8',
-            'Gen IV':  '#7c3aed'
+            'Gen I':   '#9a9999',
+            'Gen II':  '#FFC002',
+            'Gen III': '#02ACBF',
+            'Gen III+':'#00A16E',
+            'Gen IV':  '#EA6421'
         };
 
         let currentReactors = [];
@@ -494,15 +494,15 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#16a34a',
-                    'Under Construction': '#d97706',
-                    'Suspended': '#6366f1',
+                    'Operational': '#00A16E',
+                    'Under Construction': '#EE8009',
+                    'Suspended': '#B8CD25',
                     'Permanent Shutdown': '#9ca3af'
                 };
 
                 const bounds = [];
                 withCoords.forEach(r => {
-                    const color = statusColors[r.status] || '#2563eb';
+                    const color = statusColors[r.status] || '#02ACBF';
                     bounds.push([r.latitude, r.longitude]);
                     L.circleMarker([r.latitude, r.longitude], {
                         radius: 6,
@@ -513,8 +513,8 @@
                         fillOpacity: 0.7
                     })
                     .bindPopup(`
-                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color:#2563eb">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        <a href="/country/${encodeURIComponent(r.country)}" style="color:#64748b">${r.country}</a> | ${r.design_series}<br>
+                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color:#02ACBF">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color:#6e6d6d">${r.country}</a> | ${r.design_series}<br>
                         <a href="/status/${encodeURIComponent(r.status)}" style="color:${color}; text-decoration:none">${r.status}</a>
                     `)
                     .addTo(map);
@@ -522,7 +522,7 @@
                 map.fitBounds(bounds, { padding: [20, 20] });
             } else {
                 document.getElementById('lineage-map').innerHTML =
-                    '<p style="text-align:center;color:#64748b;padding:100px 0;">No location data</p>';
+                    '<p style="text-align:center;color:#6e6d6d;padding:100px 0;">No location data</p>';
             }
 
             // Country chart
@@ -535,7 +535,7 @@
                         datasets: [{
                             label: 'Capacity (GW)',
                             data: top15.map(c => c.capacity_gw),
-                            backgroundColor: '#2563eb',
+                            backgroundColor: '#02ACBF',
                             borderRadius: 4
                         }]
                     },
@@ -553,13 +553,13 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#e2e8f0' },
-                                ticks: { color: '#64748b' },
-                                title: { display: true, text: 'GW', color: '#64748b' }
+                                grid: { color: '#e2e0de' },
+                                ticks: { color: '#1a1a1a' },
+                                title: { display: true, text: 'GW', color: '#535252' }
                             },
                             y: {
                                 grid: { display: false },
-                                ticks: { color: '#1e293b' }
+                                ticks: { color: '#1a1a1a' }
                             }
                         },
                         onClick: (event, elements) => {
@@ -575,7 +575,7 @@
                 });
             } else {
                 document.getElementById('country-chart').parentElement.innerHTML =
-                    '<p style="text-align:center;color:#64748b;padding:80px 0;">No operational reactors</p>';
+                    '<p style="text-align:center;color:#6e6d6d;padding:80px 0;">No operational reactors</p>';
             }
 
             // Reactor table
@@ -690,7 +690,7 @@
                 .attr('height', nodeH)
                 .attr('rx', 8)
                 .attr('ry', 8)
-                .attr('fill', d => genColors[d.data.generation_label] || '#e2e8f0');
+                .attr('fill', d => genColors[d.data.generation_label] || '#e2e0de');
 
             // Series name
             nodes.append('text')
@@ -701,7 +701,7 @@
                 .attr('font-weight', '700')
                 .attr('fill', d => {
                     const label = d.data.generation_label || '';
-                    return (label === 'Gen I' || !label) ? '#1e293b' : '#fff';
+                    return (label === 'Gen I' || !label) ? '#535252' : '#fff';
                 })
                 .text(d => d.data.design_series);
 
@@ -713,7 +713,7 @@
                 .attr('font-size', '11px')
                 .attr('fill', d => {
                     const label = d.data.generation_label || '';
-                    return (label === 'Gen I' || !label) ? '#64748b' : 'rgba(255,255,255,0.85)';
+                    return (label === 'Gen I' || !label) ? '#6e6d6d' : 'rgba(255,255,255,0.85)';
                 })
                 .text(d => `${d.data.reactor_count} reactor${d.data.reactor_count !== 1 ? 's' : ''}`);
 
@@ -790,7 +790,7 @@
                 else statusClass = 'shutdown';
 
                 const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
-                    ? `<span style="color:#64748b">Shut:</span> ${r.permanent_shutdown}`
+                    ? `<span style="color:#6e6d6d">Shut:</span> ${r.permanent_shutdown}`
                     : (r.commercial_operation || '-');
 
                 return `

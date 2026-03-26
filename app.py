@@ -695,9 +695,41 @@ def model_detail(model_name):
         GROUP BY m.name, t.code
     """, (model_name,))
 
-    # If no model match, try design_series lookup (aggregates all model variants)
+    # If model name matched, check if there's a broader design_series that includes
+    # additional model variants (e.g., "W (2-loop)" + "W (2-loop) DRYAMB" both belong to "W 2-Loop")
     is_design_series = False
-    if not stats:
+    if stats:
+        ds_check = query_db("""
+            SELECT r.design_series
+            FROM reactors r
+            JOIN models m ON r.model_id = m.id
+            WHERE LOWER(m.name) = LOWER(?) AND r.design_series IS NOT NULL
+            GROUP BY r.design_series
+        """, (model_name,))
+        if len(ds_check) == 1:
+            design_series_name = ds_check[0]['design_series']
+            ds_total = query_db("SELECT COUNT(*) as cnt FROM reactors WHERE LOWER(design_series) = LOWER(?)", (design_series_name,))
+            if ds_total and ds_total[0]['cnt'] > stats[0]['total']:
+                is_design_series = True
+                model_name = design_series_name
+                stats = query_db("""
+                    SELECT
+                        ? as name,
+                        t.code as technology_code,
+                        COUNT(*) as total,
+                        SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
+                        SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+                        SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+                        ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
+                        ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+                    FROM reactors r
+                    LEFT JOIN technologies t ON r.technology_id = t.id
+                    WHERE LOWER(r.design_series) = LOWER(?)
+                    GROUP BY t.code
+                """, (design_series_name, design_series_name))
+
+    # If no model match, try design_series lookup (aggregates all model variants)
+    if not is_design_series and not stats:
         ds_check = query_db("SELECT 1 FROM reactors WHERE LOWER(design_series) = LOWER(?) LIMIT 1", (model_name,))
         if not ds_check:
             return jsonify({'error': f'Model not found: {model_name}'}), 404
