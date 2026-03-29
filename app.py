@@ -1730,6 +1730,25 @@ def run_validation():
     """)
     results['cf_anomalies'] = cf_anomalies
 
+    # 6. Whitespace issues in key text columns
+    whitespace_issues = query_db("""
+        SELECT 'models.name' as location, m.id, m.name as value
+        FROM models m WHERE m.name != TRIM(m.name)
+        UNION ALL
+        SELECT 'reactors.plant_name', r.id, r.plant_name
+        FROM reactors r WHERE r.plant_name != TRIM(r.plant_name)
+        UNION ALL
+        SELECT 'reactors.design_series', r.id, r.design_series
+        FROM reactors r WHERE r.design_series IS NOT NULL AND r.design_series != TRIM(r.design_series)
+        UNION ALL
+        SELECT 'suppliers.name', s.id, s.name
+        FROM suppliers s WHERE s.name != TRIM(s.name)
+        UNION ALL
+        SELECT 'owners.name', o.id, o.name
+        FROM owners o WHERE o.name != TRIM(o.name)
+    """)
+    results['whitespace_issues'] = whitespace_issues
+
     return results
 
 
