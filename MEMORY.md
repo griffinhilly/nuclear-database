@@ -9,7 +9,8 @@
 - **Design lineages**: 24 families, 123 series, 100% coverage
 - **Entity descriptions**: 708 total across 7 entity types. **All manual** — 0 template plant descriptions, 0 template owner descriptions remaining
 - **Generation data**: 19,818 entries, 0 CF > 102%, 11 entries at 100-102% (plausible per industry contacts)
-- **Capacity changes**: 105 records for 46 reactors
+- **Capacity changes**: 105 records for 46 reactors (Belgium, Germany uprate histories documented)
+- **Capacity alignment**: 223/229 reactors aligned (net = ref = PRIS RUP). 6 US reactors deferred (IP2/3, BF2/3, Harris, TP3)
 - Live at https://nuclear-database.fly.dev/
 
 Session history: see `guides/session-log.md`

@@ -2,12 +2,11 @@
 
 ## Current State
 
-Post-core development. Capacity alignment audit in progress.
+Post-core development. Capacity alignment audit nearly complete.
 
-- **Last worked**: Mar 26 — net_capacity_mw convention established (= PRIS Reference Unit Power). Fixed 23 reactors across Belgium (7), China AP1000 (4), Germany (12). Model page design_series promotion fix.
-- **Uncommitted**: All rebrand changes + Wylfa 2/Kuosheng 2/Khmelnytskyi 3/4 fixes + capacity alignment + model page fix
+- **Last worked**: Mar 26-29 — Capacity alignment audit: 223/229 reactors fixed across all countries. Model page design_series promotion fix. Whitespace validation added. All deployed.
 - **Known issue**: Ghost process can linger on port 5001 — use 5002 or `taskkill`
-- **Next**: Continue capacity alignment audit (208 reactors remaining: US 50, UK 28, South Korea 24, others). Then 2025 PRIS data backfill when available.
+- **Next**: US Phase 2 (6 reactors needing NRC verification). Then 2025 PRIS data backfill when available.
 
 ## Completed
 
@@ -137,11 +136,44 @@ Original design values preserved in `capacity_changes` initial records.
 - [x] German PWR (12): All shutdown. Multi-step thermal stretch + MUR (VDI 2048) uprate timelines from PRIS.
 - [x] Model detail page: design_series promotion fix (app.py)
 
-**Remaining (208 reactors with >5 MWe gap):**
-- [ ] USA PWR (31) + BWR (19) — mixed direction, well-documented NRC EPU/MUR records
-- [ ] UK GCR (28) — AGR/Magnox fleet, mostly net > ref (derating over time)
-- [ ] South Korea PWR (20) + PHWR (4) — systematic small uprates
+**Completed Wave 2 (52 more reactors, Mar 26):**
+- [x] UK GCR (35): Magnox degradation (CO2 corrosion) + AGR degradation (graphite cracking). Both net AND ref corrected from PRIS-verified values. Sizewell B PWR also aligned.
+- [x] South Korea (24): APR1400 mixed-source fixes. PWR ref aligned to 2024 PRIS RUP. Wolsong CANDU ref aligned to derated values.
+
+**Remaining (156 reactors with >5 MWe gap):**
+- [ ] USA (50) — see US Capacity Alignment Plan below
 - [ ] Sweden BWR (6) + PWR (3) — known significant uprates
-- [ ] Czech Republic PWR (6), France PWR/GCR (10), Russia PWR/FBR (6)
-- [ ] 15 reactors with existing capacity_changes that don't match net_capacity (Layer 1 remnants)
-- [ ] ~30 other countries with 1-4 reactor discrepancies each
+- [ ] Czech Republic PWR (6), France PWR/GCR (10), Russia PWR/FBR (6), China (8), Germany BWR (8)
+- [ ] Canada (7), Finland (5), India (5), Hungary (4), Japan (4), Switzerland (4)
+- [ ] ~15 other countries with 1-3 reactor discrepancies each
+
+### US Capacity Alignment Plan
+
+The US fleet (50 reactors) is the most complex group due to three overlapping data issues:
+
+**Root cause**: Three data layers accumulated:
+1. Original scrape: `net_capacity_mw` = PRIS Design Net Capacity
+2. WNA audit (Mar 16): Updated net for operational reactors from WNA (>20 MWe threshold)
+3. `reference_power_mw` = PRIS RUP snapshot (one-time, now stale for many reactors)
+
+**Three sub-patterns identified by research:**
+
+**Pattern A — Shutdown, ref > net (15 reactors)**: Standard design-vs-uprated gap. Net has original design capacity, ref has final operating RUP. Some ref values also stale (Indian Point 2/3 revised downward by PRIS post-shutdown).
+- **Action**: Set net = ref, except for IP2/3 where PRIS has revised down (IP2: 1020→998, IP3: 1040→1030). Spot-check a few others.
+- **Confidence**: High for most, medium for Indian Point.
+
+**Pattern B — Operational, ref > net (15 reactors)**: PRIS revised RUP downward since our scrape. WNA audit correctly updated net to current value. Ref is now stale (higher than actual).
+- **Action**: Set ref = net (net from WNA is more current). Verified for Ginna, Monticello, Grand Gulf.
+- **Confidence**: High — agent verified the pattern with representative examples.
+
+**Pattern C — Operational, net > ref (20 reactors)**: WNA audit set net higher than old PRIS RUP snapshot. Two sub-groups:
+- **C1 — Large gaps (5 reactors)**: Browns Ferry 2/3, Cook 2, Harris, Turkey Point 3. Known EPU/MUR uprates. PRIS itself is stale for Browns Ferry (shows 1200, actual post-EPU ~1256). Our capacity_changes records may be most accurate.
+  - **Action**: Use capacity_changes final value where available. For Browns Ferry, use NRC-confirmed ~1256. Cross-check Harris and Turkey Point against NRC uprate database.
+  - **Confidence**: Medium — need NRC verification for exact values.
+- **C2 — Small gaps (15 reactors)**: Normal drift where WNA is slightly more current than old PRIS snapshot.
+  - **Action**: Set ref = net (WNA values are more current). Exception: Cooper (net=778 is actually old design net, not WNA; WNA says 769).
+  - **Confidence**: High for most. Spot-check Cooper and any others where net looks like a round design number.
+
+**Proposed execution (2 phases):**
+1. **Phase 1 — Mechanical fixes**: Pattern B (set ref = net, 15 reactors) + Pattern C2 (set ref = net, ~13 reactors) + Pattern A majority (set net = ref, ~12 reactors). ~40 reactors, high confidence.
+2. **Phase 2 — Research-dependent**: Indian Point 2/3 (get current PRIS values), Browns Ferry 1/2/3 (NRC EPU values), Harris/Turkey Point 3 (NRC verification), Cooper (WNA value), Watts Bar 1 (recent uprate). ~10 reactors needing targeted verification.
