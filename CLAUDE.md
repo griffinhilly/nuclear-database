@@ -38,14 +38,24 @@ git push origin main
 fly deploy
 ```
 
+## Data Change Protocol
+
+1. **Bulk updates (>5 rows)**: Create a numbered SQL migration in `migrations/` before applying.
+2. **Sampling protocol**: For pattern-based fixes touching 50+ records without individual research, spot-check 10-15 records against an authoritative source before and after. Document the sample.
+3. **Post-update validation**: Run `python scripts/validate_db.py` after any bulk change. Zero issues required before deploy.
+4. **Capacity source priority**: NRC (US only) > WNA > PRIS for operational reactors. PRIS can be stale for recently-uprated reactors.
+5. **Binary DB merge conflicts**: Take remote DB (preserves new schema), replay SQL migrations, validate.
+
 ## Key Decisions
 
 - **Coordinates**: Wikipedia GeoData is the gold standard — always use article coordinates, never dismiss small discrepancies. See `guides/data-quality.md` for full notes.
+- **Capacity**: `net_capacity_mw` = `reference_power_mw` = PRIS Reference Unit Power (current/final). Original design values in `capacity_changes` initial records.
 - Other feature decisions (chart design, map grouping, capacity factor formula, design lineage structure): see `guides/feature-decisions.md`
 
 ## Situational Guides
 
 - When modifying map, charts, capacity factor, or design lineage pages → read `guides/feature-decisions.md`
 - When adding or verifying reactor data → read `guides/data-quality.md`
+- When doing bulk data updates → read `migrations/README.md` and follow the Data Change Protocol above
 - When re-running or extending the WNA audit → read `wna_audit.py` header comments and `MEMORY.md` decisions
 - When debugging issues that may trace to prior work → read `guides/session-log.md`
