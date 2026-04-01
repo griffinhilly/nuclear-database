@@ -1347,6 +1347,118 @@ def planned_reactors():
     """)
     return jsonify({'planned_reactors': reactors, 'count': len(reactors)})
 
+@app.route('/planned/<project_name>')
+def planned_detail_page(project_name):
+    """Serve the planned plant detail page."""
+    return render_template('planned_detail.html', project_name=project_name)
+
+@app.route('/api/planned/<project_name>')
+@require_api_key('free')
+def planned_detail(project_name):
+    """Planned plant detail: all planned units at a project, milestones, nearby plants."""
+    units = query_db("""
+        SELECT p.id, p.project_name, p.unit_number, c.name as country,
+               t.code as technology, p.model, p.gross_capacity_mw, p.net_capacity_mw,
+               p.thermal_capacity_mw, p.vendor, p.vendor_country, p.is_export,
+               p.expected_construction_start, p.expected_online,
+               p.likelihood, p.likelihood_rating, p.status, p.notes,
+               p.latitude, p.longitude, p.developer, p.cost_estimate, p.description,
+               p.site_location
+        FROM planned_reactors p
+        LEFT JOIN countries c ON p.country_id = c.id
+        LEFT JOIN technologies t ON p.technology_id = t.id
+        WHERE p.project_name = ?
+        ORDER BY CAST(p.unit_number AS INTEGER), p.unit_number
+    """, (project_name,))
+
+    if not units:
+        return jsonify({'error': f'Planned plant not found: {project_name}'}), 404
+
+    first = units[0]
+
+    # Parse milestones from notes field (split by sentence, match keywords)
+    milestones = []
+    notes_text = first['notes'] or ''
+    sentences = [s.strip() for s in notes_text.replace('. ', '.\n').split('\n') if s.strip()]
+    milestone_keywords = [
+        ('Development Consent Order', 'DCO'),
+        ('Site preparation', 'Construction prep'),
+        ('Final Investment Decision', 'FID'),
+        ('first concrete', 'FCP'),
+        ('grid connection', 'Grid connection'),
+    ]
+    for keyword, label in milestone_keywords:
+        for sentence in sentences:
+            if keyword.lower() in sentence.lower():
+                milestones.append({'date': label, 'description': sentence.rstrip('.'), 'future': False})
+                break
+
+    # Add future milestones from data
+    if first['expected_construction_start']:
+        milestones.append({
+            'date': f"~{first['expected_construction_start']}",
+            'description': 'Expected construction start (first nuclear concrete)',
+            'future': True
+        })
+    if first['expected_online']:
+        online_years = sorted(set(u['expected_online'] for u in units if u['expected_online']))
+        for yr in online_years:
+            matching = [u for u in units if u['expected_online'] == yr]
+            unit_labels = ', '.join(f"Unit {u['unit_number']}" for u in matching)
+            milestones.append({
+                'date': f"~{yr}",
+                'description': f'{unit_labels} expected online',
+                'future': True
+            })
+
+    # Find nearby existing plants (same coordinates or similar name)
+    nearby = []
+    if first['latitude'] and first['longitude']:
+        nearby = query_db("""
+            SELECT DISTINCT r.plant_name as name,
+                   CASE
+                       WHEN SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) > 0 THEN 'Operational'
+                       WHEN SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) > 0 THEN 'Under Construction'
+                       WHEN SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) > 0 THEN 'Suspended'
+                       ELSE 'Permanent Shutdown'
+                   END as status
+            FROM reactors r
+            WHERE ABS(r.latitude - ?) < 0.05 AND ABS(r.longitude - ?) < 0.05
+            GROUP BY r.plant_name
+            ORDER BY r.plant_name
+        """, (first['latitude'], first['longitude']))
+
+    return jsonify({
+        'plant': {
+            'project_name': first['project_name'],
+            'country': first['country'],
+            'site_location': first['site_location'],
+            'technology': first['technology'],
+            'latitude': first['latitude'],
+            'longitude': first['longitude'],
+            'developer': first['developer'],
+            'cost_estimate': first['cost_estimate'],
+            'description': first['description'],
+            'thermal_capacity_mw': first['thermal_capacity_mw'],
+            'likelihood': first['likelihood'],
+            'status': first['status'],
+            'expected_online': min(u['expected_online'] for u in units if u['expected_online']) if any(u['expected_online'] for u in units) else None,
+        },
+        'units': [{
+            'unit_number': u['unit_number'],
+            'model': u['model'],
+            'gross_capacity_mw': u['gross_capacity_mw'],
+            'net_capacity_mw': u['net_capacity_mw'],
+            'vendor': u['vendor'],
+            'vendor_country': u['vendor_country'],
+            'expected_online': u['expected_online'],
+            'likelihood': u['likelihood'],
+            'notes': u['notes'],
+        } for u in units],
+        'milestones': milestones,
+        'nearby_plants': nearby,
+    })
+
 @app.route('/api/stats/history')
 @require_api_key('free')
 def stats_history():

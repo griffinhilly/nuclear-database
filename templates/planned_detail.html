@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planned Plant Details - Global Nuclear Database</title>
+
+    <!-- Leaflet for maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-card: #F7F7F6;
+            --bg-card-alt: #efeeec;
+            --bg-header: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);
+            --text-primary: #1a1a1a;
+            --text-secondary: #535252;
+            --text-muted: #9a9999;
+            --accent: #02ACBF;
+            --accent-planned: #9c27b0;
+            --border: #e2e0de;
+            --border-header: #9c27b0;
+            --success: #00A16E;
+            --warning: #EE8009;
+            --bg-hover: #e9e8e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 30px 20px;
+            background: var(--bg-header);
+            border-bottom: 2px solid var(--border-header);
+        }
+
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--accent-planned);
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .subtitle a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .subtitle a:hover {
+            text-decoration: underline;
+        }
+
+        .planned-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: var(--accent-planned);
+            color: #fff;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 10px;
+            max-width: 800px;
+        }
+
+        /* Stats cards */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mini-stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mini-stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-planned);
+        }
+
+        .mini-stat-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        /* Grid layout */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .detail-grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .card h2 {
+            color: var(--accent-planned);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+        }
+
+        .stat-value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .stat-value a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .stat-value a:hover {
+            text-decoration: underline;
+        }
+
+        /* Map */
+        #plant-map {
+            height: 300px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .data-table th, .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table th {
+            background: var(--bg-card-alt);
+            color: var(--accent-planned);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table tr:hover {
+            background: var(--bg-hover);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .likelihood-high { background: var(--success); color: #fff; }
+        .likelihood-medium { background: var(--warning); color: #fff; }
+        .likelihood-low { background: #9ca3af; color: #fff; }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 12px 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 18px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-planned);
+            border: 2px solid #fff;
+        }
+
+        .timeline-item.future::before {
+            background: var(--border);
+            border: 2px solid var(--accent-planned);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--accent-planned);
+            font-size: 0.9rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Nearby plants */
+        .nearby-link {
+            display: inline-block;
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin: 4px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .nearby-link:hover {
+            background: var(--bg-hover);
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--accent-planned);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            text-align: center;
+            padding: 60px;
+            color: #dc2626;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="back-link">&larr; Back to Dashboard</a>
+            <h1 id="plant-name">Loading...<span class="planned-badge">Planned</span></h1>
+            <p class="subtitle" id="plant-subtitle"></p>
+            <p class="description" id="plant-description"></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            Loading planned plant data...
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            Planned plant not found. <a href="/">Return to dashboard</a>
+        </div>
+
+        <div id="content" style="display: none;">
+            <!-- Quick Stats -->
+            <div class="stats-row" id="quick-stats"></div>
+
+            <!-- Main Grid -->
+            <div class="detail-grid">
+                <!-- Project Information -->
+                <div class="card">
+                    <h2>Project Information</h2>
+                    <div id="project-info"></div>
+                </div>
+
+                <!-- Location Map -->
+                <div class="card">
+                    <h2>Location</h2>
+                    <div id="plant-map"></div>
+                </div>
+            </div>
+
+            <!-- Timeline & Milestones -->
+            <div class="detail-grid">
+                <div class="card">
+                    <h2>Timeline & Milestones</h2>
+                    <div class="timeline" id="timeline"></div>
+                </div>
+
+                <!-- Nearby Plants -->
+                <div class="card">
+                    <h2>Related Plants at this Site</h2>
+                    <div id="nearby-plants">
+                        <p style="color: var(--text-muted);">Loading...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Planned Units Table -->
+            <div class="card" style="margin-top: 30px;">
+                <h2 id="units-title">Planned Units</h2>
+                <table class="data-table" id="units-table">
+                    <thead>
+                        <tr>
+                            <th>Unit</th>
+                            <th>Technology</th>
+                            <th>Model</th>
+                            <th>Gross Capacity (MW)</th>
+                            <th>Net Capacity (MW)</th>
+                            <th>Vendor</th>
+                            <th>Expected Online</th>
+                            <th>Likelihood</th>
+                        </tr>
+                    </thead>
+                    <tbody id="units-body"></tbody>
+                </table>
+            </div>
+
+            <!-- Notes -->
+            <div class="card" id="notes-card" style="margin-top: 30px; display: none;">
+                <h2>Project Notes</h2>
+                <p id="notes-text" style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Data: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> &amp;
+           <a href="https://world-nuclear.org" target="_blank">WNA</a> |
+           <a href="/sources">Sources & Methodology</a> |
+           <a href="/lineages">Design Lineages</a> |
+           <a href="/">Dashboard</a></p>
+    </footer>
+
+    <script>
+        const PROJECT_NAME = "{{ project_name }}";
+
+        async function loadPlannedDetails() {
+            try {
+                const response = await fetch(`/api/planned/${encodeURIComponent(PROJECT_NAME)}`);
+                if (!response.ok) throw new Error('Plant not found');
+                const data = await response.json();
+                renderPlannedDetails(data);
+            } catch (error) {
+                console.error('Failed to load planned plant:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        function renderPlannedDetails(data) {
+            const plant = data.plant;
+            const units = data.units;
+
+            // Header
+            document.getElementById('plant-name').innerHTML =
+                `${plant.project_name}<span class="planned-badge">${plant.status || 'Planned'}</span>`;
+            document.getElementById('plant-subtitle').innerHTML =
+                `<a href="/country/${encodeURIComponent(plant.country)}">${plant.country}</a> | ${plant.site_location || ''} | ${units.length} unit${units.length !== 1 ? 's' : ''} planned`;
+
+            if (plant.description) {
+                document.getElementById('plant-description').textContent = plant.description;
+            }
+
+            // Quick stats
+            const totalCapacity = units.reduce((s, u) => s + (u.net_capacity_mw || 0), 0);
+            const likelihoodClass = plant.likelihood === 'High' ? 'likelihood-high'
+                : plant.likelihood === 'Medium' ? 'likelihood-medium' : 'likelihood-low';
+
+            document.getElementById('quick-stats').innerHTML = `
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${units.length}</div>
+                    <div class="mini-stat-label">Planned Units</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${units[0].net_capacity_mw ? units[0].net_capacity_mw.toLocaleString() : '--'}</div>
+                    <div class="mini-stat-label">Net Capacity / Unit (MW)</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${totalCapacity ? totalCapacity.toLocaleString() : '--'}</div>
+                    <div class="mini-stat-label">Total Net Capacity (MW)</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value">${plant.expected_online || '--'}</div>
+                    <div class="mini-stat-label">First Unit Online</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-value"><span class="status-badge ${likelihoodClass}">${plant.likelihood || 'TBD'}</span></div>
+                    <div class="mini-stat-label">Likelihood</div>
+                </div>
+            `;
+
+            // Project info card
+            document.getElementById('project-info').innerHTML = `
+                <div class="stat-row">
+                    <span class="stat-label">Country</span>
+                    <span class="stat-value"><a href="/country/${encodeURIComponent(plant.country)}">${plant.country}</a></span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Location</span>
+                    <span class="stat-value">${plant.site_location || '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Developer</span>
+                    <span class="stat-value">${plant.developer || '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Vendor</span>
+                    <span class="stat-value">${units[0].vendor || '--'}${units[0].vendor_country ? ' (' + units[0].vendor_country + ')' : ''}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Technology</span>
+                    <span class="stat-value">${plant.technology ? '<a href="/technology/' + encodeURIComponent(plant.technology) + '">' + plant.technology + '</a>' : '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Reactor Model</span>
+                    <span class="stat-value">${units[0].model ? '<a href="/model/' + encodeURIComponent(units[0].model) + '">' + units[0].model + '</a>' : '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Thermal Capacity</span>
+                    <span class="stat-value">${plant.thermal_capacity_mw ? plant.thermal_capacity_mw.toLocaleString() + ' MWth / unit' : '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Cost Estimate</span>
+                    <span class="stat-value">${plant.cost_estimate || '--'}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Status</span>
+                    <span class="stat-value">${plant.status || 'Planned'}</span>
+                </div>
+            `;
+
+            // Show content before map init
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
+            // Map
+            if (plant.latitude && plant.longitude) {
+                const map = L.map('plant-map').setView([plant.latitude, plant.longitude], 12);
+                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+                    attribution: 'Esri, HERE, Garmin, &copy; OpenStreetMap'
+                }).addTo(map);
+                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
+
+                L.circleMarker([plant.latitude, plant.longitude], {
+                    radius: 14,
+                    fillColor: '#9c27b0',
+                    color: '#fff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map).bindPopup(`<strong>${plant.project_name}</strong><br>Planned - ${units.length} units`);
+            } else {
+                document.getElementById('plant-map').innerHTML =
+                    '<p style="text-align: center; color: #6e6d6d; padding: 100px 0;">Location data not available</p>';
+            }
+
+            // Timeline
+            const timeline = data.milestones || [];
+            if (timeline.length > 0) {
+                document.getElementById('timeline').innerHTML = timeline.map(m => `
+                    <div class="timeline-item ${m.future ? 'future' : ''}">
+                        <div class="timeline-date">${m.date}</div>
+                        <div class="timeline-desc">${m.description}</div>
+                    </div>
+                `).join('');
+            } else {
+                document.getElementById('timeline').innerHTML =
+                    '<p style="color: var(--text-muted);">No milestone data available</p>';
+            }
+
+            // Nearby / related plants
+            const nearby = data.nearby_plants || [];
+            if (nearby.length > 0) {
+                document.getElementById('nearby-plants').innerHTML =
+                    nearby.map(p => `<a href="/plant/${encodeURIComponent(p.name)}" class="nearby-link">${p.name} <span style="color: var(--text-muted); font-size: 0.8rem;">${p.status}</span></a>`).join('') +
+                    '<p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 15px;">Other nuclear plants at or near this site</p>';
+            } else {
+                document.getElementById('nearby-plants').innerHTML =
+                    '<p style="color: var(--text-muted);">No related plants found</p>';
+            }
+
+            // Units table
+            document.getElementById('units-title').textContent = `Planned Units (${units.length})`;
+            document.getElementById('units-body').innerHTML = units.map(u => {
+                const likeCls = u.likelihood === 'High' ? 'likelihood-high'
+                    : u.likelihood === 'Medium' ? 'likelihood-medium' : 'likelihood-low';
+                return `
+                    <tr>
+                        <td><strong>${plant.project_name}-${u.unit_number}</strong></td>
+                        <td>${plant.technology ? '<a href="/technology/' + encodeURIComponent(plant.technology) + '" style="color: var(--accent); text-decoration: none;">' + plant.technology + '</a>' : '-'}</td>
+                        <td>${u.model ? '<a href="/model/' + encodeURIComponent(u.model) + '" style="color: var(--accent); text-decoration: none;">' + u.model + '</a>' : '-'}</td>
+                        <td>${u.gross_capacity_mw ? u.gross_capacity_mw.toLocaleString() : '-'}</td>
+                        <td>${u.net_capacity_mw ? u.net_capacity_mw.toLocaleString() : '-'}</td>
+                        <td>${u.vendor || '-'}</td>
+                        <td>${u.expected_online || '-'}</td>
+                        <td><span class="status-badge ${likeCls}">${u.likelihood || 'TBD'}</span></td>
+                    </tr>
+                `;
+            }).join('');
+
+            // Notes
+            if (units[0].notes) {
+                document.getElementById('notes-text').textContent = units[0].notes;
+                document.getElementById('notes-card').style.display = 'block';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPlannedDetails);
+    </script>
+</body>
+</html>

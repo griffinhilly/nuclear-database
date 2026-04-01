@@ -1594,8 +1594,8 @@
         function renderPlannedTable(reactors) {
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = reactors.map(r => `
-                <tr>
-                    <td><strong>${r.project_name}-${r.unit_number || '?'}</strong></td>
+                <tr style="cursor: pointer;" onclick="window.location='/planned/${encodeURIComponent(r.project_name)}'">
+                    <td><a href="/planned/${encodeURIComponent(r.project_name)}" style="color: var(--accent); text-decoration: none; font-weight: 600;">${r.project_name}-${r.unit_number || '?'}</a></td>
                     <td>${r.country || '-'}</td>
                     <td>${r.technology || '-'}</td>
                     <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
