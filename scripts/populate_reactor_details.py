@@ -61,10 +61,14 @@ def determine_cooling_type(plant, unit, country, design, lat, lon):
                 return 'Cooling tower (natural draft)'
         if plant == 'Tricastin':
             return 'Once-through (river)'
-        if plant in ('Dampierre', 'Chinon B'):
-            return 'Once-through (river)'
-        if plant in ('St. Laurent B', 'St. Laurent A'):
-            return 'Once-through (river)'
+        if plant == 'Dampierre':
+            return 'Cooling tower (natural draft)'  # 4 × 165m hyperbolic towers on Loire
+        if plant == 'Chinon B':
+            return 'Cooling tower (mechanical draft)'  # 4 × 30m low-profile towers (UNESCO Loire Valley)
+        if plant == 'St. Laurent A':
+            return 'Once-through (river)'  # Retired UNGG units
+        if plant == 'St. Laurent B':
+            return 'Cooling tower (natural draft)'  # Operational PWR units have cooling towers
         if plant == 'Blayais':
             return 'Once-through (river)'
         # Cooling tower plants
@@ -153,16 +157,22 @@ def determine_cooling_type(plant, unit, country, design, lat, lon):
 
     # --- Russia ---
     if country == 'Russia':
-        if plant in ('Novovoronezh 1', 'Novovoronezh 2'):
+        if plant == 'Novovoronezh 1':
             return 'Cooling pond'
-        if plant in ('Kursk 1', 'Kursk 2'):
+        if plant == 'Novovoronezh 2':
+            return 'Cooling tower (natural draft)'  # Each VVER-1200 has its own tower
+        if plant == 'Kursk 1':
             return 'Cooling pond'
+        if plant == 'Kursk 2':
+            return 'Cooling tower (natural draft)'  # 179m tower (tallest in Russia)
         if plant in ('Rostov',):
             return 'Cooling pond'
         if plant in ('Smolensk',):
             return 'Cooling tower (natural draft)'
-        if plant in ('Leningrad 1', 'Leningrad 2'):
+        if plant == 'Leningrad 1':
             return 'Once-through (seawater)'
+        if plant == 'Leningrad 2':
+            return 'Cooling tower (natural draft)'  # Each VVER-1200 has its own tower
         if plant == 'Kola':
             return 'Once-through (lake)'
         if plant in ('Balakovo',):
@@ -263,7 +273,9 @@ def determine_cooling_type(plant, unit, country, design, lat, lon):
     # --- Belgium ---
     if country == 'Belgium':
         if plant == 'Doel':
-            return 'Once-through (river)'
+            if unit in ('1', '2'):
+                return 'Once-through (river)'
+            return 'Cooling tower (natural draft)'  # Units 3/4 each have ~170m natural-draft tower
         if plant == 'Tihange':
             return 'Cooling tower (natural draft)'
         if plant == 'BR-3':
@@ -430,7 +442,7 @@ def _us_cooling_type(plant, unit, design, lat, lon):
     # Clearly seawater/coastal
     seawater = {
         'San Onofre', 'Diablo Canyon', 'Millstone', 'Pilgrim',
-        'Oyster Creek', 'Salem', 'Hope Creek', 'Brunswick',
+        'Oyster Creek', 'Salem', 'Brunswick',
         'Calvert Cliffs', 'Surry', 'Seabrook', 'St Lucie',
         'Crystal River', 'Maine Yankee', 'Humboldt Bay',
         'GE Vallecitos', 'Shoreham',
@@ -454,11 +466,21 @@ def _us_cooling_type(plant, unit, design, lat, lon):
     if plant == 'Palo Verde':
         return 'Cooling tower (mechanical draft)'
 
+    # Nine Mile Point - mixed cooling (pre/post-NEPA)
+    if plant == 'Nine Mile Point':
+        if unit == '1':
+            return 'Once-through (lake)'
+        return 'Cooling tower (natural draft)'  # Unit 2: 543 ft natural-draft tower
+
+    # Hope Creek - natural-draft cooling tower (512 ft), post-NEPA
+    if plant == 'Hope Creek':
+        return 'Cooling tower (natural draft)'
+
     # Great Lakes plants
     lake_plants = {
         'Cook (Donald C. Cook)', 'Point Beach', 'Kewaunee',
         'Davis Besse', 'Fitzpatrick (James A. Fitzpatrick)',
-        'Ginna (R. E. Ginna)', 'Nine Mile Point', 'Perry',
+        'Ginna (R. E. Ginna)', 'Perry',
         'Zion', 'Big Rock Point',
     }
     if plant in lake_plants:
