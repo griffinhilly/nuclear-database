@@ -8,6 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py .
 COPY nuclear_reactors.db .
 COPY templates/ templates/
+COPY static/ static/
 COPY start.sh .
 RUN chmod +x start.sh
 
