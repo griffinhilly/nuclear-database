@@ -15,302 +15,159 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+
+    <!-- REG shared brand stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+
     <style>
-        :root {
-            --bg-primary: #ffffff;
-            --bg-card: #f8fafc;
-            --bg-card-alt: #f1f5f9;
-            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --accent: #2563eb;
-            --border: #e2e8f0;
-            --border-header: #2563eb;
-            --success: #16a34a;
-            --warning: #d97706;
-            --bg-hover: #e2e8f0;
-        }
+        /* Page-specific overrides — lineage detail */
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-
-        header {
-            padding: 30px 20px;
-            background: var(--bg-header);
-            border-bottom: 2px solid var(--border-header);
-        }
-
-        .back-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 15px;
-            margin-right: 15px;
-        }
-
-        .back-link:hover { text-decoration: underline; }
-
-        h1 { font-size: 2.2rem; color: var(--accent); margin-bottom: 5px; }
-
-        .subtitle { color: var(--text-secondary); font-size: 1.1rem; }
-
-        .description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-top: 10px;
-            max-width: 800px;
-        }
-
-        /* Stats row */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .mini-stat {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .mini-stat-value { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
-        .mini-stat-label { color: var(--text-secondary); font-size: 0.85rem; margin-top: 5px; }
-
-        /* Grid */
+        /* Detail grid */
         .detail-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 24px;
             margin: 30px 0;
         }
-
         @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
 
+        /* Cards */
         .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 25px;
+            background: #ffffff;
+            border: 1px solid var(--hairline);
+            border-left: 3px solid var(--reg-blue-cobalt);
+            padding: 24px 26px;
         }
-
         .card h2 {
-            color: var(--accent);
-            font-size: 1.1rem;
+            font-family: var(--font-sans);
+            color: var(--reg-grey-dark);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
             margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--hairline);
         }
 
         .stat-row {
             display: flex;
             justify-content: space-between;
             padding: 12px 0;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--hairline);
+            font-size: 0.92rem;
         }
-
         .stat-row:last-child { border-bottom: none; }
-        .stat-label { color: var(--text-secondary); }
-        .stat-value { color: var(--text-primary); font-weight: 600; }
-        .stat-value.highlight { color: var(--accent); }
+        .stat-row .stat-label { color: var(--text-secondary); }
+        .stat-row .stat-value { color: var(--reg-grey-dark); font-weight: 500; }
+        .stat-row .stat-value.highlight { color: var(--accent); }
 
         /* Tree visualization */
-        .tree-card {
-            grid-column: 1 / -1;
-        }
+        .tree-card { grid-column: 1 / -1; }
 
         #tree-container {
             overflow-x: auto;
             overflow-y: hidden;
         }
-
-        #tree-container svg {
-            display: block;
-        }
+        #tree-container svg { display: block; }
 
         .tree-node rect {
-            stroke: var(--border);
-            stroke-width: 1.5px;
+            stroke: var(--hairline);
+            stroke-width: 1px;
             cursor: pointer;
             transition: stroke 0.15s;
         }
-
         .tree-node rect:hover {
             stroke: var(--accent);
-            stroke-width: 2px;
+            stroke-width: 1.5px;
         }
-
         .tree-node text {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            fill: var(--text-primary);
+            font-family: var(--font-sans);
+            fill: var(--reg-grey-dark);
         }
 
         .tree-link {
             fill: none;
-            stroke: var(--border);
-            stroke-width: 2px;
+            stroke: var(--hairline);
+            stroke-width: 1px;
         }
 
         .tree-legend {
             display: flex;
-            gap: 15px;
+            gap: 18px;
             flex-wrap: wrap;
-            margin-top: 15px;
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px solid var(--hairline);
         }
-
         .tree-legend-item {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
+            gap: 8px;
+            font-size: 0.7rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
             color: var(--text-secondary);
+            font-weight: 500;
         }
-
         .tree-legend-swatch {
             width: 14px;
             height: 14px;
-            border-radius: 3px;
-            border: 1px solid var(--border);
+            border-radius: 0;
+            border: 1px solid var(--hairline);
         }
 
         /* Tooltip */
         .tree-tooltip {
             position: absolute;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            background: #ffffff;
+            border: 1px solid var(--hairline);
+            border-left: 3px solid var(--reg-yellow);
+            border-radius: 0;
             padding: 12px 16px;
             font-size: 0.85rem;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
             pointer-events: none;
             z-index: 100;
             max-width: 300px;
-            line-height: 1.5;
+            line-height: 1.55;
+            color: var(--text-secondary);
+            font-family: var(--font-sans);
         }
-
-        .tree-tooltip strong { color: var(--accent); }
+        .tree-tooltip strong { color: var(--reg-grey-dark); font-weight: 500; }
 
         /* Map */
         #lineage-map {
             height: 300px;
-            border-radius: 8px;
-            margin-top: 15px;
+            border-radius: 0;
+            border: 1px solid var(--hairline);
+            margin-top: 4px;
         }
 
         /* Chart */
         .chart-container {
             height: 300px;
-            margin-top: 15px;
+            margin-top: 8px;
         }
 
-        /* Data table */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .data-table th, .data-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .data-table th {
-            background: var(--bg-card-alt);
-            color: var(--accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .data-table th:hover { background: var(--bg-card); }
-
-        .data-table th .sort-icon { margin-left: 5px; opacity: 0.5; }
-        .data-table th.sorted .sort-icon { opacity: 1; }
-
-        .data-table tr:hover { background: var(--bg-hover); }
-
-        .data-table a.reactor-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .data-table a.reactor-link:hover { text-decoration: underline; }
-
-        .status-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .status-operational { background: var(--success); color: #fff; }
-        .status-construction { background: var(--warning); color: #fff; }
-        .status-shutdown { background: #9ca3af; color: #fff; }
-        .status-suspended { background: #6366f1; color: #fff; }
-
-        /* Loading */
-        .loading { text-align: center; padding: 60px; color: var(--text-secondary); }
-
-        .spinner {
-            border: 3px solid var(--border);
-            border-top: 3px solid var(--accent);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .error { text-align: center; padding: 60px; color: #dc2626; }
-
-        footer {
+        /* Error */
+        .error {
             text-align: center;
-            padding: 30px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            margin-top: 50px;
+            padding: 60px;
+            color: var(--danger);
         }
-
-        footer a { color: var(--accent); text-decoration: none; }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="/" class="back-link">&larr; Dashboard</a>
-            <a href="/lineages" class="back-link">&larr; All Lineages</a>
-            <h1 id="lineage-name">Loading...</h1>
-            <p class="subtitle" id="lineage-subtitle"></p>
-            <p class="description" id="lineage-description"></p>
+    {% include '_reg_nav.html' %}
+
+    <div class="reg-page-header">
+        <div class="reg-page-header-inner">
+            <a href="/lineages" class="reg-back-link">&larr; Back to Lineages</a>
+            <h1 class="reg-page-title" id="lineage-name">Loading...</h1>
+            <p class="reg-page-subtitle" id="lineage-subtitle"></p>
+            <p class="reg-page-description" id="lineage-description"></p>
         </div>
-    </header>
+    </div>
 
     <div class="container">
         <div id="loading" class="loading">
@@ -374,22 +231,18 @@
         </div>
     </div>
 
-    <footer>
-        <p>Data: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
-           <a href="/sources">Sources & Methodology</a> |
-           <a href="/">Dashboard</a></p>
-    </footer>
+    {% include '_reg_footer.html' %}
 
     <script>
         const SLUG = "{{ lineage_slug }}";
 
-        // Generation colors
+        // Generation colors (REG palette)
         const genColors = {
-            'Gen I':   '#94a3b8',
-            'Gen II':  '#60a5fa',
-            'Gen III': '#2563eb',
-            'Gen III+':'#1d4ed8',
-            'Gen IV':  '#7c3aed'
+            'Gen I':   '#D6D6DA',
+            'Gen II':  '#C7D9E8',
+            'Gen III': '#3F55C5',
+            'Gen III+':'#3F55C5',
+            'Gen IV':  '#E06336'
         };
 
         let currentReactors = [];
@@ -494,15 +347,16 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#16a34a',
-                    'Under Construction': '#d97706',
-                    'Suspended': '#6366f1',
-                    'Permanent Shutdown': '#9ca3af'
+                    'Operational': '#40774A',
+                    'Under Construction': '#FFC100',
+                    'Suspended': '#E06336',
+                    'Permanent Shutdown': '#474853',
+                    'Long-term Shutdown': '#9FC3A5'
                 };
 
                 const bounds = [];
                 withCoords.forEach(r => {
-                    const color = statusColors[r.status] || '#2563eb';
+                    const color = statusColors[r.status] || '#3F55C5';
                     bounds.push([r.latitude, r.longitude]);
                     L.circleMarker([r.latitude, r.longitude], {
                         radius: 6,
@@ -513,8 +367,8 @@
                         fillOpacity: 0.7
                     })
                     .bindPopup(`
-                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color:#2563eb">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        <a href="/country/${encodeURIComponent(r.country)}" style="color:#64748b">${r.country}</a> | ${r.design_series}<br>
+                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color:#3F55C5">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color:#6B6E7B">${r.country}</a> | ${r.design_series}<br>
                         <a href="/status/${encodeURIComponent(r.status)}" style="color:${color}; text-decoration:none">${r.status}</a>
                     `)
                     .addTo(map);
@@ -522,7 +376,7 @@
                 map.fitBounds(bounds, { padding: [20, 20] });
             } else {
                 document.getElementById('lineage-map').innerHTML =
-                    '<p style="text-align:center;color:#64748b;padding:100px 0;">No location data</p>';
+                    '<p style="text-align:center;color:#6B6E7B;padding:100px 0;">No location data</p>';
             }
 
             // Country chart
@@ -535,8 +389,8 @@
                         datasets: [{
                             label: 'Capacity (GW)',
                             data: top15.map(c => c.capacity_gw),
-                            backgroundColor: '#2563eb',
-                            borderRadius: 4
+                            backgroundColor: '#3F55C5',
+                            borderRadius: 0
                         }]
                     },
                     options: {
@@ -544,7 +398,7 @@
                         maintainAspectRatio: false,
                         indexAxis: 'y',
                         plugins: {
-                            legend: { display: false },
+                            legend: { display: false, labels: { color: '#474853' } },
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => `${top15[ctx.dataIndex].count} reactors`
@@ -553,13 +407,13 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#e2e8f0' },
-                                ticks: { color: '#64748b' },
-                                title: { display: true, text: 'GW', color: '#64748b' }
+                                grid: { color: '#E8E8EB' },
+                                ticks: { color: '#6B6E7B' },
+                                title: { display: true, text: 'GW', color: '#6B6E7B' }
                             },
                             y: {
                                 grid: { display: false },
-                                ticks: { color: '#1e293b' }
+                                ticks: { color: '#474853' }
                             }
                         },
                         onClick: (event, elements) => {
@@ -575,7 +429,7 @@
                 });
             } else {
                 document.getElementById('country-chart').parentElement.innerHTML =
-                    '<p style="text-align:center;color:#64748b;padding:80px 0;">No operational reactors</p>';
+                    '<p style="text-align:center;color:#6B6E7B;padding:80px 0;">No operational reactors</p>';
             }
 
             // Reactor table
@@ -684,13 +538,13 @@
                 .attr('class', 'tree-node')
                 .attr('transform', d => `translate(${d.y}, ${d.x})`);
 
-            // Node rectangles
+            // Node rectangles (square corners, REG palette)
             nodes.append('rect')
                 .attr('width', nodeW)
                 .attr('height', nodeH)
-                .attr('rx', 8)
-                .attr('ry', 8)
-                .attr('fill', d => genColors[d.data.generation_label] || '#e2e8f0');
+                .attr('rx', 0)
+                .attr('ry', 0)
+                .attr('fill', d => genColors[d.data.generation_label] || '#D6D6DA');
 
             // Series name
             nodes.append('text')
@@ -698,10 +552,11 @@
                 .attr('y', 22)
                 .attr('text-anchor', 'middle')
                 .attr('font-size', '13px')
-                .attr('font-weight', '700')
+                .attr('font-weight', '500')
                 .attr('fill', d => {
                     const label = d.data.generation_label || '';
-                    return (label === 'Gen I' || !label) ? '#1e293b' : '#fff';
+                    // Light fills (Gen I grey, Gen II powder blue) get dark text
+                    return (label === 'Gen I' || label === 'Gen II' || !label) ? '#474853' : '#fff';
                 })
                 .text(d => d.data.design_series);
 
@@ -713,7 +568,7 @@
                 .attr('font-size', '11px')
                 .attr('fill', d => {
                     const label = d.data.generation_label || '';
-                    return (label === 'Gen I' || !label) ? '#64748b' : 'rgba(255,255,255,0.85)';
+                    return (label === 'Gen I' || label === 'Gen II' || !label) ? '#6B6E7B' : 'rgba(255,255,255,0.85)';
                 })
                 .text(d => `${d.data.reactor_count} reactor${d.data.reactor_count !== 1 ? 's' : ''}`);
 
@@ -724,7 +579,7 @@
                 .attr('font-size', '10px')
                 .attr('fill', d => {
                     const label = d.data.generation_label || '';
-                    return (label === 'Gen I' || !label) ? '#94a3b8' : 'rgba(255,255,255,0.7)';
+                    return (label === 'Gen I' || label === 'Gen II' || !label) ? '#9498A4' : 'rgba(255,255,255,0.7)';
                 })
                 .text(d => {
                     const parts = [];
@@ -787,10 +642,11 @@
                 if (r.status === 'Operational') statusClass = 'operational';
                 else if (r.status === 'Under Construction') statusClass = 'construction';
                 else if (r.status === 'Suspended') statusClass = 'suspended';
+                else if (r.status === 'Long-term Shutdown') statusClass = 'longterm';
                 else statusClass = 'shutdown';
 
                 const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
-                    ? `<span style="color:#64748b">Shut:</span> ${r.permanent_shutdown}`
+                    ? `<span style="color:#6B6E7B">Shut:</span> ${r.permanent_shutdown}`
                     : (r.commercial_operation || '-');
 
                 return `

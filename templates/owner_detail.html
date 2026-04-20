@@ -12,424 +12,109 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+
+    <!-- REG shared brand stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+
     <style>
-        :root {
-            --bg-primary: #ffffff;
-            --bg-card: #f8fafc;
-            --bg-card-alt: #f1f5f9;
-            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --accent: #2563eb;
-            --border: #e2e8f0;
-            --border-header: #2563eb;
-            --success: #16a34a;
-            --warning: #d97706;
-            --bg-hover: #e2e8f0;
-        }
+        /* Page-specific overrides — owner detail */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            padding: 30px 20px;
-            background: var(--bg-header);
-            border-bottom: 2px solid var(--border-header);
-        }
-
-        .back-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            color: var(--accent);
-            margin-bottom: 5px;
-        }
-
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        .description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-top: 10px;
-            max-width: 800px;
-        }
-
-        /* Stats cards */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .mini-stat {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .mini-stat-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .mini-stat-label {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-top: 5px;
-        }
-
-        /* Grid layout */
+        /* Two-column detail grid (fleet info + map) */
         .detail-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 30px 0;
+            gap: 24px;
+            margin: 36px 0;
         }
-
         @media (max-width: 768px) {
             .detail-grid { grid-template-columns: 1fr; }
         }
 
+        /* Owner overview / fleet listing card */
         .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 25px;
+            background: #ffffff;
+            border: 1px solid var(--hairline);
+            padding: 24px 26px;
         }
-
+        .card.featured {
+            border-left: 3px solid var(--reg-yellow);
+        }
         .card h2 {
-            color: var(--accent);
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
+            font-family: var(--font-sans);
+            color: var(--reg-grey-dark);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--hairline);
         }
 
+        /* Stat rows (key/value pairs in fleet info card) */
         .stat-row {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 11px 0;
+            border-bottom: 1px solid var(--hairline);
+            font-size: 0.92rem;
         }
+        .stat-row:last-child { border-bottom: none; }
+        .stat-row .stat-label { color: var(--text-secondary); }
+        .stat-row .stat-value { color: var(--text-primary); font-weight: 500; }
+        .stat-row .stat-value.highlight { color: var(--accent); }
+        .stat-row .stat-value a { color: var(--accent); text-decoration: none; }
+        .stat-row .stat-value a:hover { text-decoration: underline; }
+        .stat-row .stat-label a { color: var(--accent); text-decoration: none; }
+        .stat-row .stat-label a:hover { text-decoration: underline; }
 
-        .stat-row:last-child {
-            border-bottom: none;
+        /* Subsection header inside fleet info (Technology Mix, Countries) */
+        .fleet-subhead {
+            margin-top: 18px;
+            padding-top: 12px;
+            border-top: 1px solid var(--hairline);
         }
-
-        .stat-label {
-            color: var(--text-secondary);
-        }
-
-        .stat-value {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .stat-value.highlight {
-            color: var(--accent);
-        }
-
-        .stat-value a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .stat-value a:hover {
-            text-decoration: underline;
+        .fleet-subhead strong {
+            color: var(--reg-grey-dark);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
         }
 
         /* Map */
         #owner-map {
             height: 300px;
-            border-radius: 8px;
-            margin-top: 15px;
+            border: 1px solid var(--hairline);
+            margin-top: 8px;
         }
 
         /* Chart */
         .chart-container {
-            height: 300px;
-            margin-top: 15px;
-        }
-
-        /* Data Table */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .data-table th, .data-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .data-table th {
-            background: var(--bg-card-alt);
-            color: var(--accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            user-select: none;
             position: relative;
+            height: 300px;
+            margin-top: 8px;
         }
 
-        .data-table th:hover {
-            background: var(--bg-card);
-        }
-
-        .data-table th .sort-icon {
-            margin-left: 5px;
-            opacity: 0.5;
-        }
-
-        .data-table th.sorted .sort-icon {
-            opacity: 1;
-        }
-
-        .data-table tr:hover {
-            background: var(--bg-hover);
-        }
-
-        .data-table a.reactor-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .data-table a.reactor-link:hover {
-            text-decoration: underline;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .status-operational {
-            background: var(--success);
-            color: #fff;
-        }
-
-        .status-construction {
-            background: var(--warning);
-            color: #fff;
-        }
-
-        .status-shutdown {
-            background: #9ca3af;
-            color: #fff;
-        }
-
-        .status-suspended {
-            background: #6366f1;
-            color: #fff;
-        }
-
-        .status-longterm {
-            background: #d1d5db;
-            color: #374151;
-        }
-
-        .status-longterm {
-            background: #9ca3af;
-            color: #fff;
-        }
-
-        /* Column Filter Popover */
-        .filter-icon {
-            margin-left: 5px;
-            opacity: 0.4;
-            cursor: pointer;
-            font-size: 0.7rem;
-        }
-
-        .filter-icon:hover {
-            opacity: 0.8;
-        }
-
-        .filter-icon.active {
-            color: var(--accent);
-            opacity: 1;
-        }
-
-        .filter-popover {
-            position: fixed;
-            z-index: 1000;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px;
-            min-width: 220px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            text-transform: none;
-            letter-spacing: normal;
-            font-size: 0.9rem;
-            font-weight: 400;
-        }
-
-        .filter-popover input[type="text"],
-        .filter-popover input[type="number"] {
-            width: 100%;
-            padding: 8px 10px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-        }
-
-        .filter-popover input:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .filter-popover .filter-actions {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 8px;
-            font-size: 0.8rem;
-        }
-
-        .filter-popover .filter-actions a {
-            color: var(--accent);
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .filter-popover .filter-actions a:hover {
-            text-decoration: underline;
-        }
-
-        .filter-popover .filter-checkbox-list {
-            max-height: 200px;
-            overflow-y: auto;
-            margin-top: 4px;
-        }
-
-        .filter-popover .filter-checkbox-list label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 4px 0;
-            cursor: pointer;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-
-        .filter-popover .filter-checkbox-list label:hover {
-            color: var(--text-primary);
-        }
-
-        .filter-popover .filter-range {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .filter-popover .filter-range input {
-            flex: 1;
-            margin-bottom: 0;
-        }
-
-        .filter-popover .filter-range span {
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-        }
-
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 60px;
-            color: var(--text-secondary);
-        }
-
-        .spinner {
-            border: 3px solid var(--border);
-            border-top: 3px solid var(--accent);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
+        /* Error state */
         .error {
             text-align: center;
             padding: 60px;
-            color: #ff5252;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            margin-top: 50px;
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
+            color: var(--danger);
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="/" class="back-link">&larr; Back to Dashboard</a>
-            <h1 id="owner-name">Loading...</h1>
-            <p class="subtitle" id="owner-subtitle">Nuclear Fleet Operator</p>
-            <p class="description" id="owner-description"></p>
+    {% include '_reg_nav.html' %}
+
+    <div class="reg-page-header">
+        <div class="reg-page-header-inner">
+            <a href="/" class="reg-back-link">&larr; Back to Dashboard</a>
+            <h1 class="reg-page-title" id="owner-name">Loading...</h1>
+            <p class="reg-page-subtitle" id="owner-subtitle">Nuclear Fleet Operator</p>
+            <p class="reg-page-description" id="owner-description"></p>
         </div>
-    </header>
+    </div>
 
     <div class="container">
         <div id="loading" class="loading">
@@ -448,7 +133,7 @@
             <!-- Main Grid -->
             <div class="detail-grid">
                 <!-- Fleet Information -->
-                <div class="card">
+                <div class="card featured">
                     <h2>Fleet Information</h2>
                     <div id="fleet-info"></div>
                 </div>
@@ -461,7 +146,7 @@
             </div>
 
             <!-- Generation History Chart -->
-            <div class="card" style="margin-top: 30px;">
+            <div class="card" style="margin-top: 24px;">
                 <h2>Generation History</h2>
                 <div class="chart-container">
                     <canvas id="generation-chart"></canvas>
@@ -469,7 +154,7 @@
             </div>
 
             <!-- Reactor Table -->
-            <div class="card" style="margin-top: 30px;">
+            <div class="card" style="margin-top: 24px;">
                 <h2 id="reactor-table-title">Reactors</h2>
                 <table class="data-table" id="reactor-table">
                     <thead>
@@ -488,12 +173,7 @@
         </div>
     </div>
 
-    <footer>
-        <p>Data: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
-           <a href="/sources">Sources & Methodology</a> |
-           <a href="/lineages">Design Lineages</a> |
-           <a href="/">Dashboard</a></p>
-    </footer>
+    {% include '_reg_footer.html' %}
 
     <script>
         const OWNER_NAME = "{{ owner_name }}";
@@ -809,12 +489,12 @@
                     <span class="stat-label">Most Recent Online</span>
                     <span class="stat-value">${lastOnline || '--'}</span>
                 </div>
-                <div style="margin-top: 15px; padding-top: 10px; border-top: 1px solid var(--border);">
-                    <strong style="color: var(--accent); font-size: 0.9rem;">Technology Mix</strong>
+                <div class="fleet-subhead">
+                    <strong>Technology Mix</strong>
                 </div>
                 ${techRows}
-                <div style="margin-top: 15px; padding-top: 10px; border-top: 1px solid var(--border);">
-                    <strong style="color: var(--accent); font-size: 0.9rem;">Countries</strong>
+                <div class="fleet-subhead">
+                    <strong>Countries</strong>
                 </div>
                 ${countryRows}
             `;
@@ -833,16 +513,16 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#16a34a',
-                    'Under Construction': '#d97706',
-                    'Suspended': '#6366f1',
-                    'Long-term Shutdown': '#d1d5db',
-                    'Permanent Shutdown': '#9ca3af'
+                    'Operational': '#40774A',
+                    'Under Construction': '#FFC100',
+                    'Suspended': '#E06336',
+                    'Long-term Shutdown': '#9FC3A5',
+                    'Permanent Shutdown': '#474853'
                 };
 
                 const bounds = [];
                 reactorsWithCoords.forEach(r => {
-                    const color = statusColors[r.status] || '#2563eb';
+                    const color = statusColors[r.status] || '#3F55C5';
                     bounds.push([r.latitude, r.longitude]);
                     L.circleMarker([r.latitude, r.longitude], {
                         radius: 8,
@@ -853,9 +533,9 @@
                         fillOpacity: 0.7
                     })
                     .bindPopup(`
-                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #2563eb;">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        <a href="/country/${encodeURIComponent(r.country)}" style="color: #64748b;">${r.country}</a> | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
-                        <a href="/technology/${encodeURIComponent(r.technology)}" style="color: #64748b;">${r.technology || ''}</a><br>
+                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #3F55C5;">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color: #6B6E7B;">${r.country}</a> | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
+                        <a href="/technology/${encodeURIComponent(r.technology)}" style="color: #6B6E7B;">${r.technology || ''}</a><br>
                         <a href="/status/${encodeURIComponent(r.status)}" style="color: ${color}; text-decoration: none;">${r.status}</a>
                     `)
                     .addTo(map);
@@ -864,7 +544,7 @@
                 map.fitBounds(bounds, { padding: [20, 20] });
             } else {
                 document.getElementById('owner-map').innerHTML =
-                    '<p style="text-align: center; color: #64748b; padding: 100px 0;">Location data not available</p>';
+                    '<p style="text-align: center; color: #6B6E7B; padding: 100px 0;">Location data not available</p>';
             }
 
             // Generation chart
@@ -876,15 +556,15 @@
                         datasets: [{
                             label: 'Generation (TWh)',
                             data: history.map(h => h.total_twh),
-                            backgroundColor: '#2563eb',
-                            borderRadius: 4
+                            backgroundColor: '#3F55C5',
+                            borderRadius: 0
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { display: false },
+                            legend: { display: false, labels: { color: '#474853' } },
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => {
@@ -896,19 +576,19 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#e2e8f0' },
-                                ticks: { color: '#64748b', maxTicksLimit: 20 }
+                                grid: { color: '#E8E8EB' },
+                                ticks: { color: '#6B6E7B', maxTicksLimit: 20 }
                             },
                             y: {
-                                grid: { color: '#e2e8f0' },
+                                grid: { color: '#E8E8EB' },
                                 ticks: {
-                                    color: '#64748b',
+                                    color: '#6B6E7B',
                                     callback: (val) => val.toLocaleString()
                                 },
                                 title: {
                                     display: true,
                                     text: 'TWh',
-                                    color: '#64748b'
+                                    color: '#6B6E7B'
                                 }
                             }
                         }
@@ -916,7 +596,7 @@
                 });
             } else {
                 document.getElementById('generation-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #64748b; padding: 80px 0;">No generation data available</p>';
+                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No generation data available</p>';
             }
 
             // Reactor table
@@ -936,7 +616,7 @@
                 else statusClass = 'shutdown';
 
                 const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
-                    ? `<span style="color:#64748b">Shut down:</span> ${r.permanent_shutdown}`
+                    ? `<span style="color:#6B6E7B">Shut down:</span> ${r.permanent_shutdown}`
                     : (r.commercial_operation || '-');
 
                 return `
