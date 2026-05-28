@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reactor Details - Global Nuclear Database</title>
+    <title>Reactor Details &mdash; Global Nuclear Database</title>
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -12,290 +12,172 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+
+    <!-- REG shared brand stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+
     <style>
-        :root {
-            --bg-primary: #ffffff;
-            --bg-card: #f8fafc;
-            --bg-card-alt: #f1f5f9;
-            --bg-header: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --accent: #2563eb;
-            --border: #e2e8f0;
-            --border-header: #2563eb;
-            --success: #16a34a;
-            --warning: #d97706;
-        }
+        /* Page-specific overrides — reactor detail */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            padding: 30px 20px;
-            background: var(--bg-header);
-            border-bottom: 2px solid var(--border-header);
-        }
-
-        .back-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
+        /* Plant back link inside the page header */
+        #plant-back-link a.back-link {
             display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            color: var(--accent);
-            margin-bottom: 5px;
-        }
-
-        .subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
             color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            text-decoration: none;
+            margin-left: 18px;
             font-weight: 500;
-            margin-left: 10px;
         }
+        #plant-back-link a.back-link:hover { color: var(--accent); }
 
-        .status-operational {
-            background: var(--success);
-            color: #fff;
-        }
-
-        .status-construction {
-            background: var(--warning);
-            color: #000;
-        }
-
-        .status-shutdown {
-            background: #9ca3af;
-            color: #fff;
-        }
-
-        .status-suspended {
-            background: #6366f1;
-            color: #fff;
-        }
-
-        .status-longterm {
-            background: #d1d5db;
-            color: #374151;
-        }
-
-        /* Grid layout */
+        /* Detail grid layout (two-column) */
         .detail-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 24px;
             margin: 30px 0;
         }
-
         @media (max-width: 768px) {
             .detail-grid { grid-template-columns: 1fr; }
         }
 
+        /* Detail card — flat hairline */
         .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 25px;
+            background: #ffffff;
+            border: 1px solid var(--hairline);
+            padding: 24px 26px;
         }
-
         .card h2 {
-            color: var(--accent);
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--reg-grey-dark);
+            margin-bottom: 18px;
+            padding: 0 0 10px 14px;
+            border-bottom: 1px solid var(--hairline);
+            position: relative;
+            letter-spacing: -0.005em;
+        }
+        .card h2::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 4px;
+            width: 4px; height: 1.05rem;
+            background: var(--reg-yellow);
         }
 
+        /* Stat rows inside cards */
         .stat-row {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--bg-card-alt);
+            align-items: baseline;
+            gap: 16px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--hairline);
         }
-
-        .stat-row:last-child {
-            border-bottom: none;
-        }
+        .stat-row:last-child { border-bottom: none; }
 
         .stat-label {
             color: var(--text-secondary);
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 500;
         }
-
         .stat-value {
-            color: var(--text-primary);
-            font-weight: 600;
+            color: var(--reg-grey-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-align: right;
+        }
+        .stat-value.highlight { color: var(--accent); }
+        .stat-value a { color: var(--accent); text-decoration: none; }
+        .stat-value a:hover { text-decoration: underline; }
+
+        /* Header status badge spacing */
+        .reg-page-title .status-badge {
+            margin-left: 12px;
+            vertical-align: middle;
+            font-size: 0.65rem;
         }
 
-        .stat-value.highlight {
-            color: var(--accent);
-        }
-
-        /* Stats cards */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .mini-stat {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .mini-stat-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .mini-stat-label {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-top: 5px;
-        }
-
-        /* Map */
+        /* Map (override default reg-css 500px to 300px for detail card) */
         #reactor-map {
             height: 300px;
-            border-radius: 8px;
-            margin-top: 15px;
+            border: 1px solid var(--hairline);
+            margin-top: 4px;
         }
 
-        /* Chart */
+        /* Chart container */
         .chart-container {
-            height: 250px;
-            margin-top: 15px;
+            position: relative;
+            height: 260px;
+            margin-top: 8px;
         }
 
-        /* Generation table */
+        /* Generation / capacity-history table */
         .gen-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
+            margin-top: 8px;
+            font-size: 0.92rem;
         }
-
         .gen-table th, .gen-table td {
-            padding: 10px;
+            padding: 11px 12px;
             text-align: left;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--hairline);
         }
-
         .gen-table th {
-            color: var(--accent);
-            font-size: 0.8rem;
+            color: var(--reg-grey-dark);
+            font-size: 0.66rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
+            background: var(--reg-grey-light);
+            border-bottom: 1px solid var(--reg-grey-dark);
         }
+        .gen-table tr:hover { background: var(--bg-hover); }
 
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 60px;
-            color: var(--text-secondary);
-        }
-
-        .spinner {
-            border: 3px solid var(--border);
-            border-top: 3px solid var(--accent);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
+        /* Error state */
         .error {
             text-align: center;
             padding: 60px;
-            color: #dc2626;
+            color: var(--danger);
         }
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            margin-top: 50px;
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        /* Collapsible cards */
+        /* Collapsible cards — yellow left rule when expanded */
         .card-collapsible h2 {
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .card-collapsible h2::after {
             content: '\25B8';
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
             transition: transform 0.2s;
+            position: static;
+            background: none;
+            width: auto;
+            height: auto;
         }
-
-        .card-collapsible.expanded h2::after {
-            content: '\25BE';
-        }
-
-        .card-collapsible .card-body {
-            display: none;
-        }
-
-        .card-collapsible.expanded .card-body {
-            display: block;
-        }
+        .card-collapsible.expanded h2::after { content: '\25BE'; }
+        .card-collapsible .card-body { display: none; }
+        .card-collapsible.expanded .card-body { display: block; }
 
         .spec-note {
-            margin-top: 15px;
+            margin-top: 14px;
             padding-top: 10px;
-            border-top: 1px solid var(--border);
-            font-size: 0.8rem;
+            border-top: 1px solid var(--hairline);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
             color: var(--text-muted);
         }
-
         .spec-note a {
             color: var(--text-muted);
             text-decoration: underline;
@@ -303,14 +185,16 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="/" class="back-link">&larr; Back to Dashboard</a>
+    {% include '_reg_nav.html' %}
+
+    <div class="reg-page-header">
+        <div class="reg-page-header-inner">
+            <a href="/" class="reg-back-link">&larr; Back to Dashboard</a>
             <span id="plant-back-link"></span>
-            <h1 id="reactor-name">Loading...</h1>
-            <p class="subtitle" id="reactor-location"></p>
+            <h1 class="reg-page-title" id="reactor-name">Loading...</h1>
+            <p class="reg-page-subtitle" id="reactor-location"></p>
         </div>
-    </header>
+    </div>
 
     <div class="container">
         <div id="loading" class="loading">
@@ -338,21 +222,21 @@
 
                 <!-- Design & Safety -->
                 <div class="card">
-                    <h2>Design & Safety</h2>
+                    <h2>Design &amp; Safety</h2>
                     <div id="design-info">
                     </div>
                 </div>
 
                 <!-- Core & Primary System (design specs, collapsed by default) -->
                 <div class="card card-collapsible" id="core-primary-card" style="display: none;">
-                    <h2>Core & Primary System</h2>
+                    <h2>Core &amp; Primary System</h2>
                     <div class="card-body" id="core-primary-info">
                     </div>
                 </div>
 
                 <!-- Steam & Secondary System (design specs, collapsed by default) -->
                 <div class="card card-collapsible" id="steam-secondary-card" style="display: none;">
-                    <h2>Steam & Secondary System</h2>
+                    <h2>Steam &amp; Secondary System</h2>
                     <div class="card-body" id="steam-secondary-info">
                     </div>
                 </div>
@@ -405,7 +289,7 @@
             </div>
 
             <!-- Generation History Table -->
-            <div class="card" style="margin-top: 30px;">
+            <div class="card" style="margin-top: 24px;">
                 <h2>Annual Generation Data</h2>
                 <table class="gen-table">
                     <thead>
@@ -423,12 +307,7 @@
         </div>
     </div>
 
-    <footer>
-        <p>Data: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
-           <a href="/sources">Sources & Methodology</a> |
-           <a href="/lineages">Design Lineages</a> |
-           <a href="/">Dashboard</a></p>
-    </footer>
+    {% include '_reg_footer.html' %}
 
     <script>
         const API_KEY = 'demo-key-12345';
@@ -467,9 +346,9 @@
                 ${reactor.plant_name}-${reactor.unit_number}
                 <span class="status-badge status-${reactor.status === 'Operational' ? 'operational' : reactor.status === 'Under Construction' ? 'construction' : reactor.status === 'Suspended' ? 'suspended' : reactor.status === 'Long-term Shutdown' ? 'longterm' : 'shutdown'}">${reactor.status}</span>
             `;
-            document.getElementById('reactor-location').innerHTML = `<a href="/country/${encodeURIComponent(reactor.country)}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted #94a3b8;">${reactor.country}</a> | <a href="/technology/${encodeURIComponent(reactor.technology)}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted #94a3b8;">${reactor.technology_name || reactor.technology}</a>`;
+            document.getElementById('reactor-location').innerHTML = `<a href="/country/${encodeURIComponent(reactor.country)}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted #9498A4;">${reactor.country}</a> | <a href="/technology/${encodeURIComponent(reactor.technology)}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted #9498A4;">${reactor.technology_name || reactor.technology}</a>`;
             document.getElementById('plant-back-link').innerHTML =
-                `<a href="/plant/${encodeURIComponent(reactor.plant_name)}" class="back-link" style="margin-left: 15px;">&larr; ${reactor.plant_name} Plant</a>`;
+                `<a href="/plant/${encodeURIComponent(reactor.plant_name)}" class="back-link">&larr; ${reactor.plant_name} Plant</a>`;
 
             // Quick stats
             document.getElementById('quick-stats').innerHTML = `
@@ -617,11 +496,11 @@
             // Capacity history
             if (capacityChanges.length > 0) {
                 const typeLabels = {initial: 'Initial', uprate: 'Uprate', derate: 'Derate', restart: 'Restart'};
-                const typeColors = {initial: '#64748b', uprate: '#16a34a', derate: '#dc2626', restart: '#2563eb'};
+                const typeColors = {initial: '#6B6E7B', uprate: '#40774A', derate: '#B33A20', restart: '#3F55C5'};
                 document.getElementById('capacity-history-table').innerHTML = capacityChanges.map(cc => `
                     <tr>
                         <td>${cc.effective_date}</td>
-                        <td><span style="color: ${typeColors[cc.change_type] || '#64748b'}; font-weight: 600;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
+                        <td><span style="color: ${typeColors[cc.change_type] || '#6B6E7B'}; font-weight: 600;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
                         <td>${cc.gross_capacity_mw.toLocaleString()}</td>
                         <td>${cc.net_capacity_mw ? cc.net_capacity_mw.toLocaleString() : '--'}</td>
                         <td style="color: var(--text-secondary); font-size: 0.85rem;">${cc.notes || ''}</td>
@@ -647,7 +526,7 @@
 
                 // Source note HTML
                 const sourceNote = `<div class="spec-note">Typical values for ${ds.design_series} design` +
-                    (ds.source ? ` — ${ds.source}` : '') +
+                    (ds.source ? ` &mdash; ${ds.source}` : '') +
                     `</div>`;
 
                 // Card 1: Core & Primary System
@@ -716,23 +595,23 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#16a34a',
-                    'Under Construction': '#d97706',
-                    'Suspended': '#6366f1',
-                    'Long-term Shutdown': '#d1d5db',
-                    'Permanent Shutdown': '#9ca3af'
+                    'Operational': '#40774A',
+                    'Under Construction': '#FFC100',
+                    'Suspended': '#E06336',
+                    'Long-term Shutdown': '#9FC3A5',
+                    'Permanent Shutdown': '#474853'
                 };
 
                 L.circleMarker([reactor.latitude, reactor.longitude], {
                     radius: 12,
-                    fillColor: statusColors[reactor.status] || '#2563eb',
+                    fillColor: statusColors[reactor.status] || '#3F55C5',
                     color: '#fff',
                     weight: 2,
                     opacity: 1,
                     fillOpacity: 0.8
                 }).addTo(map);
             } else {
-                document.getElementById('reactor-map').innerHTML = '<p style="text-align: center; color: #64748b; padding: 100px 0;">Location data not available</p>';
+                document.getElementById('reactor-map').innerHTML = '<p style="text-align: center; color: #6B6E7B; padding: 100px 0;">Location data not available</p>';
             }
 
             // Generation chart
@@ -745,25 +624,25 @@
                         datasets: [{
                             label: 'Generation (GWh)',
                             data: sortedHistory.map(h => h.electricity_gwh),
-                            backgroundColor: '#2563eb',
-                            borderRadius: 4
+                            backgroundColor: '#3F55C5',
+                            borderRadius: 0
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { display: false }
+                            legend: { display: false, labels: { color: '#474853' } }
                         },
                         scales: {
                             x: {
-                                grid: { color: '#e2e8f0' },
-                                ticks: { color: '#64748b' }
+                                grid: { color: '#E8E8EB' },
+                                ticks: { color: '#6B6E7B' }
                             },
                             y: {
-                                grid: { color: '#e2e8f0' },
+                                grid: { color: '#E8E8EB' },
                                 ticks: {
-                                    color: '#64748b',
+                                    color: '#6B6E7B',
                                     callback: (val) => val.toLocaleString()
                                 }
                             }
@@ -785,8 +664,8 @@
                     </tr>
                 `).join('');
             } else {
-                document.getElementById('generation-chart').parentElement.innerHTML = '<p style="text-align: center; color: #64748b; padding: 80px 0;">No generation data available</p>';
-                document.getElementById('generation-table').innerHTML = '<tr><td colspan="3" style="text-align: center; color: #64748b;">No data available</td></tr>';
+                document.getElementById('generation-chart').parentElement.innerHTML = '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No generation data available</p>';
+                document.getElementById('generation-table').innerHTML = '<tr><td colspan="3" style="text-align: center; color: #6B6E7B;">No data available</td></tr>';
             }
 
             // Toggle collapsible cards

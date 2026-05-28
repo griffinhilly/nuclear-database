@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plant Details - Global Nuclear Database</title>
+    <title>Plant Details &mdash; Global Nuclear Database</title>
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -12,301 +12,112 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+
+    <!-- REG shared brand stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+
     <style>
-        :root {
-            --bg-primary: #ffffff;
-            --bg-card: #F7F7F6;
-            --bg-card-alt: #efeeec;
-            --bg-header: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
-            --text-primary: #1a1a1a;
-            --text-secondary: #535252;
-            --text-muted: #9a9999;
-            --accent: #02ACBF;
-            --border: #e2e0de;
-            --border-header: #FFC002;
-            --success: #00A16E;
-            --warning: #EE8009;
-            --bg-hover: #e9e8e6;
-        }
+        /* Page-specific overrides — plant detail */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            padding: 30px 20px;
-            background: var(--bg-header);
-            border-bottom: 2px solid var(--border-header);
-        }
-
-        .back-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            color: var(--accent);
-            margin-bottom: 5px;
-        }
-
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        .subtitle a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .subtitle a:hover {
-            text-decoration: underline;
-        }
-
-        .description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-top: 10px;
-            max-width: 800px;
-        }
-
-        /* Stats cards */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .mini-stat {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .mini-stat-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .mini-stat-label {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-top: 5px;
-        }
-
-        /* Grid layout */
+        /* Detail grid (info card + map card) */
         .detail-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 24px;
             margin: 30px 0;
         }
-
         @media (max-width: 768px) {
             .detail-grid { grid-template-columns: 1fr; }
         }
 
+        /* Flat hairline cards */
         .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 25px;
+            background: #ffffff;
+            border: 1px solid var(--hairline);
+            padding: 24px 26px;
         }
-
+        .card.featured {
+            border-left: 3px solid var(--reg-blue-cobalt);
+        }
         .card h2 {
-            color: var(--accent);
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--reg-grey-dark);
+            margin-bottom: 18px;
+            padding: 0 0 10px 12px;
+            border-bottom: 1px solid var(--hairline);
+            position: relative;
+        }
+        .card h2::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 2px;
+            width: 3px; height: 0.95rem;
+            background: var(--reg-yellow);
         }
 
+        /* Two-column key/value rows inside info card */
         .stat-row {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
+            align-items: baseline;
+            gap: 14px;
+            padding: 11px 0;
+            border-bottom: 1px solid var(--hairline);
         }
-
-        .stat-row:last-child {
-            border-bottom: none;
-        }
-
-        .stat-label {
+        .stat-row:last-child { border-bottom: none; }
+        .stat-row .stat-label {
             color: var(--text-secondary);
-        }
-
-        .stat-value {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .stat-value.highlight {
-            color: var(--accent);
-        }
-
-        /* Map */
-        #plant-map {
-            height: 300px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        /* Chart */
-        .chart-container {
-            height: 300px;
-            margin-top: 15px;
-        }
-
-        /* Data Table */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .data-table th, .data-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .data-table th {
-            background: var(--bg-card-alt);
-            color: var(--accent);
-            font-weight: 600;
+            font-size: 0.7rem;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
+            font-weight: 500;
+            flex-shrink: 0;
         }
-
-        .data-table tr:hover {
-            background: var(--bg-hover);
+        .stat-row .stat-value {
+            color: var(--reg-grey-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-align: right;
         }
-
-        .data-table a.reactor-link {
+        .stat-row .stat-value.highlight {
+            color: var(--accent);
+        }
+        .stat-row .stat-value a {
             color: var(--accent);
             text-decoration: none;
-            font-weight: 600;
+        }
+        .stat-row .stat-value a:hover { text-decoration: underline; }
+
+        /* Plant map */
+        #plant-map {
+            height: 320px;
+            border: 1px solid var(--hairline);
+            margin-top: 4px;
         }
 
-        .data-table a.reactor-link:hover {
-            text-decoration: underline;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .status-operational {
-            background: var(--success);
-            color: #fff;
-        }
-
-        .status-construction {
-            background: var(--warning);
-            color: #fff;
-        }
-
-        .status-shutdown {
-            background: #9ca3af;
-            color: #fff;
-        }
-
-        .status-suspended {
-            background: #B8CD25;
-            color: #fff;
-        }
-
-        .status-longterm {
-            background: #d1d5db;
-            color: #374151;
-        }
-
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 60px;
-            color: var(--text-secondary);
-        }
-
-        .spinner {
-            border: 3px solid var(--border);
-            border-top: 3px solid var(--accent);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
+        /* Error state */
         .error {
             text-align: center;
             padding: 60px;
-            color: #dc2626;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            margin-top: 50px;
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
+            color: var(--danger);
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="/" class="back-link">&larr; Back to Dashboard</a>
-            <h1 id="plant-name">Loading...</h1>
-            <p class="subtitle" id="plant-subtitle"></p>
-            <p class="description" id="plant-description"></p>
+    {% include '_reg_nav.html' %}
+
+    <div class="reg-page-header">
+        <div class="reg-page-header-inner">
+            <a href="/" class="reg-back-link">&larr; Back to Dashboard</a>
+            <h1 class="reg-page-title" id="plant-name">Loading...</h1>
+            <p class="reg-page-subtitle" id="plant-subtitle"></p>
+            <p class="reg-page-description" id="plant-description"></p>
         </div>
-    </header>
+    </div>
 
     <div class="container">
         <div id="loading" class="loading">
@@ -325,7 +136,7 @@
             <!-- Main Grid -->
             <div class="detail-grid">
                 <!-- Plant Information -->
-                <div class="card">
+                <div class="card featured">
                     <h2>Plant Information</h2>
                     <div id="plant-info"></div>
                 </div>
@@ -385,12 +196,7 @@
         </div>
     </div>
 
-    <footer>
-        <p>Data: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
-           <a href="/sources">Sources & Methodology</a> |
-           <a href="/lineages">Design Lineages</a> |
-           <a href="/">Dashboard</a></p>
-    </footer>
+    {% include '_reg_footer.html' %}
 
     <script>
         const PLANT_NAME = "{{ plant_name }}";
@@ -424,7 +230,7 @@
             // Header
             document.getElementById('plant-name').textContent = plant.name;
             document.getElementById('plant-subtitle').innerHTML =
-                `<a href="/country/${encodeURIComponent(plant.country)}">${plant.country}</a> | ${plant.total_units} unit${plant.total_units !== 1 ? 's' : ''}`;
+                `<a href="/country/${encodeURIComponent(plant.country)}">${plant.country}</a> &middot; ${plant.total_units} unit${plant.total_units !== 1 ? 's' : ''}`;
 
             if (data.description) {
                 document.getElementById('plant-description').textContent = data.description;
@@ -476,23 +282,23 @@
             document.getElementById('plant-info').innerHTML = `
                 <div class="stat-row">
                     <span class="stat-label">Country</span>
-                    <span class="stat-value"><a href="/country/${encodeURIComponent(plant.country)}" style="color: var(--accent); text-decoration: none;">${plant.country}</a></span>
+                    <span class="stat-value"><a href="/country/${encodeURIComponent(plant.country)}">${plant.country}</a></span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Technology</span>
-                    <span class="stat-value">${technologies.length > 0 ? technologies.map(t => `<a href="/technology/${encodeURIComponent(t)}" style="color: var(--accent); text-decoration: none;">${t}</a>`).join(', ') : '--'}</span>
+                    <span class="stat-value">${technologies.length > 0 ? technologies.map(t => `<a href="/technology/${encodeURIComponent(t)}">${t}</a>`).join(', ') : '--'}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Model</span>
-                    <span class="stat-value">${models.length > 0 ? models.map(m => `<a href="/model/${encodeURIComponent(m)}" style="color: var(--accent); text-decoration: none;">${m}</a>`).join(', ') : '--'}</span>
+                    <span class="stat-value">${models.length > 0 ? models.map(m => `<a href="/model/${encodeURIComponent(m)}">${m}</a>`).join(', ') : '--'}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Owner</span>
-                    <span class="stat-value">${owners.length > 0 ? owners.map(o => `<a href="/owner/${encodeURIComponent(o)}" style="color: var(--accent); text-decoration: none;">${o}</a>`).join(', ') : '--'}</span>
+                    <span class="stat-value">${owners.length > 0 ? owners.map(o => `<a href="/owner/${encodeURIComponent(o)}">${o}</a>`).join(', ') : '--'}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Supplier / Builder</span>
-                    <span class="stat-value">${suppliers.length > 0 ? suppliers.map(s => `<a href="/supplier/${encodeURIComponent(s)}" style="color: var(--accent); text-decoration: none;">${s}</a>`).join(', ') : '--'}</span>
+                    <span class="stat-value">${suppliers.length > 0 ? suppliers.map(s => `<a href="/supplier/${encodeURIComponent(s)}">${s}</a>`).join(', ') : '--'}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Units by Status</span>
@@ -521,26 +327,26 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#00A16E',
-                    'Under Construction': '#EE8009',
-                    'Suspended': '#B8CD25',
-                    'Long-term Shutdown': '#d1d5db',
-                    'Permanent Shutdown': '#9ca3af'
+                    'Operational': '#40774A',
+                    'Under Construction': '#FFC100',
+                    'Suspended': '#E06336',
+                    'Long-term Shutdown': '#9FC3A5',
+                    'Permanent Shutdown': '#474853'
                 };
 
                 // Single marker for the plant site
                 const primaryStatus = reactors.find(r => r.status === 'Operational')?.status || reactors[0].status;
                 L.circleMarker([plant.latitude, plant.longitude], {
                     radius: 14,
-                    fillColor: statusColors[primaryStatus] || '#02ACBF',
+                    fillColor: statusColors[primaryStatus] || '#3F55C5',
                     color: '#fff',
                     weight: 2,
                     opacity: 1,
-                    fillOpacity: 0.8
+                    fillOpacity: 0.85
                 }).addTo(map);
             } else {
                 document.getElementById('plant-map').innerHTML =
-                    '<p style="text-align: center; color: #6e6d6d; padding: 100px 0;">Location data not available</p>';
+                    '<p style="text-align: center; color: #6B6E7B; padding: 100px 0;">Location data not available</p>';
             }
 
             // Reactor units table
@@ -570,12 +376,12 @@
             const capacityChanges = data.capacity_changes || [];
             if (capacityChanges.length > 0) {
                 const typeLabels = {initial: 'Initial', uprate: 'Uprate', derate: 'Derate', restart: 'Restart'};
-                const typeColors = {initial: '#6e6d6d', uprate: '#00A16E', derate: '#dc2626', restart: '#02ACBF'};
+                const typeColors = {initial: '#6B6E7B', uprate: '#40774A', derate: '#B33A20', restart: '#3F55C5'};
                 document.getElementById('capacity-history-body').innerHTML = capacityChanges.map(cc => `
                     <tr>
                         <td><a href="/reactor/${cc.reactor_id}" class="reactor-link">${plant.name}-${cc.unit_number}</a></td>
                         <td>${cc.effective_date}</td>
-                        <td><span style="color: ${typeColors[cc.change_type] || '#6e6d6d'}; font-weight: 600;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
+                        <td><span style="color: ${typeColors[cc.change_type] || '#6B6E7B'}; font-weight: 500;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
                         <td>${cc.gross_capacity_mw.toLocaleString()}</td>
                         <td>${cc.net_capacity_mw ? cc.net_capacity_mw.toLocaleString() : '--'}</td>
                         <td style="color: var(--text-secondary); font-size: 0.85rem;">${cc.notes || ''}</td>
@@ -593,15 +399,18 @@
                         datasets: [{
                             label: 'Generation (GWh)',
                             data: history.map(h => h.total_gwh),
-                            backgroundColor: '#02ACBF',
-                            borderRadius: 4
+                            backgroundColor: '#3F55C5',
+                            borderRadius: 0
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { display: false },
+                            legend: {
+                                display: false,
+                                labels: { color: '#474853' }
+                            },
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => {
@@ -613,19 +422,19 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#e2e0de' },
-                                ticks: { color: '#1a1a1a', maxTicksLimit: 20 }
+                                grid: { color: '#E8E8EB' },
+                                ticks: { color: '#6B6E7B', maxTicksLimit: 20 }
                             },
                             y: {
-                                grid: { color: '#e2e0de' },
+                                grid: { color: '#E8E8EB' },
                                 ticks: {
-                                    color: '#535252',
+                                    color: '#6B6E7B',
                                     callback: (val) => val.toLocaleString()
                                 },
                                 title: {
                                     display: true,
                                     text: 'GWh',
-                                    color: '#535252'
+                                    color: '#6B6E7B'
                                 }
                             }
                         }
@@ -633,7 +442,7 @@
                 });
             } else {
                 document.getElementById('generation-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #6e6d6d; padding: 80px 0;">No generation data available</p>';
+                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No generation data available</p>';
             }
         }
 

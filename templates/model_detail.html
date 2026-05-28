@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Model Details - Global Nuclear Database</title>
+    <title>Model Details &mdash; Global Nuclear Database</title>
 
     <!-- D3.js for tree visualization -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -15,120 +15,23 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+
+    <!-- REG shared brand stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+
     <style>
-        :root {
-            --bg-primary: #ffffff;
-            --bg-card: #F7F7F6;
-            --bg-card-alt: #efeeec;
-            --bg-header: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
-            --text-primary: #1a1a1a;
-            --text-secondary: #535252;
-            --text-muted: #9a9999;
-            --accent: #02ACBF;
-            --border: #e2e0de;
-            --border-header: #FFC002;
-            --success: #00A16E;
-            --warning: #EE8009;
-            --bg-hover: #e9e8e6;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
+        /* Page-specific overrides — model detail */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            padding: 30px 20px;
-            background: var(--bg-header);
-            border-bottom: 2px solid var(--border-header);
-        }
-
-        .back-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            color: var(--accent);
-            margin-bottom: 5px;
-        }
-
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        .subtitle a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .subtitle a:hover {
-            text-decoration: underline;
-        }
-
-        .description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-top: 10px;
-            max-width: 800px;
-        }
-
-        /* Stats cards */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .mini-stat {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .mini-stat-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .mini-stat-label {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-top: 5px;
+            padding: 30px 20px 20px;
         }
 
         /* Grid layout */
         .detail-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 24px;
             margin: 30px 0;
         }
 
@@ -136,380 +39,157 @@
             .detail-grid { grid-template-columns: 1fr; }
         }
 
+        /* Spec / info card */
         .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 25px;
+            background: #ffffff;
+            border: 1px solid var(--hairline);
+            padding: 24px 26px;
         }
 
         .card h2 {
-            color: var(--accent);
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--reg-grey-dark);
+            margin-bottom: 18px;
+            padding: 0 0 10px 14px;
+            border-bottom: 1px solid var(--hairline);
+            position: relative;
+            letter-spacing: -0.005em;
+        }
+        .card h2::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 4px;
+            width: 4px; height: 1.05rem;
+            background: var(--reg-yellow);
         }
 
+        /* Spec rows */
         .stat-row {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 11px 0;
+            border-bottom: 1px solid var(--hairline);
+            font-size: 0.92rem;
         }
-
-        .stat-row:last-child {
-            border-bottom: none;
-        }
+        .stat-row:last-child { border-bottom: none; }
 
         .stat-label {
             color: var(--text-secondary);
         }
-
         .stat-value {
-            color: var(--text-primary);
-            font-weight: 600;
+            color: var(--reg-grey-dark);
+            font-weight: 500;
         }
-
         .stat-value.highlight {
             color: var(--accent);
         }
+        .stat-value a { color: var(--accent); text-decoration: none; }
+        .stat-value a:hover { text-decoration: underline; }
 
-        /* Tree visualization */
+        /* Lineage tree visualization */
         .tree-card { grid-column: 1 / -1; }
 
         #tree-container {
             overflow-x: auto;
             overflow-y: hidden;
         }
-
         #tree-container svg { display: block; }
 
         .tree-node rect {
-            stroke: var(--border);
-            stroke-width: 1.5px;
+            stroke: var(--hairline);
+            stroke-width: 1px;
             cursor: pointer;
             transition: stroke 0.15s;
         }
-
         .tree-node rect:hover {
             stroke: var(--accent);
-            stroke-width: 2px;
+            stroke-width: 1.5px;
         }
-
         .tree-node.highlighted rect {
-            stroke: var(--accent);
-            stroke-width: 3px;
-            filter: drop-shadow(0 0 6px rgba(2, 172, 191, 0.4));
+            stroke: var(--reg-yellow);
+            stroke-width: 2.5px;
         }
-
         .tree-node text {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            fill: var(--text-primary);
+            font-family: var(--font-sans);
+            fill: var(--reg-grey-dark);
         }
-
         .tree-link {
             fill: none;
-            stroke: var(--border);
-            stroke-width: 2px;
+            stroke: var(--hairline);
+            stroke-width: 1.25px;
         }
 
         .tree-legend {
             display: flex;
-            gap: 15px;
+            gap: 18px;
             flex-wrap: wrap;
-            margin-top: 15px;
+            margin-top: 16px;
         }
-
         .tree-legend-item {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
+            gap: 8px;
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
             color: var(--text-secondary);
         }
-
         .tree-legend-swatch {
             width: 14px;
             height: 14px;
-            border-radius: 3px;
-            border: 1px solid var(--border);
+            border: 1px solid var(--hairline);
         }
 
         .tree-tooltip {
             position: absolute;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            background: #ffffff;
+            border: 1px solid var(--hairline);
+            border-left: 3px solid var(--reg-blue-cobalt);
+            border-radius: 0;
             padding: 12px 16px;
             font-size: 0.85rem;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
             pointer-events: none;
             z-index: 100;
-            max-width: 300px;
+            max-width: 320px;
             line-height: 1.5;
+            color: var(--text-secondary);
         }
+        .tree-tooltip strong { color: var(--reg-grey-dark); }
 
-        .tree-tooltip strong { color: var(--accent); }
-
-        /* Map */
+        /* Map sizing on this page */
         #model-map {
             height: 300px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        /* Chart */
-        .chart-container {
-            height: 300px;
-            margin-top: 15px;
-        }
-
-        /* Data Table */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .data-table th, .data-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .data-table th {
-            background: var(--bg-card-alt);
-            color: var(--accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            user-select: none;
-            position: relative;
-        }
-
-        .data-table th:hover {
-            background: var(--bg-card);
-        }
-
-        .data-table th .sort-icon {
-            margin-left: 5px;
-            opacity: 0.5;
-        }
-
-        .data-table th.sorted .sort-icon {
-            opacity: 1;
-        }
-
-        .data-table tr:hover {
-            background: var(--bg-hover);
-        }
-
-        .data-table a.reactor-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .data-table a.reactor-link:hover {
-            text-decoration: underline;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .status-operational {
-            background: var(--success);
-            color: #fff;
-        }
-
-        .status-construction {
-            background: var(--warning);
-            color: #fff;
-        }
-
-        .status-shutdown {
-            background: #9ca3af;
-            color: #fff;
-        }
-
-        .status-suspended {
-            background: #B8CD25;
-            color: #fff;
-        }
-
-        .status-longterm {
-            background: #d1d5db;
-            color: #374151;
-        }
-
-        .status-longterm {
-            background: #9ca3af;
-            color: #fff;
-        }
-
-        /* Column Filter Popover */
-        .filter-icon {
-            margin-left: 5px;
-            opacity: 0.4;
-            cursor: pointer;
-            font-size: 0.7rem;
-        }
-
-        .filter-icon:hover {
-            opacity: 0.8;
-        }
-
-        .filter-icon.active {
-            color: var(--accent);
-            opacity: 1;
-        }
-
-        .filter-popover {
-            position: fixed;
-            z-index: 1000;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px;
-            min-width: 220px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            text-transform: none;
-            letter-spacing: normal;
-            font-size: 0.9rem;
-            font-weight: 400;
-        }
-
-        .filter-popover input[type="text"],
-        .filter-popover input[type="number"] {
-            width: 100%;
-            padding: 8px 10px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-        }
-
-        .filter-popover input:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .filter-popover .filter-actions {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 8px;
-            font-size: 0.8rem;
-        }
-
-        .filter-popover .filter-actions a {
-            color: var(--accent);
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .filter-popover .filter-actions a:hover {
-            text-decoration: underline;
-        }
-
-        .filter-popover .filter-checkbox-list {
-            max-height: 200px;
-            overflow-y: auto;
+            border: 1px solid var(--hairline);
             margin-top: 4px;
         }
 
-        .filter-popover .filter-checkbox-list label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 4px 0;
-            cursor: pointer;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
+        /* Local chart container — overrides default 300px on detail charts */
+        .card .chart-container {
+            height: 300px;
+            margin-top: 4px;
         }
 
-        .filter-popover .filter-checkbox-list label:hover {
-            color: var(--text-primary);
-        }
-
-        .filter-popover .filter-range {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .filter-popover .filter-range input {
-            flex: 1;
-            margin-bottom: 0;
-        }
-
-        .filter-popover .filter-range span {
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-        }
-
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 60px;
-            color: var(--text-secondary);
-        }
-
-        .spinner {
-            border: 3px solid var(--border);
-            border-top: 3px solid var(--accent);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
+        /* Loading / error states */
         .error {
             text-align: center;
             padding: 60px;
-            color: #ff5252;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            margin-top: 50px;
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
+            color: var(--danger);
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="/" class="back-link">&larr; Back to Dashboard</a>
-            <h1 id="model-name">Loading...</h1>
-            <p class="subtitle" id="model-subtitle"></p>
-            <p class="description" id="model-description"></p>
+    {% include '_reg_nav.html' %}
+
+    <div class="reg-page-header">
+        <div class="reg-page-header-inner">
+            <a href="/" class="reg-back-link">&larr; Back to Dashboard</a>
+            <h1 class="reg-page-title" id="model-name">Loading...</h1>
+            <p class="reg-page-subtitle" id="model-subtitle"></p>
+            <p class="reg-page-description" id="model-description"></p>
         </div>
-    </header>
+    </div>
 
     <div class="container">
         <div id="loading" class="loading">
@@ -583,22 +263,19 @@
         </div>
     </div>
 
-    <footer>
-        <p>Data: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> |
-           <a href="/sources">Sources & Methodology</a> |
-           <a href="/lineages">Design Lineages</a> |
-           <a href="/">Dashboard</a></p>
-    </footer>
+    {% include '_reg_footer.html' %}
 
     <script>
         const MODEL_NAME = "{{ model_name }}";
 
+        const REG_SERIES = ['#3F55C5', '#40774A', '#E06336', '#9FC3A5', '#FFC100', '#C7D9E8', '#474853'];
+
         const genColors = {
-            'Gen I':   '#9a9999',
-            'Gen II':  '#FFC002',
-            'Gen III': '#02ACBF',
-            'Gen III+':'#00A16E',
-            'Gen IV':  '#EA6421'
+            'Gen I':   '#9FC3A5',
+            'Gen II':  '#C7D9E8',
+            'Gen III': '#3F55C5',
+            'Gen III+':'#3F55C5',
+            'Gen IV':  '#E06336'
         };
 
         let currentReactors = [];
@@ -926,16 +603,16 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#00A16E',
-                    'Under Construction': '#EE8009',
-                    'Suspended': '#B8CD25',
-                    'Long-term Shutdown': '#d1d5db',
-                    'Permanent Shutdown': '#9ca3af'
+                    'Operational': '#40774A',
+                    'Under Construction': '#FFC100',
+                    'Suspended': '#E06336',
+                    'Long-term Shutdown': '#9FC3A5',
+                    'Permanent Shutdown': '#474853'
                 };
 
                 const bounds = [];
                 reactorsWithCoords.forEach(r => {
-                    const color = statusColors[r.status] || '#02ACBF';
+                    const color = statusColors[r.status] || '#3F55C5';
                     bounds.push([r.latitude, r.longitude]);
                     L.circleMarker([r.latitude, r.longitude], {
                         radius: 8,
@@ -946,8 +623,8 @@
                         fillOpacity: 0.7
                     })
                     .bindPopup(`
-                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #02ACBF;">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        <a href="/country/${encodeURIComponent(r.country)}" style="color: #6e6d6d;">${r.country}</a> | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
+                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #3F55C5;">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color: #6B6E7B;">${r.country}</a> | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
                         <a href="/status/${encodeURIComponent(r.status)}" style="color: ${color}; text-decoration: none;">${r.status}</a>
                     `)
                     .addTo(map);
@@ -956,7 +633,7 @@
                 map.fitBounds(bounds, { padding: [20, 20] });
             } else {
                 document.getElementById('model-map').innerHTML =
-                    '<p style="text-align: center; color: #6e6d6d; padding: 100px 0;">Location data not available</p>';
+                    '<p style="text-align: center; color: #6B6E7B; padding: 100px 0;">Location data not available</p>';
             }
 
             // Generation chart
@@ -968,15 +645,15 @@
                         datasets: [{
                             label: 'Generation (TWh)',
                             data: history.map(h => h.total_twh),
-                            backgroundColor: '#02ACBF',
-                            borderRadius: 4
+                            backgroundColor: '#3F55C5',
+                            borderRadius: 0
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { display: false },
+                            legend: { display: false, labels: { color: '#474853' } },
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => {
@@ -988,19 +665,19 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#e2e0de' },
-                                ticks: { color: '#1a1a1a', maxTicksLimit: 20 }
+                                grid: { color: '#E8E8EB' },
+                                ticks: { color: '#6B6E7B', maxTicksLimit: 20 }
                             },
                             y: {
-                                grid: { color: '#e2e0de' },
+                                grid: { color: '#E8E8EB' },
                                 ticks: {
-                                    color: '#535252',
+                                    color: '#6B6E7B',
                                     callback: (val) => val.toLocaleString()
                                 },
                                 title: {
                                     display: true,
                                     text: 'TWh',
-                                    color: '#535252'
+                                    color: '#6B6E7B'
                                 }
                             }
                         }
@@ -1008,7 +685,7 @@
                 });
             } else {
                 document.getElementById('generation-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #6e6d6d; padding: 80px 0;">No generation data available</p>';
+                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No generation data available</p>';
             }
 
             // Reactor table
@@ -1031,8 +708,8 @@
                         datasets: [{
                             label: 'Capacity (GW)',
                             data: top15.map(c => c.capacity_gw),
-                            backgroundColor: '#02ACBF',
-                            borderRadius: 4
+                            backgroundColor: '#3F55C5',
+                            borderRadius: 0
                         }]
                     },
                     options: {
@@ -1040,7 +717,7 @@
                         maintainAspectRatio: false,
                         indexAxis: 'y',
                         plugins: {
-                            legend: { display: false },
+                            legend: { display: false, labels: { color: '#474853' } },
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => {
@@ -1051,17 +728,17 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#e2e0de' },
-                                ticks: { color: '#1a1a1a' },
+                                grid: { color: '#E8E8EB' },
+                                ticks: { color: '#6B6E7B' },
                                 title: {
                                     display: true,
                                     text: 'GW',
-                                    color: '#535252'
+                                    color: '#6B6E7B'
                                 }
                             },
                             y: {
                                 grid: { display: false },
-                                ticks: { color: '#1a1a1a' }
+                                ticks: { color: '#474853' }
                             }
                         },
                         onClick: (event, elements) => {
@@ -1078,7 +755,7 @@
                 });
             } else {
                 document.getElementById('country-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #6e6d6d; padding: 80px 0;">No country data available</p>';
+                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No country data available</p>';
             }
         }
 
@@ -1191,19 +868,19 @@
             nodes.append('rect')
                 .attr('width', nodeW)
                 .attr('height', nodeH)
-                .attr('rx', 8)
-                .attr('ry', 8)
-                .attr('fill', d => genColors[d.data.generation_label] || '#e2e0de');
+                .attr('rx', 0)
+                .attr('ry', 0)
+                .attr('fill', d => genColors[d.data.generation_label] || '#D6D6DA');
 
             nodes.append('text')
                 .attr('x', nodeW / 2)
                 .attr('y', 22)
                 .attr('text-anchor', 'middle')
                 .attr('font-size', '13px')
-                .attr('font-weight', '700')
+                .attr('font-weight', '500')
                 .attr('fill', d => {
                     const label = d.data.generation_label || '';
-                    return (label === 'Gen I' || !label) ? '#535252' : '#fff';
+                    return (label === 'Gen I' || label === 'Gen II' || !label) ? '#474853' : '#fff';
                 })
                 .text(d => d.data.design_series);
 
@@ -1214,7 +891,7 @@
                 .attr('font-size', '11px')
                 .attr('fill', d => {
                     const label = d.data.generation_label || '';
-                    return (label === 'Gen I' || !label) ? '#6e6d6d' : 'rgba(255,255,255,0.85)';
+                    return (label === 'Gen I' || label === 'Gen II' || !label) ? '#474853' : 'rgba(255,255,255,0.85)';
                 })
                 .text(d => `${d.data.reactor_count} reactor${d.data.reactor_count !== 1 ? 's' : ''}`);
 
@@ -1225,7 +902,7 @@
                 .attr('font-size', '10px')
                 .attr('fill', d => {
                     const label = d.data.generation_label || '';
-                    return (label === 'Gen I' || !label) ? '#94a3b8' : 'rgba(255,255,255,0.7)';
+                    return (label === 'Gen I' || label === 'Gen II' || !label) ? '#9498A4' : 'rgba(255,255,255,0.7)';
                 })
                 .text(d => {
                     const parts = [];
@@ -1285,7 +962,7 @@
                 else statusClass = 'shutdown';
 
                 const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
-                    ? `<span style="color:#6e6d6d">Shut down:</span> ${r.permanent_shutdown}`
+                    ? `<span style="color:#6B6E7B">Shut down:</span> ${r.permanent_shutdown}`
                     : (r.commercial_operation || '-');
 
                 return `
