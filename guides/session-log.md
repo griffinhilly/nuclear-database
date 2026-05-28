@@ -1,5 +1,12 @@
 # Nuclear Database — Session Log
 
+## Apr 3-4, 2026 — Cooling System Audit (9 plants fixed)
+- **Root cause**: `populate_reactor_details.py` assigned cooling type per plant, not per unit
+- **Fixed**: Doel 3/4 (natural draft), Nine Mile Point 2 (natural draft), Hope Creek (natural draft), Leningrad 2 (natural draft), Kursk 2 (natural draft), Novovoronezh 2 (natural draft), St. Laurent B (natural draft), Dampierre (natural draft), Chinon B (mechanical draft)
+- **Verified correct**: Blayais, Tricastin, Bugey 2/3 vs 4/5, Tihange, Tarapur (satellite), Kakrapar, all French plants audited
+- **Deferred**: Fermi 2 (likely wrong), Tarapur 3/4 (needs NPCIL source), US mech-vs-natural-draft audit, China inland fragility, validation checks
+- **Triggered by**: Belgium report review spotted Doel 3/4 error
+
 ## Mar 14, 2026 — Entity Descriptions (ALL 6 PHASES COMPLETE)
 - **688 total descriptions** across 7 entity types in `entity_descriptions` table
 - **Phase 1**: Infrastructure — created `entity_descriptions` table, `get_entity_description()` helper, updated all 7 API endpoints and templates

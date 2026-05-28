@@ -49,7 +49,7 @@ fly deploy
 ## Key Decisions
 
 - **Coordinates**: Wikipedia GeoData is the gold standard — always use article coordinates, never dismiss small discrepancies. See `guides/data-quality.md` for full notes.
-- **Capacity**: `net_capacity_mw` = `reference_power_mw` = PRIS Reference Unit Power (current/final). Original design values in `capacity_changes` initial records.
+- **Capacity**: `net_capacity_mw` = `reference_power_mw` = PRIS Reference Unit Power (current/final). Original design values in `capacity_changes` initial records. **Always query `capacity_changes` for historical/time-series questions, not just the static `reactors` table — plants change capacity over time (uprates, derates).**
 - Other feature decisions (chart design, map grouping, capacity factor formula, design lineage structure): see `guides/feature-decisions.md`
 
 ## Situational Guides

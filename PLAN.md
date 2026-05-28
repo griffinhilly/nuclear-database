@@ -2,11 +2,11 @@
 
 ## Current State
 
-Post-core development. Capacity alignment audit complete.
+Post-core development. Cooling system audit complete (9 plants fixed).
 
-- **Last worked**: Mar 26-29 — Capacity alignment audit: 229/229 reactors fixed. Model page design_series promotion fix. Whitespace validation added. REG rebrand deployed.
+- **Last worked**: Apr 3-4 — Cooling system audit: 9 plants corrected across 4 countries. Script + DB updated. Pushed.
 - **Known issue**: Ghost process can linger on port 5001 — use 5002 or `taskkill`
-- **Next**: 2025 PRIS data backfill when available. Consider periodic re-verification of PRIS RUP for operational fleet.
+- **Next**: Follow-up cooling audit (Fermi 2, Tarapur 3/4, US mechanical-vs-natural-draft). 2025 PRIS data backfill when available.
 
 ## Completed
 
@@ -77,6 +77,20 @@ Post-core development. Capacity alignment audit complete.
 - Fixed Rajasthan-7 status (UC → Operational)
 - 19 remaining CF > 110% entries are known limitations (historical ref power changes) — Uprates task will fix
 
+### Cooling System Audit (Apr 3-4, 2026)
+- Root cause: `populate_reactor_details.py` assigned cooling type per plant name, not per unit
+- Fixed 9 plants where newer/larger units have cooling towers but older units don't:
+  - Doel 3/4 (Belgium): once-through → natural draft tower
+  - Nine Mile Point 2 (USA): once-through lake → natural draft tower
+  - Hope Creek (USA): once-through seawater → natural draft tower
+  - Leningrad 2 (Russia): once-through seawater → natural draft tower
+  - Kursk 2 (Russia): cooling pond → natural draft tower
+  - Novovoronezh 2 (Russia): cooling pond → natural draft tower
+  - St. Laurent B (France): once-through river → natural draft tower
+  - Dampierre (France): once-through river → natural draft tower
+  - Chinon B (France): once-through river → mechanical draft tower (UNESCO landscape)
+- Verified correct: Blayais, Tricastin, Bugey 2/3 vs 4/5, Tihange, Tarapur, Kakrapar, all coastal plants
+
 ## Remaining
 
 ### 1. Coordinate & Planned Reactor Cleanup
@@ -142,3 +156,10 @@ Original design values preserved in `capacity_changes` initial records. 229/229 
 - [x] 106 capacity_changes records (was 55)
 
 **Key lesson**: PRIS Reference Unit Power can be stale for recently-uprated US reactors (Browns Ferry EPU completed 2019, PRIS still showed pre-EPU values in 2026). NRC and WNA are more current for US operational reactors. For future capacity verification, check NRC first for US reactors, WNA for international.
+
+### 8. Cooling System Audit Follow-up
+- [ ] Fermi 2 (USA): likely wrong — has 475 ft natural-draft tower but marked "Once-through (lake)"
+- [ ] Tarapur 3/4 (India): NPCIL literature suggests PHWR units use induced-draft cooling towers despite coastal location. Satellite was inconclusive — induced-draft towers are low-profile. Needs primary source verification.
+- [ ] US mechanical vs natural draft: Byron, Braidwood, Comanche Peak may be mechanical draft. Audit full US cooling_tower set.
+- [ ] China section fragile: fallthrough returns "seawater" for any unrecognized plant. Will break when inland sites enter construction.
+- [ ] Add cooling data checks to `validate_db.py` (null check, enum check, flag all-same-per-plant as review candidate)

@@ -13,6 +13,8 @@
 - **Capacity alignment**: COMPLETE — 229/229 reactors aligned. `net_capacity_mw` = `reference_power_mw` = current PRIS RUP (or NRC/WNA where PRIS stale)
 - Live at https://nuclear-database.fly.dev/
 
+- **Cooling audit (Apr 3-4)**: 9 plants fixed (Doel 3/4, NMP 2, Hope Creek, Leningrad 2, Kursk 2, Novovoronezh 2, St. Laurent B, Dampierre, Chinon B). Root cause: script assigned per-plant not per-unit. Follow-up needed: Fermi 2, Tarapur 3/4, US mech-vs-natural-draft, China inland fragility.
+
 Session history: see `guides/session-log.md`
 
 ## Gotchas
@@ -28,6 +30,9 @@ Session history: see `guides/session-log.md`
 - WNA "Gross Capacity" field sometimes reports net/reference power, not true gross (discovered for Browns Ferry: WNA=1256, actual gross=1310; Cook 2: WNA=1151, PRIS=1231)
 - PRIS itself can have stale values — both gross and RUP. Browns Ferry EPU completed 2019, PRIS still showed pre-EPU 1200 MWe in 2026 (actual: 1256). For US reactors, verify against NRC/WNA before trusting PRIS.
 - **Capacity source priority**: NRC (US only) > WNA > PRIS for operational reactors. PRIS is authoritative for shutdown reactors (usually). Always cross-reference when gaps are large.
+- `populate_reactor_details.py` assigns cooling per plant name — any multi-generation site with mixed cooling needs unit-level logic. Check new plants against this pattern.
+- Induced-draft cooling towers are low-profile (~30m) and hard to spot on satellite vs. natural-draft hyperbolic towers (~150-170m). Don't rely solely on satellite for cooling type verification.
+- Chinon B uses mechanical-draft towers (not natural draft) — unique in the French fleet, driven by UNESCO Loire Valley landscape constraints.
 - Bad generation data deleted: Bruce 1&2 layup (30), Wolsong 1 spikes (3), Bruce 6 MCR (2), Quad Cities 1 impossible (2), Sendai 1 (2), Takahama 3 (1), Wolsong 2 (1) = 41 total
 - 11 CF 100-102% entries remain — all plausible per industry contacts (Mark confirms ~101% possible for US units over a full year)
 
