@@ -131,7 +131,7 @@ def global_stats():
             COUNT(*) as total_reactors,
             SUM(CASE WHEN status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
-            SUM(CASE WHEN status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            SUM(CASE WHEN status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
             SUM(CASE WHEN status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
             SUM(CASE WHEN status = 'Long-term Shutdown' THEN 1 ELSE 0 END) as long_term_shutdown,
             ROUND(SUM(CASE WHEN status = 'Operational' THEN gross_capacity_mw ELSE 0 END) / 1000, 1) as operational_gw,
@@ -253,7 +253,7 @@ def country_detail(country):
             COUNT(*) as total_reactors,
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
-            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
             SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
             SUM(CASE WHEN r.status = 'Long-term Shutdown' THEN 1 ELSE 0 END) as long_term_shutdown,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
@@ -296,7 +296,7 @@ def country_detail(country):
                 WHEN 'Under Construction' THEN 2
                 WHEN 'Suspended' THEN 3
                 WHEN 'Long-term Shutdown' THEN 4
-                WHEN 'Permanent Shutdown' THEN 5
+                WHEN 'Shutdown' THEN 5
                 ELSE 6
             END,
             r.plant_name, r.unit_number
@@ -716,7 +716,7 @@ def model_detail(model_name):
             COUNT(*) as total,
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
-            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
             ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
         FROM models m
@@ -750,7 +750,7 @@ def model_detail(model_name):
                         COUNT(*) as total,
                         SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
                         SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
-                        SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+                        SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
                         ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
                         ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
                     FROM reactors r
@@ -772,7 +772,7 @@ def model_detail(model_name):
                 COUNT(*) as total,
                 SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
                 SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
-                SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+                SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
                 ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
                 ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
             FROM reactors r
@@ -824,7 +824,7 @@ def model_detail(model_name):
                 WHEN 'Under Construction' THEN 2
                 WHEN 'Suspended' THEN 3
                 WHEN 'Long-term Shutdown' THEN 4
-                WHEN 'Permanent Shutdown' THEN 5
+                WHEN 'Shutdown' THEN 5
                 ELSE 6
             END,
             c.name COLLATE NOCASE, r.plant_name, r.unit_number
@@ -924,7 +924,7 @@ def technology_detail(tech_code):
             COUNT(*) as total,
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
-            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
             ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
         FROM technologies t
@@ -965,7 +965,7 @@ def technology_detail(tech_code):
                 WHEN 'Under Construction' THEN 2
                 WHEN 'Suspended' THEN 3
                 WHEN 'Long-term Shutdown' THEN 4
-                WHEN 'Permanent Shutdown' THEN 5
+                WHEN 'Shutdown' THEN 5
                 ELSE 6
             END,
             c.name COLLATE NOCASE, r.plant_name, r.unit_number
@@ -1006,7 +1006,7 @@ def owner_detail(owner_name):
             COUNT(*) as total,
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
-            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
             ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age,
             COUNT(DISTINCT r.country_id) as countries
@@ -1048,7 +1048,7 @@ def owner_detail(owner_name):
                 WHEN 'Under Construction' THEN 2
                 WHEN 'Suspended' THEN 3
                 WHEN 'Long-term Shutdown' THEN 4
-                WHEN 'Permanent Shutdown' THEN 5
+                WHEN 'Shutdown' THEN 5
                 ELSE 6
             END,
             c.name COLLATE NOCASE, r.plant_name, r.unit_number
@@ -1186,7 +1186,7 @@ def supplier_detail(supplier_name):
             COUNT(*) as total,
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
-            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
             ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw,
             ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
         FROM suppliers s
@@ -1230,7 +1230,7 @@ def supplier_detail(supplier_name):
                 WHEN 'Under Construction' THEN 2
                 WHEN 'Suspended' THEN 3
                 WHEN 'Long-term Shutdown' THEN 4
-                WHEN 'Permanent Shutdown' THEN 5
+                WHEN 'Shutdown' THEN 5
                 ELSE 6
             END,
             c.name COLLATE NOCASE, r.plant_name, r.unit_number
@@ -1420,7 +1420,7 @@ def planned_detail(project_name):
                        WHEN SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) > 0 THEN 'Operational'
                        WHEN SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) > 0 THEN 'Under Construction'
                        WHEN SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) > 0 THEN 'Suspended'
-                       ELSE 'Permanent Shutdown'
+                       ELSE 'Shutdown'
                    END as status
             FROM reactors r
             WHERE ABS(r.latitude - ?) < 0.05 AND ABS(r.longitude - ?) < 0.05
@@ -2031,7 +2031,7 @@ def lineages_list():
                SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
                SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
                SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
-               SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+               SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
                ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
                COUNT(DISTINCT dsi.id) as series_count
         FROM design_lineages dl
@@ -2059,7 +2059,7 @@ def lineage_detail(slug):
                COUNT(r.id) as reactor_count,
                SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
                SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
-               SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+               SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
                SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended
         FROM design_series_info dsi
         LEFT JOIN reactors r ON r.design_series = dsi.design_series
@@ -2087,7 +2087,7 @@ def lineage_detail(slug):
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
             SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
-            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
             COUNT(DISTINCT c.name) as countries
         FROM reactors r
@@ -2140,7 +2140,7 @@ def containment_overview():
             COUNT(*) as total,
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
-            SUM(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+            SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
             SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw
         FROM reactors r
@@ -2181,7 +2181,7 @@ def containment_overview():
                 WHEN 'Under Construction' THEN 2
                 WHEN 'Suspended' THEN 3
                 WHEN 'Long-term Shutdown' THEN 4
-                WHEN 'Permanent Shutdown' THEN 5
+                WHEN 'Shutdown' THEN 5
                 ELSE 6
             END,
             c.name COLLATE NOCASE, r.plant_name, r.unit_number

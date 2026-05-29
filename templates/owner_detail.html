@@ -517,7 +517,7 @@
                     'Under Construction': '#FFC100',
                     'Suspended': '#E06336',
                     'Long-term Shutdown': '#9FC3A5',
-                    'Permanent Shutdown': '#474853'
+                    'Shutdown': '#474853'
                 };
 
                 const bounds = [];
@@ -615,7 +615,7 @@
                 else if (r.status === 'Long-term Shutdown') statusClass = 'longterm';
                 else statusClass = 'shutdown';
 
-                const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
+                const dateCol = r.status === 'Shutdown' && r.permanent_shutdown
                     ? `<span style="color:#6B6E7B">Shut down:</span> ${r.permanent_shutdown}`
                     : (r.commercial_operation || '-');
 

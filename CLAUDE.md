@@ -2,7 +2,7 @@
 
 ## Overview
 
-Flask web app serving a global nuclear reactor database with 739 reactors across 39 countries, plus 122 planned reactors. Backed by SQLite (`nuclear_reactors.db`) with reactor specs, generation history (1954-2024), and geographic coordinates. Reactor data verified against IAEA PRIS and cross-checked with WNA (March 2026).
+Flask web app serving a global nuclear reactor database with 738 reactors across 39 countries, plus 123 planned reactors. Backed by SQLite (`nuclear_reactors.db`) with reactor specs, generation history (1954-2024), and geographic coordinates. Reactor data verified against IAEA PRIS and cross-checked with WNA (March 2026).
 
 ## Architecture
 

@@ -287,7 +287,7 @@ def create_database():
             c.name as country,
             COUNT(CASE WHEN r.status = 'Operational' THEN 1 END) as operational_reactors,
             COUNT(CASE WHEN r.status = 'Under Construction' THEN 1 END) as under_construction,
-            COUNT(CASE WHEN r.status = 'Permanent Shutdown' THEN 1 END) as shutdown,
+            COUNT(CASE WHEN r.status = 'Shutdown' THEN 1 END) as shutdown,
             SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) as operational_capacity_mw,
             AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END) as avg_fleet_age
         FROM reactors r
@@ -449,7 +449,7 @@ def populate_database():
             parse_date(row.get('Construction Start')),
             parse_date(row.get('Grid Connection')),
             parse_date(row.get('Commercial Operation')),
-            parse_date(row.get('Permanent Shutdown Date')),
+            parse_date(row.get('Shutdown Date')),
             parse_date(row.get('Planned Retirement Date')),
             parse_date(row.get('Licensed Until')),
             float(row.get('Construction Time')) if pd.notna(row.get('Construction Time')) else None,
@@ -737,7 +737,7 @@ class NuclearDB:
                 COUNT(*) as total_reactors,
                 SUM(CASE WHEN status = 'Operational' THEN 1 ELSE 0 END) as operational,
                 SUM(CASE WHEN status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
-                SUM(CASE WHEN status = 'Permanent Shutdown' THEN 1 ELSE 0 END) as shutdown,
+                SUM(CASE WHEN status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
                 SUM(CASE WHEN status = 'Operational' THEN gross_capacity_mw ELSE 0 END) / 1000 as operational_gw,
                 AVG(CASE WHEN status = 'Operational' THEN age_years END) as avg_age
             FROM reactors

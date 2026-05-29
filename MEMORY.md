@@ -1,8 +1,9 @@
 # Nuclear Database — Memory
 
-## Current State (Mar 2026)
-- **739 reactors**: 417 Operational, 72 Under Construction, 24 Suspended, 226 Permanent Shutdown
-- **119 planned reactors** with likelihood ratings (High/Medium/Low)
+## Current State (May 2026)
+- **738 reactors**: 417 Operational, 76 Under Construction, 22 Suspended, 223 Shutdown
+  - (Mar 2026 was 739 / 72 / 24 / 226 "Permanent Shutdown". May 28 Noah review: status "Permanent Shutdown" renamed to "Shutdown"; +Kursk 2-3 & Darlington SMR-1 as UC; Khmelnytskyi 3/4 Suspended->UC; Madras-1 ->Suspended; CEFR ->Operational; Lungmen 1/2 + Baltic-1 moved reactors->planned as cancelled-construction.)
+- **123 planned reactors** with likelihood ratings (High/Medium/Low)
 - **39 countries**, all verified against IAEA PRIS
 - **All reactors have coordinates** — verified against Wikipedia GeoData (gold standard)
 - **All reactors have owners** — 154 distinct owners, all with descriptions
@@ -14,6 +15,8 @@
 - Live at https://nuclear-database.fly.dev/
 
 - **Cooling audit (Apr 3-4)**: 9 plants fixed (Doel 3/4, NMP 2, Hope Creek, Leningrad 2, Kursk 2, Novovoronezh 2, St. Laurent B, Dampierre, Chinon B). Root cause: script assigned per-plant not per-unit. Follow-up needed: Fermi 2, Tarapur 3/4, US mech-vs-natural-draft, China inland fragility.
+
+- **Noah review (May 28)**: ~45 external corrections from Noah, verified by 6 parallel research agents vs IAEA PRIS/WNA (asymmetric bar: default Noah unless overwhelming evidence). Applied via migrations 002-008 + a code-side status rename + 3 new validate_db.py checks. See `noah_review.md` for the full ledger. Net: many real model-code/naming errors fixed (Kola 3/4 V-213, Kursk II V-510K, Novovoronezh 1/2, Khmelnytskyi 3/4 model+status, Vandellos UNGG, Fuqing M310+, etc.). **3 OVERRIDES where Noah was wrong** (overwhelming evidence): Ling'ao 1/2 stay M310 (not M310+); Lianjiang 3/4 stay CAP1000 (not CAP1400 — Shidaowan conflation); Kudankulam 3/4 stay V-412 (no "M"). **Open follow-up — ask Noah** for his source on undocumented suffixes V-491S (Xudabao), V-491T (Tianwan), V-412T (Kudankulam 5/6) — base codes applied, suffixes dropped pending source.
 
 Session history: see `guides/session-log.md`
 
@@ -35,6 +38,10 @@ Session history: see `guides/session-log.md`
 - Chinon B uses mechanical-draft towers (not natural draft) — unique in the French fleet, driven by UNESCO Loire Valley landscape constraints.
 - Bad generation data deleted: Bruce 1&2 layup (30), Wolsong 1 spikes (3), Bruce 6 MCR (2), Quad Cities 1 impossible (2), Sendai 1 (2), Takahama 3 (1), Wolsong 2 (1) = 41 total
 - 11 CF 100-102% entries remain — all plausible per industry contacts (Mark confirms ~101% possible for US units over a full year)
+- **PRIS reactor-type codes can leak into the `models.name` field** — found a model literally named `"25"` (WITH quote chars) used by US prototypes (Vallecitos, Saxton). The quotes meant a naive `WHERE name='25'` missed it. `validate_db.py` check 7 now flags numeric-only model names.
+- **Auto-numbered units (R1)**: the build synthesized integer unit_numbers even where real plants use letters (Biblis A/B, Gundremmingen A/B/C) or where site≠plant (Calder Hall/Windscale on the Sellafield site). Noah's general note. Fixed those; no clean automated check (reactor_id transliteration mismatches like Khmelnitski≠Khmelnytskyi make it un-automatable) — watch for it when adding plants.
+- **Noah's VVER suffix convention** (V-491S/T, V-412M/T) is NOT in IAEA PRIS/WNA (they show plain V-491/V-412). Some suffixes ARE documented (V-510K, V-213+). Treat undocumented suffixes as Noah-internal until sourced.
+- **`reactors.status` canonical set is now {Operational, Under Construction, Suspended, Shutdown}** (no more "Permanent Shutdown"). `validate_db.py` check 6 enforces this. Note `app.py` still has a dead `'Long-term Shutdown'` CASE branch (0 rows). The `/api/stats` JSON key is still literally `permanently_shutdown` (value is correct) — cosmetic, left untouched to avoid frontend breakage.
 
 Data quality notes: see `guides/data-quality.md`
 
@@ -50,3 +57,6 @@ Data quality notes: see `guides/data-quality.md`
 - Korean "Saeul" renaming (Shin-Kori 3-6 → Saeul 1-4) not applied — keeping PRIS naming for DB consistency. WNA audit script has name overrides for matching.
 - **`net_capacity_mw` = PRIS Reference Unit Power** (current/final operating capacity), not Design Net Capacity. Original design values preserved in `capacity_changes` initial records. Decision made Mar 26 after discovering systematic design-vs-operating discrepancy across 229 reactors.
 - **Model detail page uses design_series grouping** when a model name is a subset of a broader series (e.g., "W (2-loop)" promotes to "W 2-Loop" showing all 19 reactors). Guard prevents promotion when a model spans multiple design_series.
+- **Status "Permanent Shutdown" -> "Shutdown" (May 28, Noah + REG editorial)**: REG argues some German/Belgian units should be refurbished and restarted, so "Permanent" contradicts the firm's own position. "Suspended" stays the shorter-term-offline category. DB value + all code references renamed together.
+- **Shidaowan naming (May 28, Q1)**: CAP1400 units -> "Shidaowan Guohe One" (国和一号, the official CAP1400 brand); HPR1000 Phase-I units -> "Shidaowan 1/2" (PRIS). Rejected Noah's "SN-1/SN-2" (zero source support). The site has 3 programs: Shidao Bay (HTR-PM), Shidaowan Guohe One (CAP1400), Shidaowan (HPR1000).
+- **Cancelled-construction class (May 28, D2)**: units that began construction but never operated (Lungmen 1/2, Baltic-1) live in `planned_reactors` with `expected_online='Cancelled'` (text in the integer-year column; app handles it because each such project is homogeneously 'Cancelled' — do NOT mix int years and 'Cancelled' in one project or `min()/sorted()` in app.py will TypeError).

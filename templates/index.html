@@ -118,7 +118,7 @@
                 <button class="map-filter-btn" data-filter="Operational" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 500;">Operational</button>
                 <button class="map-filter-btn" data-filter="Under Construction" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 500;">Under Construction</button>
                 <button class="map-filter-btn" data-filter="Suspended" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 500;">Suspended</button>
-                <button class="map-filter-btn" data-filter="Permanent Shutdown" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 500;">Permanent Shutdown</button>
+                <button class="map-filter-btn" data-filter="Shutdown" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 500;">Shutdown</button>
             </div>
             <div id="reactor-map"></div>
         </section>
@@ -132,7 +132,7 @@
                 <button class="tab-btn" data-tab="construction">Under Construction</button>
                 <button class="tab-btn" data-tab="planned">Planned</button>
                 <button class="tab-btn" data-tab="suspended">Suspended</button>
-                <button class="tab-btn" data-tab="shutdown">Permanent Shutdown</button>
+                <button class="tab-btn" data-tab="shutdown">Shutdown</button>
                 <button class="tab-btn" data-tab="search">Search</button>
             </div>
 
@@ -473,7 +473,7 @@
                 'Under Construction':  colors.yellow,
                 'Suspended':           colors.vermilion,
                 'Long-term Shutdown':  colors.sage,
-                'Permanent Shutdown':  colors.greyDark,
+                'Shutdown':  colors.greyDark,
                 'Unknown':             '#D6D6DA'
             };
 
@@ -578,7 +578,7 @@
             'Under Construction':  '#FFC100',  // yellow
             'Suspended':           '#E06336',  // vermilion
             'Long-term Shutdown':  '#9FC3A5',  // sage
-            'Permanent Shutdown':  '#474853'   // grey-dark
+            'Shutdown':  '#474853'   // grey-dark
         };
 
         const statusPriority = {
@@ -586,7 +586,7 @@
             'Under Construction': 2,
             'Suspended': 3,
             'Long-term Shutdown': 4,
-            'Permanent Shutdown': 5
+            'Shutdown': 5
         };
 
         async function loadMap() {
@@ -960,7 +960,7 @@
                         'operational': 'Operational',
                         'construction': 'Under Construction',
                         'suspended': 'Suspended',
-                        'shutdown': 'Permanent Shutdown'
+                        'shutdown': 'Shutdown'
                     };
                     const status = statusMap[tab];
                     let url = `/api/reactors?status=${encodeURIComponent(status)}&per_page=500`;
@@ -1058,7 +1058,7 @@
                     : '-';
 
                 let dateCol = r.commercial_operation || '-';
-                if (r.status === 'Permanent Shutdown' && r.permanent_shutdown) {
+                if (r.status === 'Shutdown' && r.permanent_shutdown) {
                     dateCol = `<span style="color:#888">Shut down:</span> ${r.permanent_shutdown}`;
                 }
 

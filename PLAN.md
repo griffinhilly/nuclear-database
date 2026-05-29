@@ -2,11 +2,19 @@
 
 ## Current State
 
-Post-core development. Cooling system audit complete (9 plants fixed).
+May 28 — **Noah review applied & validated locally; NOT yet committed/deployed** (awaiting Griffin approval for git push + fly deploy).
 
-- **Last worked**: Apr 3-4 — Cooling system audit: 9 plants corrected across 4 countries. Script + DB updated. Pushed.
+- **Last worked**: May 28 — ~45 external corrections from Noah. Verified by 6 parallel research agents (PRIS/WNA), applied via migrations 002-008, a code-side "Permanent Shutdown"->"Shutdown" rename (app.py/database.py/12 templates), and 3 new `validate_db.py` checks. Ledger: `noah_review.md`. Validator: all hard-FAIL checks pass; 54 remaining are the pre-existing WARN backlog (capacity-rounding + net/coord nulls), identical to the pre-Noah backup. App smoke-tested on :5002 (stats, status page, renamed plants, planned-with-Cancelled all OK).
+- **Uncommitted**: 8 new migration files, app.py + database.py + 12 templates, validate_db.py, scripts/rename_status_shutdown.py, noah_review.md, COMP updates. DB backed up to `nuclear_reactors.db.bak-noah-20260528`.
+- **Migration 009** (spec-blind review fixes): Khmelnytskyi notes de-contradicted; Darlington SMR construction_start -> first-concrete (2026-05); VVER-1200/510 year fixed; orphan artifact models W?/V-120 dropped; entity_descriptions synced (renamed Sellafield->Calder Hall, Shidaowan->Shidaowan Guohe One, MONTS-D'ARREE->EL-4, W?->WH 2-loop, CANDU casing; deleted artifacts).
+- **Open follow-ups**:
+  1. **Ask Noah** for sources on undocumented suffixes V-491S / V-491T / V-412T (applied base codes only). Also tell him the 3 overrides (Ling'ao=M310, Lianjiang=CAP1000, Kudankulam=V-412).
+  2. **Manual descriptions needed** (per project's manual-description standard): plants Windscale AGR, Shidaowan (HPR1000 units), Darlington SMR; and new models (V-510K, V-527/528/529, V-213+, M310+, CPR-1000+, BWRX-300, VBWR, WH 2-loop, VVER-210/365). App shows blank gracefully meanwhile.
+  3. Spotted adjacent (out of Noah scope): Novovoronezh-1 U5 series is "VVER-440/187" but should be "VVER-1000/187" (it's the prototype VVER-1000).
+  4. Reviewer-flagged (deferred, working): `expected_online='Cancelled'` is text in an INTEGER column (Griffin's D2 choice) — safe only because each cancelled project is homogeneous; do NOT mix int years + 'Cancelled' in one project. A few orphan model rows remain (CNP-1000, VVER-1200, VVER-TOI, V-392B, MONTS-D'ARREE) — cosmetic, mostly real designs.
+  5. Optional cosmetic: rename `/api/stats` JSON key `permanently_shutdown` -> `shutdown` (+ frontend); remove dead `'Long-term Shutdown'` CASE branch in app.py.
 - **Known issue**: Ghost process can linger on port 5001 — use 5002 or `taskkill`
-- **Next**: Follow-up cooling audit (Fermi 2, Tarapur 3/4, US mechanical-vs-natural-draft). 2025 PRIS data backfill when available.
+- **Next (pre-existing backlog)**: Follow-up cooling audit (Fermi 2, Tarapur 3/4, US mechanical-vs-natural-draft). 2025 PRIS data backfill when available.
 
 ## Completed
 

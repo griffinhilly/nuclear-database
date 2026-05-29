@@ -332,7 +332,7 @@
                     <span class="stat-value">${stats.suspended}</span>
                 </div>
                 <div class="stat-row">
-                    <span class="stat-label">Permanent Shutdown</span>
+                    <span class="stat-label">Shutdown</span>
                     <span class="stat-value">${stats.shutdown}</span>
                 </div>
             `;
@@ -350,7 +350,7 @@
                     'Operational': '#40774A',
                     'Under Construction': '#FFC100',
                     'Suspended': '#E06336',
-                    'Permanent Shutdown': '#474853',
+                    'Shutdown': '#474853',
                     'Long-term Shutdown': '#9FC3A5'
                 };
 
@@ -645,7 +645,7 @@
                 else if (r.status === 'Long-term Shutdown') statusClass = 'longterm';
                 else statusClass = 'shutdown';
 
-                const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
+                const dateCol = r.status === 'Shutdown' && r.permanent_shutdown
                     ? `<span style="color:#6B6E7B">Shut:</span> ${r.permanent_shutdown}`
                     : (r.commercial_operation || '-');
 

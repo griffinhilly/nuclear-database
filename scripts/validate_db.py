@@ -9,6 +9,9 @@ Checks:
   3. Whitespace in key text columns
   4. Orphan foreign keys
   5. Null checks on required fields
+  6. Status enum (canonical status set; catches drift / the Shutdown rename)
+  7. Model-name artifacts: numeric-only names (e.g. leaked PRIS reactor-type codes)
+  8. VVER series specificity (advisory, non-blocking)
 """
 import sqlite3
 import sys
@@ -158,6 +161,59 @@ def main():
             issues += count
     if not nulls_found:
         print("  OK: All required fields populated")
+
+    # 6. Status enum (locks in the "Shutdown" rename; catches status drift)
+    print()
+    print("=" * 60)
+    print("6. STATUS ENUM")
+    print("=" * 60)
+    allowed_status = ("Operational", "Under Construction", "Suspended", "Shutdown")
+    rows = conn.execute(
+        f"SELECT id, plant_name, unit_number, status FROM reactors "
+        f"WHERE status NOT IN ({','.join('?' * len(allowed_status))})",
+        allowed_status,
+    ).fetchall()
+    if rows:
+        print(f"  FAIL: {len(rows)} reactor(s) with unexpected status value")
+        for r in rows:
+            print(f"    id={r['id']} | {r['plant_name']} {r['unit_number']} | status='{r['status']}'")
+        issues += len(rows)
+    else:
+        print(f"  OK: all reactor statuses in {allowed_status}")
+
+    # 7. Model-name artifacts (R2): numeric-only names = leaked PRIS reactor-type codes (e.g. "25")
+    print()
+    print("=" * 60)
+    print("7. MODEL-NAME ARTIFACTS (numeric-only model names)")
+    print("=" * 60)
+    rows = conn.execute(
+        "SELECT id, name FROM models WHERE name GLOB '*[0-9]*' AND NOT name GLOB '*[A-Za-z]*'"
+    ).fetchall()
+    if rows:
+        print(f"  FAIL: {len(rows)} model(s) with numeric-only names (likely PRIS type-code leak)")
+        for r in rows:
+            print(f"    model id={r['id']} | name=\"{r['name']}\"")
+        issues += len(rows)
+    else:
+        print("  OK: no numeric-only model names")
+
+    # 8. VVER series specificity (R3) — ADVISORY, does not increment `issues`
+    print()
+    print("=" * 60)
+    print("8. VVER SERIES SPECIFICITY (advisory — non-blocking)")
+    print("=" * 60)
+    rows = conn.execute(
+        "SELECT plant_name, unit_number, design_series FROM reactors "
+        "WHERE design_series IN ('VVER-1200', 'VVER-1000', 'VVER-440') "
+        "ORDER BY plant_name, unit_number"
+    ).fetchall()
+    if rows:
+        print(f"  ADVISORY: {len(rows)} VVER reactor(s) with a generic series (no V-xxx project suffix):")
+        for r in rows:
+            print(f"    {r['plant_name']} {r['unit_number']} | series='{r['design_series']}'")
+        print("  (review candidates — assign a specific V-code where known; NOT counted as blocking)")
+    else:
+        print("  OK: no generic VVER series in reactors")
 
     # Summary
     print()

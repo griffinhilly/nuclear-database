@@ -210,7 +210,7 @@
             'Under Construction': '#FFC100',
             'Suspended': '#E06336',
             'Long-term Shutdown': '#9FC3A5',
-            'Permanent Shutdown': '#474853',
+            'Shutdown': '#474853',
             'Unknown': '#ECECEC'
         };
 
@@ -218,13 +218,13 @@
             'Operational': '#fff',
             'Under Construction': '#474853',
             'Suspended': '#fff',
-            'Permanent Shutdown': '#fff',
+            'Shutdown': '#fff',
             'Long-term Shutdown': '#474853',
             'Unknown': '#474853'
         };
 
         // Statuses that have meaningful generation data
-        const hasGeneration = ['Operational', 'Permanent Shutdown', 'Suspended'];
+        const hasGeneration = ['Operational', 'Shutdown', 'Suspended'];
 
         let currentReactors = [];
         let currentSort = { column: null, ascending: true };
@@ -677,7 +677,7 @@
                     '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No technology data available</p>';
             }
 
-            // Generation chart — only for Operational / Permanent Shutdown
+            // Generation chart — only for Operational / Shutdown
             if (!hasGeneration.includes(STATUS_NAME)) {
                 document.getElementById('generation-card').style.display = 'none';
             } else if (history && history.length > 0) {
@@ -739,7 +739,7 @@
                     ? `<a href="/technology/${encodeURIComponent(r.technology)}" class="reactor-link">${r.technology}</a>`
                     : '-';
 
-                const dateCol = r.status === 'Permanent Shutdown' && r.permanent_shutdown
+                const dateCol = r.status === 'Shutdown' && r.permanent_shutdown
                     ? `<span style="color:#6B6E7B">Shut down:</span> ${r.permanent_shutdown}`
                     : (r.commercial_operation || '-');
 

@@ -431,7 +431,7 @@
                 </div>
                 ${reactor.permanent_shutdown ? `
                 <div class="stat-row">
-                    <span class="stat-label">Permanent Shutdown</span>
+                    <span class="stat-label">Shutdown</span>
                     <span class="stat-value">${reactor.permanent_shutdown}</span>
                 </div>` : ''}
             `;
@@ -599,7 +599,7 @@
                     'Under Construction': '#FFC100',
                     'Suspended': '#E06336',
                     'Long-term Shutdown': '#9FC3A5',
-                    'Permanent Shutdown': '#474853'
+                    'Shutdown': '#474853'
                 };
 
                 L.circleMarker([reactor.latitude, reactor.longitude], {
