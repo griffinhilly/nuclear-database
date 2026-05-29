@@ -2,7 +2,7 @@
 
 ## Current State
 
-May 28 — **Noah review applied & validated locally; NOT yet committed/deployed** (awaiting Griffin approval for git push + fly deploy).
+May 28-29 — **Noah review SHIPPED.** Committed on branch `noah-review-2026-05` (058a304), pushed to GitHub, deployed to Fly.io (3 machines, health-checked). Live site verified: 738 reactors / 223 Shutdown / 76 UC / 417 operational. Branch not yet merged to `main` (PR available).
 
 - **Last worked**: May 28 — ~45 external corrections from Noah. Verified by 6 parallel research agents (PRIS/WNA), applied via migrations 002-008, a code-side "Permanent Shutdown"->"Shutdown" rename (app.py/database.py/12 templates), and 3 new `validate_db.py` checks. Ledger: `noah_review.md`. Validator: all hard-FAIL checks pass; 54 remaining are the pre-existing WARN backlog (capacity-rounding + net/coord nulls), identical to the pre-Noah backup. App smoke-tested on :5002 (stats, status page, renamed plants, planned-with-Cancelled all OK).
 - **Uncommitted**: 8 new migration files, app.py + database.py + 12 templates, validate_db.py, scripts/rename_status_shutdown.py, noah_review.md, COMP updates. DB backed up to `nuclear_reactors.db.bak-noah-20260528`.

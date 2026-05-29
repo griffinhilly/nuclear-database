@@ -162,5 +162,7 @@ Tech/model storage: `reactors.technology_id`→`technologies.code`, `reactors.mo
   - 002 new models/series; 003 corrections; 004 renaming; 005 "25"+Canada; 006 UC/cancelled/planned; 007 status rename; 008 drop orphan `"25"` (005 missed it — name had literal quote chars).
   - DB verified row-by-row; app smoke-tested (:5002) — stats, status page, renamed plants, planned/Cancelled all OK.
   - Validator: hard-FAIL checks all pass; 54 remaining = pre-existing WARN backlog (identical to pre-Noah backup).
-  - **NOT yet committed / deployed** — awaiting Griffin approval (git push + fly deploy).
-  - TODO ask Noah: sources for V-491S / V-491T / V-412T suffixes; inform him of the 3 overrides.
+  - Spec-blind review pass → migration 009 (Khmelnytskyi notes, Darlington date, entity_descriptions sync, orphan-model cleanup).
+- 2026-05-29: **SHIPPED.** Branch `noah-review-2026-05` (058a304) pushed; `fly deploy` succeeded (3 machines health-checked); live site verified (738/223/76/417). Branch not merged to main (PR available).
+  - TODO ask Noah: sources for V-491S / V-491T / V-412T suffixes; inform him of the 3 overrides (Ling'ao M310, Lianjiang CAP1000, Kudankulam V-412).
+  - TODO (manual content): plant descriptions for Windscale AGR, Shidaowan (HPR1000), Darlington SMR; descriptions for new models.
