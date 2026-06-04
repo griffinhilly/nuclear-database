@@ -131,15 +131,21 @@ Tech/model storage: `reactors.technology_id`→`technologies.code`, `reactors.mo
 
 **Status rename (D7):** "Permanent Shutdown" → **"Shutdown"** fleet-wide (226 rows + app.py + templates + validator + status description).
 
-## ⛔ OVERRIDE NOAH — overwhelming authoritative evidence to the contrary
+## ⛔→✅ OVERRIDE NOAH — ALL THREE REVERSED 2026-06-04 (Noah supplied authoritative sources)
 
-- **Ling'ao 1/2: keep M310** (NOT M310+). IAEA PRIS lists both as M310; M310+ is the CNNC label for Fuqing/Fangjiashan/Tianwan-5/6, not the CGN Ling'ao units. *(Noah's Fuqing→M310+ is right; his premise that Ling'ao 1/2 are also M310+ is inverted.)*
-- **Lianjiang 3/4: keep CAP1000 (~1160 MW)** (NOT CAP1400/1530 MW). All sources: all 6 Lianjiang units are CAP1000. Noah appears to have conflated with Shidaowan (CAP1400).
-- **Kudankulam 3/4: keep V-412** (NOT V-412M). PRIS/WNA list all 6 KK units identically as V-412. *(DB already V-412 → no change.)*
+The May-28 overrides were made on an "overwhelming contra-evidence" bar. Noah responded with sources; **all three now resolve in his favour** (applied via migration 010). Original override reasoning kept below for the record, with the reversal noted.
+
+- ~~Ling'ao 1/2: keep M310~~ → **M310+** (Griffin-approved 2026-06-04; Daya Bay 1/2 stay M310). The override's own premise was wrong: it claimed "M310+ is the label for Fuqing/Fangjiashan/Tianwan-5/6," but the DB had Fangjiashan **and** Tianwan 5/6 as CPR-1000, never M310+ — only Fuqing 1-4 was M310+. Taxonomy resolved: Daya Bay 1/2 = original Framatome M310; Ling'ao Phase-I (1/2) = CGN improved/localized M310 = M310+.
+- ~~Lianjiang 3/4: keep CAP1000~~ → **CAP1400 (Guohe One), 1534 gross / 1400 net**. Noah's source: China MEE EIA public notice (Jan 2026, archived). Corroborated 2026-06-04 by WNA / World Nuclear News / Wikipedia / Global Energy Monitor: Lianjiang is SPIC's first Guangdong plant; Phase-II units 3/4 are Guohe One (CAP1400). It is **State Nuclear, NOT a Shidaowan conflation** — exactly as Noah said. Lianjiang 1/2 stay CAP1000 (Phase I). *(Could not open the archived MEE PDF directly — archive.org blocked — but live sources independently confirm.)*
+- ~~Kudankulam 3/4: keep V-412~~ → **V-412M** (and 5/6 → **V-412T**, resolving Q2). Noah's source: OKB Gidropress 75-year anniversary book (2021) — the VVER designer's own designations; PRIS/WNA carry only the generic V-412. Source confirmed real (covers the V-412/V-491 design families); exact suffix letters live in the Russian chapter body, not independently re-verified by us.
+
+**Bonus error Noah surfaced** (not one of the three overrides): Tianwan 5/6 were `CPR-1000` in the DB; they are CNNC **ACPR-1000** (WNA / WNN / Wikipedia, 2026-06-04). Fixed in migration 010. This also exposed that the M310+ lineage description still wrongly listed Fangjiashan 1-2 / Tianwan 5-6 as M310+ — de-contradicted in 010.
+
+**Net:** every Noah correction from the May review is now accepted. The three overrides were the only holdouts; two reversed on hard external confirmation, one (Ling'ao) as a Griffin-approved taxonomy call.
 
 ## ✔️ DECISIONS RESOLVED (Griffin, 2026-05-28)
 - **Q1 Shidaowan → Guohe One (official).** CAP1400 units (DB "Shidaowan U1/U2") → **"Shidaowan Guohe One" U1/U2**; HPR1000 units (DB "Shidaowan U3/U4") → **"Shidaowan" U1/U2** (PRIS). NOT SN-1/SN-2.
-- **Q2 VVER suffixes → base code + ask Noah.** Apply **V-491** (Xudabao 3/4, Tianwan 7/8) and **V-412** (Kudankulam 5/6, currently NULL); do NOT add S/T/M suffixes. **TODO: ask Noah for his source on V-491S / V-491T / V-412T.**
+- **Q2 VVER suffixes → RESOLVED 2026-06-04.** Source received (OKB Gidropress 2021 book). Suffixes applied in migration 010: Xudabao 3/4 = **V-491S**, Tianwan 7/8 = **V-491T**, Kudankulam 5/6 = **V-412T** (and 3/4 = V-412M). *(Originally applied base codes only pending source; Noah then provided the designer's publication.)*
 - **Q3 Tarapur containment → "Pre-Mark I".**
 - **Q4 Planned remodel → Minimal.** Rename+annotate the Ukraine "U7-13" row; leave Doicesti/Wloclawek aggregates as-is.
 
@@ -163,6 +169,7 @@ Tech/model storage: `reactors.technology_id`→`technologies.code`, `reactors.mo
   - DB verified row-by-row; app smoke-tested (:5002) — stats, status page, renamed plants, planned/Cancelled all OK.
   - Validator: hard-FAIL checks all pass; 54 remaining = pre-existing WARN backlog (identical to pre-Noah backup).
   - Spec-blind review pass → migration 009 (Khmelnytskyi notes, Darlington date, entity_descriptions sync, orphan-model cleanup).
-- 2026-05-29: **SHIPPED.** Branch `noah-review-2026-05` (058a304) pushed; `fly deploy` succeeded (3 machines health-checked); live site verified (738/223/76/417). Branch not merged to main (PR available).
+- 2026-05-29: **SHIPPED.** Branch `noah-review-2026-05` (058a304) pushed; `fly deploy` succeeded (3 machines health-checked); live site verified (738/223/76/417). *(Later confirmed merged to `main` — 058a304 + docs are in main history; the "not merged" COMP note was stale.)*
   - TODO ask Noah: sources for V-491S / V-491T / V-412T suffixes; inform him of the 3 overrides (Ling'ao M310, Lianjiang CAP1000, Kudankulam V-412).
   - TODO (manual content): plant descriptions for Windscale AGR, Shidaowan (HPR1000), Darlington SMR; descriptions for new models.
+- 2026-06-04: **OVERRIDES REVERSED.** Noah replied with sources (Gidropress 2021 book; China MEE EIA notice) and held his ground on all three. Independently triangulated Lianjiang→CAP1400 and Tianwan 5/6→ACPR-1000 via WNA/WNN/Wikipedia/GEM. Applied via **migration 010** (`010_noah_override_reversals.sql`): 4 new models (V-412M/T, V-491S/T) + 4 design_series rows; reactor updates Ling'ao 1/2→M310+, Kudankulam 3/4→V-412M & 5/6→V-412T, Tianwan 7/8→V-491T, Xudabao 3/4→V-491S, Tianwan 5/6 CPR-1000→ACPR-1000; planned Lianjiang 3/4→CAP1400 (1534/1400); M310+ lineage description de-contradicted. Validator: zero new issues (54 pre-existing WARN backlog unchanged). App smoke-tested via test client (20 pages incl. all new model pages + VVER lineage tree, all 200). Branch `noah-followup-2026-06`. **Remaining manual content:** entity_descriptions for V-412M, V-412T, V-491S, V-491T.
