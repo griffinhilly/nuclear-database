@@ -1856,8 +1856,8 @@ def run_validation():
         SELECT 'suppliers.name', s.id, s.name
         FROM suppliers s WHERE s.name != TRIM(s.name)
         UNION ALL
-        SELECT 'owners.name', o.id, o.name
-        FROM owners o WHERE o.name != TRIM(o.name)
+        SELECT 'reactors.owner', r.id, r.owner
+        FROM reactors r WHERE r.owner IS NOT NULL AND r.owner != TRIM(r.owner)
     """)
     results['whitespace_issues'] = whitespace_issues
 
