@@ -2,12 +2,14 @@
 
 ## Current State
 
-Jun 4 — **Noah override reversals applied (migration 010).** All 3 May-28 overrides reversed after Noah supplied sources and held his ground; every Noah correction is now accepted. On branch `noah-followup-2026-06` (off main). Validator clean. **NOT yet committed / deployed** — see below.
+Jul 6 — **Migration 010 CONFIRMED SHIPPED** (session-start audit): committed `b1ae92f` Jun 4 11:29, merged to `main`, pushed to GitHub, and deployed to Fly.io — live-verified via API (Tianwan 5 = ACPR-1000, a change that exists only in 010). The "NOT yet committed / deployed" note below was stale: the Jun 4 COMP-update commit (1e7ea2d, 11:10) froze that language before the data commit landed at 11:29.
+
+Jun 4 — **Noah override reversals applied (migration 010).** All 3 May-28 overrides reversed after Noah supplied sources and held his ground; every Noah correction is now accepted. Validator clean.
 
 May 28-29 — **Noah review SHIPPED.** Committed (058a304), pushed to GitHub, deployed to Fly.io (3 machines, health-checked). Live site verified: 738 reactors / 223 Shutdown / 76 UC / 417 operational. **Confirmed merged to `main`** Jun 4 (the earlier "not merged" note was stale; main history contains 058a304 + docs).
 
 - **Last worked**: May 28 — ~45 external corrections from Noah. Verified by 6 parallel research agents (PRIS/WNA), applied via migrations 002-008, a code-side "Permanent Shutdown"->"Shutdown" rename (app.py/database.py/12 templates), and 3 new `validate_db.py` checks. Ledger: `noah_review.md`. Validator: all hard-FAIL checks pass; 54 remaining are the pre-existing WARN backlog (capacity-rounding + net/coord nulls), identical to the pre-Noah backup. App smoke-tested on :5002 (stats, status page, renamed plants, planned-with-Cancelled all OK).
-- **Uncommitted**: 8 new migration files, app.py + database.py + 12 templates, validate_db.py, scripts/rename_status_shutdown.py, noah_review.md, COMP updates. DB backed up to `nuclear_reactors.db.bak-noah-20260528`.
+- **Committed in 058a304** (May 29): 8 new migration files, app.py + database.py + 12 templates, validate_db.py, scripts/rename_status_shutdown.py, noah_review.md, COMP updates. DB backed up to `nuclear_reactors.db.bak-noah-20260528`.
 - **Migration 009** (spec-blind review fixes): Khmelnytskyi notes de-contradicted; Darlington SMR construction_start -> first-concrete (2026-05); VVER-1200/510 year fixed; orphan artifact models W?/V-120 dropped; entity_descriptions synced (renamed Sellafield->Calder Hall, Shidaowan->Shidaowan Guohe One, MONTS-D'ARREE->EL-4, W?->WH 2-loop, CANDU casing; deleted artifacts).
 - **Never-operated audit COMPLETE (D2)**: queried all `status='Shutdown'` reactors with no grid_connection AND no commercial_operation → only **3** in the DB (Lungmen 1/2, Baltic-1), all moved to planned/Cancelled. The other famous never-built plants (Zwentendorf, Bataan, Kalkar/SNR-300, WNP, Bellefonte) are NOT in this DB's reactor set, so nothing further to move. Audit done, not deferred.
 - **Open follow-ups (intended TODO)**:
