@@ -1,6 +1,9 @@
 # Nuclear Database — Memory
 
-## Current State (May 2026)
+## Current State (Jul 2026)
+- **Generation data through 2025** (backfilled Jul 6: 93.3% of operational fleet for 2025; 2024 raw total 2426.2 TWh, 2025 raw total 2622.8 TWh). Cooling audit complete (per-unit, US fleet). All entity descriptions complete (0 missing). pris_id integrity repaired + guarded (validator checks 12-14); ground-truth map `pris_id_map_2026-07.json`.
+
+## Prior State (May 2026)
 - **738 reactors**: 417 Operational, 76 Under Construction, 22 Suspended, 223 Shutdown
   - (Mar 2026 was 739 / 72 / 24 / 226 "Permanent Shutdown". May 28 Noah review: status "Permanent Shutdown" renamed to "Shutdown"; +Kursk 2-3 & Darlington SMR-1 as UC; Khmelnytskyi 3/4 Suspended->UC; Madras-1 ->Suspended; CEFR ->Operational; Lungmen 1/2 + Baltic-1 moved reactors->planned as cancelled-construction.)
 - **123 planned reactors** with likelihood ratings (High/Medium/Low)
@@ -20,9 +23,16 @@
 
 - **Override reversal (Jun 4, migration 010)**: Noah replied with sources and held his ground; all three overrides resolve in his favour. **Ling'ao 1/2 → M310+** (Griffin-approved taxonomy; Daya Bay 1/2 stay M310 — original Framatome M310 vs CGN improved/localized). **Lianjiang 3/4 → CAP1400/Guohe One, 1534 gross/1400 net** (China MEE EIA notice + WNA/WNN/Wikipedia/GEM confirm SPIC State-Nuclear, NOT a Shidaowan conflation; Lianjiang 1/2 stay CAP1000 Phase I). **Kudankulam 3/4 → V-412M, 5/6 → V-412T**; **Tianwan 7/8 → V-491T, Xudabao 3/4 → V-491S** (Q2 suffixes, now sourced to OKB Gidropress 2021 book — the designer's own designations; PRIS/WNA carry generic codes). **Bonus fix:** Tianwan 5/6 were wrongly CPR-1000 → **ACPR-1000** (CNNC; WNA/WNN/Wikipedia), surfaced by Noah's M310+ explanation; M310+ lineage description de-contradicted. Validator clean (54 pre-existing WARN unchanged). With this, **every Noah correction is accepted.** Remaining: manual entity_descriptions for the 4 new VVER models.
 
+- **Jul 6 session (migrations 011-015)**: Novovoronezh-5 V-187 series fix; US cooling audit (40 per-unit fixes; ledger `cooling_audit_2026-07.md`); 2025 PRIS backfill; **pris_id corruption found by spec-blind review + repaired** (ledger `pris_id_repair_2026-07.md`). World-electricity denominator rebase = OPEN decision (dict ~15% low vs EI; share chart overstates nuclear).
+
 Session history: see `guides/session-log.md`
 
 ## Gotchas
+- **pris_id is load-bearing and was silently wrong for 24 reactors** (13 duplicates + 5 dead/foreign ids + 6 NULLs, fixed Jul 6 in migration 015). Any backfill keyed on pris_id propagates identity errors into generation data. Before trusting a pris_id, check it against `pris_id_map_2026-07.json`; validator check 12 hard-fails duplicates. Symptom of past damage: byte-identical generation values on two reactors in the same year.
+- **PRIS renames reactors**: Shin-Kori 3/4 are now SAEUL-1/2 in PRIS (DB keeps Shin-Kori naming; pris_ids 885/886). Name-matching PRIS pages needs alias awareness (GOESGEN, KRSKO, ZAPORIZHZHYA, CHASNUPP=Chashma, KANUPP=Karachi, ANO=Arkansas Nuclear One).
+- **Shidaowan Guohe One 1 has NO PRIS page** (pris_id NULL since migration 015) — its generation needs a non-PRIS source (WNA/CNNC). Do not "find" it an id; the CAP1400 demo is absent from PRIS as of Jul 2026.
+- **Subagent CF-flag rationalization (process)**: the Jul 6 orchestrator saw 21 CF>102% flags incl. 200%+ values on shutdown reactors and wrote them off as "gross-vs-net artifacts". A 216% CF cannot be a basis artifact (~5-8% max). Treat any CF>110% flag as corruption-until-proven-otherwise; the flag that looks explainable is the one that isn't.
+- **Dungeness B 1/2 2020-21**: PRIS shows small NEGATIVE electricity (house-load during defueling); DB convention stores no <=0 rows, so DB's older positive rows for those years stand (known, accepted).
 - `fly ssh` doesn't work from Git Bash on Windows (handle error). Use PowerShell or cmd if needed.
 - `fly.exe` is at `~/.fly/bin/fly.exe` (not on PATH in bash)
 - Global electricity data in app.py is hardcoded dict (1970-2024) from EI Statistical Review

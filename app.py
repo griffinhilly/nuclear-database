@@ -196,8 +196,8 @@ def global_stats():
                 JOIN reactors r ON c.id = r.country_id
                 WHERE r.status IN ('Operational', 'Under Construction')
             """)[0]['cnt'],
-            'generation_years': '1954-2024',
-            'last_updated': '2024-12'
+            'generation_years': '1954-2025',
+            'last_updated': '2025-12'
         }
     })
 
@@ -1562,7 +1562,7 @@ def generation_decades():
         ('1990s', 1990, 1999),
         ('2000s', 2000, 2009),
         ('2010s', 2010, 2019),
-        ('2020s', 2020, 2024),
+        ('2020s', 2020, 2025),
     ]
 
     result = []
@@ -1624,7 +1624,7 @@ def generation_decades():
             'avg_annual_twh': round(avg_annual, 1),
             'years_with_data': years_covered,
             'total_years': total_years,
-            'is_partial': end >= 2024,
+            'is_partial': end >= 2025,
             'yearly_detail': yearly_adjusted
         })
 

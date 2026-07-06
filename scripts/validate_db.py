@@ -12,6 +12,9 @@ Checks:
   6. Status enum (canonical status set; catches drift / the Shutdown rename)
   7. Model-name artifacts: numeric-only names (e.g. leaked PRIS reactor-type codes)
   8. VVER series specificity (advisory, non-blocking)
+  9. Cooling-type NULLs on non-Shutdown reactors (advisory, non-blocking)
+ 10. Cooling-type enum (all non-NULL values in the 6-value set)
+ 11. Uniform cooling across 4+ unit plants (advisory review candidates, non-blocking)
 """
 import sqlite3
 import sys
@@ -214,6 +217,144 @@ def main():
         print("  (review candidates — assign a specific V-code where known; NOT counted as blocking)")
     else:
         print("  OK: no generic VVER series in reactors")
+
+    # 9. Cooling-type NULLs on non-Shutdown reactors (R4) — ADVISORY, does not increment issues
+    print()
+    print("=" * 60)
+    print("9. COOLING-TYPE NULLs (non-Shutdown reactors) — advisory, non-blocking")
+    print("=" * 60)
+    rows = conn.execute(
+        "SELECT r.plant_name, r.unit_number, r.status "
+        "FROM reactors r "
+        "LEFT JOIN reactor_details rd ON rd.reactor_id = r.id "
+        "WHERE r.status != 'Shutdown' "
+        "AND (rd.cooling_type IS NULL OR rd.reactor_id IS NULL) "
+        "ORDER BY r.plant_name, r.unit_number"
+    ).fetchall()
+    if rows:
+        print(f"  ADVISORY: {len(rows)} non-Shutdown reactor(s) with no cooling_type:")
+        for r in rows:
+            print(f"    {r['plant_name']} {r['unit_number']} | status={r['status']}")
+        print("  (fill where a reliable source exists; NOT counted as blocking)")
+    else:
+        print("  OK: all non-Shutdown reactors have a cooling_type")
+
+    # 10. Cooling-type enum (R5) — HARD check
+    print()
+    print("=" * 60)
+    print("10. COOLING-TYPE ENUM")
+    print("=" * 60)
+    allowed_cooling = (
+        'Once-through (seawater)', 'Once-through (river)', 'Once-through (lake)',
+        'Cooling tower (natural draft)', 'Cooling tower (mechanical draft)', 'Cooling pond',
+    )
+    rows = conn.execute(
+        f"SELECT rd.reactor_id, r.plant_name, r.unit_number, rd.cooling_type "
+        f"FROM reactor_details rd JOIN reactors r ON r.id = rd.reactor_id "
+        f"WHERE rd.cooling_type IS NOT NULL "
+        f"AND rd.cooling_type NOT IN ({','.join('?' * len(allowed_cooling))})",
+        allowed_cooling,
+    ).fetchall()
+    if rows:
+        print(f"  FAIL: {len(rows)} reactor(s) with cooling_type outside the 6-value enum")
+        for r in rows:
+            print(f"    id={r['reactor_id']} | {r['plant_name']} {r['unit_number']} | "
+                  f"cooling_type='{r['cooling_type']}'")
+        issues += len(rows)
+    else:
+        print("  OK: all non-NULL cooling_type values are in the 6-value enum")
+
+    # 11. Uniform cooling across 4+ unit plants (R6) — ADVISORY, does not increment issues
+    print()
+    print("=" * 60)
+    print("11. UNIFORM COOLING ACROSS 4+ UNIT PLANTS — advisory, non-blocking")
+    print("=" * 60)
+    rows = conn.execute(
+        "SELECT r.plant_name, COUNT(*) AS n_units, MIN(rd.cooling_type) AS ct "
+        "FROM reactors r JOIN reactor_details rd ON rd.reactor_id = r.id "
+        "WHERE rd.cooling_type IS NOT NULL "
+        "GROUP BY r.plant_name "
+        "HAVING COUNT(*) >= 4 AND COUNT(DISTINCT rd.cooling_type) = 1 "
+        "ORDER BY r.plant_name"
+    ).fetchall()
+    if rows:
+        print(f"  ADVISORY: {len(rows)} plant(s) with 4+ units all sharing one cooling_type "
+              "(the original per-plant bug looked like this — confirm uniformity is real):")
+        for r in rows:
+            print(f"    {r['plant_name']} | {r['n_units']} units | all '{r['ct']}'")
+        print("  (per-unit variation is common; NOT counted as blocking)")
+    else:
+        print("  OK: no 4+ unit plants with fully uniform cooling_type")
+
+    # 12. Duplicate pris_id — HARD check (a shared id makes pris_id-keyed
+    # backfills write one reactor's output onto another)
+    print()
+    print("=" * 60)
+    print("12. DUPLICATE PRIS IDs")
+    print("=" * 60)
+    rows = conn.execute(
+        "SELECT pris_id, COUNT(*) AS n, "
+        "GROUP_CONCAT(plant_name || ' ' || unit_number, ' / ') AS members "
+        "FROM reactors WHERE pris_id IS NOT NULL "
+        "GROUP BY pris_id HAVING COUNT(*) > 1 ORDER BY pris_id"
+    ).fetchall()
+    if rows:
+        print(f"  FAIL: {len(rows)} pris_id value(s) shared by multiple reactors:")
+        for r in rows:
+            print(f"    pris_id={r['pris_id']}: {r['members']}")
+        issues += len(rows)
+    else:
+        print("  OK: all pris_id values unique")
+
+    # 13. Generation after permanent shutdown — HARD check
+    print()
+    print("=" * 60)
+    print("13. GENERATION ROWS AFTER PERMANENT SHUTDOWN")
+    print("=" * 60)
+    rows = conn.execute(
+        "SELECT r.plant_name, r.unit_number, r.permanent_shutdown, g.year, g.electricity_gwh "
+        "FROM generation_annual g JOIN reactors r ON g.reactor_id = r.id "
+        "WHERE r.status = 'Shutdown' AND r.permanent_shutdown IS NOT NULL "
+        "AND g.year > CAST(strftime('%Y', r.permanent_shutdown) AS INTEGER) "
+        "ORDER BY r.plant_name, g.year"
+    ).fetchall()
+    if rows:
+        print(f"  FAIL: {len(rows)} generation row(s) dated after the reactor's shutdown year:")
+        for r in rows:
+            print(f"    {r['plant_name']} {r['unit_number']} (shut {r['permanent_shutdown']}) "
+                  f"| {r['year']}: {r['electricity_gwh']} GWh")
+        issues += len(rows)
+    else:
+        print("  OK: no generation rows after permanent shutdown")
+
+    # 14. Impossible capacity factors — HARD check. Mirrors the public
+    # /api/data/validation anomaly query (historical GROSS capacity via
+    # capacity_changes, >105%): the site's own anomaly surface must be empty.
+    print()
+    print("=" * 60)
+    print("14. IMPOSSIBLE CAPACITY FACTORS (>105% vs historical gross)")
+    print("=" * 60)
+    rows = conn.execute(
+        "SELECT r.plant_name, r.unit_number, g.year, g.electricity_gwh, "
+        "COALESCE((SELECT cc.gross_capacity_mw FROM capacity_changes cc "
+        "          WHERE cc.reactor_id = r.id AND cc.effective_date <= g.year || '-12-31' "
+        "          ORDER BY cc.effective_date DESC LIMIT 1), "
+        "         r.gross_capacity_mw) AS eff_mw "
+        "FROM generation_annual g JOIN reactors r ON g.reactor_id = r.id "
+        "WHERE r.gross_capacity_mw > 0 AND eff_mw > 0 "
+        "AND g.electricity_gwh * 1000.0 / (eff_mw * 8760) > 1.05 "
+        "ORDER BY g.electricity_gwh * 1000.0 / (eff_mw * 8760) DESC"
+    ).fetchall()
+    if rows:
+        print(f"  FAIL: {len(rows)} generation row(s) exceed 105% CF vs historical gross "
+              "(these render on the public validation endpoint):")
+        for r in rows:
+            cf = r["electricity_gwh"] * 1000.0 / (r["eff_mw"] * 8760)
+            print(f"    {r['plant_name']} {r['unit_number']} | {r['year']}: "
+                  f"{r['electricity_gwh']} GWh vs {r['eff_mw']} MW -> CF {cf:.0%}")
+        issues += len(rows)
+    else:
+        print("  OK: no generation rows above 105% CF vs historical gross capacity")
 
     # Summary
     print()
