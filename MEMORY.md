@@ -12,7 +12,7 @@
 - **All reactors have owners** — 154 distinct owners, all with descriptions
 - **Design lineages**: 24 families, 123 series, 100% coverage
 - **Entity descriptions**: 708 total across 7 entity types. **All manual** — 0 template plant descriptions, 0 template owner descriptions remaining
-- **Generation data**: 19,818 entries, 0 CF > 102%, 11 entries at 100-102% (plausible per industry contacts)
+- **Generation data**: 20,181 entries through 2025; public CF-anomaly endpoint = 0 (validator check 14 mirrors it); 11 entries at 100-102% vs net (plausible per industry contacts)
 - **Capacity changes**: 106 records for 47 reactors (Belgium SG+uprate, Germany thermal stretch+MUR, US EPU/MUR, Korean rerating, etc.)
 - **Capacity alignment**: COMPLETE — 229/229 reactors aligned. `net_capacity_mw` = `reference_power_mw` = current PRIS RUP (or NRC/WNA where PRIS stale)
 - Live at https://nuclear-database.fly.dev/
@@ -28,6 +28,7 @@
 Session history: see `guides/session-log.md`
 
 ## Gotchas
+- Ghost Flask process lingers on ports 5001+ — kill by port/PID (`netstat -ano | grep :PORT` then `taskkill //F //PID N`), NEVER `taskkill //IM python.exe` (kills unrelated sessions).
 - **pris_id is load-bearing and was silently wrong for 24 reactors** (13 duplicates + 5 dead/foreign ids + 6 NULLs, fixed Jul 6 in migration 015). Origin (git archaeology): the Feb 14 backfill session wrote hand/model-guessed ids from `KNOWN_PRIS_IDS` (in the never-committed `fetch_pris_generation.py`), then the postback scraper corrected only PRIS-**Operational** reactors — the guesses survived on exactly the shutdown/renamed/unlisted units the scraper couldn't see. Full story: `pris_id_repair_2026-07.md`. Any backfill keyed on pris_id propagates identity errors into generation data. Before trusting a pris_id, check it against `pris_id_map_2026-07.json`; validator check 12 hard-fails duplicates. Symptom of past damage: byte-identical generation values on two reactors in the same year.
 - **PRIS renames reactors**: Shin-Kori 3/4 are now SAEUL-1/2 in PRIS (DB keeps Shin-Kori naming; pris_ids 885/886). Name-matching PRIS pages needs alias awareness (GOESGEN, KRSKO, ZAPORIZHZHYA, CHASNUPP=Chashma, KANUPP=Karachi, ANO=Arkansas Nuclear One).
 - **Shidaowan Guohe One 1 has NO PRIS page** (pris_id NULL since migration 015) — its generation needs a non-PRIS source (WNA/CNNC). Do not "find" it an id; the CAP1400 demo is absent from PRIS as of Jul 2026.

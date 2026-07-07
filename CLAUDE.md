@@ -45,6 +45,7 @@ fly deploy
 3. **Post-update validation**: Run `python scripts/validate_db.py` after any bulk change. Zero issues required before deploy.
 4. **Capacity source priority**: NRC (US only) > WNA > PRIS for operational reactors. PRIS can be stale for recently-uprated reactors.
 5. **Binary DB merge conflicts**: Take remote DB (preserves new schema), replay SQL migrations, validate.
+6. **Invariant scan BEFORE spot-sampling on bulk writes**: check join-key integrity (pris_id uniqueness + agreement with `pris_id_map_2026-07.json`), post-shutdown activity, and CF range FIRST; only then sample values. Sampling verifies values and is structurally blind to identity/key violations (2026-07-06: a 12/12 value sample passed while 13 duplicate pris_ids double-counted ~100 TWh).
 
 ## Key Decisions
 
