@@ -1643,23 +1643,28 @@ def generation_annual_share():
     conn = get_db()
     cursor = conn.cursor()
 
-    # Global electricity generation by year (TWh) - IEA/EI Statistical Review data
+    # Global electricity generation by year (TWh, gross) — Energy Institute
+    # Statistical Review of World Energy, accessed via Our World in Data
+    # (grapher: electricity-generation, World; retrieved 2026-07-06).
+    # The EI series begins in 1985; years before that have no denominator
+    # and the share endpoint returns share_pct = None for them.
+    # NOTE: the previous 1970-2024 series here did NOT match EI's published
+    # values (7-15% low, drifting) and was replaced wholesale — see the
+    # 2026-07-06 rebase commit.
     global_electricity_twh = {
-        1970: 5249, 1971: 5529, 1972: 5876, 1973: 6242, 1974: 6370,
-        1975: 6504, 1976: 6945, 1977: 7281, 1978: 7611, 1979: 7897,
-        1980: 8043, 1981: 8129, 1982: 8161, 1983: 8476, 1984: 8917,
-        1985: 9259, 1986: 9544, 1987: 9958, 1988: 10368, 1989: 10717,
-        1990: 11020, 1991: 11195, 1992: 11380, 1993: 11596, 1994: 11890,
-        1995: 12264, 1996: 12658, 1997: 12998, 1998: 13235, 1999: 13547,
-        2000: 14013, 2001: 14303, 2002: 14821, 2003: 15365, 2004: 16057,
-        2005: 16595, 2006: 17242, 2007: 17880, 2008: 18200, 2009: 17930,
-        2010: 19050, 2011: 19700, 2012: 20200, 2013: 20800, 2014: 21300,
-        2015: 21700, 2016: 22200, 2017: 22800, 2018: 23400, 2019: 23700,
-        2020: 23500, 2021: 24800, 2022: 25200, 2023: 25600, 2024: 26100,
+        1985: 9886, 1986: 10181, 1987: 10671, 1988: 11141, 1989: 11658,
+        1990: 11961, 1991: 12223, 1992: 12336, 1993: 12600, 1994: 12924,
+        1995: 13382, 1996: 13797, 1997: 14129, 1998: 14511, 1999: 14926,
+        2000: 15279, 2001: 15501, 2002: 16050, 2003: 16628, 2004: 17415,
+        2005: 18134, 2006: 18839, 2007: 19714, 2008: 20103, 2009: 19944,
+        2010: 21264, 2011: 21972, 2012: 22516, 2013: 23155, 2014: 23747,
+        2015: 24002, 2016: 24695, 2017: 25441, 2018: 26464, 2019: 26832,
+        2020: 26723, 2021: 28259, 2022: 28918, 2023: 29665, 2024: 30930,
+        2025: 31772,
     }
 
     result = []
-    for year in range(1970, 2025):
+    for year in range(1985, 2026):
         cursor.execute("""
             SELECT COALESCE(SUM(electricity_gwh), 0) as raw_gwh,
                    COUNT(DISTINCT reactor_id) as reporting
