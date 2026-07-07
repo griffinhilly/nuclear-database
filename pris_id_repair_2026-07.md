@@ -11,6 +11,24 @@ logic itself but pre-existing duplicate pris_ids. A full PRIS id-space scan (ids
 name read from each page's `lblReactorName`) then exposed the wider class, including
 wrong-but-unclaimed ids that corrupt nothing today but silently mis-fetch forever.
 
+**Where the wrong ids came from (git archaeology, 2026-07-06):** the initial commit
+(`7c1bacb`) had `pris_id` all NULL. Every wrong id appears in commit `7b47e0f`
+(2026-02-14, "Add PRIS backfill script"). That session ran two writers:
+(1) `fetch_missing_generation.py` wrote ids from `KNOWN_PRIS_IDS` — a hard-coded name→id
+dict in the never-committed, since-deleted `fetch_pris_generation.py`, i.e. ids authored
+from model memory rather than scraped (fingerprints: Kursk 1-1/1-2 guessed as 495/496,
+exactly sequential below Kursk 3/4's true 497/498; six UK AGRs given one consecutive block
+of ids that belong to US reactors; Pickering 1/4 guessed as the adjacent pair 75/76).
+(2) `backfill_pris_coverage.py --discover` then scraped TRUE ids via ASP.NET postbacks —
+but only for reactors PRIS listed as **Operational**. So every operational unit got
+corrected (McGuire, Kalinin, Temelin, Smolensk, Watts Bar… all correct), while the
+guessed ids survived on exactly the reactors the scraper couldn't see: 16 shutdown units,
+2 renamed units (Shin-Kori 3/4 = SAEUL-1/2 in PRIS), and 1 unit with no PRIS page
+(Shidaowan Guohe One 1). All 18/18 victims fit that pattern — none were visible to
+discovery. Textbook latent-vs-deterministic failure: hallucinated ids looked authoritative,
+the deterministic pass fixed only the subset it could reach, and the residue persisted
+~5 months until generation rows made it visible.
+
 **Ground truth artifact:** `pris_id_map_2026-07.json` (id → PRIS reactor name for ids 1–1150,
 721 named). Use it to validate any future pris_id assignment. Validator check 12 makes
 duplicate ids a hard failure; checks 13 (generation after shutdown) and 14 (CF >105% vs
