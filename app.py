@@ -118,6 +118,19 @@ def sources():
     """Data sources and methodology page."""
     return render_template('sources.html')
 
+@app.route('/embed/map')
+def embed_map():
+    """Embeddable teaser map for the REG website (iframe). Public — inlines
+    coordinate data server-side so no API key is exposed."""
+    reactors = query_db("""
+        SELECT r.plant_name, r.status, r.gross_capacity_mw, r.latitude, r.longitude
+        FROM reactors r
+        WHERE r.latitude IS NOT NULL AND r.longitude IS NOT NULL
+    """)
+    rows = [[r['latitude'], r['longitude'], r['status'],
+             r['gross_capacity_mw'] or 0, r['plant_name']] for r in reactors]
+    return render_template('embed_map.html', reactor_rows=rows)
+
 # =============================================================================
 # FREE TIER API ENDPOINTS
 # =============================================================================

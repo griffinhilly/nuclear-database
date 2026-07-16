@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Nuclear Database — Reactor Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        html, body { margin: 0; padding: 0; height: 100%; }
+        #embed-map { position: absolute; inset: 0; background: #F6F6F6; }
+        /* Teaser tint: REG yellow wash over the map, clicks pass through */
+        #tint {
+            position: absolute; inset: 0; z-index: 500;
+            background: rgba(255, 193, 0, 0.28);
+            pointer-events: none;
+        }
+        #cta {
+            position: absolute; left: 16px; bottom: 16px; z-index: 600;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+            background: #474853; color: #fff;
+            padding: 12px 18px; border-radius: 2px;
+            text-decoration: none;
+        }
+        #cta:hover { background: #2f303a; }
+        .leaflet-control-attribution { font-size: 9px; }
+    </style>
+</head>
+<body>
+    <div id="embed-map"></div>
+    <div id="tint"></div>
+    <a id="cta" href="/" target="_top">Explore the Database &rarr;</a>
+    <script>
+        // rows: [lat, lng, status, capacity_mw, plant_name]
+        const rows = {{ reactor_rows | tojson }};
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('tint') === '0') document.getElementById('tint').style.display = 'none';
+
+        const statusColors = {
+            'Operational':         '#40774A',
+            'Under Construction':  '#FFC100',
+            'Suspended':           '#E06336',
+            'Long-term Shutdown':  '#9FC3A5',
+            'Shutdown':            '#474853'
+        };
+        const statusPriority = {
+            'Operational': 1, 'Under Construction': 2, 'Suspended': 3,
+            'Long-term Shutdown': 4, 'Shutdown': 5
+        };
+
+        const map = L.map('embed-map', {
+            scrollWheelZoom: false,
+            attributionControl: true
+        }).setView([30, 0], 2);
+
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Esri, HERE, Garmin, &copy; OpenStreetMap'
+        }).addTo(map);
+
+        // Group reactors into plant sites (same rule as the dashboard map)
+        const sites = {};
+        rows.forEach(([lat, lng, status, cap]) => {
+            const key = lat.toFixed(4) + ',' + lng.toFixed(4);
+            if (!sites[key]) sites[key] = { lat, lng, statuses: [], capacity: 0 };
+            sites[key].statuses.push(status);
+            sites[key].capacity += cap;
+        });
+
+        Object.values(sites).forEach(site => {
+            const best = site.statuses.reduce((a, b) =>
+                (statusPriority[a] || 99) <= (statusPriority[b] || 99) ? a : b);
+            L.circleMarker([site.lat, site.lng], {
+                radius: Math.max(3, Math.min(10, Math.sqrt(site.capacity) / 12)),
+                color: '#fff', weight: 1,
+                fillColor: statusColors[best] || '#3F55C5',
+                fillOpacity: 0.85,
+                interactive: false
+            }).addTo(map);
+        });
+    </script>
+</body>
+</html>
