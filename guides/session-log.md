@@ -1,5 +1,11 @@
 # Nuclear Database — Session Log
 
+## Jul 16, 2026 — /embed/map teaser for REG website rebuild (deployed)
+- **Context**: REG website being rebuilt (Figma design features the database prominently; homepage has a yellow-tinted world-map teaser panel). Designer asked for "the code" to embed the reactor map.
+- **Built**: public `/embed/map` route (app.py, after `/sources`) + `templates/embed_map.html`. Inlines coordinates server-side — no API key exposure; `/api/map` stays paid-tier. Leaflet map with dashboard's site grouping/status colors/capacity sizing, REG-yellow teaser tint (`?tint=0` disables), "Explore the Database →" CTA (`target=_top`, relative link so it follows the serving domain).
+- **Integration handoff**: designer embeds via iframe pointing at `https://nuclear-database.fly.dev/embed/map`; URL swaps when `database.radiantenergygroup.com` subdomain is set up (pending DNS access — Madi asked).
+- **Deployed**: commit `36956a1`, fly deploy verified live via headless-Chrome screenshot.
+
 ## Apr 3-4, 2026 — Cooling System Audit (9 plants fixed)
 - **Root cause**: `populate_reactor_details.py` assigned cooling type per plant, not per unit
 - **Fixed**: Doel 3/4 (natural draft), Nine Mile Point 2 (natural draft), Hope Creek (natural draft), Leningrad 2 (natural draft), Kursk 2 (natural draft), Novovoronezh 2 (natural draft), St. Laurent B (natural draft), Dampierre (natural draft), Chinon B (mechanical draft)
