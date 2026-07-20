@@ -566,12 +566,15 @@ def get_reactor(reactor_id):
         except Exception:
             pass
 
-    # Get reactor-specific details (cooling type, vendors)
+    # Get reactor-specific details. Cooling type only: the supply-chain fields
+    # (constructor, architect_engineer, turbine_supplier,
+    # pressure_vessel_manufacturer) were heuristic-assigned and are withheld
+    # from the API until per-reactor verification lands — see
+    # constants_audit_2026-07.md.
     reactor_details = None
     try:
         details = query_db("""
-            SELECT cooling_type, constructor, architect_engineer,
-                   turbine_supplier, pressure_vessel_manufacturer
+            SELECT cooling_type
             FROM reactor_details WHERE reactor_id = ?
         """, (reactor_id,))
         if details:
