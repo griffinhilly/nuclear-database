@@ -9,28 +9,18 @@
     <style>
         html, body { margin: 0; padding: 0; height: 100%; }
         #embed-map { position: absolute; inset: 0; background: #F6F6F6; }
-        /* Teaser tint: REG yellow wash over the map, clicks pass through */
+        /* Teaser tint: translucent #FFBF00 wash over the map, clicks pass through */
         #tint {
             position: absolute; inset: 0; z-index: 500;
-            background: rgba(255, 193, 0, 0.28);
+            background: rgba(255, 191, 0, 0.28);
             pointer-events: none;
         }
-        #cta {
-            position: absolute; left: 16px; bottom: 16px; z-index: 600;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
-            background: #474853; color: #fff;
-            padding: 12px 18px; border-radius: 2px;
-            text-decoration: none;
-        }
-        #cta:hover { background: #2f303a; }
         .leaflet-control-attribution { font-size: 9px; }
     </style>
 </head>
 <body>
     <div id="embed-map"></div>
     <div id="tint"></div>
-    <a id="cta" href="/" target="_top">Explore the Database &rarr;</a>
     <script>
         // rows: [lat, lng, status, capacity_mw, plant_name]
         const rows = {{ reactor_rows | tojson }};
@@ -39,7 +29,7 @@
 
         const statusColors = {
             'Operational':         '#40774A',
-            'Under Construction':  '#FFC100',
+            'Under Construction':  '#3F55C5',  // REG cobalt (yellow reads as tint-colored)
             'Suspended':           '#E06336',
             'Long-term Shutdown':  '#9FC3A5',
             'Shutdown':            '#474853'
@@ -51,8 +41,25 @@
 
         const map = L.map('embed-map', {
             scrollWheelZoom: false,
-            attributionControl: true
-        }).setView([30, 0], 2);
+            attributionControl: true,
+            zoomSnap: 0.25,
+            zoomDelta: 0.5,
+            worldCopyJump: false
+        });
+
+        // Frame the reactor fleet: no Antarctica, nothing north of the
+        // northernmost Russian reactors, longitude clipped to the data.
+        let minLat = 90, maxLat = -90, minLng = 180, maxLng = -180;
+        rows.forEach(([lat, lng]) => {
+            if (lat < minLat) minLat = lat;
+            if (lat > maxLat) maxLat = lat;
+            if (lng < minLng) minLng = lng;
+            if (lng > maxLng) maxLng = lng;
+        });
+        const bounds = L.latLngBounds([minLat, minLng], [maxLat, maxLng]);
+        map.fitBounds(bounds, { padding: [12, 12] });
+        map.setMaxBounds(bounds.pad(0.05));
+        map.setMinZoom(map.getZoom());
 
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
             attribution: 'Esri, HERE, Garmin, &copy; OpenStreetMap'
