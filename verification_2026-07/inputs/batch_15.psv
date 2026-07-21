@@ -1,0 +1,25 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+UK|Berkeley|1|Magnox|Shutdown|AEI-John Thompson Nuclear Energy Co.|AEI-John Thompson Nuclear Energy Co.|GEC|None
+UK|Berkeley|2|Magnox|Shutdown|AEI-John Thompson Nuclear Energy Co.|AEI-John Thompson Nuclear Energy Co.|GEC|None
+UK|Bradwell|1|Magnox|Shutdown|Nuclear Power Plant Co. (NPPC)|Nuclear Power Plant Co. (NPPC)|GEC|None
+UK|Bradwell|2|Magnox|Shutdown|Nuclear Power Plant Co. (NPPC)|Nuclear Power Plant Co. (NPPC)|GEC|None
+UK|Calder Hall|1|Magnox|Shutdown|UKAEA|UKAEA|GEC|None
+UK|Calder Hall|2|Magnox|Shutdown|UKAEA|UKAEA|GEC|None
+UK|Calder Hall|3|Magnox|Shutdown|UKAEA|UKAEA|GEC|None
+UK|Calder Hall|4|Magnox|Shutdown|UKAEA|UKAEA|GEC|None
+UK|Chapelcross|1|Magnox|Shutdown|UKAEA|UKAEA|GEC|None
+UK|Chapelcross|2|Magnox|Shutdown|UKAEA|UKAEA|GEC|None
+UK|Chapelcross|3|Magnox|Shutdown|UKAEA|UKAEA|GEC|None
+UK|Chapelcross|4|Magnox|Shutdown|UKAEA|UKAEA|GEC|None
+UK|Dounreay DFR|1|DFR|Shutdown|UKAEA|UKAEA|GEC|None
+UK|Dounreay PFR|1|PFR|Shutdown|UKAEA|UKAEA|GEC|None
+UK|Dungeness A|1|Magnox|Shutdown|TNPG|TNPG|GEC|None
+UK|Dungeness A|2|Magnox|Shutdown|TNPG|TNPG|GEC|None
+UK|Dungeness B|1|AGR|Shutdown|APC/BNDC|APC/BNDC|GEC|None
+UK|Dungeness B|2|AGR|Shutdown|APC/BNDC|APC/BNDC|GEC|None
+UK|Hartlepool|1|AGR|Operational|BNDC|BNDC|GEC|None
+UK|Hartlepool|2|AGR|Operational|BNDC|BNDC|GEC|None
+UK|Heysham A|1|AGR|Operational|BNDC|BNDC|GEC|None
+UK|Heysham A|2|AGR|Operational|BNDC|BNDC|GEC|None
+UK|Heysham B|1|AGR|Operational|NNC|NNC|GEC|None
+UK|Heysham B|2|AGR|Operational|NNC|NNC|GEC|None

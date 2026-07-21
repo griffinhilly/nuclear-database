@@ -1,0 +1,116 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Palo Verde|3|constructor|WRONG|Bechtel Power Corporation|HIGH|Wikipedia: Palo Verde Nuclear Generating Station ("Bechtel Power Corporation was the Architect/Engineer/Constructor for the facility")
+Palo Verde|3|architect_engineer|CONFIRMED||HIGH|Wikipedia: Palo Verde Nuclear Generating Station
+Palo Verde|3|turbine_supplier|CONFIRMED||HIGH|Wikipedia: Palo Verde Nuclear Generating Station
+Palo Verde|3|rpv_manufacturer|CONFIRMED||MED|UCS blog, "Made in Chattanooga" (CE Chattanooga TN vessel fabrication)
+Pathfinder|1|constructor|WRONG|Fegles Construction Co. and Power Service Corporation|HIGH|ANS, "Pathfinder: A Path Not Taken"
+Pathfinder|1|architect_engineer|WRONG|Pioneer Service & Engineering Co.|HIGH|ANS, "Pathfinder: A Path Not Taken"
+Pathfinder|1|turbine_supplier|UNVERIFIABLE|||
+Pathfinder|1|rpv_manufacturer|UNVERIFIABLE|||
+Peach Bottom|1|constructor|UNVERIFIABLE|||
+Peach Bottom|1|architect_engineer|CONFIRMED||HIGH|Wikipedia: Peach Bottom Unit 1; ANS, "The Peach Bottom-1 HTGR"
+Peach Bottom|1|turbine_supplier|UNVERIFIABLE|||
+Peach Bottom|1|rpv_manufacturer|CONFIRMED||MED|Wikipedia: Peach Bottom Unit 1 (General Atomic as HTGR/NSSS designer, treated as vessel source for single-vendor prototype)
+Peach Bottom|2|constructor|CONFIRMED||LOW|power-technology.com Peach Bottom-2 profile (sole source; conflates NSSS vendor/constructor per known trap)
+Peach Bottom|2|architect_engineer|CONFIRMED||HIGH|power-technology.com Peach Bottom-2 profile; corroborated by Wikipedia: Peach Bottom Nuclear Generating Station
+Peach Bottom|2|turbine_supplier|CONFIRMED||LOW|power-technology.com Peach Bottom-2 profile (sole source)
+Peach Bottom|2|rpv_manufacturer|CONFIRMED||LOW|power-technology.com Peach Bottom-2 profile ("reactor vessel supplied by BWX Technologies," B&W's successor; sole source)
+Peach Bottom|3|constructor|CONFIRMED||LOW|power-technology.com Peach Bottom-2 profile (shared plant data; sole source)
+Peach Bottom|3|architect_engineer|CONFIRMED||HIGH|power-technology.com profile; corroborated by Wikipedia: Peach Bottom Nuclear Generating Station
+Peach Bottom|3|turbine_supplier|CONFIRMED||LOW|power-technology.com profile (sole source)
+Peach Bottom|3|rpv_manufacturer|CONFIRMED||LOW|power-technology.com profile (sole source)
+Perry|1|constructor|UNVERIFIABLE|||
+Perry|1|architect_engineer|CONFIRMED||LOW|power-technology.com Perry-1 profile (sole source)
+Perry|1|turbine_supplier|CONFIRMED||LOW|power-technology.com Perry-1 profile (sole source)
+Perry|1|rpv_manufacturer|CONFIRMED||LOW|power-technology.com Perry-1 profile ("reactor vessel supplied by GE Power and McDermott International"; sole source)
+Pilgrim|1|constructor|WRONG|Bechtel|MED|Wikipedia: Pilgrim Nuclear Power Station ("Like many similar plants, it was constructed by Bechtel")
+Pilgrim|1|architect_engineer|UNVERIFIABLE|||
+Pilgrim|1|turbine_supplier|UNVERIFIABLE|||
+Pilgrim|1|rpv_manufacturer|UNVERIFIABLE|||
+Piqua|1|constructor|UNVERIFIABLE|||
+Piqua|1|architect_engineer|UNVERIFIABLE|||
+Piqua|1|turbine_supplier|UNVERIFIABLE|||
+Piqua|1|rpv_manufacturer|UNVERIFIABLE|||
+Point Beach|1|constructor|UNVERIFIABLE|||
+Point Beach|1|architect_engineer|UNVERIFIABLE|||
+Point Beach|1|turbine_supplier|UNVERIFIABLE|||
+Point Beach|1|rpv_manufacturer|UNVERIFIABLE|||
+Point Beach|2|constructor|UNVERIFIABLE|||
+Point Beach|2|architect_engineer|UNVERIFIABLE|||
+Point Beach|2|turbine_supplier|UNVERIFIABLE|||
+Point Beach|2|rpv_manufacturer|UNVERIFIABLE|||
+Prairie Island|1|constructor|UNVERIFIABLE|||
+Prairie Island|1|architect_engineer|CONFIRMED||LOW|Fluor project page, fluor.com/projects/prairie-island-nuclear-generating-plant ("served as the plant's original architect/engineer")
+Prairie Island|1|turbine_supplier|UNVERIFIABLE|||
+Prairie Island|1|rpv_manufacturer|UNVERIFIABLE|||
+Prairie Island|2|constructor|UNVERIFIABLE|||
+Prairie Island|2|architect_engineer|CONFIRMED||LOW|Fluor project page, fluor.com/projects/prairie-island-nuclear-generating-plant
+Prairie Island|2|turbine_supplier|UNVERIFIABLE|||
+Prairie Island|2|rpv_manufacturer|UNVERIFIABLE|||
+Quad Cities|1|constructor|UNVERIFIABLE|||
+Quad Cities|1|architect_engineer|UNVERIFIABLE|||
+Quad Cities|1|turbine_supplier|UNVERIFIABLE|||
+Quad Cities|1|rpv_manufacturer|UNVERIFIABLE|||
+Quad Cities|2|constructor|UNVERIFIABLE|||
+Quad Cities|2|architect_engineer|UNVERIFIABLE|||
+Quad Cities|2|turbine_supplier|UNVERIFIABLE|||
+Quad Cities|2|rpv_manufacturer|UNVERIFIABLE|||
+Rancho Seco|1|constructor|WRONG|Bechtel|MED|UC Davis Environs, Sabey, "Sacramento Turns Out Rancho Seco" ("SMUD hired Babcock and Wilcox to design the plant and Bechtel to construct it")
+Rancho Seco|1|architect_engineer|UNVERIFIABLE|||
+Rancho Seco|1|turbine_supplier|UNVERIFIABLE|||
+Rancho Seco|1|rpv_manufacturer|UNVERIFIABLE|||
+River Bend|1|constructor|UNVERIFIABLE|||
+River Bend|1|architect_engineer|UNVERIFIABLE|||
+River Bend|1|turbine_supplier|UNVERIFIABLE|||
+River Bend|1|rpv_manufacturer|UNVERIFIABLE|||
+Robinson (H B Robinson)|2|constructor|WRONG|Ebasco Services|MED|NRC ADAMS ML20041F522 (Ebasco Services nuclear power plant filing), via search synthesis
+Robinson (H B Robinson)|2|architect_engineer|CONFIRMED||MED|NRC ADAMS ML20041F522
+Robinson (H B Robinson)|2|turbine_supplier|UNVERIFIABLE|||
+Robinson (H B Robinson)|2|rpv_manufacturer|UNVERIFIABLE|||
+Salem|1|constructor|UNVERIFIABLE|||
+Salem|1|architect_engineer|CONFIRMED||MED|power-technology.com Salem-1 profile ("Public Service Enterprise Group was selected as an architect engineer" — PSEG is parent of claimed PSE&G)
+Salem|1|turbine_supplier|UNVERIFIABLE|||
+Salem|1|rpv_manufacturer|CONFIRMED||MED|power-technology.com Salem-1 profile ("reactor vessel has been supplied by Combustion Engineering" — distinct from Westinghouse NSSS, mitigating conflation risk)
+Salem|2|constructor|UNVERIFIABLE|||
+Salem|2|architect_engineer|CONFIRMED||MED|power-technology.com Salem-1 profile (shared plant data)
+Salem|2|turbine_supplier|UNVERIFIABLE|||
+Salem|2|rpv_manufacturer|CONFIRMED||MED|power-technology.com Salem-1 profile (shared plant data)
+San Onofre|1|constructor|WRONG|Bechtel|LOW|power-technology.com San Onofre profile ("All three units...were built by Bechtel"; sole source)
+San Onofre|1|architect_engineer|CONFIRMED||LOW|power-technology.com San Onofre profile (sole source)
+San Onofre|1|turbine_supplier|WRONG|English Electric (original; later replaced by Mitsubishi Heavy Industries)|LOW|power-technology.com San Onofre profile (sole source)
+San Onofre|1|rpv_manufacturer|UNVERIFIABLE|||
+San Onofre|2|constructor|WRONG|Bechtel|LOW|power-technology.com San Onofre profile (sole source)
+San Onofre|2|architect_engineer|CONFIRMED||LOW|power-technology.com San Onofre profile (sole source)
+San Onofre|2|turbine_supplier|WRONG|English Electric (original; later Mitsubishi Heavy Industries)|LOW|power-technology.com San Onofre profile (sole source)
+San Onofre|2|rpv_manufacturer|UNVERIFIABLE|||
+San Onofre|3|constructor|WRONG|Bechtel|LOW|power-technology.com San Onofre profile (sole source)
+San Onofre|3|architect_engineer|CONFIRMED||LOW|power-technology.com San Onofre profile (sole source)
+San Onofre|3|turbine_supplier|WRONG|English Electric (original; later Mitsubishi Heavy Industries)|LOW|power-technology.com San Onofre profile (sole source)
+San Onofre|3|rpv_manufacturer|UNVERIFIABLE|||
+Saxton|1|constructor|WRONG|Westinghouse Electric Corporation|HIGH|Wikipedia: Saxton Nuclear Generating Station ("designed and constructed by Westinghouse Electric Corporation")
+Saxton|1|architect_engineer|UNVERIFIABLE|||
+Saxton|1|turbine_supplier|CONFIRMED||HIGH|Wikipedia: Saxton Nuclear Generating Station (plant had no dedicated turbine; used adjacent Saxton Steam Generating Station's turbine-generator)
+Saxton|1|rpv_manufacturer|UNVERIFIABLE|||
+Seabrook|1|constructor|UNVERIFIABLE|||
+Seabrook|1|architect_engineer|CONFIRMED||MED|power-technology.com Seabrook-1 profile ("United Engineers & Constructors was selected as the architect engineer")
+Seabrook|1|turbine_supplier|WRONG|General Electric|MED|power-technology.com Seabrook-1 profile ("Steam Turbine Supplier: GE Power"); corroborated by MIT OpenCourseWare 22.091 Lecture 16 PDF ("Seabrook's turbine-generator was built by General Electric")
+Seabrook|1|rpv_manufacturer|UNVERIFIABLE|||
+Sequoyah|1|constructor|UNVERIFIABLE|||
+Sequoyah|1|architect_engineer|UNVERIFIABLE|||
+Sequoyah|1|turbine_supplier|UNVERIFIABLE|||
+Sequoyah|1|rpv_manufacturer|UNVERIFIABLE|||
+Sequoyah|2|constructor|UNVERIFIABLE|||
+Sequoyah|2|architect_engineer|UNVERIFIABLE|||
+Sequoyah|2|turbine_supplier|UNVERIFIABLE|||
+Sequoyah|2|rpv_manufacturer|UNVERIFIABLE|||
+Shippingport|1|constructor|UNVERIFIABLE|||
+Shippingport|1|architect_engineer|UNVERIFIABLE|||
+Shippingport|1|turbine_supplier|CONFIRMED||MED|Multi-source historical AEC/Duquesne synthesis ("installation...of the 100,000 kw Westinghouse turbine generator")
+Shippingport|1|rpv_manufacturer|UNVERIFIABLE|||
+# NOTES
+# Tooling constraints across all three research passes: NRC.gov (docket/FSAR/info-finder pages) returned HTTP 403 to WebFetch on every attempt; Global Energy Monitor (gem.wiki) and Grokipedia also 403'd. WebSearch quota was exhausted mid-task in all three groups, cutting off further primary-source lookups (especially for Point Beach, Quad Cities, River Bend, Sequoyah, Shippingport AE/turbine/RPV fields). This means many UNVERIFIABLE verdicts reflect blocked tooling, not necessarily absence of real documentation — a follow-up pass with NRC ADAMS access via browser (not automated WebFetch) or a fresh WebSearch budget would likely resolve a meaningful fraction of them.
+# Wikipedia's "Infobox nuclear power station" template does not carry constructor/architect_engineer/turbine_supplier/rpv_manufacturer parameters on any of the Point Beach, Prairie Island, Quad Cities, Rancho Seco, or River Bend articles (confirmed via raw wikitext) — these fields are structurally absent from Wikipedia for that plant cluster, not merely unresearched.
+# power-technology.com was used as a LOW-confidence sole source for several BWR plants (Peach Bottom 2/3, Perry) and for the San Onofre/Salem/Seabrook cluster. Per the known trap, it sometimes names the NSSS vendor as "reactor vessel supplier" even when that is not the actual fabricator (e.g., Peach Bottom's claimed rpv_manufacturer=Babcock & Wilcox is distinct from GE's NSSS role, and Salem's claimed rpv_manufacturer=Combustion Engineering is distinct from Westinghouse's NSSS role — both cases where the site's number is NOT simply the NSSS vendor, which somewhat mitigates conflation risk. San Onofre 2/3's rpv_manufacturer claim (Combustion Engineering) exactly IS the NSSS vendor, so it was marked UNVERIFIABLE rather than CONFIRMED to avoid the conflation trap.
+# Significant finding: San Onofre units 1/2/3 constructor was claimed as Westinghouse (unit 1) / CE (units 2,3) but power-technology.com states all three units were built by Bechtel — constructor and architect_engineer were swapped/conflated with the NSSS vendor across the whole plant. Similarly Palo Verde 3, Pilgrim 1, and Rancho Seco 1 each had "constructor" wrongly set to the NSSS vendor (CE, GE, GE respectively) instead of the actual construction firm (Bechtel in all three cases) — suggesting the original heuristic systematically confused NSSS vendor with constructor across the batch.
+# Saxton 1 is a clean refutation: Westinghouse was NOT merely the NSSS/turbine vendor for this prototype — Wikipedia states Westinghouse designed AND constructed the reactor, contradicting the claimed constructor=GE, and the plant had no dedicated turbine (shared the adjacent coal plant's), contradicting nothing since turbine_supplier was already claimed as None — that part was correct.
+# Robinson 2's claimed constructor=Westinghouse and architect_engineer=Ebasco: research indicates Ebasco Services held both the AE and constructor role (not Westinghouse as constructor), consistent with the systematic NSSS-vendor-as-constructor conflation pattern noted above.

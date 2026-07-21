@@ -1,0 +1,28 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+Russia|Kursk 1|3|RBMK-1000|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Kursk 1|4|RBMK-1000|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Kursk 2|1|VVER V-510K|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Kursk 2|2|VVER V-510K|Under Construction|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Kursk 2|3|VVER V-510K|Under Construction|None|None|None|None
+Russia|Leningrad 1|1|RBMK-1000|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Leningrad 1|2|RBMK-1000|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Leningrad 1|3|RBMK-1000|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Leningrad 1|4|RBMK-1000|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Leningrad 2|1|VVER V-491|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Leningrad 2|2|VVER V-491|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Leningrad 2|3|VVER V-491|Under Construction|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Leningrad 2|4|VVER V-491|Under Construction|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Novovoronezh 1|1|VVER-210 (V-1)|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Novovoronezh 1|2|VVER-365 (V-3M)|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Novovoronezh 1|3|VVER V-179|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Novovoronezh 1|4|VVER V-179|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Novovoronezh 1|5|VVER V-187|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Novovoronezh 2|1|VVER V-392M|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Novovoronezh 2|2|VVER V-392M|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Rostov|1|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Rostov|2|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Rostov|3|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Rostov|4|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Smolensk|1|RBMK-1000|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Smolensk|2|RBMK-1000|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Smolensk|3|RBMK-1000|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None

@@ -1,0 +1,117 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Shoreham|1|constructor|WRONG|Stone & Webster|HIGH|Wikipedia: Shoreham Nuclear Power Plant
+Shoreham|1|architect_engineer|CONFIRMED||HIGH|Wikipedia: Shoreham Nuclear Power Plant
+Shoreham|1|turbine_supplier|UNVERIFIABLE|||
+Shoreham|1|rpv_manufacturer|UNVERIFIABLE|||
+South Texas Project|1|constructor|WRONG|Brown & Root (1975-1981), then Ebasco Constructors (1982-completion)|MED|Wikipedia: South Texas Nuclear Generating Station
+South Texas Project|1|architect_engineer|CONFIRMED||MED|Wikipedia: South Texas Nuclear Generating Station (Bechtel AE from 1981, succeeding Brown & Root)
+South Texas Project|1|turbine_supplier|UNVERIFIABLE|||
+South Texas Project|1|rpv_manufacturer|UNVERIFIABLE|||
+South Texas Project|2|constructor|WRONG|Brown & Root (1975-1981), then Ebasco Constructors (1982-completion)|MED|Wikipedia: South Texas Nuclear Generating Station
+South Texas Project|2|architect_engineer|CONFIRMED||MED|Wikipedia: South Texas Nuclear Generating Station (Bechtel AE from 1981, succeeding Brown & Root)
+South Texas Project|2|turbine_supplier|UNVERIFIABLE|||
+South Texas Project|2|rpv_manufacturer|UNVERIFIABLE|||
+St Lucie|1|constructor|UNVERIFIABLE|||
+St Lucie|1|architect_engineer|CONFIRMED||MED|Wikipedia: St. Lucie Nuclear Power Plant
+St Lucie|1|turbine_supplier|UNVERIFIABLE|||
+St Lucie|1|rpv_manufacturer|UNVERIFIABLE|||
+St Lucie|2|constructor|UNVERIFIABLE|||
+St Lucie|2|architect_engineer|CONFIRMED||MED|Wikipedia: St. Lucie Nuclear Power Plant
+St Lucie|2|turbine_supplier|UNVERIFIABLE|||
+St Lucie|2|rpv_manufacturer|UNVERIFIABLE|||
+Summer (V C Summer)|1|constructor|UNVERIFIABLE|||
+Summer (V C Summer)|1|architect_engineer|UNVERIFIABLE|||
+Summer (V C Summer)|1|turbine_supplier|UNVERIFIABLE|||
+Summer (V C Summer)|1|rpv_manufacturer|UNVERIFIABLE|||
+Surry|1|constructor|UNVERIFIABLE|||
+Surry|1|architect_engineer|CONFIRMED||HIGH|Wikipedia: Surry Nuclear Power Plant; WNA reactor database
+Surry|1|turbine_supplier|CONFIRMED||MED|Wikipedia: Surry Nuclear Power Plant
+Surry|1|rpv_manufacturer|UNVERIFIABLE|||
+Surry|2|constructor|UNVERIFIABLE|||
+Surry|2|architect_engineer|CONFIRMED||HIGH|Wikipedia: Surry Nuclear Power Plant; WNA reactor database
+Surry|2|turbine_supplier|CONFIRMED||MED|Wikipedia: Surry Nuclear Power Plant
+Surry|2|rpv_manufacturer|UNVERIFIABLE|||
+Susquehanna|1|constructor|WRONG|Bechtel Power Corporation|HIGH|Wikipedia: Susquehanna Steam Electric Station
+Susquehanna|1|architect_engineer|CONFIRMED||HIGH|Wikipedia: Susquehanna Steam Electric Station; power-technology.com
+Susquehanna|1|turbine_supplier|WRONG|GE Power and Siemens|LOW|power-technology.com Susquehanna profile (last-resort source only)
+Susquehanna|1|rpv_manufacturer|CONFIRMED||LOW|power-technology.com Susquehanna profile (last-resort source only)
+Susquehanna|2|constructor|WRONG|Bechtel Power Corporation|HIGH|Wikipedia: Susquehanna Steam Electric Station
+Susquehanna|2|architect_engineer|CONFIRMED||HIGH|Wikipedia: Susquehanna Steam Electric Station; power-technology.com
+Susquehanna|2|turbine_supplier|WRONG|GE Power and Siemens|LOW|power-technology.com Susquehanna profile (last-resort source only)
+Susquehanna|2|rpv_manufacturer|CONFIRMED||LOW|power-technology.com Susquehanna profile (last-resort source only)
+Three Mile Island|1|constructor|UNVERIFIABLE|||
+Three Mile Island|1|architect_engineer|UNVERIFIABLE|||
+Three Mile Island|1|turbine_supplier|UNVERIFIABLE|||
+Three Mile Island|1|rpv_manufacturer|UNVERIFIABLE|||
+Three Mile Island|2|constructor|UNVERIFIABLE|||
+Three Mile Island|2|architect_engineer|UNVERIFIABLE|||
+Three Mile Island|2|turbine_supplier|UNVERIFIABLE|||
+Three Mile Island|2|rpv_manufacturer|UNVERIFIABLE|||
+Trojan|1|constructor|UNVERIFIABLE|||
+Trojan|1|architect_engineer|UNVERIFIABLE|||
+Trojan|1|turbine_supplier|UNVERIFIABLE|||
+Trojan|1|rpv_manufacturer|UNVERIFIABLE|||
+Turkey Point|3|constructor|WRONG|Bechtel|MED|NRC docket reference (secondary/aggregated; primary NRC PDF blocked)
+Turkey Point|3|architect_engineer|CONFIRMED||MED|NRC docket reference (secondary/aggregated; primary NRC PDF blocked)
+Turkey Point|3|turbine_supplier|UNVERIFIABLE|||
+Turkey Point|3|rpv_manufacturer|UNVERIFIABLE|||
+Turkey Point|4|constructor|WRONG|Bechtel|MED|NRC docket reference (secondary/aggregated; primary NRC PDF blocked)
+Turkey Point|4|architect_engineer|CONFIRMED||MED|NRC docket reference (secondary/aggregated; primary NRC PDF blocked)
+Turkey Point|4|turbine_supplier|UNVERIFIABLE|||
+Turkey Point|4|rpv_manufacturer|UNVERIFIABLE|||
+Vermont Yankee|1|constructor|WRONG|Ebasco|MED|Wikipedia: Vermont Yankee Nuclear Power Plant; ANS Nuclear Newswire
+Vermont Yankee|1|architect_engineer|CONFIRMED||MED|Wikipedia: Vermont Yankee Nuclear Power Plant; ANS Nuclear Newswire
+Vermont Yankee|1|turbine_supplier|UNVERIFIABLE|||
+Vermont Yankee|1|rpv_manufacturer|UNVERIFIABLE|||
+Vogtle|1|constructor|WRONG|Bechtel / Southern Company Services|MED|Wikipedia: Vogtle Electric Generating Plant
+Vogtle|1|architect_engineer|CONFIRMED||MED|Wikipedia: Vogtle Electric Generating Plant
+Vogtle|1|turbine_supplier|WRONG|General Electric|MED|Wikipedia: Vogtle Electric Generating Plant
+Vogtle|1|rpv_manufacturer|UNVERIFIABLE|||
+Vogtle|2|constructor|WRONG|Bechtel / Southern Company Services|MED|Wikipedia: Vogtle Electric Generating Plant
+Vogtle|2|architect_engineer|CONFIRMED||MED|Wikipedia: Vogtle Electric Generating Plant
+Vogtle|2|turbine_supplier|WRONG|General Electric|MED|Wikipedia: Vogtle Electric Generating Plant
+Vogtle|2|rpv_manufacturer|UNVERIFIABLE|||
+Vogtle|3|constructor|WRONG|Bechtel (EPC contractor from 2017, completed construction; earlier phases built by Shaw Group / CB&I / Westinghouse)|MED|Wikipedia: Vogtle Electric Generating Plant; Bechtel project page (bechtel.com/projects/vogtle-units-3-and-4)
+Vogtle|3|architect_engineer|UNVERIFIABLE|||
+Vogtle|3|turbine_supplier|WRONG|GE Power|LOW|power-technology.com Vogtle 3&4 profile (last-resort source only)
+Vogtle|3|rpv_manufacturer|CONFIRMED||MED|power-technology.com Vogtle 3&4 profile, corroborated by general industry reporting on Doosan's AP1000 vessel contracts
+Vogtle|4|constructor|WRONG|Bechtel (EPC contractor from 2017, completed construction; earlier phases built by Shaw Group / CB&I / Westinghouse)|MED|Wikipedia: Vogtle Electric Generating Plant; Bechtel project page (bechtel.com/projects/vogtle-units-3-and-4)
+Vogtle|4|architect_engineer|UNVERIFIABLE|||
+Vogtle|4|turbine_supplier|WRONG|GE Power|LOW|power-technology.com Vogtle 3&4 profile (last-resort source only)
+Vogtle|4|rpv_manufacturer|CONFIRMED||MED|power-technology.com Vogtle 3&4 profile, corroborated by general industry reporting on Doosan's AP1000 vessel contracts
+Waterford|3|constructor|WRONG|Ebasco|MED|Wikipedia: Waterford Nuclear Generating Station; power-technology.com
+Waterford|3|architect_engineer|CONFIRMED||HIGH|Wikipedia: Waterford Nuclear Generating Station; power-technology.com
+Waterford|3|turbine_supplier|UNVERIFIABLE|||
+Waterford|3|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Waterford Nuclear Generating Station; power-technology.com (SA-533 alloy steel vessel supplied by CE)
+Watts Bar|1|constructor|WRONG|Tennessee Valley Authority (self-performed)|MED|TVA self-build industry record; Bechtel completion project page (bechtel.com/projects/watts-bar-completion) shows Bechtel only engaged in 2007 for Unit 2 completion
+Watts Bar|1|architect_engineer|CONFIRMED||MED|TVA self-build industry record (TVA self-performed AE on its own nuclear plants)
+Watts Bar|1|turbine_supplier|UNVERIFIABLE|||
+Watts Bar|1|rpv_manufacturer|UNVERIFIABLE|||
+Watts Bar|2|constructor|WRONG|Tennessee Valley Authority (self-performed)|MED|TVA self-build industry record; Bechtel completion project page (bechtel.com/projects/watts-bar-completion) shows Bechtel only engaged in 2007 for Unit 2 completion
+Watts Bar|2|architect_engineer|CONFIRMED||MED|TVA self-build industry record (TVA self-performed AE on its own nuclear plants)
+Watts Bar|2|turbine_supplier|UNVERIFIABLE|||
+Watts Bar|2|rpv_manufacturer|UNVERIFIABLE|||
+Wolf Creek|1|constructor|WRONG|Fluor (civil works contractor)|LOW|power-technology.com Wolf Creek 1 profile (last-resort source only)
+Wolf Creek|1|architect_engineer|WRONG|Bechtel and Sargent & Lundy|LOW|power-technology.com Wolf Creek 1 profile (last-resort source only)
+Wolf Creek|1|turbine_supplier|WRONG|General Electric|LOW|power-technology.com Wolf Creek 1 profile (last-resort source only)
+Wolf Creek|1|rpv_manufacturer|CONFIRMED||LOW|power-technology.com Wolf Creek 1 profile (last-resort source only)
+Yankee NPS|1|constructor|UNVERIFIABLE|||
+Yankee NPS|1|architect_engineer|UNVERIFIABLE|||
+Yankee NPS|1|turbine_supplier|UNVERIFIABLE|||
+Yankee NPS|1|rpv_manufacturer|UNVERIFIABLE|||
+Zion|1|constructor|UNVERIFIABLE|||
+Zion|1|architect_engineer|UNVERIFIABLE|||
+Zion|1|turbine_supplier|UNVERIFIABLE|||
+Zion|1|rpv_manufacturer|UNVERIFIABLE|||
+Zion|2|constructor|UNVERIFIABLE|||
+Zion|2|architect_engineer|UNVERIFIABLE|||
+Zion|2|turbine_supplier|UNVERIFIABLE|||
+Zion|2|rpv_manufacturer|UNVERIFIABLE|||
+# NOTES
+# Tooling constraint: all four research passes exhausted WebSearch quota mid-task and hit repeated 403s on NRC.gov/ADAMS FSAR PDFs, the strongest primary source for turbine_supplier and rpv_manufacturer fields. Those two fields are UNVERIFIABLE for most plants as a direct result — this reflects a source-access gap, not necessarily that the claimed values are wrong.
+# Recurring confirmed pattern (the "NSSS-vendor-as-constructor" trap named in the task): constructor was WRONG wherever it merely repeated the reactor vendor's name (GE, Westinghouse, CE, B&W) instead of the actual AE/construction firm, for: Shoreham, Susquehanna, Turkey Point, Vermont Yankee, Vogtle 1/2/3/4, Waterford, Watts Bar, Wolf Creek. Recommend auditing this field across the full database, not just this batch.
+# South Texas Project: constructor/AE changed mid-construction (Brown & Root 1975-1981 -> Bechtel/Ebasco Constructors 1981-1982 onward). The DB schema has no way to represent a construction-phase handoff; flagging structurally rather than picking one name.
+# Surry rpv_manufacturer: input data hedges with "Rotterdam Dockyard / Babcock & Wilcox" — could not resolve which (if either) is correct; no source distinguishes Unit 1 vs Unit 2. Marked UNVERIFIABLE rather than picking one arbitrarily.
+# Watts Bar Unit 2: RPV manufacturer for Unit 2 (completed 2016, decades after Unit 1's 1970s-80s original construction) could not be confirmed as either matching Unit 1's original-era fabricator or a distinct later one — flagged as the single most consequential open question in this batch given the multi-decade construction gap.
+# Wolf Creek and Susquehanna turbine/rpv fields and Vogtle 3/4 turbine field rest solely on power-technology.com (the flagged last-resort source known to blur NSSS-vendor vs actual fabricator) — recommend a follow-up pass with NRC ADAMS access to upgrade or overturn these LOW-confidence calls.
+# Vogtle 3&4 architect_engineer: the modern AP1000 build had a multi-phase contractor history (Shaw Group -> CB&I -> Westinghouse -> Bechtel as EPC from 2017) with no source cleanly naming a single "architect-engineer" of record distinct from the EPC contractor; marked UNVERIFIABLE rather than forcing a fit to the historical AE/constructor/turbine/RPV schema built for 1970s-80s plants.

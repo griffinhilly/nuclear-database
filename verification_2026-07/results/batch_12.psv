@@ -1,0 +1,138 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Bailong|1|constructor|WRONG|SPIC (via subsidiary Guangxi Nuclear Power Co.)|MED|WNN-derived contract summary re Bailong (SPIC/Guangxi Nuclear Power Co.)
+Bailong|1|architect_engineer|WRONG|SNERDI (Shanghai Nuclear Engineering Research & Design Institute, SPIC subsidiary)|MED|Same source as constructor
+Bailong|1|turbine_supplier|UNVERIFIABLE||LOW|No source found naming Bailong's turbine supplier
+Bailong|1|rpv_manufacturer|UNVERIFIABLE||LOW|No unit-specific source; CFHI plausible by analogy to other CAP1000 units only, not confirmed
+CEFR|1|constructor|WRONG|Built with Russian assistance (OKBM Afrikantov, OKB Gidropress, NIKIET, Kurchatov Institute) at CIAE; not CNNC/CNPE|MED|Wikipedia: China Experimental Fast Reactor
+CEFR|1|architect_engineer|WRONG|Russian design consortium (OKBM Afrikantov et al.) in collaboration with CIAE; not CNPE|MED|Wikipedia: China Experimental Fast Reactor
+CEFR|1|turbine_supplier|UNVERIFIABLE||LOW|No source found
+CEFR|1|rpv_manufacturer|CONFIRMED|None|MED|Pool-type sodium fast reactor has no conventional RPV
+CFR|1|constructor|UNVERIFIABLE||LOW|CNNC confirmed as overall developer of CFR-600, but no specific EPC/civil-works contractor named
+CFR|1|architect_engineer|UNVERIFIABLE||LOW|CNNC confirmed as designer broadly; CNPE specifically not named in any source found
+CFR|1|turbine_supplier|UNVERIFIABLE||LOW|No source found
+CFR|1|rpv_manufacturer|CONFIRMED|None|MED|Sodium-cooled pool-type fast reactor, no conventional RPV
+CFR|2|constructor|UNVERIFIABLE||LOW|Same as Unit 1 (same project/site)
+CFR|2|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 1
+CFR|2|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 1
+CFR|2|rpv_manufacturer|CONFIRMED|None|MED|Same as Unit 1
+Changjiang|1|constructor|UNVERIFIABLE||LOW|Wikipedia confirms CNNC + China Huaneng as owners but no EPC contractor named distinct from ownership
+Changjiang|1|architect_engineer|UNVERIFIABLE||LOW|No source found
+Changjiang|1|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Changjiang|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Changjiang|2|constructor|UNVERIFIABLE||LOW|Same as Unit 1
+Changjiang|2|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 1
+Changjiang|2|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 1
+Changjiang|2|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 1
+Changjiang|3|constructor|UNVERIFIABLE||LOW|HPR1000 design confirmed CNNC/CGN co-developed generically; project-specific EPC not named
+Changjiang|3|architect_engineer|UNVERIFIABLE||LOW|No source found
+Changjiang|3|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Changjiang|3|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Changjiang|4|constructor|UNVERIFIABLE||LOW|Same as Unit 3
+Changjiang|4|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 3
+Changjiang|4|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 3
+Changjiang|4|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 3
+Daya Bay|1|constructor|CONFIRMED|Framatome|HIGH|Wikipedia: Daya Bay Nuclear Power Plant; WNA China country profile
+Daya Bay|1|architect_engineer|WRONG|EDF (Électricité de France); "CNPEC" appears anachronistic (CNPEC/CGN entities postdate Daya Bay's 1980s construction)|MED|WNA China country profile: "Architect Engineer: EDF managed the construction process"
+Daya Bay|1|turbine_supplier|CONFIRMED|Alstom (GEC Alsthom, the entity's name at time of construction 1987-1994)|HIGH|WNA China country profile: "Turbine Generator Supplier: GEC-Alstom"
+Daya Bay|1|rpv_manufacturer|UNVERIFIABLE||LOW|No Daya-Bay-specific RPV fabrication source found (Framatome as overall constructor is not the same claim as naming the RPV forge/entity)
+Daya Bay|2|constructor|CONFIRMED|Framatome|HIGH|Same as Unit 1
+Daya Bay|2|architect_engineer|WRONG|EDF; "CNPEC" anachronistic|MED|Same as Unit 1
+Daya Bay|2|turbine_supplier|CONFIRMED|Alstom (GEC Alsthom)|HIGH|Same as Unit 1
+Daya Bay|2|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 1
+Fangchenggang|1|constructor|UNVERIFIABLE||MED|CGN confirmed as owner/developer via WNA China profile; distinct EPC contractor not named
+Fangchenggang|1|architect_engineer|UNVERIFIABLE||LOW|No source found
+Fangchenggang|1|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Fangchenggang|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Fangchenggang|2|constructor|UNVERIFIABLE||MED|Same as Unit 1
+Fangchenggang|2|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 1
+Fangchenggang|2|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 1
+Fangchenggang|2|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 1
+Fangchenggang|3|constructor|UNVERIFIABLE||MED|CGN confirmed as owner (HPR1000 demonstration project, Bradwell B reference plant)
+Fangchenggang|3|architect_engineer|UNVERIFIABLE||LOW|No source found
+Fangchenggang|3|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Fangchenggang|3|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Fangchenggang|4|constructor|UNVERIFIABLE||MED|Same as Unit 3
+Fangchenggang|4|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 3
+Fangchenggang|4|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 3
+Fangchenggang|4|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 3
+Fangjiashan|1|constructor|WRONG|China Nuclear Power Engineering Co. (CNPE), a CNNC subsidiary — Fangjiashan is CNNC-owned (72% stake), not CGN|MED|Wikipedia: Fangjiashan Nuclear Power Plant; WNA China country profile
+Fangjiashan|1|architect_engineer|UNVERIFIABLE||LOW|"CNPEC" guess inconsistent with confirmed CNNC ownership; correct AE not independently named in sources found
+Fangjiashan|1|turbine_supplier|CONFIRMED|Dongfang Electric|MED|Wikipedia: Fangjiashan Nuclear Power Plant
+Fangjiashan|1|rpv_manufacturer|CONFIRMED|China First Heavy Industries|MED|Wikipedia: Fangjiashan Nuclear Power Plant
+Fangjiashan|2|constructor|WRONG|China Nuclear Power Engineering Co. (CNPE), CNNC subsidiary|MED|Same as Unit 1
+Fangjiashan|2|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 1
+Fangjiashan|2|turbine_supplier|CONFIRMED|Dongfang Electric|MED|Same as Unit 1
+Fangjiashan|2|rpv_manufacturer|CONFIRMED|China First Heavy Industries|MED|Same as Unit 1
+Fuqing|1|constructor|WRONG|China Nuclear Engineering Corporation (CNECC)|HIGH|WNN coverage of Fuqing Unit 1 performance test naming CNECC as plant constructor
+Fuqing|1|architect_engineer|CONFIRMED|China Nuclear Power Engineering Co. (CNPE)|MED|CNPE project materials (direct confirmation on Unit 5, extrapolated to Unit 1 per CNNC-fleet practice)
+Fuqing|1|turbine_supplier|WRONG|Dongfang Electric (Dongfang Steam Turbine Co.)|HIGH|Chinese technical source: Fuqing Unit 1 turbine "manufactured by Dongfang Steam Turbine Co.", thermal acceptance test Nov 2014
+Fuqing|1|rpv_manufacturer|CONFIRMED|China First Heavy Industries|HIGH|CFHI corporate news: Fuqing Unit 1 RPV completed at Dalian facility, 2011
+Fuqing|2|constructor|WRONG|China Nuclear Engineering Corporation (CNECC)|MED|Same constructor entity per WNN Fuqing coverage pattern, not independently re-verified per unit
+Fuqing|2|architect_engineer|CONFIRMED|China Nuclear Power Engineering Co. (CNPE)|MED|Pattern inference from Unit 5 confirmation
+Fuqing|2|turbine_supplier|WRONG|Dongfang Electric|MED|Inferred from Unit 1 and Units 5-6 confirmed pattern; no Unit-2-specific citation found
+Fuqing|2|rpv_manufacturer|CONFIRMED|China First Heavy Industries|MED|CFHI general domestic-supply statement covering Fuqing units; not unit-specific
+Fuqing|3|constructor|WRONG|China Nuclear Engineering Corporation (CNECC)|MED|Same as Unit 2
+Fuqing|3|architect_engineer|CONFIRMED|China Nuclear Power Engineering Co. (CNPE)|MED|Pattern inference
+Fuqing|3|turbine_supplier|WRONG|Dongfang Electric|LOW|No Unit-3-specific citation found; inferred from batch pattern only
+Fuqing|3|rpv_manufacturer|CONFIRMED|China First Heavy Industries|MED|CFHI general statement, not unit-specific
+Fuqing|4|constructor|WRONG|China Nuclear Engineering Corporation (CNECC)|MED|Same as Unit 3
+Fuqing|4|architect_engineer|CONFIRMED|China Nuclear Power Engineering Co. (CNPE)|MED|Pattern inference
+Fuqing|4|turbine_supplier|WRONG|Dongfang Electric|LOW|No Unit-4-specific citation found; inferred from batch pattern only
+Fuqing|4|rpv_manufacturer|CONFIRMED|China First Heavy Industries|MED|CFHI general statement, not unit-specific
+Fuqing|5|constructor|WRONG|China Nuclear Engineering Corporation (CNECC)|HIGH|CNPE/industry press: CNECC regional bureaus (23rd/24th/5th Construction Co.) executed construction
+Fuqing|5|architect_engineer|CONFIRMED|China Nuclear Power Engineering Co. (CNPE)|HIGH|Industry press: CNPE named directly as EPC/design lead for Unit 5 — clearest unit-specific confirmation found
+Fuqing|5|turbine_supplier|CONFIRMED|Dongfang Electric|HIGH|Multiple Chinese industry sources: "Dongfang Electric is the largest equipment supplier for Units 5 and 6"
+Fuqing|5|rpv_manufacturer|CONFIRMED|China First Heavy Industries|HIGH|CFHI corporate news: delivered world's first Hualong One (HPR1000) RPV for Fuqing Unit 5, Aug 2017
+Fuqing|6|constructor|WRONG|China Nuclear Engineering Corporation (CNECC)|MED|Same demonstration project as Unit 5, same EPC entity per CNPE/industry sourcing
+Fuqing|6|architect_engineer|CONFIRMED|China Nuclear Power Engineering Co. (CNPE)|MED|Same Unit 5/6 demonstration project sourcing; not independently isolated for Unit 6
+Fuqing|6|turbine_supplier|CONFIRMED|Dongfang Electric|HIGH|Same sources explicitly cover "Units 5 and 6"
+Fuqing|6|rpv_manufacturer|CONFIRMED|China First Heavy Industries|MED|CFHI dominant domestic RPV supplier + Unit 5 confirmation extended by same-project sourcing
+Haiyang|1|constructor|WRONG|China Nuclear Engineering & Construction Group (CNECC) — Westinghouse is reactor technology licensor, not EPC/civil constructor|MED|WNA China country profile
+Haiyang|1|architect_engineer|UNVERIFIABLE||LOW|SNPTC guess not corroborated by any source found
+Haiyang|1|turbine_supplier|UNVERIFIABLE||LOW|Single unreliable/internally-inconsistent source (WNA); Harbin Electric guess not confirmed
+Haiyang|1|rpv_manufacturer|CONFIRMED|Doosan Heavy Industries|MED|WNA China country profile
+Haiyang|2|constructor|WRONG|China Nuclear Engineering & Construction Group (CNECC), not Westinghouse|MED|WNA China country profile
+Haiyang|2|architect_engineer|UNVERIFIABLE||LOW|No source found
+Haiyang|2|turbine_supplier|UNVERIFIABLE||LOW|WNA source internally inconsistent (names both MHI and Shanghai Electric elsewhere); Harbin Electric guess unconfirmed
+Haiyang|2|rpv_manufacturer|WRONG|Shanghai Electric Group Corporation (SEC), not Doosan|MED|WNA China country profile
+Haiyang|3|constructor|WRONG|State Power Investment Corporation (SPIC), via Shandong Nuclear Power subsidiary — not CNNC|HIGH|Wikipedia: Haiyang Nuclear Power Plant (explicitly lists SPIC as owner for all 4 units incl. 3 and 4)
+Haiyang|3|architect_engineer|WRONG|Not CNPE (a CNNC entity, inconsistent with confirmed SPIC ownership); correct SPIC-affiliated AE not independently confirmed|MED|Wikipedia: Haiyang Nuclear Power Plant (SPIC ownership chain)
+Haiyang|3|turbine_supplier|UNVERIFIABLE||LOW|No unit-specific source found (still under construction, started 2022)
+Haiyang|3|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Haiyang|4|constructor|WRONG|State Power Investment Corporation (SPIC), via Shandong Nuclear Power subsidiary — not CNNC|HIGH|Same as Unit 3
+Haiyang|4|architect_engineer|WRONG|Not CNPE (CNNC entity, inconsistent with SPIC ownership); correct AE not independently confirmed|MED|Same as Unit 3
+Haiyang|4|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Haiyang|4|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Hongyanhe|1|constructor|CONFIRMED|CGN (CGNPC)|MED|power-technology.com project page (project-level statement; JV also includes SPIC and Dalian Construction Investment Group per Wikipedia)
+Hongyanhe|1|architect_engineer|CONFIRMED|CNPEC|MED|power-technology.com project page (project-level statement)
+Hongyanhe|1|turbine_supplier|UNVERIFIABLE||LOW|No source found (Wikipedia, WNA, power-technology all silent on turbine supplier)
+Hongyanhe|1|rpv_manufacturer|CONFIRMED|China First Heavy Industries|MED|power-technology.com: unit-1-specific statement naming CFHI as RPV supplier
+Hongyanhe|2|constructor|UNVERIFIABLE||LOW|Only project-level statement found (see Unit 1), not unit-specific
+Hongyanhe|2|architect_engineer|UNVERIFIABLE||LOW|Same as constructor
+Hongyanhe|2|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Hongyanhe|2|rpv_manufacturer|UNVERIFIABLE||LOW|Source explicitly states RPV supplier not specified for Units 2-6; do not carry over Unit 1's CFHI
+Hongyanhe|3|constructor|UNVERIFIABLE||LOW|Same as Unit 2
+Hongyanhe|3|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 2
+Hongyanhe|3|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Hongyanhe|3|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 2
+Hongyanhe|4|constructor|UNVERIFIABLE||LOW|Same as Unit 2
+Hongyanhe|4|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 2
+Hongyanhe|4|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Hongyanhe|4|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 2
+Hongyanhe|5|constructor|UNVERIFIABLE||LOW|ACPR-1000 is a newer CGN design generation; project-level EPC statement predates this phase, not confirmed to carry over
+Hongyanhe|5|architect_engineer|UNVERIFIABLE||LOW|Same caveat as constructor
+Hongyanhe|5|turbine_supplier|UNVERIFIABLE||LOW|No source found; flagged risk that ACPR-1000 units may use a different supplier than Units 1-4, but no evidence either way
+Hongyanhe|5|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 2
+Hongyanhe|6|constructor|UNVERIFIABLE||LOW|Same as Unit 5
+Hongyanhe|6|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 5
+Hongyanhe|6|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Hongyanhe|6|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 5
+# NOTES
+- Fangjiashan (both units): confirmed CNNC-owned (72% CNNC stake, adjacent to the CNNC Qinshan complex), NOT CGN as the heuristic assigned. This is the same class of owner-group misattribution bug as the documented Lufeng case, but in the reverse direction (a CNNC site mislabeled CGN, vs. Lufeng being a CGN site mislabeled CNNC). "CNPEC" is an ambiguous acronym in this dataset — it can mean CNNC's engineering subsidiary (China Nuclear Power Engineering Co., the actual Fangjiashan constructor) or informally suggest CGN's own engineering arm; recommend disambiguating this acronym everywhere it appears.
+- Haiyang (all 4 units): confirmed owner/operator is State Power Investment Corporation (SPIC), via its Shandong Nuclear Power subsidiary — NOT CNNC. This affects Units 3-4 (CAP1000, currently tagged CNNC/CNPE) most directly, but also means Units 1-2's "constructor=Westinghouse" field conflates the AP1000 reactor technology licensor with the actual EPC/civil contractor (CNECC per WNA).
+- Systemic "constructor" field ambiguity found across multiple CNNC-heuristic sites (Fuqing, Haiyang, and likely more outside this batch): the heuristic populates "constructor" with the parent owner-group name (CNNC), but industry sources consistently name a distinct literal EPC/civil-works contractor — China Nuclear Engineering Corporation (CNECC), executed via its regional bureaus. Recommend clarifying whether the "constructor" column is meant to capture parent ownership or the literal EPC firm, and auditing all CNNC-tagged sites in the full database against this pattern (Changjiang and Fangchenggang in this batch could not be checked due to lack of unit-specific sources, so this correction was NOT applied there — flagged as UNVERIFIABLE rather than assumed).
+- Fuqing turbine_supplier: the "Harbin Electric" default for Units 1-4 (M310+) is wrong — Unit 1 is directly confirmed Dongfang Electric (HIGH), and Units 5-6 (HPR1000) are directly confirmed Dongfang Electric (HIGH); Units 2-4 were corrected to Dongfang by inference from this pattern (MED/LOW, not independently unit-sourced) rather than left on the wrong Harbin default.
+- Fast reactors (CEFR, CFR-600/Xiapu Units 1-2) correctly have no RPV (rpv_manufacturer=None is structurally right), but the CNNC/CNPE default for constructor/architect_engineer was wrong for CEFR specifically — CEFR has a substantial Russian design lineage (OKBM Afrikantov, OKB Gidropress, NIKIET, Kurchatov Institute) built with CIAE, not a purely domestic CNNC/CNPE project. CFR-600's constructor/AE beyond "CNNC broadly designed it" could not be sourced.
+- Daya Bay architect_engineer: the compound guess "EDF / CNPEC" is likely a garbled/anachronistic entry — CNPEC (a CGN engineering subsidiary) postdates Daya Bay's 1980s construction era. Corrected to EDF alone; a further refinement to "EDF/SOFINEL" (EDF's joint engineering venture with Framatome at the time) is plausible but was not independently confirmed this session.
+- Bailong Unit 1: another owner-group misattribution — actual owner/developer is SPIC (via Guangxi Nuclear Power Co.) with SNERDI as architect-engineer, not CNNC/CNPE.
+- SESSION LIMITATION: the WebSearch tool budget (200/200 calls) was exhausted before this batch's research began (confirmed via a direct test query that returned a budget-exhausted message), so essentially all findings above come from WebFetch against known/guessed URLs (Wikipedia, WNA country profile, cached search snippets) rather than live search. This is a materially weaker verification path — the large UNVERIFIABLE counts for Changjiang (16/16 fields), Fangchenggang (16/16 fields), and Hongyanhe Units 2-6 (20/24 fields) likely reflect tool-access limitations more than genuine unavailability of sourcing. Recommend re-running this batch's gaps once WebSearch budget resets, prioritizing: Hongyanhe turbine suppliers (all 6 units), Fangchenggang all fields, and Changjiang all fields.

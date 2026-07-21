@@ -1,0 +1,36 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+France|Fessenheim|1|CP0|Shutdown|Framatome|EDF|Alstom|Creusot-Loire
+France|Fessenheim|2|CP0|Shutdown|Framatome|EDF|Alstom|Creusot-Loire
+France|Flamanville|1|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Flamanville|2|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Flamanville|3|EPR|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|G2|2|None|Shutdown|EDF|EDF|Alstom|None
+France|G3|3|None|Shutdown|EDF|EDF|Alstom|None
+France|Golfech|1|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Golfech|2|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Gravelines|1|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Gravelines|2|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Gravelines|3|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Gravelines|4|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Gravelines|5|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Gravelines|6|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Nogent|1|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Nogent|2|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Paluel|1|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Paluel|2|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Paluel|3|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Paluel|4|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Penly|1|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Penly|2|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Phenix|1|PH-250|Shutdown|CEA|EDF|Alstom|None
+France|St. Alban|1|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|St. Alban|2|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|St. Laurent A|1|UNGG|Shutdown|EDF|EDF|Alstom|None
+France|St. Laurent A|2|UNGG|Shutdown|EDF|EDF|Alstom|None
+France|St. Laurent B|1|CP2|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|St. Laurent B|2|CP2|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Super-Phenix|1|Na-1200|Shutdown|Novatome|EDF|Alstom|None
+France|Tricastin|1|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Tricastin|2|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Tricastin|3|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Tricastin|4|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire

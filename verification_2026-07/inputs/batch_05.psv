@@ -1,0 +1,28 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+USA|Shoreham|1|BWR-5 (Mark 2)|Shutdown|GE|Stone & Webster|General Electric|Chicago Bridge & Iron
+USA|South Texas Project|1|W (4-loop)|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|South Texas Project|2|W (4-loop) DRYAMB|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|St Lucie|1|CE DRYAMB|Operational|CE|Ebasco|General Electric|Combustion Engineering
+USA|St Lucie|2|CE DRYAMB|Operational|CE|Ebasco|General Electric|Combustion Engineering
+USA|Summer (V C Summer)|1|W (3-loop) DRYAMB|Operational|Westinghouse|Gilbert Associates|Westinghouse|Combustion Engineering
+USA|Surry|1|W (3-loop) DRYSUB|Operational|Westinghouse|Stone & Webster|Westinghouse|Rotterdam Dockyard / Babcock & Wilcox
+USA|Surry|2|W (3-loop) DRYSUB|Operational|Westinghouse|Stone & Webster|Westinghouse|Rotterdam Dockyard / Babcock & Wilcox
+USA|Susquehanna|1|BWR-4 (Mark 2)|Operational|GE|Bechtel|General Electric|Chicago Bridge & Iron
+USA|Susquehanna|2|BWR-4 (Mark 2)|Operational|GE|Bechtel|General Electric|Chicago Bridge & Iron
+USA|Three Mile Island|1|B&W (L-loop)|Shutdown|B&W|Gilbert Associates|Westinghouse|Babcock & Wilcox
+USA|Three Mile Island|2|B&W (L-loop)|Shutdown|B&W|Gilbert Associates|Westinghouse|Babcock & Wilcox
+USA|Trojan|1|W (4-loop)|Shutdown|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|Turkey Point|3|W (3-loop) DRYAMB|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|Turkey Point|4|W (3-loop) DRYAMB|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|Vermont Yankee|1|BWR-4 (Mark 1)|Shutdown|GE|Ebasco|General Electric|Chicago Bridge & Iron
+USA|Vogtle|1|W (4-loop) DRYAMB|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|Vogtle|2|W (4-loop) DRYAMB|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|Vogtle|3|AP1000|Operational|Westinghouse|Bechtel|Westinghouse|Doosan Heavy Industries
+USA|Vogtle|4|AP1000|Operational|Westinghouse|Bechtel|Westinghouse|Doosan Heavy Industries
+USA|Waterford|3|CE (2-loop)|Operational|CE|Ebasco|General Electric|Combustion Engineering
+USA|Watts Bar|1|W (4-loop) ICECDN|Operational|Westinghouse|TVA|Westinghouse|Rotterdam Dockyard
+USA|Watts Bar|2|W (4-loop) ICECDN|Operational|Westinghouse|TVA|Westinghouse|Rotterdam Dockyard
+USA|Wolf Creek|1|W (4-loop)|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|Yankee NPS|1|PWR|Shutdown|Westinghouse|Stone & Webster|Westinghouse|Babcock & Wilcox
+USA|Zion|1|W (4-loop)|Shutdown|Westinghouse|Sargent & Lundy|Westinghouse|Combustion Engineering
+USA|Zion|2|W (4-loop)|Shutdown|Westinghouse|Sargent & Lundy|Westinghouse|Combustion Engineering

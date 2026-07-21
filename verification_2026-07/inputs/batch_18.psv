@@ -1,0 +1,39 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+Germany|AVR Jülich|1|Pebble bed prototype|Shutdown|BBC / Krupp|BBC / Krupp|KWU|BBC / Krupp
+Germany|Biblis|A|PWR|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Biblis|B|PWR|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Brokdorf|1|PWR|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Brunsbüttel|1|BWR-69|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Emsland|1|Konvoi|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Grafenrheinfeld|1|PWR|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Greifswald|1|VVER V-230|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Germany|Greifswald|2|VVER V-230|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Germany|Greifswald|3|VVER V-230|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Germany|Greifswald|4|VVER V-230|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Germany|Greifswald|5|VVER V-230|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Germany|Grohnde|1|PWR|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Gundremmingen|B|BWR-72|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Japan Steel Works, Uddcomb, MAN-GHH
+Germany|Gundremmingen|C|BWR-72|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Japan Steel Works, Uddcomb, MAN-GHH
+Germany|Gundremmingen|A|BWR|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|General Electric, Rotterdam Dockyard (RDM)
+Germany|HDR Großwelzheim|1|Superheated steam reactor|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Isar|1|BWR-69|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Isar|2|Konvoi|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|KNK II|1|Prototype|Shutdown|Interatom|Interatom|KWU|Interatom
+Germany|Krümmel|1|BWR-69|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Lingen|1|BWR with fossil fuel-fired superheater|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|MZFR|1|PHWR|Shutdown|Siemens|Siemens|KWU|Siemens
+Germany|Mülheim-Kärlich|1|PWR|Shutdown|Brown Boveri / Babcock|BBR|KWU|Rotterdam Dockyard (RDM)
+Germany|Neckarwestheim|1|PWR|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Neckarwestheim|2|Konvoi|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Niederaichbach|1|Pressure tube reactor|Shutdown|Siemens|Siemens|KWU|Siemens
+Germany|Obrigheim|1|PWR|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Philippsburg|1|BWR-69|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Philippsburg|2|PWR|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Rheinsberg|1|VVER V-70|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Germany|Stade|1|PWR|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|THTR-300|1|Pebble bed reactor|Shutdown|Brown Boveri / Krupp|Brown Boveri / Krupp|KWU|Brown Boveri / Krupp
+Germany|Unterweser|1|PWR|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Vak Kahl|1|BWR|Shutdown|GE|KWU|KWU|Rotterdam Dockyard (RDM)
+Germany|Würgassen|1|BWR|Shutdown|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Netherlands|Borssele|1|KWU 2-loops|Operational|Siemens|KWU|KWU|Rotterdam Dockyard (RDM)
+Netherlands|Dodewaard|1|GE design|Shutdown|GE|GE|General Electric|General Electric

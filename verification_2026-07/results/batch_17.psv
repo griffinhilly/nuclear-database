@@ -1,0 +1,121 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Bruce|1|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Bruce Nuclear Generating Station ("constructed in stages between 1970 and 1987 by the provincial Crown corporation, Ontario Hydro"; AECL was reactor supplier, not constructor)
+Bruce|1|architect_engineer|UNVERIFIABLE||-|-
+Bruce|1|turbine_supplier|UNVERIFIABLE||-|-
+Bruce|1|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Bruce Nuclear Generating Station (calandria design confirmed, e.g. 1986 fuel-channel failure swept fuel into "the moderator (calandria)"; CANDU PHWR has no RPV)
+Bruce|2|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|2|architect_engineer|UNVERIFIABLE||-|-
+Bruce|2|turbine_supplier|UNVERIFIABLE||-|-
+Bruce|2|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|3|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|3|architect_engineer|UNVERIFIABLE||-|-
+Bruce|3|turbine_supplier|UNVERIFIABLE||-|-
+Bruce|3|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|4|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|4|architect_engineer|UNVERIFIABLE||-|-
+Bruce|4|turbine_supplier|UNVERIFIABLE||-|-
+Bruce|4|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|5|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|5|architect_engineer|UNVERIFIABLE||-|-
+Bruce|5|turbine_supplier|UNVERIFIABLE||-|-
+Bruce|5|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|6|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|6|architect_engineer|UNVERIFIABLE||-|-
+Bruce|6|turbine_supplier|UNVERIFIABLE||-|-
+Bruce|6|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|7|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|7|architect_engineer|UNVERIFIABLE||-|-
+Bruce|7|turbine_supplier|UNVERIFIABLE||-|-
+Bruce|7|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|8|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Bruce Nuclear Generating Station
+Bruce|8|architect_engineer|UNVERIFIABLE||-|-
+Bruce|8|turbine_supplier|UNVERIFIABLE||-|-
+Bruce|8|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Bruce Nuclear Generating Station
+Darlington|1|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Darlington Nuclear Generating Station (built 1981-1993, predates 1999 Ontario Hydro/OPG split; AECL listed only as reactor supplier)
+Darlington|1|architect_engineer|UNVERIFIABLE||-|-
+Darlington|1|turbine_supplier|UNVERIFIABLE||-|-
+Darlington|1|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Darlington Nuclear Generating Station (CANDU PHWR, calandria design, no RPV)
+Darlington|2|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Darlington Nuclear Generating Station
+Darlington|2|architect_engineer|UNVERIFIABLE||-|-
+Darlington|2|turbine_supplier|UNVERIFIABLE||-|-
+Darlington|2|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Darlington Nuclear Generating Station
+Darlington|3|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Darlington Nuclear Generating Station
+Darlington|3|architect_engineer|UNVERIFIABLE||-|-
+Darlington|3|turbine_supplier|UNVERIFIABLE||-|-
+Darlington|3|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Darlington Nuclear Generating Station
+Darlington|4|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Darlington Nuclear Generating Station
+Darlington|4|architect_engineer|UNVERIFIABLE||-|-
+Darlington|4|turbine_supplier|UNVERIFIABLE||-|-
+Darlington|4|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Darlington Nuclear Generating Station
+Darlington SMR|1|constructor|UNVERIFIABLE||-|-
+Darlington SMR|1|architect_engineer|UNVERIFIABLE||-|-
+Darlington SMR|1|turbine_supplier|UNVERIFIABLE||-|-
+Darlington SMR|1|rpv_manufacturer|WRONG|Has an RPV (manufacturer not yet publicly confirmed) — "None" is structurally wrong|MED|Wikipedia: BWRX-300 ("utilizes components of the operational Advanced Boiling Water Reactor (ABWR)"); BWRX-300 is a conventional boiling-water reactor with a real reactor pressure vessel, unlike CANDU's calandria — the "(none)" convention for CANDU RPVs does not apply to this LWR design
+Douglas Point|1|constructor|CONFIRMED||HIGH|Wikipedia: Douglas Point Nuclear Generating Station ("built and owned by Atomic Energy of Canada Limited (AECL) but operated by Ontario Hydro")
+Douglas Point|1|architect_engineer|CONFIRMED||MED|Same source — no separate architect-engineer entity is mentioned; AECL is described as sole project sponsor/builder, consistent with AECL also serving the AE role (unlike the commercial Ontario Hydro stations)
+Douglas Point|1|turbine_supplier|UNVERIFIABLE||-|-
+Douglas Point|1|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Douglas Point (explicit calandria description: stainless steel calandria, 54.4 tonnes, 6.1m diameter, manufactured by Dominion Bridge Company — a calandria, not an RPV, consistent with "(none)")
+Gentilly|1|constructor|UNVERIFIABLE||-|-
+Gentilly|1|architect_engineer|UNVERIFIABLE||-|-
+Gentilly|1|turbine_supplier|UNVERIFIABLE||-|-
+Gentilly|1|rpv_manufacturer|CONFIRMED||MED|Wikipedia: Gentilly Nuclear Generating Station (Gentilly-1 = CANDU-BWR/CANDU-BLW prototype based on SGHWR design, vertical pressure tubes, light-water coolant; CANDU-family design uses a calandria/heavy-water moderator tank rather than a pressure vessel — article does not explicitly use the word "calandria" for this unit, hence MED not HIGH)
+Gentilly|2|constructor|UNVERIFIABLE||-|-
+Gentilly|2|architect_engineer|UNVERIFIABLE||-|-
+Gentilly|2|turbine_supplier|UNVERIFIABLE||-|-
+Gentilly|2|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Gentilly Nuclear Generating Station (Gentilly-2 = CANDU PHWR/CANDU 6, standard calandria design, no RPV)
+Pickering|1|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Pickering Nuclear Generating Station ("constructed in stages between 1965 and 1986 by the provincial Crown corporation, Ontario Hydro")
+Pickering|1|architect_engineer|UNVERIFIABLE||-|-
+Pickering|1|turbine_supplier|UNVERIFIABLE||-|-
+Pickering|1|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Pickering Nuclear Generating Station (CANDU-500, calandria design, no RPV)
+Pickering|2|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|2|architect_engineer|UNVERIFIABLE||-|-
+Pickering|2|turbine_supplier|UNVERIFIABLE||-|-
+Pickering|2|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|3|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|3|architect_engineer|UNVERIFIABLE||-|-
+Pickering|3|turbine_supplier|UNVERIFIABLE||-|-
+Pickering|3|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|4|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|4|architect_engineer|UNVERIFIABLE||-|-
+Pickering|4|turbine_supplier|UNVERIFIABLE||-|-
+Pickering|4|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|5|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|5|architect_engineer|UNVERIFIABLE||-|-
+Pickering|5|turbine_supplier|UNVERIFIABLE||-|-
+Pickering|5|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|6|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|6|architect_engineer|UNVERIFIABLE||-|-
+Pickering|6|turbine_supplier|UNVERIFIABLE||-|-
+Pickering|6|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|7|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|7|architect_engineer|UNVERIFIABLE||-|-
+Pickering|7|turbine_supplier|UNVERIFIABLE||-|-
+Pickering|7|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|8|constructor|WRONG|Ontario Hydro|HIGH|Wikipedia: Pickering Nuclear Generating Station
+Pickering|8|architect_engineer|UNVERIFIABLE||-|-
+Pickering|8|turbine_supplier|UNVERIFIABLE||-|-
+Pickering|8|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Pickering Nuclear Generating Station
+Point Lepreau|1|constructor|WRONG|NB Power|HIGH|Wikipedia: Point Lepreau Nuclear Generating Station ("constructed between 1975 and 1983 by NB Power, the provincially owned public utility"; AECL supplied only the reactor)
+Point Lepreau|1|architect_engineer|UNVERIFIABLE||-|-
+Point Lepreau|1|turbine_supplier|UNVERIFIABLE||-|-|
+Point Lepreau|1|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Point Lepreau (CANDU 6/CANDU C6, calandria design, no RPV)
+Rolphton NPD|1|constructor|WRONG|Canadian General Electric (in partnership with AECL, which owned the facility; Ontario Hydro/HEPCO operated it)|HIGH|Wikipedia: Nuclear Power Demonstration ("Built by Canadian General Electric (now GE Canada), in partnership with Atomic Energy of Canada Limited (AECL)")
+Rolphton NPD|1|architect_engineer|CONFIRMED||MED|Same source — AECL is the named technical/design partner and facility owner; no separate AE firm is mentioned
+Rolphton NPD|1|turbine_supplier|CONFIRMED||MED|Wikipedia: Nuclear Power Demonstration — Canadian General Electric ("now GE Canada") built the station as a turbine/generator manufacturer; original value "GE Canada" is directionally consistent with CGE's identity, though the source does not explicitly separate a turbine-supply role from general construction
+Rolphton NPD|1|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Nuclear Power Demonstration ("a low-pressure calandria vessel, and on-line refueling" with horizontal pressure tubes — no RPV)
+
+# NOTES
+
+1. CONFIRMED HEURISTIC BUG (constructor): For all Ontario Hydro-built commercial stations in this batch (Bruce 1-8, Darlington 1-4, Pickering 1-8 = 20 of 26 units), "constructor" was blanket-filled as AECL. Sourced correction: Ontario Hydro (now OPG) was the actual constructor at all three stations; AECL was reactor/NSSS supplier only. This matches the known bug pattern exactly.
+
+2. NOT a uniform bug — AECL genuinely WAS the constructor at Douglas Point (AECL "built and owned" it, Ontario Hydro only operated it). Do not blanket-correct constructor to a utility name across all rows; Douglas Point is a confirmed exception.
+
+3. Rolphton NPD is a THIRD pattern, not previously flagged in the task brief: the true constructor was Canadian General Electric (CGE, later renamed GE Canada) acting in partnership with AECL (owner) and Ontario Hydro/HEPCO (operator). So "constructor: AECL" is wrong here too, but the correction is CGE, not a utility. Interestingly, this means the original blanket "turbine_supplier: GE Canada" default happens to be directionally CORRECT at NPD specifically (CGE = GE Canada), even though it is confirmed wrong as a blanket default at Bruce/Darlington/Pickering (unverifiable there, not confirmed correct).
+
+4. Point Lepreau and Gentilly-2 (both CANDU 6, both flagged in the task brief as "verify — era differs") did NOT resolve as cleanly as Douglas Point/NPD: Point Lepreau's constructor is sourced and WRONG (NB Power, not AECL) — same bug as the Ontario Hydro stations, contradicting the brief's suggestion that CANDU-6-era units might be AECL-built exceptions. Gentilly-2's constructor could not be sourced at all (Wikipedia gives only "reactor supplier: AECL," operator Hydro-Québec, no explicit building contractor) — flagged UNVERIFIABLE rather than guessed.
+
+5. Turbine supplier and architect-engineer were UNVERIFIABLE for the great majority of rows (48 of 52 UNVERIFIABLE lines): none of the station Wikipedia infoboxes for Bruce, Darlington, Pickering, Point Lepreau, or Gentilly list a turbine supplier or architect-engineer field, and no secondary source (power-technology.com station pages returned 404; IAEA PRIS country page has no per-unit supplier breakdown accessible via fetch; Bing search fallback returned irrelevant results) surfaced this data within the available research budget. Recommend a follow-up pass using Canadian Nuclear Society historical papers or OPG/NB Power/Hydro-Québec primary archives, which were not directly fetchable here.
+
+6. STRUCTURAL FINDING — Darlington SMR (BWRX-300) RPV field: the input lists "rpv_manufacturer: None" for this unit, which is WRONG as a structural matter, not just unsourced. The task's rule that CANDU reactors correctly have "(none)" for RPV (calandria design) does NOT apply here — BWRX-300 is a boiling water reactor (GE Hitachi, based on ABWR/ESBWR lineage) with a conventional reactor pressure vessel. This looks like the heuristic mechanically applying the CANDU-family "no RPV" convention to a non-CANDU reactor type in the same batch. Worth checking other batches for planned/under-construction non-CANDU designs (SMRs) with the same "(none)" default possibly misapplied.
+
+7. Research budget constraint: WebSearch was exhausted session-wide (200/200 used, likely by other concurrent work) before this batch's research began. All findings above rely on WebFetch against Wikipedia articles (and two failed power-technology.com guesses + one failed Bing fallback). This narrowed the source diversity requested in the task (Canadian Nuclear Society papers, OPG/NB Power/Hydro-Québec publications, INIS/IAEA were not reachable via direct fetch without search). Confidence ratings reflect this — HIGH is reserved for explicit Wikipedia infobox/prose statements; MED is used where a reasonable inference was made from adjacent explicit facts (e.g., NPD's AECL/CGE role split); UNVERIFIABLE is used everywhere a specific claim could not be found in any fetched source, per the task's instruction to never bless a plausible guess.

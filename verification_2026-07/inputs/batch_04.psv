@@ -1,0 +1,28 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+USA|Palo Verde|3|CE80 DRYAMB|Operational|CE|Bechtel|General Electric|Combustion Engineering
+USA|Pathfinder|1|None|Shutdown|None|None|General Electric|Allis-Chalmers
+USA|Peach Bottom|1|None|Shutdown|None|Bechtel|None|General Atomic
+USA|Peach Bottom|2|BWR-4 (Mark 1)|Operational|GE|Bechtel|General Electric|Babcock & Wilcox
+USA|Peach Bottom|3|BWR-4 (Mark 1)|Operational|GE|Bechtel|General Electric|Babcock & Wilcox
+USA|Perry|1|BWR-6 (Mark 3)|Operational|GE|Gilbert Associates|General Electric|Babcock & Wilcox
+USA|Pilgrim|1|BWR-3 (Mark 1)|Shutdown|GE|Bechtel|General Electric|Combustion Engineering
+USA|Piqua|1|Prototype|Shutdown|None|None|None|Atomics International
+USA|Point Beach|1|W (2-loop) DRYAMB|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|Point Beach|2|W (2-loop) DRYAMB|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|Prairie Island|1|W (2-loop) DRYAMB|Operational|Westinghouse|Fluor|Westinghouse|Combustion Engineering
+USA|Prairie Island|2|W (2-loop) DRYAMB|Operational|Westinghouse|Fluor|Westinghouse|Combustion Engineering
+USA|Quad Cities|1|BWR-3 (Mark 1)|Operational|GE|Sargent & Lundy|General Electric|Babcock & Wilcox
+USA|Quad Cities|2|BWR-3 (Mark 1)|Operational|GE|Sargent & Lundy|General Electric|Babcock & Wilcox
+USA|Rancho Seco|1|B&W|Shutdown|GE|Bechtel|Westinghouse|Babcock & Wilcox
+USA|River Bend|1|BWR-6 (Mark 3)|Operational|GE|Stone & Webster|General Electric|Chicago Bridge & Iron
+USA|Robinson (H B Robinson)|2|W (3-loop) DRYAMB|Operational|Westinghouse|Ebasco|Westinghouse|Combustion Engineering
+USA|Salem|1|W (4-loop) DRYAMB|Operational|Westinghouse|Public Service Electric|Westinghouse|Combustion Engineering
+USA|Salem|2|W (4-loop) DRYAMB|Operational|Westinghouse|Public Service Electric|Westinghouse|Combustion Engineering
+USA|San Onofre|1|W (3-loop)|Shutdown|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|San Onofre|2|CE (2-loop) DRYAMB|Shutdown|CE|Bechtel|General Electric|Combustion Engineering
+USA|San Onofre|3|CE (2-loop) DRYAMB|Shutdown|CE|Bechtel|General Electric|Combustion Engineering
+USA|Saxton|1|None|Shutdown|GE|None|None|Westinghouse
+USA|Seabrook|1|W (4-loop) DRYAMB|Operational|Westinghouse|United Engineers|Westinghouse|Combustion Engineering
+USA|Sequoyah|1|W (4-loop) ICECDN|Operational|Westinghouse|TVA|Westinghouse|Rotterdam Dockyard
+USA|Sequoyah|2|W (4-loop) ICECDN|Operational|Westinghouse|TVA|Westinghouse|Rotterdam Dockyard
+USA|Shippingport|1|PLWBR|Shutdown|Westinghouse|None|Westinghouse|Babcock & Wilcox

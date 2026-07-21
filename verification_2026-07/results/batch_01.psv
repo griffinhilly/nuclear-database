@@ -1,0 +1,115 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Arkansas Nuclear One|1|constructor|UNVERIFIABLE||
+Arkansas Nuclear One|1|architect_engineer|CONFIRMED||MED|Grokipedia/Arkansas Business/Encyclopedia of Arkansas: "Both units were designed by Bechtel Power"
+Arkansas Nuclear One|1|turbine_supplier|CONFIRMED||MED|Arkansas Business/Grokipedia: "generator was supplied by Westinghouse Electric Corp. of Pittsburgh"
+Arkansas Nuclear One|1|rpv_manufacturer|CONFIRMED||HIGH|Encyclopedia of Arkansas/Grokipedia: Unit 1 reactor built by Babcock & Wilcox, Akron OH
+Arkansas Nuclear One|2|constructor|UNVERIFIABLE||
+Arkansas Nuclear One|2|architect_engineer|CONFIRMED||MED|Grokipedia/Arkansas Business: "Both units were designed by Bechtel Power"
+Arkansas Nuclear One|2|turbine_supplier|CONFIRMED||MED|NRC ano2 info-finder / Entergy summary: turbine generator supplied by General Electric
+Arkansas Nuclear One|2|rpv_manufacturer|CONFIRMED||MED|UCS "Made in Chattanooga" (Lochbaum): ANO Unit 2 reactor vessel made by Combustion Engineering, Chattanooga
+Beaver Valley|1|constructor|UNVERIFIABLE||
+Beaver Valley|1|architect_engineer|CONFIRMED||MED|Wikipedia Beaver Valley Nuclear Power Station: plant "designed and engineered by Stone & Webster"
+Beaver Valley|1|turbine_supplier|UNVERIFIABLE||
+Beaver Valley|1|rpv_manufacturer|CONFIRMED||MED|UCS "Made in Chattanooga": Beaver Valley Unit 1 reactor vessel made by Combustion Engineering
+Beaver Valley|2|constructor|UNVERIFIABLE||
+Beaver Valley|2|architect_engineer|CONFIRMED||MED|Wikipedia Beaver Valley Nuclear Power Station: "designed and engineered by Stone & Webster"
+Beaver Valley|2|turbine_supplier|UNVERIFIABLE||
+Beaver Valley|2|rpv_manufacturer|CONFIRMED||MED|UCS "Made in Chattanooga": Beaver Valley Unit 2 reactor vessel made by Combustion Engineering
+Big Rock Point|1|constructor|WRONG|Bechtel Corporation|MED|Wikipedia Big Rock Point Nuclear Power Plant: "Bechtel Corporation was the primary contractor"
+Big Rock Point|1|architect_engineer|UNVERIFIABLE||
+Big Rock Point|1|turbine_supplier|CONFIRMED||MED|Wikipedia Big Rock Point: GE 3600 rpm tandem-compound turbine-generator
+Big Rock Point|1|rpv_manufacturer|CONFIRMED||MED|UCS "Made in Chattanooga": Big Rock Point reactor vessel made by Combustion Engineering (note: generic Wikipedia prose calling the reactor "made by GE" conflates GE as NSSS/turnkey vendor with the actual vessel fabricator - the known trap)
+Bonus|1|constructor|WRONG|Chicago Bridge Co.; General Nuclear Engineering|HIGH|Wikipedia Boiling Nuclear Superheater Reactor Facility (BONUS) infobox: "Chicago Bridge Co.; Gen Nuclear Engineering built the facility"
+Bonus|1|architect_engineer|WRONG|Atomic Energy Commission; Maxon Co.|HIGH|Wikipedia BONUS infobox: "Atomic Energy Commission" and "Maxon Co." served as architects
+Bonus|1|turbine_supplier|UNVERIFIABLE||
+Bonus|1|rpv_manufacturer|UNVERIFIABLE||
+Braidwood|1|constructor|UNVERIFIABLE||
+Braidwood|1|architect_engineer|UNVERIFIABLE||
+Braidwood|1|turbine_supplier|UNVERIFIABLE||
+Braidwood|1|rpv_manufacturer|UNVERIFIABLE||
+Braidwood|2|constructor|UNVERIFIABLE||
+Braidwood|2|architect_engineer|UNVERIFIABLE||
+Braidwood|2|turbine_supplier|UNVERIFIABLE||
+Braidwood|2|rpv_manufacturer|UNVERIFIABLE||
+Browns Ferry|1|constructor|UNVERIFIABLE||
+Browns Ferry|1|architect_engineer|UNVERIFIABLE||
+Browns Ferry|1|turbine_supplier|UNVERIFIABLE||
+Browns Ferry|1|rpv_manufacturer|UNVERIFIABLE||
+Browns Ferry|2|constructor|UNVERIFIABLE||
+Browns Ferry|2|architect_engineer|UNVERIFIABLE||
+Browns Ferry|2|turbine_supplier|UNVERIFIABLE||
+Browns Ferry|2|rpv_manufacturer|UNVERIFIABLE||
+Browns Ferry|3|constructor|UNVERIFIABLE||
+Browns Ferry|3|architect_engineer|UNVERIFIABLE||
+Browns Ferry|3|turbine_supplier|UNVERIFIABLE||
+Browns Ferry|3|rpv_manufacturer|UNVERIFIABLE||
+Brunswick|1|constructor|UNVERIFIABLE||
+Brunswick|1|architect_engineer|UNVERIFIABLE||
+Brunswick|1|turbine_supplier|UNVERIFIABLE||
+Brunswick|1|rpv_manufacturer|UNVERIFIABLE||
+Brunswick|2|constructor|UNVERIFIABLE||
+Brunswick|2|architect_engineer|UNVERIFIABLE||
+Brunswick|2|turbine_supplier|UNVERIFIABLE||
+Brunswick|2|rpv_manufacturer|UNVERIFIABLE||
+Byron|1|constructor|UNVERIFIABLE||
+Byron|1|architect_engineer|CONFIRMED||HIGH|Wikipedia Byron Nuclear Generating Station: "The firm of Sargent & Lundy acted as consulting engineer during construction"
+Byron|1|turbine_supplier|UNVERIFIABLE||
+Byron|1|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia Byron Nuclear Generating Station: "Babcock & Wilcox oversaw the completion of the reactor vessels"
+Byron|2|constructor|UNVERIFIABLE||
+Byron|2|architect_engineer|CONFIRMED||HIGH|Wikipedia Byron: "Sargent & Lundy acted as consulting engineer during construction"
+Byron|2|turbine_supplier|UNVERIFIABLE||
+Byron|2|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia Byron: "Babcock & Wilcox oversaw the completion of the reactor vessels"
+CVTR|1|constructor|UNVERIFIABLE||
+CVTR|1|architect_engineer|WRONG|Stone & Webster Engineering|MED|Wikipedia Carolinas-Virginia Tube Reactor: "Stone and Webster Engineering handled the remainder of the plant design," including containment
+CVTR|1|turbine_supplier|UNVERIFIABLE||
+CVTR|1|rpv_manufacturer|CONFIRMED||MED|Wikipedia CVTR: "Westinghouse Atomic Power Division was responsible for the design of the nuclear systems"
+Callaway|1|constructor|UNVERIFIABLE||
+Callaway|1|architect_engineer|UNVERIFIABLE||
+Callaway|1|turbine_supplier|UNVERIFIABLE||
+Callaway|1|rpv_manufacturer|CONFIRMED||MED|UCS "Made in Chattanooga": Callaway reactor vessel made by Combustion Engineering
+Calvert Cliffs|1|constructor|UNVERIFIABLE||
+Calvert Cliffs|1|architect_engineer|UNVERIFIABLE||
+Calvert Cliffs|1|turbine_supplier|UNVERIFIABLE||
+Calvert Cliffs|1|rpv_manufacturer|CONFIRMED||MED|UCS "Made in Chattanooga": Calvert Cliffs Unit 1 reactor vessel made by Combustion Engineering; consistent with Wikipedia infobox reactor supplier=Combustion Engineering
+Calvert Cliffs|2|constructor|UNVERIFIABLE||
+Calvert Cliffs|2|architect_engineer|UNVERIFIABLE||
+Calvert Cliffs|2|turbine_supplier|UNVERIFIABLE||
+Calvert Cliffs|2|rpv_manufacturer|CONFIRMED||MED|UCS "Made in Chattanooga": Calvert Cliffs Unit 2 reactor vessel made by Combustion Engineering
+Catawba|1|constructor|UNVERIFIABLE||
+Catawba|1|architect_engineer|UNVERIFIABLE||
+Catawba|1|turbine_supplier|UNVERIFIABLE||
+Catawba|1|rpv_manufacturer|UNVERIFIABLE||
+Catawba|2|constructor|UNVERIFIABLE||
+Catawba|2|architect_engineer|UNVERIFIABLE||
+Catawba|2|turbine_supplier|UNVERIFIABLE||
+Catawba|2|rpv_manufacturer|CONFIRMED||MED|UCS "Made in Chattanooga": Catawba Unit 2 reactor vessel made by Combustion Engineering (Unit 1 notably absent from this list, consistent with a genuine per-unit vendor split)
+Clinton|1|constructor|UNVERIFIABLE||
+Clinton|1|architect_engineer|UNVERIFIABLE||
+Clinton|1|turbine_supplier|UNVERIFIABLE||
+Clinton|1|rpv_manufacturer|UNVERIFIABLE||
+Columbia|1|constructor|UNVERIFIABLE||
+Columbia|1|architect_engineer|UNVERIFIABLE||
+Columbia|1|turbine_supplier|UNVERIFIABLE||
+Columbia|1|rpv_manufacturer|UNVERIFIABLE||
+Comanche Peak|1|constructor|UNVERIFIABLE||
+Comanche Peak|1|architect_engineer|UNVERIFIABLE||
+Comanche Peak|1|turbine_supplier|UNVERIFIABLE||
+Comanche Peak|1|rpv_manufacturer|CONFIRMED||MED|UCS "Made in Chattanooga": Comanche Peak Unit 1 reactor vessel made by Combustion Engineering
+Comanche Peak|2|constructor|UNVERIFIABLE||
+Comanche Peak|2|architect_engineer|UNVERIFIABLE||
+Comanche Peak|2|turbine_supplier|UNVERIFIABLE||
+Comanche Peak|2|rpv_manufacturer|CONFIRMED||MED|UCS "Made in Chattanooga": Comanche Peak Unit 2 reactor vessel made by Combustion Engineering
+Cook (Donald C. Cook)|1|constructor|UNVERIFIABLE||
+Cook (Donald C. Cook)|1|architect_engineer|UNVERIFIABLE||
+Cook (Donald C. Cook)|1|turbine_supplier|WRONG|General Electric|HIGH|Wikipedia Donald C. Cook Nuclear Plant infobox/additional-info table: Unit 1 turbine manufacturer = General Electric
+Cook (Donald C. Cook)|1|rpv_manufacturer|CONFIRMED||MED|UCS "Made in Chattanooga": Donald C. Cook Unit 1 reactor vessel made by Combustion Engineering
+Cook (Donald C. Cook)|2|constructor|UNVERIFIABLE||
+Cook (Donald C. Cook)|2|architect_engineer|UNVERIFIABLE||
+Cook (Donald C. Cook)|2|turbine_supplier|WRONG|Brown Boveri (BBC)|HIGH|Wikipedia Donald C. Cook Nuclear Plant infobox/additional-info table: Unit 2 turbine manufacturer = Brown Boveri
+Cook (Donald C. Cook)|2|rpv_manufacturer|UNVERIFIABLE||
+# NOTES
+- Systemic pattern in the source data: the "constructor" column is populated with the reactor/NSSS vendor name (Westinghouse, GE, or Combustion Engineering) for almost every row in this batch - i.e., the same information already encoded in the "model" column - rather than an actual construction-firm/general-contractor identity. Per the audit brief's own definition, constructor should NOT be the reactor designer. This looks like a systematic heuristic-fill error, not per-row research. Only two rows in this batch had a sourceable, distinct constructor: Big Rock Point (Bechtel Corporation, per Wikipedia) and Bonus (Chicago Bridge Co. / General Nuclear Engineering, per Wikipedia infobox) - both WRONG as currently recorded. For every other plant I could not find a primary or secondary source naming a distinct general contractor, so those rows are UNVERIFIABLE rather than blessed as CONFIRMED or guessed as WRONG-with-a-replacement.
+- Confirmed genuine per-unit deviation: Donald C. Cook Units 1 and 2 have DIFFERENT turbine manufacturers (Unit 1 = General Electric, Unit 2 = Brown Boveri), per Wikipedia's infobox/additional-info table - not the "Westinghouse" listed for both units in the source file. This is a clear illustration of why per-unit checking (rather than copying Unit 1's value to Unit 2) matters.
+- The UCS "Made in Chattanooga" blog post (Dave Lochbaum) was the single most useful source in this batch - it names 56 specific US reactors (by unit, in several cases) whose reactor pressure vessels were fabricated by Combustion Engineering's Chattanooga, TN plant. It confirmed RPV=Combustion Engineering for ANO2, Beaver Valley 1&2, Big Rock Point, Callaway, Calvert Cliffs 1&2, Catawba Unit 2 only (not Unit 1), Comanche Peak 1&2, and Donald C. Cook Unit 1 only (not Unit 2). Its silence on Catawba Unit 1 and Cook Unit 2 is circumstantial support for the source file's claim that Catawba's two units have different RPV vendors (Unit 1 = "Rotterdam Dockyard"), but I found no direct source confirming Rotterdam Dockyard specifically, so that cell stays UNVERIFIABLE rather than CONFIRMED. The same applies to Cook Unit 2's RPV.
+- Clinton Power Station: an NRC document found via search confirms Chicago Bridge & Iron fabricated Clinton Unit 1's feedwater spargers and thermal sleeves - but that is an internal reactor-vessel-internals component, not the reactor pressure vessel itself. I did not treat this as confirmation of the rpv_manufacturer field to avoid the same NSSS-vendor/component-vendor conflation the audit warns about; Clinton's rpv_manufacturer is UNVERIFIABLE.
+- Research constraints: the session's WebSearch tool budget was exhausted partway through this batch (after roughly the first third of plants), forcing reliance on WebFetch of Wikipedia/NRC/UCS pages plus DuckDuckGo/Bing HTML fetches for the remainder. NRC's own info-finder pages (nrc.gov/info-finder/reactors/...) returned HTTP 403 to WebFetch. Guessed power-technology.com project URLs for Braidwood, Browns Ferry, Brunswick, Clinton, Columbia, and Catawba all 404'd. DuckDuckGo and Bing HTML search pages returned CAPTCHA challenges or irrelevant results (e.g., Arsenal FC, Cleveland Browns NFL, Catawba College, Donald Trump) for several nuclear-specific queries. As a direct result, Braidwood (both units), Browns Ferry (all 3 units), Brunswick (both units), Catawba Unit 1, Clinton, and Columbia have NO confirmable constructor/AE/turbine/RPV fields in this pass beyond what is noted above - all UNVERIFIABLE. These plants are good candidates for a follow-up pass once search budget resets, ideally against NRC FSAR/docket PDFs directly rather than Wikipedia prose, which frequently omits constructor/AE/turbine detail entirely.

@@ -1,0 +1,121 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Hinkley Point A|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Hinkley_Point_A_nuclear_power_station (consortium "backed by English Electric, Babcock & Wilcox and Taylor Woodrow"; English Electric named lead partner, not sole constructor)
+Hinkley Point A|1|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/Hinkley_Point_A_nuclear_power_station (no separate AE named; same EE-led consortium)
+Hinkley Point A|1|turbine_supplier|WRONG|English Electric|HIGH|en.wikipedia.org/wiki/Hinkley_Point_A_nuclear_power_station ("reactors and the turbines were supplied by English Electric")
+Hinkley Point A|1|rpv_manufacturer|WRONG|Steel vessel (fabricator unspecified) — not "None"|MED|en.wikipedia.org/wiki/Hinkley_Point_A_nuclear_power_station ("welded steel pressure vessel")
+Hinkley Point A|2|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Hinkley_Point_A_nuclear_power_station
+Hinkley Point A|2|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/Hinkley_Point_A_nuclear_power_station
+Hinkley Point A|2|turbine_supplier|WRONG|English Electric|HIGH|en.wikipedia.org/wiki/Hinkley_Point_A_nuclear_power_station
+Hinkley Point A|2|rpv_manufacturer|WRONG|Steel vessel (fabricator unspecified) — not "None"|MED|en.wikipedia.org/wiki/Hinkley_Point_A_nuclear_power_station
+Hinkley Point B|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Hinkley_Point_B_nuclear_power_station ("The Nuclear Power Group (TNPG)" undertook construction from 1967)
+Hinkley Point B|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Hinkley_Point_B_nuclear_power_station (TNPG overall project)
+Hinkley Point B|1|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Hinkley_Point_B_nuclear_power_station ("GEC supplied the turbines")
+Hinkley Point B|1|rpv_manufacturer|CONFIRMED||MED|en.wikipedia.org/wiki/Hinkley_Point_B_nuclear_power_station (concrete pressure vessel, not steel; note Whessoe supplied internal steel reactor vessel components, not a manufactured steel RPV)
+Hinkley Point B|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Hinkley_Point_B_nuclear_power_station
+Hinkley Point B|2|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Hinkley_Point_B_nuclear_power_station
+Hinkley Point B|2|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Hinkley_Point_B_nuclear_power_station
+Hinkley Point B|2|rpv_manufacturer|CONFIRMED||MED|en.wikipedia.org/wiki/Hinkley_Point_B_nuclear_power_station
+Hinkley Point C|1|constructor|WRONG|NNB Generation Company (EDF Group / CGN joint-venture project company)|HIGH|en.wikipedia.org/wiki/Hinkley_Point_C_nuclear_power_station ("NNB Generation Company" is the operating/building subsidiary; "EDF Energy" is the separate existing-fleet operator)
+Hinkley Point C|1|architect_engineer|WRONG|NNB Generation Company|MED|en.wikipedia.org/wiki/Hinkley_Point_C_nuclear_power_station (no single AE firm publicly named beyond the project company)
+Hinkley Point C|1|turbine_supplier|WRONG|GE Steam Power (Arabelle turbine; formerly Alstom)|MED|edfenergy.com/energy/nuclear-new-build-projects/hinkley-point-c (lists "Alstom, GE Steam Power (Arabelle turbine)" — Alstom's nuclear turbine business was acquired by GE in 2015)
+Hinkley Point C|1|rpv_manufacturer|WRONG|Framatome|HIGH|en.wikipedia.org/wiki/Hinkley_Point_C_nuclear_power_station + edfenergy.com ("pressure vessel was built in France ... by Framatome"); not Mitsubishi Heavy Industries
+Hinkley Point C|2|constructor|WRONG|NNB Generation Company (EDF Group / CGN joint-venture project company)|HIGH|en.wikipedia.org/wiki/Hinkley_Point_C_nuclear_power_station
+Hinkley Point C|2|architect_engineer|WRONG|NNB Generation Company|MED|en.wikipedia.org/wiki/Hinkley_Point_C_nuclear_power_station
+Hinkley Point C|2|turbine_supplier|WRONG|GE Steam Power (Arabelle turbine; formerly Alstom)|MED|edfenergy.com/energy/nuclear-new-build-projects/hinkley-point-c
+Hinkley Point C|2|rpv_manufacturer|WRONG|Framatome|HIGH|en.wikipedia.org/wiki/Hinkley_Point_C_nuclear_power_station + edfenergy.com
+Hunterston A|1|constructor|WRONG|GEC and Simon Carves (construction consortium)|MED|en.wikipedia.org/wiki/Hunterston_A_nuclear_power_station ("undertaken by a consortium of GEC and Simon Carves"; civil contractor Mowlem)
+Hunterston A|1|architect_engineer|WRONG|GEC and Simon Carves (consortium)|MED|en.wikipedia.org/wiki/Hunterston_A_nuclear_power_station
+Hunterston A|1|turbine_supplier|WRONG|C.A. Parsons & Company|HIGH|en.wikipedia.org/wiki/Hunterston_A_nuclear_power_station ("turbines by C.A. Parsons & Company")
+Hunterston A|1|rpv_manufacturer|WRONG|Steel vessel (fabricator unspecified) — not "None"|MED|en.wikipedia.org/wiki/Hunterston_A_nuclear_power_station (reactors "enclosed in a steel pressure vessel")
+Hunterston A|2|constructor|WRONG|GEC and Simon Carves (construction consortium)|MED|en.wikipedia.org/wiki/Hunterston_A_nuclear_power_station
+Hunterston A|2|architect_engineer|WRONG|GEC and Simon Carves (consortium)|MED|en.wikipedia.org/wiki/Hunterston_A_nuclear_power_station
+Hunterston A|2|turbine_supplier|WRONG|C.A. Parsons & Company|HIGH|en.wikipedia.org/wiki/Hunterston_A_nuclear_power_station
+Hunterston A|2|rpv_manufacturer|WRONG|Steel vessel (fabricator unspecified) — not "None"|MED|en.wikipedia.org/wiki/Hunterston_A_nuclear_power_station
+Hunterston B|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Hunterston_B_nuclear_power_station ("The Nuclear Power Group (TNPG)")
+Hunterston B|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Hunterston_B_nuclear_power_station
+Hunterston B|1|turbine_supplier|WRONG|C. A. Parsons & Co|HIGH|en.wikipedia.org/wiki/Hunterston_B_nuclear_power_station ("turbines by C. A. Parsons & Co")
+Hunterston B|1|rpv_manufacturer|UNVERIFIABLE||n/a|en.wikipedia.org/wiki/Hunterston_B_nuclear_power_station (article silent on vessel; AGR PCPV design is plausible but not station-confirmed — do not bless the guess)
+Hunterston B|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Hunterston_B_nuclear_power_station
+Hunterston B|2|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Hunterston_B_nuclear_power_station
+Hunterston B|2|turbine_supplier|WRONG|C. A. Parsons & Co|HIGH|en.wikipedia.org/wiki/Hunterston_B_nuclear_power_station
+Hunterston B|2|rpv_manufacturer|UNVERIFIABLE||n/a|en.wikipedia.org/wiki/Hunterston_B_nuclear_power_station
+Oldbury|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Oldbury_Nuclear_Power_Station ("undertaken by a consortium known as The Nuclear Power Group")
+Oldbury|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Oldbury_Nuclear_Power_Station
+Oldbury|1|turbine_supplier|WRONG|AEI and C. A. Parsons & Co|HIGH|en.wikipedia.org/wiki/Oldbury_Nuclear_Power_Station
+Oldbury|1|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Oldbury_Nuclear_Power_Station ("first nuclear power station in the UK to use prestressed concrete pressure vessels" — no steel RPV)
+Oldbury|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Oldbury_Nuclear_Power_Station
+Oldbury|2|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Oldbury_Nuclear_Power_Station
+Oldbury|2|turbine_supplier|WRONG|AEI and C. A. Parsons & Co|HIGH|en.wikipedia.org/wiki/Oldbury_Nuclear_Power_Station
+Oldbury|2|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Oldbury_Nuclear_Power_Station
+Sizewell A|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Sizewell_A_nuclear_power_station ("British Nuclear Design and Construction Ltd (BNDC), a consortium of English Electric, Babcock & Wilcox and Taylor Woodrow Construction")
+Sizewell A|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Sizewell_A_nuclear_power_station
+Sizewell A|1|turbine_supplier|WRONG|English Electric|HIGH|en.wikipedia.org/wiki/Sizewell_A_nuclear_power_station ("reactors and turbines were both supplied by English Electric")
+Sizewell A|1|rpv_manufacturer|UNVERIFIABLE||n/a|en.wikipedia.org/wiki/Sizewell_A_nuclear_power_station (article does not describe vessel construction/material)
+Sizewell A|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Sizewell_A_nuclear_power_station
+Sizewell A|2|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Sizewell_A_nuclear_power_station
+Sizewell A|2|turbine_supplier|WRONG|English Electric|HIGH|en.wikipedia.org/wiki/Sizewell_A_nuclear_power_station
+Sizewell A|2|rpv_manufacturer|UNVERIFIABLE||n/a|en.wikipedia.org/wiki/Sizewell_A_nuclear_power_station
+Sizewell B|1|constructor|WRONG|No single named constructor — distributed model: John Laing (civil works), NNC + Bechtel (containment design); Nuclear Electric was project owner, not constructor|MED|en.wikipedia.org/wiki/Sizewell_B_nuclear_power_station
+Sizewell B|1|architect_engineer|WRONG|Yorke Rosenberg Mardall|HIGH|en.wikipedia.org/wiki/Sizewell_B_nuclear_power_station ("architectural design was carried out by Yorke Rosenberg Mardall")
+Sizewell B|1|turbine_supplier|CONFIRMED||MED|en.wikipedia.org/wiki/Sizewell_B_nuclear_power_station (turbines from "GEC-Alsthom" — GEC named but as part of the GEC-Alsthom joint venture, not GEC alone)
+Sizewell B|1|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Sizewell_B_nuclear_power_station ("Framatome supplied the reactor vessel"; main shell forged by Japan Steel Works)
+Torness|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Torness_nuclear_power_station ("undertaken by a consortium known as National Nuclear Corporation (NNC)")
+Torness|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Torness_nuclear_power_station (NNC designed the station)
+Torness|1|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Torness_nuclear_power_station ("turbines by GEC")
+Torness|1|rpv_manufacturer|UNVERIFIABLE||n/a|en.wikipedia.org/wiki/Torness_nuclear_power_station (article does not identify vessel manufacturer/material for this AGR)
+Torness|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Torness_nuclear_power_station
+Torness|2|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Torness_nuclear_power_station
+Torness|2|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Torness_nuclear_power_station
+Torness|2|rpv_manufacturer|UNVERIFIABLE||n/a|en.wikipedia.org/wiki/Torness_nuclear_power_station
+Trawsfynydd|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Trawsfynydd_nuclear_power_station (consortium of "Crompton Parkinson, International Combustion, Fairey Engineering and Richardsons Westgarth", known as Atomic Power Constructions/APC)
+Trawsfynydd|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Trawsfynydd_nuclear_power_station ("reactors were supplied by APC"; note: building architect was Sir Basil Spence, a distinct role from nuclear AE — see NOTES)
+Trawsfynydd|1|turbine_supplier|WRONG|Richardsons Westgarth|HIGH|en.wikipedia.org/wiki/Trawsfynydd_nuclear_power_station ("turbines by Richardsons Westgarth")
+Trawsfynydd|1|rpv_manufacturer|UNVERIFIABLE||n/a|en.wikipedia.org/wiki/Trawsfynydd_nuclear_power_station (article does not describe vessel construction/material)
+Trawsfynydd|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Trawsfynydd_nuclear_power_station
+Trawsfynydd|2|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Trawsfynydd_nuclear_power_station
+Trawsfynydd|2|turbine_supplier|WRONG|Richardsons Westgarth|HIGH|en.wikipedia.org/wiki/Trawsfynydd_nuclear_power_station
+Trawsfynydd|2|rpv_manufacturer|UNVERIFIABLE||n/a|en.wikipedia.org/wiki/Trawsfynydd_nuclear_power_station
+Windscale AGR|1|constructor|WRONG|Mitchell Construction (building contractor, for UKAEA)|MED|en.wikipedia.org/wiki/Windscale_Advanced_Gas_Cooled_Reactor ("Construction was carried out by Mitchell Construction")
+Windscale AGR|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Windscale_Advanced_Gas_Cooled_Reactor ("United Kingdom Atomic Energy Authority designed the reactor")
+Windscale AGR|1|turbine_supplier|UNVERIFIABLE||n/a|en.wikipedia.org/wiki/Windscale_Advanced_Gas_Cooled_Reactor (article does not name a turbine supplier for this prototype)
+Windscale AGR|1|rpv_manufacturer|WRONG|Stainless steel vessel (fabricator unspecified) — not "None"|HIGH|en.wikipedia.org/wiki/Windscale_Advanced_Gas_Cooled_Reactor ("reactor pressure vessel was of stainless steel, unlike the prestressed concrete vessels used in the commercial reactors")
+Winfrith|1|constructor|UNVERIFIABLE||n/a|en.wikipedia.org/wiki/Steam_generating_heavy_water_reactor + en.wikipedia.org/wiki/Winfrith (design attributed to UKAEA; no building/construction contractor named)
+Winfrith|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Steam_generating_heavy_water_reactor ("It was designed by the UKAEA")
+Winfrith|1|turbine_supplier|UNVERIFIABLE||n/a|en.wikipedia.org/wiki/Winfrith (no turbine supplier identified in available sources)
+Winfrith|1|rpv_manufacturer|UNVERIFIABLE||n/a|en.wikipedia.org/wiki/Winfrith (no vessel manufacturer/material identified in available sources)
+Wylfa|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Wylfa_Nuclear_Power_Station ("British Nuclear Design and Construction (BNDC), a consortium backed by English Electric, Babcock & Wilcox Ltd and Taylor Woodrow Construction")
+Wylfa|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Wylfa_Nuclear_Power_Station (BNDC; note article separately names TNPG as "reactor supplier" — see NOTES on overlapping consortium naming)
+Wylfa|1|turbine_supplier|WRONG|English Electric|HIGH|en.wikipedia.org/wiki/Wylfa_Nuclear_Power_Station ("English Electric supplied the turbines")
+Wylfa|1|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Wylfa_Nuclear_Power_Station ("second British nuclear power station, following Oldbury, to have a pre-stressed concrete pressure vessel instead of steel")
+Wylfa|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Wylfa_Nuclear_Power_Station
+Wylfa|2|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Wylfa_Nuclear_Power_Station
+Wylfa|2|turbine_supplier|WRONG|English Electric|HIGH|en.wikipedia.org/wiki/Wylfa_Nuclear_Power_Station
+Wylfa|2|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Wylfa_Nuclear_Power_Station
+# NOTES
+# 1. Steel-vessel Magnox stations misclassified as "(none)": Hinkley Point A, Hunterston A, and the Windscale AGR
+#    prototype ALL had steel (or stainless steel) pressure vessels, contradicting the heuristic's blanket
+#    "None" default for rpv_manufacturer. Oldbury and Wylfa correctly have "None" — they were the first two UK
+#    stations to use prestressed concrete pressure vessels (PCPV), confirming the task brief's warning that early
+#    Magnox stations differ from later ones on this exact field. Sizewell A and Trawsfynydd (also early Magnox)
+#    could not be confirmed either way — flagged UNVERIFIABLE rather than assumed steel.
+# 2. Turbine heuristic ("GEC" as blanket default) is wrong for the majority of Magnox stations: actual suppliers
+#    were station-specific — English Electric (Hinkley A, Sizewell A, Wylfa), C.A. Parsons & Co (Hunterston A,
+#    Hunterston B), AEI/C.A. Parsons jointly (Oldbury), Richardsons Westgarth (Trawsfynydd). GEC turbines were
+#    confirmed only for the AGR stations checked (Hinkley B, Torness) plus the GEC-Alsthom JV at Sizewell B.
+# 3. Consortium-naming complexity (as flagged in the task brief) is real and unresolved at the sourcing tier used
+#    here: Wylfa's Wikipedia article names BNDC as main contractor in one place and TNPG as "reactor supplier" in
+#    another — likely reflecting that TNPG was an umbrella grouping formed in 1962 that BNDC-style consortia fed
+#    into, but the article doesn't reconcile this and neither source used here resolves it. Treat Wylfa/TNPG-vs-
+#    BNDC as a known ambiguity, not a contradiction we adjudicated.
+# 4. Hinkley Point C: heuristic constructor/architect_engineer of "EDF Energy" conflates the existing-fleet UK
+#    operating company with "NNB Generation Company," the actual EDF/CGN joint-venture project entity building
+#    HPC. Turbine heuristic "Alstom" is a legacy brand name — the current supplying entity is GE Steam Power
+#    (Alstom's nuclear turbine business was acquired by GE in 2015); marked WRONG but this is a naming-lineage
+#    correction, not a factual reversal. RPV heuristic "Mitsubishi Heavy Industries" is a clear miss — MHI is not
+#    involved in EPR RPV fabrication; Framatome is confirmed as the vessel supplier via two independent sources.
+# 5. Prototypes (Windscale AGR, Winfrith) have thin public sourcing beyond "designed by UKAEA" — turbine and RPV
+#    fields mostly UNVERIFIABLE rather than guessed. Windscale AGR's constructor is UKAEA in the input but the
+#    actual site works contractor was Mitchell Construction, a distinction the heuristic collapsed.
+# 6. Trawsfynydd had a named building architect (Sir Basil Spence) separate from the nuclear architect-engineer
+#    role (APC) — a reminder that "architect_engineer" in this dataset means nuclear engineering AE, not the
+#    civil/aesthetic building architect, which existed as a distinct credited role at several UK stations.

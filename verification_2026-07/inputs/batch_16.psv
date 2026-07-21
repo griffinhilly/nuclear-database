@@ -1,0 +1,24 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+UK|Hinkley Point A|1|Magnox|Shutdown|English Electric|English Electric|GEC|None
+UK|Hinkley Point A|2|Magnox|Shutdown|English Electric|English Electric|GEC|None
+UK|Hinkley Point B|1|AGR|Shutdown|TNPG|TNPG|GEC|None
+UK|Hinkley Point B|2|AGR|Shutdown|TNPG|TNPG|GEC|None
+UK|Hinkley Point C|1|EPR|Under Construction|EDF Energy|EDF Energy|Alstom|Mitsubishi Heavy Industries
+UK|Hinkley Point C|2|EPR|Under Construction|EDF Energy|EDF Energy|Alstom|Mitsubishi Heavy Industries
+UK|Hunterston A|1|Magnox|Shutdown|GEC|GEC|GEC|None
+UK|Hunterston A|2|Magnox|Shutdown|GEC|GEC|GEC|None
+UK|Hunterston B|1|AGR|Shutdown|TNPG|TNPG|GEC|None
+UK|Hunterston B|2|AGR|Shutdown|TNPG|TNPG|GEC|None
+UK|Oldbury|1|Magnox|Shutdown|TNPG|TNPG|GEC|None
+UK|Oldbury|2|Magnox|Shutdown|TNPG|TNPG|GEC|None
+UK|Sizewell A|1|Magnox|Shutdown|BNDC|BNDC|GEC|None
+UK|Sizewell A|2|Magnox|Shutdown|BNDC|BNDC|GEC|None
+UK|Sizewell B|1|SNUPPS|Operational|Nuclear Electric|Nuclear Electric|GEC|Framatome
+UK|Torness|1|AGR|Operational|NNC|NNC|GEC|None
+UK|Torness|2|AGR|Operational|NNC|NNC|GEC|None
+UK|Trawsfynydd|1|Magnox|Shutdown|APC|APC|GEC|None
+UK|Trawsfynydd|2|Magnox|Shutdown|APC|APC|GEC|None
+UK|Windscale AGR|1|AGR|Shutdown|UKAEA|UKAEA|GEC|None
+UK|Winfrith|1|None|Shutdown|UKAEA|UKAEA|GEC|None
+UK|Wylfa|1|Magnox|Shutdown|BNDC|BNDC|GEC|None
+UK|Wylfa|2|Magnox|Shutdown|BNDC|BNDC|GEC|None

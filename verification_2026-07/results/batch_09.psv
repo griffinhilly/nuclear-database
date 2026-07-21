@@ -1,0 +1,133 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Kashiwazaki Kariwa|7|constructor|WRONG|Hitachi/Toshiba/GE (joint NSSS supplier)|MED|en.wikipedia.org/wiki/Kashiwazaki-Kariwa_Nuclear_Power_Plant infobox "Reactor/NSSS Supplier: Hitachi/Toshiba/GE"; ja.wikipedia.org/wiki/柏崎刈羽原子力発電所 describes Unit 7 as "3社合同設計" (3-company joint design)
+Kashiwazaki Kariwa|7|architect_engineer|WRONG|Hitachi/Toshiba/GE (joint)|MED|same as constructor - no separate AE role found distinct from the joint NSSS consortium
+Kashiwazaki Kariwa|7|turbine_supplier|UNVERIFIABLE||LOW|no source found breaking out turbine supplier separately from the joint NSSS group
+Kashiwazaki Kariwa|7|rpv_manufacturer|UNVERIFIABLE||LOW|no source distinguishes RPV fabricator (JSW vs IHI) for this unit
+Mihama|1|constructor|WRONG|Westinghouse Electric / Mitsubishi Atomic Power Industries|MED|ja.wikipedia.org/wiki/美浜発電所 lists "ウェスティングハウス・エレクトリック、三菱原子力工業" for Unit 1 - Westinghouse was the actual NSSS vendor, not MHI
+Mihama|1|architect_engineer|WRONG|Westinghouse Electric / Mitsubishi Atomic Power Industries|MED|same source as constructor
+Mihama|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Mihama|1|rpv_manufacturer|UNVERIFIABLE||LOW|JSW claim not confirmed; plausible the vessel was Westinghouse/US-fabricated given Unit 1 predates JSW's large-forging scale-up, but no source confirms this
+Mihama|2|constructor|UNVERIFIABLE||LOW|ja.wikipedia.org/wiki/美浜発電所 lists "三菱原子力工業" (Mitsubishi Atomic Power Industries, MHI's nuclear-division predecessor, absorbed into MHI 1980) for Unit 2 without an explicit Westinghouse tag seen for Unit 1; ambiguous whether this reflects a real difference from Unit 1 or a source-extraction gap - not confident enough to call WRONG or CONFIRMED
+Mihama|2|architect_engineer|UNVERIFIABLE||LOW|same ambiguity as constructor
+Mihama|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Mihama|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Mihama|3|constructor|UNVERIFIABLE||LOW|source fetch surfaced "三菱商事" (Mitsubishi Corporation, a trading house) for Unit 3, likely a fetch/summarization artifact rather than a real vendor - insufficient to confirm or refute MHI
+Mihama|3|architect_engineer|UNVERIFIABLE||LOW|same as constructor
+Mihama|3|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Mihama|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Monju|1|constructor|WRONG|Hitachi / Toshiba / Mitsubishi Heavy Industries / Fuji Electric consortium (under Fast Reactor Engineering Co., est. 1980)|MED|ja.wikipedia.org/wiki/もんじゅ names this 4-company consortium under PNC, not MHI alone
+Monju|1|architect_engineer|WRONG|Hitachi / Toshiba / Mitsubishi Heavy Industries / Fuji Electric consortium|MED|same source as constructor
+Monju|1|turbine_supplier|UNVERIFIABLE||LOW|multi-vendor consortium confirmed but no source assigns turbine role to a specific member
+Monju|1|rpv_manufacturer|UNVERIFIABLE||LOW|DB's non-standard claim of MHI (rather than JSW) as RPV maker is plausible for the FBR vessel given MHI's role in similar consortia, but no source confirms or refutes it
+Ohi|1|constructor|WRONG|Westinghouse Electric|MED|ja.wikipedia.org/wiki/大飯発電所 lists "WH、三菱商事" (Westinghouse Electric, Mitsubishi Corporation as trading intermediary) for Units 1-2, consistent with these being Westinghouse-design 4-loop PWRs; MHI (the manufacturer) is not named
+Ohi|1|architect_engineer|WRONG|Westinghouse Electric|MED|same source as constructor
+Ohi|1|turbine_supplier|UNVERIFIABLE||LOW|no source found; plausibly Westinghouse but unconfirmed
+Ohi|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Ohi|2|constructor|WRONG|Westinghouse Electric|MED|same source as Ohi 1 - ja.wikipedia.org/wiki/大飯発電所 lists Westinghouse/Mitsubishi Corp for Units 1-2 jointly
+Ohi|2|architect_engineer|WRONG|Westinghouse Electric|MED|same as constructor
+Ohi|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Ohi|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Ohi|3|constructor|CONFIRMED||MED|ja.wikipedia.org/wiki/大飯発電所 lists "三菱重工業" (MHI) for Units 3-4
+Ohi|3|architect_engineer|CONFIRMED||MED|same source as constructor
+Ohi|3|turbine_supplier|UNVERIFIABLE||LOW|no source separately confirms turbine supplier; consistent with standard MHI-era pattern but not sourced
+Ohi|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source confirms JSW specifically
+Ohi|4|constructor|CONFIRMED||MED|ja.wikipedia.org/wiki/大飯発電所 lists MHI for Units 3-4
+Ohi|4|architect_engineer|CONFIRMED||MED|same source as constructor
+Ohi|4|turbine_supplier|UNVERIFIABLE||LOW|no source
+Ohi|4|rpv_manufacturer|UNVERIFIABLE||LOW|no source
+Ohma|1|constructor|UNVERIFIABLE||LOW|neither en.wikipedia.org/wiki/Ōma_Nuclear_Power_Plant nor ja.wikipedia.org/wiki/大間原子力発電所 name a supplier beyond operator J-Power; Hitachi-GE mentioned only in an external-link/general context, not as sourced attribution
+Ohma|1|architect_engineer|UNVERIFIABLE||LOW|same as constructor
+Ohma|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Ohma|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Onagawa|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Onagawa_Nuclear_Power_Plant: "All the reactors were constructed by Toshiba"
+Onagawa|1|architect_engineer|UNVERIFIABLE||LOW|no source distinguishes AE role from constructor
+Onagawa|1|turbine_supplier|UNVERIFIABLE||LOW|no source found; note the plant-level "one vendor per plant" heuristic held here for constructor, but JSW-vs-IHI RPV split could not be checked
+Onagawa|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Onagawa|2|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Onagawa_Nuclear_Power_Plant: "All the reactors were constructed by Toshiba"
+Onagawa|2|architect_engineer|UNVERIFIABLE||LOW|no source found
+Onagawa|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Onagawa|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Onagawa|3|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Onagawa_Nuclear_Power_Plant: "All the reactors were constructed by Toshiba"
+Onagawa|3|architect_engineer|UNVERIFIABLE||LOW|no source found
+Onagawa|3|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Onagawa|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Sendai|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Sendai_Nuclear_Power_Plant: "3-loop M type pressurized water reactor, built by Mitsubishi Heavy Industries"
+Sendai|1|architect_engineer|UNVERIFIABLE||LOW|no source separately confirms AE role
+Sendai|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Sendai|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Sendai|2|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Sendai_Nuclear_Power_Plant, same as Unit 1
+Sendai|2|architect_engineer|UNVERIFIABLE||LOW|no source found
+Sendai|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Sendai|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Shika|1|constructor|CONFIRMED||MED|ja.wikipedia.org/wiki/志賀原子力発電所 infobox lists "日立製作所" (Hitachi) for Unit 1
+Shika|1|architect_engineer|UNVERIFIABLE||LOW|no source distinguishes AE role
+Shika|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Shika|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Shika|2|constructor|CONFIRMED||MED|ja.wikipedia.org/wiki/志賀原子力発電所 infobox lists Hitachi for Unit 2 (ABWR)
+Shika|2|architect_engineer|UNVERIFIABLE||LOW|no source found
+Shika|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Shika|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Shimane|1|constructor|CONFIRMED||HIGH|ja.wikipedia.org/wiki/島根原子力発電所: Unit 1 "built entirely by Hitachi" (国産の原子炉第1号)
+Shimane|1|architect_engineer|UNVERIFIABLE||LOW|no source distinguishes AE from constructor
+Shimane|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Shimane|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Shimane|2|constructor|CONFIRMED||HIGH|ja.wikipedia.org/wiki/島根原子力発電所 lists Hitachi as 主契約者 (main contractor) for Unit 2
+Shimane|2|architect_engineer|UNVERIFIABLE||LOW|no source found
+Shimane|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Shimane|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Shimane|3|constructor|CONFIRMED||HIGH|ja.wikipedia.org/wiki/島根原子力発電所 lists 日立GEニュークリア・エナジー (Hitachi-GE Nuclear Energy) as main contractor for Unit 3, matching DB
+Shimane|3|architect_engineer|CONFIRMED||MED|same source - Hitachi-GE joint venture matches DB's "Hitachi-GE"
+Shimane|3|turbine_supplier|UNVERIFIABLE||LOW|no source separately confirms turbine role as Hitachi alone vs Hitachi-GE
+Shimane|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Takahama|1|constructor|WRONG|Westinghouse Electric|MED|en.wikipedia.org/wiki/Takahama_Nuclear_Power_Plant unit table lists manufacturer "Westinghouse Electric" for Unit 1 (commissioned 14 Nov 1974), not MHI
+Takahama|1|architect_engineer|WRONG|Westinghouse Electric|MED|same source as constructor
+Takahama|1|turbine_supplier|UNVERIFIABLE||LOW|Wikipedia infobox lists Westinghouse and MHI at plant level without unit-specific turbine assignment; MHI-licensed turbine plausible but unconfirmed for Unit 1 specifically
+Takahama|1|rpv_manufacturer|UNVERIFIABLE||LOW|JSW claim unconfirmed for this Westinghouse-design unit
+Takahama|2|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Takahama_Nuclear_Power_Plant unit table lists "Mitsubishi Heavy Industries" for Unit 2
+Takahama|2|architect_engineer|CONFIRMED||MED|same source as constructor
+Takahama|2|turbine_supplier|UNVERIFIABLE||LOW|no unit-specific turbine data in source
+Takahama|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Takahama|3|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Takahama_Nuclear_Power_Plant unit table lists MHI for Unit 3
+Takahama|3|architect_engineer|CONFIRMED||MED|same source as constructor
+Takahama|3|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Takahama|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Takahama|4|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Takahama_Nuclear_Power_Plant unit table lists MHI for Unit 4
+Takahama|4|architect_engineer|CONFIRMED||MED|same source as constructor
+Takahama|4|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Takahama|4|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Tokai|1|constructor|WRONG|GEC (UK, reactor design/supply) with Fuji Electric, Hitachi, and Shimizu Corporation as joint Japanese construction partners|MED|ja.wikipedia.org/wiki/東海発電所 unit table names "Fuji Electric, Hitachi, GEC (UK), Shimizu" jointly, not GEC alone; en.wikipedia.org/wiki/Tokai_Nuclear_Power_Plant confirms UK Magnox design origin
+Tokai|1|architect_engineer|WRONG|GEC (UK) with Fuji Electric, Hitachi, Shimizu Corporation (exact role split among the four not sourced)|MED|same source as constructor
+Tokai|1|turbine_supplier|UNVERIFIABLE||LOW|GEC (UK) was a major turbine manufacturer so plausible, but no source separately confirms turbine role vs the other consortium members
+Tokai|1|rpv_manufacturer|UNVERIFIABLE||LOW|"Fuji Electric" as sole RPV fabricator is suspect - Fuji Electric is not otherwise documented as a pressure-vessel maker and this was an imported UK Magnox design where the vessel would plausibly be UK-sourced (GEC or associated firm) - but no source names the actual fabricator, so this cannot be confirmed as WRONG with a corrected value, only flagged as unverified and doubtful
+Tokai|2|constructor|WRONG|GE / Hitachi / Shimizu Corporation (joint contractors)|MED|ja.wikipedia.org/wiki/東海第二発電所 unit table lists "GE、日立製作所、清水建設" jointly, not GE alone
+Tokai|2|architect_engineer|WRONG|GE / Hitachi / Shimizu Corporation|MED|same source as constructor; Shimizu (general contractor) plausibly held the construction/AE-side role with GE as NSSS supplier, but exact split not sourced
+Tokai|2|turbine_supplier|UNVERIFIABLE||LOW|no source separately confirms turbine role
+Tokai|2|rpv_manufacturer|UNVERIFIABLE||LOW|JSW claim unconfirmed; IHI or GE-direct also plausible for this early-1970s unit but not sourced
+Tomari|1|constructor|CONFIRMED||MED|ja.wikipedia.org/wiki/泊発電所 lists 三菱重工業 (MHI) as 主契約者 (primary contractor) for Unit 1
+Tomari|1|architect_engineer|CONFIRMED||MED|same source as constructor
+Tomari|1|turbine_supplier|UNVERIFIABLE||LOW|no source separately confirms turbine role
+Tomari|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Tomari|2|constructor|CONFIRMED||MED|ja.wikipedia.org/wiki/泊発電所 lists MHI as primary contractor for Unit 2
+Tomari|2|architect_engineer|CONFIRMED||MED|same source as constructor
+Tomari|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Tomari|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Tomari|3|constructor|CONFIRMED||MED|ja.wikipedia.org/wiki/泊発電所 lists MHI as primary contractor for Unit 3
+Tomari|3|architect_engineer|CONFIRMED||MED|same source as constructor
+Tomari|3|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Tomari|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Tsuruga|1|constructor|CONFIRMED||MED|ja.wikipedia.org/wiki/敦賀発電所: purchase contract ("購入契約") signed with 米国GE社 (US GE) on 1966-05-14
+Tsuruga|1|architect_engineer|CONFIRMED||MED|same source as constructor - Japan's earliest US-turnkey plants typically collapsed constructor/AE into the single NSSS vendor contract
+Tsuruga|1|turbine_supplier|UNVERIFIABLE||LOW|no source separately confirms turbine role
+Tsuruga|1|rpv_manufacturer|UNVERIFIABLE||LOW|JSW claim unconfirmed; as Japan's oldest commercial reactor (1970) this is the highest-priority open item - vessel could plausibly be GE-fabricated or an early IHI unit rather than JSW, but no source found either way
+Tsuruga|2|constructor|CONFIRMED||MED|ja.wikipedia.org/wiki/敦賀発電所 lists 三菱重工業 (MHI) as 主契約者 for Unit 2
+Tsuruga|2|architect_engineer|CONFIRMED||MED|same source as constructor
+Tsuruga|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Tsuruga|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+# NOTES
+# Structural findings from this batch:
+# 1. Confirmed bug class: the heuristic's plant-level single-vendor assumption breaks specifically at the boundary between the original vendor consortium and later single-vendor branding. Five units (Mihama 1, Ohi 1-2, Takahama 1) were originally built by WESTINGHOUSE, not MHI - the DB mislabeled all Mihama/Ohi/Takahama units as MHI regardless of unit-level vintage. This is a distinct failure mode from the BWR unit-splitting the task anticipated: it's an *early-vs-late* vintage split within the "MHI plant" family, not a same-era multi-vendor split.
+# 2. Kashiwazaki-Kariwa Unit 7 and (likely) other ABWR units are joint Hitachi/Toshiba/GE NSSS designs, not single-vendor - the DB's single-Hitachi label is an oversimplification for ABWR specifically (cf. Shimane 3's "Hitachi-GE" label, which correctly captures a joint-venture name but still omits Toshiba/GE where applicable).
+# 3. Tokai 1 and Tokai 2 (Japan's two oldest reactors) were both multi-party consortium builds (GEC-UK/GE + Fuji Electric/Hitachi + Shimizu Corporation as general contractor) - the DB collapsed each to a single foreign NSSS vendor name and omitted the Japanese construction partners entirely for both units.
+# 4. RPV manufacturer (JSW vs IHI vs foreign) was UNVERIFIABLE for every single unit in this batch (30/30 non-Monju units) - neither English nor Japanese Wikipedia plant articles break out RPV fabricator at all. IAEA PRIS (the authoritative source with explicit per-unit "Turbine Supplier"/"NSSS Supplier" fields) could not be reached this session (403 errors / JS-postback navigation WebFetch cannot follow) and WebSearch quota was exhausted mid-batch. Turbine supplier was similarly UNVERIFIABLE for all 31 units. Recommend a follow-up pass targeting IAEA PRIS directly (via browser) or JAIF/utility primary sources specifically for these two fields.
+# 5. Monju (fast breeder reactor) was built by a 4-company consortium (Hitachi/Toshiba/MHI/Fuji Electric) under Fast Reactor Engineering Co., not MHI alone - the DB's non-standard RPV=MHI entry (vs JSW default) could not be confirmed or refuted given the consortium structure.
+# 6. Onagawa's Toshiba-only constructor claim and Sendai/Tomari/Shimane's single-vendor claims for constructor DID hold up under Wikipedia verification - the heuristic is not wrong everywhere, just at the vintage-split and joint-NSSS boundaries noted above.

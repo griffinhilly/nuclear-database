@@ -1,0 +1,104 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Berkeley|1|constructor|CONFIRMED||HIGH|Wikipedia: Berkeley Nuclear Power Station (AEI/John Thompson consortium)
+Berkeley|1|architect_engineer|CONFIRMED||HIGH|Wikipedia: Berkeley Nuclear Power Station (same AEI/John Thompson consortium acted as AE)
+Berkeley|1|turbine_supplier|WRONG|AEI (Associated Electrical Industries)|HIGH|Wikipedia: Berkeley Nuclear Power Station ("turbines by AEI"); AEI not absorbed into GEC until 1968, post-construction
+Berkeley|1|rpv_manufacturer|UNVERIFIABLE||MED|Wikipedia: Berkeley Nuclear Power Station does not name vessel material or fabricator
+Berkeley|2|constructor|CONFIRMED||HIGH|Wikipedia: Berkeley Nuclear Power Station (AEI/John Thompson consortium)
+Berkeley|2|architect_engineer|CONFIRMED||HIGH|Wikipedia: Berkeley Nuclear Power Station (same AEI/John Thompson consortium acted as AE)
+Berkeley|2|turbine_supplier|WRONG|AEI (Associated Electrical Industries)|HIGH|Wikipedia: Berkeley Nuclear Power Station ("turbines by AEI")
+Berkeley|2|rpv_manufacturer|UNVERIFIABLE||MED|Wikipedia: Berkeley Nuclear Power Station does not name vessel material or fabricator
+Bradwell|1|constructor|CONFIRMED||HIGH|Wikipedia: Bradwell nuclear power station (Nuclear Power Plant Company consortium)
+Bradwell|1|architect_engineer|CONFIRMED||MED|Wikipedia: Bradwell nuclear power station — NPPC consortium acted as both constructor and AE, no distinct AE firm named
+Bradwell|1|turbine_supplier|WRONG|C.A. Parsons & Co.|HIGH|Wikipedia: Bradwell nuclear power station (nine turbines by C.A. Parsons)
+Bradwell|1|rpv_manufacturer|UNVERIFIABLE||MED|Wikipedia: Bradwell nuclear power station does not name vessel material or fabricator; NPPC included steel-vessel fabricators (Whessoe, Head Wrightson) as consortium members but none confirmed as vessel maker
+Bradwell|2|constructor|CONFIRMED||HIGH|Wikipedia: Bradwell nuclear power station (NPPC consortium)
+Bradwell|2|architect_engineer|CONFIRMED||MED|Wikipedia: Bradwell nuclear power station — NPPC acted as both
+Bradwell|2|turbine_supplier|WRONG|C.A. Parsons & Co.|HIGH|Wikipedia: Bradwell nuclear power station
+Bradwell|2|rpv_manufacturer|UNVERIFIABLE||MED|Wikipedia: Bradwell nuclear power station does not name vessel material or fabricator
+Calder Hall|1|constructor|WRONG|Taylor Woodrow Construction|HIGH|Wikipedia: Calder Hall nuclear power station — UKAEA was owning/managing authority, not the civil contractor
+Calder Hall|1|architect_engineer|CONFIRMED||MED|Wikipedia: Calder Hall nuclear power station — design led by Christopher Hinton's UKAEA Industrial Group
+Calder Hall|1|turbine_supplier|WRONG|C.A. Parsons & Co.|HIGH|Wikipedia + Grace's Guide: Calder Hall Power Station (two turbines per reactor, 23 MWe uprated to 30 MWe)
+Calder Hall|1|rpv_manufacturer|WRONG|Whessoe (steel pressure vessel)|HIGH|Grace's Guide: Calder Hall Power Station — steel vessel stress-relieved on-site at 600°C; separate 8ft concrete biological shield is not the pressure vessel
+Calder Hall|2|constructor|WRONG|Taylor Woodrow Construction|HIGH|Wikipedia: Calder Hall nuclear power station
+Calder Hall|2|architect_engineer|CONFIRMED||MED|Wikipedia: Calder Hall nuclear power station — UKAEA Industrial Group design authority
+Calder Hall|2|turbine_supplier|WRONG|C.A. Parsons & Co.|HIGH|Wikipedia + Grace's Guide: Calder Hall Power Station
+Calder Hall|2|rpv_manufacturer|WRONG|Whessoe (steel pressure vessel)|HIGH|Grace's Guide: Calder Hall Power Station
+Calder Hall|3|constructor|WRONG|Taylor Woodrow Construction|HIGH|Wikipedia: Calder Hall nuclear power station
+Calder Hall|3|architect_engineer|CONFIRMED||MED|Wikipedia: Calder Hall nuclear power station
+Calder Hall|3|turbine_supplier|WRONG|C.A. Parsons & Co.|HIGH|Wikipedia + Grace's Guide: Calder Hall Power Station
+Calder Hall|3|rpv_manufacturer|WRONG|Whessoe (steel pressure vessel)|HIGH|Grace's Guide: Calder Hall Power Station
+Calder Hall|4|constructor|WRONG|Taylor Woodrow Construction|HIGH|Wikipedia: Calder Hall nuclear power station
+Calder Hall|4|architect_engineer|CONFIRMED||MED|Wikipedia: Calder Hall nuclear power station
+Calder Hall|4|turbine_supplier|WRONG|C.A. Parsons & Co.|HIGH|Wikipedia + Grace's Guide: Calder Hall Power Station
+Calder Hall|4|rpv_manufacturer|WRONG|Whessoe (steel pressure vessel)|HIGH|Grace's Guide: Calder Hall Power Station
+Chapelcross|1|constructor|WRONG|Mitchell Construction|HIGH|Wikipedia: Chapelcross nuclear power station ("construction was carried out by Mitchell Construction")
+Chapelcross|1|architect_engineer|CONFIRMED||MED|Wikipedia: Chapelcross nuclear power station lists reactors as "supplied by the UKAEA"; inferred design authority same as sister station Calder Hall (not directly re-stated)
+Chapelcross|1|turbine_supplier|WRONG|C.A. Parsons & Co.|HIGH|Wikipedia + Grace's Guide: Chapelcross Nuclear Power Station (eight 23 MW turbine-alternators, uprated to 30 MW)
+Chapelcross|1|rpv_manufacturer|UNVERIFIABLE||MED|Wikipedia: Chapelcross nuclear power station does not state vessel material or fabricator; plausible steel vessel by analogy to sister station Calder Hall but not confirmed for Chapelcross specifically
+Chapelcross|2|constructor|WRONG|Mitchell Construction|HIGH|Wikipedia: Chapelcross nuclear power station
+Chapelcross|2|architect_engineer|CONFIRMED||MED|Wikipedia: Chapelcross nuclear power station; inferred from sister-station design authority
+Chapelcross|2|turbine_supplier|WRONG|C.A. Parsons & Co.|HIGH|Wikipedia + Grace's Guide: Chapelcross Nuclear Power Station
+Chapelcross|2|rpv_manufacturer|UNVERIFIABLE||MED|Wikipedia: Chapelcross nuclear power station does not state vessel material or fabricator
+Chapelcross|3|constructor|WRONG|Mitchell Construction|HIGH|Wikipedia: Chapelcross nuclear power station
+Chapelcross|3|architect_engineer|CONFIRMED||MED|Wikipedia: Chapelcross nuclear power station
+Chapelcross|3|turbine_supplier|WRONG|C.A. Parsons & Co.|HIGH|Wikipedia + Grace's Guide: Chapelcross Nuclear Power Station
+Chapelcross|3|rpv_manufacturer|UNVERIFIABLE||MED|Wikipedia: Chapelcross nuclear power station does not state vessel material or fabricator
+Chapelcross|4|constructor|WRONG|Mitchell Construction|HIGH|Wikipedia: Chapelcross nuclear power station
+Chapelcross|4|architect_engineer|CONFIRMED||MED|Wikipedia: Chapelcross nuclear power station
+Chapelcross|4|turbine_supplier|WRONG|C.A. Parsons & Co.|HIGH|Wikipedia + Grace's Guide: Chapelcross Nuclear Power Station
+Chapelcross|4|rpv_manufacturer|UNVERIFIABLE||MED|Wikipedia: Chapelcross nuclear power station does not state vessel material or fabricator
+Dounreay DFR|1|constructor|UNVERIFIABLE||LOW|Wikipedia: Dounreay Fast Reactor names only Motherwell Bridge Company as sphere builder, no general civil contractor identified
+Dounreay DFR|1|architect_engineer|UNVERIFIABLE||LOW|Wikipedia: Dounreay Fast Reactor does not name a distinct architect-engineer firm
+Dounreay DFR|1|turbine_supplier|UNVERIFIABLE||LOW|Wikipedia: Dounreay Fast Reactor does not name a turbine supplier
+Dounreay DFR|1|rpv_manufacturer|WRONG|Motherwell Bridge Company (139-ft steel containment sphere)|HIGH|Wikipedia: Dounreay Fast Reactor — distinctive steel sphere built by Motherwell Bridge Company (note: DFR is a sodium/NaK-cooled fast reactor with a spherical steel containment vessel rather than a conventional gas-cooled RPV; "(none)" is clearly wrong regardless)
+Dounreay PFR|1|constructor|UNVERIFIABLE||LOW|Wikipedia: Dounreay/Prototype Fast Reactor articles do not name a civil contractor
+Dounreay PFR|1|architect_engineer|UNVERIFIABLE||LOW|Wikipedia: no distinct AE firm found for PFR
+Dounreay PFR|1|turbine_supplier|UNVERIFIABLE||LOW|Wikipedia: no turbine supplier named for PFR
+Dounreay PFR|1|rpv_manufacturer|UNVERIFIABLE||LOW|Wikipedia: PFR is a pool-type reactor (1,500t liquid sodium) implying a large steel primary tank, but no manufacturer is named in sources found
+Dungeness A|1|constructor|CONFIRMED||HIGH|Wikipedia: Dungeness Nuclear Power Station ("construction was undertaken by...The Nuclear Power Group (TNPG)")
+Dungeness A|1|architect_engineer|CONFIRMED||MED|Wikipedia: Dungeness Nuclear Power Station — TNPG also supplied the reactors, no distinct AE firm named
+Dungeness A|1|turbine_supplier|WRONG|C.A. Parsons & Co.|HIGH|Wikipedia: Dungeness Nuclear Power Station ("the turbines by C. A. Parsons & Co."), confirmed via two independent fetches
+Dungeness A|1|rpv_manufacturer|UNVERIFIABLE||MED|Wikipedia: Dungeness Nuclear Power Station does not name vessel material or fabricator for the A station; steel vessel plausible by Magnox-era pattern (predates concrete-vessel Oldbury/Wylfa) but not station-specific-confirmed
+Dungeness A|2|constructor|CONFIRMED||HIGH|Wikipedia: Dungeness Nuclear Power Station (TNPG)
+Dungeness A|2|architect_engineer|CONFIRMED||MED|Wikipedia: Dungeness Nuclear Power Station — TNPG acted as both
+Dungeness A|2|turbine_supplier|WRONG|C.A. Parsons & Co.|HIGH|Wikipedia: Dungeness Nuclear Power Station
+Dungeness A|2|rpv_manufacturer|UNVERIFIABLE||MED|Wikipedia: Dungeness Nuclear Power Station does not name vessel material or fabricator for the A station
+Dungeness B|1|constructor|WRONG|Atomic Power Constructions (APC), original 1965 contractor, succeeded by British Nuclear Design and Construction (BNDC) after APC's 1969 collapse|HIGH|Wikipedia: Dungeness Nuclear Power Station — two sequential contractors, not one combined entity
+Dungeness B|1|architect_engineer|WRONG|Sequential: Atomic Power Constructions then BNDC (same succession as constructor, no distinct AE firm identified)|MED|Wikipedia: Dungeness Nuclear Power Station
+Dungeness B|1|turbine_supplier|WRONG|C.A. Parsons & Company|HIGH|Wikipedia: Dungeness Nuclear Power Station
+Dungeness B|1|rpv_manufacturer|CONFIRMED||MED|Wikipedia: Dungeness Nuclear Power Station references pressure-vessel liner construction problems, consistent with standard AGR prestressed-concrete integral vessel with steel liner (no separate steel RPV maker); no station-specific liner fabricator named
+Dungeness B|2|constructor|WRONG|Atomic Power Constructions (APC), succeeded by BNDC after 1969 collapse|HIGH|Wikipedia: Dungeness Nuclear Power Station
+Dungeness B|2|architect_engineer|WRONG|Sequential: Atomic Power Constructions then BNDC|MED|Wikipedia: Dungeness Nuclear Power Station
+Dungeness B|2|turbine_supplier|WRONG|C.A. Parsons & Company|HIGH|Wikipedia: Dungeness Nuclear Power Station
+Dungeness B|2|rpv_manufacturer|CONFIRMED||MED|Wikipedia: Dungeness Nuclear Power Station — standard AGR prestressed-concrete integral vessel
+Hartlepool|1|constructor|CONFIRMED||MED|Wikipedia: Hartlepool Nuclear Power Station names the civil consortium "Nuclear Design & Construction (NDC)" (English Electric, Babcock, Taylor Woodrow) — same backer firms as Heysham A's "BNDC," treated as a naming variant of the same entity
+Hartlepool|1|architect_engineer|WRONG|National Nuclear Corporation (NNC)|MED|Wikipedia: Hartlepool Nuclear Power Station states "the reactors were supplied by the National Nuclear Corporation" (formed 1973, after BNDC/NDC construction began in 1968/69) — reactor design/supply attributed to a different entity than the civil constructor
+Hartlepool|1|turbine_supplier|CONFIRMED||HIGH|Wikipedia: Hartlepool Nuclear Power Station ("generating sets supplied by the General Electric Company (GEC)")
+Hartlepool|1|rpv_manufacturer|CONFIRMED||MED|Wikipedia: Hartlepool Nuclear Power Station — standard AGR prestressed-concrete integral vessel, no separate steel RPV manufacturer named
+Hartlepool|2|constructor|CONFIRMED||MED|Wikipedia: Hartlepool Nuclear Power Station (NDC/BNDC consortium)
+Hartlepool|2|architect_engineer|WRONG|National Nuclear Corporation (NNC)|MED|Wikipedia: Hartlepool Nuclear Power Station — reactors supplied by NNC
+Hartlepool|2|turbine_supplier|CONFIRMED||HIGH|Wikipedia: Hartlepool Nuclear Power Station (GEC)
+Hartlepool|2|rpv_manufacturer|CONFIRMED||MED|Wikipedia: Hartlepool Nuclear Power Station — AGR prestressed-concrete integral vessel
+Heysham A|1|constructor|CONFIRMED||HIGH|Wikipedia: Heysham nuclear power station — "British Nuclear Design & Construction (BNDC)" explicitly named (English Electric, Babcock & Wilcox, Taylor Woodrow)
+Heysham A|1|architect_engineer|WRONG|National Nuclear Corporation (NNC)|MED|Wikipedia: Heysham nuclear power station — reactors supplied by NNC (formed 1973), distinct from BNDC civil consortium whose construction began 1970
+Heysham A|1|turbine_supplier|CONFIRMED||HIGH|Wikipedia: Heysham nuclear power station (GEC)
+Heysham A|1|rpv_manufacturer|CONFIRMED||MED|Wikipedia: Heysham nuclear power station — AGR prestressed-concrete integral vessel, no separate steel RPV maker named
+Heysham A|2|constructor|CONFIRMED||HIGH|Wikipedia: Heysham nuclear power station (BNDC)
+Heysham A|2|architect_engineer|WRONG|National Nuclear Corporation (NNC)|MED|Wikipedia: Heysham nuclear power station
+Heysham A|2|turbine_supplier|CONFIRMED||HIGH|Wikipedia: Heysham nuclear power station (GEC)
+Heysham A|2|rpv_manufacturer|CONFIRMED||MED|Wikipedia: Heysham nuclear power station — AGR prestressed-concrete integral vessel
+Heysham B|1|constructor|CONFIRMED||HIGH|Wikipedia: Heysham nuclear power station — "construction, undertaken by a consortium known as National Nuclear Corporation (NNC), began in 1979"; entirely within post-1973 NNC era, no merger-timeline ambiguity
+Heysham B|1|architect_engineer|CONFIRMED||HIGH|Wikipedia: Heysham nuclear power station — NNC for both constructor and reactor supply
+Heysham B|1|turbine_supplier|WRONG|NEI (Northern Engineering Industries)|HIGH|Wikipedia: Heysham nuclear power station — "the reactors were supplied by NNC, the turbines and boilers by NEI," confirmed by direct fetch
+Heysham B|1|rpv_manufacturer|CONFIRMED||MED|Wikipedia: Heysham nuclear power station — AGR prestressed-concrete integral vessel, NNC-supplied reactors
+Heysham B|2|constructor|CONFIRMED||HIGH|Wikipedia: Heysham nuclear power station (NNC)
+Heysham B|2|architect_engineer|CONFIRMED||HIGH|Wikipedia: Heysham nuclear power station (NNC)
+Heysham B|2|turbine_supplier|WRONG|NEI (Northern Engineering Industries)|HIGH|Wikipedia: Heysham nuclear power station
+Heysham B|2|rpv_manufacturer|CONFIRMED||MED|Wikipedia: Heysham nuclear power station — AGR prestressed-concrete integral vessel
+# NOTES
+# 1. GEC turbine default was WRONG for every Magnox-era station in this batch (Berkeley: AEI; Bradwell/Calder Hall/Chapelcross/Dungeness A/Dungeness B: C.A. Parsons & Co.). GEC only became correct once it had absorbed AEI (1968) and English Electric's turbine business (1968-69) — it is confirmed correct for Hartlepool and Heysham A (started construction 1968-70), but WRONG again for Heysham B, which used NEI (Northern Engineering Industries, the 1977 Parsons/Reyrolle-lineage merger) rather than GEC. The heuristic's blanket "GEC for all" default ignores this timeline entirely.
+# 2. RPV "(none)" default is confirmed WRONG at Calder Hall (steel vessel by Whessoe) and Dounreay DFR (139-ft steel containment sphere by Motherwell Bridge). It is UNVERIFIABLE (not confirmed either way) for Berkeley, Bradwell, Chapelcross, Dungeness A, and Dounreay PFR — these are all early/non-standard designs where a steel vessel is plausible by era/design analogy but no source names the specific station's vessel material or fabricator. "(none)" is genuinely CONFIRMED only for the later AGR stations (Dungeness B, Hartlepool, Heysham A, Heysham B), which use prestressed-concrete integral pressure vessels by design, not a retrofitted default.
+# 3. The heuristic's pattern of copying an identical value into both constructor and architect_engineer is a real risk, not just a formatting quirk: it happened to be correct for stations where one commercial consortium truly did both jobs (Berkeley: AEI-John Thompson; Bradwell: NPPC; Dungeness A: TNPG; Heysham B: NNC), but WRONG where a government design authority and a separate civil contractor were conflated (Calder Hall: constructor was Taylor Woodrow, not UKAEA; Chapelcross: constructor was Mitchell Construction, not UKAEA) or where a consortium reorganization split the two roles over time (Hartlepool and Heysham A: civil construction was BNDC/NDC but reactor design/supply is separately attributed to NNC, formed 1973 mid-construction).
+# 4. Dungeness B's constructor/AE was collapsed into a single slashed string "APC/BNDC" by the heuristic, obscuring that these were two SEQUENTIAL contractors (Atomic Power Constructions from 1965, replaced by BNDC after APC's 1969 insolvency), not a joint venture — a materially different fact than the heuristic's formatting implies.
+# 5. Dounreay PFR is a near-total sourcing gap: Wikipedia coverage does not name a civil contractor, architect-engineer, turbine supplier, or vessel manufacturer distinct from the owner (UKAEA). All four fields are UNVERIFIABLE; do not treat the heuristic's UKAEA/GEC/None defaults as validated by omission.
+# 6. Session WebSearch budget was exhausted during research; findings rely primarily on Wikipedia (station articles) plus Grace's Guide for Calder Hall and Chapelcross specifically. Engineering-timelines.com and additional gracesguide.co.uk pages (Berkeley, Bradwell, Dungeness, Hartlepool, Heysham) could not be accessed (connection errors/404s) and were not cross-checked — a follow-up pass against those sources, plus IAEA INIS/WNA, is recommended before treating MED-confidence items above as fully closed.

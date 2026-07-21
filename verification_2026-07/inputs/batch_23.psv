@@ -1,0 +1,44 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+Spain|Almaraz|1|W (3-loop)|Operational|Westinghouse|Westinghouse|Westinghouse|Westinghouse
+Spain|Almaraz|2|W (3-loop)|Operational|Westinghouse|Westinghouse|Westinghouse|Westinghouse
+Spain|Asco|1|W (3-loop)|Operational|Westinghouse|Westinghouse|Westinghouse|Westinghouse
+Spain|Asco|2|W (3-loop)|Operational|Westinghouse|Westinghouse|Westinghouse|Westinghouse
+Spain|Cofrentes|1|BWR-6|Operational|GE|GE|General Electric|Rotterdam Dockyard (RDM)
+Spain|Jose Cabrera|1|W (1-loop)|Shutdown|Westinghouse|Westinghouse|Westinghouse|Westinghouse
+Spain|Santa María de Garoña|1|BWR-3|Shutdown|GE|GE|General Electric|Rotterdam Dockyard (RDM)
+Spain|Trillo|1|PWR 3 loops|Operational|KWU|KWU|KWU|Rotterdam Dockyard (RDM)
+Spain|Vandellos|1|UNGG|Shutdown|EDF|CEA|Alsthom|Creusot-Loire
+Spain|Vandellos|2|W (3-loop)|Operational|Westinghouse|Westinghouse|Westinghouse|ENSA
+Italy|Caorso|1|BWR-4 (Mark 2)|Shutdown|Ansaldo / GE|Ansaldo|Ansaldo|General Electric
+Italy|Enrico Fermi|1|W (4-loop)|Shutdown|Westinghouse|Westinghouse|Westinghouse|Westinghouse
+Italy|Garigliano|1|BWR-1|Shutdown|GE|GE|GE|General Electric
+Italy|Latina|1|Magnox|Shutdown|NPPC|NPPC|C. A. Parsons|NPPC
+Czech Republic|Dukovany|1|VVER V-213|Operational|Skoda Praha|Atomenergoproekt|Skoda|Izhora Plants
+Czech Republic|Dukovany|2|VVER V-213|Operational|Skoda Praha|Atomenergoproekt|Skoda|Izhora Plants
+Czech Republic|Dukovany|3|VVER V-213|Operational|Skoda Praha|Atomenergoproekt|Skoda|Izhora Plants
+Czech Republic|Dukovany|4|VVER V-213|Operational|Skoda Praha|Atomenergoproekt|Skoda|Izhora Plants
+Czech Republic|Temelin|1|VVER V-320|Operational|Skoda Praha|Atomenergoproekt|Skoda|Izhora Plants
+Czech Republic|Temelin|2|VVER V-320|Operational|Skoda Praha|Atomenergoproekt|Skoda|Izhora Plants
+Slovakia|Bohunice|1|VVER V-230|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Slovakia|Bohunice|2|VVER V-230|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Slovakia|Bohunice|3|VVER V-213|Operational|Skoda Praha|Atomenergoproekt|Skoda|Izhora Plants
+Slovakia|Bohunice|4|VVER V-213|Operational|Skoda Praha|Atomenergoproekt|Skoda|Izhora Plants
+Slovakia|Bohunice A|1|KS 150|Shutdown|Skoda Works|Energoprojekt Praha|Skoda|Skoda Works
+Slovakia|Mochovce|1|VVER V-213|Operational|Skoda Praha|Atomenergoproekt|Skoda|Izhora Plants
+Slovakia|Mochovce|2|VVER V-213|Operational|Skoda Praha|Atomenergoproekt|Skoda|Izhora Plants
+Slovakia|Mochovce|3|VVER V-213+|Operational|Skoda Praha|Atomenergoproekt|Skoda|Izhora Plants
+Slovakia|Mochovce|4|VVER V-213+|Under Construction|Skoda Praha|Atomenergoproekt|Skoda|Izhora Plants
+Hungary|Paks|1|VVER V-213|Operational|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Hungary|Paks|2|VVER V-213|Operational|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Hungary|Paks|3|VVER V-213|Operational|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Hungary|Paks|4|VVER V-213|Operational|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Hungary|Paks|5|VVER V-527|Under Construction|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Bulgaria|Kozloduy|1|VVER V-230|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Bulgaria|Kozloduy|2|VVER V-230|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Bulgaria|Kozloduy|3|VVER V-230|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Bulgaria|Kozloduy|4|VVER V-230|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Bulgaria|Kozloduy|5|VVER V-320|Operational|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Bulgaria|Kozloduy|6|VVER V-320|Operational|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Romania|Cernavodă|1|CANDU 6|Operational|AECL|AECL|GE Canada|AECL
+Romania|Cernavodă|2|CANDU 6|Operational|AECL|AECL|GE Canada|AECL
+Slovenia|Krško|1|W (2-loop)|Operational|Westinghouse|Gilbert Associates|Westinghouse|Westinghouse

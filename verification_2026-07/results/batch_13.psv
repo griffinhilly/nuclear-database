@@ -1,0 +1,141 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Jinqimen|1|constructor|UNVERIFIABLE||LOW|Group A sub-agent produced no output (unresponsive/dead) — not researched this pass
+Jinqimen|1|architect_engineer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Jinqimen|1|turbine_supplier|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Jinqimen|1|rpv_manufacturer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Lianjiang|1|constructor|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Lianjiang|1|architect_engineer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Lianjiang|1|turbine_supplier|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Lianjiang|1|rpv_manufacturer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Lianjiang|2|constructor|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Lianjiang|2|architect_engineer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Lianjiang|2|turbine_supplier|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Lianjiang|2|rpv_manufacturer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Linglong|1|constructor|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Linglong|1|architect_engineer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Linglong|1|turbine_supplier|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Linglong|1|rpv_manufacturer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Sanao|1|constructor|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Sanao|1|architect_engineer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Sanao|1|turbine_supplier|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Sanao|1|rpv_manufacturer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Sanao|2|constructor|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Sanao|2|architect_engineer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Sanao|2|turbine_supplier|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Sanao|2|rpv_manufacturer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Sanao|3|constructor|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Sanao|3|architect_engineer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Sanao|3|turbine_supplier|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Sanao|3|rpv_manufacturer|UNVERIFIABLE||LOW|Group A sub-agent produced no output
+Ling Ao|1|constructor|WRONG|LANPC (Lingao Nuclear Power Co., project company)|LOW|power-technology.com/projects/lingao/
+Ling Ao|1|architect_engineer|WRONG|Tractebel Engineering (Belgium); EDF listed only as consultant|LOW|power-technology.com/projects/lingao/
+Ling Ao|1|turbine_supplier|CONFIRMED||MED|power-technology.com/projects/lingao/; world-nuclear.org China country profile (GEC-Alstom turbines at Daya Bay/Ling Ao)
+Ling Ao|1|rpv_manufacturer|UNVERIFIABLE||LOW|power-technology.com names Framatome as overall NSSS/reactor supplier but does not isolate RPV fabrication entity
+Ling Ao|2|constructor|WRONG|LANPC (Lingao Nuclear Power Co.)|LOW|power-technology.com/projects/lingao/
+Ling Ao|2|architect_engineer|WRONG|Tractebel Engineering (Belgium); EDF as consultant only|LOW|power-technology.com/projects/lingao/
+Ling Ao|2|turbine_supplier|CONFIRMED||MED|power-technology.com/projects/lingao/; world-nuclear.org
+Ling Ao|2|rpv_manufacturer|UNVERIFIABLE||LOW|same ambiguity as Unit 1
+Ling Ao|3|constructor|WRONG|LANPC (CGN project company)|LOW|power-technology.com/projects/lingao/
+Ling Ao|3|architect_engineer|UNVERIFIABLE||LOW|No Phase II-specific AE entity found; "CNPEC" not found in any source checked
+Ling Ao|3|turbine_supplier|WRONG|Dongfang Turbine Co. AND Alstom, jointly|MED|power-technology.com: phase two turbines supplied by Sichuan-based Dongfang Turbine and Alstom
+Ling Ao|3|rpv_manufacturer|UNVERIFIABLE||LOW|Wikipedia CPR-1000 lists CFHI only as one of several general partners, no plant-specific attribution found
+Ling Ao|4|constructor|WRONG|LANPC|LOW|power-technology.com/projects/lingao/
+Ling Ao|4|architect_engineer|UNVERIFIABLE||LOW|same as Unit 3
+Ling Ao|4|turbine_supplier|WRONG|Dongfang Turbine Co. AND Alstom, jointly|MED|power-technology.com/projects/lingao/
+Ling Ao|4|rpv_manufacturer|UNVERIFIABLE||LOW|same as Unit 3
+Ningde|1|constructor|WRONG|CNPDC and CGN, jointly (main contract awarded to both)|LOW|power-technology.com/projects/ningde/
+Ningde|1|architect_engineer|WRONG|CNPDC (China Nuclear Power Design Co.) — likely real entity behind garbled "CNPEC"|LOW|power-technology.com/projects/ningde/
+Ningde|1|turbine_supplier|WRONG|Alstom (all six units, $135m contract for six 1,000MW turbine-generator packages)|MED|power-technology.com/projects/ningde/
+Ningde|1|rpv_manufacturer|WRONG|Dongfang Electric|LOW|power-technology.com/projects/ningde/: "Dongfang also supplied the pressure vessel and steam generators for unit one"
+Ningde|2|constructor|WRONG|CNPDC and CGN, jointly|LOW|power-technology.com/projects/ningde/
+Ningde|2|architect_engineer|WRONG|CNPDC|LOW|power-technology.com/projects/ningde/
+Ningde|2|turbine_supplier|WRONG|Alstom|MED|power-technology.com/projects/ningde/
+Ningde|2|rpv_manufacturer|WRONG|Shanghai Electric Group Corporation (SEC)|LOW|power-technology.com/projects/ningde/: "SEC supplied the pressure vessel and steam generators for unit two"
+Ningde|3|constructor|WRONG|CNPDC and CGN, jointly|LOW|power-technology.com/projects/ningde/
+Ningde|3|architect_engineer|WRONG|CNPDC|LOW|power-technology.com/projects/ningde/
+Ningde|3|turbine_supplier|WRONG|Alstom|MED|power-technology.com/projects/ningde/
+Ningde|3|rpv_manufacturer|CONFIRMED||LOW|power-technology.com/projects/ningde/: "China First (CFHI) supplied the pressure vessel and steam generators for units three and four"
+Ningde|4|constructor|WRONG|CNPDC and CGN, jointly|LOW|power-technology.com/projects/ningde/
+Ningde|4|architect_engineer|WRONG|CNPDC|LOW|power-technology.com/projects/ningde/
+Ningde|4|turbine_supplier|WRONG|Alstom|MED|power-technology.com/projects/ningde/
+Ningde|4|rpv_manufacturer|CONFIRMED||LOW|power-technology.com/projects/ningde/
+Ningde|5|constructor|UNVERIFIABLE||LOW|Only general HPR1000/construction-start fact found (Wikipedia Hualong One), no supplier-level source
+Ningde|5|architect_engineer|UNVERIFIABLE||LOW|No source found
+Ningde|5|turbine_supplier|UNVERIFIABLE||LOW|No source found; cannot assume Phase I Alstom contract extends to this HPR1000 unit
+Ningde|5|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Ningde|6|constructor|UNVERIFIABLE||LOW|Only general construction-start fact found (Wikipedia), no supplier-level source
+Ningde|6|architect_engineer|UNVERIFIABLE||LOW|No source found
+Ningde|6|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Ningde|6|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Qinshan 1|1|constructor|CONFIRMED||HIGH|world-nuclear.org China country profile: constructor CNNC for Qinshan Phase I
+Qinshan 1|1|architect_engineer|WRONG|SNERDI (Shanghai Nuclear Engineering Research & Design Institute)|HIGH|world-nuclear.org China country profile: CNP-300 "indigenous design developed by SNERDI"
+Qinshan 1|1|turbine_supplier|UNVERIFIABLE||LOW|No source found naming Harbin Electric or any turbine supplier
+Qinshan 1|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source found; CFHI Wikipedia page had no Qinshan-specific detail
+Qinshan 2|1|constructor|CONFIRMED||HIGH|world-nuclear.org China country profile: Qinshan Phase II (CNP-600) constructed by CNNC
+Qinshan 2|1|architect_engineer|UNVERIFIABLE||LOW|No source explicitly names AE for Phase II; SNERDI plausible by design continuity but unconfirmed
+Qinshan 2|1|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Qinshan 2|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source found; Wikipedia notes steam generators (different component) supplied by Babcock & Wilcox Canada
+Qinshan 2|2|constructor|CONFIRMED||HIGH|world-nuclear.org China country profile (Phase II attribution)
+Qinshan 2|2|architect_engineer|UNVERIFIABLE||LOW|same as Unit 1
+Qinshan 2|2|turbine_supplier|UNVERIFIABLE||LOW|same as Unit 1
+Qinshan 2|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as Unit 1
+Qinshan 2|3|constructor|CONFIRMED||HIGH|world-nuclear.org China country profile (Phase II attribution)
+Qinshan 2|3|architect_engineer|UNVERIFIABLE||LOW|same as Unit 1
+Qinshan 2|3|turbine_supplier|UNVERIFIABLE||LOW|same as Unit 1
+Qinshan 2|3|rpv_manufacturer|UNVERIFIABLE||LOW|same as Unit 1
+Qinshan 2|4|constructor|CONFIRMED||HIGH|world-nuclear.org China country profile (Phase II attribution)
+Qinshan 2|4|architect_engineer|UNVERIFIABLE||LOW|same as Unit 1
+Qinshan 2|4|turbine_supplier|UNVERIFIABLE||LOW|same as Unit 1
+Qinshan 2|4|rpv_manufacturer|UNVERIFIABLE||LOW|same as Unit 1
+Qinshan 3|1|constructor|CONFIRMED||HIGH|Wikipedia CANDU reactor / world-nuclear.org: two CANDU 6 units at Qinshan supplied by AECL
+Qinshan 3|1|architect_engineer|UNVERIFIABLE||LOW|No source uses "architect-engineer" terminology for AECL's role, though AECL confirmed as vendor
+Qinshan 3|1|turbine_supplier|UNVERIFIABLE||LOW|No source found naming Harbin Electric or any turbine supplier
+Qinshan 3|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source names a calandria/pressure-tube manufacturer; see NOTES on schema fit for CANDU
+Qinshan 3|2|constructor|CONFIRMED||HIGH|same sources as Unit 1
+Qinshan 3|2|architect_engineer|UNVERIFIABLE||LOW|same as Unit 1
+Qinshan 3|2|turbine_supplier|UNVERIFIABLE||LOW|same as Unit 1
+Qinshan 3|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as Unit 1
+Lufeng|1|constructor|WRONG|CGN|HIGH|Wikipedia Lufeng Nuclear Power Plant (operator "CGN Lufeng Nuclear Power Co."); WNA China country profile lists Lufeng as a CGN site
+Lufeng|1|architect_engineer|UNVERIFIABLE||LOW|No source names actual AE; current "CNPEC" value suspect given confirmed CGN (not CNNC) ownership
+Lufeng|1|turbine_supplier|UNVERIFIABLE||LOW|No sourced statement found
+Lufeng|1|rpv_manufacturer|UNVERIFIABLE||LOW|No sourced statement found
+Lufeng|2|constructor|WRONG|CGN|HIGH|same sources as Lufeng 1
+Lufeng|2|architect_engineer|UNVERIFIABLE||LOW|same concern as Lufeng 1
+Lufeng|2|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Lufeng|2|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Lufeng|5|constructor|CONFIRMED||HIGH|Wikipedia Lufeng Nuclear Power Plant confirms CGN ownership, matches existing guess
+Lufeng|5|architect_engineer|UNVERIFIABLE||LOW|No source found naming AE for Hualong One/HPR1000 unit
+Lufeng|5|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Lufeng|5|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Lufeng|6|constructor|CONFIRMED||HIGH|same basis as Lufeng 5
+Lufeng|6|architect_engineer|UNVERIFIABLE||LOW|No source found
+Lufeng|6|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Lufeng|6|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Sanmen|1|constructor|WRONG|State Nuclear Power Technology Corporation (SNPTC)|MED|Wikipedia Sanmen Nuclear Power Station: SNPTC named as general contractor/constructor
+Sanmen|1|architect_engineer|WRONG|Westinghouse / Shaw Group|MED|Wikipedia Sanmen Nuclear Power Station: Shaw Group (now part of Westinghouse) provided engineering/procurement/project-management (AE role); constructor/AE values appear swapped in DB
+Sanmen|1|turbine_supplier|CONFIRMED||MED|power-technology.com Sanmen project page + WNA summary: Harbin supplied turbines under MHI turbine-island license
+Sanmen|1|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia Sanmen / AP1000 articles: Doosan Heavy Industries (Korea) manufactured Unit 1's RPV
+Sanmen|2|constructor|WRONG|State Nuclear Power Technology Corporation (SNPTC)|MED|same reasoning as Sanmen 1
+Sanmen|2|architect_engineer|WRONG|Westinghouse / Shaw Group|MED|same reasoning as Sanmen 1
+Sanmen|2|turbine_supplier|CONFIRMED||MED|same sourcing as Sanmen 1 (Harbin under MHI license, stated to apply to both units)
+Sanmen|2|rpv_manufacturer|WRONG|China First Heavy Industries (CFHI)|HIGH|Wikipedia AP1000 article: "CFHI manufactured the first domestically produced AP1000 RPV, for the second AP1000 unit of Sanmen" (2014) — DB value appears copied from Unit 1
+Sanmen|3|constructor|CONFIRMED||MED|Sanmen site ownership by CNNC (Sanmen Nuclear Power Co., 51% CNNC) well established; no unit-3-specific EPC source found
+Sanmen|3|architect_engineer|UNVERIFIABLE||LOW|No source found confirming AE for CAP1000-era Sanmen 3; "CNPE" plausible given CNNC ownership but unconfirmed
+Sanmen|3|turbine_supplier|UNVERIFIABLE||LOW|No source found for CAP1000-era Sanmen 3 turbine supplier
+Sanmen|3|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Sanmen|4|constructor|CONFIRMED||MED|same basis as Sanmen 3 (CNNC site ownership)
+Sanmen|4|architect_engineer|UNVERIFIABLE||LOW|No source found
+Sanmen|4|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Sanmen|4|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+# NOTES
+# - Group A (Jinqimen, Lianjiang, Linglong, Sanao) never returned results — its sub-agent process produced no output despite completing without error signal. Per coordinator instruction, all 28 fields for these 7 reactors are marked UNVERIFIABLE rather than left unresearched or guessed. These 4 plants/7 units need a follow-up verification pass with a fresh web-search budget.
+# - Session-wide WebSearch quota (200 calls) was exhausted almost immediately across the four parallel agents, forcing all groups onto WebFetch against specific known URLs (Wikipedia, world-nuclear.org, power-technology.com) instead of iterative search-and-verify. This is why many LOW-confidence "single source" citations appear below — recommend a follow-up pass with a fresh WebSearch budget, run serially rather than in parallel, to raise confidence and fill UNVERIFIABLE gaps (especially Ningde 5&6, Sanmen 3&4, Qinshan turbine/RPV suppliers, and all of Group A).
+# - CNPE/CNPEC in the original heuristic is likely a garbled/incorrect stand-in for two different real entities depending on plant: (a) SNERDI (Shanghai Nuclear Engineering Research & Design Institute) for CNNC's early indigenous designs (Qinshan 1, confirmed WRONG), and (b) CNPDC (China Nuclear Power Design Company) for CGN sites (Ningde, confirmed WRONG). Recommend a database-wide grep for "CNPEC"/"CNPE" as architect_engineer values and re-verifying each against plant ownership (CNNC vs CGN) rather than treating it as a single correct default.
+# - CONFIRMED CNNC/CGN ownership mixup: Lufeng units 1 & 2 are listed with constructor=CNNC but Lufeng is a CGN site (Wikipedia + WNA both confirm "CGN Lufeng Nuclear Power Co." as operator, and Lufeng units 5 & 6 already correctly show CGN). This is exactly the confusion pattern this audit was designed to catch.
+# - Sanmen 1 & 2 constructor/architect_engineer values appear swapped: sourcing describes SNPTC as general contractor and Westinghouse/Shaw Group as the engineering/AE-role provider, the reverse of the current DB assignment. Confidence MED (single Wikipedia-article synthesis) — recommend confirming against an NRC or Westinghouse project document before flipping.
+# - Sanmen 2 rpv_manufacturer is very likely a copy-paste-from-Unit-1 error: Doosan made Unit 1's RPV but CFHI made Unit 2's RPV per an explicit, well-corroborated Wikipedia AP1000-article statement (China's first domestically produced AP1000 RPV).
+# - Ningde rpv_manufacturer varies unit-by-unit (Unit1=Dongfang Electric, Unit2=Shanghai Electric, Units3&4=CFHI) — the blanket "CFHI for all" guess is only half-right, confirming the audit's per-plant-verification premise.
+# - Ningde turbine_supplier for units 1-4 is sourced to Alstom (not Dongfang Electric as guessed) per a single power-technology.com citation ($135m contract for six 1,000MW turbine-generator packages); this is a MED-confidence but potentially high-impact correction and should be cross-checked against a second source before being treated as final.
+# - Ling Ao 1&2 (Framatome-era M310+) constructor/architect_engineer values ("Framatome" / "EDF / CNPEC") both appear wrong: the project-company that actually built the plant was LANPC (a CGN joint venture), and the named architect-engineer in sourcing is Tractebel Engineering (Belgium), with EDF only in a consultancy role. Framatome's real role was as NSSS/reactor vendor, which is more consistent with the existing rpv_manufacturer field than with constructor.
+# - CANDU units (Qinshan 3) structurally do not have a single "RPV" — they use a calandria + horizontal pressure-tube design. The existing "None" value is defensible as a schema/structural point, but the correct fabricator identity for the calandria/pressure tubes remains UNVERIFIABLE with sources checked this pass; consider whether the schema should carry a distinct note field for reactor-type-inapplicable cases rather than a bare "None."
+# - Newest under-construction units at each site (Ningde 5&6, Sanmen 3&4, and all of Group A) have thin-to-nonexistent English-language secondary sourcing for turbine/RPV suppliers — this is a structural gap (recency), not a heuristic error, and should be flagged as "needs WNN construction-start article" in the backlog rather than re-guessed.

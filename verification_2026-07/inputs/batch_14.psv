@@ -1,0 +1,33 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+China|Shidao Bay|1|HTR-PM|Operational|CNNC|Tsinghua University / CNEC|Harbin Electric|None
+China|Shidaowan|1|HPR1000|Under Construction|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Shidaowan|2|HPR1000|Under Construction|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Shidaowan Guohe One|1|CAP1400|Operational|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Shidaowan Guohe One|2|CAP1400|Under Construction|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Taipingling|1|HPR1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Taipingling|2|HPR1000|Under Construction|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Taipingling|3|HPR1000|Under Construction|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Taishan|1|EPR|Operational|Areva|EDF / CNPEC|Alstom|Mitsubishi Heavy Industries
+China|Taishan|2|EPR|Operational|Areva|EDF / CNPEC|Alstom|Mitsubishi Heavy Industries
+China|Tianwan|1|VVER V-428|Operational|Atomstroyexport|Atomenergoproekt / JNPC|Power Machines (LMZ)|Izhora Plants
+China|Tianwan|2|VVER V-428|Operational|Atomstroyexport|Atomenergoproekt / JNPC|Power Machines (LMZ)|Izhora Plants
+China|Tianwan|3|VVER V-428M|Operational|Atomstroyexport|Atomenergoproekt / JNPC|Power Machines (LMZ)|Izhora Plants
+China|Tianwan|4|VVER V-428M|Operational|Atomstroyexport|Atomenergoproekt / JNPC|Power Machines (LMZ)|Izhora Plants
+China|Tianwan|5|ACPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Tianwan|6|ACPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Tianwan|7|VVER V-491T|Under Construction|Atomstroyexport|Atomenergoproekt / JNPC|Power Machines (LMZ)|Izhora Plants
+China|Tianwan|8|VVER V-491T|Under Construction|Atomstroyexport|Atomenergoproekt / JNPC|Power Machines (LMZ)|Izhora Plants
+China|Xudabao|1|CAP1000|Under Construction|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Xudabao|2|CAP1000|Under Construction|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Xudabao|3|VVER V-491S|Under Construction|Atomstroyexport|Atomenergoproekt / JNPC|Power Machines (LMZ)|Izhora Plants
+China|Xudabao|4|VVER V-491S|Under Construction|Atomstroyexport|Atomenergoproekt / JNPC|Power Machines (LMZ)|Izhora Plants
+China|Yangjiang|1|CPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Yangjiang|2|CPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Yangjiang|3|CPR-1000+|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Yangjiang|4|CPR-1000+|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Yangjiang|5|ACPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Yangjiang|6|ACPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Zhangzhou|1|HPR1000|Operational|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Zhangzhou|2|HPR1000|Operational|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Zhangzhou|3|HPR1000|Under Construction|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Zhangzhou|4|HPR1000|Under Construction|CNNC|CNPE|Dongfang Electric|China First Heavy Industries

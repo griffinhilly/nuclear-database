@@ -1,0 +1,115 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Cooper|1|constructor|WRONG|Burns & Roe|LOW|NRC docket search synthesis (primary FSAR not directly fetched, 403)
+Cooper|1|architect_engineer|CONFIRMED||MED|NRC docket search synthesis (primary FSAR not directly fetched, 403)
+Cooper|1|turbine_supplier|WRONG|Westinghouse|HIGH|Wikipedia: Cooper Nuclear Station
+Cooper|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source found confirming or contradicting Combustion Engineering
+Crystal River|3|constructor|WRONG|J.A. Jones Construction Co.|LOW|Facing South (Institute for Southern Studies): "The Anti-Union, Pro-Nuke Contractors"
+Crystal River|3|architect_engineer|CONFIRMED||MED|Gilbert Associates company history (jwgainc.com)
+Crystal River|3|turbine_supplier|UNVERIFIABLE||LOW|No source found confirming or contradicting Westinghouse
+Crystal River|3|rpv_manufacturer|UNVERIFIABLE||LOW|B&W confirmed only as NSSS vendor; no source confirms B&W fabricated the vessel itself
+Davis Besse|1|constructor|UNVERIFIABLE||LOW|Bechtel confirmed only as AE; no source names a distinct constructor
+Davis Besse|1|architect_engineer|CONFIRMED||HIGH|Bechtel.com project page; Wikipedia: Davis-Besse Nuclear Power Station
+Davis Besse|1|turbine_supplier|UNVERIFIABLE||LOW|No source found confirming or contradicting Westinghouse
+Davis Besse|1|rpv_manufacturer|UNVERIFIABLE||LOW|B&W confirmed only as NSSS vendor; no source confirms B&W fabricated the vessel itself
+Diablo Canyon|1|constructor|WRONG|Fluor Corporation|LOW|POWER Magazine: "Top Plants: Diablo Canyon Power Plant" (single source, not cross-verified)
+Diablo Canyon|2|constructor|WRONG|Fluor Corporation|LOW|POWER Magazine: "Top Plants: Diablo Canyon Power Plant" (single source, not cross-verified)
+Diablo Canyon|1|architect_engineer|UNVERIFIABLE||LOW|No source directly confirms PG&E self-AE role
+Diablo Canyon|2|architect_engineer|UNVERIFIABLE||LOW|No source directly confirms PG&E self-AE role
+Diablo Canyon|1|turbine_supplier|UNVERIFIABLE||LOW|Only NSSS role confirmed as Westinghouse; turbine specifically not sourced
+Diablo Canyon|2|turbine_supplier|UNVERIFIABLE||LOW|Only NSSS role confirmed as Westinghouse; turbine specifically not sourced
+Diablo Canyon|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source found confirming or contradicting Combustion Engineering
+Diablo Canyon|2|rpv_manufacturer|UNVERIFIABLE||LOW|No source found confirming or contradicting Combustion Engineering
+Dresden|1|constructor|CONFIRMED||HIGH|Wikipedia: Dresden Generating Station - "Commonwealth Edison contracted with General Electric to design, construct, and place into operation" Unit 1
+Dresden|1|architect_engineer|UNVERIFIABLE||LOW|GE held the turnkey design/construct contract for Unit 1; no source confirms Sargent & Lundy AE role specifically on Unit 1
+Dresden|1|turbine_supplier|CONFIRMED||HIGH|Wikipedia/search synthesis: GE dual-admission turbine for Dresden Unit 1
+Dresden|1|rpv_manufacturer|UNVERIFIABLE||LOW|GE confirmed as reactor system designer; no source identifies actual vessel fabricator
+Dresden|2|constructor|UNVERIFIABLE||LOW|GE confirmed as reactor supplier for Units 2/3, but no source confirms GE (vs. ComEd) as constructor
+Dresden|3|constructor|UNVERIFIABLE||LOW|GE confirmed as reactor supplier for Units 2/3, but no source confirms GE (vs. ComEd) as constructor
+Dresden|2|architect_engineer|CONFIRMED||MED|Search synthesis: Sargent & Lundy AE for ComEd nuclear projects (general statement, not unit-specific quote)
+Dresden|3|architect_engineer|CONFIRMED||MED|Search synthesis: Sargent & Lundy AE for ComEd nuclear projects (general statement, not unit-specific quote)
+Dresden|2|turbine_supplier|UNVERIFIABLE||LOW|Only confirmed for Unit 1; no source found for Units 2/3 specifically
+Dresden|3|turbine_supplier|UNVERIFIABLE||LOW|Only confirmed for Unit 1; no source found for Units 2/3 specifically
+Dresden|2|rpv_manufacturer|UNVERIFIABLE||LOW|No source found confirming or contradicting Babcock & Wilcox
+Dresden|3|rpv_manufacturer|UNVERIFIABLE||LOW|No source found confirming or contradicting Babcock & Wilcox
+Duane Arnold|1|constructor|UNVERIFIABLE||LOW|Bechtel confirmed as AE, GE as NSSS vendor; no source names a distinct constructor
+Duane Arnold|1|architect_engineer|CONFIRMED||HIGH|Wikipedia: Duane Arnold Energy Center - "The architect/engineering firm was Bechtel"
+Duane Arnold|1|turbine_supplier|CONFIRMED||MED|Search synthesis of NextEra/Wikipedia content (turbine/generator wording not fully distinct)
+Duane Arnold|1|rpv_manufacturer|WRONG|Chicago Bridge & Iron|MED|Search synthesis of Wikipedia/GEM wiki: "reactor pressure vessel was manufactured by Chicago Bridge and Iron"
+Elk River|1|constructor|WRONG|Maxon Construction Company|HIGH|ANS Nuclear Newswire: "Elk River - Rural America's First Atomic Power Plant"
+Elk River|1|architect_engineer|WRONG|Sargent & Lundy|HIGH|ANS Nuclear Newswire: "Elk River - Rural America's First Atomic Power Plant"
+Elk River|1|turbine_supplier|UNVERIFIABLE||LOW|No source found confirming or contradicting General Electric
+Elk River|1|rpv_manufacturer|UNVERIFIABLE||LOW|Allis-Chalmers confirmed as NSSS vendor; no source identifies who fabricated the RPV specifically
+Farley (Joseph M. Farley)|1|constructor|WRONG|Fluor Corporation (general contractor)|MED|Wikipedia: Joseph M. Farley Nuclear Plant
+Farley (Joseph M. Farley)|2|constructor|WRONG|Fluor Corporation (general contractor)|MED|Wikipedia: Joseph M. Farley Nuclear Plant
+Farley (Joseph M. Farley)|1|architect_engineer|CONFIRMED||HIGH|Wikipedia: Joseph M. Farley Nuclear Plant
+Farley (Joseph M. Farley)|2|architect_engineer|CONFIRMED||HIGH|Wikipedia: Joseph M. Farley Nuclear Plant
+Farley (Joseph M. Farley)|1|turbine_supplier|UNVERIFIABLE||LOW|No source found naming turbine supplier
+Farley (Joseph M. Farley)|2|turbine_supplier|UNVERIFIABLE||LOW|No source found naming turbine supplier
+Farley (Joseph M. Farley)|1|rpv_manufacturer|UNVERIFIABLE||LOW|Wikipedia confirms Westinghouse as NSSS supplier only, no distinct vessel fabricator named
+Farley (Joseph M. Farley)|2|rpv_manufacturer|UNVERIFIABLE||LOW|Wikipedia confirms Westinghouse as NSSS supplier only, no distinct vessel fabricator named
+Fermi|1|constructor|WRONG|Power Reactor Development Company (PRDC)|MED|Wikipedia: Enrico Fermi Nuclear Generating Station / OSTI Fermi 1 report
+Fermi|1|architect_engineer|UNVERIFIABLE||LOW|No AE firm named in any source found
+Fermi|1|turbine_supplier|UNVERIFIABLE||LOW|No turbine supplier named for Unit 1
+Fermi|1|rpv_manufacturer|CONFIRMED||MED|PRDC documented as owner/construct-charter entity for the reactor system; consistent with guessed value
+Fermi|2|constructor|UNVERIFIABLE||LOW|GE confirmed only as NSSS/reactor supplier, not distinctly as general constructor
+Fermi|2|architect_engineer|WRONG|Sargent & Lundy|MED|Sargent & Lundy company site + WNA Enrico Fermi 2 page
+Fermi|2|turbine_supplier|WRONG|English Electric (original; replaced by GE in 1993 after turbine blade failure)|HIGH|Wikipedia: Enrico Fermi Nuclear Generating Station
+Fermi|2|rpv_manufacturer|UNVERIFIABLE||LOW|GE confirmed as NSSS supplier; no source names Combustion Engineering or any distinct vessel fabricator
+Fitzpatrick (James A. Fitzpatrick)|1|constructor|WRONG|Niagara Mohawk Power Corporation|MED|Wikipedia: James A. FitzPatrick Nuclear Power Plant
+Fitzpatrick (James A. Fitzpatrick)|1|architect_engineer|UNVERIFIABLE||LOW|No AE firm mentioned anywhere in article found
+Fitzpatrick (James A. Fitzpatrick)|1|turbine_supplier|WRONG|English Electric (original; replaced by GE after 1993 blade failure)|HIGH|Wikipedia: James A. FitzPatrick Nuclear Power Plant
+Fitzpatrick (James A. Fitzpatrick)|1|rpv_manufacturer|UNVERIFIABLE||LOW|GE confirmed only as reactor (NSSS) supplier; no distinct vessel fabricator named
+Fort Calhoun|1|constructor|UNVERIFIABLE||LOW|CE confirmed only as reactor supplier; no distinct general-contractor/constructor named
+Fort Calhoun|1|architect_engineer|UNVERIFIABLE||LOW|Gibbs & Hill not mentioned in Wikipedia; no other source checked confirms or denies
+Fort Calhoun|1|turbine_supplier|UNVERIFIABLE||LOW|No turbine supplier named; possible mismatch (CE-designed plant w/ guessed GE turbine) could not be confirmed or refuted
+Fort Calhoun|1|rpv_manufacturer|UNVERIFIABLE||LOW|Wikipedia/WNA state Combustion Engineering as reactor (NSSS) supplier only, not confirmed separately as vessel fabricator; 2006 replaced vessel HEAD (not full vessel) with Mitsubishi Heavy Industries
+Fort St. Vrain|1|constructor|UNVERIFIABLE||LOW|No distinct constructor named beyond General Atomic as designer
+Fort St. Vrain|1|architect_engineer|UNVERIFIABLE||LOW|No AE firm named
+Fort St. Vrain|1|turbine_supplier|UNVERIFIABLE||LOW|No turbine supplier named
+Fort St. Vrain|1|rpv_manufacturer|CONFIRMED||HIGH|Wikipedia: Fort Saint Vrain Nuclear Generating Station (General Atomics designed reactor and PCRV pressure vessel)
+GE Vallecitos|1|constructor|UNVERIFIABLE||LOW|Wikipedia describes GE/PG&E as co-developers and Bechtel as engineering contractor; unclear which maps to "constructor"
+GE Vallecitos|1|architect_engineer|WRONG|Bechtel Corporation|MED|Wikipedia: Vallecitos Nuclear Center - "Bechtel Corporation served as the engineering contractor"
+GE Vallecitos|1|turbine_supplier|UNVERIFIABLE||LOW|No turbine supplier explicitly named
+GE Vallecitos|1|rpv_manufacturer|UNVERIFIABLE||LOW|GE designed the VBWR reactor but no source explicitly names vessel fabricator
+Ginna (R. E. Ginna)|1|constructor|UNVERIFIABLE||LOW|Westinghouse confirmed only as reactor (NSSS) supplier; no distinct constructor named
+Ginna (R. E. Ginna)|1|architect_engineer|UNVERIFIABLE||LOW|Gilbert Associates not mentioned in Wikipedia article; no confirming/denying source found
+Ginna (R. E. Ginna)|1|turbine_supplier|UNVERIFIABLE||LOW|No turbine supplier named
+Ginna (R. E. Ginna)|1|rpv_manufacturer|UNVERIFIABLE||LOW|Westinghouse confirmed as NSSS supplier; steam generators (not RPV) later replaced by B&W in 1996 - no vessel-fabricator source found
+Grand Gulf|1|constructor|UNVERIFIABLE||LOW|Wikipedia infobox lists only "reactor supplier"=GE; weak search synthesis suggested Bechtel did civil construction, not independently confirmed
+Grand Gulf|1|architect_engineer|CONFIRMED||LOW|Aggregated web search (incl. power-technology.com) states Bechtel was AE; not independently verified via primary document
+Grand Gulf|1|turbine_supplier|UNVERIFIABLE||LOW|Conflicting, low-reliability web search claim of Allis-Chalmers; no primary source found either way
+Grand Gulf|1|rpv_manufacturer|UNVERIFIABLE||LOW|Web search snippet mentioned McDermott International (B&W's later parent co.), ambiguous/unconfirmed relative to guessed B&W
+Haddam Neck (Connecticut Yankee)|1|constructor|WRONG|Stone & Webster|MED|Aggregated search of LOC HAER/nukeworker.com listings
+Haddam Neck (Connecticut Yankee)|1|architect_engineer|CONFIRMED||MED|Aggregated search of LOC HAER/nukeworker.com listings; not a direct primary-document confirmation
+Haddam Neck (Connecticut Yankee)|1|turbine_supplier|UNVERIFIABLE||LOW|No source found (LOC HAER PDF fetch blocked, 403)
+Haddam Neck (Connecticut Yankee)|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source found naming vessel fabricator
+Hallam|1|constructor|WRONG|Atomics International|HIGH|Wikipedia: Hallam Nuclear Power Facility - "built by Atomics International and operated by Consumers Public Power District"
+Hallam|1|architect_engineer|UNVERIFIABLE||LOW|Wikipedia does not name a separate AE firm from Atomics International
+Hallam|1|turbine_supplier|UNVERIFIABLE||LOW|Wikipedia mentions a shared turbo-generator but does not name the manufacturer
+Hallam|1|rpv_manufacturer|UNVERIFIABLE||LOW|Wikipedia mentions reactor vessel material (type 304 SS) but does not name the fabricator
+Harris (Shearon Harris)|1|constructor|UNVERIFIABLE||LOW|Wikipedia names Westinghouse only as reactor supplier, no separate constructor field
+Harris (Shearon Harris)|1|architect_engineer|UNVERIFIABLE||LOW|Not present in Wikipedia article; not re-verified via web search (budget exhausted)
+Harris (Shearon Harris)|1|turbine_supplier|UNVERIFIABLE||LOW|Not present in Wikipedia article
+Harris (Shearon Harris)|1|rpv_manufacturer|UNVERIFIABLE||LOW|Wikipedia discusses 2013 RPV head flaw and 2019 head replacement but never names original fabricator
+Hatch (Edwin I. Hatch)|1|constructor|UNVERIFIABLE||LOW|Wikipedia names GE only as reactor supplier, no separate constructor field
+Hatch (Edwin I. Hatch)|2|constructor|UNVERIFIABLE||LOW|Wikipedia names GE only as reactor supplier, no separate constructor field
+Hatch (Edwin I. Hatch)|1|architect_engineer|UNVERIFIABLE||LOW|Not present in Wikipedia article; not re-verified via web search (budget exhausted)
+Hatch (Edwin I. Hatch)|2|architect_engineer|UNVERIFIABLE||LOW|Not present in Wikipedia article; not re-verified via web search (budget exhausted)
+Hatch (Edwin I. Hatch)|1|turbine_supplier|UNVERIFIABLE||LOW|Not present in Wikipedia article
+Hatch (Edwin I. Hatch)|2|turbine_supplier|UNVERIFIABLE||LOW|Not present in Wikipedia article
+Hatch (Edwin I. Hatch)|1|rpv_manufacturer|UNVERIFIABLE||LOW|Not present in Wikipedia article
+Hatch (Edwin I. Hatch)|2|rpv_manufacturer|UNVERIFIABLE||LOW|Not present in Wikipedia article
+Hope Creek|1|constructor|UNVERIFIABLE||LOW|Wikipedia names GE only as reactor supplier, no separate constructor field
+Hope Creek|1|architect_engineer|UNVERIFIABLE||LOW|Not present in Wikipedia article; not re-verified via web search (budget exhausted)
+Hope Creek|1|turbine_supplier|UNVERIFIABLE||LOW|Not present in Wikipedia article
+Hope Creek|1|rpv_manufacturer|UNVERIFIABLE||LOW|Not present in Wikipedia article
+Humboldt Bay|1|constructor|UNVERIFIABLE||LOW|Wikipedia names GE only as reactor supplier, no separate constructor field
+Humboldt Bay|1|architect_engineer|UNVERIFIABLE||LOW|Not present in Wikipedia article
+Humboldt Bay|1|turbine_supplier|UNVERIFIABLE||LOW|Not present in Wikipedia article; only "reactor supplier"=GE listed
+Humboldt Bay|1|rpv_manufacturer|UNVERIFIABLE||LOW|Not present in Wikipedia article
+# NOTES
+- Systematic pattern observed across many plants: the guessed "constructor" field appears to have been populated with the NSSS/reactor vendor name (GE, Westinghouse, CE, B&W) rather than the actual general contractor/builder. Where a distinct general contractor could be sourced (Elk River -> Maxon Construction, Farley -> Fluor Corporation, Fitzpatrick -> Niagara Mohawk (owner-built), Fermi 1 -> Power Reactor Development Co., Hallam -> Atomics International, Haddam Neck -> Stone & Webster, Diablo Canyon -> Fluor Corporation (LOW confidence, single trade-press source), GE Vallecitos AE -> Bechtel), it was marked WRONG. This suggests the original heuristic guess for "constructor" was systematically derived from the reactor/NSSS vendor column rather than independent research, across the whole dataset, not just this batch.
+- rpv_manufacturer is the weakest-sourced field overall: for nearly every plant, only the NSSS/reactor vendor is documented in accessible sources (Wikipedia infoboxes, WNA), and no source distinguishes a separate vessel fabricator. Most rpv_manufacturer rows are UNVERIFIABLE as a result — the guessed values (often Combustion Engineering as fabricator for GE/Westinghouse-designed plants) could not be confirmed OR refuted with available sources.
+- turbine_supplier for Fermi 2 and Fitzpatrick was originally General Electric in the guessed data; sourced fact is that BOTH plants originally had English Electric turbines, replaced by GE only after 1993 turbine-blade failures at Fermi 2/similar era issues. Guessed value may reflect current-state hardware rather than as-built supplier — worth checking if other GE BWR plants in the full dataset have the same as-built vs. current-state ambiguity.
+- Wikipedia's standard power-station infobox template does not carry constructor/architect-engineer/turbine-supplier/RPV-fabricator fields for most of these 1960s-1980s plants (only "reactor supplier," i.e., NSSS vendor) — this is why a large share of fields across Harris, Hatch, Hope Creek, Humboldt Bay, Ginna, Fort Calhoun, Fort St. Vrain, Farley (turbine/RPV) came back UNVERIFIABLE rather than confirmed. Primary NRC FSAR/docket documents were largely inaccessible (403 errors) or not reached before per-agent WebSearch budgets (200 calls) were exhausted. A follow-up pass with direct NRC ADAMS/FSAR PDF access or IAEA PRIS (which has explicit Constructor/Turbine Supplier fields) would likely resolve many of these.
+- Fort Calhoun: guessed turbine_supplier = General Electric despite the plant being a Combustion Engineering NSSS design — flagged as a plausible mismatch but could not be confirmed or refuted; left UNVERIFIABLE rather than guessing.

@@ -1,0 +1,175 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Belleville|1|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Belleville ("construits par Framatome")
+Belleville|1|architect_engineer|CONFIRMED||MED|generalized from fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chooz (EDF named AE for N4 program; EDF is standard in-house AE across French PWR fleet)
+Belleville|1|turbine_supplier|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Belleville (lists "General Electric France (Alstom jusqu'en 2014)" as supplier, not explicitly per-unit)
+Belleville|1|rpv_manufacturer|UNVERIFIABLE||-|no source found naming RPV forge for Belleville; commissioned 1988, RPV likely forged 1983-85, straddling Creusot-Loire's Dec-1984 liquidation - see NOTES
+Belleville|2|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Belleville
+Belleville|2|architect_engineer|CONFIRMED||MED|generalized, see Belleville-1
+Belleville|2|turbine_supplier|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Belleville
+Belleville|2|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1989 - see NOTES (Creusot-Loire boundary)
+Blayais|1|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Blayais ("constructed by Framatome")
+Blayais|1|architect_engineer|CONFIRMED||MED|generalized (EDF standard AE, French PWR fleet)
+Blayais|1|turbine_supplier|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Blayais (GE France/Alstom fleet supplier, not unit-specific)
+Blayais|1|rpv_manufacturer|UNVERIFIABLE||-|no direct source; commissioned 1981, RPV era-consistent with Creusot-Loire (1970-1984) but unconfirmed
+Blayais|2|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Blayais
+Blayais|2|architect_engineer|CONFIRMED||MED|generalized
+Blayais|2|turbine_supplier|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Blayais
+Blayais|2|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1983, unconfirmed
+Blayais|3|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Blayais
+Blayais|3|architect_engineer|CONFIRMED||MED|generalized
+Blayais|3|turbine_supplier|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Blayais
+Blayais|3|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1983, unconfirmed
+Blayais|4|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Blayais
+Blayais|4|architect_engineer|CONFIRMED||MED|generalized
+Blayais|4|turbine_supplier|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Blayais
+Blayais|4|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1983, unconfirmed
+Brennilis|1|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_des_Monts_d'Arrée ("Le CEA construit le réacteur experimental EL-4")
+Brennilis|1|architect_engineer|UNVERIFIABLE||-|source describes EDF+CEA joint operation from 1967 but does not name a distinct AE role separate from CEA's own design/construction of this experimental reactor
+Brennilis|1|turbine_supplier|WRONG|Unknown (had a 75 MWe turbine-alternator connected to grid July 1967; exact supplier not sourced, likely Alsthom-lineage but unconfirmed)|MED|fr.wikipedia.org/wiki/Centrale_nucléaire_des_Monts_d'Arrée ("l'alternateur d'une puissance de 75 MWe est couplé au réseau en juillet 1967") - input value "None" is factually wrong, the plant generated and exported power
+Brennilis|1|rpv_manufacturer|WRONG|Unknown (cannot be Creusot-Loire; that company did not exist until the 1970 merger, while EL-4 construction began 1962 and reached criticality Dec 1966)|HIGH|fr.wikipedia.org/wiki/Creusot-Loire (formed 1970 from CAFL + Forges et Ateliers du Creusot merger) + fr.wikipedia.org/wiki/Centrale_nucléaire_des_Monts_d'Arrée (construction began 1962)
+Bugey|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Bugey_Nuclear_Power_Plant + fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chinon (EDF's own UNGG fleet, built in-house from CEA avant-projet); not an explicit "constructor" citation for Bugey-1 itself
+Bugey|1|architect_engineer|CONFIRMED||MED|same in-house EDF UNGG program reasoning as constructor
+Bugey|1|turbine_supplier|UNVERIFIABLE||-|no source found naming Bugey-1's turbine supplier specifically (Alsthom source found only covers Bugey CP0 units 2-5)
+Bugey|1|rpv_manufacturer|UNVERIFIABLE||-|UNGG reactors use a different vessel technology (steel sphere or prestressed-concrete pressure vessel, not a standard PWR-style commercial RPV) - "None" may be a reasonable DB convention but is not independently confirmed; see NOTES
+Bugey|2|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_du_Bugey (direct: Framatome supplied "la chaudière nucléaire (cuve, générateurs de vapeurs...)")
+Bugey|2|architect_engineer|CONFIRMED||MED|generalized (EDF standard AE)
+Bugey|2|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_du_Bugey (direct: "Alsthom" supplied conventional island/turbogenerator)
+Bugey|2|rpv_manufacturer|UNVERIFIABLE||-|no source names RPV forge; commissioned 1978, era-consistent with Creusot-Loire (1970-1984) but unconfirmed
+Bugey|3|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_du_Bugey
+Bugey|3|architect_engineer|CONFIRMED||MED|generalized
+Bugey|3|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_du_Bugey
+Bugey|3|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1978, unconfirmed
+Bugey|4|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_du_Bugey
+Bugey|4|architect_engineer|CONFIRMED||MED|generalized
+Bugey|4|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_du_Bugey
+Bugey|4|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1979, unconfirmed
+Bugey|5|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_du_Bugey
+Bugey|5|architect_engineer|CONFIRMED||MED|generalized
+Bugey|5|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_du_Bugey
+Bugey|5|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1979, unconfirmed
+Cattenom|1|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Cattenom ("Les quatre réacteurs sont construits par Framatome")
+Cattenom|1|architect_engineer|CONFIRMED||MED|generalized (EDF standard AE)
+Cattenom|1|turbine_supplier|CONFIRMED||MED|generalized fleet-wide Alstom/GE France turbine supply; not unit-specific in source
+Cattenom|1|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1987; RPV likely forged ~1982-83, plausibly within Creusot-Loire era but unconfirmed - see NOTES
+Cattenom|2|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Cattenom
+Cattenom|2|architect_engineer|CONFIRMED||MED|generalized
+Cattenom|2|turbine_supplier|CONFIRMED||MED|generalized
+Cattenom|2|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1988, boundary case - see NOTES
+Cattenom|3|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Cattenom
+Cattenom|3|architect_engineer|CONFIRMED||MED|generalized
+Cattenom|3|turbine_supplier|CONFIRMED||MED|generalized
+Cattenom|3|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1991 - HIGHER anachronism risk, flagged for follow-up in NOTES
+Cattenom|4|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Cattenom
+Cattenom|4|architect_engineer|CONFIRMED||MED|generalized
+Cattenom|4|turbine_supplier|CONFIRMED||MED|generalized
+Cattenom|4|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1992 - HIGHER anachronism risk, flagged for follow-up in NOTES
+Chinon A (EDF1)|1|constructor|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chinon (CEA avant-projet, EDF built/operated its own UNGG units)
+Chinon A (EDF1)|1|architect_engineer|CONFIRMED||MED|same in-house EDF UNGG program reasoning
+Chinon A (EDF1)|1|turbine_supplier|UNVERIFIABLE||-|no source found naming turbine supplier for this unit
+Chinon A (EDF1)|1|rpv_manufacturer|UNVERIFIABLE||-|EDF1 used a 55m steel spherical containment (per fr.wiki), not a standard commercial RPV; "None" plausible DB convention but not confirmed - see NOTES
+Chinon A (EDF2)|2|constructor|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chinon
+Chinon A (EDF2)|2|architect_engineer|CONFIRMED||MED|generalized
+Chinon A (EDF2)|2|turbine_supplier|UNVERIFIABLE||-|not sourced
+Chinon A (EDF2)|2|rpv_manufacturer|UNVERIFIABLE||-|not sourced; see NOTES (UNGG vessel-type question)
+Chinon A (EDF3)|3|constructor|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chinon
+Chinon A (EDF3)|3|architect_engineer|CONFIRMED||MED|generalized
+Chinon A (EDF3)|3|turbine_supplier|UNVERIFIABLE||-|not sourced
+Chinon A (EDF3)|3|rpv_manufacturer|UNVERIFIABLE||-|not sourced; see NOTES (UNGG vessel-type question)
+Chinon B|1|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chinon + en.wikipedia.org/wiki/Chinon_Nuclear_Power_Plant ("Framatome" reactor supplier)
+Chinon B|1|architect_engineer|CONFIRMED||MED|generalized (EDF standard AE)
+Chinon B|1|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Chinon_Nuclear_Power_Plant ("Alstom" turbine supplier)
+Chinon B|1|rpv_manufacturer|UNVERIFIABLE||-|no source; era-consistent with Creusot-Loire but unconfirmed
+Chinon B|2|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chinon
+Chinon B|2|architect_engineer|CONFIRMED||MED|generalized
+Chinon B|2|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Chinon_Nuclear_Power_Plant
+Chinon B|2|rpv_manufacturer|UNVERIFIABLE||-|unconfirmed
+Chinon B|3|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chinon
+Chinon B|3|architect_engineer|CONFIRMED||MED|generalized
+Chinon B|3|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Chinon_Nuclear_Power_Plant
+Chinon B|3|rpv_manufacturer|UNVERIFIABLE||-|later CP2 unit (commissioned mid-1980s) - flagged as boundary risk in NOTES
+Chinon B|4|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chinon
+Chinon B|4|architect_engineer|CONFIRMED||MED|generalized
+Chinon B|4|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Chinon_Nuclear_Power_Plant
+Chinon B|4|rpv_manufacturer|UNVERIFIABLE||-|later CP2 unit (commissioned ~1987-88) - flagged as boundary risk in NOTES
+Chooz B|1|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chooz ("Framatome" NSSS for N4 palier)
+Chooz B|1|architect_engineer|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chooz (direct: "EDF served as architect-engineer" for N4 units)
+Chooz B|1|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Chooz_Nuclear_Power_Plant ("Alstom"/Arabelle Solutions lineage)
+Chooz B|1|rpv_manufacturer|WRONG|Framatome (successor operator of the Le Creusot forge after Creusot-Loire's 1984 liquidation/nationalization)|MED|fr.wikipedia.org/wiki/Creusot-Loire (liquidated Dec 12 1984) vs Chooz B-1 grid connection 1996/commercial ~1996-97 - "Creusot-Loire" as a corporate entity had ceased to exist for over a decade before this RPV was forged
+Chooz B|2|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chooz
+Chooz B|2|architect_engineer|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chooz
+Chooz B|2|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Chooz_Nuclear_Power_Plant
+Chooz B|2|rpv_manufacturer|WRONG|Framatome (see Chooz B-1 reasoning)|MED|same reasoning; Chooz B-2 commercial 1997
+Chooz-A|1|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chooz ("Framatome received licence...from Westinghouse...applied to Chooz A")
+Chooz-A|1|architect_engineer|WRONG|SENA - Société d'énergie nucléaire franco-belge des Ardennes (Franco-Belgian joint venture between EDF and Belgian utilities, not EDF alone)|HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chooz (direct: project organized through SENA, "created in 1960 between EDF and Belgian electricity companies")
+Chooz-A|1|turbine_supplier|UNVERIFIABLE||-|no source found naming the turbine supplier for this 1967 prototype
+Chooz-A|1|rpv_manufacturer|WRONG|Forges et Ateliers du Creusot (Société des Forges et Ateliers du Creusot)|HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Chooz (direct quote: "La cuve du réacteur, construite par la Société des Forges et Ateliers du Creusot") - "Creusot-Loire" is anachronistic; that name only existed 1970-1984, while Chooz A was commissioned in 1967
+Civaux|1|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Civaux + en.wikipedia.org/wiki/Civaux_Nuclear_Power_Plant
+Civaux|1|architect_engineer|CONFIRMED||MED|generalized from Chooz B (same N4 program, EDF named AE there); not directly sourced for Civaux specifically
+Civaux|1|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Civaux_Nuclear_Power_Plant + fr.wikipedia.org/wiki/Centrale_nucléaire_de_Civaux (Alstom/Arabelle Solutions)
+Civaux|1|rpv_manufacturer|WRONG|Framatome (successor operator of Le Creusot forge post-1984)|MED|fr.wikipedia.org/wiki/Creusot-Loire (liquidated 1984) vs Civaux-1 grid connection Dec 1997/commercial 2002 - same temporal-impossibility logic as Chooz B
+Civaux|2|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Civaux
+Civaux|2|architect_engineer|CONFIRMED||MED|generalized
+Civaux|2|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Civaux_Nuclear_Power_Plant
+Civaux|2|rpv_manufacturer|WRONG|Framatome (see Civaux-1 reasoning)|MED|Civaux-2 grid connection Dec 1999/commercial 2002
+Cruas|1|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Cruas + en.wikipedia.org/wiki/Cruas_Nuclear_Power_Plant
+Cruas|1|architect_engineer|CONFIRMED||MED|generalized (EDF standard AE)
+Cruas|1|turbine_supplier|CONFIRMED||MED|en.wikipedia.org/wiki/Cruas_Nuclear_Power_Plant ("Alstom")
+Cruas|1|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1984; RPV likely forged ~1979-80, within Creusot-Loire era but unconfirmed
+Cruas|2|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Cruas
+Cruas|2|architect_engineer|CONFIRMED||MED|generalized
+Cruas|2|turbine_supplier|CONFIRMED||MED|en.wikipedia.org/wiki/Cruas_Nuclear_Power_Plant
+Cruas|2|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1985, unconfirmed
+Cruas|3|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Cruas
+Cruas|3|architect_engineer|CONFIRMED||MED|generalized
+Cruas|3|turbine_supplier|CONFIRMED||MED|en.wikipedia.org/wiki/Cruas_Nuclear_Power_Plant
+Cruas|3|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1984, unconfirmed
+Cruas|4|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Cruas
+Cruas|4|architect_engineer|CONFIRMED||MED|generalized
+Cruas|4|turbine_supplier|CONFIRMED||MED|en.wikipedia.org/wiki/Cruas_Nuclear_Power_Plant
+Cruas|4|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1985, unconfirmed
+Dampierre|1|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Dampierre
+Dampierre|1|architect_engineer|CONFIRMED||MED|generalized (EDF standard AE)
+Dampierre|1|turbine_supplier|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Dampierre (GE France/Alstom listed as supplier)
+Dampierre|1|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1980; era-consistent with Creusot-Loire but unconfirmed
+Dampierre|2|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Dampierre
+Dampierre|2|architect_engineer|CONFIRMED||MED|generalized
+Dampierre|2|turbine_supplier|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Dampierre
+Dampierre|2|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1981, unconfirmed
+Dampierre|3|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Dampierre
+Dampierre|3|architect_engineer|CONFIRMED||MED|generalized
+Dampierre|3|turbine_supplier|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Dampierre
+Dampierre|3|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1981, unconfirmed
+Dampierre|4|constructor|CONFIRMED||HIGH|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Dampierre
+Dampierre|4|architect_engineer|CONFIRMED||MED|generalized
+Dampierre|4|turbine_supplier|CONFIRMED||MED|fr.wikipedia.org/wiki/Centrale_nucléaire_de_Dampierre
+Dampierre|4|rpv_manufacturer|UNVERIFIABLE||-|commissioned 1981, unconfirmed
+# NOTES
+# 1. STRUCTURAL ANACHRONISM CONFIRMED: "Creusot-Loire" is WRONG as RPV manufacturer for Chooz B-1/2 and Civaux-1/2 (N4 palier, commissioned 1996-2002).
+#    Creusot-Loire was formed in 1970 (merger of CAFL + Forges et Ateliers du Creusot) and liquidated Dec 12 1984 (fr.wikipedia.org/wiki/Creusot-Loire).
+#    Its forge/nuclear assets were absorbed via Framatome's nationalization. N4-palier RPVs, forged in the late 1980s/early 1990s at the earliest,
+#    could not have been made by a company that had ceased to exist a decade prior. Corrected manufacturer: Framatome.
+# 2. PRE-1970 ANACHRONISM: Chooz-A (commissioned 1967) and Brennilis/EL-4 (built 1962-66) both predate Creusot-Loire's 1970 formation entirely.
+#    Chooz-A's RPV is directly sourced to "Société des Forges et Ateliers du Creusot" (the pre-merger predecessor) - confirms the anachronism pattern
+#    extends earlier than the sample audit's original P4/N4-era flag suggested.
+# 3. UNRESOLVED BOUNDARY RISK (flagged, not resolved - recommend follow-up sourcing): P4-palier units commissioned 1987-1992 (Cattenom, Belleville) and
+#    later CP2 units (Chinon B-3/4, commissioned ~1987-88) were commissioned close to or after Creusot-Loire's Dec-1984 liquidation. Given typical
+#    multi-year RPV forging lead times, Cattenom-3 (1991) and Cattenom-4 (1992) in particular are at meaningfully higher risk of the same
+#    "Creusot-Loire" anachronism as the N4 units, but no source was found confirming exact forging/order dates, so these were left UNVERIFIABLE
+#    rather than called WRONG on inference alone. Worth a targeted follow-up (EDF/Framatome technical archives, INIS) before bulk-correcting.
+# 4. Chooz-A's architect_engineer is WRONG: the plant was built and operated through SENA (Société d'énergie nucléaire franco-belge des Ardennes),
+#    a Franco-Belgian joint venture created 1960 between EDF and Belgian utilities - not EDF acting alone as AE. This is a real exception to the
+#    "EDF is always AE" fleet-wide pattern, arising because Chooz-A was a binational project.
+# 5. Brennilis (EL-4) turbine_supplier is WRONG as "None": sourced confirmation the plant had a 75 MWe turbine-alternator connected to the grid in
+#    July 1967 and generated ~6.32 TWh over its lifetime. The heuristic apparently assumed shutdown/experimental reactors had no turbine - false for
+#    EL-4, which was a power-generating prototype, not a pure research reactor. Exact turbine manufacturer was not sourced (corrected value: Unknown).
+# 6. UNGG/gas-graphite units (Bugey-1, Chinon A EDF1/2/3): "None" for rpv_manufacturer could not be confirmed or refuted with available sources.
+#    These reactors used steel spherical containment (Chinon EDF1: 55m diameter steel sphere, per fr.wikipedia) or prestressed-concrete pressure
+#    vessels rather than a standard forged PWR-style RPV supplied by a commercial vendor - so "None" may be a defensible DB convention for
+#    "no comparable commercial RPV market participant," but this was not independently confirmed and should not be read as "CONFIRMED."
+# 7. Turbine supplier for the standard PWR fleet (Alstom/Alsthom/GEC-Alsthom lineage) was directly sourced for Bugey CP0, Chinon B, Chooz B, and
+#    Civaux, and only generalized (not per-plant sourced) for Belleville, Blayais, Cattenom, Cruas, and Dampierre. Note also a naming anachronism
+#    risk not flagged as WRONG here: the corporate name "Alstom" (with one 's') postdates 1998; contemporaneous 1970s-90s documents would say
+#    "Alsthom" or "GEC Alsthom." Treated as the same continuing entity/lineage rather than a substantive misattribution.
+# 8. WebSearch quota was exhausted mid-session (shared session budget, not batch-specific); all research after that point relied on WebFetch against
+#    French and English Wikipedia only. IAEA PRIS/INIS and EDF/Framatome primary sources were not directly consulted for this batch - a likely next
+#    step for resolving the boundary-risk RPV cases in note 3.

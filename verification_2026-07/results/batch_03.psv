@@ -1,0 +1,113 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Indian Point|1|constructor|WRONG|Consolidated Edison|MED|en.wikipedia.org/wiki/Indian_Point_Energy_Center ("built by Consolidated Edison")
+Indian Point|1|architect_engineer|UNVERIFIABLE|||
+Indian Point|1|turbine_supplier|UNVERIFIABLE|||
+Indian Point|1|rpv_manufacturer|UNVERIFIABLE|||
+Indian Point|2|constructor|UNVERIFIABLE|||
+Indian Point|2|architect_engineer|UNVERIFIABLE|||
+Indian Point|2|turbine_supplier|UNVERIFIABLE|||
+Indian Point|2|rpv_manufacturer|UNVERIFIABLE|||
+Indian Point|3|constructor|UNVERIFIABLE|||
+Indian Point|3|architect_engineer|UNVERIFIABLE|||
+Indian Point|3|turbine_supplier|UNVERIFIABLE|||
+Indian Point|3|rpv_manufacturer|UNVERIFIABLE|||
+Kewaunee|1|constructor|UNVERIFIABLE|||
+Kewaunee|1|architect_engineer|UNVERIFIABLE|||
+Kewaunee|1|turbine_supplier|UNVERIFIABLE|||
+Kewaunee|1|rpv_manufacturer|UNVERIFIABLE|||
+LaSalle|1|constructor|UNVERIFIABLE|||
+LaSalle|1|architect_engineer|UNVERIFIABLE|||
+LaSalle|1|turbine_supplier|UNVERIFIABLE|||
+LaSalle|1|rpv_manufacturer|UNVERIFIABLE|||
+LaSalle|2|constructor|UNVERIFIABLE|||
+LaSalle|2|architect_engineer|UNVERIFIABLE|||
+LaSalle|2|turbine_supplier|UNVERIFIABLE|||
+LaSalle|2|rpv_manufacturer|UNVERIFIABLE|||
+Lacrosse|1|turbine_supplier|UNVERIFIABLE|||
+Lacrosse|1|rpv_manufacturer|UNVERIFIABLE|||
+Limerick|1|constructor|WRONG|Bechtel Power Corporation|MED|en.wikipedia.org/wiki/Limerick_Generating_Station ("construction ... by the Bechtel Power Corporation")
+Limerick|1|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/Limerick_Generating_Station
+Limerick|1|turbine_supplier|UNVERIFIABLE|||
+Limerick|1|rpv_manufacturer|UNVERIFIABLE|||
+Limerick|2|constructor|WRONG|Bechtel Power Corporation|MED|en.wikipedia.org/wiki/Limerick_Generating_Station
+Limerick|2|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/Limerick_Generating_Station
+Limerick|2|turbine_supplier|UNVERIFIABLE|||
+Limerick|2|rpv_manufacturer|UNVERIFIABLE|||
+Maine Yankee|1|constructor|UNVERIFIABLE|||
+Maine Yankee|1|architect_engineer|UNVERIFIABLE|||
+Maine Yankee|1|turbine_supplier|UNVERIFIABLE|||
+Maine Yankee|1|rpv_manufacturer|UNVERIFIABLE|||
+McGuire|1|constructor|UNVERIFIABLE|||
+McGuire|1|architect_engineer|UNVERIFIABLE|||
+McGuire|1|turbine_supplier|UNVERIFIABLE|||
+McGuire|1|rpv_manufacturer|UNVERIFIABLE|||
+McGuire|2|constructor|UNVERIFIABLE|||
+McGuire|2|architect_engineer|UNVERIFIABLE|||
+McGuire|2|turbine_supplier|UNVERIFIABLE|||
+McGuire|2|rpv_manufacturer|UNVERIFIABLE|||
+Millstone|1|constructor|UNVERIFIABLE|||
+Millstone|1|architect_engineer|UNVERIFIABLE|||
+Millstone|1|turbine_supplier|UNVERIFIABLE|||
+Millstone|1|rpv_manufacturer|UNVERIFIABLE|||
+Millstone|2|constructor|UNVERIFIABLE|||
+Millstone|2|architect_engineer|UNVERIFIABLE|||
+Millstone|2|turbine_supplier|UNVERIFIABLE|||
+Millstone|2|rpv_manufacturer|UNVERIFIABLE|||
+Millstone|3|constructor|UNVERIFIABLE|||
+Millstone|3|architect_engineer|UNVERIFIABLE|||
+Millstone|3|turbine_supplier|UNVERIFIABLE|||
+Millstone|3|rpv_manufacturer|UNVERIFIABLE|||
+Monticello|1|constructor|UNVERIFIABLE|||
+Monticello|1|architect_engineer|UNVERIFIABLE|||
+Monticello|1|turbine_supplier|UNVERIFIABLE|||
+Monticello|1|rpv_manufacturer|UNVERIFIABLE|||
+Nine Mile Point|1|constructor|UNVERIFIABLE|||
+Nine Mile Point|1|architect_engineer|UNVERIFIABLE|||
+Nine Mile Point|1|turbine_supplier|UNVERIFIABLE|||
+Nine Mile Point|1|rpv_manufacturer|UNVERIFIABLE|||
+Nine Mile Point|2|constructor|UNVERIFIABLE|||
+Nine Mile Point|2|architect_engineer|UNVERIFIABLE|||
+Nine Mile Point|2|turbine_supplier|UNVERIFIABLE|||
+Nine Mile Point|2|rpv_manufacturer|UNVERIFIABLE|||
+North Anna|1|constructor|UNVERIFIABLE|||
+North Anna|1|architect_engineer|UNVERIFIABLE|||
+North Anna|1|turbine_supplier|UNVERIFIABLE|||
+North Anna|1|rpv_manufacturer|UNVERIFIABLE|||
+North Anna|2|constructor|UNVERIFIABLE|||
+North Anna|2|architect_engineer|UNVERIFIABLE|||
+North Anna|2|turbine_supplier|UNVERIFIABLE|||
+North Anna|2|rpv_manufacturer|UNVERIFIABLE|||
+Oconee|1|constructor|UNVERIFIABLE|||
+Oconee|1|architect_engineer|UNVERIFIABLE|||
+Oconee|1|turbine_supplier|UNVERIFIABLE|||
+Oconee|1|rpv_manufacturer|UNVERIFIABLE|||
+Oconee|2|constructor|UNVERIFIABLE|||
+Oconee|2|architect_engineer|UNVERIFIABLE|||
+Oconee|2|turbine_supplier|UNVERIFIABLE|||
+Oconee|2|rpv_manufacturer|UNVERIFIABLE|||
+Oconee|3|constructor|UNVERIFIABLE|||
+Oconee|3|architect_engineer|UNVERIFIABLE|||
+Oconee|3|turbine_supplier|UNVERIFIABLE|||
+Oconee|3|rpv_manufacturer|UNVERIFIABLE|||
+Oyster Creek|1|constructor|UNVERIFIABLE|||
+Oyster Creek|1|architect_engineer|UNVERIFIABLE|||
+Oyster Creek|1|turbine_supplier|UNVERIFIABLE|||
+Oyster Creek|1|rpv_manufacturer|UNVERIFIABLE|||
+Palisades|1|constructor|UNVERIFIABLE|||
+Palisades|1|architect_engineer|UNVERIFIABLE|||
+Palisades|1|turbine_supplier|WRONG|Westinghouse Electric Company|HIGH|en.wikipedia.org/wiki/Palisades_Nuclear_Generating_Station ("The Westinghouse Electric Company turbine generator can produce 725,000 kilowatts")
+Palisades|1|rpv_manufacturer|UNVERIFIABLE|||
+Palo Verde|1|constructor|WRONG|Bechtel Power Corporation|HIGH|en.wikipedia.org/wiki/Palo_Verde_Nuclear_Generating_Station ("Bechtel Power Corporation was the Architect/Engineer/Constructor for the facility")
+Palo Verde|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Palo_Verde_Nuclear_Generating_Station
+Palo Verde|1|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Palo_Verde_Nuclear_Generating_Station ("main turbine generators were supplied by General Electric")
+Palo Verde|1|rpv_manufacturer|UNVERIFIABLE|||
+Palo Verde|2|constructor|WRONG|Bechtel Power Corporation|HIGH|en.wikipedia.org/wiki/Palo_Verde_Nuclear_Generating_Station
+Palo Verde|2|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Palo_Verde_Nuclear_Generating_Station
+Palo Verde|2|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Palo_Verde_Nuclear_Generating_Station
+Palo Verde|2|rpv_manufacturer|UNVERIFIABLE|||
+# NOTES
+# 1. This session's WebSearch tool quota (shared across the whole Claude Code session) was exhausted before this batch finished, so verification relied entirely on WebFetch against Wikipedia plant articles. IAEA PRIS "Reactor Details" pages were tried but do not expose Constructor/Architect-Engineer/Turbine-Supplier fields through WebFetch (either not present or rendered client-side and not captured); NRC ADAMS/FSAR documents were not fetched. This materially caps how much could be confirmed in this pass -- a re-run with WebSearch budget restored, or direct NRC docket/FSAR lookups, would likely resolve many of the UNVERIFIABLE rows below.
+# 2. Systematic suspicious pattern (not resolved to WRONG without a source): in this batch the "constructor" field is populated with the reactor NSSS vendor (Westinghouse/GE/CE/B&W) for every row except Lacrosse. Where a direct source named the actual builder, it was NOT the NSSS vendor and the row was marked WRONG (Indian Point 1 -> Consolidated Edison; Limerick 1&2 and Palo Verde 1&2 -> Bechtel Power Corporation, explicitly titled "Architect/Engineer/Constructor" for Palo Verde). For every other plant this same substitution is suspected but could not be confirmed with a source, so those rows are UNVERIFIABLE rather than WRONG -- flagging the suspicion here so it isn't lost, per the instruction not to bless a plausible guess in either direction.
+# 3. Per-unit RPV-manufacturer deviation IS present in the raw input for two plants, contrary to the usual same-plant-shares-values pattern: McGuire (unit 1 = Combustion Engineering, unit 2 = Rotterdam Dockyard) and Nine Mile Point (unit 1 = Combustion Engineering, unit 2 = Babcock & Wilcox). Neither unit's value could be sourced in this pass, so both are UNVERIFIABLE, but the deviation itself is worth a second look since it's exactly the kind of unit-level split the audit asks us to watch for.
+# 4. Palo Verde rpv_manufacturer: the only source found (Wikipedia) confirms Combustion Engineering as the NSSS/nuclear steam supply system vendor (System 80 design), not as the RPV fabricator specifically. Per the known NSSS-vendor-vs-fabricator trap called out in the task brief, this was left UNVERIFIABLE rather than CONFIRMED even though CE is a plausible self-fabricator.
+# 5. Lacrosse: constructor and architect_engineer are already "None" in the source data (not a guessed attribution), so no verification line was written for those two fields -- there was nothing to check. turbine_supplier and rpv_manufacturer were checked and are UNVERIFIABLE.

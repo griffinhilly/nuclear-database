@@ -1,0 +1,138 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Shidao Bay|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Shidao_Bay_Nuclear_Power_Plant - JV of Huaneng/CNNC/Tsinghua; CNEC construction arm is a CNNC-group subsidiary
+Shidao Bay|1|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/Shidao_Bay_Nuclear_Power_Plant - JV includes China Nuclear Engineering & Construction Group (CNEC) and Tsinghua University
+Shidao Bay|1|turbine_supplier|UNVERIFIABLE||MED|en.wikipedia.org/wiki/Shidao_Bay_Nuclear_Power_Plant - article names no turbine supplier
+Shidao Bay|1|rpv_manufacturer|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/Shidao_Bay_Nuclear_Power_Plant - confirms a reactor pressure vessel exists (design life stated) but manufacturer unnamed; "None" as a value is suspect since HTR-PM does have a pressure vessel, but no source names it
+Shidaowan|1|constructor|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/Shidao_Bay_Nuclear_Power_Plant - no supplier/constructor detail given for Shidaowan HPR1000 units
+Shidaowan|1|architect_engineer|UNVERIFIABLE||LOW|same source - no AE detail for Shidaowan HPR1000
+Shidaowan|1|turbine_supplier|UNVERIFIABLE||LOW|same source - no turbine detail for Shidaowan HPR1000
+Shidaowan|1|rpv_manufacturer|UNVERIFIABLE||LOW|same source - no RPV detail for Shidaowan HPR1000
+Shidaowan|2|constructor|UNVERIFIABLE||LOW|same as Shidaowan Unit 1
+Shidaowan|2|architect_engineer|UNVERIFIABLE||LOW|same as Shidaowan Unit 1
+Shidaowan|2|turbine_supplier|UNVERIFIABLE||LOW|same as Shidaowan Unit 1
+Shidaowan|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as Shidaowan Unit 1
+Shidaowan Guohe One|1|constructor|WRONG|SPIC (State Power Investment Corporation)|MED|en.wikipedia.org/wiki/Shidao_Bay_Nuclear_Power_Plant - identifies SPIC as CAP1400/Guohe One developer, not CNNC; matches special-case flag in task brief
+Shidaowan Guohe One|1|architect_engineer|WRONG|SNERDI (Shanghai Nuclear Engineering Research & Design Institute, SPIC subsidiary)|LOW|General industry knowledge that CAP1400 was designed by SNERDI under SPIC; not independently confirmed via a fetched source this session - re-verify before relying on this correction
+Shidaowan Guohe One|1|turbine_supplier|CONFIRMED||MED|en.wikipedia.org/wiki/Shidao_Bay_Nuclear_Power_Plant - "Dongfang Electric Group Dongfang Steam Turbine Co." built the CAP1400 LP2 turbine module
+Shidaowan Guohe One|1|rpv_manufacturer|UNVERIFIABLE||LOW|same source - confirms a ~487t vessel passed hydraulic test in March 2017 but does not name the manufacturer
+Shidaowan Guohe One|2|constructor|WRONG|SPIC (State Power Investment Corporation)|MED|same as Guohe One Unit 1
+Shidaowan Guohe One|2|architect_engineer|WRONG|SNERDI (Shanghai Nuclear Engineering Research & Design Institute, SPIC subsidiary)|LOW|same as Guohe One Unit 1
+Shidaowan Guohe One|2|turbine_supplier|CONFIRMED||MED|same as Guohe One Unit 1
+Shidaowan Guohe One|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as Guohe One Unit 1
+Taipingling|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Taipingling_Nuclear_Power_Plant - "owned by CGN Huizhou Nuclear Power Co."
+Taipingling|1|architect_engineer|UNVERIFIABLE||LOW|Wikipedia article does not name an AE firm; "CNPEC" could not be confirmed as a real CGN entity in any source checked this session (see NOTES)
+Taipingling|1|turbine_supplier|UNVERIFIABLE||LOW|not specified in sources checked
+Taipingling|1|rpv_manufacturer|UNVERIFIABLE||LOW|not specified in sources checked
+Taipingling|2|constructor|CONFIRMED||HIGH|same as Taipingling Unit 1
+Taipingling|2|architect_engineer|UNVERIFIABLE||LOW|same as Taipingling Unit 1
+Taipingling|2|turbine_supplier|UNVERIFIABLE||LOW|same as Taipingling Unit 1
+Taipingling|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as Taipingling Unit 1
+Taipingling|3|constructor|CONFIRMED||HIGH|same as Taipingling Unit 1
+Taipingling|3|architect_engineer|UNVERIFIABLE||LOW|same as Taipingling Unit 1
+Taipingling|3|turbine_supplier|UNVERIFIABLE||LOW|same as Taipingling Unit 1
+Taipingling|3|rpv_manufacturer|UNVERIFIABLE||LOW|same as Taipingling Unit 1
+Taishan|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Taishan_Nuclear_Power_Plant - Areva (Framatome) contracted to develop the nuclear island
+Taishan|1|architect_engineer|WRONG|EDF / CGN (Taishan Joint Venture partners)|LOW|Taishan Nuclear Power Joint Venture Company = CGN + EDF; no source confirms a distinct "CNPEC" AE entity (see NOTES on CNPEC)
+Taishan|1|turbine_supplier|CONFIRMED||HIGH|world-nuclear.org China country profile - "The Arabelle steam turbines and 1750 MWe generators were purchased separately from Alstom and Dongfang Electric Co respectively" (turbine=Alstom, generator=Dongfang)
+Taishan|1|rpv_manufacturer|WRONG|Framatome (Areva NP)|HIGH|en.wikipedia.org/wiki/Taishan_Nuclear_Power_Plant - Areva/Framatome contracted for the nuclear island including the reactor; Mitsubishi Heavy Industries has no documented role in Taishan's EPR supply chain
+Taishan|2|constructor|CONFIRMED||MED|same as Taishan Unit 1
+Taishan|2|architect_engineer|WRONG|EDF / CGN (Taishan Joint Venture partners)|LOW|same as Taishan Unit 1
+Taishan|2|turbine_supplier|CONFIRMED||HIGH|same as Taishan Unit 1
+Taishan|2|rpv_manufacturer|WRONG|Framatome (Areva NP)|HIGH|same as Taishan Unit 1
+Tianwan|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Tianwan_Nuclear_Power_Plant - Atomstroyexport supplied VVER-1000/428 units 1-2
+Tianwan|1|architect_engineer|UNVERIFIABLE||LOW|not directly confirmed; plausible convention (Atomenergoproekt=Russian design institute, JNPC=Jiangsu Nuclear Power Corp local partner) but no source names this pairing explicitly
+Tianwan|1|turbine_supplier|CONFIRMED||MED|en.wikipedia.org/wiki/Tianwan_Nuclear_Power_Plant - "reactor and turbo-generators are of Russian design," consistent with Power Machines (LMZ) as the standard VVER-1000 turbine supplier for this construction era
+Tianwan|1|rpv_manufacturer|CONFIRMED||MED|Consistent with Izhora Plants as sole VVER RPV supplier prior to Atommash's 2015 restart of VVER vessel production; Tianwan 1-2 built/commissioned well before that date
+Tianwan|2|constructor|CONFIRMED||HIGH|same as Tianwan Unit 1
+Tianwan|2|architect_engineer|UNVERIFIABLE||LOW|same as Tianwan Unit 1
+Tianwan|2|turbine_supplier|CONFIRMED||MED|same as Tianwan Unit 1
+Tianwan|2|rpv_manufacturer|CONFIRMED||MED|same as Tianwan Unit 1
+Tianwan|3|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Tianwan_Nuclear_Power_Plant - Atomstroyexport supplied VVER-1000/428M units 3-4
+Tianwan|3|architect_engineer|UNVERIFIABLE||LOW|same reasoning as Tianwan Unit 1
+Tianwan|3|turbine_supplier|CONFIRMED||MED|same reasoning as Tianwan Unit 1 (commissioned 2017, before Atommash-era shift)
+Tianwan|3|rpv_manufacturer|CONFIRMED||MED|same reasoning as Tianwan Unit 1
+Tianwan|4|constructor|CONFIRMED||HIGH|same as Tianwan Unit 3
+Tianwan|4|architect_engineer|UNVERIFIABLE||LOW|same as Tianwan Unit 3
+Tianwan|4|turbine_supplier|CONFIRMED||MED|same as Tianwan Unit 3
+Tianwan|4|rpv_manufacturer|CONFIRMED||MED|same as Tianwan Unit 3
+Tianwan|5|constructor|WRONG|CNNC (via China Nuclear Power Engineering Co., Ltd. / CNPE)|HIGH|en.wikipedia.org/wiki/Tianwan_Nuclear_Power_Plant - "Units 5-6: Constructor: China Nuclear Power Engineering, Ltd. (CNPE)"; Tianwan site ownership is CNNC/JNPC/Rosatom, not CGN - this is a CNNC/CGN misattribution
+Tianwan|5|architect_engineer|WRONG|CNPE / JNPC|MED|same source - no CGN or "CNPEC" involvement documented for Tianwan; ACPR-1000 is a co-developed design but the Tianwan site itself is CNNC-side
+Tianwan|5|turbine_supplier|UNVERIFIABLE||LOW|no source checked names a turbine supplier for Tianwan ACPR-1000 units
+Tianwan|5|rpv_manufacturer|UNVERIFIABLE||LOW|no source checked names an RPV manufacturer for Tianwan ACPR-1000 units
+Tianwan|6|constructor|WRONG|CNNC (via China Nuclear Power Engineering Co., Ltd. / CNPE)|HIGH|same as Tianwan Unit 5
+Tianwan|6|architect_engineer|WRONG|CNPE / JNPC|MED|same as Tianwan Unit 5
+Tianwan|6|turbine_supplier|UNVERIFIABLE||LOW|same as Tianwan Unit 5
+Tianwan|6|rpv_manufacturer|UNVERIFIABLE||LOW|same as Tianwan Unit 5
+Tianwan|7|constructor|CONFIRMED||HIGH|world-nuclear.org China country profile - Atomstroyexport/Rosatom general contractor for VVER-1200 units 7&8 (2018 contract)
+Tianwan|7|architect_engineer|UNVERIFIABLE||LOW|not directly sourced
+Tianwan|7|turbine_supplier|WRONG|Shanghai Electric|MED|Web search finding: "Shanghai Electric wins CNNC's steam turbine order for nuclear power plants" naming Tianwan 7&8; corroborated by world-nuclear.org stating Russia's contract for units 7&8 covers the nuclear island only, so the turbine/conventional island is Chinese-supplied
+Tianwan|7|rpv_manufacturer|WRONG|AEM-Technologies (Atommash, Volgodonsk)|MED|VVER-1200 export RPV production shifted from Izhora Plants to Atommash/AEM-Technologies after its 2015 restart (confirmed for Belarus, India Kudankulam contracts); Tianwan 7-8 are VVER-1200, contracted 2018, post-dating that shift
+Tianwan|8|constructor|CONFIRMED||HIGH|same as Tianwan Unit 7
+Tianwan|8|architect_engineer|UNVERIFIABLE||LOW|same as Tianwan Unit 7
+Tianwan|8|turbine_supplier|WRONG|Shanghai Electric|MED|same as Tianwan Unit 7
+Tianwan|8|rpv_manufacturer|WRONG|AEM-Technologies (Atommash, Volgodonsk)|MED|same as Tianwan Unit 7
+Xudabao|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Xudapu_Nuclear_Power_Plant - "Constructor: China Nuclear Industry 22 Construction Company (CNI22)," a CNNC-group subsidiary, consistent with CNNC
+Xudabao|1|architect_engineer|UNVERIFIABLE||LOW|not directly sourced for the CAP1000 units
+Xudabao|1|turbine_supplier|UNVERIFIABLE||LOW|not directly sourced
+Xudabao|1|rpv_manufacturer|UNVERIFIABLE||LOW|not directly sourced
+Xudabao|2|constructor|CONFIRMED||MED|same as Xudabao Unit 1
+Xudabao|2|architect_engineer|UNVERIFIABLE||LOW|same as Xudabao Unit 1
+Xudabao|2|turbine_supplier|UNVERIFIABLE||LOW|same as Xudabao Unit 1
+Xudabao|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as Xudabao Unit 1
+Xudabao|3|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Xudapu_Nuclear_Power_Plant - "CNNC and Atomstroyexport signed the detailed contract for the construction of two VVER-1200s"
+Xudabao|3|architect_engineer|WRONG|Atomenergoproekt / CNNC (with Datang, SDIC as minority JV partners)|MED|same source - Xudapu ownership is CNNC 70% / Datang 20% / SDIC 10%, with no Jiangsu Nuclear Power Corp (JNPC) involvement; JNPC is specific to the separate Tianwan site in Jiangsu - "JNPC" here looks like a copy-paste artifact from the Tianwan VVER rows
+Xudabao|3|turbine_supplier|WRONG|Chinese-supplied (specific manufacturer unconfirmed - NOT Power Machines)|LOW|world-nuclear.org China country profile quote confirms "China will supply turbine generators" for Xudapu units 3&4, since Rosatom's VVER-1200 contract covers the nuclear island only; unable to confirm the specific Chinese company this session
+Xudabao|3|rpv_manufacturer|WRONG|AEM-Technologies (Atommash, Volgodonsk)|MED|Same Atommash/Izhora-transition reasoning as Tianwan 7-8 - both are VVER-1200 units under the 2018-era Rosatom export contracts, post-dating the 2015 Atommash restart
+Xudabao|4|constructor|CONFIRMED||MED|same as Xudabao Unit 3
+Xudabao|4|architect_engineer|WRONG|Atomenergoproekt / CNNC (with Datang, SDIC as minority JV partners)|MED|same as Xudabao Unit 3
+Xudabao|4|turbine_supplier|WRONG|Chinese-supplied (specific manufacturer unconfirmed - NOT Power Machines)|LOW|same as Xudabao Unit 3
+Xudabao|4|rpv_manufacturer|WRONG|AEM-Technologies (Atommash, Volgodonsk)|MED|same as Xudabao Unit 3
+Yangjiang|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Yangjiang_Nuclear_Power_Plant / power-technology.com - CGN Power manages the plant; well-documented CGN home fleet
+Yangjiang|1|architect_engineer|UNVERIFIABLE||LOW|no source checked names an AE firm; "CNPEC" unconfirmed (see NOTES)
+Yangjiang|1|turbine_supplier|UNVERIFIABLE||LOW|power-technology.com lists unrelated equipment/DCS vendors (Metso, Hollysys, ABB, China Techenergy) but no turbine supplier
+Yangjiang|1|rpv_manufacturer|UNVERIFIABLE||LOW|not specified in sources checked
+Yangjiang|2|constructor|CONFIRMED||HIGH|same as Yangjiang Unit 1
+Yangjiang|2|architect_engineer|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|2|turbine_supplier|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|3|constructor|CONFIRMED||HIGH|same as Yangjiang Unit 1
+Yangjiang|3|architect_engineer|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|3|turbine_supplier|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|3|rpv_manufacturer|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|4|constructor|CONFIRMED||HIGH|same as Yangjiang Unit 1
+Yangjiang|4|architect_engineer|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|4|turbine_supplier|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|4|rpv_manufacturer|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|5|constructor|CONFIRMED||HIGH|same as Yangjiang Unit 1
+Yangjiang|5|architect_engineer|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|5|turbine_supplier|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|5|rpv_manufacturer|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|6|constructor|CONFIRMED||HIGH|same as Yangjiang Unit 1
+Yangjiang|6|architect_engineer|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|6|turbine_supplier|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Yangjiang|6|rpv_manufacturer|UNVERIFIABLE||LOW|same as Yangjiang Unit 1
+Zhangzhou|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Zhangzhou_Nuclear_Power_Plant - "owned by CNNC Guodian Zhangzhou Energy Co. Ltd." (CNNC 51% / China Guodian 49%)
+Zhangzhou|1|architect_engineer|UNVERIFIABLE||LOW|not confirmed; "CNPE" is CNNC's known engineering arm but no source ties it specifically to Zhangzhou
+Zhangzhou|1|turbine_supplier|UNVERIFIABLE||LOW|not specified in sources checked
+Zhangzhou|1|rpv_manufacturer|UNVERIFIABLE||LOW|not specified in sources checked
+Zhangzhou|2|constructor|CONFIRMED||HIGH|same as Zhangzhou Unit 1
+Zhangzhou|2|architect_engineer|UNVERIFIABLE||LOW|same as Zhangzhou Unit 1
+Zhangzhou|2|turbine_supplier|UNVERIFIABLE||LOW|same as Zhangzhou Unit 1
+Zhangzhou|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as Zhangzhou Unit 1
+Zhangzhou|3|constructor|CONFIRMED||HIGH|same as Zhangzhou Unit 1
+Zhangzhou|3|architect_engineer|UNVERIFIABLE||LOW|same as Zhangzhou Unit 1
+Zhangzhou|3|turbine_supplier|UNVERIFIABLE||LOW|same as Zhangzhou Unit 1
+Zhangzhou|3|rpv_manufacturer|UNVERIFIABLE||LOW|same as Zhangzhou Unit 1
+Zhangzhou|4|constructor|CONFIRMED||HIGH|same as Zhangzhou Unit 1
+Zhangzhou|4|architect_engineer|UNVERIFIABLE||LOW|same as Zhangzhou Unit 1
+Zhangzhou|4|turbine_supplier|UNVERIFIABLE||LOW|same as Zhangzhou Unit 1
+Zhangzhou|4|rpv_manufacturer|UNVERIFIABLE||LOW|same as Zhangzhou Unit 1
+# NOTES
+# 1. "CNPEC" (used as architect_engineer default for every CGN-owned plant in this batch: Taipingling, Taishan, Yangjiang, and incorrectly Tianwan 5-6) could not be confirmed as a real, distinct CGN entity in any source checked this session. CGN's actual engineering/design arm is commonly referred to in industry literature as "China Nuclear Power Design Company" (CNPDC), which was not independently re-confirmed this session either. Recommend a dedicated follow-up pass to pin down CGN's correct AE subsidiary name and re-run architect_engineer verification across the whole CGN fleet, not just this batch - "CNPEC" looks like it may be a fabricated blend of CNNC's real "CNPE" (China Nuclear Power Engineering Co.) with CGN's ownership tag.
+# 2. Tianwan units 5 & 6 (ACPR-1000) are misattributed to CGN (constructor + architect_engineer) in the source data. Wikipedia's Tianwan article explicitly names "China Nuclear Power Engineering, Ltd. (CNPE)" as constructor for units 5-6, and the whole Tianwan site is a CNNC/Jiangsu Nuclear Power Corp (JNPC)/Rosatom joint venture, not a CGN site - even though ACPR-1000 is a CGN co-developed design lineage. This is a real instance of the CNNC/CGN confusion flagged in the task brief, but running in the opposite direction from the described heuristic (a CNNC site defaulted to CGN, apparently because of the ACPR-1000 model name association with CGN's design family).
+# 3. RPV manufacturer for the newer VVER-1200 units (Tianwan 7-8, Xudabao 3-4, both under 2018-era Rosatom export contracts) should likely be AEM-Technologies/Atommash (Volgodonsk), not Izhora Plants - Russian VVER RPV production shifted to Atommash after its 2015 restart. Izhora Plants remains a plausible/CONFIRMED default for the older Tianwan 1-4 VVER-1000 units (built/commissioned 1999-2018, pre-dating the shift).
+# 4. Turbine supplier for the same newer VVER-1200 cooperation units (Tianwan 7-8, Xudabao 3-4) is Chinese-supplied, not Power Machines (LMZ) - Rosatom's contracts for these units cover the nuclear island only. Confirmed specifically as Shanghai Electric for Tianwan 7-8; the Xudabao 3-4 Chinese supplier could not be confirmed by name this session (marked WRONG with an unconfirmed corrected_value - re-verify before use).
+# 5. Shidaowan Guohe One (CAP1400) ownership/development is SPIC, not CNNC as defaulted - this confirms the special case flagged in the task brief. Its turbine_supplier default (Dongfang Electric) is nonetheless CONFIRMED correct by coincidence/genuine sourcing (Dongfang built the CAP1400 LP turbine module regardless of SPIC vs CNNC ownership).
+# 6. Taishan EPR: turbine_supplier=Alstom is CONFIRMED correct as-is (WNA explicitly splits turbine=Alstom vs generator=Dongfang Electric - do not "fix" this to Dongfang). rpv_manufacturer=Mitsubishi Heavy Industries is WRONG; MHI has no documented role at Taishan, the nuclear island/RPV came from Areva/Framatome.
+# 7. Large fraction of UNVERIFIABLE verdicts (67/128) reflects genuinely thin English-language sourcing for turbine_supplier/rpv_manufacturer/architect_engineer at CGN-owned sites (Taipingling, Yangjiang, Zhangzhou-adjacent CGN pattern) - Wikipedia and power-technology.com pages for these plants document ownership and construction timelines but not equipment supply chains. A follow-up pass using Chinese-language sources or CGN/CNNC annual reports would likely resolve many of these.
+# 8. WebSearch tool exhausted its session quota (200/200) early in this batch; all research after that point relied on WebFetch against Wikipedia, world-nuclear.org, and DuckDuckGo HTML search (with mixed success - Bing returned unusable generic results, Ecosia 403'd, DuckDuckGo occasionally served a CAPTCHA page instead of results). This constrained the depth of verification, particularly for constructor/AE names at CGN sites and for Guohe One's architect_engineer, which is asserted from general industry knowledge rather than a source fetched this session.

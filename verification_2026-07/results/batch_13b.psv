@@ -1,0 +1,33 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Jinqimen|1|constructor|CONFIRMED||HIGH|Wikipedia Jinqimen NPP: "CNNC Zhejiang Energy Co Ltd will be responsible for construction of the plant"
+Jinqimen|1|architect_engineer|UNVERIFIABLE||LOW|No source found tying CNPE specifically to Jinqimen; CNNC's usual Hualong One AE but not directly sourced for this site
+Jinqimen|1|turbine_supplier|UNVERIFIABLE||LOW|Only generic mentions of Dongfang Electric as a major Chinese nuclear turbine maker found; no source ties it specifically to Jinqimen Unit 1
+Jinqimen|1|rpv_manufacturer|UNVERIFIABLE||LOW|Only generic mentions of Shanghai Electric RPV manufacturing capability found; no source confirms either Shanghai Electric or China First Heavy Industries specifically for Jinqimen
+Lianjiang|1|constructor|WRONG|SNPTC (State Nuclear Power construction, SPIC subsidiary)|HIGH|Wikipedia Lianjiang NPP + search summary: owner SPIC, operator Zhanjiang Nuclear Power Co (SPIC subsidiary), constructor SNPTC — this is a CAP1000/SPIC site, not CNNC
+Lianjiang|1|architect_engineer|WRONG|SNERDI (Shanghai Nuclear Engineering Research & Design Institute, SPIC subsidiary)|HIGH|Search summary citing SNERDI as AE, "set up a dedicated team for the ancillary building," manages design/construction oversight for Lianjiang
+Lianjiang|1|turbine_supplier|CONFIRMED||HIGH|Search summary: "low-pressure rotor (with LT57-inch last stage blades) designed by Arabelle Solutions and manufactured by Dongfang Electric" for Lianjiang Unit 1
+Lianjiang|1|rpv_manufacturer|WRONG|Shanghai Electric Nuclear Power Group|HIGH|Search summary: RPV for Lianjiang manufactured by Shanghai Electric Nuclear Power Group, delivered ~March 2025; not China First Heavy Industries
+Lianjiang|2|constructor|WRONG|SNPTC (State Nuclear Power construction, SPIC subsidiary)|HIGH|Same basis as Unit 1 — single-site owner/constructor (SPIC/SNPTC), not CNNC
+Lianjiang|2|architect_engineer|WRONG|SNERDI (Shanghai Nuclear Engineering Research & Design Institute, SPIC subsidiary)|MED|Same AE as Unit 1 per site-level sourcing; not unit-specific confirmation
+Lianjiang|2|turbine_supplier|UNVERIFIABLE||LOW|Dongfang Electric confirmed for Unit 1 low-pressure rotor; no unit 2-specific source found, so not independently confirmed
+Lianjiang|2|rpv_manufacturer|WRONG|Shanghai Electric Nuclear Power Group|MED|Same RPV supplier pattern as Unit 1 per site-level sourcing; not unit-specific confirmation
+Linglong|1|constructor|CONFIRMED||HIGH|Wikipedia ACP100/Linglong One: CNNC announced (2019) it would build the demonstration ACP100 SMR at Changjiang site; CNNC-led project
+Linglong|1|architect_engineer|UNVERIFIABLE||LOW|CNNC designed the ACP100 in-house; no source specifically names CNPE as AE of record for Linglong
+Linglong|1|turbine_supplier|UNVERIFIABLE||LOW|Search found only that Linglong One "passed turbine generator testing" milestone; no manufacturer name (Dongfang, Harbin, or Shanghai Electric) found in sourced coverage
+Linglong|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source identifies RPV manufacturer for Linglong One; only the shielded main pump supplier (Harbin Electric) was sourced, which is a different component
+Sanao|1|constructor|WRONG|CGN (via CGN Cangnan Nuclear Power Co., Ltd.)|HIGH|Search summary: CGN holds 46% of project company Cangnan Nuclear Power; site is CGN-led, not CNNC
+Sanao|1|architect_engineer|WRONG|CGN (specific AE subsidiary not sourced)|MED|Site confirmed as CGN project (Cangnan Nuclear Power), so CNNC/CNPE default is inconsistent with ownership; exact AE entity name not found in sourced coverage
+Sanao|1|turbine_supplier|UNVERIFIABLE||LOW|No source found naming turbine generator manufacturer for Sanao Unit 1
+Sanao|1|rpv_manufacturer|WRONG|Shanghai Electric Nuclear Power Equipment Company|MED|Confirmed for Unit 2 by name ("RPV...manufactured by Shanghai Electric Nuclear Power Equipment Company," arrived at site after sea transport); Unit 1 not separately confirmed but same-site pattern makes CFHI default unlikely
+Sanao|2|constructor|WRONG|CGN (via CGN Cangnan Nuclear Power Co., Ltd.)|HIGH|Same basis as Unit 1 — CGN Cangnan Nuclear Power Co. is the operating/development entity for the whole site
+Sanao|2|architect_engineer|WRONG|CGN (specific AE subsidiary not sourced)|MED|Same basis as Unit 1
+Sanao|2|turbine_supplier|UNVERIFIABLE||LOW|No source found naming turbine generator manufacturer for Sanao Unit 2
+Sanao|2|rpv_manufacturer|WRONG|Shanghai Electric Nuclear Power Equipment Company|HIGH|Directly sourced: "RPV for unit 2 of China's San'ao NPP...manufactured by Shanghai Electric Nuclear Power Equipment Company...left Shanghai on 30 July"
+Sanao|3|constructor|WRONG|CGN (via CGN Cangnan Nuclear Power Co., Ltd.)|HIGH|Same basis as Units 1-2 — single-site CGN development
+Sanao|3|architect_engineer|WRONG|CGN (specific AE subsidiary not sourced)|MED|Same basis as Units 1-2
+Sanao|3|turbine_supplier|UNVERIFIABLE||LOW|No source found naming turbine generator manufacturer for Sanao Unit 3
+Sanao|3|rpv_manufacturer|WRONG|Shanghai Electric Nuclear Power Equipment Company (unconfirmed for this unit)|LOW|Confirmed only for Unit 2 by name; extrapolated to Unit 3 on same-site pattern but not independently sourced
+# NOTES
+# Session's WebSearch tool budget was exhausted (200/200) before this batch began; all verification here relied on WebFetch against Wikipedia and DuckDuckGo HTML search result pages rather than direct WNN/WNA article retrieval (several direct WNN/NucNet/WNA URLs 403'd or 404'd). Confidence levels reflect this — MED/HIGH marks are for facts explicitly quoted in retrieved page text; LOW/UNVERIFIABLE marks are where no page surfaced a specific claim.
+# Biggest confirmed finding: Lianjiang and Sanao are NOT CNNC/CNPE sites as the input data claims. Lianjiang is an SPIC/State Nuclear Power (SNPTC constructor, SNERDI architect-engineer) CAP1000 site; Sanao is a CGN (Cangnan Nuclear Power Co.) HPR1000 site. Both plants' constructor and architect_engineer fields in the source PSV are wrong for all their units. Jinqimen (CNNC-run, per Wikipedia) and Linglong (CNNC's own ACP100 SMR demo) constructor values are consistent with sourced ownership.
+# Turbine supplier and RPV manufacturer fields were the hardest to source at unit-level granularity; only Lianjiang Unit 1 (turbine: Dongfang Electric; RPV: Shanghai Electric Nuclear Power Group) and Sanao Unit 2 (RPV: Shanghai Electric Nuclear Power Equipment Company) had specific, quotable confirmations. Recommend a follow-up pass with WNN/NucNet direct access (not via search cache) once available, especially for Jinqimen and Linglong component suppliers, which remain fully unsourced in this pass.

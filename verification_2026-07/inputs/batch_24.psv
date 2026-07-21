@@ -1,0 +1,30 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+Argentina|Atucha|1|KWU|Operational|Siemens|KWU|KWU|KWU
+Argentina|Atucha|2|KWU|Operational|Siemens|KWU|KWU|KWU
+Argentina|Carem25|1|CAREM Prototype|Under Construction|CNEA|CNEA|CNEA|CNEA
+Argentina|Embalse|1|CANDU 6|Operational|AECL|AECL|GE Canada|AECL
+Bangladesh|Rooppur|1|VVER V-523|Under Construction|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Bangladesh|Rooppur|2|VVER V-523|Under Construction|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Belarus|Belarusian|1|VVER V-491|Operational|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Belarus|Belarusian|2|VVER V-491|Operational|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Brazil|Angra|1|2-loop WE|Operational|Westinghouse|Westinghouse|Westinghouse|Westinghouse
+Brazil|Angra|2|PRE KONVOI|Operational|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Brazil|Angra|3|PRE KONVOI|Under Construction|Kraftwerk Union (KWU)|KWU|KWU|Rotterdam Dockyard (RDM)
+Egypt|El Dabaa|1|VVER V-529|Under Construction|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Egypt|El Dabaa|2|VVER V-529|Under Construction|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Egypt|El Dabaa|3|VVER V-529|Under Construction|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Egypt|El Dabaa|4|VVER V-529|Under Construction|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Iran|Bushehr|1|VVER V-446|Operational|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Iran|Bushehr|2|VVER V-528|Under Construction|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Mexico|Laguna Verde|1|BWR-5|Operational|GE|GE|General Electric|General Electric
+Mexico|Laguna Verde|2|BWR-5|Operational|GE|GE|General Electric|General Electric
+South Africa|Koeberg|1|CP1|Operational|Framatome|Framatome|Alstom|Framatome
+South Africa|Koeberg|2|CP1|Operational|Framatome|Framatome|Alstom|Framatome
+Turkey|Akkuyu|1|VVER V-509|Under Construction|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Turkey|Akkuyu|2|VVER V-509|Under Construction|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Turkey|Akkuyu|3|VVER V-509|Under Construction|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+Turkey|Akkuyu|4|VVER V-509|Under Construction|Atomstroyexport|Atomenergoproekt|Skoda|Izhora Plants
+UAE|Barakah|1|APR1400|Operational|KEPCO|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+UAE|Barakah|2|APR1400|Operational|KEPCO|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+UAE|Barakah|3|APR1400|Operational|KEPCO|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+UAE|Barakah|4|APR1400|Operational|KEPCO|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries

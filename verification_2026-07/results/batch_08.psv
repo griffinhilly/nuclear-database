@@ -1,0 +1,182 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Fugen ATR|1|constructor|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/Fugen_Nuclear_Power_Plant (no manufacturer named)
+Fugen ATR|1|architect_engineer|UNVERIFIABLE||LOW|no source found
+Fugen ATR|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Fugen ATR|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Fukushima-Daiichi|1|constructor|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|1|architect_engineer|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|1|turbine_supplier|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|1|rpv_manufacturer|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|2|constructor|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|2|architect_engineer|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|2|turbine_supplier|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|2|rpv_manufacturer|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|3|constructor|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|3|architect_engineer|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|3|turbine_supplier|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|3|rpv_manufacturer|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|4|constructor|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|4|architect_engineer|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|4|turbine_supplier|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|4|rpv_manufacturer|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|5|constructor|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|5|architect_engineer|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|5|turbine_supplier|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|5|rpv_manufacturer|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|6|constructor|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|6|architect_engineer|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|6|turbine_supplier|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daiichi|6|rpv_manufacturer|UNVERIFIABLE||LOW|research agent did not return results in time; not independently checked
+Fukushima-Daini|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Fukushima_Daini_Nuclear_Power_Plant (unit table: Reactor supplier=Toshiba)
+Fukushima-Daini|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Fukushima_Daini_Nuclear_Power_Plant (unit table: Architecture=Toshiba)
+Fukushima-Daini|1|turbine_supplier|UNVERIFIABLE||LOW|no source states turbine vendor
+Fukushima-Daini|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source states RPV vendor
+Fukushima-Daini|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Fukushima_Daini_Nuclear_Power_Plant (unit table: Reactor supplier=Hitachi)
+Fukushima-Daini|2|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Fukushima_Daini_Nuclear_Power_Plant (unit table: Architecture=Hitachi)
+Fukushima-Daini|2|turbine_supplier|UNVERIFIABLE||LOW|no source states turbine vendor
+Fukushima-Daini|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source states RPV vendor
+Fukushima-Daini|3|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Fukushima_Daini_Nuclear_Power_Plant (unit table: Reactor supplier=Toshiba)
+Fukushima-Daini|3|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Fukushima_Daini_Nuclear_Power_Plant (unit table: Architecture=Toshiba)
+Fukushima-Daini|3|turbine_supplier|UNVERIFIABLE||LOW|no source states turbine vendor
+Fukushima-Daini|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source states RPV vendor
+Fukushima-Daini|4|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Fukushima_Daini_Nuclear_Power_Plant (unit table: Reactor supplier=Hitachi)
+Fukushima-Daini|4|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Fukushima_Daini_Nuclear_Power_Plant (unit table: Architecture=Hitachi)
+Fukushima-Daini|4|turbine_supplier|UNVERIFIABLE||LOW|no source states turbine vendor
+Fukushima-Daini|4|rpv_manufacturer|UNVERIFIABLE||LOW|no source states RPV vendor
+Genkai|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Genkai_Nuclear_Power_Plant ("built by Mitsubishi Heavy Industries")
+Genkai|1|architect_engineer|UNVERIFIABLE||LOW|no source found
+Genkai|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Genkai|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source names JSW/IHI/MHI for this unit specifically
+Genkai|2|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Genkai_Nuclear_Power_Plant
+Genkai|2|architect_engineer|UNVERIFIABLE||LOW|no source found
+Genkai|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Genkai|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source names JSW/IHI/MHI for this unit specifically
+Genkai|3|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Genkai_Nuclear_Power_Plant
+Genkai|3|architect_engineer|UNVERIFIABLE||LOW|no source found
+Genkai|3|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Genkai|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source names JSW/IHI/MHI for this unit specifically
+Genkai|4|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Genkai_Nuclear_Power_Plant
+Genkai|4|architect_engineer|UNVERIFIABLE||LOW|no source found
+Genkai|4|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Genkai|4|rpv_manufacturer|UNVERIFIABLE||LOW|no source names JSW/IHI/MHI for this unit specifically
+Hamaoka|1|constructor|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/Hamaoka_Nuclear_Power_Plant (prose says design lineage is GE BWR-4; ambiguous vs actual builder)
+Hamaoka|1|architect_engineer|UNVERIFIABLE||LOW|no source found
+Hamaoka|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Hamaoka|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Hamaoka|2|constructor|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/Hamaoka_Nuclear_Power_Plant (same GE-design-lineage ambiguity as unit 1)
+Hamaoka|2|architect_engineer|UNVERIFIABLE||LOW|no source found
+Hamaoka|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Hamaoka|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Hamaoka|3|constructor|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/Hamaoka_Nuclear_Power_Plant (table lists reactor type only, no manufacturer)
+Hamaoka|3|architect_engineer|UNVERIFIABLE||LOW|no source found
+Hamaoka|3|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Hamaoka|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Hamaoka|4|constructor|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/Hamaoka_Nuclear_Power_Plant
+Hamaoka|4|architect_engineer|UNVERIFIABLE||LOW|no source found
+Hamaoka|4|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Hamaoka|4|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Hamaoka|5|constructor|WRONG|Hitachi|MED|en.wikipedia.org/wiki/Hamaoka_Nuclear_Power_Plant ("Fault for the problems was placed on Hitachi, the Nuclear Steam Supply System manufacturer" — 2006 turbine incident coverage)
+Hamaoka|5|architect_engineer|UNVERIFIABLE||LOW|no source found
+Hamaoka|5|turbine_supplier|UNVERIFIABLE||LOW|source text conflates NSSS/turbine liability, does not cleanly name a separate turbine vendor
+Hamaoka|5|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Higashi Dori|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Higashidōri_Nuclear_Power_Plant ("reactors are all of Toshiba design")
+Higashi Dori|1|architect_engineer|UNVERIFIABLE||LOW|no source found
+Higashi Dori|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Higashi Dori|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Ikata|1|constructor|CONFIRMED||MED|ja.wikipedia.org/wiki/伊方発電所 ("三菱・2ループ")
+Ikata|1|architect_engineer|UNVERIFIABLE||LOW|no source found
+Ikata|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Ikata|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Ikata|2|constructor|CONFIRMED||MED|ja.wikipedia.org/wiki/伊方発電所
+Ikata|2|architect_engineer|UNVERIFIABLE||LOW|no source found
+Ikata|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Ikata|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Ikata|3|constructor|UNVERIFIABLE||LOW|ja.wikipedia.org/wiki/伊方発電所 (names "ウェスティングハウス・エレクトリック、三菱重工業" jointly — unclear if Westinghouse is co-constructor or only original 3-loop design licensor)
+Ikata|3|architect_engineer|UNVERIFIABLE||LOW|no source found
+Ikata|3|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Ikata|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+JPDR|1|constructor|CONFIRMED||MED|ja.wikipedia.org/wiki/JPDR (GE-supplied BWR)
+JPDR|1|architect_engineer|UNVERIFIABLE||LOW|no source found
+JPDR|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+JPDR|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Kashiwazaki Kariwa|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Kashiwazaki-Kariwa_Nuclear_Power_Plant (table: Reactor/NSSS supplier=Toshiba)
+Kashiwazaki Kariwa|1|architect_engineer|UNVERIFIABLE||LOW|table has no AE column
+Kashiwazaki Kariwa|1|turbine_supplier|UNVERIFIABLE||LOW|table has no turbine column
+Kashiwazaki Kariwa|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Kashiwazaki Kariwa|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Kashiwazaki-Kariwa_Nuclear_Power_Plant (table: Toshiba)
+Kashiwazaki Kariwa|2|architect_engineer|UNVERIFIABLE||LOW|table has no AE column
+Kashiwazaki Kariwa|2|turbine_supplier|UNVERIFIABLE||LOW|table has no turbine column
+Kashiwazaki Kariwa|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Kashiwazaki Kariwa|3|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Kashiwazaki-Kariwa_Nuclear_Power_Plant (table: Toshiba)
+Kashiwazaki Kariwa|3|architect_engineer|UNVERIFIABLE||LOW|table has no AE column
+Kashiwazaki Kariwa|3|turbine_supplier|UNVERIFIABLE||LOW|table has no turbine column
+Kashiwazaki Kariwa|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Kashiwazaki Kariwa|4|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Kashiwazaki-Kariwa_Nuclear_Power_Plant (table: Hitachi)
+Kashiwazaki Kariwa|4|architect_engineer|UNVERIFIABLE||LOW|table has no AE column
+Kashiwazaki Kariwa|4|turbine_supplier|UNVERIFIABLE||LOW|table has no turbine column
+Kashiwazaki Kariwa|4|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Kashiwazaki Kariwa|5|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Kashiwazaki-Kariwa_Nuclear_Power_Plant (table: Hitachi)
+Kashiwazaki Kariwa|5|architect_engineer|UNVERIFIABLE||LOW|table has no AE column
+Kashiwazaki Kariwa|5|turbine_supplier|UNVERIFIABLE||LOW|table has no turbine column
+Kashiwazaki Kariwa|5|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Kashiwazaki Kariwa|6|constructor|WRONG|Joint Hitachi/Toshiba/GE (ABWR co-development, not sole Toshiba)|MED|en.wikipedia.org/wiki/Kashiwazaki-Kariwa_Nuclear_Power_Plant (table lists Hitachi/Toshiba/GE for unit 6, same as unit 7)
+Kashiwazaki Kariwa|6|architect_engineer|UNVERIFIABLE||LOW|table gives no separate AE breakdown for the joint build
+Kashiwazaki Kariwa|6|turbine_supplier|UNVERIFIABLE||LOW|table gives no separate turbine breakdown for the joint build
+Kashiwazaki Kariwa|6|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+# NOTES
+# Root cause confirmed in codebase: scripts/populate_reactor_details.py, function determine_rpv_manufacturer()
+# (~line 1322-1324) hardcodes `if country == 'Japan': return 'Japan Steel Works (JSW)'` for EVERY Japanese
+# reactor regardless of unit/design, with its own comment admitting "IHI and MHI also involved." This means
+# every rpv_manufacturer=JSW value in this batch (and likely the whole Japan fleet) is a country-level
+# default, not a per-reactor sourced fact. Recommend treating ALL Japan rpv_manufacturer=JSW values
+# database-wide as UNVERIFIABLE-by-construction until sourced individually, not just the 31 in this batch.
+#
+# Similarly, scripts/fix_japan_details.py encodes a "vertical integration" heuristic: architect_engineer
+# and turbine_supplier are mechanically set equal to whatever constructor value already existed in the DB,
+# without independent per-unit sourcing (see file header rationale, ~lines 14-21). Where constructor itself
+# is confirmed by a real source (as at Fukushima Daini and most Kashiwazaki Kariwa units), that gives
+# reasonable confidence constructor is right, but architect_engineer/turbine_supplier still generally
+# lack independent confirmation — Wikipedia unit tables for these plants typically carry only a
+# "reactor supplier"/"architecture" column, not separate turbine or AE columns, which is why so many
+# turbine_supplier fields land UNVERIFIABLE even where constructor is solidly CONFIRMED.
+#
+# Two confirmed unit-level breaks in the heuristic's "one vendor per plant" assumption (exactly the failure
+# mode flagged in the task brief):
+#  - Hamaoka unit 5: claimed constructor "Toshiba" is WRONG — Wikipedia's 2006 turbine-incident coverage
+#    identifies Hitachi as the NSSS manufacturer, breaking the "all Hamaoka units = Toshiba" pattern the
+#    heuristic assumed.
+#  - Kashiwazaki Kariwa unit 6 (ABWR): claimed constructor "Toshiba" (sole) is WRONG — Wikipedia's plant
+#    table lists unit 6 (like unit 7) as a three-way joint Hitachi/Toshiba/GE build, consistent with the
+#    ABWR being co-developed by all three vendors. The single-constructor-field schema cannot cleanly
+#    represent this; flagging for schema owners to consider a multi-vendor field for ABWR units.
+#  - By contrast, Kashiwazaki Kariwa units 1-5 (1/2/3=Toshiba, 4/5=Hitachi) and Fukushima Daini units 1-4
+#    (alternating Toshiba/Hitachi/Toshiba/Hitachi) were CONFIRMED exactly as claimed against Wikipedia's
+#    per-unit reactor-supplier tables — so the original heuristic did get some unit-level splits right,
+#    likely because whoever built the original DB entries for these two plants already consulted per-unit
+#    sources (only turbine_supplier/rpv_manufacturer were back-filled by the blanket heuristic).
+#
+# Fukushima Daiichi (6 units, the single most consequential group for exactly this kind of unit-by-unit
+# vendor-split check, per the task brief's own example) could NOT be verified in this pass: the dedicated
+# research sub-agent did not return results before the batch deadline. All 24 Fukushima Daiichi
+# reactor-field lines above are marked UNVERIFIABLE for this reason ONLY (no source was found to contradict
+# OR confirm them) — this is a coverage gap, not a finding that the claimed values are correct. Strongly
+# recommend re-running verification on Fukushima Daiichi specifically in a follow-up batch; the well-known
+# public record (NS Energy, TEPCO, Wikipedia's unit table) likely resolves per-unit constructor/AE/turbine
+# with HIGH confidence, and the known GE/Toshiba joint-construction units (commonly cited as units 2 and 6)
+# were never checked against the claimed sole-vendor values in the input file.
+#
+# Fugen ATR and Ikata unit 3 also carry unresolved ambiguities worth a follow-up pass:
+#  - Fugen: zero sources found either supporting or refuting "Fuji Electric" for any of its 4 fields.
+#    fix_japan_details.py's own comment describes Fugen as a JOINT build by Hitachi, Toshiba, MHI, Fuji,
+#    and Sumitomo with Fuji Electric as "lead constructor" and PNC (a government entity) as the actual
+#    architect-engineer — if that comment's account is accurate, "Fuji Electric" alone materially
+#    understates the true multi-vendor picture, but it could not be independently sourced this session.
+#  - Ikata unit 3: Japanese Wikipedia names Westinghouse Electric alongside MHI for the 3-loop design;
+#    unclear whether Westinghouse should be credited as co-constructor or only as the original PWR
+#    technology licensor.
+#
+# Tool/process gaps encountered by all sub-agents: IAEA PRIS reactor-detail pages could not be fetched
+# (403/404 errors, and the site's ASP.NET postback navigation isn't fetchable by WebFetch); WebSearch quota
+# was exhausted partway through the batch, capping how many follow-up queries each agent could run
+# (this is likely why so many turbine_supplier/rpv_manufacturer fields ended UNVERIFIABLE rather than
+# resolved either way — a scarcity of remaining search budget, not necessarily a scarcity of sources).

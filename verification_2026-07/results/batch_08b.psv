@@ -1,0 +1,31 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Fukushima-Daiichi|1|constructor|CONFIRMED||HIGH|en.wikipedia.org Fukushima Daiichi NPP reactor table (NSSS=General Electric, cited to TEPCO)
+Fukushima-Daiichi|1|architect_engineer|WRONG|Ebasco|HIGH|en.wikipedia.org Fukushima Daiichi NPP reactor table (A-E=Ebasco for Unit 1, not GE)
+Fukushima-Daiichi|1|turbine_supplier|UNVERIFIABLE||LOW|No source found distinguishing turbine supplier from NSSS/reactor supplier for Unit 1
+Fukushima-Daiichi|1|rpv_manufacturer|UNVERIFIABLE||LOW|ja.wikipedia.org draft table suggested GE but a second, more careful pass retracted the separate RPV column as not present in the main table; JSW (current DB value) is a plausible forge-supplier but unconfirmed as RPV assembler
+Fukushima-Daiichi|2|constructor|WRONG|GE/Toshiba|MED|en.wikipedia.org (NSSS=GE) + ja.wikipedia.org (Primary contractor listed as GE/Toshiba for Unit 2); reactor design/NSSS by GE, built out by Toshiba
+Fukushima-Daiichi|2|architect_engineer|WRONG|Ebasco|MED|en.wikipedia.org Fukushima Daiichi NPP reactor table (A-E=Ebasco for Unit 2)
+Fukushima-Daiichi|2|turbine_supplier|UNVERIFIABLE||LOW|No independently sourced turbine-specific data found for Unit 2 (ja.wikipedia first-pass fetch suggested GE but a stricter re-check found no distinct turbine column in the article)
+Fukushima-Daiichi|2|rpv_manufacturer|UNVERIFIABLE||LOW|Conflicting/unreliable scrape results (one pass suggested Toshiba, a stricter re-check found no distinct RPV column); cannot confirm JSW or any alternative
+Fukushima-Daiichi|3|constructor|CONFIRMED||HIGH|en.wikipedia.org + ja.wikipedia.org agree: reactor/NSSS supplier = Toshiba for Unit 3
+Fukushima-Daiichi|3|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org Fukushima Daiichi NPP reactor table (A-E=Toshiba for Unit 3)
+Fukushima-Daiichi|3|turbine_supplier|UNVERIFIABLE||LOW|No source distinguishing turbine supplier from reactor vendor found; Toshiba plausible by convention but unconfirmed
+Fukushima-Daiichi|3|rpv_manufacturer|UNVERIFIABLE||LOW|No reliable source found isolating RPV manufacturer from reactor vendor/forge supplier for Unit 3
+Fukushima-Daiichi|4|constructor|CONFIRMED||HIGH|en.wikipedia.org + ja.wikipedia.org agree: reactor/NSSS supplier = Hitachi for Unit 4
+Fukushima-Daiichi|4|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org Fukushima Daiichi NPP reactor table (A-E=Hitachi for Unit 4)
+Fukushima-Daiichi|4|turbine_supplier|UNVERIFIABLE||LOW|No source distinguishing turbine supplier from reactor vendor found; Hitachi plausible by convention but unconfirmed
+Fukushima-Daiichi|4|rpv_manufacturer|UNVERIFIABLE||LOW|No reliable source found isolating RPV manufacturer from reactor vendor/forge supplier for Unit 4
+Fukushima-Daiichi|5|constructor|CONFIRMED||HIGH|en.wikipedia.org + ja.wikipedia.org agree: reactor/NSSS supplier = Toshiba for Unit 5
+Fukushima-Daiichi|5|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org Fukushima Daiichi NPP reactor table (A-E=Toshiba for Unit 5)
+Fukushima-Daiichi|5|turbine_supplier|UNVERIFIABLE||LOW|No source distinguishing turbine supplier from reactor vendor found; Toshiba plausible by convention but unconfirmed
+Fukushima-Daiichi|5|rpv_manufacturer|UNVERIFIABLE||LOW|No reliable source found isolating RPV manufacturer from reactor vendor/forge supplier for Unit 5
+Fukushima-Daiichi|6|constructor|WRONG|GE/Toshiba|MED|en.wikipedia.org (NSSS=GE) + task-provided per-unit ground truth (Unit 6 GE/Toshiba); current DB value Hitachi is incorrect
+Fukushima-Daiichi|6|architect_engineer|WRONG|Ebasco|MED|en.wikipedia.org Fukushima Daiichi NPP reactor table (A-E=Ebasco for Unit 6, not Hitachi)
+Fukushima-Daiichi|6|turbine_supplier|UNVERIFIABLE||LOW|No independently sourced turbine-specific data found for Unit 6
+Fukushima-Daiichi|6|rpv_manufacturer|UNVERIFIABLE||LOW|No reliable source found isolating RPV manufacturer from reactor vendor/forge supplier for Unit 6
+# NOTES
+# Constructor/architect_engineer verified against en.wikipedia.org "Fukushima Daiichi Nuclear Power Plant" reactor data table (columns: NSSS, A-E, Builder; cited to TEPCO) and cross-checked against ja.wikipedia.org's unit table.
+# The source DB's heuristic guess had copied ONE vendor across constructor/architect_engineer/turbine_supplier per unit (e.g. Unit 1 all three = GE). Real architect-engineer for Units 1, 2, 6 was Ebasco (a US engineering firm), NOT the reactor vendor GE -- this is the most consequential finding, since it was wrong for all 3 GE-line units.
+# Units 2 and 6 had split reactor supply (GE design/NSSS, Toshiba fabrication/turbine role per Japanese-language sourcing) -- current DB collapsed each to a single vendor (Toshiba for Unit 2, Hitachi for Unit 6), both WRONG.
+# Turbine_supplier and rpv_manufacturer could not be independently verified for any of the 6 units within available tools (WebSearch budget was exhausted mid-task; WebFetch attempts at IAEA PRIS, industcards.com, and a stricter re-pass of ja.wikipedia.org's table found no column distinguishing turbine supplier or RPV manufacturer from the general reactor vendor). All 12 turbine/RPV rows are UNVERIFIABLE rather than assumed CONFIRMED, per instructions not to assume turbine tracks the reactor vendor without a citation.
+# Recommend re-attempting turbine_supplier and rpv_manufacturer verification with TEPCO primary-source PDFs or IAEA PRIS reactor detail pages (need per-unit reactor IDs) in a future session with WebSearch budget available.

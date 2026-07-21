@@ -1,0 +1,182 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Almaraz|1|constructor|UNVERIFIABLE||LOW|No source names a distinct EPC/general contractor beyond Westinghouse as NSSS vendor (Wikipedia: Almaraz NPP)
+Almaraz|1|architect_engineer|WRONG|Empresarios Agrupados or INITEC (exact firm unconfirmed)|LOW|WNA Spain country profile: Spain's "second generation" reactors (started early 1970s, Almaraz's cohort) "involved local engineering companies Empresarios Agrupados and INITEC"
+Almaraz|1|turbine_supplier|UNVERIFIABLE||LOW|No source found naming turbine supplier specifically
+Almaraz|1|rpv_manufacturer|UNVERIFIABLE||LOW|ENSA founded 1973, first vessel delivered 1981 (Valdecaballeros) — rules out ENSA for Almaraz's ~1977-79 vessel need, but does not independently confirm Westinghouse
+Almaraz|2|constructor|UNVERIFIABLE||LOW|Same as Unit 1
+Almaraz|2|architect_engineer|WRONG|Empresarios Agrupados or INITEC (exact firm unconfirmed)|LOW|Same WNA basis as Unit 1
+Almaraz|2|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 1
+Almaraz|2|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 1
+Asco|1|constructor|UNVERIFIABLE||LOW|Wikipedia: Ascó NPP confirms only PWR type/capacity, no supplier/contractor detail
+Asco|1|architect_engineer|WRONG|Empresarios Agrupados or INITEC (exact firm unconfirmed)|LOW|Asco construction began 1971, fits WNA's second-generation Empresarios Agrupados/INITEC cohort
+Asco|1|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Asco|1|rpv_manufacturer|UNVERIFIABLE||LOW|ENSA timeline (first vessel 1981) rules out ENSA for a unit commissioned 1984 needing vessel years earlier; does not confirm Westinghouse
+Asco|2|constructor|UNVERIFIABLE||LOW|Same as Unit 1
+Asco|2|architect_engineer|WRONG|Empresarios Agrupados or INITEC (exact firm unconfirmed)|LOW|Same WNA basis as Unit 1
+Asco|2|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 1
+Asco|2|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 1
+Cofrentes|1|constructor|CONFIRMED||HIGH|Wikipedia EN+ES: "contracts were drawn up with General Electric Co. to supply the reactor, turbogenerator...and first load of fuel"
+Cofrentes|1|architect_engineer|WRONG|Empresarios Agrupados or INITEC (exact firm unconfirmed)|LOW|Cofrentes (authorized Sept 1973) fits WNA's second-generation Empresarios Agrupados/INITEC cohort
+Cofrentes|1|turbine_supplier|CONFIRMED||HIGH|Same explicit GE "turbogenerator" contract language, Wikipedia EN+ES
+Cofrentes|1|rpv_manufacturer|CONFIRMED||LOW|RDM's own Wikipedia page states it built vessels for "Spain (2)" reactors, circumstantially matching Spain's only two GE BWRs (Cofrentes + Santa María de Garoña); no source names Cofrentes explicitly
+Jose Cabrera|1|constructor|WRONG|Zachry Construction Corporation|MED|Wikipedia: José Cabrera Nuclear Power Station — "Zachry Construction Corporation built the plant for Westinghouse Electric Company" (single source, not cross-verified)
+Jose Cabrera|1|architect_engineer|UNVERIFIABLE||LOW|Plant was a "turnkey project" per WNA, implying vendor-as-own-AE, but not explicitly stated
+Jose Cabrera|1|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Jose Cabrera|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source found
+Santa María de Garoña|1|constructor|UNVERIFIABLE||LOW|Wikipedia ES confirms GE supplied the BWR-3 design but names no overall plant constructor/EPC
+Santa María de Garoña|1|architect_engineer|UNVERIFIABLE||LOW|First-generation turnkey project per WNA; no plant-specific AE source found
+Santa María de Garoña|1|turbine_supplier|UNVERIFIABLE||LOW|GE confirmed only for reactor design, not explicitly for turbine
+Santa María de Garoña|1|rpv_manufacturer|CONFIRMED||LOW|Same RDM "Spain (2)" inference as Cofrentes; plant built 1966-1970, predating ENSA (1973), requiring a foreign vessel supplier
+Trillo|1|constructor|CONFIRMED||MED|Wikipedia ES: "Su diseño es de la firma alemana Siemens AG-KWU"; general-contractor role not separately confirmed
+Trillo|1|architect_engineer|CONFIRMED||MED|Same Siemens AG-KWU source as above
+Trillo|1|turbine_supplier|UNVERIFIABLE||LOW|Not explicitly mentioned in sources found
+Trillo|1|rpv_manufacturer|WRONG|ENSA|MED|Wikipedia ES: Trillo components "fueron fabricados por Ensa"; timeline fits (built 1979-1988, within ENSA's active window); RDM not mentioned in any Trillo sourcing
+Vandellos|1|constructor|UNVERIFIABLE||LOW|Wikipedia ES confirms HIFRENSA consortium ownership (EDF/FECSA/ENHER/HECSA/Fuerzas del Segre) but names no constructor company
+Vandellos|1|architect_engineer|UNVERIFIABLE||LOW|No source found naming CEA specifically for this plant
+Vandellos|1|turbine_supplier|UNVERIFIABLE||LOW|No source found naming Alsthom specifically for this plant
+Vandellos|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source found naming Creusot-Loire specifically for this plant
+Vandellos|2|constructor|WRONG|Copisa|MED|Wikipedia ES: "Comenzada a construir en 1981 por la constructora Copisa" — Westinghouse remains correct as reactor/NSSS vendor, but Copisa was the physical constructor
+Vandellos|2|architect_engineer|UNVERIFIABLE||LOW|No plant-specific AE source found
+Vandellos|2|turbine_supplier|UNVERIFIABLE||LOW|No source found
+Vandellos|2|rpv_manufacturer|UNVERIFIABLE||LOW|Current value (ENSA) is timeline-consistent (built 1981-1988) but no source explicitly names Vandellos 2's vessel supplier
+Caorso|1|constructor|CONFIRMED|Ansaldo Meccanico Nucleare / GE Technical Services Co. (GETSCO)|MED|Wikipedia: Caorso Nuclear Power Plant; WNA Italy profile calls it a "GE/Ansaldo partnership"
+Caorso|1|architect_engineer|UNVERIFIABLE||LOW|No source separates an AE role from the constructor role; Ansaldo plausibly served both
+Caorso|1|turbine_supplier|UNVERIFIABLE||LOW|No source names turbine vendor distinctly
+Caorso|1|rpv_manufacturer|UNVERIFIABLE||LOW|GE supplied the BWR-4/Mark II design; whether the physical vessel was GE- or Ansaldo-fabricated under license is not sourced
+Enrico Fermi|1|constructor|CONFIRMED|Westinghouse (NSSS vendor); actual Italian building entity was SEI S.p.A. (Società Elettronucleare Italiana)|MED|Italian Wikipedia: Centrale nucleare Enrico Fermi (Trino Vercellese); note the plant is a single site, not a naming duplicate of "Trino"
+Enrico Fermi|1|architect_engineer|UNVERIFIABLE||LOW|No source names a distinct AE firm
+Enrico Fermi|1|turbine_supplier|UNVERIFIABLE||LOW|No source names turbine manufacturer
+Enrico Fermi|1|rpv_manufacturer|CONFIRMED|Westinghouse Electric Company|MED|Italian Wikipedia: Centrale nucleare Enrico Fermi — "Westinghouse Electric Company provided the PWR reactor design and components"
+Garigliano|1|constructor|CONFIRMED|General Electric (NSSS vendor); actual Italian legal entity was SENN S.p.A. (Società Elettronucleare Nazionale, IRI-Finelettrica group)|MED|Italian Wikipedia: Centrale nucleare del Garigliano
+Garigliano|1|architect_engineer|UNVERIFIABLE||LOW|"GE" not directly sourced as AE role; Italian Wikipedia credits Riccardo Morandi as civil/structural designer, a different role
+Garigliano|1|turbine_supplier|WRONG|Ansaldo Meccanico Nucleare|MED|Italian Wikipedia: Centrale nucleare del Garigliano names Ansaldo Meccanico Nucleare as generator/turbine supplier, not GE (single source)
+Garigliano|1|rpv_manufacturer|CONFIRMED|General Electric (as part of GE-Ansaldo technology partnership)|MED|Italian Wikipedia: Centrale nucleare del Garigliano
+Latina|1|constructor|WRONG|The Nuclear Power Group (TNPG) — UK consortium of AEI, John Thompson, C.A. Parsons, Head Wrightson, and A. Reyrolle & Co., working with SIMEA S.p.A. as Italian constructing entity|HIGH|Wikipedia: Latina Nuclear Power Plant — names TNPG and member firms directly; "NPPC" (Nuclear Power Plant Company) was a distinct, separate UK consortium
+Latina|1|architect_engineer|WRONG|The Nuclear Power Group (TNPG)|HIGH|Wikipedia: Latina Nuclear Power Plant, same reasoning as constructor
+Latina|1|turbine_supplier|CONFIRMED||HIGH|Wikipedia: Latina Nuclear Power Plant — "C. A. Parsons and Company manufactured three 70 MWe turbo generator sets"
+Latina|1|rpv_manufacturer|WRONG|Not "NPPC" (entity does not match TNPG naming); exact vessel fabricator unconfirmed among TNPG members (candidates: Head Wrightson, A. Reyrolle & Company)|LOW|Wikipedia: Latina Nuclear Power Plant explicitly does not identify a specific RPV manufacturer
+Dukovany|1|constructor|CONFIRMED|Skoda Praha|HIGH|WNA Czech Republic profile: "designed by Russian organizations and Energoprojekt and built by Skoda Praha"
+Dukovany|1|architect_engineer|CONFIRMED|Atomenergoproekt (with Energoprojekt Praha co-designing domestic/conventional scope)|MED|Same WNA source; "Russian organizations" inferred as Atomenergoproekt, the standard VVER-440 designer
+Dukovany|1|turbine_supplier|CONFIRMED||HIGH|Czech Wikipedia: Jaderná elektrárna Dukovany — "Škoda Plzeň...vyrobila a dodala všechny turbogenerátory" (manufactured and supplied all turbogenerators)
+Dukovany|1|rpv_manufacturer|WRONG|Skoda (Skoda JS, Plzeň)|MED|No source anywhere names Izhora for Dukovany; inferred from Czech Wikipedia's "~80% of equipment domestically made" claim plus Skoda JS's own history of manufacturing 21 complete VVER-440 reactors
+Dukovany|2|constructor|CONFIRMED|Skoda Praha|HIGH|Same as Unit 1
+Dukovany|2|architect_engineer|CONFIRMED|Atomenergoproekt (with Energoprojekt Praha)|MED|Same as Unit 1
+Dukovany|2|turbine_supplier|CONFIRMED||HIGH|Same as Unit 1
+Dukovany|2|rpv_manufacturer|WRONG|Skoda (Skoda JS, Plzeň)|MED|Same as Unit 1
+Dukovany|3|constructor|CONFIRMED|Skoda Praha|HIGH|Same as Unit 1
+Dukovany|3|architect_engineer|CONFIRMED|Atomenergoproekt (with Energoprojekt Praha)|MED|Same as Unit 1
+Dukovany|3|turbine_supplier|CONFIRMED||HIGH|Same as Unit 1
+Dukovany|3|rpv_manufacturer|WRONG|Skoda (Skoda JS, Plzeň)|MED|Same as Unit 1
+Dukovany|4|constructor|CONFIRMED|Skoda Praha|HIGH|Same as Unit 1
+Dukovany|4|architect_engineer|CONFIRMED|Atomenergoproekt (with Energoprojekt Praha)|MED|Same as Unit 1
+Dukovany|4|turbine_supplier|CONFIRMED||HIGH|Same as Unit 1
+Dukovany|4|rpv_manufacturer|WRONG|Skoda (Skoda JS, Plzeň)|MED|Same as Unit 1
+Temelin|1|constructor|CONFIRMED|Skoda Praha (engineering); note main civil contractor was "VSB"|MED|WNA Czech Republic profile: "built by VSB with engineering by Skoda Praha"
+Temelin|1|architect_engineer|CONFIRMED|Atomenergoproekt (with Energoprojekt Praha)|MED|WNA: "designed by Russian organizations and Energoprojekt"
+Temelin|1|turbine_supplier|CONFIRMED|Skoda (Skoda Energo); HP turbines later replaced by Alstom 2004-07|HIGH|Czech Wikipedia: Jaderná elektrárna Temelín; WNA notes Skoda Power modified HP turbines 2004-07, implying original supplier was Skoda
+Temelin|1|rpv_manufacturer|WRONG|Skoda Plzeň|HIGH|Czech Wikipedia: "Dne 10. července 1991 dorazila na staveniště první tlaková nádoba reaktoru vyrobená společností Škoda Plzeň" (first RPV, made by Škoda Plzeň, arrived July 10, 1991)
+Temelin|2|constructor|CONFIRMED|Skoda Praha (engineering); civil contractor "VSB"|MED|Same as Unit 1
+Temelin|2|architect_engineer|CONFIRMED|Atomenergoproekt (with Energoprojekt Praha)|MED|Same as Unit 1
+Temelin|2|turbine_supplier|CONFIRMED|Skoda (Skoda Energo); HP turbines later Alstom|HIGH|Same as Unit 1
+Temelin|2|rpv_manufacturer|WRONG|Skoda Plzeň|HIGH|Same source as Unit 1 (both RPVs from the same domestic Škoda Plzeň production run)
+Bohunice|1|constructor|WRONG|Atomenergoexport (USSR) and Skoda (Czechoslovakia), joint supply|MED|WNA Slovakia profile: "two VVER-440 V-230 reactors supplied by Atomenergoexport of Russia and Skoda of (then) Czechoslovakia"
+Bohunice|1|architect_engineer|CONFIRMED|Atomenergoproekt|HIGH|WNA Slovakia profile: "All were designed by Atomenergoproekt"
+Bohunice|1|turbine_supplier|CONFIRMED||MED|Inferred from consistent VVER-440 Czechoslovak-market turbine pattern (Skoda Plzen K-220-44); no unit-specific citation found this pass
+Bohunice|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source names Izhora OR Skoda specifically as vessel maker for V1; WNA's joint "Atomenergoexport/Skoda" phrasing describes overall reactor supply, not the vessel forging specifically — one genuinely open question in this batch
+Bohunice|2|constructor|WRONG|Atomenergoexport (USSR) and Skoda (Czechoslovakia), joint supply|MED|Same as Unit 1
+Bohunice|2|architect_engineer|CONFIRMED|Atomenergoproekt|HIGH|Same as Unit 1
+Bohunice|2|turbine_supplier|CONFIRMED||MED|Same as Unit 1
+Bohunice|2|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 1
+Bohunice|3|constructor|CONFIRMED|Skoda Praha|HIGH|WNA Slovakia profile: "two V-213 reactors (the V2 plant) built by Skoda"
+Bohunice|3|architect_engineer|CONFIRMED|Atomenergoproekt|HIGH|Same WNA sentence covers V1+V2: "All were designed by Atomenergoproekt"
+Bohunice|3|turbine_supplier|CONFIRMED||MED|Inferred via same VVER-440 Czechoslovak turbine-supply pattern as V1
+Bohunice|3|rpv_manufacturer|WRONG|Skoda (Skoda JS)|MED|Inferred from V-213 domestic-manufacture pattern plus Skoda JS's 21-reactor VVER-440 claim; no direct per-unit citation
+Bohunice|4|constructor|CONFIRMED|Skoda Praha|HIGH|Same as Unit 3
+Bohunice|4|architect_engineer|CONFIRMED|Atomenergoproekt|HIGH|Same as Unit 3
+Bohunice|4|turbine_supplier|CONFIRMED||MED|Same as Unit 3
+Bohunice|4|rpv_manufacturer|WRONG|Skoda (Skoda JS)|MED|Same as Unit 3
+Bohunice A|1|constructor|CONFIRMED|Skoda Works|MED|Consistent with A-1 (KS-150 gas-cooled) being an entirely Czechoslovak-designed/built prototype, distinct from the Soviet VVER program; not independently re-sourced externally this pass
+Bohunice A|1|architect_engineer|CONFIRMED|Energoprojekt Praha|MED|Same basis as constructor
+Bohunice A|1|turbine_supplier|CONFIRMED|Skoda|MED|Same basis as constructor
+Bohunice A|1|rpv_manufacturer|CONFIRMED|Skoda Works|MED|Consistent with A-1 being wholly domestic (non-Soviet) design, making a Soviet Izhora vessel implausible regardless
+Mochovce|1|constructor|CONFIRMED|Skoda Praha|MED|WNA Slovakia profile: "Constructor: Skoda (commenced 1982)" for Mochovce units 1-2
+Mochovce|1|architect_engineer|CONFIRMED|Atomenergoproekt|MED|Inferred from identical V-213 Soviet/Czechoslovak design-collaboration structure seen at Dukovany/Bohunice; not separately quoted for Mochovce
+Mochovce|1|turbine_supplier|CONFIRMED|Skoda|MED|Mochovce 3-4 explicitly confirmed "Skoda Power steam turbines" per WNA; inferred same supplier line for 1-2 (same program/era)
+Mochovce|1|rpv_manufacturer|WRONG|Skoda (Skoda JS)|MED|Inferred from V-213 domestic-manufacture pattern plus Skoda JS's 21-reactor VVER-440 claim; no direct per-unit citation
+Mochovce|2|constructor|CONFIRMED|Skoda Praha|MED|Same as Unit 1
+Mochovce|2|architect_engineer|CONFIRMED|Atomenergoproekt|MED|Same as Unit 1
+Mochovce|2|turbine_supplier|CONFIRMED|Skoda|MED|Same as Unit 1
+Mochovce|2|rpv_manufacturer|WRONG|Skoda (Skoda JS)|MED|Same as Unit 1
+Mochovce|3|constructor|CONFIRMED|Skoda Praha (original 1980s contract); completion consortium later included Skoda JS + Russia's AtomStroyExport (ASE)|MED|WNA Slovakia profile notes for units 3-4: "Skoda JS, Russia's AtomStroyExport (ASE)"; Slovak Wikipedia Mochovce article: "Mechanické systémy: Škoda"
+Mochovce|3|architect_engineer|CONFIRMED|Atomenergoproekt (original design basis)|MED|Same original V-213 design lineage as Units 1-2
+Mochovce|3|turbine_supplier|CONFIRMED||HIGH|WNA Slovakia profile explicit: "Skoda Power steam turbines" for Mochovce 3-4
+Mochovce|3|rpv_manufacturer|WRONG|Skoda (Skoda JS)|MED|Units 3-4 largely used components manufactured/procured under the original 1980s Czechoslovak V-213 program, including Skoda-made vessels; inferred, no direct per-unit citation
+Mochovce|4|constructor|CONFIRMED|Skoda Praha (original 1980s contract); completion consortium later included Skoda JS + AtomStroyExport (ASE)|MED|Same as Unit 3
+Mochovce|4|architect_engineer|CONFIRMED|Atomenergoproekt (original design basis)|MED|Same as Unit 3
+Mochovce|4|turbine_supplier|CONFIRMED||HIGH|Same as Unit 3
+Mochovce|4|rpv_manufacturer|WRONG|Skoda (Skoda JS)|MED|Same as Unit 3
+Paks|1|constructor|UNVERIFIABLE||LOW|No source confirms/denies Atomenergoexport as on-site general contractor vs a Hungarian domestic construction trust; Hungarian Wikipedia gives no unit-level detail
+Paks|1|architect_engineer|UNVERIFIABLE||LOW|Hungarian Wikipedia confirms Soviet design origin generally but names no specific AE firm
+Paks|1|turbine_supplier|UNVERIFIABLE||LOW|Skoda appears in Hungarian Wikipedia only re: a 1997 control-rod-drive maintenance incident, not as confirmed turbine OEM
+Paks|1|rpv_manufacturer|UNVERIFIABLE||LOW|No source found confirming Izhora Plants specifically for Paks 1
+Paks|2|constructor|UNVERIFIABLE||LOW|Same as Unit 1
+Paks|2|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 1
+Paks|2|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 1
+Paks|2|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 1
+Paks|3|constructor|UNVERIFIABLE||LOW|Same as Unit 1
+Paks|3|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 1
+Paks|3|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 1
+Paks|3|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 1
+Paks|4|constructor|UNVERIFIABLE||LOW|Same as Unit 1
+Paks|4|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 1
+Paks|4|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 1
+Paks|4|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 1
+Paks|5|constructor|CONFIRMED|Atomstroyexport (JSC ASE, Rosatom's EPC subsidiary — modern successor brand)|MED|WNA Hungary country profile: "Construction Contractor: Rosatom"; ASE is Rosatom's EPC arm and modern name for Atomstroyexport
+Paks|5|architect_engineer|UNVERIFIABLE||LOW|WNA profile did not separately name an AE firm distinct from ASE/Rosatom
+Paks|5|turbine_supplier|WRONG|Arabelle Solutions (Belfort, France — GE/EDF nuclear turbine joint venture)|HIGH|WNA Hungary profile: "Turbine components: Arabelle Solutions (Belfort, France) began production in April 2025" — this is a modern (2020s) VVER-1200 new-build, not the 1980s Paks 1-4 supply chain; Skoda is incorrect for this unit
+Paks|5|rpv_manufacturer|WRONG|AEM-Technologies (forging at AEM-Spetsstal, St Petersburg — modern Rosatom vessel supply chain, distinct from the legacy Izhora Plants entity)|MED|WNA Hungary profile: "Reactor pressure vessel parts: Forging began at AEM-Spetsstal (St Petersburg, Russia) in April 2025"
+Kozloduy|1|constructor|UNVERIFIABLE||LOW|Bulgarian Wikipedia and WNA Bulgaria profile do not name unit-level contractors for units 1-4
+Kozloduy|1|architect_engineer|UNVERIFIABLE||LOW|Same as above
+Kozloduy|1|turbine_supplier|UNVERIFIABLE||LOW|No corroboration found distinguishing Skoda vs. Kharkiv Turbine Works/LMZ for V-230 units
+Kozloduy|1|rpv_manufacturer|UNVERIFIABLE||LOW|Not confirmed; WNA Bulgaria profile notes Skoda built the RPV for the never-completed Belene-1 project (1989), establishing Skoda's VVER-320-class capability historically but not confirming Kozloduy specifically
+Kozloduy|2|constructor|UNVERIFIABLE||LOW|Same as Unit 1
+Kozloduy|2|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 1
+Kozloduy|2|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 1
+Kozloduy|2|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 1
+Kozloduy|3|constructor|UNVERIFIABLE||LOW|Same as Unit 1
+Kozloduy|3|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 1
+Kozloduy|3|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 1
+Kozloduy|3|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 1
+Kozloduy|4|constructor|UNVERIFIABLE||LOW|Same as Unit 1
+Kozloduy|4|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 1
+Kozloduy|4|turbine_supplier|UNVERIFIABLE||LOW|Same as Unit 1
+Kozloduy|4|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 1
+Kozloduy|5|constructor|UNVERIFIABLE||LOW|WNA Bulgaria profile names "Parsons E&C Europe (now WorleyParsons)" as AE for the later Belene-era project only, not confirmed applicable to Kozloduy 5/6
+Kozloduy|5|architect_engineer|UNVERIFIABLE||LOW|Ambiguous whether the Parsons/WorleyParsons reference applies to Kozloduy 5/6 or only Belene; not confirmed
+Kozloduy|5|turbine_supplier|UNVERIFIABLE||LOW|Could not distinguish Skoda vs. Russian LMZ/Power Machines supply for this V-320 unit
+Kozloduy|5|rpv_manufacturer|UNVERIFIABLE||LOW|Not confirmed
+Kozloduy|6|constructor|UNVERIFIABLE||LOW|Same as Unit 5
+Kozloduy|6|architect_engineer|UNVERIFIABLE||LOW|Same as Unit 5
+Kozloduy|6|turbine_supplier|UNVERIFIABLE||LOW|WNA Bulgaria profile notes only a 2020s turbine-generator refurbishment contract with Rusatom Services — not confirmation of the original OEM
+Kozloduy|6|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Unit 5
+Cernavodă|1|constructor|CONFIRMED|AECL, with Ansaldo Nucleare (Italy) as documented program partner|MED|WNA Romania profile + Wikipedia: Cernavodă Nuclear Power Plant describe an AECL-Ansaldo-SNN consortium; sourcing is clearest for Unit 2 (2003 restart), ambiguous whether it also governed Unit 1's original 1980s-1996 construction
+Cernavodă|1|architect_engineer|WRONG|AECL and Ansaldo Nucleare (Italy) jointly, not AECL alone|MED|Same sources as constructor; Ansaldo's role appears substantive enough to belong in this field, at least for Unit 2, possibly Unit 1
+Cernavodă|1|turbine_supplier|UNVERIFIABLE||LOW|Could not confirm original 1990s turbine OEM; a 2025 Arabelle Solutions contract exists but is explicitly a refurbishment deal, not confirmation of original supplier
+Cernavodă|1|rpv_manufacturer|UNVERIFIABLE||LOW|CANDU reactors use a calandria + pressure tubes rather than one large RPV; could not confirm fabricator (AECL directly vs. a licensed heavy manufacturer)
+Cernavodă|2|constructor|CONFIRMED|AECL / Ansaldo Nucleare (Italy) / SNN (Nuclearelectrica, Romania) consortium|HIGH|Wikipedia: Cernavodă Nuclear Power Plant — "A consortium of AECL and Ansaldo Nucleare of Italy, along with Nuclearelectrica (SNN) SA... was contracted in 2003 to manage the construction of the partially completed Unit 2...and to commission it into service"
+Cernavodă|2|architect_engineer|WRONG|AECL and Ansaldo Nucleare (Italy), not AECL alone|HIGH|Same Wikipedia citation as constructor — Ansaldo had a documented AE/construction-management role
+Cernavodă|2|turbine_supplier|UNVERIFIABLE||LOW|Not confirmed; same caveat as Unit 1 (2025 Arabelle contract is a refurbishment reference only)
+Cernavodă|2|rpv_manufacturer|UNVERIFIABLE||LOW|Not confirmed
+Krško|1|constructor|UNVERIFIABLE||LOW|nek.si (plant operator) returned HTTP 403; Wikipedia confirms "Westinghouse won the competition to supply a plant" but names no separate general construction contractor
+Krško|1|architect_engineer|UNVERIFIABLE||LOW|Could not find any source confirming or denying "Gilbert Associates"; the firm's own Wikipedia page returned 404 this pass, so even its naming could not be checked
+Krško|1|turbine_supplier|UNVERIFIABLE||LOW|Westinghouse is plausible (standard turnkey Westinghouse export PWR) but not independently confirmed; Wikipedia names Westinghouse only as NSSS/reactor supplier
+Krško|1|rpv_manufacturer|UNVERIFIABLE||LOW|Could not confirm Westinghouse vs. a licensed vessel fabricator (e.g. Uddcomb Sweden); Uddcomb's Wikipedia page returned 404 this pass
+# NOTES
+- Structural finding (Czech/Slovak/Hungarian/Bulgarian VVER RPVs): the current dataset's "Izhora Plants" value is copy-pasted identically across all 15 Czech/Slovak units plus all 11 Hungarian/Bulgarian units (26 units total) with zero supporting citation for any of them. Cross-checking against Wikipedia (EN/CS/SK/HU/BG), WNA, and Skoda JS's own company history found NOT ONE source naming Izhora for any Czech or Slovak plant. Best-supported correction: Dukovany (1-4), Temelin (1-2), Bohunice V-213 units (3-4), Bohunice A-1, and Mochovce (1-4) were built with domestically-manufactured Skoda (Skoda JS Plzen) vessels — directly documented for Temelin with a dated citation (first RPV arrived on site July 10, 1991, made by Skoda Plzen), inferred with MED confidence elsewhere via Skoda JS's own claim of having built 21 complete VVER-440 reactors and 3 VVER-1000 reactors. Bohunice V1 (units 1-2, oldest V-230 design) is the one exception left genuinely UNVERIFIABLE — WNA describes joint Atomenergoexport/Skoda supply without specifying which entity forged the vessel.
+- For Hungary (Paks 1-4) and Bulgaria (Kozloduy 1-6), the same "Izhora Plants" and "Skoda" turbine values could NOT be positively confirmed OR disconfirmed this pass — Hungarian/Bulgarian Wikipedia and WNA country profiles carry no unit-level contractor detail, and IAEA PRIS (the ideal source) returned 403/404 throughout. These 40 fields are marked UNVERIFIABLE rather than corrected; a same-hypothesis correction (Izhora→domestic or Russian-turbine-works) is plausible but unproven and should not be applied without a stronger source.
+- Confirmed miss: Paks unit 5 (Paks II, VVER-1200, under construction) is a brand-new 2020s Rosatom-led build, not the 1980s Soviet supply chain — the dataset's "Skoda" turbine and "Izhora Plants" RPV values are anachronistic. WNA's Hungary profile documents 2025-era fabrication at Arabelle Solutions (Belfort, France; GE/EDF turbine JV) for the turbine and AEM-Spetsstal (St Petersburg, Rosatom's AEM-Technologies group) for RPV forging.
+- Likely miss on "constructor" field definition across Spain: the field appears to conflate the NSSS/reactor technology vendor with the actual physical builder. Explicit contrary evidence found for two of ten Spanish units: Jose Cabrera was built by Zachry Construction Corporation "for Westinghouse," and Vandellos 2 was built by the Spanish firm Copisa, not Westinghouse. This raises the possibility that "constructor" for the other Westinghouse-tech Spanish units (Almaraz, Asco) is also a vendor-name placeholder rather than a verified builder.
+- Likely systematic miss on Spain's architect_engineer field: WNA states Spain's "second generation" of reactors (early-1970s cohort: Almaraz, Asco, Cofrentes) used local engineering firms Empresarios Agrupados and INITEC, not the foreign reactor vendor as AE — but no source found in this pass distinguishes which of the two firms applies to which specific plant, so corrected_value is left as an either/or pending a firm-specific source (Empresarios Agrupados' own site returned SSL errors; recommend a follow-up pass).
+- Naming clarification (not an error): Italy's "Enrico Fermi" plant IS Trino Vercellese — same single site, both names are legitimate and refer to one plant, not two distinct reactors. No database correction needed, but worth confirming this isn't accidentally double-counted as two separate reactor records.
+- Correction: Italy's Latina plant constructor/AE/RPV fields used "NPPC" (Nuclear Power Plant Company), but Wikipedia names the actual consortium as "The Nuclear Power Group" (TNPG) — a different, though similarly-named, UK reactor consortium (AEI, John Thompson, C.A. Parsons, Head Wrightson, A. Reyrolle & Co.). This is a clear entity-name substitution error, high confidence.
+- Coverage caveat: WebSearch quota was exhausted early in all four research passes (session-wide 200-call caps hit before or shortly after each task began), forcing reliance on WebFetch against known/guessed URLs. IAEA PRIS — intended as a primary source — was inaccessible in every pass (403/JS-postback/paywall). This is the main reason so many turbine_supplier and several architect_engineer fields, especially for Spain, Paks 1-4, and Kozloduy, are UNVERIFIABLE rather than resolved. A follow-up pass with restored search budget and working PRIS access would likely close a meaningful share of these gaps.

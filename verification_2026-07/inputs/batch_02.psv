@@ -1,0 +1,28 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+USA|Cooper|1|BWR-4 (Mark 1)|Operational|GE|Burns & Roe|General Electric|Combustion Engineering
+USA|Crystal River|3|B&W (L-loop)|Shutdown|B&W|Gilbert Associates|Westinghouse|Babcock & Wilcox
+USA|Davis Besse|1|B&W (R-loop)|Operational|B&W|Bechtel|Westinghouse|Babcock & Wilcox
+USA|Diablo Canyon|1|W (4-loop)|Operational|Westinghouse|Pacific Gas & Electric|Westinghouse|Combustion Engineering
+USA|Diablo Canyon|2|W (4-loop)|Operational|Westinghouse|Pacific Gas & Electric|Westinghouse|Combustion Engineering
+USA|Dresden|1|None|Shutdown|GE|Sargent & Lundy|General Electric|General Electric
+USA|Dresden|2|BWR-3 (Mark 1)|Operational|GE|Sargent & Lundy|General Electric|Babcock & Wilcox
+USA|Dresden|3|BWR-3 (Mark 1)|Operational|GE|Sargent & Lundy|General Electric|Babcock & Wilcox
+USA|Duane Arnold|1|BWR-4 (Mark 1)|Shutdown|GE|Bechtel|General Electric|Combustion Engineering
+USA|Elk River|1|None|Shutdown|None|None|General Electric|Allis-Chalmers
+USA|Farley (Joseph M. Farley)|1|W (3-loop)|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|Farley (Joseph M. Farley)|2|W (3-loop) DRYAMB|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|Fermi|1|Liquid Metal FBR|Shutdown|None|None|None|Power Reactor Development Company
+USA|Fermi|2|BWR-4 (Mark 1)|Operational|GE|None|General Electric|Combustion Engineering
+USA|Fitzpatrick (James A. Fitzpatrick)|1|BWR-4 (Mark 1)|Operational|GE|Stone & Webster|General Electric|Combustion Engineering
+USA|Fort Calhoun|1|CE (2-loop)|Shutdown|CE|Gibbs & Hill|General Electric|Combustion Engineering
+USA|Fort St. Vrain|1|None|Shutdown|None|None|None|General Atomic
+USA|GE Vallecitos|1|VBWR|Shutdown|GE|None|General Electric|General Electric
+USA|Ginna (R. E. Ginna)|1|W (2-loop)|Operational|Westinghouse|Gilbert Associates|Westinghouse|Combustion Engineering
+USA|Grand Gulf|1|BWR-6 (Mark 3)|Operational|GE|Bechtel|General Electric|Babcock & Wilcox
+USA|Haddam Neck (Connecticut Yankee)|1|None|Shutdown|Westinghouse|Stone & Webster|Westinghouse|Combustion Engineering
+USA|Hallam|1|SGR|Shutdown|None|None|None|Atomics International
+USA|Harris (Shearon Harris)|1|W (3-loop) DRYAMB|Operational|Westinghouse|Ebasco|Westinghouse|Combustion Engineering
+USA|Hatch (Edwin I. Hatch)|1|BWR-4 (Mark 1)|Operational|GE|Bechtel|General Electric|Combustion Engineering
+USA|Hatch (Edwin I. Hatch)|2|BWR-4 (Mark 1)|Operational|GE|Bechtel|General Electric|Combustion Engineering
+USA|Hope Creek|1|BWR-4 (Mark 1)|Operational|GE|Bechtel|General Electric|Combustion Engineering
+USA|Humboldt Bay|1|None|Shutdown|None|None|General Electric|Combustion Engineering

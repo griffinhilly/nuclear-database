@@ -1,0 +1,202 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+AVR Jülich|1|constructor|CONFIRMED||HIGH|de.wikipedia.org/wiki/AVR_Jülich
+AVR Jülich|1|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/AVR_Jülich
+AVR Jülich|1|turbine_supplier|WRONG|unknown (not KWU — anachronistic; KWU founded 1969, AVR reached criticality 1966)|LOW|de.wikipedia.org/wiki/AVR_Jülich; de.wikipedia.org/wiki/Kraftwerk_Union
+AVR Jülich|1|rpv_manufacturer|UNVERIFIABLE||LOW|de.wikipedia.org/wiki/AVR_Jülich (general construction attribution only, not RPV-specific)
+Biblis|A|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Biblis_Nuclear_Power_Plant
+Biblis|A|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/Biblis_Nuclear_Power_Plant
+Biblis|A|turbine_supplier|UNVERIFIABLE||—|no source found
+Biblis|A|rpv_manufacturer|WRONG|unknown (not RDM — absent from RDM's own build list)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Biblis|B|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Biblis_Nuclear_Power_Plant
+Biblis|B|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/Biblis_Nuclear_Power_Plant
+Biblis|B|turbine_supplier|UNVERIFIABLE||—|no source found
+Biblis|B|rpv_manufacturer|WRONG|unknown (not RDM — absent from RDM's own build list)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Brokdorf|1|constructor|CONFIRMED||HIGH|de.wikipedia.org/wiki/Kernkraftwerk_Brokdorf
+Brokdorf|1|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Brokdorf
+Brokdorf|1|turbine_supplier|UNVERIFIABLE||—|no source found
+Brokdorf|1|rpv_manufacturer|WRONG|unknown (not RDM — absent from RDM's own build list)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Brunsbüttel|1|constructor|CONFIRMED||HIGH|de.wikipedia.org/wiki/Kernkraftwerk_Brunsbüttel
+Brunsbüttel|1|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Brunsbüttel
+Brunsbüttel|1|turbine_supplier|UNVERIFIABLE||—|no source found
+Brunsbüttel|1|rpv_manufacturer|CONFIRMED||HIGH|de.wikipedia.org/wiki/Kernkraftwerk_Brunsbüttel + de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Emsland|1|constructor|UNVERIFIABLE||—|no plant-specific citation found (general Konvoi-line pattern only)
+Emsland|1|architect_engineer|UNVERIFIABLE||—|same
+Emsland|1|turbine_supplier|UNVERIFIABLE||—|no source found
+Emsland|1|rpv_manufacturer|WRONG|unknown (not RDM — absent from RDM's own build list)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Grafenrheinfeld|1|constructor|CONFIRMED||HIGH|de.wikipedia.org/wiki/Kernkraftwerk_Grafenrheinfeld
+Grafenrheinfeld|1|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Grafenrheinfeld
+Grafenrheinfeld|1|turbine_supplier|UNVERIFIABLE||—|no source found
+Grafenrheinfeld|1|rpv_manufacturer|WRONG|likely Uddcomb Sweden AB (unconfirmed exact name); forged in Japan, welded in Sweden per source|MED|de.wikipedia.org/wiki/Kernkraftwerk_Grafenrheinfeld
+Greifswald|1|constructor|CONFIRMED|(role ambiguous — see notes)|MED|en.wikipedia.org/wiki/Greifswald_Nuclear_Power_Plant
+Greifswald|1|architect_engineer|UNVERIFIABLE||—|"Atomenergoproekt" not found in any source
+Greifswald|1|turbine_supplier|CONFIRMED||MED|en.wikipedia.org/wiki/Greifswald_Nuclear_Power_Plant (Škoda + Electrosila)
+Greifswald|1|rpv_manufacturer|UNVERIFIABLE||—|"Izhora Plants" not found in any source
+Greifswald|2|constructor|CONFIRMED|(role ambiguous — see notes)|MED|en.wikipedia.org/wiki/Greifswald_Nuclear_Power_Plant
+Greifswald|2|architect_engineer|UNVERIFIABLE||—|not found
+Greifswald|2|turbine_supplier|CONFIRMED||MED|en.wikipedia.org/wiki/Greifswald_Nuclear_Power_Plant
+Greifswald|2|rpv_manufacturer|UNVERIFIABLE||—|not found
+Greifswald|3|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Greifswald_Nuclear_Power_Plant
+Greifswald|3|architect_engineer|UNVERIFIABLE||—|not found
+Greifswald|3|turbine_supplier|CONFIRMED||MED|en.wikipedia.org/wiki/Greifswald_Nuclear_Power_Plant
+Greifswald|3|rpv_manufacturer|UNVERIFIABLE||—|not found
+Greifswald|4|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Greifswald_Nuclear_Power_Plant
+Greifswald|4|architect_engineer|UNVERIFIABLE||—|not found
+Greifswald|4|turbine_supplier|CONFIRMED||MED|en.wikipedia.org/wiki/Greifswald_Nuclear_Power_Plant
+Greifswald|4|rpv_manufacturer|UNVERIFIABLE||—|not found
+Greifswald|5|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Greifswald_Nuclear_Power_Plant
+Greifswald|5|architect_engineer|UNVERIFIABLE||—|not found
+Greifswald|5|turbine_supplier|UNVERIFIABLE||—|unit 5 is a different design generation (V-213 per PRIS, not V-230) from units 3-4 — plant-wide infobox does not distinguish; see notes
+Greifswald|5|rpv_manufacturer|UNVERIFIABLE||—|not found; V-213 generation weakens confidence in Izhora Plants but not disproven
+Grohnde|1|constructor|CONFIRMED||HIGH|de.wikipedia.org/wiki/Kernkraftwerk_Grohnde
+Grohnde|1|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Grohnde
+Grohnde|1|turbine_supplier|UNVERIFIABLE||—|no source found
+Grohnde|1|rpv_manufacturer|WRONG|unknown (not RDM — absent from RDM's own build list)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Gundremmingen|B|constructor|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Gundremmingen (Baulinie 72/KWU, construction began 1976, post-KWU)
+Gundremmingen|B|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Gundremmingen
+Gundremmingen|B|turbine_supplier|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Gundremmingen
+Gundremmingen|B|rpv_manufacturer|UNVERIFIABLE||—|"Japan Steel Works, Uddcomb, MAN-GHH" three-way split not corroborated anywhere
+Gundremmingen|C|constructor|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Gundremmingen
+Gundremmingen|C|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Gundremmingen
+Gundremmingen|C|turbine_supplier|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Gundremmingen
+Gundremmingen|C|rpv_manufacturer|UNVERIFIABLE||—|same as Block B, not corroborated
+Gundremmingen|A|constructor|WRONG|unknown (KWU chronologically impossible — construction began Dec 1962, KWU founded 1969; AEG plausible but unconfirmed)|MED|de.wikipedia.org/wiki/Kernkraftwerk_Gundremmingen
+Gundremmingen|A|architect_engineer|WRONG|unknown (same timeline impossibility as constructor)|MED|de.wikipedia.org/wiki/Kernkraftwerk_Gundremmingen
+Gundremmingen|A|turbine_supplier|WRONG|unknown (same timeline impossibility)|MED|de.wikipedia.org/wiki/Kernkraftwerk_Gundremmingen
+Gundremmingen|A|rpv_manufacturer|WRONG|unknown (RDM's own stated RPV production window is 1970s-80s; Gundremmingen A built 1962-1966, predates it — GE portion unconfirmed)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+HDR Großwelzheim|1|constructor|WRONG|unknown (KWU chronologically implausible — plant shut down 1971 after short operating run, so construction/commissioning very likely predates KWU's 1969 founding; AEG plausible but unconfirmed)|MED|IAEA PRIS shutdown date (1971-07-20); de.wikipedia.org/wiki/AEG
+HDR Großwelzheim|1|architect_engineer|WRONG|unknown (same timeline reasoning)|MED|same
+HDR Großwelzheim|1|turbine_supplier|WRONG|unknown (same timeline reasoning)|MED|same
+HDR Großwelzheim|1|rpv_manufacturer|WRONG|unknown (predates RDM's stated 1970s-80s RPV production window)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Isar|1|constructor|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Isar (construction began May 1972, post-KWU)
+Isar|1|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Isar
+Isar|1|turbine_supplier|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Isar
+Isar|1|rpv_manufacturer|UNVERIFIABLE||—|no direct citation naming RDM for Isar 1; circumstantial support only (Isar 1 is "baugleich"/structurally identical to Brunsbüttel and Philippsburg 1, both confirmed RDM), not sufficient to confirm
+Isar|2|constructor|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Isar (Konvoi design, construction began 1982)
+Isar|2|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Isar
+Isar|2|turbine_supplier|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Isar
+Isar|2|rpv_manufacturer|WRONG|Gutehoffnungshütte (GHH)|MED|pre-established/confirmed bug; corroborated by Isar 2's absence from RDM's own German-customer list (only Brunsbüttel + Philippsburg 1 named), de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+KNK II|1|constructor|UNVERIFIABLE||—|de.wikipedia.org/wiki/KNK_II — no mention of Interatom found this session despite it being widely cited elsewhere
+KNK II|1|architect_engineer|UNVERIFIABLE||—|same
+KNK II|1|turbine_supplier|UNVERIFIABLE||—|same
+KNK II|1|rpv_manufacturer|UNVERIFIABLE||—|same
+Krümmel|1|constructor|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Krümmel
+Krümmel|1|architect_engineer|UNVERIFIABLE||—|no distinct AE role found separate from constructor
+Krümmel|1|turbine_supplier|UNVERIFIABLE||—|no source found
+Krümmel|1|rpv_manufacturer|WRONG|unknown (not RDM — absent from RDM's own build list)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Lingen|1|constructor|WRONG|likely AEG (unconfirmed); construction began 1964, before KWU existed|LOW|de.wikipedia.org/wiki/Kernkraftwerk_Lingen
+Lingen|1|architect_engineer|WRONG|likely AEG (unconfirmed)|LOW|de.wikipedia.org/wiki/Kernkraftwerk_Lingen
+Lingen|1|turbine_supplier|WRONG|unknown (KWU chronologically impossible)|LOW|construction-date evidence only
+Lingen|1|rpv_manufacturer|WRONG|unknown (not RDM — absent from build list)|LOW|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+MZFR|1|constructor|UNVERIFIABLE||—|de.wikipedia.org/wiki/Mehrzweckforschungsreaktor_Karlsruhe is silent on constructor; existing DB value (Siemens) neither confirmed nor refuted
+MZFR|1|architect_engineer|UNVERIFIABLE||—|same
+MZFR|1|turbine_supplier|WRONG|unknown (not KWU — first grid connection 1966-03-09, three years before KWU founded 1969)|MED|IAEA PRIS first-criticality date
+MZFR|1|rpv_manufacturer|UNVERIFIABLE||—|no source found; existing DB value (Siemens) neither confirmed nor refuted
+Mülheim-Kärlich|1|constructor|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Mülheim-Kärlich (BBR — Babcock-Brown Boveri Reaktor GmbH consortium)
+Mülheim-Kärlich|1|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Mülheim-Kärlich
+Mülheim-Kärlich|1|turbine_supplier|UNVERIFIABLE||—|no source names turbine supplier; "KWU" is suspect since this is a non-standard BBR-design plant, not a KWU plant
+Mülheim-Kärlich|1|rpv_manufacturer|WRONG|unknown (not RDM — absent from RDM's own build list)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Neckarwestheim|1|constructor|CONFIRMED||HIGH|de.wikipedia.org/wiki/Kernkraftwerk_Neckarwestheim ("Der von der Kraftwerk Union errichtete Reaktor...")
+Neckarwestheim|1|architect_engineer|UNVERIFIABLE||—|no distinct AE role found
+Neckarwestheim|1|turbine_supplier|UNVERIFIABLE||—|no source found
+Neckarwestheim|1|rpv_manufacturer|WRONG|unknown (not RDM — GKN I absent from RDM's own build list)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Neckarwestheim|2|constructor|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Neckarwestheim (Konvoi line, standard KWU product)
+Neckarwestheim|2|architect_engineer|UNVERIFIABLE||—|no distinct AE role found
+Neckarwestheim|2|turbine_supplier|UNVERIFIABLE||—|no source found
+Neckarwestheim|2|rpv_manufacturer|WRONG|unknown (not RDM — GKN II absent from RDM's own build list)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Niederaichbach|1|constructor|UNVERIFIABLE||—|de.wikipedia.org/wiki/Kernkraftwerk_Niederaichbach only mentions Siemens/KWU R&D involvement generally, no explicit constructor attribution
+Niederaichbach|1|architect_engineer|UNVERIFIABLE||—|same
+Niederaichbach|1|turbine_supplier|UNVERIFIABLE||—|construction (1966-1973) straddles KWU's 1969 founding; cannot confirm or refute
+Niederaichbach|1|rpv_manufacturer|UNVERIFIABLE||—|no source found; note this is a CO2-cooled heavy-water pressure-TUBE reactor, which may not have a conventional single RPV — field may be structurally inapplicable, flag for schema review
+Obrigheim|1|constructor|WRONG|Siemens (contract signed 12 March 1965, four years before KWU existed)|HIGH|de.wikipedia.org/wiki/Kernkraftwerk_Obrigheim; en.wikipedia.org/wiki/Obrigheim_Nuclear_Power_Plant
+Obrigheim|1|architect_engineer|WRONG|Siemens|HIGH|de.wikipedia.org/wiki/Kernkraftwerk_Obrigheim
+Obrigheim|1|turbine_supplier|WRONG|Brown Boveri & Cie (BBC), Mannheim (contracted for conventional plant section, early 1961)|HIGH|de.wikipedia.org/wiki/Kernkraftwerk_Obrigheim
+Obrigheim|1|rpv_manufacturer|WRONG|unknown (not RDM — absent from RDM's own build list; 1965 contract predates RDM's stated RPV era)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Philippsburg|1|constructor|CONFIRMED||MED|de.wikipedia.org/wiki/Liste_der_Kernreaktoren_in_Deutschland (Baubeginn 1.10.1970, post-KWU)
+Philippsburg|1|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Liste_der_Kernreaktoren_in_Deutschland
+Philippsburg|1|turbine_supplier|UNVERIFIABLE||—|no source found
+Philippsburg|1|rpv_manufacturer|CONFIRMED||HIGH|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij ("Die Reaktordruckbehälter von Brunsbüttel...und Philippsburg 1...wurden...von RDM gebaut")
+Philippsburg|2|constructor|CONFIRMED||MED|de.wikipedia.org/wiki/Liste_der_Kernreaktoren_in_Deutschland (Vor-Konvoi, Baubeginn 7.7.1977)
+Philippsburg|2|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Liste_der_Kernreaktoren_in_Deutschland
+Philippsburg|2|turbine_supplier|UNVERIFIABLE||—|no source found
+Philippsburg|2|rpv_manufacturer|UNVERIFIABLE||—|de.wikipedia.org/wiki/Kernkraftwerk_Philippsburg — KKP2's RPV was originally fabricated for the cancelled Wyhl-1 project and later repurposed for KKP2; RDM's own build list names only "Philippsburg" generically (likely referring to unit 1), so RDM attribution to unit 2 specifically is unconfirmed either way
+Rheinsberg|1|constructor|UNVERIFIABLE||—|de.wikipedia.org/wiki/Kernkraftwerk_Rheinsberg and en.wikipedia.org/wiki/Rheinsberg_Nuclear_Power_Plant contain no supplier detail beyond "Soviet-designed VVER"
+Rheinsberg|1|architect_engineer|UNVERIFIABLE||—|same
+Rheinsberg|1|turbine_supplier|UNVERIFIABLE||—|same
+Rheinsberg|1|rpv_manufacturer|UNVERIFIABLE||—|same
+Stade|1|constructor|WRONG|Siemens AG (turnkey contract awarded October 1967, before KWU existed)|MED|de.wikipedia.org/wiki/Kernkraftwerk_Stade
+Stade|1|architect_engineer|WRONG|Siemens AG|MED|de.wikipedia.org/wiki/Kernkraftwerk_Stade
+Stade|1|turbine_supplier|UNVERIFIABLE||—|no source found
+Stade|1|rpv_manufacturer|UNVERIFIABLE||—|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij — Stade absent from RDM's own build list (suggestive RDM is wrong) but no confirmed alternative found
+THTR-300|1|constructor|WRONG|Brown, Boveri & Cie (BBC) / Nukem — Krupp withdrew from the build consortium 5 days before the June 1971 groundbreaking|MED|de.wikipedia.org/wiki/THTR-300
+THTR-300|1|architect_engineer|WRONG|Brown, Boveri & Cie (BBC) / Nukem|MED|de.wikipedia.org/wiki/THTR-300
+THTR-300|1|turbine_supplier|UNVERIFIABLE||—|no source found confirming KWU or any alternative
+THTR-300|1|rpv_manufacturer|WRONG|not applicable as a discrete steel vessel — THTR-300 used an integrated prestressed-concrete pressure vessel (Spannbetonbehälter); "Brown Boveri/Krupp" unsupportable given Krupp's pre-construction withdrawal|MED|de.wikipedia.org/wiki/THTR-300
+Unterweser|1|constructor|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Unterweser (built 1972-1978 by Siemens/KWU, post-KWU founding)
+Unterweser|1|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Unterweser
+Unterweser|1|turbine_supplier|UNVERIFIABLE||—|no source found
+Unterweser|1|rpv_manufacturer|UNVERIFIABLE||—|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij — Unterweser absent from RDM's own build list (suggestive RDM is wrong) but no confirmed alternative found
+Vak Kahl|1|constructor|WRONG|AEG (Allgemeine Elektricitäts-Gesellschaft) — GE was licensor/reactor-technology supplier, not builder|HIGH|de.wikipedia.org/wiki/Versuchsatomkraftwerk_Kahl
+Vak Kahl|1|architect_engineer|WRONG|AEG|HIGH|de.wikipedia.org/wiki/Versuchsatomkraftwerk_Kahl (turnkey build 1958-1961, 8 years before KWU existed)
+Vak Kahl|1|turbine_supplier|WRONG|likely AEG (unconfirmed exact identity); definitely not KWU (chronologically impossible — plant completed 1961, KWU founded 1969)|MED|de.wikipedia.org/wiki/Versuchsatomkraftwerk_Kahl; de.wikipedia.org/wiki/Kraftwerk_Union
+Vak Kahl|1|rpv_manufacturer|WRONG|unknown (not RDM — RDM's documented RPV business began in the 1970s; VAK Kahl's vessel built 1958-1960)|MED|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij
+Würgassen|1|constructor|WRONG|AEG (construction began 26 Jan 1968, before KWU's 1969 founding)|MED|de.wikipedia.org/wiki/Kernkraftwerk_Würgassen; de.wikipedia.org/wiki/Liste_der_Kernreaktoren_in_Deutschland
+Würgassen|1|architect_engineer|WRONG|AEG|MED|de.wikipedia.org/wiki/Kernkraftwerk_Würgassen
+Würgassen|1|turbine_supplier|WRONG|AEG Telefunken|MED|de.wikipedia.org/wiki/Kernkraftwerk_Würgassen
+Würgassen|1|rpv_manufacturer|UNVERIFIABLE||—|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij — Würgassen absent from RDM's own build list (suggestive RDM is wrong) but true manufacturer (possibly AEG's own supplier, GHH, or Klöckner) not confirmed
+Borssele|1|constructor|WRONG|Kraftwerk Union (KWU) / "Siemens KWU" — sources name KWU, not plain Siemens; construction start (July 1969) coincides with KWU's formation|MED|de.wikipedia.org/wiki/Kernkraftwerk_Borssele; nl.wikipedia.org/wiki/Kernenergiecentrale_Borssele
+Borssele|1|architect_engineer|CONFIRMED||MED|de.wikipedia.org/wiki/Kernkraftwerk_Borssele; nl.wikipedia.org/wiki/Kernenergiecentrale_Borssele
+Borssele|1|turbine_supplier|UNVERIFIABLE||—|no source found
+Borssele|1|rpv_manufacturer|CONFIRMED||HIGH|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij (Borssele explicitly named among RDM's built RPVs)
+Dodewaard|1|constructor|UNVERIFIABLE||—|nl.wikipedia.org/wiki/Kerncentrale_Dodewaard — GE supplied reactor design/license (1961), but no single named overall constructor found; fabrication distributed among Dutch firms (Stork, Werkspoor, Philips, Hollandse Signaalapparaten, RDM)
+Dodewaard|1|architect_engineer|UNVERIFIABLE||—|no AE firm named in sources found
+Dodewaard|1|turbine_supplier|UNVERIFIABLE||—|nl.wikipedia.org/wiki/Kerncentrale_Dodewaard — Dutch content favored domestic firms (Stork plausible) but no confirmed replacement for "General Electric"
+Dodewaard|1|rpv_manufacturer|WRONG|Rotterdamsche Droogdok Maatschappij (RDM)|HIGH|de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij (Dodewaard explicitly named among RDM's built RPVs); nl.wikipedia.org/wiki/Kerncentrale_Dodewaard
+# NOTES
+# Structural finding 1 (confirms and generalizes the seed bug): RDM's own German Wikipedia article
+# (de.wikipedia.org/wiki/Rotterdamsche_Droogdok_Maatschappij, citing a Nov 2012 Spiegel piece) gives what
+# reads as a curated, fairly complete list of the ~21 RPVs RDM actually built (1970s-80s), across NL, DE,
+# ES, SE, CH, US. Of German plants, ONLY Brunsbüttel and Philippsburg 1 appear. This means the blanket
+# "Rotterdam Dockyard (RDM)" assignment is very likely wrong for every OTHER KWU-line German plant in this
+# batch (Biblis A/B, Brokdorf, Emsland, Grafenrheinfeld, Grohnde, Krümmel, Lingen, Mülheim-Kärlich,
+# Neckarwestheim 1/2, Obrigheim, Stade, Unterweser, Vak Kahl, Würgassen) — confirmed as WRONG or flagged
+# UNVERIFIABLE above, but the true replacement manufacturer (GHH, Klöckner, MAN, or other) could not be
+# sourced for any of them this session. Recommend a dedicated follow-up pass targeting German-language
+# metallurgy/engineering-history sources (e.g. GHH company histories) specifically for these RPVs.
+# RDM IS correctly confirmed for: Brunsbüttel, Philippsburg 1, Borssele, and Dodewaard.
+# RDM is CONFIRMED WRONG (known-bug case) for: Isar 2 (true manufacturer = Gutehoffnungshütte/GHH).
+# New instance of the same bug NOT previously flagged: Dodewaard's rpv_manufacturer was listed as
+# "General Electric" but RDM's own page and Dutch Wikipedia both credit RDM with Dodewaard's vessel —
+# GE supplied the reactor design/license, not the pressure vessel itself.
+#
+# Structural finding 2 (KWU anachronism, distinct from the RDM bug): Kraftwerk Union (KWU) was formed in
+# 1969 from the AEG + Siemens nuclear merger. Several plants in this batch began construction, or were
+# fully built and operating, before 1969 — the DB's blanket "Kraftwerk Union (KWU)" constructor/
+# architect_engineer/turbine_supplier attribution is chronologically impossible for these and is WRONG:
+# Vak Kahl (built 1958-1961, actual builder AEG, HIGH confidence), Würgassen (construction began Jan
+# 1968, actual builder AEG), Obrigheim (Siemens contract signed March 1965, turbine by BBC Mannheim
+# contracted 1961), Stade (Siemens turnkey contract October 1967), Lingen (construction began 1964,
+# likely AEG), Gundremmingen A (construction began Dec 1962), and HDR Großwelzheim (shut down 1971 after
+# a short run, so construction/commissioning very likely predates 1969). For most of these the exact
+# replacement value (AEG vs a specific consortium name) could only be inferred from chronology, not
+# directly cited, and is marked WRONG with LOW-MED confidence rather than blessed as a firm fact.
+#
+# Structural finding 3: THTR-300's rpv_manufacturer field is a category error — THTR-300 used an
+# integrated prestressed-concrete pressure vessel (Spannbetonbehälter), not a discrete steel RPV
+# fabricated by a named company. Krupp also withdrew from the build consortium five days before the June
+# 1971 groundbreaking; the actual consortium was Brown, Boveri & Cie (BBC) + Nukem. Similarly,
+# Niederaichbach is a CO2-cooled, heavy-water pressure-TUBE reactor that may not have a conventional
+# single RPV at all — flag both for schema/field-applicability review, not just data-value correction.
+#
+# Structural finding 4: possible unrelated data error surfaced incidentally — IAEA PRIS lists Greifswald
+# unit 5's reactor model as VVER V-213, not V-230 as given in this batch's `model` column (units 3-4 are
+# correctly V-230). Not one of the four fields in scope for this verification, but worth a separate check
+# since it also affects which suppliers (e.g. Škoda's documented V-213 product line) are plausible for
+# unit 5 specifically.
+#
+# Method/coverage caveat: all four research agents exhausted their WebSearch quota mid-task and had to
+# rely primarily on WebFetch against German/Dutch/English Wikipedia (plus RDM's own company page, which
+# was unexpectedly the single most useful source). None could reach nuklearesicherheit.de, gracesguide,
+# or IAEA PRIS reactor-detail pages (PRIS uses ASP.NET postback links unreachable via direct WebFetch).
+# Turbine_supplier is the single weakest field across this entire batch — UNVERIFIABLE for the large
+# majority of KWU-era plants, since Wikipedia articles typically conflate turbine supply under the
+# general "KWU built it" statement without breaking out the turbine vendor separately.

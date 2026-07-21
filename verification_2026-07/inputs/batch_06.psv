@@ -1,0 +1,37 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+France|Belleville|1|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Belleville|2|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Blayais|1|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Blayais|2|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Blayais|3|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Blayais|4|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Brennilis|1|EL-4|Shutdown|CEA|EDF|None|Creusot-Loire
+France|Bugey|1|UNGG|Shutdown|EDF|EDF|Alstom|None
+France|Bugey|2|CP0|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Bugey|3|CP0|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Bugey|4|CP0|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Bugey|5|CP0|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Cattenom|1|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Cattenom|2|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Cattenom|3|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Cattenom|4|P4 REP 1300|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Chinon A (EDF1)|1|UNGG|Shutdown|EDF|EDF|Alstom|None
+France|Chinon A (EDF2)|2|UNGG|Shutdown|EDF|EDF|Alstom|None
+France|Chinon A (EDF3)|3|UNGG|Shutdown|EDF|EDF|Alstom|None
+France|Chinon B|1|CP2|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Chinon B|2|CP2|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Chinon B|3|CP2|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Chinon B|4|CP2|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Chooz B|1|N4 REP 1450|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Chooz B|2|N4 REP 1450|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Chooz-A|1|CHOOZ-A|Shutdown|Framatome|EDF|Alstom|Creusot-Loire
+France|Civaux|1|N4 REP 1450|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Civaux|2|N4 REP 1450|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Cruas|1|CP2|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Cruas|2|CP2|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Cruas|3|CP2|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Cruas|4|CP2|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Dampierre|1|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Dampierre|2|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Dampierre|3|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire
+France|Dampierre|4|CP1|Operational|Framatome|EDF|Alstom|Creusot-Loire

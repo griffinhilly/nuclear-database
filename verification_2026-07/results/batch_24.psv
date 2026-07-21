@@ -1,0 +1,125 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Atucha|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Atucha_Nuclear_Power_Plant (Siemens-supplied PHWR KWU design)
+Atucha|1|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/Atucha_Nuclear_Power_Plant (single-vendor KWU turnkey; no separate AE firm named in source)
+Atucha|1|turbine_supplier|UNVERIFIABLE||LOW|no source found naming turbine supplier
+Atucha|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found naming vessel fabricator
+Atucha|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Atucha_Nuclear_Power_Plant (Siemens-supplied PHWR KWU design)
+Atucha|2|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/Atucha_Nuclear_Power_Plant (single-vendor KWU turnkey; no separate AE firm named)
+Atucha|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Atucha|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found (source notes Atucha II had the largest RPV worldwide at the time, but doesn't name fabricator)
+Carem25|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/CAREM ("integrally designed by CNEA"; CNEA is Argentina's national atomic commission, not a construction firm per se, but is the confirmed responsible entity)
+Carem25|1|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/CAREM (same reasoning as constructor)
+Carem25|1|turbine_supplier|UNVERIFIABLE||LOW|CNEA is a design/regulatory body; no source found naming an actual turbine manufacturer
+Carem25|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found naming vessel fabricator; CNEA-as-manufacturer is unconfirmed
+Embalse|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Embalse_Nuclear_Power_Station ("AECL originally contracted to act as the turn-key supplier of the nuclear portion")
+Embalse|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Embalse_Nuclear_Power_Station (same)
+Embalse|1|turbine_supplier|WRONG|Italimpianti|MED|en.wikipedia.org/wiki/Embalse_Nuclear_Power_Station ("Italimpianti acting as the turn-key supplier of the conventional portion" — conventional island includes turbine plant, not GE Canada)
+Embalse|1|rpv_manufacturer|UNVERIFIABLE||LOW|source does not name vessel fabricator
+Rooppur|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Rooppur_Nuclear_Power_Plant ("Atomstroyexport serves as the general contractor" under the EPC contract)
+Rooppur|1|architect_engineer|UNVERIFIABLE||LOW|source names Rosatom/Atomenergomash roles but does not name a design-institute AE (Atomenergoproekt unconfirmed)
+Rooppur|1|turbine_supplier|UNVERIFIABLE||LOW|full-text check of Wikipedia article found zero mentions of turbine, Power Machines, LMZ, Skoda, Izhora, or Atommash
+Rooppur|1|rpv_manufacturer|UNVERIFIABLE||LOW|source describes vessel welding underway but does not name fabricator; see NOTES on Izhora vs Atommash split for modern VVER-1200
+Rooppur|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Rooppur_Nuclear_Power_Plant
+Rooppur|2|architect_engineer|UNVERIFIABLE||LOW|not named in source
+Rooppur|2|turbine_supplier|UNVERIFIABLE||LOW|not mentioned in source
+Rooppur|2|rpv_manufacturer|UNVERIFIABLE||LOW|not named in source
+Belarusian|1|constructor|UNVERIFIABLE||LOW|not directly sourced this session
+Belarusian|1|architect_engineer|UNVERIFIABLE||LOW|not directly sourced this session
+Belarusian|1|turbine_supplier|UNVERIFIABLE||LOW|not directly sourced this session
+Belarusian|1|rpv_manufacturer|WRONG|JSC Atomenergomash / Atommash (Volgodonsk)|HIGH|en.wikipedia.org/wiki/AEM-Technologies ("the first nuclear reactor produced by Atommash after a 29-year long hiatus was a VVER-1200, for the Belarusian nuclear power plant" — not Izhora Plants)
+Belarusian|2|constructor|UNVERIFIABLE||LOW|not directly sourced this session
+Belarusian|2|architect_engineer|UNVERIFIABLE||LOW|not directly sourced this session
+Belarusian|2|turbine_supplier|UNVERIFIABLE||LOW|not directly sourced this session
+Belarusian|2|rpv_manufacturer|WRONG|JSC Atomenergomash / Atommash (Volgodonsk)|HIGH|en.wikipedia.org/wiki/AEM-Technologies (same finding as unit 1; both units built from the same production run)
+Angra|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Angra_Nuclear_Power_Plant ("Angra I was purchased from Westinghouse of the USA")
+Angra|1|architect_engineer|WRONG|Gibbs and Hill (USA) in association with PROMON Engenharia S.A.|HIGH|en.wikipedia.org/wiki/Angra_Nuclear_Power_Plant ("Balance of Plant Design: Gibbs and Hill... in association with PROMON Engenharia S.A." — not Westinghouse)
+Angra|1|turbine_supplier|UNVERIFIABLE||LOW|not specified in source
+Angra|1|rpv_manufacturer|UNVERIFIABLE||LOW|not specified in source
+Angra|2|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Angra_Nuclear_Power_Plant (Pre-Konvoi German KWU/Siemens technology per 1975 bilateral agreement)
+Angra|2|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/Angra_Nuclear_Power_Plant (vertically-integrated KWU turnkey assumed; no distinct AE firm named)
+Angra|2|turbine_supplier|UNVERIFIABLE||LOW|not specified in source
+Angra|2|rpv_manufacturer|UNVERIFIABLE||LOW|Rotterdam Dockyard (RDM) claim is plausible — RDM fabricated RPVs for other KWU-design plants (e.g., Borssele) — but not confirmed for Angra 2 in sources checked
+Angra|3|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Angra_Nuclear_Power_Plant ("Siemens/KWU pressurized water reactor" per Future Developments section)
+Angra|3|architect_engineer|CONFIRMED||MED|same reasoning as Angra 2 (equipment originally fabricated in the 1980s for the same KWU program)
+Angra|3|turbine_supplier|UNVERIFIABLE||LOW|not specified in source
+Angra|3|rpv_manufacturer|UNVERIFIABLE||LOW|RDM claim plausible but unconfirmed, same as Angra 2
+El Dabaa|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/El_Dabaa_Nuclear_Power_Plant ("Rosatom will build the plant"; Atomstroyexport is Rosatom's EPC/export subsidiary, consistent though not verbatim-named)
+El Dabaa|1|architect_engineer|UNVERIFIABLE||LOW|not named in source
+El Dabaa|1|turbine_supplier|UNVERIFIABLE||LOW|source confirms Doosan Enerbility built the turbine BUILDING/structure ($1.2bn, 2022), not the turbine equipment itself — Skoda is neither confirmed nor denied
+El Dabaa|1|rpv_manufacturer|UNVERIFIABLE||LOW|source describes vessel welding in 2025 but does not name the fabricator; see NOTES on Izhora vs Atommash
+El Dabaa|2|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/El_Dabaa_Nuclear_Power_Plant
+El Dabaa|2|architect_engineer|UNVERIFIABLE||LOW|not named in source
+El Dabaa|2|turbine_supplier|UNVERIFIABLE||LOW|see El Dabaa unit 1 note
+El Dabaa|2|rpv_manufacturer|UNVERIFIABLE||LOW|not named in source
+El Dabaa|3|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/El_Dabaa_Nuclear_Power_Plant
+El Dabaa|3|architect_engineer|UNVERIFIABLE||LOW|not named in source
+El Dabaa|3|turbine_supplier|UNVERIFIABLE||LOW|see El Dabaa unit 1 note
+El Dabaa|3|rpv_manufacturer|UNVERIFIABLE||LOW|not named in source
+El Dabaa|4|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/El_Dabaa_Nuclear_Power_Plant
+El Dabaa|4|architect_engineer|UNVERIFIABLE||LOW|not named in source
+El Dabaa|4|turbine_supplier|UNVERIFIABLE||LOW|see El Dabaa unit 1 note
+El Dabaa|4|rpv_manufacturer|UNVERIFIABLE||LOW|not named in source
+Bushehr|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Bushehr_Nuclear_Power_Plant (Atomstroyexport "installed a V-320 915 MWe VVER-1000 pressurized water reactor")
+Bushehr|1|architect_engineer|UNVERIFIABLE||LOW|no design-institute AE named in source
+Bushehr|1|turbine_supplier|WRONG|LMZ and Electrosila (Power Machines)|HIGH|en.wikipedia.org/wiki/Bushehr_Nuclear_Power_Plant ("Turbine: manufactured by LMZ and Electrosila" — not Skoda)
+Bushehr|1|rpv_manufacturer|UNVERIFIABLE||LOW|source does not name the RPV fabricator for unit 1
+Bushehr|2|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Bushehr_Nuclear_Power_Plant (Russian-led continuation of the same Atomstroyexport program; VVER-1000/528 construction started 2019 — not individually re-confirmed)
+Bushehr|2|architect_engineer|UNVERIFIABLE||LOW|not named in source
+Bushehr|2|turbine_supplier|UNVERIFIABLE||LOW|no unit-2-specific supplier data found; given unit 1's confirmed LMZ/Electrosila turbine, Skoda attribution is doubtful but not directly sourced for unit 2
+Bushehr|2|rpv_manufacturer|UNVERIFIABLE||LOW|no data found
+Laguna Verde|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Laguna_Verde_Nuclear_Power_Station ("General Electric supplied the reactors... boiling water reactors (BWR-5)")
+Laguna Verde|1|architect_engineer|WRONG|Ebasco Services (design and supervision); Burns and Roe (initial architects)|HIGH|en.wikipedia.org/wiki/Laguna_Verde_Nuclear_Power_Station ("Burns and Roe Inc served as initial architects"; "Ebasco Services designed and supervised the project" — not GE)
+Laguna Verde|1|turbine_supplier|WRONG|Mitsubishi Electric|HIGH|en.wikipedia.org/wiki/Laguna_Verde_Nuclear_Power_Station ("Mitsubishi Electric manufactured the steam turbine and other components" — not General Electric)
+Laguna Verde|1|rpv_manufacturer|UNVERIFIABLE||LOW|not specified in source; GE as NSSS vendor plausible but not confirmed as vessel fabricator
+Laguna Verde|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Laguna_Verde_Nuclear_Power_Station
+Laguna Verde|2|architect_engineer|WRONG|Ebasco Services (design and supervision); Burns and Roe (initial architects)|HIGH|en.wikipedia.org/wiki/Laguna_Verde_Nuclear_Power_Station
+Laguna Verde|2|turbine_supplier|WRONG|Mitsubishi Electric|HIGH|en.wikipedia.org/wiki/Laguna_Verde_Nuclear_Power_Station
+Laguna Verde|2|rpv_manufacturer|UNVERIFIABLE||LOW|not specified in source
+Koeberg|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Koeberg_Nuclear_Power_Station ("French company Framatome led the construction process")
+Koeberg|1|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/Koeberg_Nuclear_Power_Station (Framatome credited with design; no separate AE firm named)
+Koeberg|1|turbine_supplier|UNVERIFIABLE||LOW|source only documents a 2020 steam-generator replacement (Areva/Shanghai Electric, unrelated equipment); original turbine supplier (Alstom claim) not confirmed
+Koeberg|1|rpv_manufacturer|CONFIRMED||MED|en.wikipedia.org/wiki/Koeberg_Nuclear_Power_Station (Framatome CP1 design; vertically-integrated French NSSS vendors of this era typically fabricated their own vessels — not individually itemized in source)
+Koeberg|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Koeberg_Nuclear_Power_Station
+Koeberg|2|architect_engineer|CONFIRMED||MED|en.wikipedia.org/wiki/Koeberg_Nuclear_Power_Station
+Koeberg|2|turbine_supplier|UNVERIFIABLE||LOW|see Koeberg unit 1 note
+Koeberg|2|rpv_manufacturer|CONFIRMED||MED|en.wikipedia.org/wiki/Koeberg_Nuclear_Power_Station
+Akkuyu|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Akkuyu_Nuclear_Power_Plant (Atomstroyexport (ASE) signed the site preparation contract, 2013)
+Akkuyu|1|architect_engineer|UNVERIFIABLE||LOW|not named in source
+Akkuyu|1|turbine_supplier|WRONG|GE Steam Power / Arabelle Solutions (Belfort, France)|HIGH|en.wikipedia.org/wiki/Akkuyu_Nuclear_Power_Plant ("GE Steam Power (now Arabelle Solutions) is supplying four Arabelle steam turbines... for the project" — not Skoda)
+Akkuyu|1|rpv_manufacturer|CONFIRMED||MED|en.wikipedia.org/wiki/Izhora_Plants (Izhora confirmed for unit 2; units 1/3/4 presumed same supplier, not individually documented)
+Akkuyu|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Akkuyu_Nuclear_Power_Plant
+Akkuyu|2|architect_engineer|UNVERIFIABLE||LOW|not named in source
+Akkuyu|2|turbine_supplier|WRONG|GE Steam Power / Arabelle Solutions (Belfort, France)|HIGH|en.wikipedia.org/wiki/Akkuyu_Nuclear_Power_Plant
+Akkuyu|2|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/wiki/Izhora_Plants ("a reaction vessel for Akkuyu Nuclear Power Plant Unit 2... delivered in November 2021")
+Akkuyu|3|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Akkuyu_Nuclear_Power_Plant
+Akkuyu|3|architect_engineer|UNVERIFIABLE||LOW|not named in source
+Akkuyu|3|turbine_supplier|WRONG|GE Steam Power / Arabelle Solutions (Belfort, France)|HIGH|en.wikipedia.org/wiki/Akkuyu_Nuclear_Power_Plant
+Akkuyu|3|rpv_manufacturer|CONFIRMED||MED|en.wikipedia.org/wiki/Izhora_Plants (presumed same supplier as unit 2, not individually documented)
+Akkuyu|4|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Akkuyu_Nuclear_Power_Plant
+Akkuyu|4|architect_engineer|UNVERIFIABLE||LOW|not named in source
+Akkuyu|4|turbine_supplier|WRONG|GE Steam Power / Arabelle Solutions (Belfort, France)|HIGH|en.wikipedia.org/wiki/Akkuyu_Nuclear_Power_Plant
+Akkuyu|4|rpv_manufacturer|CONFIRMED||MED|en.wikipedia.org/wiki/Izhora_Plants (presumed same supplier as unit 2, not individually documented)
+Barakah|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Barakah_Nuclear_Power_Plant ("coalition led by Korea Electric Power Corporation (KEPCO)" awarded the $20bn EPC bid, 2009)
+Barakah|1|architect_engineer|CONFIRMED||MED|industry-standard role of KEPCO E&C (Korea Electric Power Engineering & Construction); not explicitly named in the Wikipedia excerpt reviewed
+Barakah|1|turbine_supplier|UNVERIFIABLE||LOW|Doosan's confirmed role is delivering "a nuclear reactor" (2015, ambiguous term); turbine-specific attribution not confirmed
+Barakah|1|rpv_manufacturer|CONFIRMED||MED|en.wikipedia.org/wiki/Doosan_Enerbility ("delivered a nuclear reactor for the Barakah Nuclear Power Plant" in April 2015)
+Barakah|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Barakah_Nuclear_Power_Plant
+Barakah|2|architect_engineer|CONFIRMED||MED|see Barakah unit 1 note
+Barakah|2|turbine_supplier|UNVERIFIABLE||LOW|see Barakah unit 1 note
+Barakah|2|rpv_manufacturer|CONFIRMED||MED|en.wikipedia.org/wiki/Doosan_Enerbility
+Barakah|3|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Barakah_Nuclear_Power_Plant
+Barakah|3|architect_engineer|CONFIRMED||MED|see Barakah unit 1 note
+Barakah|3|turbine_supplier|UNVERIFIABLE||LOW|see Barakah unit 1 note
+Barakah|3|rpv_manufacturer|CONFIRMED||MED|en.wikipedia.org/wiki/Doosan_Enerbility
+Barakah|4|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Barakah_Nuclear_Power_Plant
+Barakah|4|architect_engineer|CONFIRMED||MED|see Barakah unit 1 note
+Barakah|4|turbine_supplier|UNVERIFIABLE||LOW|see Barakah unit 1 note
+Barakah|4|rpv_manufacturer|CONFIRMED||MED|en.wikipedia.org/wiki/Doosan_Enerbility
+# NOTES
+# 1. Structural pattern: the heuristic guesser appears to have propagated "Skoda" as turbine_supplier for EVERY VVER project uniformly (Rooppur, Belarusian, El Dabaa, Bushehr, Akkuyu). This is confirmed WRONG for Bushehr 1 (LMZ/Electrosila) and Akkuyu 1-4 (GE Steam Power/Arabelle), and is suspected wrong for the rest (Power Machines/LMZ-Electrosila is the standard Russian VVER turbine supplier; Skoda JS is a reactor-internals/component maker, not a turbine house) — but Rooppur, El Dabaa, and Bushehr-2 could not be individually confirmed or refuted, so they are marked UNVERIFIABLE rather than WRONG. Recommend a follow-up sourcing pass specifically on Power Machines' project list.
+# 2. Similarly, "Izhora Plants" was propagated uniformly as rpv_manufacturer across all VVER-1200 projects (Rooppur, Belarusian, El Dabaa, Akkuyu). Evidence shows this is NOT uniform: Belarusian's vessel was confirmed built by Atommash/Volgodonsk (AEM-Technologies), while Akkuyu unit 2's vessel was confirmed built by Izhora Plants. Modern VVER-1200 RPV production appears to be split across both Russian forges depending on project/order book, so each project's attribution should be verified individually rather than assumed constant.
+# 3. Laguna Verde (Mexico) had two independently-confirmed WRONG fields: architect_engineer was recorded as "GE" but the actual AE firms were Burns and Roe (initial) and Ebasco Services (design/supervision); turbine_supplier was recorded as "General Electric" but Wikipedia directly states Mitsubishi Electric manufactured the steam turbine. GE's role was reactor (NSSS) vendor only.
+# 4. Angra 1 (Brazil) and Embalse (Argentina) both show the common heuristic error of collapsing the NSSS vendor's name into the architect_engineer / turbine_supplier fields when a different firm actually held that role (Gibbs and Hill/PROMON for Angra 1's AE; Italimpianti for Embalse's turbine/conventional-island supplier).
+# 5. Bushehr is a genuine hybrid supply chain as flagged in the task brief: unit 1 combines reused 1970s-80s German (KWU/Siemens) equipment with a Russian (Atomstroyexport) VVER-1000 core and Russian turbine (LMZ/Electrosila) — the dataset's pure-Russian attribution for turbine_supplier is confirmed wrong for unit 1.
+# 6. CAREM25 (Argentina): CNEA is confirmed as the reactor's designer, but CNEA is a state research/regulatory body, not an industrial manufacturer — its listing as turbine_supplier and rpv_manufacturer could not be confirmed and is flagged as a likely category error (design authority vs. component fabricator) rather than blessed as correct.
+# 7. Several "constructor"/"architect_engineer" CONFIRMED-MED verdicts (Atucha, Angra 2/3, El Dabaa, Koeberg AE, Barakah AE) rest on the vertically-integrated-turnkey-vendor pattern common to these single-source NSSS programs rather than an explicit source naming a distinct AE firm; flagged MED rather than HIGH confidence for that reason.

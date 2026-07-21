@@ -1,0 +1,42 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+India|Kaiga|1|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Kaiga|2|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Kaiga|3|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Kaiga|4|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Kaiga|5|PHWR-700|Under Construction|NPCIL|NPCIL|BHEL|L&T
+India|Kaiga|6|PHWR-700|Under Construction|NPCIL|NPCIL|BHEL|L&T
+India|Kakrapar|1|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Kakrapar|2|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Kakrapar|3|PHWR-700|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Kakrapar|4|PHWR-700|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Kudankulam|1|VVER V-412|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+India|Kudankulam|2|VVER V-412|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+India|Kudankulam|3|VVER V-412M|Under Construction|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+India|Kudankulam|4|VVER V-412M|Under Construction|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+India|Kudankulam|5|VVER V-412T|Under Construction|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+India|Kudankulam|6|VVER V-412T|Under Construction|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+India|Madras|1|Horizontal pressure tube type|Suspended|NPCIL|NPCIL|BHEL|L&T
+India|Madras|2|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Narora|1|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Narora|2|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|PFBR|1|Prototype|Under Construction|NPCIL|NPCIL|BHEL|L&T
+India|Rajasthan|1|CANDU|Suspended|NPCIL|NPCIL|BHEL|AECL
+India|Rajasthan|2|CANDU|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Rajasthan|3|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Rajasthan|4|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Rajasthan|5|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Rajasthan|6|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Rajasthan|7|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Rajasthan|8|Horizontal pressure tube type|Under Construction|NPCIL|NPCIL|BHEL|L&T
+India|Tarapur|1|BWR-1 (Mark 2)|Suspended|GE|NPCIL|GE|Combustion Engineering
+India|Tarapur|2|BWR-1 (Mark 2)|Suspended|GE|NPCIL|GE|Combustion Engineering
+India|Tarapur|3|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+India|Tarapur|4|Horizontal pressure tube type|Operational|NPCIL|NPCIL|BHEL|L&T
+Pakistan|Chashma|1|CNP-300|Operational|CNNC|SNERDI|Harbin Electric|China First Heavy Industries
+Pakistan|Chashma|2|CNP-300|Operational|CNNC|SNERDI|Harbin Electric|China First Heavy Industries
+Pakistan|Chashma|3|CNP-300|Operational|CNNC|SNERDI|Harbin Electric|China First Heavy Industries
+Pakistan|Chashma|4|CNP-300|Operational|CNNC|SNERDI|Harbin Electric|China First Heavy Industries
+Pakistan|Chashma|5|HPR1000|Under Construction|CNNC|SNERDI|Dongfang Electric|China First Heavy Industries
+Pakistan|Karachi|1|CANDU 137|Shutdown|AECL|AECL|GE Canada|CGE
+Pakistan|Karachi|2|HPR1000|Operational|CNNC|SNERDI|Dongfang Electric|China First Heavy Industries
+Pakistan|Karachi|3|HPR1000|Operational|CNNC|SNERDI|Dongfang Electric|China First Heavy Industries

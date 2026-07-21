@@ -1,0 +1,150 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Fessenheim|1|constructor|CONFIRMED||HIGH|fr.wikipedia Fessenheim infobox: fournisseurs=Framatome
+Fessenheim|1|architect_engineer|CONFIRMED||HIGH|fr.wikipedia Fessenheim (EDF as builder/operator)
+Fessenheim|1|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Fessenheim infobox: fournisseurs=Alstom
+Fessenheim|1|rpv_manufacturer|UNVERIFIABLE||LOW|fr.wikipedia Fessenheim names only "Framatome" generically for NSSS; no forge-level (Creusot-Loire) detail found
+Fessenheim|2|constructor|CONFIRMED||HIGH|fr.wikipedia Fessenheim infobox
+Fessenheim|2|architect_engineer|CONFIRMED||HIGH|fr.wikipedia Fessenheim
+Fessenheim|2|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Fessenheim infobox
+Fessenheim|2|rpv_manufacturer|UNVERIFIABLE||LOW|no Creusot-Loire mention found in fr.wikipedia
+Flamanville|1|constructor|CONFIRMED||HIGH|en.wikipedia Flamanville NPP: "Framatome furnished the reactor coolant systems"
+Flamanville|1|architect_engineer|UNVERIFIABLE||MED|EDF not explicitly named as AE in fetched sources; standard fleet convention only, not a direct citation
+Flamanville|1|turbine_supplier|CONFIRMED||HIGH|en.wikipedia Flamanville NPP: "Alstom provided the two turbine islands"
+Flamanville|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source names Creusot-Loire; vessel likely forged c.1980-82 (pre-1984 bankruptcy) so plausible but unconfirmed
+Flamanville|2|constructor|CONFIRMED||HIGH|en.wikipedia Flamanville NPP
+Flamanville|2|architect_engineer|UNVERIFIABLE||MED|same as unit 1
+Flamanville|2|turbine_supplier|CONFIRMED||HIGH|en.wikipedia Flamanville NPP
+Flamanville|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+Flamanville|3|constructor|CONFIRMED||HIGH|en.wikipedia Flamanville NPP: "Areva NP (now Framatome) signed contract April 2007 for nuclear island"
+Flamanville|3|architect_engineer|UNVERIFIABLE||MED|Bouygues Construction confirmed only as civil-works contractor, not AE in the conventional sense; EDF's AE/owner role not explicitly sourced but not refuted either
+Flamanville|3|turbine_supplier|CONFIRMED||HIGH|en.wikipedia Flamanville NPP: "Alstom was assigned the turbine hall work in August 2006"
+Flamanville|3|rpv_manufacturer|WRONG|Framatome (Areva NP, Creusot Forge / Le Creusot)|HIGH|en.wikipedia Flamanville NPP; 2015 carbon-segregation anomaly well-documented as involving the Le Creusot-forged EPR vessel head/bottom. "Creusot-Loire" (defunct 1984) is anachronistic for a vessel forged c.2010s
+Golfech|1|constructor|CONFIRMED||HIGH|fr.wikipedia Golfech (Framatome, P'4 class)
+Golfech|1|architect_engineer|UNVERIFIABLE||LOW|not stated in source
+Golfech|1|turbine_supplier|CONFIRMED||MED|fr.wikipedia Golfech: "General Electric France (Alstom until 2014)" - original build supplier Alstom; later replaced by GE France post-2014 (time-point ambiguity, see notes)
+Golfech|1|rpv_manufacturer|UNVERIFIABLE||LOW|not stated; construction began Nov 1982, before 1984 bankruptcy - Creusot-Loire plausible but unconfirmed
+Golfech|2|constructor|CONFIRMED||HIGH|fr.wikipedia Golfech
+Golfech|2|architect_engineer|UNVERIFIABLE||LOW|not stated
+Golfech|2|turbine_supplier|CONFIRMED||MED|fr.wikipedia Golfech - same original/later-GE caveat as unit 1
+Golfech|2|rpv_manufacturer|UNVERIFIABLE||LOW|construction began Oct 1984 - right at the Creusot-Loire bankruptcy transition point; real risk this unit differs from unit 1, unconfirmed either way
+Gravelines|1|constructor|CONFIRMED||HIGH|fr.wikipedia Gravelines infobox: fournisseurs=Framatome, Alstom
+Gravelines|1|architect_engineer|CONFIRMED||HIGH|fr.wikipedia Gravelines (EDF)
+Gravelines|1|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Gravelines infobox
+Gravelines|1|rpv_manufacturer|UNVERIFIABLE||LOW|no Creusot-Loire mention found; construction started 1975-76, pre-1984 (chronologically plausible only)
+Gravelines|2|constructor|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|2|architect_engineer|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|2|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+Gravelines|3|constructor|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|3|architect_engineer|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|3|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|3|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+Gravelines|4|constructor|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|4|architect_engineer|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|4|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|4|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+Gravelines|5|constructor|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|5|architect_engineer|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|5|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Gravelines infobox
+Gravelines|5|rpv_manufacturer|UNVERIFIABLE||LOW|construction started Oct 1979, criticality 1984-85, forging likely pre-bankruptcy but unconfirmed
+Gravelines|6|constructor|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|6|architect_engineer|CONFIRMED||HIGH|fr.wikipedia Gravelines
+Gravelines|6|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Gravelines infobox
+Gravelines|6|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 5
+Nogent|1|constructor|CONFIRMED||HIGH|fr.wikipedia Nogent (Framatome, P'4 REP 1300)
+Nogent|1|architect_engineer|UNVERIFIABLE||LOW|not stated
+Nogent|1|turbine_supplier|CONFIRMED||MED|fr.wikipedia Nogent: "Framatome, GEAST (Alstom until 2014)" - original supplier Alstom, later renamed
+Nogent|1|rpv_manufacturer|UNVERIFIABLE||LOW|construction began 1981-82, pre-bankruptcy - Creusot-Loire plausible but unconfirmed
+Nogent|2|constructor|CONFIRMED||HIGH|fr.wikipedia Nogent
+Nogent|2|architect_engineer|UNVERIFIABLE||LOW|not stated
+Nogent|2|turbine_supplier|CONFIRMED||MED|fr.wikipedia Nogent - same caveat as unit 1
+Nogent|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+Paluel|1|constructor|CONFIRMED||HIGH|fr.wikipedia Paluel: "construits par Framatome de 1977 a 1986"
+Paluel|1|architect_engineer|UNVERIFIABLE||LOW|not stated in source
+Paluel|1|turbine_supplier|UNVERIFIABLE||LOW|not stated in source (Alstom plausible by fleet convention but unconfirmed)
+Paluel|1|rpv_manufacturer|UNVERIFIABLE||LOW|not stated; construction spans 1977-1986, straddling 1984 bankruptcy - could differ by unit, no data found
+Paluel|2|constructor|CONFIRMED||HIGH|fr.wikipedia Paluel
+Paluel|2|architect_engineer|UNVERIFIABLE||LOW|not stated
+Paluel|2|turbine_supplier|UNVERIFIABLE||LOW|not stated
+Paluel|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+Paluel|3|constructor|CONFIRMED||HIGH|fr.wikipedia Paluel
+Paluel|3|architect_engineer|UNVERIFIABLE||LOW|not stated
+Paluel|3|turbine_supplier|UNVERIFIABLE||LOW|not stated
+Paluel|3|rpv_manufacturer|UNVERIFIABLE||LOW|construction later in the 1977-1986 span, closer to/after the 1984 transition - unconfirmed either way
+Paluel|4|constructor|CONFIRMED||HIGH|fr.wikipedia Paluel
+Paluel|4|architect_engineer|UNVERIFIABLE||LOW|not stated
+Paluel|4|turbine_supplier|UNVERIFIABLE||LOW|not stated
+Paluel|4|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 3
+Penly|1|constructor|CONFIRMED||HIGH|fr.wikipedia Penly: Framatome supplied "la chaudiere nucleaire"
+Penly|1|architect_engineer|UNVERIFIABLE||LOW|not stated
+Penly|1|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Penly: "Alsthom (now Alstom) provided l'ilot conventionnel"
+Penly|1|rpv_manufacturer|UNVERIFIABLE||LOW|no Creusot-Loire mention found; grid connection 1990 (well after 1984 bankruptcy) makes Framatome/Creusot Forge more plausible than Creusot-Loire, but unconfirmed
+Penly|2|constructor|CONFIRMED||HIGH|fr.wikipedia Penly
+Penly|2|architect_engineer|UNVERIFIABLE||LOW|not stated
+Penly|2|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Penly
+Penly|2|rpv_manufacturer|UNVERIFIABLE||LOW|grid connection 1992, same reasoning as unit 1
+Phenix|1|constructor|CONFIRMED||MED|fr.wikipedia Phenix: "Construit... par une equipe integree CEA/EDF/GAAA" - CEA defensible as lead/owner though GAAA (industrial predecessor of Novatome) was the industrial-build consortium; contested but not contradicted
+Phenix|1|architect_engineer|UNVERIFIABLE||LOW|no source names a distinct AE role separate from CEA/EDF
+Phenix|1|turbine_supplier|WRONG|CEM (Compagnie Electro-Mecanique)|MED|en.wikipedia Phenix Nuclear Power Plant infobox: "Reactor supplier / Power generation equipment: CEM"
+Phenix|1|rpv_manufacturer|UNVERIFIABLE||LOW|pool-type sodium fast reactor has no traditional PWR-style RPV; "None" plausible but not affirmatively sourced
+St. Alban|1|constructor|CONFIRMED||HIGH|fr.wikipedia St. Alban (Framatome, Westinghouse-licensed PWR)
+St. Alban|1|architect_engineer|UNVERIFIABLE||LOW|not stated
+St. Alban|1|turbine_supplier|UNVERIFIABLE||LOW|not stated (P4/P'4 machine hall standard mentioned but no supplier name given)
+St. Alban|1|rpv_manufacturer|UNVERIFIABLE||LOW|construction began 1979, pre-1984 - Creusot-Loire plausible but unconfirmed
+St. Alban|2|constructor|CONFIRMED||HIGH|fr.wikipedia St. Alban
+St. Alban|2|architect_engineer|UNVERIFIABLE||LOW|not stated
+St. Alban|2|turbine_supplier|UNVERIFIABLE||LOW|not stated
+St. Alban|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+St. Laurent A|1|constructor|UNVERIFIABLE||LOW|EDF confirmed as operator but no source separates "constructor" from operator role for the A1/A2 UNGG units
+St. Laurent A|1|architect_engineer|UNVERIFIABLE||LOW|no source found
+St. Laurent A|1|turbine_supplier|UNVERIFIABLE||LOW|no source found for A1/A2 specifically; Alstom confirmed only for the later B1/B2 PWR units, not the UNGG A units
+St. Laurent A|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found; gas-cooled UNGG design likely has no PWR-style RPV
+St. Laurent A|2|constructor|UNVERIFIABLE||LOW|same as unit 1
+St. Laurent A|2|architect_engineer|UNVERIFIABLE||LOW|same as unit 1
+St. Laurent A|2|turbine_supplier|UNVERIFIABLE||LOW|same as unit 1
+St. Laurent A|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+St. Laurent B|1|constructor|CONFIRMED||HIGH|fr.wikipedia St. Laurent B (Framatome NSSS)
+St. Laurent B|1|architect_engineer|CONFIRMED||HIGH|fr.wikipedia St. Laurent B (EDF)
+St. Laurent B|1|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia St. Laurent B (Alstom / GE France post-2014)
+St. Laurent B|1|rpv_manufacturer|UNVERIFIABLE||LOW|construction started 1976, pre-1984 - Creusot-Loire chronologically plausible only, not sourced
+St. Laurent B|2|constructor|CONFIRMED||HIGH|fr.wikipedia St. Laurent B
+St. Laurent B|2|architect_engineer|CONFIRMED||HIGH|fr.wikipedia St. Laurent B
+St. Laurent B|2|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia St. Laurent B
+St. Laurent B|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+Super-Phenix|1|constructor|CONFIRMED||HIGH|en.wikipedia Superphenix (Novatome confirmed as reactor/NSSS supplier)
+Super-Phenix|1|architect_engineer|WRONG|NERSA (Centrale Nucleaire Europeenne a Neutrons Rapides - joint venture EDF 51% / ENEL 33% / SBK 16%)|HIGH|en.wikipedia Superphenix infobox, operator field; EDF alone did not take over operation until 1997
+Super-Phenix|1|turbine_supplier|WRONG|Ansaldo (Ansaldo Energia)|MED|en.wikipedia Superphenix: "Ansaldo Energia supplied the make and model for power generation systems"
+Super-Phenix|1|rpv_manufacturer|UNVERIFIABLE||LOW|pool-type fast reactor, no traditional RPV; no vessel manufacturer named in sources checked
+Tricastin|1|constructor|CONFIRMED||HIGH|fr.wikipedia Tricastin: "Framatome built all four reactors"
+Tricastin|1|architect_engineer|CONFIRMED||HIGH|fr.wikipedia Tricastin (EDF)
+Tricastin|1|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Tricastin: "GEAST (Alstom jusqu'en 2014, aujourd'hui Arabelle Solutions)"
+Tricastin|1|rpv_manufacturer|UNVERIFIABLE||LOW|no Creusot-Loire mention found; construction started 1974-75, pre-1984 (chronologically plausible only)
+Tricastin|2|constructor|CONFIRMED||HIGH|fr.wikipedia Tricastin
+Tricastin|2|architect_engineer|CONFIRMED||HIGH|fr.wikipedia Tricastin
+Tricastin|2|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Tricastin
+Tricastin|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+Tricastin|3|constructor|CONFIRMED||HIGH|fr.wikipedia Tricastin
+Tricastin|3|architect_engineer|CONFIRMED||HIGH|fr.wikipedia Tricastin
+Tricastin|3|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Tricastin
+Tricastin|3|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+Tricastin|4|constructor|CONFIRMED||HIGH|fr.wikipedia Tricastin
+Tricastin|4|architect_engineer|CONFIRMED||HIGH|fr.wikipedia Tricastin
+Tricastin|4|turbine_supplier|CONFIRMED||HIGH|fr.wikipedia Tricastin
+Tricastin|4|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+G2|2|constructor|WRONG|CEA|MED|en.wikipedia Marcoule Nuclear Site infobox: "Operator: EDF/CEA"; fr.wikipedia Marcoule describes CEA-led plutonium-production reactor, not a standard EDF commercial build
+G2|2|architect_engineer|UNVERIFIABLE||LOW|no source distinguishes a separate AE role from CEA/EDF operatorship
+G2|2|turbine_supplier|WRONG|Rateau (Societe Rateau)|MED|en.wikipedia Marcoule Nuclear Site infobox, "Power generation - Make and model: Rateau"
+G2|2|rpv_manufacturer|UNVERIFIABLE||LOW|no vessel manufacturer named; UNGG gas-cooled design has no PWR-style forged RPV so "None" is plausible but not affirmatively sourced
+G3|3|constructor|WRONG|CEA|MED|same site-level infobox as G2 (Marcoule); not independently verified per-unit
+G3|3|architect_engineer|UNVERIFIABLE||LOW|same as G2
+G3|3|turbine_supplier|WRONG|Rateau (Societe Rateau)|MED|en.wikipedia Marcoule Nuclear Site infobox
+G3|3|rpv_manufacturer|UNVERIFIABLE||LOW|same as G2
+# NOTES
+# 1. WebSearch tool budget was exhausted (200/200 session calls used by earlier subagents) before the third research pass began, forcing all three verification agents onto WebFetch-only against known Wikipedia URLs. This materially limited coverage of rpv_manufacturer (world-nuclear.org France profile and IAEA PRIS reactor-detail pages, both approved sources, were never actually reached) and of architect_engineer for the P4/P'4 plants. Recommend a follow-up pass on this batch once search budget resets, targeted specifically at rpv_manufacturer sourcing.
+# 2. IAEA PRIS reactor-detail pages (pris.iaea.org) could not be retrieved at all: they render via ASP.NET __doPostBack JavaScript (WebFetch only sees static HTML) and one agent got 403 Forbidden. This is a structural gap, not a per-reactor finding — PRIS should be considered unusable via WebFetch for this whole database unless a JS-capable fetch path is added.
+# 3. The single confirmed anachronism the task predicted: Flamanville unit 3 (EPR) has rpv_manufacturer WRONG as "Creusot-Loire" (defunct since 1984) — the real forge was Areva NP/Framatome's Creusot Forge (Le Creusot), the same facility at the center of the 2015 carbon-segregation vessel scandal. Units 1 and 2 at the same plant (P4 palier, 1980s build) were NOT confirmed to use Creusot-Loire either, but are chronologically plausible and were left UNVERIFIABLE rather than corrected.
+# 4. Contrary to the "Creusot-Loire is anachronistic for later builds" hypothesis stated in the task brief, no source located for ANY of the mid-1980s to early-1990s P4/P'4 units (Flamanville 1&2, Golfech, Nogent, Paluel, Penly, St. Alban) explicitly names "Creusot-Loire" as their RPV forge — nor does any source explicitly name "Framatome" as the vessel forge specifically (as opposed to the NSSS/reactor system generally). French Wikipedia collapses forge-level detail under the generic "Framatome" vendor label. This means the original heuristic's "Creusot-Loire" value for the entire 1300MW fleet is likely fabricated/unsourced rather than merely anachronistic, but it could not be affirmatively disproven per-unit with available sources. Golfech unit 2 (construction began Oct 1984, essentially the exact month of the Creusot-Loire bankruptcy) is the single highest-risk candidate for a real split from unit 1 if better sourcing is found.
+# 5. Known "US-batch bug" pattern (NSSS vendor listed as constructor when the real builder was a construction firm or utility) shows up here in reverse and adjacent forms: G2 and G3 (Marcoule, UNGG) had "constructor=EDF" but were actually CEA-led plutonium-production reactors with EDF as a junior/power-offtake partner — corrected to CEA. Their turbine supplier was Rateau, not Alstom (Alstom/CGE did not yet dominate the market at the 1950s construction date). Phenix's turbine supplier was CEM (Compagnie Electro-Mecanique), not Alstom. Super-Phenix's architect_engineer was NERSA (a dedicated EDF/ENEL/SBK joint venture), not EDF alone, and its turbine supplier was Ansaldo Energia (Italian, reflecting ENEL's stake), not Alstom. The heuristic's blanket "Alstom = French turbine supplier" and "EDF = French architect-engineer" assumptions break down completely for the non-standard CEA-era and fast-breeder reactors.
+# 6. St. Laurent A (units 1, 2 — UNGG gas-cooled, retired) is almost entirely UNVERIFIABLE: available Wikipedia sources describe operator status but do not clearly separate constructor/AE/turbine-supplier roles for the UNGG-era A units (as distinct from the later PWR B units at the same site, where Alstom is well confirmed). This is a genuine sourcing gap, not a corrected value — do not backfill from the B-unit pattern.
+# 7. Phenix unit 1 constructor is contested rather than cleanly confirmed/wrong: fr.wikipedia describes an integrated CEA/EDF/GAAA build team, where GAAA (Groupement Atomique Alsacienne-Atlantique) was the industrial-build consortium and predecessor of Novatome. The database's "CEA" value is defensible as the program-owner/lead-designer convention, but if this database elsewhere uses "industrial constructor" as its convention (as with Super-Phenix = Novatome), Phenix may need to be recorded as GAAA instead for consistency. Flagged for a human convention call rather than auto-corrected.
+# 8. Golfech and Nogent turbine_supplier: sources confirm Alstom as the ORIGINAL-build supplier but note the turbine line was later renamed/transferred to GE France (General Electric) after 2014 (GE's 2014-2015 acquisition of Alstom's power business, later re-spun as Arabelle Solutions/EDF in 2024). Marked CONFIRMED against original-build attribution; if this database's "turbine_supplier" field is meant to reflect current ownership rather than original construction, several fleet-wide entries (Golfech, Nogent, Tricastin, St. Laurent B, Gravelines) would need re-labeling to GE France/Arabelle Solutions instead of Alstom. This is a schema/convention question, not a sourcing gap.

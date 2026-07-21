@@ -1,0 +1,27 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+Ukraine|Chernobyl|1|RBMK|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Ukraine|Chernobyl|2|RBMK|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Ukraine|Chernobyl|3|RBMK|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Ukraine|Chernobyl|4|RBMK|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Ukraine|Khmelnytskyi|1|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Khmelnytskyi|2|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Khmelnytskyi|3|VVER V-320|Under Construction|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Khmelnytskyi|4|VVER V-320|Under Construction|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Rivne|1|VVER V-213|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Rivne|2|VVER V-213|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Rivne|3|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Rivne|4|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|South Ukraine|1|VVER V-302|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|South Ukraine|2|VVER V-338|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|South Ukraine|3|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Zaporizhzhia|1|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Zaporizhzhia|2|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Zaporizhzhia|3|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Zaporizhzhia|4|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Zaporizhzhia|5|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Ukraine|Zaporizhzhia|6|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Armenia|Armenian|1|VVER V-270|Shutdown|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Armenia|Armenian|2|VVER V-270|Operational|Atomenergoexport|Atomenergoproekt|Skoda|Izhora Plants
+Lithuania|Ignalina|1|RBMK-1500|Shutdown|Minsredmash|NIKIET|Turboatom|None
+Lithuania|Ignalina|2|RBMK-1500|Shutdown|Minsredmash|NIKIET|Turboatom|None
+Kazakhstan|Aktau|1|BN-350|Shutdown|MAEC-Kaz|OKBM Afrikantov|Power Machines (LMZ)|Izhora Plants

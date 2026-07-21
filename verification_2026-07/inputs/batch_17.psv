@@ -1,0 +1,27 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+Canada|Bruce|1|CANDU 791|Operational|AECL|AECL|GE Canada|None
+Canada|Bruce|2|CANDU 791|Operational|AECL|AECL|GE Canada|None
+Canada|Bruce|3|CANDU 750A|Operational|AECL|AECL|GE Canada|None
+Canada|Bruce|4|CANDU 750A|Operational|AECL|AECL|GE Canada|None
+Canada|Bruce|5|CANDU 750B|Operational|AECL|AECL|GE Canada|None
+Canada|Bruce|6|CANDU 750B|Operational|AECL|AECL|GE Canada|None
+Canada|Bruce|7|CANDU 750B|Operational|AECL|AECL|GE Canada|None
+Canada|Bruce|8|CANDU 750B|Operational|AECL|AECL|GE Canada|None
+Canada|Darlington|1|CANDU 850|Operational|AECL|AECL|GE Canada|None
+Canada|Darlington|2|CANDU 850|Operational|AECL|AECL|GE Canada|None
+Canada|Darlington|3|CANDU 850|Operational|AECL|AECL|GE Canada|None
+Canada|Darlington|4|CANDU 850|Operational|AECL|AECL|GE Canada|None
+Canada|Darlington SMR|1|BWRX-300|Under Construction|None|None|None|None
+Canada|Douglas Point|1|CANDU 200|Shutdown|AECL|AECL|GE Canada|None
+Canada|Gentilly|1|HW BLWR 250|Shutdown|AECL|AECL|GE Canada|None
+Canada|Gentilly|2|CANDU 6|Shutdown|AECL|AECL|GE Canada|None
+Canada|Pickering|1|CANDU 500A|Shutdown|AECL|AECL|GE Canada|None
+Canada|Pickering|2|CANDU 500A|Shutdown|AECL|AECL|GE Canada|None
+Canada|Pickering|3|CANDU 500A|Shutdown|AECL|AECL|GE Canada|None
+Canada|Pickering|4|CANDU 500A|Shutdown|AECL|AECL|GE Canada|None
+Canada|Pickering|5|CANDU 500B|Operational|AECL|AECL|GE Canada|None
+Canada|Pickering|6|CANDU 500B|Operational|AECL|AECL|GE Canada|None
+Canada|Pickering|7|CANDU 500B|Operational|AECL|AECL|GE Canada|None
+Canada|Pickering|8|CANDU 500B|Operational|AECL|AECL|GE Canada|None
+Canada|Point Lepreau|1|CANDU 6|Operational|AECL|AECL|GE Canada|None
+Canada|Rolphton NPD|1|CANDU|Shutdown|AECL|AECL|GE Canada|None

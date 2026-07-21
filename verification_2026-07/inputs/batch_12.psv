@@ -1,0 +1,33 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+China|Bailong|1|CAP1000|Under Construction|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|CEFR|1|BN-20|Operational|CNNC|CNPE|Dongfang Electric|None
+China|CFR|1|CFR-600|Under Construction|CNNC|CNPE|Dongfang Electric|None
+China|CFR|2|CFR-600|Under Construction|CNNC|CNPE|Dongfang Electric|None
+China|Changjiang|1|CNP-600|Operational|CNNC|CNPE|Harbin Electric|China First Heavy Industries
+China|Changjiang|2|CNP-600|Operational|CNNC|CNPE|Harbin Electric|China First Heavy Industries
+China|Changjiang|3|HPR1000|Under Construction|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Changjiang|4|HPR1000|Under Construction|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Daya Bay|1|M310|Operational|Framatome|EDF / CNPEC|Alstom|Framatome
+China|Daya Bay|2|M310|Operational|Framatome|EDF / CNPEC|Alstom|Framatome
+China|Fangchenggang|1|CPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Fangchenggang|2|CPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Fangchenggang|3|HPR1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Fangchenggang|4|HPR1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Fangjiashan|1|CPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Fangjiashan|2|CPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Fuqing|1|M310+|Operational|CNNC|CNPE|Harbin Electric|China First Heavy Industries
+China|Fuqing|2|M310+|Operational|CNNC|CNPE|Harbin Electric|China First Heavy Industries
+China|Fuqing|3|M310+|Operational|CNNC|CNPE|Harbin Electric|China First Heavy Industries
+China|Fuqing|4|M310+|Operational|CNNC|CNPE|Harbin Electric|China First Heavy Industries
+China|Fuqing|5|HPR1000|Operational|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Fuqing|6|HPR1000|Operational|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Haiyang|1|AP1000|Operational|Westinghouse|SNPTC|Harbin Electric|Doosan Heavy Industries
+China|Haiyang|2|AP1000|Operational|Westinghouse|SNPTC|Harbin Electric|Doosan Heavy Industries
+China|Haiyang|3|CAP1000|Under Construction|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Haiyang|4|CAP1000|Under Construction|CNNC|CNPE|Dongfang Electric|China First Heavy Industries
+China|Hongyanhe|1|CPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Hongyanhe|2|CPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Hongyanhe|3|CPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Hongyanhe|4|CPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Hongyanhe|5|ACPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries
+China|Hongyanhe|6|ACPR-1000|Operational|CGN|CNPEC|Dongfang Electric|China First Heavy Industries

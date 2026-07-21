@@ -1,0 +1,185 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Hanbit (Yonggwang)|1|constructor|UNVERIFIABLE||LOW|No direct source found this session; batch value (Westinghouse) plausible for era but WNA notes these units "involved local contractors" so cannot confirm sole Westinghouse construction
+Hanbit (Yonggwang)|1|architect_engineer|UNVERIFIABLE||LOW|No unit-specific AE source found; KEPCO E&C likely anachronistic for a 1986-commissioned Westinghouse-design unit but no confirmed alternative found
+Hanbit (Yonggwang)|1|turbine_supplier|UNVERIFIABLE||LOW|No unit-specific turbine source found; Doosan HI is suspect given Kori 1-4 (same era) used GEC Rugby, but not confirmed for Hanbit 1/2 specifically
+Hanbit (Yonggwang)|1|rpv_manufacturer|UNVERIFIABLE||LOW|No unit-specific RPV source found
+Hanbit (Yonggwang)|2|constructor|UNVERIFIABLE||LOW|Same as Hanbit 1
+Hanbit (Yonggwang)|2|architect_engineer|UNVERIFIABLE||LOW|Same as Hanbit 1
+Hanbit (Yonggwang)|2|turbine_supplier|UNVERIFIABLE||LOW|Same as Hanbit 1
+Hanbit (Yonggwang)|2|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Hanbit 1
+Hanbit (Yonggwang)|3|constructor|UNVERIFIABLE||LOW|"KEPCO E&C / Hyundai E&C" duplicates the AE field with a generic constructor name; no site-specific contractor record confirmed this session
+Hanbit (Yonggwang)|3|architect_engineer|CONFIRMED||HIGH|WNA South Korea country profile: KSNP/OPR-1000-era domestic units engineered by KEPCO E&C (formerly KOPEC)
+Hanbit (Yonggwang)|3|turbine_supplier|CONFIRMED||MED|Standard domestic OPR-1000 fleet turbine supplier is Doosan Heavy Industries (industry-standard knowledge; not independently re-confirmed per-unit this session)
+Hanbit (Yonggwang)|3|rpv_manufacturer|CONFIRMED||MED|Standard domestic OPR-1000 fleet RPV/NSSS manufacturer is Doosan Heavy Industries (industry-standard knowledge; not independently re-confirmed per-unit this session)
+Hanbit (Yonggwang)|4|constructor|UNVERIFIABLE||LOW|Same as Hanbit 3
+Hanbit (Yonggwang)|4|architect_engineer|CONFIRMED||HIGH|Same as Hanbit 3
+Hanbit (Yonggwang)|4|turbine_supplier|CONFIRMED||MED|Same as Hanbit 3
+Hanbit (Yonggwang)|4|rpv_manufacturer|CONFIRMED||MED|Same as Hanbit 3
+Hanbit (Yonggwang)|5|constructor|UNVERIFIABLE||LOW|Same as Hanbit 3
+Hanbit (Yonggwang)|5|architect_engineer|CONFIRMED||HIGH|Same as Hanbit 3
+Hanbit (Yonggwang)|5|turbine_supplier|CONFIRMED||MED|Same as Hanbit 3
+Hanbit (Yonggwang)|5|rpv_manufacturer|CONFIRMED||MED|Same as Hanbit 3
+Hanbit (Yonggwang)|6|constructor|UNVERIFIABLE||LOW|Same as Hanbit 3
+Hanbit (Yonggwang)|6|architect_engineer|CONFIRMED||HIGH|Same as Hanbit 3
+Hanbit (Yonggwang)|6|turbine_supplier|CONFIRMED||MED|Same as Hanbit 3
+Hanbit (Yonggwang)|6|rpv_manufacturer|CONFIRMED||MED|Same as Hanbit 3
+Hanul (Ulchin)|1|constructor|UNVERIFIABLE||LOW|Batch lists Framatome (design vendor for France CPI model) as constructor; actual site builder unconfirmed, may follow Kori 3/4 pattern of local contractor under license
+Hanul (Ulchin)|1|architect_engineer|UNVERIFIABLE||LOW|No unit-specific AE source found for this early foreign-design unit
+Hanul (Ulchin)|1|turbine_supplier|UNVERIFIABLE||LOW|No unit-specific turbine source found; Doosan HI unconfirmed for this pre-domestic-era unit
+Hanul (Ulchin)|1|rpv_manufacturer|UNVERIFIABLE||LOW|No unit-specific RPV source found
+Hanul (Ulchin)|2|constructor|UNVERIFIABLE||LOW|Same as Hanul 1
+Hanul (Ulchin)|2|architect_engineer|UNVERIFIABLE||LOW|Same as Hanul 1
+Hanul (Ulchin)|2|turbine_supplier|UNVERIFIABLE||LOW|Same as Hanul 1
+Hanul (Ulchin)|2|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Hanul 1
+Hanul (Ulchin)|3|constructor|UNVERIFIABLE||LOW|Same duplication concern as domestic Hanbit units
+Hanul (Ulchin)|3|architect_engineer|CONFIRMED||HIGH|Domestic OPR-1000-era AE is KEPCO E&C (WNA)
+Hanul (Ulchin)|3|turbine_supplier|CONFIRMED||MED|Domestic OPR-1000 fleet standard turbine supplier Doosan HI (industry-standard knowledge)
+Hanul (Ulchin)|3|rpv_manufacturer|CONFIRMED||MED|Domestic OPR-1000 fleet standard RPV supplier Doosan HI (industry-standard knowledge)
+Hanul (Ulchin)|4|constructor|UNVERIFIABLE||LOW|Same as Hanul 3
+Hanul (Ulchin)|4|architect_engineer|CONFIRMED||HIGH|Same as Hanul 3
+Hanul (Ulchin)|4|turbine_supplier|CONFIRMED||MED|Same as Hanul 3
+Hanul (Ulchin)|4|rpv_manufacturer|CONFIRMED||MED|Same as Hanul 3
+Hanul (Ulchin)|5|constructor|UNVERIFIABLE||LOW|Same as Hanul 3
+Hanul (Ulchin)|5|architect_engineer|CONFIRMED||HIGH|Same as Hanul 3
+Hanul (Ulchin)|5|turbine_supplier|CONFIRMED||MED|Same as Hanul 3
+Hanul (Ulchin)|5|rpv_manufacturer|CONFIRMED||MED|Same as Hanul 3
+Hanul (Ulchin)|6|constructor|UNVERIFIABLE||LOW|Same as Hanul 3
+Hanul (Ulchin)|6|architect_engineer|CONFIRMED||HIGH|Same as Hanul 3
+Hanul (Ulchin)|6|turbine_supplier|CONFIRMED||MED|Same as Hanul 3
+Hanul (Ulchin)|6|rpv_manufacturer|CONFIRMED||MED|Same as Hanul 3
+Kori|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Kori_Nuclear_Power_Plant: Kori-1 built by Westinghouse (turnkey)
+Kori|1|architect_engineer|WRONG|Gilbert (Gilbert Associates/Gilbert Commonwealth)|MED|en.wikipedia.org/wiki/Kori_Nuclear_Power_Plant lists AE as Gilbert, not KEPCO E&C (KOPEC did not yet exist in this role at Kori-1's 1971 start)
+Kori|1|turbine_supplier|WRONG|GEC Turbines (Rugby, UK)|MED|en.wikipedia.org/wiki/Kori_Nuclear_Power_Plant: turbine generator by GEC Turbines (Rugby)
+Kori|1|rpv_manufacturer|UNVERIFIABLE||LOW|Wikipedia article does not specify RPV manufacturer; batch value (Doosan HI) is anachronistic for a 1978-commissioned Westinghouse turnkey unit but no confirmed replacement found
+Kori|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/wiki/Kori_Nuclear_Power_Plant: Kori-2 built by Westinghouse
+Kori|2|architect_engineer|WRONG|Gilbert (Gilbert Associates/Gilbert Commonwealth)|MED|en.wikipedia.org/wiki/Kori_Nuclear_Power_Plant lists AE as Gilbert
+Kori|2|turbine_supplier|WRONG|GEC Turbines (Rugby, UK)|MED|en.wikipedia.org/wiki/Kori_Nuclear_Power_Plant
+Kori|2|rpv_manufacturer|UNVERIFIABLE||LOW|Not specified in source; batch value (Doosan HI) suspect for same reason as Kori-1
+Kori|3|constructor|WRONG|Hyundai (Hyundai Heavy Industries/Engineering)|MED|en.wikipedia.org/wiki/Kori_Nuclear_Power_Plant: Kori-3 constructor listed as Hyundai; WNA South Korea profile corroborates Kori 3&4 "involved local contractors"
+Kori|3|architect_engineer|WRONG|Bechtel|MED|en.wikipedia.org/wiki/Kori_Nuclear_Power_Plant lists AE as Bechtel, not KEPCO E&C
+Kori|3|turbine_supplier|WRONG|GEC Turbines (Rugby, UK)|MED|en.wikipedia.org/wiki/Kori_Nuclear_Power_Plant
+Kori|3|rpv_manufacturer|UNVERIFIABLE||LOW|Not specified in source; Kori 3/4 era is plausibly when Korean firms began partial component manufacture but exact RPV supplier unconfirmed
+Kori|4|constructor|WRONG|Hyundai (Hyundai Heavy Industries/Engineering)|MED|Same as Kori-3
+Kori|4|architect_engineer|WRONG|Bechtel|MED|Same as Kori-3
+Kori|4|turbine_supplier|WRONG|GEC Turbines (Rugby, UK)|MED|Same as Kori-3
+Kori|4|rpv_manufacturer|UNVERIFIABLE||LOW|Same as Kori-3
+Shin-Hanul (Shin-Ulchin)|1|constructor|UNVERIFIABLE||LOW|Same duplication concern as other domestic-era units; site-specific contractor (possibly not Hyundai E&C) unconfirmed
+Shin-Hanul (Shin-Ulchin)|1|architect_engineer|CONFIRMED||HIGH|APR1400-era domestic AE is KEPCO E&C (WNA)
+Shin-Hanul (Shin-Ulchin)|1|turbine_supplier|CONFIRMED||MED|Domestic APR1400 fleet standard turbine supplier Doosan HI
+Shin-Hanul (Shin-Ulchin)|1|rpv_manufacturer|CONFIRMED||MED|Domestic APR1400 fleet standard RPV supplier Doosan HI
+Shin-Hanul (Shin-Ulchin)|2|constructor|UNVERIFIABLE||LOW|Same as Shin-Hanul 1
+Shin-Hanul (Shin-Ulchin)|2|architect_engineer|CONFIRMED||HIGH|Same as Shin-Hanul 1
+Shin-Hanul (Shin-Ulchin)|2|turbine_supplier|CONFIRMED||MED|Same as Shin-Hanul 1
+Shin-Hanul (Shin-Ulchin)|2|rpv_manufacturer|CONFIRMED||MED|Same as Shin-Hanul 1
+Shin-Hanul (Shin-Ulchin)|3|constructor|UNVERIFIABLE||LOW|Same as Shin-Hanul 1 (unit under construction; contractor could differ from operating units)
+Shin-Hanul (Shin-Ulchin)|3|architect_engineer|CONFIRMED||HIGH|Same as Shin-Hanul 1
+Shin-Hanul (Shin-Ulchin)|3|turbine_supplier|CONFIRMED||MED|Same as Shin-Hanul 1
+Shin-Hanul (Shin-Ulchin)|3|rpv_manufacturer|CONFIRMED||MED|Same as Shin-Hanul 1
+Shin-Kori|1|constructor|UNVERIFIABLE||LOW|Same duplication concern; site-specific contractor unconfirmed
+Shin-Kori|1|architect_engineer|CONFIRMED||HIGH|Domestic KSNP+/OPR-1000-era AE is KEPCO E&C (WNA)
+Shin-Kori|1|turbine_supplier|CONFIRMED||MED|Domestic fleet standard turbine supplier Doosan HI
+Shin-Kori|1|rpv_manufacturer|CONFIRMED||MED|Domestic fleet standard RPV supplier Doosan HI
+Shin-Kori|2|constructor|UNVERIFIABLE||LOW|Same as Shin-Kori 1
+Shin-Kori|2|architect_engineer|CONFIRMED||HIGH|Same as Shin-Kori 1
+Shin-Kori|2|turbine_supplier|CONFIRMED||MED|Same as Shin-Kori 1
+Shin-Kori|2|rpv_manufacturer|CONFIRMED||MED|Same as Shin-Kori 1
+Shin-Kori|3|constructor|UNVERIFIABLE||LOW|Same as Shin-Kori 1
+Shin-Kori|3|architect_engineer|CONFIRMED||HIGH|WNA: APR1400 Shin Kori 3&4 (Saeul 1&2) domestic AE KEPCO E&C
+Shin-Kori|3|turbine_supplier|CONFIRMED||MED|Domestic APR1400 fleet standard turbine supplier Doosan HI
+Shin-Kori|3|rpv_manufacturer|CONFIRMED||MED|Domestic APR1400 fleet standard RPV supplier Doosan HI
+Shin-Kori|4|constructor|UNVERIFIABLE||LOW|Same as Shin-Kori 3
+Shin-Kori|4|architect_engineer|CONFIRMED||HIGH|Same as Shin-Kori 3
+Shin-Kori|4|turbine_supplier|CONFIRMED||MED|Same as Shin-Kori 3
+Shin-Kori|4|rpv_manufacturer|CONFIRMED||MED|Same as Shin-Kori 3
+Shin-Kori|5|constructor|UNVERIFIABLE||LOW|Same as Shin-Kori 3 (under construction; contractor could differ)
+Shin-Kori|5|architect_engineer|CONFIRMED||HIGH|Same as Shin-Kori 3
+Shin-Kori|5|turbine_supplier|CONFIRMED||MED|Same as Shin-Kori 3
+Shin-Kori|5|rpv_manufacturer|CONFIRMED||MED|Same as Shin-Kori 3
+Shin-Kori|6|constructor|UNVERIFIABLE||LOW|Same as Shin-Kori 5
+Shin-Kori|6|architect_engineer|CONFIRMED||HIGH|Same as Shin-Kori 3
+Shin-Kori|6|turbine_supplier|CONFIRMED||MED|Same as Shin-Kori 3
+Shin-Kori|6|rpv_manufacturer|CONFIRMED||MED|Same as Shin-Kori 3
+Shin-Wolsong|1|constructor|UNVERIFIABLE||LOW|Same duplication concern as other domestic-era units
+Shin-Wolsong|1|architect_engineer|CONFIRMED||HIGH|WNA: Shin Wolsong 1&2 (KSNP+ design) domestic AE KEPCO E&C
+Shin-Wolsong|1|turbine_supplier|CONFIRMED||MED|Domestic fleet standard turbine supplier Doosan HI
+Shin-Wolsong|1|rpv_manufacturer|CONFIRMED||MED|Domestic fleet standard RPV supplier Doosan HI
+Shin-Wolsong|2|constructor|UNVERIFIABLE||LOW|Same as Shin-Wolsong 1
+Shin-Wolsong|2|architect_engineer|CONFIRMED||HIGH|Same as Shin-Wolsong 1
+Shin-Wolsong|2|turbine_supplier|CONFIRMED||MED|Same as Shin-Wolsong 1
+Shin-Wolsong|2|rpv_manufacturer|CONFIRMED||MED|Same as Shin-Wolsong 1
+Wolsong|1|constructor|CONFIRMED||MED|WNA South Korea profile: Wolsong CANDU-6 units supplied/built by AECL Canada (unit 1 was the first, most turnkey of the four)
+Wolsong|1|architect_engineer|UNVERIFIABLE||LOW|No source confirms KEPCO E&C as AE specifically for CANDU-design Wolsong 1; AECL typically served combined vendor/engineering role on CANDU turnkey projects
+Wolsong|1|turbine_supplier|UNVERIFIABLE||LOW|No source found confirming Doosan HI as turbine supplier for this 1983-era unit
+Wolsong|1|rpv_manufacturer|CONFIRMED||HIGH|CANDU reactors (including Wolsong) use a calandria + pressure-tube design, not a single RPV — "None" is structurally correct, not a data gap
+Wolsong|2|constructor|UNVERIFIABLE||LOW|WNA notes Wolsong 2-4 (1997-99) had "substantial local input," so sole-AECL construction attribution is questionable; exact contractor split unconfirmed
+Wolsong|2|architect_engineer|UNVERIFIABLE||LOW|Same as Wolsong 1
+Wolsong|2|turbine_supplier|UNVERIFIABLE||LOW|Same as Wolsong 1
+Wolsong|2|rpv_manufacturer|CONFIRMED||HIGH|Same as Wolsong 1 (CANDU has no RPV)
+Wolsong|3|constructor|UNVERIFIABLE||LOW|Same as Wolsong 2
+Wolsong|3|architect_engineer|UNVERIFIABLE||LOW|Same as Wolsong 1
+Wolsong|3|turbine_supplier|UNVERIFIABLE||LOW|Same as Wolsong 1
+Wolsong|3|rpv_manufacturer|CONFIRMED||HIGH|Same as Wolsong 1
+Wolsong|4|constructor|UNVERIFIABLE||LOW|Same as Wolsong 2
+Wolsong|4|architect_engineer|UNVERIFIABLE||LOW|Same as Wolsong 1
+Wolsong|4|turbine_supplier|UNVERIFIABLE||LOW|Same as Wolsong 1
+Wolsong|4|rpv_manufacturer|CONFIRMED||HIGH|Same as Wolsong 1
+Chinshan (First)|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_Taiwan: Chinshan/Jinshan is GE BWR technology, consistent with a GE-led turnkey project
+Chinshan (First)|1|architect_engineer|UNVERIFIABLE||LOW|No source found naming the specific AE (commonly Ebasco or Bechtel served as AE on Taipower BWR projects, but not confirmed for Chinshan specifically); GE itself as AE is plausible but unconfirmed
+Chinshan (First)|1|turbine_supplier|CONFIRMED||MED|GE-led BWR turnkey projects of this era typically included GE turbine-generators; not independently re-confirmed per-unit
+Chinshan (First)|1|rpv_manufacturer|CONFIRMED||MED|GE-led BWR turnkey projects of this era typically included GE-supplied RPV; not independently re-confirmed per-unit
+Chinshan (First)|2|constructor|CONFIRMED||MED|Same as Chinshan 1
+Chinshan (First)|2|architect_engineer|UNVERIFIABLE||LOW|Same as Chinshan 1
+Chinshan (First)|2|turbine_supplier|CONFIRMED||MED|Same as Chinshan 1
+Chinshan (First)|2|rpv_manufacturer|CONFIRMED||MED|Same as Chinshan 1
+Kuosheng (Second)|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Kuosheng_Nuclear_Power_Plant confirms GE as reactor supplier for this BWR-6 turnkey project
+Kuosheng (Second)|1|architect_engineer|UNVERIFIABLE||LOW|No source found naming specific AE for Kuosheng
+Kuosheng (Second)|1|turbine_supplier|CONFIRMED||MED|GE-led turnkey BWR project; turbine typically GE (not independently re-confirmed per-unit)
+Kuosheng (Second)|1|rpv_manufacturer|CONFIRMED||MED|GE-led turnkey BWR project; RPV typically GE-supplied (not independently re-confirmed per-unit)
+Kuosheng (Second)|2|constructor|CONFIRMED||MED|Same as Kuosheng 1
+Kuosheng (Second)|2|architect_engineer|UNVERIFIABLE||LOW|Same as Kuosheng 1
+Kuosheng (Second)|2|turbine_supplier|CONFIRMED||MED|Same as Kuosheng 1
+Kuosheng (Second)|2|rpv_manufacturer|CONFIRMED||MED|Same as Kuosheng 1
+Maanshan (Third)|1|constructor|CONFIRMED||MED|en.wikipedia.org/wiki/Maanshan_Nuclear_Power_Plant confirms Westinghouse as NSSS/reactor supplier for this three-loop PWR turnkey project
+Maanshan (Third)|1|architect_engineer|UNVERIFIABLE||LOW|Bechtel is a plausible/commonly-cited AE for Westinghouse turnkey projects of this era but not directly confirmed by the source consulted
+Maanshan (Third)|1|turbine_supplier|WRONG|General Electric|MED|en.wikipedia.org/wiki/Maanshan_Nuclear_Power_Plant explicitly states General Electric manufactured the turbines, not Westinghouse
+Maanshan (Third)|1|rpv_manufacturer|CONFIRMED||MED|Westinghouse-brand RPV consistent with Westinghouse turnkey PWR (not independently re-confirmed per-unit)
+Maanshan (Third)|2|constructor|CONFIRMED||MED|Same as Maanshan 1
+Maanshan (Third)|2|architect_engineer|UNVERIFIABLE||LOW|Same as Maanshan 1
+Maanshan (Third)|2|turbine_supplier|WRONG|General Electric|MED|Same as Maanshan 1
+Maanshan (Third)|2|rpv_manufacturer|CONFIRMED||MED|Same as Maanshan 1
+# NOTES
+# 1. Korea's early foreign-built units (Kori 1-4) show the clearest heuristic-flattening error: the source
+#    data assigned KEPCO E&C (architect_engineer) and Doosan Heavy Industries (turbine_supplier) uniformly
+#    across the ENTIRE Korean fleet, including units built a decade or more before those firms existed in
+#    those roles. Kori 1&2 (1978/1983) actually used Gilbert as AE and GEC Turbines (Rugby, UK) for turbines;
+#    Kori 3&4 (1985/1986) used Bechtel as AE and Hyundai as constructor (not Westinghouse), still with GEC
+#    turbines. This is the single largest confirmed-wrong cluster in this batch (12 WRONG fields, all Kori).
+# 2. The "constructor" field for every domestic-era Korean unit (Hanbit 3-6, Hanul 3-6, all Shin-Kori,
+#    Shin-Hanul, Shin-Wolsong — 20 units) is the identical string "KEPCO E&C / Hyundai E&C" regardless of
+#    site or build era. This is structurally suspicious: KEPCO E&C is the architect-engineer, not a
+#    construction contractor, and actual site builders on Korean NPP projects are known to vary (Hyundai
+#    E&C, Samsung C&T, Daewoo E&C, POSCO E&C, Doosan E&C depending on unit/round). I could not confirm the
+#    correct site-specific contractor for any of these 20 units this session, so all 20 "constructor" fields
+#    are marked UNVERIFIABLE rather than CONFIRMED or WRONG — this is a real gap, not a clean pass, and is
+#    the most significant residual finding in the batch.
+# 3. Wolsong's rpv_manufacturer = "None" is CORRECT, not a placeholder gap: CANDU reactors use a calandria +
+#    pressure-tube design with no single reactor pressure vessel. All 4 Wolsong units confirmed HIGH on this
+#    field.
+# 4. Maanshan's turbine_supplier was recorded as "Westinghouse" but Wikipedia's Maanshan article explicitly
+#    states General Electric manufactured the turbines for this Westinghouse-NSSS plant — confirmed WRONG
+#    for both units.
+# 5. Hanbit 1&2 and Hanul 1&2 (the other two early-foreign-built Korean pairs, analogous to Kori 1-4) could
+#    not be sourced this session — the WebSearch tool hit its session-wide budget cap (200/200) partway
+#    through research, and available WebFetch-only sources (Wikipedia plant articles, WNA country profile)
+#    did not contain unit-level vendor detail for these two plants. All 16 fields for these 4 units are
+#    marked UNVERIFIABLE. Given the confirmed pattern at Kori, it is likely their architect_engineer and
+#    turbine_supplier values are ALSO wrong (same anachronism), but this should not be assumed without a
+#    source — recommend re-running with a fresh WebSearch budget, targeting Hanbit 1&2 and Hanul 1&2
+#    specifically (search terms: "Yonggwang 1 2 Westinghouse constructor architect engineer turbine", "Ulchin
+#    1 2 Framatome constructor turbine supplier").
+# 6. Taiwan (Chinshan, Kuosheng, Maanshan) constructor/turbine/RPV fields for the foreign vendor itself (GE
+#    or Westinghouse) were marked CONFIRMED at MED confidence based on standard turnkey-project practice for
+#    plants of this type/era, not unit-specific procurement documents — flagging as a softer confirmation
+#    than the HIGH-confidence Korea CANDU finding. The architect_engineer field for all 3 Taiwan plants (6
+#    units) could not be sourced and is marked UNVERIFIABLE; Taipower's plants are commonly associated with
+#    Bechtel or Ebasco as AE but no source consulted this session named a specific firm for these projects.

@@ -1,0 +1,144 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Barsebäck|1|constructor|CONFIRMED||HIGH|sv.wikipedia.org "Barsebäcksverket" — Sydkraft ordered reactor 1 from ASEA-Atom
+Barsebäck|1|architect_engineer|UNVERIFIABLE||LOW|no AE distinct from constructor found
+Barsebäck|1|turbine_supplier|WRONG|Stal-Laval|MED|sv.wikipedia.org "Stal-Laval" — supplied turbines to all four Swedish nuclear plant sites in the 1970s; ASEA-Atom was NSSS designer, not a turbine maker
+Barsebäck|1|rpv_manufacturer|UNVERIFIABLE||LOW|no Barsebäck-specific RPV source found (Uddcomb page unreachable)
+Barsebäck|2|constructor|CONFIRMED||HIGH|sv.wikipedia.org "Barsebäcksverket" — Sydkraft ordered Barsebäck 2 from ASEA-Atom in 1970
+Barsebäck|2|architect_engineer|UNVERIFIABLE||LOW|same as Barsebäck 1
+Barsebäck|2|turbine_supplier|WRONG|Stal-Laval|MED|same basis as Barsebäck 1
+Barsebäck|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as Barsebäck 1
+Forsmark|1|constructor|WRONG|ASEA-Atom|HIGH|sv.wikipedia.org "Forsmarks kärnkraftverk" — delivered by ASEA-Atom; F1 entered service 1980, predating ABB (formed 1988)
+Forsmark|1|architect_engineer|UNVERIFIABLE||LOW|no distinct AE named in source
+Forsmark|1|turbine_supplier|WRONG|STAL (Svenska Turbinfabriks, later Stal-Laval/Alstom)|HIGH|sv.wikipedia.org "Forsmarks kärnkraftverk" — "levererades av dåvarande STAL - numera Alstom"
+Forsmark|1|rpv_manufacturer|UNVERIFIABLE||LOW|source does not cover RPV manufacturer
+Forsmark|2|constructor|WRONG|ASEA-Atom|HIGH|same source as F1 (identical twin unit); F2 in service 1981, predates ABB
+Forsmark|2|architect_engineer|UNVERIFIABLE||LOW|same as F1
+Forsmark|2|turbine_supplier|WRONG|STAL (later Alstom)|HIGH|same source as F1
+Forsmark|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as F1
+Forsmark|3|constructor|WRONG|ASEA-Atom|HIGH|sv.wikipedia.org "Forsmarks kärnkraftverk" (BWR75 model); F3 in service 1985, predates ABB
+Forsmark|3|architect_engineer|UNVERIFIABLE||LOW|no distinct AE named
+Forsmark|3|turbine_supplier|WRONG|not ASEA-Atom; likely STAL/successor — exact 1985 original supplier unconfirmed|LOW|sv.wikipedia.org confirms only a 2004 Siemens retrofit and original BBC generator; ASEA-Atom (reactor design house) is structurally not a turbine maker
+Forsmark|3|rpv_manufacturer|UNVERIFIABLE||LOW|not covered in source
+Oskarshamn|1|constructor|WRONG|ASEA-Atom|HIGH|sv.wikipedia.org "Oskarshamns kärnkraftverk" ("Konstruktör: ASEA-Atom"); O1 in service 1972, predates ABB
+Oskarshamn|1|architect_engineer|UNVERIFIABLE||LOW|not distinguished from constructor in source
+Oskarshamn|1|turbine_supplier|WRONG|Stal-Laval|HIGH|sv.wikipedia.org "Oskarshamns kärnkraftverk" — Stal-Laval (now Siemens Energy AB), world's largest double-rotation turbine at the time
+Oskarshamn|1|rpv_manufacturer|UNVERIFIABLE||LOW|not covered in source
+Oskarshamn|2|constructor|WRONG|ASEA-Atom|HIGH|sv.wikipedia.org "Oskarshamns kärnkraftverk" ("Konstruktör: ASEA-Atom"); O2 in service 1975, predates ABB
+Oskarshamn|2|architect_engineer|UNVERIFIABLE||LOW|not covered
+Oskarshamn|2|turbine_supplier|WRONG|likely Stal-Laval — unconfirmed for this specific unit|LOW|no explicit O2 turbine citation found; inferred from O1/O3 pattern and ASEA-Atom not being a turbine maker
+Oskarshamn|2|rpv_manufacturer|UNVERIFIABLE||LOW|not covered
+Oskarshamn|3|constructor|WRONG|ASEA-Atom|HIGH|sv.wikipedia.org "Oskarshamns kärnkraftverk" ("Konstruktör: ASEA-Atom"); O3 in service 1985, predates ABB
+Oskarshamn|3|architect_engineer|UNVERIFIABLE||LOW|not covered
+Oskarshamn|3|turbine_supplier|WRONG|Stal-Laval|HIGH|sv.wikipedia.org "Oskarshamns kärnkraftverk" ("Turbinleverantör: Stal-Laval")
+Oskarshamn|3|rpv_manufacturer|UNVERIFIABLE||LOW|not covered
+Ringhals|1|constructor|WRONG|ASEA-Atom|HIGH|sv.wikipedia.org "Ringhals kärnkraftverk" ("Leverantör: ASEA-Atom"); R1 in service 1976, predates ABB
+Ringhals|1|architect_engineer|UNVERIFIABLE||LOW|not covered
+Ringhals|1|turbine_supplier|WRONG|English Electric|HIGH|sv.wikipedia.org "Ringhals kärnkraftverk" — turbine and generator ordered from English Electric; commissioning delayed by vibration problems
+Ringhals|1|rpv_manufacturer|WRONG|Babcock & Wilcox (Glasgow, Scotland); vessel completion subcontracted to Ishikawajima-Harima Heavy Industries (Japan)|HIGH|sv.wikipedia.org "Ringhals kärnkraftverk" — reactor vessel at B&W Glasgow, subcontracted to IHI Japan
+Ringhals|2|constructor|CONFIRMED||HIGH|sv.wikipedia.org "Ringhals kärnkraftverk" ("Leverantör: Westinghouse")
+Ringhals|2|architect_engineer|UNVERIFIABLE||LOW|no AE distinct from Westinghouse NSSS supply found; structurally suspect given known copy-paste bug pattern
+Ringhals|2|turbine_supplier|UNVERIFIABLE||LOW|no direct source names R2 turbine supplier; "Westinghouse" is structurally suspect (Westinghouse was not a European turbine manufacturer) but no replacement value found
+Ringhals|2|rpv_manufacturer|CONFIRMED (tentative)||MED|en.wikipedia.org "Rotterdamsche Droogdok Maatschappij" — RDM built exactly 1 vessel for Sweden (of 22 worldwide); consistent with R2 as Sweden's first Westinghouse PWR (ordered 1968), though not named directly
+Ringhals|3|constructor|CONFIRMED||HIGH|sv.wikipedia.org "Ringhals kärnkraftverk" — three-loop PWR built by Westinghouse
+Ringhals|3|architect_engineer|UNVERIFIABLE||LOW|same caveat as R2
+Ringhals|3|turbine_supplier|WRONG|Stal-Laval|MED|task-provided confirmed correction; independently consistent with sv.wikipedia.org "Stal-Laval" supplying all four Swedish sites, though no R3-specific citation found
+Ringhals|3|rpv_manufacturer|WRONG|Uddcomb|MED|task-provided confirmed correction; independently consistent with RDM's "only 1 Swedish vessel" count (see Ringhals 2), which rules out RDM for R3 if R2 is the one — no direct primary source naming Uddcomb for R3
+Ringhals|4|constructor|CONFIRMED||HIGH|sv.wikipedia.org "Ringhals kärnkraftverk" — twin unit to R3, ordered from Westinghouse 1972
+Ringhals|4|architect_engineer|UNVERIFIABLE||LOW|same caveat as R2/R3
+Ringhals|4|turbine_supplier|WRONG|likely Stal-Laval — unconfirmed|LOW|inferred by analogy to R3 correction and R4 being R3's twin; no R4-specific source found
+Ringhals|4|rpv_manufacturer|WRONG|likely Uddcomb — unconfirmed|LOW|inferred by analogy to R3 correction and RDM's 1-vessel-to-Sweden count; no R4-specific source found
+Ågesta|1|constructor|CONFIRMED (with caveat)||MED|en/sv Wikipedia "Ågesta" — ASEA/Asea Atom named as main reactor supplier; note ASEA-Atom joint venture formed 1969, after Ågesta's 1964 service start, so plain "ASEA" is the more chronologically defensible value
+Ågesta|1|architect_engineer|CONFIRMED (partial)||MED|sv.wikipedia.org "Ågesta kärnkraftverk" — design responsibility shared between AB Atomenergi, Vattenfall and ASEA (AB Atomenergi confirmed as one of three co-responsible parties, not sole AE)
+Ågesta|1|turbine_supplier|WRONG|de Laval (used turbine, ex-Värtan steam plant)|HIGH|sv.wikipedia.org "Ågesta kärnkraftverk" — Stockholms Elverk chose instead a used de Laval turbine from the Värtan steam plant, not a new ASEA unit
+Ågesta|1|rpv_manufacturer|UNVERIFIABLE||LOW|"Degerfors Foundry" is plausible (Uddeholm's Degerfors works predated Uddcomb's 1968 founding) but no source directly names a vessel manufacturer for Ågesta
+Loviisa|1|constructor|CONFIRMED||HIGH|en.wikipedia.org "Loviisa Nuclear Power Plant" — reactor supplied by Atomenergoexport
+Loviisa|1|architect_engineer|UNVERIFIABLE||LOW|Imatran Voima's hybrid-design integrator role ("Eastinghouse") is well documented but no source uses the specific "architect-engineer" framing
+Loviisa|1|turbine_supplier|WRONG|Atomenergoexport (Soviet-supplied); Skoda not corroborated|MED|fi.wikipedia.org "Loviisan voimalaitos" — main components including turbines supplied by Soviet Atomenergoexport
+Loviisa|1|rpv_manufacturer|UNVERIFIABLE||LOW|Izhora Plants is the standard VVER-440 vessel manufacturer industry-wide but no source ties Izhora specifically to Loviisa by name
+Loviisa|2|constructor|CONFIRMED||HIGH|en.wikipedia.org "Loviisa Nuclear Power Plant" — same as Loviisa 1
+Loviisa|2|architect_engineer|UNVERIFIABLE||LOW|same as Loviisa 1
+Loviisa|2|turbine_supplier|WRONG|Atomenergoexport (same basis)|MED|fi.wikipedia.org "Loviisan voimalaitos", same citation
+Loviisa|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as Loviisa 1
+Olkiluoto|1|constructor|CONFIRMED||HIGH|en.wikipedia.org "Olkiluoto Nuclear Power Plant" — Main Contractor: ASEA-Atom
+Olkiluoto|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org "Olkiluoto Nuclear Power Plant" — plant architecture designed by ASEA-Atom
+Olkiluoto|1|turbine_supplier|WRONG|Stal-Laval|HIGH|en.wikipedia.org "Olkiluoto Nuclear Power Plant" — turbine generators supplied by Stal-Laval
+Olkiluoto|1|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org "Olkiluoto Nuclear Power Plant" — reactor pressure vessels constructed by Uddcomb Sweden AB
+Olkiluoto|2|constructor|CONFIRMED||HIGH|same source as Olkiluoto 1
+Olkiluoto|2|architect_engineer|CONFIRMED||HIGH|same source as Olkiluoto 1
+Olkiluoto|2|turbine_supplier|WRONG|Stal-Laval|HIGH|same source as Olkiluoto 1
+Olkiluoto|2|rpv_manufacturer|CONFIRMED||HIGH|same source as Olkiluoto 1
+Olkiluoto|3|constructor|CONFIRMED||HIGH|en.wikipedia.org "Olkiluoto 3" — Areva NP (now Framatome) as main contractor since Siemens sold its Areva NP stake in 2009
+Olkiluoto|3|architect_engineer|CONFIRMED||MED|same source; no separately-named AE distinct from Areva NP as design/construction lead
+Olkiluoto|3|turbine_supplier|WRONG|Siemens|MED|power-technology.com Olkiluoto project page + en.wikipedia.org "Olkiluoto 3" — Siemens supplied the turbine generator set (retained turbine-island scope after 2009 Areva NP split); no source names Alstom for OL3 specifically (Alstom's Arabelle turbine is documented for Flamanville, France — likely source of the original mix-up)
+Olkiluoto|3|rpv_manufacturer|WRONG|Japan Steel Works and Mitsubishi Heavy Industries (jointly)|MED|power-technology.com / en.wikipedia.org "Olkiluoto Nuclear Power Plant" — Japan Steel Works and Mitsubishi Heavy Industries jointly manufactured the 526-ton reactor pressure vessel
+BR-3|1|constructor|CONFIRMED||HIGH|en.wikipedia.org "BR3 reactor" — first reactor exported by Westinghouse Electric
+BR-3|1|architect_engineer|UNVERIFIABLE||LOW|no source found separating an AE role from the reactor vendor
+BR-3|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+BR-3|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found (Westinghouse plausible but not confirmed)
+Doel|1|constructor|CONFIRMED||HIGH|en/fr/nl.wikipedia.org "Doel Nuclear Power Station" — ACECOWEN consortium (ACEC-Cockerill-Westinghouse), confirmed as a real, documented consortium name across three language editions
+Doel|1|architect_engineer|CONFIRMED||HIGH|en/nl.wikipedia.org — Tractebel designed the plant
+Doel|1|turbine_supplier|UNVERIFIABLE||LOW|no source separately confirms a turbine supplier distinct from the reactor consortium; suspected instance of NSSS/consortium name bleeding into this field (see NOTES)
+Doel|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found for Doel 1 vessel maker specifically ("Cockerill" unconfirmed)
+Doel|2|constructor|CONFIRMED||HIGH|en/fr/nl.wikipedia.org — ACECOWEN
+Doel|2|architect_engineer|CONFIRMED||HIGH|en/nl.wikipedia.org — Tractebel
+Doel|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Doel|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Doel|3|constructor|CONFIRMED||HIGH|en.wikipedia.org table — "FRAMACEC"; fr.wikipedia.org uses spelling "FRAMACECO" (Framatome-Acec-Cockerill), same company composition, minor spelling variance across sources
+Doel|3|architect_engineer|CONFIRMED||HIGH|en/nl.wikipedia.org — Tractebel
+Doel|3|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Doel|3|rpv_manufacturer|CONFIRMED||HIGH|en/fr/nl.wikipedia.org — vessel forged by Rotterdamsche Droogdok Maatschappij (RDM), central to the 2012/2014 vessel hydrogen-flaw incident
+Doel|4|constructor|CONFIRMED||HIGH|en/fr/nl.wikipedia.org — ACECOWEN
+Doel|4|architect_engineer|CONFIRMED||HIGH|en/nl.wikipedia.org — Tractebel
+Doel|4|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Doel|4|rpv_manufacturer|UNVERIFIABLE||LOW|no source found ("Cockerill" unconfirmed)
+Tihange|1|constructor|CONFIRMED||MED|en.wikipedia.org table — "ACLF (ACECOWEN-Creusot-Loire-Framatome)"; only source found for this expansion, fr/nl Wikipedia did not spell out the acronym
+Tihange|1|architect_engineer|CONFIRMED||HIGH|nl.wikipedia.org "Kerncentrale Tihange" — plant design outsourced to Tractebel
+Tihange|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Tihange|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found ("Framatome" unconfirmed)
+Tihange|2|constructor|CONFIRMED||HIGH|en.wikipedia.org table (FRAMACEC); fr.wikipedia.org text references same consortium composition
+Tihange|2|architect_engineer|CONFIRMED||HIGH|nl.wikipedia.org — Tractebel
+Tihange|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Tihange|2|rpv_manufacturer|CONFIRMED||HIGH|en/nl/fr.wikipedia.org — vessel forged by Rotterdamsche Droogdok Maatschappij (RDM), sister vessel to Doel 3, both flagged in the 2012/2014 incident
+Tihange|3|constructor|CONFIRMED||HIGH|en.wikipedia.org table (ACECOWEN); fr.wikipedia.org confirms Tihange 3 supplied by Westinghouse, consistent with ACECOWEN membership
+Tihange|3|architect_engineer|CONFIRMED||HIGH|nl.wikipedia.org — Tractebel
+Tihange|3|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Tihange|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source found ("Cockerill" unconfirmed)
+Beznau|1|constructor|CONFIRMED||HIGH|en.wikipedia.org "Beznau Nuclear Power Plant" — reactor supplier Westinghouse Electric
+Beznau|1|architect_engineer|UNVERIFIABLE||LOW|no EN or DE Wikipedia source names a distinct architect-engineer
+Beznau|1|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org "Beznau Nuclear Power Plant" — two Brown Boveri turbine generators
+Beznau|1|rpv_manufacturer|UNVERIFIABLE||LOW|neither EN nor DE Wikipedia mentions Creusot-Loire or any RPV manufacturer for Beznau
+Beznau|2|constructor|CONFIRMED||HIGH|same source — same Westinghouse PWR design as Unit 1
+Beznau|2|architect_engineer|UNVERIFIABLE||LOW|same as Beznau 1
+Beznau|2|turbine_supplier|CONFIRMED||HIGH|same source, Brown Boveri turbine generators for both units
+Beznau|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as Beznau 1
+Gösgen|1|constructor|CONFIRMED||HIGH|kkg.ch official chronology — Kraftwerk Union AG (KWU) as turnkey general contractor
+Gösgen|1|architect_engineer|WRONG|Motor-Columbus Ingenieurunternehmungen AG|HIGH|kkg.ch "Planung, Bau und Inbetriebnahme" — KWU was reactor/general contractor; Motor-Columbus handled site development/project engineering
+Gösgen|1|turbine_supplier|UNVERIFIABLE||LOW|KWU (NSSS vendor) confirmed only as general contractor, never named as turbine supplier in any source checked (kkg.ch chronology, EN/DE Wikipedia, WNA); structurally suspect but no replacement value confirmed
+Gösgen|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source names a specific RPV manufacturer; kkg.ch chronology discusses 1988 RPV core-barrel-bolt maintenance without naming original manufacturer
+Leibstadt|1|constructor|WRONG|Consortium of Brown Boveri (BBC) and General Electric (GE)|MED|de.wikipedia.org "Kernkraftwerk Leibstadt" — BBC/GE consortium built the reactor and machine house; Elektrowatt AG built secondary structures
+Leibstadt|1|architect_engineer|UNVERIFIABLE||LOW|Elektrowatt AG confirmed only for secondary buildings (cooling tower, workshop, office), not an overall architect-engineer role
+Leibstadt|1|turbine_supplier|UNVERIFIABLE||LOW|BBC/GE consortium built the "machine house" (turbine hall) per de.wikipedia.org but no source explicitly states a turbine supplier; BBC plausible given consortium role, not confirmed
+Leibstadt|1|rpv_manufacturer|CONFIRMED (partial)||MED|de.wikipedia.org "Kernkraftwerk Leibstadt" — parts of the RPV fabricated by Rotterdamsche Droogdok Maatschappij (RDM); article notes some plate material sourced from Japan and France, so RDM was not sole fabricator of all components
+Lucens|1|constructor|WRONG|NGA consortium (Nationale Gesellschaft zur Förderung der industriellen Atomtechnik) — merger of Sulzer, Escher Wyss and Brown Boveri industry groups; Sulzer formally withdrew from Swiss atomic technology development in May 1967, before the reactor's 1968 startup|MED|de.wikipedia.org "Kernkraftwerk Lucens" — confirms Sulzer's 1967 exit and NGA as the umbrella coordinating body
+Lucens|1|architect_engineer|UNVERIFIABLE||LOW|no single architect-engineer firm named; project run collectively by the NGA/industry-group consortium
+Lucens|1|turbine_supplier|UNVERIFIABLE||LOW|BBC was a consortium member and later founded "Reaktor AG," but no source confirms BBC as turbine supplier for this 7 MWe unit
+Lucens|1|rpv_manufacturer|WRONG|N/A — no conventional RPV; underground-cavern, individual pressure-tube design specifically avoided needing a large pressure vessel|HIGH|de.wikipedia.org "Kernkraftwerk Lucens" — design avoided the difficult development steps needed for large pressure vessels; "Sulzer" as RPV manufacturer is a category error, not a wrong-vendor error
+Mühleberg|1|constructor|CONFIRMED||HIGH|en.wikipedia.org "Mühleberg Nuclear Power Plant" — General Electric (via subsidiary GETSCO) supplied the BWR-4
+Mühleberg|1|architect_engineer|UNVERIFIABLE||LOW|no source names a distinct architect-engineer for Mühleberg
+Mühleberg|1|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org "Mühleberg Nuclear Power Plant" — two Brown Boveri steam turbine generators
+Mühleberg|1|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org "Mühleberg Nuclear Power Plant" — 2012 quality-issue coverage confirms Rotterdamsche Droogdok Maatschappij (RDM) involved in manufacture of both the Mühleberg and Doel vessels
+# NOTES
+# Totals: 128 fields checked (32 reactors x 4 fields) — 44 CONFIRMED, 32 WRONG, 52 UNVERIFIABLE.
+# 1. SWEDEN "ABB" ANACHRONISM: constructor="ABB" is wrong for 7 pre-1988 units (Forsmark 1/2/3, Oskarshamn 1/2/3, Ringhals 1) — ABB (Asea Brown Boveri) did not exist until the 1988 ASEA/Brown Boveri merger; all 7 units entered service 1972-1985. Correct value is ASEA-Atom in every case.
+# 2. SWEDEN TURBINE BUG CONFIRMED BROADER THAN THE RINGHALS-3 SAMPLE: turbine_supplier="ASEA-Atom" is wrong for essentially all ASEA-Atom-built BWRs — ASEA-Atom was a reactor (NSSS) design house, never a turbine manufacturer. Directly confirmed as STAL/Stal-Laval for Forsmark 1/2 and Oskarshamn 1/3; structurally implied (but unit-specific citation not found) for Barsebäck 1/2, Forsmark 3, Oskarshamn 2, Ringhals 2/4.
+# 3. RINGHALS 1 RPV — a second, independent RPV error distinct from the known Ringhals-3 bug: the vessel was fabricated by Babcock & Wilcox (Glasgow, UK) with completion subcontracted to Ishikawajima-Harima Heavy Industries (Japan), not the domestic Uddcomb value currently recorded, despite Ringhals 1 being an ASEA-Atom BWR.
+# 4. RDM'S GLOBAL VESSEL COUNT CONSTRAINS RINGHALS 2/3/4: en.wikipedia.org's RDM article states the firm built exactly 1 reactor vessel for Sweden (of 22 worldwide). The dataset currently lists RDM for all three of Ringhals 2, 3, and 4 — at most one of the three can be correct. Combined with the task's confirmed Ringhals-3 correction (Uddcomb), Ringhals 4 (R3's twin, built under the same domestic-content approach) is very likely also Uddcomb, though no unit-specific source was found.
+# 5. LOVIISA TURBINE: current value "Skoda" is unconfirmed; fi.wikipedia.org states Soviet Atomenergoexport supplied the turbines as part of the overall reactor package, but Atomenergoexport was a trading/export agency, not necessarily the physical manufacturer — a more specific factory name (e.g. LMZ) may exist but was not found. Treat "Atomenergoexport" as a placeholder pending a source naming the actual turbine works.
+# 6. OLKILUOTO 1/2 CONFIRM THE CLASSIC BUG PATTERN CLEANLY: ASEA-Atom genuinely was both constructor and architect-engineer (so those two fields are correctly identical), but turbine_supplier (Stal-Laval) and rpv_manufacturer (Uddcomb Sweden AB) are distinct Swedish subcontractors that the heuristic incorrectly flattened to "ASEA-Atom".
+# 7. OLKILUOTO 3: turbine_supplier "Alstom" appears to be a cross-plant mix-up — no source found ties Alstom to OL3 specifically; Siemens retained the turbine-island scope even after selling its Areva NP stake in 2009. Alstom's Arabelle turbine is documented for Flamanville (France), likely the source of the original confusion. rpv_manufacturer is a joint effort (Japan Steel Works forging + Mitsubishi Heavy Industries), not MHI alone.
+# 8. BELGIUM CONSORTIUM NAMES ARE REAL, NOT FABRICATED: ACECOWEN (ACEC-Cockerill-Westinghouse) and FRAMACEC/FRAMACECO (Framatome-ACEC-Cockerill) are confirmed identically across English, French, and Dutch Wikipedia. ACLF (ACECOWEN-Creusot-Loire-Framatome, for Tihange 1) is confirmed only on English Wikipedia — MED confidence pending a second source.
+# 9. BELGIUM TURBINE_SUPPLIER IS THE CLEAREST INSTANCE OF THE HEURISTIC BUG IN THIS BATCH: "ACEC" is identical across all 8 Belgian units and no source anywhere (EN/FR/NL Wikipedia, WNA, power-technology.com) discusses turbine supply separately from the reactor-consortium narrative. Recommend flagging all 8 for re-research rather than treating UNVERIFIABLE as passive confirmation. Belgium rpv_manufacturer is confirmed only for Doel 3 and Tihange 2 (RDM, tied to the well-known 2012/2014 vessel hydrogen-flaw scandal); the "Cockerill" and "Framatome" claims on the other 6 units are unconfirmed and may be the same consortium-name-copy artifact (Cockerill being a consortium member, not necessarily the vessel forger).
+# 10. GÖSGEN ARCHITECT_ENGINEER IS A CLEAN CONFIRMED BUG: KWU was general/reactor contractor, but the actual site-engineering/AE firm was Motor-Columbus Ingenieurunternehmungen AG, a well-known Swiss nuclear AE house. Gösgen's turbine_supplier remains genuinely unverifiable despite fetching KKG's full official maintenance chronology — KWU is confirmed wrong (never named as turbine supplier anywhere) but no replacement (e.g. BBC) could be confirmed.
+# 11. LEIBSTADT CONSTRUCTOR should be a joint BBC/GE consortium, not GE alone — German Wikipedia names both as building the reactor and machine house jointly (unlike Beznau/Mühleberg, where GE/Westinghouse were NSSS-only and BBC supplied turbines as a separate contract).
+# 12. LUCENS BREAKS THE 4-FIELD TEMPLATE: it was a heavy-water-moderated, gas-cooled, pressure-tube reactor housed in rock caverns specifically to avoid large-pressure-vessel fabrication and licensing burden. "Sulzer" as rpv_manufacturer is a category error (no RPV exists), not a wrong-vendor error. Constructor is more accurately the NGA consortium (Sulzer + Escher Wyss + Brown Boveri industry groups); Sulzer itself formally exited Swiss atomic technology work in May 1967, before the reactor's 1968 startup.
+# 13. TOOLING GAP: WebSearch reached a session-wide quota (200/200 calls) partway through the Belgium sub-task and was unavailable for the remainder of Sweden, Finland, and Switzerland sub-tasks; all four regional passes fell back to WebFetch against known/guessed URLs for the back half of their research. This is the primary driver of the high UNVERIFIABLE count (52/128) — a follow-up pass with a fresh WebSearch budget, targeting IAEA PRIS reactor-detail pages, WNA country profiles, and ORNL RPV manufacturer reports, would likely resolve a meaningful share of the current UNVERIFIABLE turbine_supplier and rpv_manufacturer entries (highest-value targets: Belgium turbine_supplier x8, Sweden rpv_manufacturer for the ASEA-Atom BWR fleet, and architect_engineer across all Westinghouse/GE/KWU-NSSS PWR and BWR units where no distinct AE was found).

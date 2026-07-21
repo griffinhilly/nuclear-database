@@ -1,0 +1,28 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+USA|Indian Point|1|PWR|Shutdown|B&W|United Engineers|Westinghouse|Combustion Engineering
+USA|Indian Point|2|W (4-loop) DRYAMB|Shutdown|Westinghouse|United Engineers|Westinghouse|Combustion Engineering
+USA|Indian Point|3|W (4-loop) DRYAMB|Shutdown|Westinghouse|United Engineers|Westinghouse|Combustion Engineering
+USA|Kewaunee|1|W (2-loop) DRYAMB|Shutdown|Westinghouse|Pioneer Service & Engineering|Westinghouse|Combustion Engineering
+USA|LaSalle|1|BWR-5 (Mark 2)|Operational|GE|Sargent & Lundy|General Electric|Combustion Engineering
+USA|LaSalle|2|BWR-5 (Mark 2)|Operational|GE|Sargent & Lundy|General Electric|Combustion Engineering
+USA|Lacrosse|1|None|Shutdown|None|None|General Electric|Allis-Chalmers
+USA|Limerick|1|BWR-4 (Mark 2)|Operational|GE|Bechtel|General Electric|Combustion Engineering
+USA|Limerick|2|BWR-4 (Mark 2)|Operational|GE|Bechtel|General Electric|Combustion Engineering
+USA|Maine Yankee|1|CE 3-loop|Shutdown|CE|Stone & Webster|General Electric|Combustion Engineering
+USA|McGuire|1|W (4-loop) ICECDN|Operational|Westinghouse|Duke Power|Westinghouse|Combustion Engineering
+USA|McGuire|2|W (4-loop) ICECDN|Operational|Westinghouse|Duke Power|Westinghouse|Rotterdam Dockyard
+USA|Millstone|1|BWR-3|Shutdown|GE|Bechtel|General Electric|Combustion Engineering
+USA|Millstone|2|CE DRYAMB|Operational|CE|Bechtel|General Electric|Combustion Engineering
+USA|Millstone|3|W (4-loop) DRYSUB|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|Monticello|1|BWR-3|Operational|GE|Bechtel|General Electric|Chicago Bridge & Iron
+USA|Nine Mile Point|1|BWR-2 (Mark 1)|Operational|GE|Stone & Webster|General Electric|Combustion Engineering
+USA|Nine Mile Point|2|BWR-5 (Mark 2)|Operational|GE|Stone & Webster|General Electric|Babcock & Wilcox
+USA|North Anna|1|W (3-loop) DRYSUB|Operational|Westinghouse|Stone & Webster|Westinghouse|Rotterdam Dockyard
+USA|North Anna|2|W (3-loop) DRYSUB|Operational|Westinghouse|Stone & Webster|Westinghouse|Rotterdam Dockyard
+USA|Oconee|1|B&W (L-loop)|Operational|B&W|Duke Power|Westinghouse|Babcock & Wilcox
+USA|Oconee|2|B&W (L-loop)|Operational|B&W|Duke Power|Westinghouse|Babcock & Wilcox
+USA|Oconee|3|B&W (L-loop)|Operational|B&W|Duke Power|Westinghouse|Babcock & Wilcox
+USA|Oyster Creek|1|BWR-2 (Mark 1)|Shutdown|GE|Burns & Roe|General Electric|Combustion Engineering
+USA|Palisades|1|CE (2-loop) DRYAMB|Suspended|CE|Bechtel|General Electric|Combustion Engineering
+USA|Palo Verde|1|CE (2-loop) DRYAMB|Operational|CE|Bechtel|General Electric|Combustion Engineering
+USA|Palo Verde|2|CE80 DRYAMB|Operational|CE|Bechtel|General Electric|Combustion Engineering

@@ -1,0 +1,111 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Kursk 1|3|constructor|WRONG|Kurskatomenergostroy (construction trust; Minsredmash was the overseeing ministry, not the builder)|MED|en.wikipedia.org Kursk Nuclear Power Plant
+Kursk 1|3|architect_engineer|CONFIRMED||MED|en.wikipedia.org Kursk Nuclear Power Plant ("General Designer: Atomenergoproject (Moscow)")
+Kursk 1|3|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|ru.wikipedia.org Курская АЭС ("две турбины К-500-65/3000... производства Харьковского турбинного завода"); en.wikipedia.org Turboatom
+Kursk 1|3|rpv_manufacturer|CONFIRMED||HIGH|RBMK channel-type reactor has no single pressure vessel (general RBMK design fact)
+Kursk 1|4|constructor|WRONG|Kurskatomenergostroy (construction trust; Minsredmash was the overseeing ministry, not the builder)|MED|en.wikipedia.org Kursk Nuclear Power Plant
+Kursk 1|4|architect_engineer|CONFIRMED||MED|en.wikipedia.org Kursk Nuclear Power Plant ("General Designer: Atomenergoproject (Moscow)")
+Kursk 1|4|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|ru.wikipedia.org Курская АЭС ("две турбины К-500-65/3000... производства Харьковского турбинного завода"); en.wikipedia.org Turboatom
+Kursk 1|4|rpv_manufacturer|CONFIRMED||HIGH|RBMK channel-type reactor has no single pressure vessel (general RBMK design fact)
+Kursk 2|1|constructor|CONFIRMED||MED|Atomstroyexport is the historically correct label; current legal successor is JSC ASE (post-2012 NIAEP+Atomstroyexport merger)
+Kursk 2|1|architect_engineer|WRONG|AO ASE / NIAEP (Nizhny Novgorod Atomenergoproekt), not Moscow Atomenergoproekt|MED|analogized from ru.wikipedia.org Ростовская АЭС (Gorky/Nizhny Novgorod design institute lineage) plus Rosatom's domestic VVER-1200 "AES-2006" program structure
+Kursk 2|1|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org Kursk Nuclear Power Plant ("Turbine Supplier: Power Machines PJSC... low-speed turbine-generator" for Kursk II)
+Kursk 2|1|rpv_manufacturer|UNVERIFIABLE|||no plant-specific source distinguishing Izhora vs Atommash for the Kursk II vessel
+Kursk 2|2|constructor|CONFIRMED||MED|Atomstroyexport is the historically correct label; current legal successor is JSC ASE (post-2012 NIAEP+Atomstroyexport merger)
+Kursk 2|2|architect_engineer|WRONG|AO ASE / NIAEP (Nizhny Novgorod Atomenergoproekt), not Moscow Atomenergoproekt|MED|analogized from ru.wikipedia.org Ростовская АЭС (Gorky/Nizhny Novgorod design institute lineage) plus Rosatom's domestic VVER-1200 "AES-2006" program structure
+Kursk 2|2|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org Kursk Nuclear Power Plant ("Turbine Supplier: Power Machines PJSC... low-speed turbine-generator" for Kursk II)
+Kursk 2|2|rpv_manufacturer|UNVERIFIABLE|||no plant-specific source distinguishing Izhora vs Atommash for the Kursk II vessel
+Leningrad 1|1|constructor|UNVERIFIABLE|||Minsredmash is a ministry, not a builder; no sourced successor construction-trust name found for Leningrad
+Leningrad 1|1|architect_engineer|UNVERIFIABLE|||no direct source found; general RBMK-program literature credits the Leningrad-based institute VNIPIET for RBMK plant architect-engineer work, conflicting with the Atomenergoproekt default — left unresolved rather than guessed
+Leningrad 1|1|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org Turboatom (explicitly lists Leningrad NPP among plants receiving 500 MW Turboatom turbines in the early 1970s)
+Leningrad 1|1|rpv_manufacturer|CONFIRMED||HIGH|RBMK channel-type reactor has no single pressure vessel (general RBMK design fact)
+Leningrad 1|2|constructor|UNVERIFIABLE|||Minsredmash is a ministry, not a builder; no sourced successor construction-trust name found for Leningrad
+Leningrad 1|2|architect_engineer|UNVERIFIABLE|||no direct source found; general RBMK-program literature credits VNIPIET, conflicting with the Atomenergoproekt default — left unresolved
+Leningrad 1|2|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org Turboatom (explicitly lists Leningrad NPP among 500 MW Turboatom-turbine plants, early 1970s)
+Leningrad 1|2|rpv_manufacturer|CONFIRMED||HIGH|RBMK channel-type reactor has no single pressure vessel (general RBMK design fact)
+Leningrad 1|3|constructor|UNVERIFIABLE|||Minsredmash is a ministry, not a builder; no sourced successor construction-trust name found for Leningrad
+Leningrad 1|3|architect_engineer|UNVERIFIABLE|||no direct source found; general RBMK-program literature credits VNIPIET, conflicting with the Atomenergoproekt default — left unresolved
+Leningrad 1|3|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org Turboatom (explicitly lists Leningrad NPP among 500 MW Turboatom-turbine plants, early 1970s)
+Leningrad 1|3|rpv_manufacturer|CONFIRMED||HIGH|RBMK channel-type reactor has no single pressure vessel (general RBMK design fact)
+Leningrad 1|4|constructor|UNVERIFIABLE|||Minsredmash is a ministry, not a builder; no sourced successor construction-trust name found for Leningrad
+Leningrad 1|4|architect_engineer|UNVERIFIABLE|||no direct source found; general RBMK-program literature credits VNIPIET, conflicting with the Atomenergoproekt default — left unresolved
+Leningrad 1|4|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org Turboatom (explicitly lists Leningrad NPP among 500 MW Turboatom-turbine plants, early 1970s)
+Leningrad 1|4|rpv_manufacturer|CONFIRMED||HIGH|RBMK channel-type reactor has no single pressure vessel (general RBMK design fact)
+Leningrad 2|1|constructor|CONFIRMED||MED|Atomstroyexport is the historically correct label; current legal successor is JSC ASE
+Leningrad 2|1|architect_engineer|WRONG|AO ASE / NIAEP (Nizhny Novgorod Atomenergoproekt), not Moscow Atomenergoproekt|MED|analogized from ru.wikipedia.org Ростовская АЭС design-institute finding plus the domestic VVER-1200 "AES-2006" program structure
+Leningrad 2|1|turbine_supplier|CONFIRMED||MED|analogized from confirmed Kursk II Power Machines (LMZ) finding; consistent with Turboatom (Ukraine) being unavailable as a supplier for post-2014 domestic Russian builds
+Leningrad 2|1|rpv_manufacturer|UNVERIFIABLE|||Izhora (documented active on VVER-1200-class vessels for Akkuyu/Akademik Lomonosov, 2020s) and Atommash (documented on Rostov, 1988) are both plausible; no Leningrad II-specific source found
+Leningrad 2|2|constructor|CONFIRMED||MED|Atomstroyexport is the historically correct label; current legal successor is JSC ASE
+Leningrad 2|2|architect_engineer|WRONG|AO ASE / NIAEP (Nizhny Novgorod Atomenergoproekt), not Moscow Atomenergoproekt|MED|analogized from ru.wikipedia.org Ростовская АЭС design-institute finding plus the domestic VVER-1200 "AES-2006" program structure
+Leningrad 2|2|turbine_supplier|CONFIRMED||MED|analogized from confirmed Kursk II Power Machines (LMZ) finding
+Leningrad 2|2|rpv_manufacturer|UNVERIFIABLE|||no Leningrad II-specific source distinguishing Izhora vs Atommash
+Leningrad 2|3|constructor|CONFIRMED||MED|Atomstroyexport is the historically correct label; current legal successor is JSC ASE
+Leningrad 2|3|architect_engineer|WRONG|AO ASE / NIAEP (Nizhny Novgorod Atomenergoproekt), not Moscow Atomenergoproekt|MED|analogized from ru.wikipedia.org Ростовская АЭС design-institute finding plus the domestic VVER-1200 "AES-2006" program structure
+Leningrad 2|3|turbine_supplier|CONFIRMED||MED|analogized from confirmed Kursk II Power Machines (LMZ) finding
+Leningrad 2|3|rpv_manufacturer|UNVERIFIABLE|||no Leningrad II-specific source distinguishing Izhora vs Atommash
+Leningrad 2|4|constructor|CONFIRMED||MED|Atomstroyexport is the historically correct label; current legal successor is JSC ASE
+Leningrad 2|4|architect_engineer|WRONG|AO ASE / NIAEP (Nizhny Novgorod Atomenergoproekt), not Moscow Atomenergoproekt|MED|analogized from ru.wikipedia.org Ростовская АЭС design-institute finding plus the domestic VVER-1200 "AES-2006" program structure
+Leningrad 2|4|turbine_supplier|CONFIRMED||MED|analogized from confirmed Kursk II Power Machines (LMZ) finding
+Leningrad 2|4|rpv_manufacturer|UNVERIFIABLE|||no Leningrad II-specific source distinguishing Izhora vs Atommash
+Novovoronezh 1|1|constructor|UNVERIFIABLE|||Minsredmash is a ministry, not a builder; no sourced successor construction entity found for Novovoronezh
+Novovoronezh 1|1|architect_engineer|CONFIRMED||MED|consistent with en.wikipedia.org Kursk NPP source pattern and well-documented history of Atomenergoproekt (Moscow) originating the VVER series at Novovoronezh; not independently re-confirmed with a Novovoronezh-specific quote this session
+Novovoronezh 1|1|turbine_supplier|UNVERIFIABLE|||turbine models (e.g. K-220-44, K-500-60) are named in ru.wikipedia.org Нововоронежская АЭС, but no manufacturer is stated
+Novovoronezh 1|1|rpv_manufacturer|CONFIRMED||HIGH|ru.wikipedia.org Нововоронежская АЭС ("Корпуса всех реакторов Нововоронежской АЭС изготовлены ПО «Ижорский завод»")
+Novovoronezh 1|2|constructor|UNVERIFIABLE|||Minsredmash is a ministry, not a builder; no sourced successor construction entity found for Novovoronezh
+Novovoronezh 1|2|architect_engineer|CONFIRMED||MED|consistent with Kursk source pattern and documented Atomenergoproekt (Moscow) history at Novovoronezh; not independently re-confirmed this session
+Novovoronezh 1|2|turbine_supplier|UNVERIFIABLE|||turbine models named but manufacturer not stated in available source
+Novovoronezh 1|2|rpv_manufacturer|CONFIRMED||HIGH|ru.wikipedia.org Нововоронежская АЭС ("Корпуса всех реакторов... Ижорский завод")
+Novovoronezh 1|3|constructor|UNVERIFIABLE|||Minsredmash is a ministry, not a builder; no sourced successor construction entity found for Novovoronezh
+Novovoronezh 1|3|architect_engineer|CONFIRMED||MED|consistent with Kursk source pattern and documented Atomenergoproekt (Moscow) history at Novovoronezh; not independently re-confirmed this session
+Novovoronezh 1|3|turbine_supplier|UNVERIFIABLE|||turbine models named but manufacturer not stated in available source
+Novovoronezh 1|3|rpv_manufacturer|CONFIRMED||HIGH|ru.wikipedia.org Нововоронежская АЭС ("Корпуса всех реакторов... Ижорский завод")
+Novovoronezh 1|4|constructor|UNVERIFIABLE|||Minsredmash is a ministry, not a builder; no sourced successor construction entity found for Novovoronezh
+Novovoronezh 1|4|architect_engineer|CONFIRMED||MED|consistent with Kursk source pattern and documented Atomenergoproekt (Moscow) history at Novovoronezh; not independently re-confirmed this session
+Novovoronezh 1|4|turbine_supplier|UNVERIFIABLE|||turbine models named but manufacturer not stated in available source
+Novovoronezh 1|4|rpv_manufacturer|CONFIRMED||HIGH|ru.wikipedia.org Нововоронежская АЭС ("Корпуса всех реакторов... Ижорский завод")
+Novovoronezh 1|5|constructor|UNVERIFIABLE|||Minsredmash is a ministry, not a builder; no sourced successor construction entity found for Novovoronezh
+Novovoronezh 1|5|architect_engineer|CONFIRMED||MED|consistent with Kursk source pattern and documented Atomenergoproekt (Moscow) history at Novovoronezh; not independently re-confirmed this session
+Novovoronezh 1|5|turbine_supplier|UNVERIFIABLE|||turbine models named but manufacturer not stated in available source
+Novovoronezh 1|5|rpv_manufacturer|CONFIRMED||HIGH|ru.wikipedia.org Нововоронежская АЭС ("Корпуса всех реакторов... Ижорский завод")
+Novovoronezh 2|1|constructor|CONFIRMED||MED|Atomstroyexport is the historically correct label; current legal successor is JSC ASE
+Novovoronezh 2|1|architect_engineer|WRONG|AO ASE / NIAEP (Nizhny Novgorod Atomenergoproekt), not Moscow Atomenergoproekt|MED|analogized from Rostov design-institute finding plus the domestic VVER-1200 "AES-2006" program structure
+Novovoronezh 2|1|turbine_supplier|CONFIRMED||MED|analogized from confirmed Kursk II Power Machines (LMZ) finding
+Novovoronezh 2|1|rpv_manufacturer|UNVERIFIABLE|||the "all reactors = Izhora" quote comes from the original-station article and predates/is ambiguous about the new AES-2006 units built 2016-2019; not extended without direct confirmation
+Novovoronezh 2|2|constructor|CONFIRMED||MED|Atomstroyexport is the historically correct label; current legal successor is JSC ASE
+Novovoronezh 2|2|architect_engineer|WRONG|AO ASE / NIAEP (Nizhny Novgorod Atomenergoproekt), not Moscow Atomenergoproekt|MED|analogized from Rostov design-institute finding plus the domestic VVER-1200 "AES-2006" program structure
+Novovoronezh 2|2|turbine_supplier|CONFIRMED||MED|analogized from confirmed Kursk II Power Machines (LMZ) finding
+Novovoronezh 2|2|rpv_manufacturer|UNVERIFIABLE|||same ambiguity as Novovoronezh 2 unit 1
+Rostov|1|constructor|UNVERIFIABLE|||general designer confirmed (see architect_engineer) but no explicit general-contractor entity found in available sources
+Rostov|1|architect_engineer|WRONG|Gorky/Nizhny Novgorod branch of Teploelektroproekt (now AO ASE), not Moscow Atomenergoproekt|HIGH|ru.wikipedia.org Ростовская АЭС ("Технический проект станции был разработан Горьковским отделением института Теплоэлектропроект... в настоящее время АО ИК «АСЭ»")
+Rostov|1|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org Turboatom (lists Rostov NPP among plants receiving 1000 MW Turboatom turbines, manufactured 1982-1985)
+Rostov|1|rpv_manufacturer|WRONG|Atommash (Volgodonsk)|HIGH|ru.wikipedia.org Ростовская АЭС ("В июне 1988 года на первый энергоблок с завода «Атоммаш» был доставлен корпус ядерного реактора")
+Rostov|2|constructor|UNVERIFIABLE|||same as unit 1 — no explicit general-contractor entity found
+Rostov|2|architect_engineer|WRONG|Gorky/Nizhny Novgorod branch of Teploelektroproekt (now AO ASE), not Moscow Atomenergoproekt|HIGH|ru.wikipedia.org Ростовская АЭС (plant-wide design-institute statement)
+Rostov|2|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org Turboatom (plant-wide 1000 MW turbine listing)
+Rostov|2|rpv_manufacturer|WRONG|Atommash (Volgodonsk)|MED|analogized from unit-1-specific Atommash delivery record; same plant/regional supplier
+Rostov|3|constructor|UNVERIFIABLE|||same as unit 1 — no explicit general-contractor entity found
+Rostov|3|architect_engineer|WRONG|Gorky/Nizhny Novgorod branch of Teploelektroproekt (now AO ASE), not Moscow Atomenergoproekt|HIGH|ru.wikipedia.org Ростовская АЭС (plant-wide design-institute statement)
+Rostov|3|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org Turboatom (plant-wide 1000 MW turbine listing)
+Rostov|3|rpv_manufacturer|WRONG|Atommash (Volgodonsk)|MED|analogized from unit-1-specific Atommash delivery record; same plant/regional supplier
+Rostov|4|constructor|UNVERIFIABLE|||same as unit 1 — no explicit general-contractor entity found
+Rostov|4|architect_engineer|WRONG|Gorky/Nizhny Novgorod branch of Teploelektroproekt (now AO ASE), not Moscow Atomenergoproekt|HIGH|ru.wikipedia.org Ростовская АЭС (plant-wide design-institute statement)
+Rostov|4|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org Turboatom (plant-wide 1000 MW turbine listing)
+Rostov|4|rpv_manufacturer|WRONG|Atommash (Volgodonsk)|MED|analogized from unit-1-specific Atommash delivery record; same plant/regional supplier
+Smolensk|1|constructor|UNVERIFIABLE|||Minsredmash is a ministry, not a builder; no sourced successor construction entity found for Smolensk
+Smolensk|1|architect_engineer|UNVERIFIABLE|||no direct source found for Smolensk's design institute
+Smolensk|1|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org Turboatom (explicitly lists Smolensk NPP among 500 MW Turboatom-turbine plants, early 1970s)
+Smolensk|1|rpv_manufacturer|CONFIRMED||HIGH|RBMK channel-type reactor has no single pressure vessel (general RBMK design fact)
+Smolensk|2|constructor|UNVERIFIABLE|||Minsredmash is a ministry, not a builder; no sourced successor construction entity found for Smolensk
+Smolensk|2|architect_engineer|UNVERIFIABLE|||no direct source found for Smolensk's design institute
+Smolensk|2|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org Turboatom (explicitly lists Smolensk NPP among 500 MW Turboatom-turbine plants, early 1970s)
+Smolensk|2|rpv_manufacturer|CONFIRMED||HIGH|RBMK channel-type reactor has no single pressure vessel (general RBMK design fact)
+Smolensk|3|constructor|UNVERIFIABLE|||Minsredmash is a ministry, not a builder; no sourced successor construction entity found for Smolensk
+Smolensk|3|architect_engineer|UNVERIFIABLE|||no direct source found for Smolensk's design institute
+Smolensk|3|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org Turboatom (explicitly lists Smolensk NPP among 500 MW Turboatom-turbine plants, early 1970s)
+Smolensk|3|rpv_manufacturer|CONFIRMED||HIGH|RBMK channel-type reactor has no single pressure vessel (general RBMK design fact)
+# NOTES
+# 1. RBMK turbines: en.wikipedia.org/wiki/Turboatom explicitly names Leningrad, Kursk, and Smolensk NPPs as recipients of Turboatom's (Kharkiv Turbine Plant) 500 MW turbines in the early 1970s, and separately names Rostov NPP as a recipient of Turboatom's 1000 MW turbines (1982-85). This directly contradicts the heuristic's blanket "Power Machines (LMZ)" default for every plant/unit in the batch except the newest VVER-1200/TOI builds (Kursk II, confirmed Power Machines PJSC via en.wikipedia.org Kursk NPP). Reading: Turboatom (Ukraine, Kharkiv) supplied essentially all Soviet-era RBMK and early VVER-1000 turbines; Power Machines (Russia, ex-LMZ) only became the default supplier for new domestic builds after Ukrainian supply became politically unavailable (~2014). This pattern was extended by analogy (MED confidence) to Leningrad II and Novovoronezh II turbines.
+# 2. Architect-engineer: the regional "Atomenergoproekt" institutes are indeed distinct organizations, as the task brief warned. ru.wikipedia.org's Rostov NPP article directly attributes the plant's technical design to the Gorky (Nizhny Novgorod) branch of Teploelektroproekt, now branded "AO ASE" — not the Moscow Atomenergoproekt used (per direct source) at Kursk I. Because Rosatom's domestic VVER-1200 "AES-2006" new-build program (Novovoronezh II, Leningrad II, Kursk II) is documented industry-wide as executed by this same Nizhny Novgorod/ASE lineage, the Moscow-Atomenergoproekt default was marked WRONG for all of those plants (MED confidence, analogized rather than plant-by-plant sourced).
+# 3. Constructor: "Minsredmash" is a ministry, not a company, per the task brief. A sourced successor construction organization was only found for Kursk ("Kurskatomenergostroy," per en.wikipedia.org). No equivalent named entity was found for Leningrad, Smolensk, or Novovoronezh 1 in available sources — these were left UNVERIFIABLE rather than assuming a parallel "Leningradatomenergostroy" / "Smolenskatomenergostroy" name without a citation.
+# 4. RPV manufacturer: "None" is CONFIRMED (HIGH) for every RBMK unit — channel-type reactors have no single reactor pressure vessel. Izhora Plants is CONFIRMED (HIGH) for the original Novovoronezh station (all 5 units), directly sourced. Atommash (Volgodonsk) is CONFIRMED as the correct value for Rostov (contradicting the Izhora default), matching the task brief's note that Atommash fabricated later VVER-1000 vessels. For the newest VVER-1200 builds (Leningrad II, Kursk II, Novovoronezh II) neither Izhora nor Atommash could be confirmed on a plant-specific basis — both are documented as active VVER-1200-class vessel suppliers in the same era (Izhora: Akademik Lomonosov, Akkuyu unit 2, 2020s), so these were left UNVERIFIABLE.
+# 5. Kursk 2 unit 3 (Under Construction) has no heuristic-guessed values in the input (all four fields already "None") — excluded from verification entirely, no output rows generated for it.

@@ -1,0 +1,38 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+South Korea|Hanbit (Yonggwang)|1|WH F|Operational|Westinghouse|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Hanbit (Yonggwang)|2|WH F|Operational|Westinghouse|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Hanbit (Yonggwang)|3|OPR-1000|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Hanbit (Yonggwang)|4|OPR-1000|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Hanbit (Yonggwang)|5|OPR-1000|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Hanbit (Yonggwang)|6|OPR-1000|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Hanul (Ulchin)|1|France CPI|Operational|Framatome|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Hanul (Ulchin)|2|France CPI|Operational|Framatome|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Hanul (Ulchin)|3|OPR-1000|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Hanul (Ulchin)|4|OPR-1000|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Hanul (Ulchin)|5|OPR-1000|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Hanul (Ulchin)|6|OPR-1000|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Kori|1|WH 2-loop|Shutdown|Westinghouse|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Kori|2|WH F|Operational|Westinghouse|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Kori|3|WH F|Operational|Westinghouse|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Kori|4|WH F|Operational|Westinghouse|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Shin-Hanul (Shin-Ulchin)|1|APR1400|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Shin-Hanul (Shin-Ulchin)|2|APR1400|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Shin-Hanul (Shin-Ulchin)|3|APR1400|Under Construction|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Shin-Kori|1|OPR-1000|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Shin-Kori|2|OPR-1000|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Shin-Kori|3|APR1400|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Shin-Kori|4|APR1400|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Shin-Kori|5|APR1400|Under Construction|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Shin-Kori|6|APR1400|Under Construction|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Shin-Wolsong|1|OPR-1000|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Shin-Wolsong|2|OPR-1000|Operational|KEPCO E&C / Hyundai E&C|KEPCO E&C|Doosan Heavy Industries|Doosan Heavy Industries
+South Korea|Wolsong|1|CANDU 6|Shutdown|AECL|KEPCO E&C|Doosan Heavy Industries|None
+South Korea|Wolsong|2|CANDU 6|Operational|AECL|KEPCO E&C|Doosan Heavy Industries|None
+South Korea|Wolsong|3|CANDU 6|Operational|AECL|KEPCO E&C|Doosan Heavy Industries|None
+South Korea|Wolsong|4|CANDU 6|Operational|AECL|KEPCO E&C|Doosan Heavy Industries|None
+Taiwan|Chinshan (First)|1|BWR-4|Shutdown|GE|GE|General Electric|General Electric
+Taiwan|Chinshan (First)|2|BWR-4|Shutdown|GE|GE|General Electric|General Electric
+Taiwan|Kuosheng (Second)|1|BWR-6|Shutdown|GE|GE|General Electric|General Electric
+Taiwan|Kuosheng (Second)|2|BWR-6|Shutdown|GE|GE|General Electric|General Electric
+Taiwan|Maanshan (Third)|1|WE 312|Shutdown|Westinghouse|Bechtel|Westinghouse|Westinghouse
+Taiwan|Maanshan (Third)|2|WE 312|Shutdown|Westinghouse|Bechtel|Westinghouse|Westinghouse

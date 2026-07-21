@@ -1,0 +1,28 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+USA|Arkansas Nuclear One|1|B&W (L-loop) DRYAMB|Operational|B&W|Bechtel|Westinghouse|Babcock & Wilcox
+USA|Arkansas Nuclear One|2|CE (2-loop) DRYAMB|Operational|CE|Bechtel|General Electric|Combustion Engineering
+USA|Beaver Valley|1|W (3-loop)|Operational|Westinghouse|Stone & Webster|Westinghouse|Combustion Engineering
+USA|Beaver Valley|2|W (3-loop)|Operational|Westinghouse|Stone & Webster|Westinghouse|Combustion Engineering
+USA|Big Rock Point|1|None|Shutdown|GE|None|General Electric|Combustion Engineering
+USA|Bonus|1|Superheater|Shutdown|None|None|General Electric|General Nuclear Engineering
+USA|Braidwood|1|W (4-loop)|Operational|Westinghouse|Sargent & Lundy|Westinghouse|Babcock & Wilcox
+USA|Braidwood|2|W (4-loop) DRYAMB|Operational|Westinghouse|Sargent & Lundy|Westinghouse|Babcock & Wilcox
+USA|Browns Ferry|1|BWR-4 (Mark 1)|Operational|GE|TVA|General Electric|Combustion Engineering
+USA|Browns Ferry|2|BWR-4 (Mark 1)|Operational|GE|TVA|General Electric|Combustion Engineering
+USA|Browns Ferry|3|BWR-4 (Mark 1)|Operational|GE|TVA|General Electric|Combustion Engineering
+USA|Brunswick|1|BWR-4 (Mark 1)|Operational|GE|United Engineers|General Electric|Combustion Engineering
+USA|Brunswick|2|BWR-4 (Mark 1)|Operational|GE|United Engineers|General Electric|Combustion Engineering
+USA|Byron|1|W (4-loop) DRYAMB|Operational|Westinghouse|Sargent & Lundy|Westinghouse|Babcock & Wilcox
+USA|Byron|2|W (4-loop) DRYAMB|Operational|Westinghouse|Sargent & Lundy|Westinghouse|Babcock & Wilcox
+USA|CVTR|1|Prototype|Shutdown|None|None|None|Westinghouse
+USA|Callaway|1|W (4-loop) DRYAMB|Operational|Westinghouse|Bechtel|Westinghouse|Combustion Engineering
+USA|Calvert Cliffs|1|CE (2-loop) DRYAMB|Operational|CE|Bechtel|General Electric|Combustion Engineering
+USA|Calvert Cliffs|2|CE (2-loop) DRYAMB|Operational|CE|Bechtel|General Electric|Combustion Engineering
+USA|Catawba|1|W (4-loop) ICECDN|Operational|Westinghouse|Duke Power|Westinghouse|Rotterdam Dockyard
+USA|Catawba|2|W (4-loop) ICECDN|Operational|Westinghouse|Duke Power|Westinghouse|Combustion Engineering
+USA|Clinton|1|BWR-6 (Mark 3)|Operational|GE|Sargent & Lundy|General Electric|Chicago Bridge & Iron
+USA|Columbia|1|BWR-5 (Mark 2)|Operational|GE|Burns & Roe|General Electric|Chicago Bridge & Iron
+USA|Comanche Peak|1|W (4-loop) DRYAMB|Operational|Westinghouse|Gibbs & Hill|Westinghouse|Combustion Engineering
+USA|Comanche Peak|2|W (4-loop) DRYAMB|Operational|Westinghouse|Gibbs & Hill|Westinghouse|Combustion Engineering
+USA|Cook (Donald C. Cook)|1|W (4-loop) ICECDN|Operational|Westinghouse|American Electric Power|Westinghouse|Combustion Engineering
+USA|Cook (Donald C. Cook)|2|W (4-loop) ICECDN|Operational|Westinghouse|American Electric Power|Westinghouse|Combustion Engineering

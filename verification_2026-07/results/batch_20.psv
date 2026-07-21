@@ -1,0 +1,185 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Kaiga|1|constructor|CONFIRMED||HIGH|Wikipedia: Kaiga Atomic Power Station
+Kaiga|1|architect_engineer|CONFIRMED||MED|Wikipedia: Kaiga Atomic Power Station
+Kaiga|1|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found naming turbine supplier
+Kaiga|1|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found naming calandria fabricator
+Kaiga|2|constructor|CONFIRMED||HIGH|Wikipedia: Kaiga Atomic Power Station
+Kaiga|2|architect_engineer|CONFIRMED||MED|Wikipedia: Kaiga Atomic Power Station
+Kaiga|2|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found naming turbine supplier
+Kaiga|2|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found naming calandria fabricator
+Kaiga|3|constructor|CONFIRMED||HIGH|Wikipedia: Kaiga Atomic Power Station
+Kaiga|3|architect_engineer|CONFIRMED||MED|Wikipedia: Kaiga Atomic Power Station
+Kaiga|3|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found naming turbine supplier
+Kaiga|3|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found naming calandria fabricator
+Kaiga|4|constructor|CONFIRMED||HIGH|Wikipedia: Kaiga Atomic Power Station
+Kaiga|4|architect_engineer|CONFIRMED||MED|Wikipedia: Kaiga Atomic Power Station
+Kaiga|4|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found naming turbine supplier
+Kaiga|4|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found naming calandria fabricator
+Kaiga|5|constructor|CONFIRMED||MED|pattern from Kaiga 1-4 (not individually re-checked); Wikipedia: Kaiga Atomic Power Station
+Kaiga|5|architect_engineer|CONFIRMED||MED|pattern from Kaiga 1-4 (not individually re-checked)
+Kaiga|5|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Kaiga|5|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Kaiga|6|constructor|CONFIRMED||MED|pattern from Kaiga 1-4 (not individually re-checked); Wikipedia: Kaiga Atomic Power Station
+Kaiga|6|architect_engineer|CONFIRMED||MED|pattern from Kaiga 1-4 (not individually re-checked)
+Kaiga|6|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Kaiga|6|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Kakrapar|1|constructor|CONFIRMED||HIGH|Wikipedia: Kakrapar Atomic Power Station
+Kakrapar|1|architect_engineer|CONFIRMED||MED|Wikipedia: Kakrapar Atomic Power Station
+Kakrapar|1|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found
+Kakrapar|1|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found
+Kakrapar|2|constructor|CONFIRMED||HIGH|Wikipedia: Kakrapar Atomic Power Station
+Kakrapar|2|architect_engineer|CONFIRMED||MED|Wikipedia: Kakrapar Atomic Power Station
+Kakrapar|2|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found
+Kakrapar|2|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found
+Kakrapar|3|constructor|UNVERIFIABLE||LOW|Wikipedia gives no supplier detail beyond IPHWR-700 design; one summarized WNA source mentions HCC/L&T as civil contractors, muddying "NPCIL" as sole constructor
+Kakrapar|3|architect_engineer|UNVERIFIABLE||LOW|same ambiguity as constructor
+Kakrapar|3|turbine_supplier|UNVERIFIABLE||LOW|could NOT confirm or deny prior BHEL-Alstom consortium claim; only a vague unattributed "Alstom consortium involved with earlier units" summary found, not specific to Kakrapar 3 -- treat prior claim as unconfirmed, not corroborated
+Kakrapar|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source found naming calandria fabricator
+Kakrapar|4|constructor|UNVERIFIABLE||LOW|same as Kakrapar 3, not separately sourced
+Kakrapar|4|architect_engineer|UNVERIFIABLE||LOW|same as Kakrapar 3, not separately sourced
+Kakrapar|4|turbine_supplier|UNVERIFIABLE||LOW|same as Kakrapar 3 -- BHEL-Alstom claim unconfirmed
+Kakrapar|4|rpv_manufacturer|UNVERIFIABLE||LOW|same as Kakrapar 3, not separately sourced
+Kudankulam|1|constructor|WRONG|NPCIL / Atomstroyexport (joint: Rosatom holds Engineering & Procurement contract; NPCIL responsible for construction/commissioning)|MED|Wikipedia: Kudankulam Nuclear Power Plant
+Kudankulam|1|architect_engineer|CONFIRMED||MED|WNA-style summary naming Atomenergoproekt as designer (paraphrased, not direct quote)
+Kudankulam|1|turbine_supplier|CONFIRMED|Power Machines (Silovye Mashiny) -- LMZ (Leningrad Metal Works) is a subsidiary of Power Machines, same entity under two names|MED|secondary summarized source naming "Silmash (St. Petersburg)"
+Kudankulam|1|rpv_manufacturer|CONFIRMED||MED|Izhora Plants traditionally documented as VVER RPV supplier for units 1-2
+Kudankulam|2|constructor|WRONG|NPCIL / Atomstroyexport (joint)|MED|Wikipedia: Kudankulam Nuclear Power Plant
+Kudankulam|2|architect_engineer|CONFIRMED||MED|same as unit 1
+Kudankulam|2|turbine_supplier|CONFIRMED|Power Machines (Silovye Mashiny) / LMZ|MED|same as unit 1
+Kudankulam|2|rpv_manufacturer|CONFIRMED||MED|same as unit 1
+Kudankulam|3|constructor|WRONG|NPCIL / Atomstroyexport (joint)|MED|Wikipedia: Kudankulam Nuclear Power Plant
+Kudankulam|3|architect_engineer|CONFIRMED||MED|pattern from units 1-2
+Kudankulam|3|turbine_supplier|CONFIRMED|Power Machines (Silovye Mashiny) / LMZ|MED|pattern from units 1-2
+Kudankulam|3|rpv_manufacturer|UNVERIFIABLE||LOW|conflicting secondary source names Atommash (Volgodonsk branch) as RPV supplier for later units, vs Izhora for early units; both are Atomenergomash subsidiaries -- unresolved which supplied unit 3
+Kudankulam|4|constructor|WRONG|NPCIL / Atomstroyexport (joint)|MED|Wikipedia: Kudankulam Nuclear Power Plant
+Kudankulam|4|architect_engineer|CONFIRMED||MED|pattern from units 1-2
+Kudankulam|4|turbine_supplier|CONFIRMED|Power Machines (Silovye Mashiny) / LMZ|MED|pattern from units 1-2
+Kudankulam|4|rpv_manufacturer|UNVERIFIABLE||LOW|secondary source explicitly states Atommash (Volgodonsk) supplies unit 4 RPV -- conflicts with guessed "Izhora Plants"; not independently confirmed
+Kudankulam|5|constructor|WRONG|NPCIL / Atomstroyexport (joint)|MED|Wikipedia: Kudankulam Nuclear Power Plant
+Kudankulam|5|architect_engineer|CONFIRMED||MED|pattern from units 1-2 (V-412T design still Atomenergoproekt lineage)
+Kudankulam|5|turbine_supplier|CONFIRMED|Power Machines (Silovye Mashiny) / LMZ|MED|pattern from units 1-2
+Kudankulam|5|rpv_manufacturer|UNVERIFIABLE||LOW|no source found naming RPV manufacturer specifically for V-412T units 5-6
+Kudankulam|6|constructor|WRONG|NPCIL / Atomstroyexport (joint)|MED|Wikipedia: Kudankulam Nuclear Power Plant
+Kudankulam|6|architect_engineer|CONFIRMED||MED|pattern from units 1-2
+Kudankulam|6|turbine_supplier|CONFIRMED|Power Machines (Silovye Mashiny) / LMZ|MED|pattern from units 1-2
+Kudankulam|6|rpv_manufacturer|UNVERIFIABLE||LOW|no source found naming RPV manufacturer specifically for V-412T units 5-6
+Madras|1|constructor|WRONG|DAE (Department of Atomic Energy) -- NPCIL was not founded until 1987, well after MAPS-1 construction (1970-72)|LOW|Wikipedia: Madras Atomic Power Station; correction is an inference from NPCIL's founding date, not a direct sourced disambiguation
+Madras|1|architect_engineer|WRONG|DAE (same anachronism as constructor)|LOW|same as above
+Madras|1|turbine_supplier|UNVERIFIABLE||LOW|no source found on early-era supplier (BHEL vs other domestic entity)
+Madras|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found on early-era calandria supplier
+Madras|2|constructor|WRONG|DAE (same anachronism as unit 1)|LOW|Wikipedia: Madras Atomic Power Station; not separately re-sourced from unit 1
+Madras|2|architect_engineer|WRONG|DAE|LOW|same as unit 1
+Madras|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Madras|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Narora|1|constructor|WRONG|DAE (Department of Atomic Energy) -- NPCIL not founded until 1987; Narora construction began 1976-77|LOW|Wikipedia: Narora Atomic Power Station; inference from NPCIL founding date, not explicit era disambiguation in source
+Narora|1|architect_engineer|WRONG|DAE (same anachronism)|LOW|same as above
+Narora|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Narora|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Narora|2|constructor|WRONG|DAE (same anachronism as unit 1)|LOW|Wikipedia: Narora Atomic Power Station; not separately re-sourced from unit 1
+Narora|2|architect_engineer|WRONG|DAE|LOW|same as unit 1
+Narora|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Narora|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+PFBR|1|constructor|WRONG|BHAVINI (Bharatiya Nabhikiya Vidyut Nigam Limited) -- a DAE public-sector undertaking, not NPCIL|HIGH|Wikipedia: Prototype Fast Breeder Reactor (direct quote: "BHAVINI... a Public Sector Undertaking under the Department of Atomic Energy")
+PFBR|1|architect_engineer|WRONG|IGCAR (Indira Gandhi Centre for Atomic Research)|HIGH|Wikipedia: Prototype Fast Breeder Reactor (direct quote: "IGCAR is responsible for the design of this reactor")
+PFBR|1|turbine_supplier|UNVERIFIABLE||LOW|source states "BHEL is providing technology and equipment for construction" but does not name turbine specifically; PFBR is a sodium-cooled fast reactor, structurally distinct from the PHWR fleet
+PFBR|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source names a main-vessel manufacturer; PFBR has no calandria (fast reactor), so "rpv_manufacturer" concept itself needs redefinition for this reactor type
+Rajasthan|1|constructor|WRONG|AECL (Atomic Energy of Canada Limited)|HIGH|Wikipedia: Rajasthan Atomic Power Station (direct quote: "Units 1 & 2: AECL")
+Rajasthan|1|architect_engineer|WRONG|AECL / DAE jointly (exact division of AE role unclear) -- NPCIL is anachronistic, founded 1987, RAPS-1 built 1965-72|LOW|Wikipedia: Rajasthan Atomic Power Station; precise AE label not directly sourced
+Rajasthan|1|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Rajasthan|1|rpv_manufacturer|CONFIRMED||MED|directionally consistent with AECL as reactor supplier for Unit 1 (completed under full Canadian assistance pre-1974 cutoff); no direct quote naming calandria manufacturer specifically
+Rajasthan|2|constructor|WRONG|DAE (Department of Atomic Energy) completed the reactor after Canada withdrew assistance following India's 1974 test; NPCIL did not exist until 1987|HIGH|Wikipedia: Rajasthan Atomic Power Station (direct quote: Canada's withdrawal "leaving the DAE alone to develop the second reactor")
+Rajasthan|2|architect_engineer|WRONG|DAE (post-1974 completion), with AECL involvement pre-1974 -- exact split not sourced|LOW|same source as constructor
+Rajasthan|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Rajasthan|2|rpv_manufacturer|UNVERIFIABLE||LOW|plausible partial AECL/domestic split given the mid-construction Canadian cutoff, but no source names L&T or AECL specifically for RAPS-2 calandria
+Rajasthan|3|constructor|CONFIRMED||HIGH|Wikipedia: Rajasthan Atomic Power Station (direct quote: "Units 3 to 8: NPCIL")
+Rajasthan|3|architect_engineer|CONFIRMED||HIGH|same direct quote
+Rajasthan|3|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found
+Rajasthan|3|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found
+Rajasthan|4|constructor|CONFIRMED||HIGH|Wikipedia: Rajasthan Atomic Power Station ("Units 3 to 8: NPCIL")
+Rajasthan|4|architect_engineer|CONFIRMED||HIGH|same
+Rajasthan|4|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found
+Rajasthan|4|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found
+Rajasthan|5|constructor|CONFIRMED||HIGH|Wikipedia: Rajasthan Atomic Power Station ("Units 3 to 8: NPCIL")
+Rajasthan|5|architect_engineer|CONFIRMED||HIGH|same
+Rajasthan|5|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found
+Rajasthan|5|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found
+Rajasthan|6|constructor|CONFIRMED||HIGH|Wikipedia: Rajasthan Atomic Power Station ("Units 3 to 8: NPCIL")
+Rajasthan|6|architect_engineer|CONFIRMED||HIGH|same
+Rajasthan|6|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found
+Rajasthan|6|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found
+Rajasthan|7|constructor|CONFIRMED||HIGH|Wikipedia: Rajasthan Atomic Power Station ("Units 3 to 8: NPCIL")
+Rajasthan|7|architect_engineer|CONFIRMED||HIGH|same
+Rajasthan|7|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found
+Rajasthan|7|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found
+Rajasthan|8|constructor|CONFIRMED||HIGH|Wikipedia: Rajasthan Atomic Power Station ("Units 3 to 8: NPCIL")
+Rajasthan|8|architect_engineer|CONFIRMED||HIGH|same
+Rajasthan|8|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found
+Rajasthan|8|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found
+Tarapur|1|constructor|CONFIRMED||HIGH|Wikipedia: Tarapur Atomic Power Station (direct quote: "built for the Department of Atomic Energy by GE and Bechtel")
+Tarapur|1|architect_engineer|WRONG|Bechtel|HIGH|same direct quote as constructor
+Tarapur|1|turbine_supplier|CONFIRMED||MED|plausible given GE turnkey BWR contract of this era typically included the full nuclear steam supply system and turbine-generator; no explicit turbine-specific quote found
+Tarapur|1|rpv_manufacturer|UNVERIFIABLE||LOW|could not confirm or rule out Combustion Engineering vs. another 1960s-era US vessel fabricator (e.g. Chicago Bridge & Iron)
+Tarapur|2|constructor|CONFIRMED||HIGH|Wikipedia: Tarapur Atomic Power Station (same GE/Bechtel quote applies to both units)
+Tarapur|2|architect_engineer|WRONG|Bechtel|HIGH|same as unit 1
+Tarapur|2|turbine_supplier|CONFIRMED||MED|same reasoning as unit 1, not separately re-sourced
+Tarapur|2|rpv_manufacturer|UNVERIFIABLE||LOW|same as unit 1
+Tarapur|3|constructor|CONFIRMED||MED|Wikipedia: Tarapur Atomic Power Station, general review (not individually re-checked beyond group pattern)
+Tarapur|3|architect_engineer|CONFIRMED||MED|same
+Tarapur|3|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found
+Tarapur|3|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found
+Tarapur|4|constructor|CONFIRMED||MED|Wikipedia: Tarapur Atomic Power Station, pattern from unit 3
+Tarapur|4|architect_engineer|CONFIRMED||MED|same
+Tarapur|4|turbine_supplier|UNVERIFIABLE||LOW|no per-unit source found
+Tarapur|4|rpv_manufacturer|UNVERIFIABLE||LOW|no per-unit source found
+Chashma|1|constructor|UNVERIFIABLE||LOW|WNA Pakistan country profile says C1 "supplied by CNNC under safeguards" but does not name CZEC (China Zhongyuan Engineering Corp) explicitly for C1 as it does for C3/C4; CNNC as bare parent-level label is directionally plausible but imprecise
+Chashma|1|architect_engineer|CONFIRMED||HIGH|WNA Pakistan country profile (direct quote: "designed by Shanghai Nuclear Engineering Research and Design Institute (SNERDI), based on Qinshan 1")
+Chashma|1|turbine_supplier|UNVERIFIABLE||LOW|no source found distinguishing Harbin Electric vs Shanghai Electric
+Chashma|1|rpv_manufacturer|UNVERIFIABLE||LOW|China First Heavy Industries not confirmed for C1 specifically
+Chashma|2|constructor|UNVERIFIABLE||LOW|same as Chashma 1, not separately sourced
+Chashma|2|architect_engineer|CONFIRMED||HIGH|WNA Pakistan country profile, same SNERDI quote
+Chashma|2|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Chashma|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Chashma|3|constructor|WRONG|CZEC (China Zhongyuan Engineering Corporation)|HIGH|WNA Pakistan country profile (direct quote: "SNERDI announced it was proceeding with design of Chashma 3&4, with China Zhongyuan Engineering Co. Ltd (CZEC) as the general contractor")
+Chashma|3|architect_engineer|CONFIRMED||HIGH|same source, SNERDI named as designer
+Chashma|3|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Chashma|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Chashma|4|constructor|WRONG|CZEC (China Zhongyuan Engineering Corporation)|HIGH|WNA Pakistan country profile, same CZEC/SNERDI quote applies to Chashma 3&4 jointly
+Chashma|4|architect_engineer|CONFIRMED||HIGH|same source
+Chashma|4|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Chashma|4|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Chashma|5|constructor|UNVERIFIABLE||LOW|WNA Pakistan country profile only says "CNNC signed the final contracts for construction," does not name CZEC specifically for C5
+Chashma|5|architect_engineer|UNVERIFIABLE||LOW|SNERDI documented for C1-C4 but not re-confirmed for C5 (HPR1000, a different design generation) in sources found
+Chashma|5|turbine_supplier|UNVERIFIABLE||LOW|Dongfang Electric not confirmed
+Chashma|5|rpv_manufacturer|UNVERIFIABLE||LOW|China First Heavy Industries not confirmed for C5 specifically, though plausible by pattern from Karachi-2
+Karachi|1|constructor|WRONG|Montreal Engineering Company (civil construction contractor, 1965-71)|HIGH|Wikipedia: Karachi Nuclear Power Plant
+Karachi|1|architect_engineer|WRONG|General Electric Canada (Canadian General Electric) -- contract signed with GE Canada as designer|HIGH|Wikipedia: Karachi Nuclear Power Plant (direct quote: "contract was signed with General Electric Canada as the designer")
+Karachi|1|turbine_supplier|UNVERIFIABLE||LOW|no source found; plausibly Canadian General Electric by extension of the turnkey design contract, but not directly confirmed
+Karachi|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found identifying calandria fabricator
+Karachi|2|constructor|WRONG|CZEC (China Zhongyuan Engineering Corporation) -- CNNC is the parent; CZEC is the documented EPC/general-contractor entity, alongside CNPE, NPIC and ECEPDI per the 2013 contract signing|HIGH|WNA Pakistan country profile (direct quote: "contracts were signed... with CNNC, CZEC, China Nuclear Power Engineering Co. Ltd (CNPE), Nuclear Power Institute of China (NPIC), and East China Electric Power Designing Institute (ECEPDI)")
+Karachi|2|architect_engineer|WRONG|CNPE (China Nuclear Power Engineering Co.) / NPIC (Nuclear Power Institute of China) -- SNERDI is not named in the K-2/K-3 contract-signing source; the guessed "SNERDI" appears copy-pasted from the Chashma CNP-300 units without re-verification for this HPR1000 export unit|MED|WNA Pakistan country profile, same 2013 contract-signing quote
+Karachi|2|turbine_supplier|UNVERIFIABLE||LOW|Dongfang Electric not confirmed; ECEPDI appears in the contract list and may relate to turbine-island/balance-of-plant design rather than equipment supply
+Karachi|2|rpv_manufacturer|CONFIRMED||HIGH|WNA Pakistan country profile (direct quote: "the reactor vessel for unit 2 completed pressure tests at China First Heavy Machinery Group's factory" -- China First Heavy Machinery Group = China First Heavy Industries, alternate translation of same entity)
+Karachi|3|constructor|WRONG|CZEC (China Zhongyuan Engineering Corporation)|HIGH|WNA Pakistan country profile, same 2013 contract-signing quote covers Karachi 2&3 jointly
+Karachi|3|architect_engineer|WRONG|CNPE / NPIC -- SNERDI unconfirmed for this unit, same issue as Karachi 2|MED|WNA Pakistan country profile
+Karachi|3|turbine_supplier|UNVERIFIABLE||LOW|no source found
+Karachi|3|rpv_manufacturer|UNVERIFIABLE||LOW|Karachi 2's vessel pressure-test event confirmed China First Heavy Machinery Group; Karachi 3's own RPV manufacturer not separately confirmed in sources found (plausible by pattern, not verified)
+
+# NOTES
+
+## Structural findings
+
+1. **Anachronistic "NPCIL" attribution across the pre-1987 fleet.** NPCIL (Nuclear Power Corporation of India Limited) was incorporated in 1987. Every reactor whose original construction predates 1987 -- Tarapur 1-2 (1969), Rajasthan 1-2 (1972/1981), Madras 1-2 (1984/1986), Narora 1-2 (1991, but construction began 1976-77) -- has "NPCIL" listed as constructor and/or architect_engineer in the source data. This is very likely a blanket retroactive label applied by the original heuristic rather than a period-accurate attribution. The correct period-accurate entity for the pre-1987 era is DAE (Department of Atomic Energy) or its operating arm, with AECL (Canada) directly involved for Rajasthan 1-2 and GE/Bechtel for Tarapur 1-2. Recommend a database-wide pass flagging any reactor with first-criticality/construction-start date before 1987 for constructor/AE re-review, not just the units in this batch.
+
+2. **PFBR is not an NPCIL reactor.** It is owned/constructed by BHAVINI (a separate DAE public-sector undertaking created specifically for fast-breeder deployment) and designed by IGCAR, not NPCIL. This is a clear, high-confidence miscategorization likely caused by a heuristic that defaulted every Indian reactor to "NPCIL" regardless of reactor class. Recommend checking the full India dataset for any other fast-reactor or non-NPCIL entries (e.g. future FBR units) with the same default-NPCIL error.
+
+3. **Turbine supplier and calandria/RPV manufacturer are systematically undocumented for standard Indian PHWRs.** Across every "standard" indigenous unit checked (Kaiga, Kakrapar 1-2, Rajasthan 3-8, Tarapur 3-4), no citable per-unit source could be found naming BHEL as turbine supplier or L&T as calandria fabricator, despite this being widely understood industry practice. These fields are marked UNVERIFIABLE (not CONFIRMED) throughout this batch per the "never bless a plausible guess" instruction. A future verification pass should target NPCIL annual reports, BHEL/L&T press releases, or IAEA PRIS per-unit component pages (not reachable via WebFetch in this session) rather than Wikipedia, which does not carry this level of detail.
+
+4. **Kakrapar 3/4 BHEL-Alstom turbine claim remains unresolved.** The prior sample finding that flagged this as a known correction could not be independently corroborated or refuted with a citable source in this session -- it is carried forward as UNVERIFIABLE, not CONFIRMED, pending a source with WebSearch access to NPCIL press releases, L&T/BHEL annual reports, or World Nuclear News archives.
+
+5. **Pakistan: CNNC is a parent-holding-company label, not the precise EPC contractor.** For Chashma 3/4/Karachi 2/3, the documented general contractor is CZEC (China Zhongyuan Engineering Corporation), a CNNC subsidiary -- not "CNNC" itself. Chashma 1/2/5 could not be confirmed either way (WNA's Pakistan profile is less explicit about the contractor for these units) and are marked UNVERIFIABLE rather than assumed to follow the same CZEC pattern.
+
+6. **Karachi 2/3 architect_engineer is likely NOT SNERDI.** The 2013 contract-signing announcement names CNPE and NPIC as the Chinese design-side entities for the HPR1000 export units, not SNERDI (which is documented for the earlier CNP-300 Chashma units). The original heuristic appears to have copy-pasted "SNERDI" across all Pakistani reactors regardless of design generation.
+
+7. **KANUPP (Karachi 1) constructor/architect_engineer were swapped in the source data.** The documented split is: Montreal Engineering Company as the civil construction contractor, General Electric Canada (Canadian General Electric) as the design/turnkey contractor -- i.e. closer to an AE role than the guessed "AECL" for both fields.
+
+8. **Research constraint:** both verification sub-agents exhausted their WebSearch budget mid-task and had to fall back on WebFetch against known URLs (primarily Wikipedia and the WNA India/Pakistan country profiles). Turbine-supplier and RPV/calandria-manufacturer fields are the least-verifiable category across this entire batch as a direct result -- a follow-up pass with fresh search budget targeting NPCIL/BHEL/L&T press releases and World Nuclear News/Nuclear Engineering International archives would likely resolve many of the 78 UNVERIFIABLE rows below.

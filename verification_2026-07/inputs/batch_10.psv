@@ -1,0 +1,29 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+Russia|APS1 Obninsk|1|AM-1|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Akademik Lomonosov|1|KLT-40S|Operational|Baltiysky Zavod|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Akademik Lomonosov|2|KLT-40S|Operational|Baltiysky Zavod|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|BREST|1|None|Under Construction|Rosatom|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Balakovo|1|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Balakovo|2|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Balakovo|3|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Balakovo|4|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Beloyarsk|1|AMB-100|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Beloyarsk|2|AMB-200|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Beloyarsk|3|BN-600|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Beloyarsk|4|BN-800|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Bilibino|1|EGP-6|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Bilibino|2|EGP-6|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Bilibino|3|EGP-6|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Bilibino|4|EGP-6|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Cape Nagloynyn|1|RITM-200S|Under Construction|Rosatom|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Cape Nagloynyn|2|RITM-200S|Under Construction|Rosatom|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Kalinin|1|VVER V-338|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Kalinin|2|VVER V-338|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Kalinin|3|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Kalinin|4|VVER V-320|Operational|Atomstroyexport|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Kola|1|VVER V-230|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Kola|2|VVER V-230|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Kola|3|VVER V-213|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Kola|4|VVER V-213|Operational|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|Izhora Plants
+Russia|Kursk 1|1|RBMK-1000|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None
+Russia|Kursk 1|2|RBMK-1000|Shutdown|Minsredmash|Atomenergoproekt|Power Machines (LMZ)|None

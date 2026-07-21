@@ -570,7 +570,11 @@
             if (data.reactor_details) {
                 const rd = data.reactor_details;
                 const detailRows =
-                    specRow('Cooling System', rd.cooling_type);
+                    specRow('Cooling System', rd.cooling_type) +
+                    specRow('Constructor', rd.constructor) +
+                    specRow('Architect-Engineer', rd.architect_engineer) +
+                    specRow('Turbine Supplier', rd.turbine_supplier) +
+                    specRow('Pressure Vessel', rd.pressure_vessel_manufacturer);
 
                 if (detailRows) {
                     document.getElementById('reactor-details-info').innerHTML = detailRows;

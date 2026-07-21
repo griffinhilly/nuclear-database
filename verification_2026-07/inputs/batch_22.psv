@@ -1,0 +1,33 @@
+country|plant|unit|model|status|constructor|architect_engineer|turbine_supplier|rpv_manufacturer
+Sweden|Barsebäck|1|ABB-II|Shutdown|ASEA-Atom|ASEA-Atom|ASEA-Atom|Uddcomb
+Sweden|Barsebäck|2|ABB-II|Shutdown|ASEA-Atom|ASEA-Atom|ASEA-Atom|Uddcomb
+Sweden|Forsmark|1|ABB-III, BWR-2500|Operational|ABB|ASEA-Atom|ASEA-Atom|Uddcomb
+Sweden|Forsmark|2|ABB-III, BWR-2500|Operational|ABB|ASEA-Atom|ASEA-Atom|Uddcomb
+Sweden|Forsmark|3|ABB-III, BWR-3000|Operational|ABB|ASEA-Atom|ASEA-Atom|Uddcomb
+Sweden|Oskarshamn|1|ABB-I|Shutdown|ABB|ASEA-Atom|ASEA-Atom|Uddcomb
+Sweden|Oskarshamn|2|ABB-II|Shutdown|ABB|ASEA-Atom|ASEA-Atom|Uddcomb
+Sweden|Oskarshamn|3|ABB-III, BWR-3000|Operational|ABB|ASEA-Atom|ASEA-Atom|Uddcomb
+Sweden|Ringhals|1|ABB-I|Shutdown|ABB|ASEA-Atom|ASEA-Atom|Uddcomb
+Sweden|Ringhals|2|W (3-loops)|Shutdown|Westinghouse|Westinghouse|Westinghouse|Rotterdam Dockyard (RDM)
+Sweden|Ringhals|3|W (3-loops)|Operational|Westinghouse|Westinghouse|Westinghouse|Rotterdam Dockyard (RDM)
+Sweden|Ringhals|4|W (3-loops)|Operational|Westinghouse|Westinghouse|Westinghouse|Rotterdam Dockyard (RDM)
+Sweden|Ågesta|1|None|Shutdown|ASEA|AB Atomenergi|ASEA|Degerfors Foundry
+Finland|Loviisa|1|VVER V-213|Operational|Atomenergoexport|Imatran Voima|Skoda|Izhora Plants
+Finland|Loviisa|2|VVER V-213|Operational|Atomenergoexport|Imatran Voima|Skoda|Izhora Plants
+Finland|Olkiluoto|1|ABB-III, BWR-2500|Operational|ASEA-Atom|ASEA-Atom|ASEA-Atom|Uddcomb
+Finland|Olkiluoto|2|ABB-III, BWR-2500|Operational|ASEA-Atom|ASEA-Atom|ASEA-Atom|Uddcomb
+Finland|Olkiluoto|3|EPR|Operational|Areva|Areva|Alstom|Mitsubishi Heavy Industries
+Belgium|BR-3|1|Prototype|Shutdown|Westinghouse|Westinghouse|ACEC|Westinghouse
+Belgium|Doel|1|W (2-loop)|Shutdown|ACECOWEN|Tractebel|ACEC|Cockerill
+Belgium|Doel|2|W (2-loop)|Shutdown|ACECOWEN|Tractebel|ACEC|Cockerill
+Belgium|Doel|3|W (3-loop)|Shutdown|FramACEC|Tractebel|ACEC|Rotterdam Dockyard (RDM)
+Belgium|Doel|4|W (3-loop)|Operational|ACECOWEN|Tractebel|ACEC|Cockerill
+Belgium|Tihange|1|Framatome 3 loop|Shutdown|ACLF|Tractebel|ACEC|Framatome
+Belgium|Tihange|2|W (3-loop)|Shutdown|FramACEC|Tractebel|ACEC|Rotterdam Dockyard (RDM)
+Belgium|Tihange|3|W (3-loop)|Operational|ACECOWEN|Tractebel|ACEC|Cockerill
+Switzerland|Beznau|1|W (2-loop)|Operational|Westinghouse|Westinghouse|Brown Boveri (BBC)|Creusot-Loire
+Switzerland|Beznau|2|W (2-loop)|Operational|Westinghouse|Westinghouse|Brown Boveri (BBC)|Creusot-Loire
+Switzerland|Gösgen|1|PWR 3 loop|Operational|KWU|KWU|KWU|Rotterdam Dockyard (RDM)
+Switzerland|Leibstadt|1|BWR-6|Operational|GE|GE|Brown Boveri (BBC)|Rotterdam Dockyard (RDM)
+Switzerland|Lucens|1|HWGCR: 2-loops|Shutdown|Sulzer|Sulzer|Brown Boveri (BBC)|Sulzer
+Switzerland|Mühleberg|1|BWR-4|Shutdown|GE|GE|Brown Boveri (BBC)|Rotterdam Dockyard (RDM)

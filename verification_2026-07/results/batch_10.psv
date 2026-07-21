@@ -1,0 +1,120 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Obninsk|1|constructor|UNVERIFIABLE||n/a|ru.wikipedia.org/Обнинская_АЭС — Minsredmash is a ministry; construction director named (P. Zakharov) but no builder trust/company documented
+Obninsk|1|architect_engineer|WRONG|NIKIET (Research & Design Institute of Power Engineering; chief designer N.A. Dollezhal)|MED|ru.wikipedia.org/Обнинская_АЭС; AM-1 went critical 1954, predating Atomenergoproekt's founding (1957) — chronologically impossible for AEP to be the design institute
+Obninsk|1|turbine_supplier|UNVERIFIABLE||n/a|no turbine supplier documented in en/ru Wikipedia articles on Obninsk
+Obninsk|1|rpv_manufacturer|CONFIRMED||HIGH|ru.wikipedia.org/Обнинская_АЭС — AM-1 is a "уран-графитового реактора канального типа" (channel-type uranium-graphite reactor); channel-type designs have no single RPV, so "None" is structurally correct
+Akademik Lomonosov|1|constructor|CONFIRMED||HIGH|en.wikipedia.org/Akademik_Lomonosov — Baltic Shipyard completed final assembly 2008-2010 (Sevmash performed initial hull work 2007-2008 before transfer)
+Akademik Lomonosov|1|architect_engineer|WRONG|Nizhny Novgorod Atomenergoproekt (JSC NIAEP)|MED|en.wikipedia.org/Akademik_Lomonosov — "assembled by Nizhniy Novgorod Research and Development Institute Atomenergoproekt"; input's generic "Atomenergoproekt" masks that this is the NN-specific regional institute, not Moscow or St. Petersburg AEP
+Akademik Lomonosov|1|turbine_supplier|WRONG|Kaluga Turbine Plant (KTZ)|HIGH|en.wikipedia.org/Akademik_Lomonosov — "The turbo-generators were supplied by Kaluga Turbine Plant"
+Akademik Lomonosov|1|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/Akademik_Lomonosov — "The reactor vessels were produced by Izhorskiye Zavody"
+Akademik Lomonosov|2|constructor|CONFIRMED||HIGH|en.wikipedia.org/Akademik_Lomonosov — same platform/build as unit 1
+Akademik Lomonosov|2|architect_engineer|WRONG|Nizhny Novgorod Atomenergoproekt (JSC NIAEP)|MED|en.wikipedia.org/Akademik_Lomonosov — same as unit 1
+Akademik Lomonosov|2|turbine_supplier|WRONG|Kaluga Turbine Plant (KTZ)|HIGH|en.wikipedia.org/Akademik_Lomonosov — same as unit 1
+Akademik Lomonosov|2|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/Akademik_Lomonosov — same as unit 1
+BREST|1|constructor|WRONG|Siberian Chemical Combine (JSC SKhK), general contractor for the Proryv project, with Concern Titan-2 performing construction/installation work|MED|ru.wikipedia.org/БРЕСТ-ОД-300 — "5 декабря 2019 «СХК» и АО «Концерн Титан-2» заключили договор на выполнение строительно-монтажных работ"; "Rosatom" in the input is the parent state corporation, not the operating constructor entity
+BREST|1|architect_engineer|WRONG|NIKIET named after N.A. Dollezhal|MED|ru.wikipedia.org/БРЕСТ-ОД-300 — "Главный конструктор реакторной установки — НИКИЭТ имени Н. А. Доллежаля" (NIKIET is chief designer of the reactor installation; a distinct plant-level AE institute is not separately confirmed for this demonstration unit)
+BREST|1|turbine_supplier|UNVERIFIABLE||n/a|no turbine supplier documented in available sources
+BREST|1|rpv_manufacturer|UNVERIFIABLE||n/a|BREST-OD-300 is a lead-cooled fast reactor with a different vessel concept than VVER/RBMK; no vessel manufacturer sourced this session
+Balakovo|1|constructor|WRONG|not Atomstroyexport — company founded 1998; unit 1 commissioned 1985, predating it; precise domestic construction trust unsourced|MED|date contradiction: Atomstroyexport founding (1998) vs. Balakovo unit 1 commercial operation (1985)
+Balakovo|1|architect_engineer|UNVERIFIABLE||n/a|ru.wikipedia.org/Балаковская_АЭС confirms OKB Gidropress as reactor designer ("Проектировщик — ОКБ «Гидропресс»") but does not name the plant architect-engineer institute or its region
+Balakovo|1|turbine_supplier|WRONG|Turboatom (Kharkiv Turbine/Turbogenerator Plant)|HIGH|ru.wikipedia.org/Балаковская_АЭС — "турбина К-1000-60/1500-2, изготовленная Харьковским турбогенераторным заводом"
+Balakovo|1|rpv_manufacturer|WRONG|Mixed — Izhora Plants (St. Petersburg) AND Atommash (Volgodonsk) both supplied VVER-1000 vessels to this plant; per-unit assignment not sourced|MED|ru.wikipedia.org/Балаковская_АЭС — "Изготовители — производственное объединение «Ижорские заводы» ... и «Атоммаш» (г.Волгодонск)" — uniform "Izhora Plants" across all 4 units is not established
+Balakovo|2|constructor|WRONG|not Atomstroyexport — founded 1998; unit 2 commissioned 1987|MED|date contradiction, same as unit 1
+Balakovo|2|architect_engineer|UNVERIFIABLE||n/a|same as unit 1
+Balakovo|2|turbine_supplier|WRONG|Turboatom (Kharkiv Turbine/Turbogenerator Plant)|HIGH|ru.wikipedia.org/Балаковская_АЭС
+Balakovo|2|rpv_manufacturer|WRONG|Mixed — Izhora Plants and Atommash both supplied vessels; per-unit assignment not sourced|MED|ru.wikipedia.org/Балаковская_АЭС
+Balakovo|3|constructor|WRONG|not Atomstroyexport — founded 1998; unit 3 commissioned 1988|MED|date contradiction, same as unit 1
+Balakovo|3|architect_engineer|UNVERIFIABLE||n/a|same as unit 1
+Balakovo|3|turbine_supplier|WRONG|Turboatom (Kharkiv Turbine/Turbogenerator Plant)|HIGH|ru.wikipedia.org/Балаковская_АЭС
+Balakovo|3|rpv_manufacturer|WRONG|Mixed — Izhora Plants and Atommash both supplied vessels; per-unit assignment not sourced|MED|ru.wikipedia.org/Балаковская_АЭС
+Balakovo|4|constructor|WRONG|not Atomstroyexport — founded 1998; unit 4 commissioned 1993|MED|date contradiction, same as unit 1
+Balakovo|4|architect_engineer|UNVERIFIABLE||n/a|same as unit 1
+Balakovo|4|turbine_supplier|WRONG|Turboatom (Kharkiv Turbine/Turbogenerator Plant)|HIGH|ru.wikipedia.org/Балаковская_АЭС
+Balakovo|4|rpv_manufacturer|WRONG|Mixed — Izhora Plants and Atommash both supplied vessels; per-unit assignment not sourced|MED|ru.wikipedia.org/Балаковская_АЭС
+Beloyarsk|1|constructor|UNVERIFIABLE||n/a|ru.wikipedia.org/Белоярская_АЭС — Minsredmash is a ministry; no specific construction trust documented
+Beloyarsk|1|architect_engineer|WRONG|Leningrad branch of Teploelektroproekt|MED|ru.wikipedia.org/Белоярская_АЭС — "Техпроект Белоярской АЭС был разработан на основе проектного задания, выполненного Ленинградским отделением «Теплоэлектропроекта»"
+Beloyarsk|1|turbine_supplier|UNVERIFIABLE||n/a|no turbine supplier documented for AMB-100
+Beloyarsk|1|rpv_manufacturer|CONFIRMED||MED|AMB-100 is a uranium-graphite channel-type reactor (same design family as AM-1/RBMK); no single RPV. Design-family inference, not a direct per-unit citation this session
+Beloyarsk|2|constructor|UNVERIFIABLE||n/a|same as unit 1
+Beloyarsk|2|architect_engineer|WRONG|Uralteploenergoproekt|MED|ru.wikipedia.org/Белоярская_АЭС — unit 2 technical project attributed to Uralteploenergoproekt (per 1960 design task reference)
+Beloyarsk|2|turbine_supplier|UNVERIFIABLE||n/a|no turbine supplier documented for AMB-200
+Beloyarsk|2|rpv_manufacturer|CONFIRMED||MED|AMB-200 is channel-type (same family as AMB-100); no single RPV. Design-family inference
+Beloyarsk|3|constructor|UNVERIFIABLE||n/a|no construction-trust source found for BN-600
+Beloyarsk|3|architect_engineer|UNVERIFIABLE||n/a|ru.wikipedia.org/Белоярская_АЭС has no AE detail for BN-600
+Beloyarsk|3|turbine_supplier|UNVERIFIABLE||n/a|no turbine supplier sourced for BN-600
+Beloyarsk|3|rpv_manufacturer|UNVERIFIABLE||n/a|BN-600 is a pool-type sodium-cooled fast reactor with a large low-pressure reactor vessel — a different concept than VVER's pressurized RPV; whether "None" is the right database convention for this design is unresolved without a source
+Beloyarsk|4|constructor|UNVERIFIABLE||n/a|no construction-trust source found for BN-800
+Beloyarsk|4|architect_engineer|UNVERIFIABLE||n/a|no AE source found for BN-800
+Beloyarsk|4|turbine_supplier|UNVERIFIABLE||n/a|no turbine supplier sourced for BN-800
+Beloyarsk|4|rpv_manufacturer|UNVERIFIABLE||n/a|same pool-type-vessel ambiguity as BN-600
+Bilibino|1|constructor|WRONG|Magadanenergostroi trust (Bilibino NPP Construction Directorate)|HIGH|ru.wikipedia.org/Билибинская_АЭС — "Bilibino NPP Construction Management of the 'Magadanenergostroi' trust handled construction work"
+Bilibino|1|architect_engineer|WRONG|Ural Branch of VNIPIET (VGNIPKII)|MED|ru.wikipedia.org/Билибинская_АЭС — "Уральское отделение ВГНИПКИИ" served as general designer
+Bilibino|1|turbine_supplier|WRONG|Brno Machine-Building Works (Czechoslovak; Velká Bíteš) — foreign supplier, not Power Machines/LMZ|HIGH|ru.wikipedia.org/Билибинская_АЭС — "Теплофикационные турбины ... были разработаны и изготовлены чешским Брненским машиностроительным заводом"
+Bilibino|1|rpv_manufacturer|CONFIRMED||HIGH|ru.wikipedia.org/Билибинская_АЭС — EGP-6 is "водно-графитовый гетерогенный реактор канального типа" (channel-type), no RPV
+Bilibino|2|constructor|WRONG|Magadanenergostroi trust|HIGH|ru.wikipedia.org/Билибинская_АЭС — same plant-wide builder
+Bilibino|2|architect_engineer|WRONG|Ural Branch of VNIPIET (VGNIPKII)|MED|ru.wikipedia.org/Билибинская_АЭС
+Bilibino|2|turbine_supplier|WRONG|Brno Machine-Building Works (Czechoslovak)|HIGH|ru.wikipedia.org/Билибинская_АЭС
+Bilibino|2|rpv_manufacturer|CONFIRMED||HIGH|ru.wikipedia.org/Билибинская_АЭС — channel-type, no RPV
+Bilibino|3|constructor|WRONG|Magadanenergostroi trust|HIGH|ru.wikipedia.org/Билибинская_АЭС
+Bilibino|3|architect_engineer|WRONG|Ural Branch of VNIPIET (VGNIPKII)|MED|ru.wikipedia.org/Билибинская_АЭС
+Bilibino|3|turbine_supplier|WRONG|Brno Machine-Building Works (Czechoslovak)|HIGH|ru.wikipedia.org/Билибинская_АЭС
+Bilibino|3|rpv_manufacturer|CONFIRMED||HIGH|ru.wikipedia.org/Билибинская_АЭС — channel-type, no RPV
+Bilibino|4|constructor|WRONG|Magadanenergostroi trust|HIGH|ru.wikipedia.org/Билибинская_АЭС
+Bilibino|4|architect_engineer|WRONG|Ural Branch of VNIPIET (VGNIPKII)|MED|ru.wikipedia.org/Билибинская_АЭС
+Bilibino|4|turbine_supplier|WRONG|Brno Machine-Building Works (Czechoslovak)|HIGH|ru.wikipedia.org/Билибинская_АЭС
+Bilibino|4|rpv_manufacturer|CONFIRMED||HIGH|ru.wikipedia.org/Билибинская_АЭС — channel-type, no RPV
+Cape Nagloynyn|1|constructor|UNVERIFIABLE||n/a|no dedicated source located for this RITM-200S land/coastal SMR project (English Wikipedia page for BREST/Baimskaya area returned 404; project is very recent and thinly documented)
+Cape Nagloynyn|1|architect_engineer|UNVERIFIABLE||n/a|not sourced
+Cape Nagloynyn|1|turbine_supplier|UNVERIFIABLE||n/a|not sourced
+Cape Nagloynyn|1|rpv_manufacturer|UNVERIFIABLE||n/a|not sourced (RITM-200-family vessels are commonly fabricated by AEM-Technologies/Petrozavodskmash for icebreaker units, but this is not confirmed for this specific onshore project)
+Cape Nagloynyn|2|constructor|UNVERIFIABLE||n/a|same as unit 1
+Cape Nagloynyn|2|architect_engineer|UNVERIFIABLE||n/a|same as unit 1
+Cape Nagloynyn|2|turbine_supplier|UNVERIFIABLE||n/a|same as unit 1
+Cape Nagloynyn|2|rpv_manufacturer|UNVERIFIABLE||n/a|same as unit 1
+Kalinin|1|constructor|WRONG|not Atomstroyexport — founded 1998; unit 1 commissioned 1984|MED|date contradiction: Atomstroyexport founding (1998) vs. Kalinin unit 1 commercial operation (1984)
+Kalinin|1|architect_engineer|WRONG|Gorky branch of Teploelektroproekt (predecessor of Nizhny Novgorod Atomenergoproekt)|HIGH|ru.wikipedia.org/Калининская_АЭС — "Горьковским отделением института «Теплоэлектропроект»"
+Kalinin|1|turbine_supplier|WRONG|Turboatom (Kharkov Production Association)|HIGH|ru.wikipedia.org/Калининская_АЭС — "Харьковское производственное объединение «Турбоатом»"
+Kalinin|1|rpv_manufacturer|UNVERIFIABLE||n/a|ru.wikipedia.org/Калининская_АЭС does not name a vessel manufacturer
+Kalinin|2|constructor|WRONG|not Atomstroyexport — founded 1998; unit 2 commissioned 1986|MED|date contradiction, same as unit 1
+Kalinin|2|architect_engineer|WRONG|Gorky branch of Teploelektroproekt|HIGH|ru.wikipedia.org/Калининская_АЭС
+Kalinin|2|turbine_supplier|WRONG|Turboatom (Kharkov Production Association)|HIGH|ru.wikipedia.org/Калининская_АЭС
+Kalinin|2|rpv_manufacturer|UNVERIFIABLE||n/a|not named in source
+Kalinin|3|constructor|UNVERIFIABLE||n/a|unit 3 commissioned 2004 (postdates Atomstroyexport's 1998 founding, so plausible unlike units 1-2) but no direct confirmation found this session
+Kalinin|3|architect_engineer|WRONG|Nizhny Novgorod Atomenergoproekt (successor name of the Gorky branch of Teploelektroproekt)|HIGH|ru.wikipedia.org/Калининская_АЭС
+Kalinin|3|turbine_supplier|WRONG|Turboatom (Kharkov Production Association)|HIGH|ru.wikipedia.org/Калининская_АЭС — source states Turboatom supplied all the plant's 1000 MW turbogenerators
+Kalinin|3|rpv_manufacturer|UNVERIFIABLE||n/a|not named in source
+Kalinin|4|constructor|UNVERIFIABLE||n/a|unit 4 commissioned 2011/2012 (postdates Atomstroyexport founding, plausible) but not directly confirmed
+Kalinin|4|architect_engineer|WRONG|Nizhny Novgorod Atomenergoproekt|HIGH|ru.wikipedia.org/Калининская_АЭС
+Kalinin|4|turbine_supplier|WRONG|Turboatom (Kharkov Production Association)|HIGH|ru.wikipedia.org/Калининская_АЭС
+Kalinin|4|rpv_manufacturer|UNVERIFIABLE||n/a|not named in source
+Kola|1|constructor|UNVERIFIABLE||n/a|ru.wikipedia.org/Кольская_АЭС — Minsredmash is a ministry; no construction trust named
+Kola|1|architect_engineer|UNVERIFIABLE||n/a|regional AE institute not identified in source
+Kola|1|turbine_supplier|WRONG|Turboatom (Kharkiv Turbine Plant)|HIGH|ru.wikipedia.org/Кольская_АЭС — "турбинами К-220-44-3 Харьковского турбинного завода"
+Kola|1|rpv_manufacturer|UNVERIFIABLE||n/a|not named in source (Izhora is a plausible candidate for this VVER-440 era, pre-Atommash, but not directly confirmed)
+Kola|2|constructor|UNVERIFIABLE||n/a|same as unit 1
+Kola|2|architect_engineer|UNVERIFIABLE||n/a|same as unit 1
+Kola|2|turbine_supplier|WRONG|Turboatom (Kharkiv Turbine Plant)|HIGH|ru.wikipedia.org/Кольская_АЭС
+Kola|2|rpv_manufacturer|UNVERIFIABLE||n/a|same as unit 1
+Kola|3|constructor|UNVERIFIABLE||n/a|same as unit 1
+Kola|3|architect_engineer|UNVERIFIABLE||n/a|same as unit 1
+Kola|3|turbine_supplier|WRONG|Turboatom (Kharkiv Turbine Plant)|HIGH|ru.wikipedia.org/Кольская_АЭС (source did not separately distinguish V-213 turbine model from V-230, but same plant/supplier)
+Kola|3|rpv_manufacturer|UNVERIFIABLE||n/a|same as unit 1
+Kola|4|constructor|UNVERIFIABLE||n/a|same as unit 1
+Kola|4|architect_engineer|UNVERIFIABLE||n/a|same as unit 1
+Kola|4|turbine_supplier|WRONG|Turboatom (Kharkiv Turbine Plant)|HIGH|ru.wikipedia.org/Кольская_АЭС
+Kola|4|rpv_manufacturer|UNVERIFIABLE||n/a|same as unit 1
+Kursk 1|1|constructor|WRONG|Tsentroenergomontazh trust performed reactor installation/construction|MED|ru.wikipedia.org/Курская_АЭС — "Установку первого реактора производили несколько бригад треста «Центроэнергомонтаж»"
+Kursk 1|1|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/Kursk_Nuclear_Power_Plant — "The general designer of Kursk I was Atomenergoproject (Moscow)" — matches input, and confirms the Moscow-specific branch
+Kursk 1|1|turbine_supplier|WRONG|Turboatom (Kharkiv Turbine Plant)|HIGH|ru.wikipedia.org/Курская_АЭС — "две турбины К-500-65/3000 (производства Харьковского турбинного завода)"
+Kursk 1|1|rpv_manufacturer|CONFIRMED||HIGH|RBMK-1000 is a channel-type reactor with no single pressure vessel — well-established design characteristic, consistent across en/ru Wikipedia RBMK coverage
+Kursk 1|2|constructor|WRONG|Tsentroenergomontazh trust|MED|ru.wikipedia.org/Курская_АЭС
+Kursk 1|2|architect_engineer|CONFIRMED||HIGH|en.wikipedia.org/Kursk_Nuclear_Power_Plant — Atomenergoproject (Moscow)
+Kursk 1|2|turbine_supplier|WRONG|Turboatom (Kharkiv Turbine Plant)|HIGH|ru.wikipedia.org/Курская_АЭС
+Kursk 1|2|rpv_manufacturer|CONFIRMED||HIGH|RBMK-1000 channel-type, no RPV
+# NOTES
+# 1. TURBINE SUPPLIER — the most consistent and highest-confidence finding across the batch: every VVER and RBMK unit that could be sourced (Balakovo, Kalinin, Kola, Kursk) used Kharkiv-built turbines (Turboatom / Kharkiv Turbine Plant), NOT Power Machines/LMZ as the heuristic assumed uniformly. LMZ was never confirmed as a turbine supplier for any reactor in this batch. Bilibino is a further outlier: its turbines came from a Czechoslovak manufacturer (Brno Machine-Building Works), not any Soviet/Russian turbine maker at all.
+# 2. CONSTRUCTOR="Atomstroyexport" is anachronistic for any unit commissioned before 1998 (Atomstroyexport's founding year) — this affects Balakovo (all 4 units, 1985-1993) and Kalinin units 1-2 (1984, 1986). For Kalinin units 3-4 (2004, 2011-12), Atomstroyexport is chronologically plausible but not directly sourced this session — left UNVERIFIABLE rather than confirmed.
+# 3. CONSTRUCTOR="Minsredmash" (Beloyarsk, Bilibino, Kola, Obninsk) is a ministry, not a company, per the verification brief's own framing. Only Bilibino yielded a specific documented builder (Magadanenergostroi trust); the rest remain UNVERIFIABLE for lack of a named construction trust — this should NOT be read as confirming Minsredmash, only as "could not find better."
+# 4. ARCHITECT_ENGINEER regional split confirmed as a real issue: Kalinin's AE traces to the Gorky/Nizhny Novgorod branch of Teploelektroproekt/Atomenergoproekt, Akademik Lomonosov's to the Nizhny Novgorod branch, Beloyarsk units 1-2 to Leningrad/Ural branches, Bilibino to a Ural VNIPIET branch, and Kursk to the Moscow branch (the one case where generic "Atomenergoproekt" was regionally confirmed CORRECT). Generic "Atomenergoproekt" without a region should be treated as imprecise/WRONG wherever a specific branch is documented.
+# 5. RPV="None" is CONFIRMED correct for all channel-type reactors (Obninsk AM-1, Beloyarsk AMB-1/2, Bilibino EGP-6, Kursk RBMK-1000) — these designs genuinely have no single pressure vessel, so the heuristic's blanket "None" for these units is structurally right, just for the wrong underlying reason (heuristic applied it uniformly rather than by design type). For VVER units, "Izhora Plants" is demonstrably NOT uniform: Balakovo's own plant history documents both Izhora AND Atommash (Volgodonsk) as vessel suppliers, so per-unit Izhora attribution needs individual sourcing, not a blanket assumption.
+# 6. Fast reactors (Beloyarsk BN-600/BN-800) and the newest small-reactor projects (Cape Nagloynyn RITM-200S, BREST-OD-300 partially) are the weakest-sourced group — pool-type/non-VVER vessel concepts don't map cleanly onto the "RPV manufacturer" field, and BN-600/700/800 plus RITM-200S/BREST supply-chain details were not found in the English/Russian Wikipedia sources checked this session. These would benefit from IAEA PRIS or Rosatom primary-source lookups in a follow-up pass (WebSearch was unavailable this session — budget exhausted — so only direct Wikipedia URL fetches were used).

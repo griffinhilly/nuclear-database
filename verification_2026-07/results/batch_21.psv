@@ -1,0 +1,113 @@
+plant|unit|field|verdict|corrected_value|confidence|source
+Chernobyl|1|constructor|WRONG|Kremenchuggesstroy (Ukrainian hydro-construction trust; Minsredmash ran design side, not civil construction)|MED|ru.wikipedia.org/wiki/Чернобыльская_АЭС
+Chernobyl|1|architect_engineer|WRONG|Gidroproekt / Hydroproject Institute (general designer per USSR Ministry of Energy order, 30 Mar 1970); VNIPIET was reactor-section subcontractor only|MED|ru.wikipedia.org/wiki/Чернобыльская_АЭС; ru.wikipedia.org/wiki/ВНИПИЭТ
+Chernobyl|1|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom) — K-500-65/3000 turbines|HIGH|en.wikipedia.org/wiki/Chernobyl_Nuclear_Power_Plant; en.wikipedia.org/wiki/RBMK
+Chernobyl|1|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/wiki/RBMK (pressure-tube design, no single RPV)
+Chernobyl|2|constructor|WRONG|Kremenchuggesstroy|MED|ru.wikipedia.org/wiki/Чернобыльская_АЭС
+Chernobyl|2|architect_engineer|WRONG|Gidroproekt / Hydroproject Institute|MED|ru.wikipedia.org/wiki/Чернобыльская_АЭС; ru.wikipedia.org/wiki/ВНИПИЭТ
+Chernobyl|2|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org/wiki/Chernobyl_Nuclear_Power_Plant; en.wikipedia.org/wiki/RBMK
+Chernobyl|2|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/wiki/RBMK
+Chernobyl|3|constructor|WRONG|Kremenchuggesstroy|MED|ru.wikipedia.org/wiki/Чернобыльская_АЭС
+Chernobyl|3|architect_engineer|WRONG|Gidroproekt / Hydroproject Institute|MED|ru.wikipedia.org/wiki/Чернобыльская_АЭС; ru.wikipedia.org/wiki/ВНИПИЭТ
+Chernobyl|3|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org/wiki/Chernobyl_Nuclear_Power_Plant; en.wikipedia.org/wiki/RBMK
+Chernobyl|3|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/wiki/RBMK
+Chernobyl|4|constructor|WRONG|Kremenchuggesstroy|MED|ru.wikipedia.org/wiki/Чернобыльская_АЭС
+Chernobyl|4|architect_engineer|WRONG|Gidroproekt / Hydroproject Institute|MED|ru.wikipedia.org/wiki/Чернобыльская_АЭС; ru.wikipedia.org/wiki/ВНИПИЭТ
+Chernobyl|4|turbine_supplier|WRONG|Kharkiv Turbine Plant (Turboatom)|HIGH|en.wikipedia.org/wiki/Chernobyl_Nuclear_Power_Plant; en.wikipedia.org/wiki/RBMK
+Chernobyl|4|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/wiki/RBMK
+Ignalina|1|constructor|UNVERIFIABLE||LOW|lt.wikipedia.org/wiki/Ignalinos_atominė_elektrinė; ru.wikipedia.org/wiki/Игналинская_АЭС — no single named general contractor found; candidate name "Игналинаэнергострой" checked and found unsupported
+Ignalina|1|architect_engineer|UNVERIFIABLE||LOW|ru.wikipedia.org/wiki/РБМК; ru.wikipedia.org/wiki/ВНИПИЭТ — NIKIET (current guess) is confirmed to be the reactor designer, not architect-engineer/general designer, so current value is a role misattribution, but no source names the actual general designer for Ignalina specifically (VNIPIET confirmed only for Leningrad NPP)
+Ignalina|1|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Ignalina_Nuclear_Power_Plant (K-750-65/3000 turbines built by Kharkiv turbine plant/Turboatom)
+Ignalina|1|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/wiki/RBMK
+Ignalina|2|constructor|UNVERIFIABLE||LOW|same as Ignalina-1
+Ignalina|2|architect_engineer|UNVERIFIABLE||LOW|same as Ignalina-1
+Ignalina|2|turbine_supplier|CONFIRMED||HIGH|en.wikipedia.org/wiki/Ignalina_Nuclear_Power_Plant
+Ignalina|2|rpv_manufacturer|CONFIRMED||HIGH|en.wikipedia.org/wiki/RBMK
+Khmelnytskyi|1|constructor|WRONG|Unknown Soviet-era construction trust (Atomstroyexport did not exist until 1998; unit built 1981-1987, pre-dates the company)|HIGH|en.wikipedia.org/wiki/Khmelnytskyi_Nuclear_Power_Plant (construction dates); anachronism reasoning
+Khmelnytskyi|1|architect_engineer|WRONG|Kyivenergoproekt|HIGH|uk.wikipedia.org/wiki/Київенергопроект ("генеральним проектувальником...Хмельницької АЕС")
+Khmelnytskyi|1|turbine_supplier|WRONG|Turboatom (Kharkiv Turbine Plant) — inferred from VVER-1000 plant-wide Ukrainian pattern, not directly sourced for this unit|MED|inference from South Ukraine/Zaporizhzhia sourced pattern
+Khmelnytskyi|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found confirming or denying Izhora vs. Atommash for this unit
+Khmelnytskyi|2|constructor|CONFIRMED (partial — completion phase only)||MED|world-nuclear.org Ukraine country profile: unit completed 2000-2004 by "consortium of Framatome ANP and Atomstroyexport"; original 1983-1990 construction-phase builder unverified
+Khmelnytskyi|2|architect_engineer|WRONG|Kyivenergoproekt|HIGH|uk.wikipedia.org/wiki/Київенергопроект
+Khmelnytskyi|2|turbine_supplier|WRONG|Turboatom (inferred)|MED|inference from Ukrainian VVER-1000 pattern
+Khmelnytskyi|2|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+Khmelnytskyi|3|constructor|WRONG|Unresolved / no current constructor of record — 2010 agreement named Atomstroyexport but Ukraine terminated Russian cooperation by presidential decree, 16 Sep 2015; 2025 reports discuss buying unused ex-Belene (Bulgaria) equipment instead|MED|uk.wikipedia.org/wiki/Хмельницька_атомна_електростанція
+Khmelnytskyi|3|architect_engineer|WRONG|Kyivenergoproekt (per plant-wide finding; unit incomplete so not independently confirmed)|MED|uk.wikipedia.org/wiki/Київенергопроект
+Khmelnytskyi|3|turbine_supplier|UNVERIFIABLE||LOW|Turboatom named as planned supplier in a 2018 Cabinet equipment plan, but unit is unfinished — not an as-built fact; uk.wikipedia.org/wiki/Хмельницька_атомна_електростанція
+Khmelnytskyi|3|rpv_manufacturer|UNVERIFIABLE||LOW|reactor vessel not installed; 2025 plan discusses sourcing ex-Belene (Bulgaria) equipment, manufacturer of that equipment not established
+Khmelnytskyi|4|constructor|WRONG|Unresolved / no current constructor of record (see Khmelnytskyi-3)|MED|uk.wikipedia.org/wiki/Хмельницька_атомна_електростанція
+Khmelnytskyi|4|architect_engineer|WRONG|Kyivenergoproekt (unconfirmed for this specific unit)|MED|uk.wikipedia.org/wiki/Київенергопроект
+Khmelnytskyi|4|turbine_supplier|UNVERIFIABLE||LOW|see Khmelnytskyi-3
+Khmelnytskyi|4|rpv_manufacturer|UNVERIFIABLE||LOW|see Khmelnytskyi-3
+Rivne|1|constructor|WRONG|Unknown Soviet-era construction trust (Atomstroyexport anachronistic; unit built 1973-1982)|HIGH|en.wikipedia.org/wiki/Rivne_Nuclear_Power_Plant (construction dates)
+Rivne|1|architect_engineer|WRONG|Kyivenergoproekt|HIGH|uk.wikipedia.org/wiki/Київенергопроект ("генеральним проектувальником...Рівненської АЕС")
+Rivne|1|turbine_supplier|UNVERIFIABLE||LOW|Power Machines (LMZ) is plausible for VVER-440 units specifically (traditional Soviet VVER-440 turbine line, distinct from VVER-1000/Turboatom pattern) but no Rivne-specific source found confirming it
+Rivne|1|rpv_manufacturer|UNVERIFIABLE||LOW|Izhora Plants plausible for VVER-440 (traditional vessel maker) but no Rivne-specific source found
+Rivne|2|constructor|WRONG|Unknown Soviet-era construction trust|HIGH|en.wikipedia.org/wiki/Rivne_Nuclear_Power_Plant
+Rivne|2|architect_engineer|WRONG|Kyivenergoproekt|HIGH|uk.wikipedia.org/wiki/Київенергопроект
+Rivne|2|turbine_supplier|UNVERIFIABLE||LOW|see Rivne-1
+Rivne|2|rpv_manufacturer|UNVERIFIABLE||LOW|see Rivne-1
+Rivne|3|constructor|WRONG|Unknown Soviet-era construction trust (Atomstroyexport anachronistic; unit built 1980-1987)|HIGH|en.wikipedia.org/wiki/Rivne_Nuclear_Power_Plant
+Rivne|3|architect_engineer|WRONG|Kyivenergoproekt|HIGH|uk.wikipedia.org/wiki/Київенергопроект
+Rivne|3|turbine_supplier|WRONG|Turboatom (inferred from Ukrainian VVER-1000 pattern, not directly sourced for Rivne)|MED|inference from South Ukraine/Zaporizhzhia sourced pattern
+Rivne|3|rpv_manufacturer|UNVERIFIABLE||LOW|no source found either confirming or denying Izhora vs. Atommash
+Rivne|4|constructor|CONFIRMED (completion-phase only)||MED-HIGH|world-nuclear.org Ukraine country profile: unit completed 2006 by "consortium of Framatome ANP and Atomstroyexport"
+Rivne|4|architect_engineer|WRONG|Kyivenergoproekt|HIGH|uk.wikipedia.org/wiki/Київенергопроект
+Rivne|4|turbine_supplier|WRONG|Turboatom (inferred)|MED|inference from Ukrainian VVER-1000 pattern
+Rivne|4|rpv_manufacturer|UNVERIFIABLE||LOW|no source found
+South Ukraine|1|constructor|WRONG|Unknown Soviet-era construction trust (Atomstroyexport anachronistic; unit commissioned 1982/83)|HIGH|en/ru/uk Wikipedia South Ukraine NPP pages
+South Ukraine|1|architect_engineer|UNVERIFIABLE||LOW|Kyivenergoproekt's own Wikipedia page (listing its credited plants) does not name South Ukraine NPP; no alternative source found either
+South Ukraine|1|turbine_supplier|WRONG|Turboatom (Kharkiv) — K-1000-60/1500 turbines|HIGH|ru.wikipedia.org/wiki/Южно-Украинская_АЭС ("турбинами К-1000-60/1500 производства харьковского ОАО «Турбоатом»")
+South Ukraine|1|rpv_manufacturer|CONFIRMED||HIGH|ru.wikipedia.org/wiki/Южно-Украинская_АЭС ("реакторной установкой производства «Ижорских заводов»")
+South Ukraine|2|constructor|WRONG|Unknown Soviet-era construction trust|HIGH|en/ru/uk Wikipedia South Ukraine NPP pages
+South Ukraine|2|architect_engineer|UNVERIFIABLE||LOW|see South Ukraine-1
+South Ukraine|2|turbine_supplier|WRONG|Turboatom (Kharkiv) — inferred, same plant/turbine-model line as Unit 1|MED-HIGH|ru.wikipedia.org/wiki/Южно-Украинская_АЭС
+South Ukraine|2|rpv_manufacturer|WRONG|Atommash (Volgodonsk) — differs from Unit 1's Izhora vessel|HIGH|ru.wikipedia.org/wiki/Южно-Украинская_АЭС ("реакторы ВВЭР-1000... произведённые на заводе «Атоммаш»"); corroborated by en.wikipedia.org/wiki/Atommash noting its first VVER-1000 reactor went to South Ukraine NPP unit 2 in 1981
+South Ukraine|3|constructor|WRONG|Unknown Soviet-era construction trust|HIGH|en/ru/uk Wikipedia South Ukraine NPP pages
+South Ukraine|3|architect_engineer|UNVERIFIABLE||LOW|see South Ukraine-1
+South Ukraine|3|turbine_supplier|WRONG|Turboatom (Kharkiv) — inferred|MED-HIGH|ru.wikipedia.org/wiki/Южно-Украинская_АЭС
+South Ukraine|3|rpv_manufacturer|WRONG|Atommash (Volgodonsk)|HIGH|ru.wikipedia.org/wiki/Южно-Украинская_АЭС
+Zaporizhzhia|1|constructor|WRONG|Unknown Soviet-era construction trust (Atomstroyexport anachronistic; unit commissioned 1984-85)|HIGH|en/ru Wikipedia Zaporizhzhia NPP pages
+Zaporizhzhia|1|architect_engineer|UNVERIFIABLE||LOW|no source found crediting Kyivenergoproekt, Atomenergoproekt, or any specific institute for this plant
+Zaporizhzhia|1|turbine_supplier|WRONG|Turboatom / Kharkiv Turbine Plant|HIGH|ru.wikipedia.org/wiki/Запорожская_АЭС; en.wikipedia.org/wiki/Turboatom (names Zaporizhzhia as recipient plant, 1000 MW turbines, 1982-85 delivery period)
+Zaporizhzhia|1|rpv_manufacturer|UNVERIFIABLE||LOW|Russian Wikipedia gives only a plant-wide (not unit-broken-out) Izhora claim; South Ukraine precedent shows vessel supplier can switch mid-plant as Atommash ramped up in the early 1980s, so a blanket claim across all 6 units is not safe to accept without unit-level confirmation
+Zaporizhzhia|2|constructor|WRONG|Unknown Soviet-era construction trust|HIGH|en/ru Wikipedia Zaporizhzhia NPP pages
+Zaporizhzhia|2|architect_engineer|UNVERIFIABLE||LOW|see Zaporizhzhia-1
+Zaporizhzhia|2|turbine_supplier|WRONG|Turboatom / Kharkiv Turbine Plant|HIGH|ru.wikipedia.org/wiki/Запорожская_АЭС; en.wikipedia.org/wiki/Turboatom
+Zaporizhzhia|2|rpv_manufacturer|UNVERIFIABLE||LOW|see Zaporizhzhia-1
+Zaporizhzhia|3|constructor|WRONG|Unknown Soviet-era construction trust|HIGH|en/ru Wikipedia Zaporizhzhia NPP pages
+Zaporizhzhia|3|architect_engineer|UNVERIFIABLE||LOW|see Zaporizhzhia-1
+Zaporizhzhia|3|turbine_supplier|WRONG|Turboatom / Kharkiv Turbine Plant|HIGH|ru.wikipedia.org/wiki/Запорожская_АЭС; en.wikipedia.org/wiki/Turboatom
+Zaporizhzhia|3|rpv_manufacturer|UNVERIFIABLE||LOW|see Zaporizhzhia-1
+Zaporizhzhia|4|constructor|WRONG|Unknown Soviet-era construction trust|HIGH|en/ru Wikipedia Zaporizhzhia NPP pages
+Zaporizhzhia|4|architect_engineer|UNVERIFIABLE||LOW|see Zaporizhzhia-1
+Zaporizhzhia|4|turbine_supplier|WRONG|Turboatom / Kharkiv Turbine Plant|HIGH|ru.wikipedia.org/wiki/Запорожская_АЭС; en.wikipedia.org/wiki/Turboatom
+Zaporizhzhia|4|rpv_manufacturer|UNVERIFIABLE||LOW|see Zaporizhzhia-1
+Zaporizhzhia|5|constructor|WRONG|Unknown Soviet-era construction trust|HIGH|en/ru Wikipedia Zaporizhzhia NPP pages
+Zaporizhzhia|5|architect_engineer|UNVERIFIABLE||LOW|see Zaporizhzhia-1
+Zaporizhzhia|5|turbine_supplier|WRONG|Turboatom / Kharkiv Turbine Plant|HIGH|ru.wikipedia.org/wiki/Запорожская_АЭС; en.wikipedia.org/wiki/Turboatom
+Zaporizhzhia|5|rpv_manufacturer|UNVERIFIABLE||LOW|see Zaporizhzhia-1
+Zaporizhzhia|6|constructor|WRONG|Unknown Soviet-era construction trust (unit commissioned 1996, still pre-dates Atomstroyexport's 1998 founding)|HIGH|en/ru Wikipedia Zaporizhzhia NPP pages
+Zaporizhzhia|6|architect_engineer|UNVERIFIABLE||LOW|see Zaporizhzhia-1
+Zaporizhzhia|6|turbine_supplier|WRONG|Turboatom / Kharkiv Turbine Plant|HIGH|ru.wikipedia.org/wiki/Запорожская_АЭС; en.wikipedia.org/wiki/Turboatom
+Zaporizhzhia|6|rpv_manufacturer|UNVERIFIABLE||LOW|see Zaporizhzhia-1
+Armenian|1|constructor|UNVERIFIABLE||LOW|ru.wikipedia.org/wiki/Армянская_АЭС — names multiple design institutes and ~100 equipment-supplying enterprises but no single "Atomenergoexport" constructor role
+Armenian|1|architect_engineer|WRONG|Gorky branch of Atomteploelectroproekt (ATEP) Institute|MED|ru.wikipedia.org/wiki/Армянская_АЭС ("Генеральным проектировщиком АЭС было назначено Горьковское отделение института «Атомтеплоэлектропроект»")
+Armenian|1|turbine_supplier|WRONG|Not Škoda; Soviet/Kharkiv-lineage — original K-220-44 turbines, later modernized by Turboatom (Kharkiv); exact original 1970s manufacturer unconfirmed|MED|ru.wikipedia.org/wiki/Армянская_АЭС; Škoda VVER-440 turbines are documented for export plants outside the USSR (Paks, Loviisa, Dukovany), not domestic Soviet plants like Armenia
+Armenian|1|rpv_manufacturer|UNVERIFIABLE||LOW|ru.wikipedia.org/wiki/Армянская_АЭС lists Izhora Plants among ~100 equipment suppliers but does not specify it as RPV-specific
+Armenian|2|constructor|UNVERIFIABLE||LOW|see Armenian-1
+Armenian|2|architect_engineer|WRONG|Gorky branch of Atomteploelectroproekt (ATEP) Institute|MED|ru.wikipedia.org/wiki/Армянская_АЭС
+Armenian|2|turbine_supplier|WRONG|Not Škoda; Soviet/Kharkiv-lineage, exact original manufacturer unconfirmed|MED|see Armenian-1
+Armenian|2|rpv_manufacturer|UNVERIFIABLE||LOW|see Armenian-1
+Aktau|1|constructor|WRONG|Unknown/unconfirmed — "MAEC-Kaz" does not appear in any source checked and looks like a fabricated/garbled name (cf. MAEK, the plant's operating combine, which is not a construction entity)|MED|no source found for "MAEC-Kaz"; en/ru Wikipedia BN-350 and Aktau pages name only MAEK as operator
+Aktau|1|architect_engineer|WRONG|Atomenergoproekt (general plant designer per Wikipedia infobox); OKBM Afrikantov is the BN-series reactor/NSSS designer, a distinct role from architect-engineer|MED|en.wikipedia.org/wiki/BN-350_reactor (infobox: "Reactor supplier: Atomenergoproekt"); en.wikipedia.org/wiki/OKBM_Afrikantov (confirms its role as reactor design bureau)
+Aktau|1|turbine_supplier|WRONG|Kharkov Turbine Plant (Turboatom)|MED-HIGH|en.wikipedia.org/wiki/BN-350_reactor
+Aktau|1|rpv_manufacturer|UNVERIFIABLE||LOW|no source found confirming or denying Izhora Plants for BN-350; note BN-350 is a low-pressure sodium-cooled loop reactor, so "RPV" terminology may not map cleanly onto its primary vessel/tank as it does for VVER units
+# NOTES
+# Structural finding 1: "Atomstroyexport" as blanket constructor is anachronistic (founded 1998) for every Soviet-era unit in this batch built before ~1998 — i.e. all of Chernobyl, Ignalina, Khmelnytskyi-1, Rivne 1-3, all of South Ukraine, all of Zaporizhzhia, and both Armenian units. It is legitimately correct only where a documented post-1998 completion consortium is named: Khmelnytskyi-2 (completed 2000-2004) and Rivne-4 (completed 2006), both per World Nuclear Association's Ukraine country profile ("consortium of Framatome ANP and Atomstroyexport"). No specific pre-1998 Soviet construction-trust name could be confirmed for any unit this session (candidates like "Yuzhatomenergostroy" or "Zaporizhzhyaatomenergobud" were not found in sources checked) — flagged UNVERIFIABLE rather than guessed, per instructions.
+# Structural finding 2: "Atomenergoproekt" as blanket architect-engineer is confirmed WRONG for Khmelnytskyi and Rivne — the actual general designer was Kyivenergoproekt (Kyiv Institute for Nuclear Power Plant Design), per its own Wikipedia page explicitly crediting both plants. Notably, that same source did NOT credit South Ukraine or Zaporizhzhia, so those two plants' architect-engineer remains genuinely unverifiable rather than assumed to also be Kyivenergoproekt.
+# Structural finding 3: "Power Machines (LMZ)" as blanket turbine supplier is confirmed WRONG for VVER-1000 units — Ukrainian VVER-1000 plants (South Ukraine, Zaporizhzhia, and by strong inference Khmelnytskyi/Rivne-3/4) used Turboatom (Kharkiv Turbine Plant), not LMZ. This also applies to Chernobyl (RBMK) — Kharkiv Turbine Plant, not LMZ. Ignalina's existing "Turboatom" value was already correct. However, for the VVER-440 units at Rivne 1-2, the LMZ guess could not be confirmed OR refuted — LMZ was historically a real VVER-440 turbine supplier, so this is marked UNVERIFIABLE rather than WRONG (no unit-specific source found either way).
+# Structural finding 4: "Izhora Plants" as blanket RPV manufacturer is demonstrably NOT plant-wide-safe even within a single site: South Ukraine Unit 1's vessel is confirmed Izhora, but Units 2 and 3 are confirmed Atommash (Volgodonsk) — a documented supplier switch as Atommash ramped up VVER-1000 vessel production in the early 1980s. Because of this precedent, the single plant-wide "Izhora" claim found for Zaporizhzhia (spanning 6 units built 1980-1996) was NOT accepted at face value and is marked UNVERIFIABLE per unit pending a unit-level source, rather than blanket-confirmed.
+# Structural finding 5: Ignalina's constructor and architect-engineer fields are genuine data gaps, not resolvable from Wikipedia in Lithuanian/Russian/English — recommend a follow-up with Lithuanian state archives or Ignalina NPP's official decommissioning-history documents rather than accepting a guess. NIKIET (current architect_engineer guess) is confirmed to be a role misattribution regardless (it is the RBMK reactor designer, not the plant's general designer), but no replacement value could be sourced.
+# Structural finding 6: Aktau/BN-350's "MAEC-Kaz" constructor value shows no evidence of existing as a real historical entity in any source checked (Wikipedia EN/RU, WNA, general web search) and appears to be a garbled conflation with "MAEK" (Mangystau Atomic Energy Combine), which is the plant's operating organization, not its builder. Recommend treating this as a likely-fabricated placeholder needing replacement from an archival source (e.g. IAEA's BN-350 decommissioning technical report, which could not be accessed this session — paywalled/403).
+# Research constraint: WebSearch tool quota (200/session) was exhausted early in three of the four research sub-tasks (Ukrainian VVER cluster, RBMK cluster, Armenian NPP, Aktau), forcing a pivot to direct WebFetch of known Wikipedia/company-history URLs. This capped verification to sources reachable by direct URL guessing — IAEA PRIS unit-detail pages, WNA per-unit pages, and power-technology.com were largely inaccessible (wrong reactor IDs resolved to unrelated plants, 403/404/402 errors). A follow-up pass with a fresh WebSearch budget or direct IAEA NUCLEUS/INIS document access would likely resolve several of the UNVERIFIABLE entries above, particularly: pre-1998 Soviet construction-trust names, South Ukraine/Zaporizhzhia architect-engineer, Rivne VVER-440 turbine/RPV suppliers, and Ignalina constructor/architect-engineer.
