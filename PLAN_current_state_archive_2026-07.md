@@ -3,6 +3,12 @@
 Bullets swept from `PLAN.md ## Current State` per prune-on-wrap. Nothing here is needed
 to resume work; it is preserved for provenance.
 
+## Swept 2026-07-21 wrapup
+
+Jul 6, 2026 — **Backlog sweep SHIPPED end-to-end** (7 commits `f06a728..4ff9a06`, pushed + deployed to Fly.io, live-verified). All four open backlog items done in one session: Novovoronezh-5 V-187 fix (011), US cooling audit (012, 40 per-unit fixes), 2025 PRIS backfill (013), all missing descriptions (014) — plus a **pris_id corruption repair** (015: spec-blind review caught 13 duplicate ids writing pair-partner generation onto wrong reactors; full id-space scan → 24 id fixes; origin = model-guessed id dict from Feb 14, recorded in ledger), a fix for `/api/data/validation` (HTTP 500 in production since March), and a **world-electricity rebase** (old denominator fabricated/~15% low; now real EI-via-OWID 1985–2025; 2024 share reads 8.8%, was 10.3%). Detail: `PLAN_current_state_archive_2026-07.md` + ledgers `pris_id_repair_2026-07.md`, `cooling_audit_2026-07.md`.
+
+- **Deliberately deferred (Griffin accepted, May 28)**: `expected_online='Cancelled'` text-in-INTEGER column (safe while cancelled projects stay homogeneous; app.py `min()/sorted()` at L1404/1445 would TypeError on a mix — cheap hardening available) · cosmetic `/api/stats` key `permanently_shutdown`→`shutdown` + dead 'Long-term Shutdown' CASE branch.
+
 ## Jul 6, 2026 (session 2) — backlog sweep detail (headline retained in PLAN.md)
 
 - **011**: Novovoronezh-5 = prototype VVER-1000 (V-187), series renamed VVER-440/187→VVER-1000/187, predecessor chain rewired, specs + model description corrected (committed `96a421d`).

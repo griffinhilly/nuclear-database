@@ -46,6 +46,9 @@ fly deploy
 4. **Capacity source priority**: NRC (US only) > WNA > PRIS for operational reactors. PRIS can be stale for recently-uprated reactors.
 5. **Binary DB merge conflicts**: Take remote DB (preserves new schema), replay SQL migrations, validate.
 6. **Invariant scan BEFORE spot-sampling on bulk writes**: check join-key integrity (pris_id uniqueness + agreement with `pris_id_map_2026-07.json`), post-shutdown activity, and CF range FIRST; only then sample values. Sampling verifies values and is structurally blind to identity/key violations (2026-07-06: a 12/12 value sample passed while 13 duplicate pris_ids double-counted ~100 TWh).
+7. **Provenance rule — model recall is never a source**: any script that bulk-writes factual values must record a per-row source naming where each value was *retrieved*; a source column written by the same process that wrote the values is self-attestation and counts as unverified. Verification agents must report BLOCKED rather than confirm from memory when search is unavailable (2026-07-21: search-dead agent hallucinated a "correction" to Konvoi's real 18x18 lattice).
+8. **Vendor-field whitelist (zero-doubt policy, 2026-07-20)**: reactor_details supply-chain fields may only hold values listed visible=yes in `verification_2026-07/final_verdicts.psv` — validator check 15 enforces this. New attestations (e.g. from Noah/Dirk, whose word is gospel) are appended to the whitelist in the same change that writes the DB.
+9. **Agent-facing verification extracts must carry all sibling columns** needed to judge a mismatch (gross AND net capacity, etc.) — an incomplete extract caused 2 false-positive corrections on 2026-07-20.
 
 ## Key Decisions
 
