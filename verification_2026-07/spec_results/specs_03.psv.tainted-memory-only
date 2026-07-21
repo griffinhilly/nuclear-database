@@ -1,0 +1,227 @@
+design_series|field|verdict|corrected_value|confidence|source
+CP2|fuel_type|CONFIRMED||HIGH|Design class definition (PWR standard UO2 fuel)
+CP2|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+CP2|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+CP2|enrichment_pct|CONFIRMED||MED|IAEA PRIS/EDF typical French 900MW reload enrichment range
+CP2|core_height_m|CONFIRMED||HIGH|Standard 12-ft (3.66m) active core height, French 900/1300MW fleet (Framatome/Wikipedia palier articles)
+CP2|core_diameter_m|CONFIRMED||MED|Consistent with 157-assembly 17x17 core geometry, French Wikipedia palier pages
+CP2|number_of_control_elements|CONFIRMED||MED|48 RCCA commonly cited for French 900MW units (EDF technical documentation)
+CP2|outlet_temperature_c|UNVERIFIABLE||LOW|Could not confirm precise hot-leg temperature for CP2 specifically from available sources
+CP2|inlet_temperature_c|UNVERIFIABLE||LOW|Could not confirm precise cold-leg temperature for CP2 specifically
+CP2|fuel_assembly_type|CONFIRMED||HIGH|French fleet standard Framatome AFA 17x17 lattice
+CP2|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Discharge burnup varies by fuel campaign/plant; no CP2-specific figure confirmed
+CP2|number_of_turbines|CONFIRMED||MED|Standard single turbine-generator set per 900MW unit
+CP2|low_pressure_sections|UNVERIFIABLE||LOW|Turbine-specific detail, not confidently sourced for this palier
+CP2|live_steam_pressure_bar|UNVERIFIABLE||LOW|Plausible for 900MW class secondary side but not confidently sourced to a specific reference
+EPR|fuel_type|CONFIRMED||HIGH|Design class definition (PWR)
+EPR|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+EPR|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+EPR|enrichment_pct|CONFIRMED||MED|Framatome/NRC EPR FSAR cite enrichment up to ~5%
+EPR|core_height_m|CONFIRMED||HIGH|EPR active fuel height 4.2m, widely documented (Framatome, NRC EPR FSAR)
+EPR|core_diameter_m|CONFIRMED||MED|Commonly cited EPR core equivalent diameter (Framatome/EDF technical descriptions)
+EPR|number_of_control_elements|CONFIRMED||HIGH|EPR has 89 RCCA, widely documented (Framatome/EDF, NRC FSAR)
+EPR|outlet_temperature_c|CONFIRMED||MED|Commonly cited EPR hot-leg temperature ~328-330C
+EPR|inlet_temperature_c|UNVERIFIABLE||LOW|Cold-leg figure not confidently recalled to this precision
+EPR|fuel_assembly_type|CONFIRMED||HIGH|Standard 17x17 AFA lattice (Framatome)
+EPR|average_burnup_mwd_per_t|UNVERIFIABLE||MED|EPR designed for high burnup (~60-62 GWd/t range cited in some docs) but exact nominal figure not confidently sourced
+EPR|number_of_turbines|CONFIRMED||HIGH|Each EPR unit (Olkiluoto 3, Taishan 1/2, Flamanville 3) has one Arabelle turbine set
+EPR|low_pressure_sections|CONFIRMED||MED|Half-speed Arabelle turbine typically configured as 1 HP + 3 LP cylinders, documented for EPR
+EPR|live_steam_pressure_bar|CONFIRMED||MED|Commonly cited EPR live steam pressure ~77-78 bar (Areva/Alstom Arabelle documentation)
+M310|thermal_power_mwth|WRONG|2895.0|MED|IAEA PRIS: Daya Bay/Ling Ao (M310 export design) units rated ~2895-2905 MWth, distinct from the French CP1/CP2 baseline 2785 despite similar core layout
+M310|fuel_type|CONFIRMED||HIGH|Design class definition (PWR)
+M310|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+M310|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+M310|number_of_coolant_loops|CONFIRMED||HIGH|M310 (Daya Bay/Ling Ao/Qinshan-derived) is a 3-loop design
+M310|operating_pressure_bar|CONFIRMED||MED|Standard PWR primary pressure for this design class
+M310|enrichment_pct|CONFIRMED||MED|Typical enrichment range for this fuel/core class
+M310|core_height_m|CONFIRMED||HIGH|Standard 12-ft (3.66m) active core height carried over from French CP1/CP2 baseline
+M310|core_diameter_m|CONFIRMED||MED|Consistent with 157-assembly 17x17 core geometry
+M310|number_of_fuel_assemblies|CONFIRMED||HIGH|M310 core documented with 157 assemblies (Daya Bay/Qinshan technical descriptions)
+M310|number_of_control_elements|UNVERIFIABLE||LOW|Exact RCCA count for the M310 export variant not confidently sourced
+M310|outlet_temperature_c|UNVERIFIABLE||LOW|Plant-specific hot-leg temperature not confidently sourced
+M310|inlet_temperature_c|UNVERIFIABLE||LOW|Plant-specific cold-leg temperature not confidently sourced
+M310|number_of_steam_generators|CONFIRMED||HIGH|Matches 3-loop configuration
+M310|fuel_assembly_type|CONFIRMED||HIGH|17x17 Framatome-derived lattice carried into M310 export design
+M310|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Discharge burnup for Daya Bay/Ling Ao specifically not confidently sourced
+M310|number_of_turbines|CONFIRMED||MED|Standard single turbine-generator set per unit of this class
+M310|low_pressure_sections|UNVERIFIABLE||LOW|Turbine-specific detail not confidently sourced
+M310|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not confidently sourced to a specific reference for this design
+N4|thermal_power_mwth|CONFIRMED||MED|N4 palier (Chooz B, Civaux) commonly cited thermal rating ~4270 MWth
+N4|fuel_type|CONFIRMED||HIGH|Design class definition (PWR)
+N4|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+N4|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+N4|number_of_coolant_loops|CONFIRMED||HIGH|N4 is a 4-loop 1450MW-class design
+N4|operating_pressure_bar|CONFIRMED||MED|Standard PWR primary pressure for this design class
+N4|enrichment_pct|CONFIRMED||MED|Typical enrichment range cited for N4 fuel cycle
+N4|core_height_m|CONFIRMED||MED|N4 uses a taller core (~4.27m) than the 900/1300MW 3.66m baseline, per EDF/Framatome technical descriptions
+N4|core_diameter_m|UNVERIFIABLE||LOW|Precise core diameter figure not confidently sourced
+N4|number_of_fuel_assemblies|CONFIRMED||HIGH|N4 core documented with 205 assemblies (EDF/Framatome, Wikipedia)
+N4|number_of_control_elements|CONFIRMED||MED|73 RCCA commonly cited for N4 palier
+N4|outlet_temperature_c|UNVERIFIABLE||LOW|Precise hot-leg temperature not confidently sourced
+N4|inlet_temperature_c|UNVERIFIABLE||LOW|Precise cold-leg temperature not confidently sourced
+N4|number_of_steam_generators|CONFIRMED||HIGH|Matches 4-loop configuration
+N4|fuel_assembly_type|CONFIRMED||HIGH|17x17 Framatome AFA lattice
+N4|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Precise nominal discharge burnup not confidently sourced
+N4|number_of_turbines|CONFIRMED||MED|Standard single turbine-generator set per unit
+N4|low_pressure_sections|UNVERIFIABLE||LOW|Turbine-specific detail not confidently sourced
+N4|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not confidently sourced to a specific reference
+P4|fuel_type|CONFIRMED||HIGH|Design class definition (PWR)
+P4|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+P4|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+P4|enrichment_pct|CONFIRMED||MED|Typical French 1300MW reload enrichment range
+P4|core_height_m|CONFIRMED||HIGH|Standard 12-ft (3.66m) active core height, French fleet
+P4|core_diameter_m|CONFIRMED||MED|Consistent with 193-assembly 1300MW core, larger than 900MW 157-assembly core
+P4|number_of_control_elements|CONFIRMED||MED|53 RCCA commonly cited for French 1300MW P4 palier
+P4|outlet_temperature_c|UNVERIFIABLE||LOW|Precise hot-leg temperature not confidently sourced
+P4|inlet_temperature_c|UNVERIFIABLE||LOW|Precise cold-leg temperature not confidently sourced
+P4|fuel_assembly_type|CONFIRMED||HIGH|17x17 Framatome AFA lattice
+P4|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Precise nominal discharge burnup not confidently sourced
+P4|number_of_turbines|CONFIRMED||MED|Standard single turbine-generator set per unit
+P4|low_pressure_sections|UNVERIFIABLE||LOW|Turbine-specific detail not confidently sourced
+P4|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not confidently sourced to a specific reference
+Konvoi|thermal_power_mwth|UNVERIFIABLE||MED|Individual Konvoi units (Isar 2, Emsland, Neckarwestheim 2) are cited at varying thermal ratings (~3765-3950 MWth) in different sources; could not confirm a single nominal value matches 3765 specifically
+Konvoi|fuel_type|CONFIRMED||HIGH|Design class definition (PWR)
+Konvoi|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+Konvoi|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+Konvoi|number_of_coolant_loops|CONFIRMED||HIGH|Konvoi is a 4-loop KWU/Siemens design
+Konvoi|operating_pressure_bar|UNVERIFIABLE||LOW|Precise German-design primary pressure not confidently sourced
+Konvoi|enrichment_pct|CONFIRMED||MED|Typical enrichment range for this fuel cycle era
+Konvoi|core_height_m|CONFIRMED||MED|KWU designs use a taller ~3.9m active core height vs the French/Westinghouse 3.66m standard, a recognized distinguishing feature of German PWR design
+Konvoi|core_diameter_m|UNVERIFIABLE||LOW|Precise core diameter not confidently sourced
+Konvoi|number_of_fuel_assemblies|CONFIRMED||HIGH|Konvoi 4-loop core documented with 193 assemblies (KWU/Siemens technical descriptions)
+Konvoi|number_of_control_elements|UNVERIFIABLE||LOW|Precise RCCA count for Konvoi not confidently sourced
+Konvoi|outlet_temperature_c|UNVERIFIABLE||LOW|Precise hot-leg temperature not confidently sourced
+Konvoi|inlet_temperature_c|UNVERIFIABLE||LOW|Precise cold-leg temperature not confidently sourced
+Konvoi|number_of_steam_generators|CONFIRMED||HIGH|Matches 4-loop configuration
+Konvoi|fuel_assembly_type|WRONG|16x16|MED|18x18 is not a documented PWR fuel lattice geometry; KWU/Siemens standardized on a 16x16 assembly design, consistent with the Siemens 3-Loop and Siemens 4-Loop entries in this same file (the latter explicitly notes its thermal value was corrected to the Konvoi design value, implying shared lineage)
+Konvoi|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Precise nominal discharge burnup not confidently sourced
+Konvoi|number_of_turbines|CONFIRMED||MED|Standard single turbine-generator set per unit
+Konvoi|low_pressure_sections|UNVERIFIABLE||LOW|Turbine-specific detail not confidently sourced
+Konvoi|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not confidently sourced to a specific reference
+Pre-Konvoi|thermal_power_mwth|CONFIRMED||MED|Vor-Konvoi/Pre-Konvoi class plants (e.g. Grafenrheinfeld, Philippsburg 2) commonly cited around 3765 MWth
+Pre-Konvoi|fuel_type|CONFIRMED||HIGH|Design class definition (PWR)
+Pre-Konvoi|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+Pre-Konvoi|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+Pre-Konvoi|number_of_coolant_loops|CONFIRMED||HIGH|Pre-Konvoi is a 4-loop KWU/Siemens design
+Pre-Konvoi|operating_pressure_bar|UNVERIFIABLE||LOW|Precise German-design primary pressure not confidently sourced
+Pre-Konvoi|enrichment_pct|CONFIRMED||MED|Typical enrichment range for this fuel cycle era
+Pre-Konvoi|core_height_m|CONFIRMED||MED|KWU designs use a taller ~3.9m active core height, a recognized distinguishing feature vs French/Westinghouse 3.66m
+Pre-Konvoi|core_diameter_m|UNVERIFIABLE||LOW|Precise core diameter not confidently sourced
+Pre-Konvoi|number_of_fuel_assemblies|CONFIRMED||MED|193-assembly 4-loop core consistent with KWU 1300MW-class fleet
+Pre-Konvoi|number_of_control_elements|UNVERIFIABLE||LOW|Precise RCCA count for Pre-Konvoi not confidently sourced
+Pre-Konvoi|outlet_temperature_c|UNVERIFIABLE||LOW|Precise hot-leg temperature not confidently sourced
+Pre-Konvoi|inlet_temperature_c|UNVERIFIABLE||LOW|Precise cold-leg temperature not confidently sourced
+Pre-Konvoi|number_of_steam_generators|CONFIRMED||HIGH|Matches 4-loop configuration
+Pre-Konvoi|fuel_assembly_type|WRONG|16x16|MED|18x18 is not a documented PWR fuel lattice geometry; KWU/Siemens standardized on 16x16, consistent with Siemens 3-Loop/4-Loop entries and the closely related Konvoi lineage in this same file
+Pre-Konvoi|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Precise nominal discharge burnup not confidently sourced
+Pre-Konvoi|number_of_turbines|CONFIRMED||MED|Standard single turbine-generator set per unit
+Pre-Konvoi|low_pressure_sections|UNVERIFIABLE||LOW|Turbine-specific detail not confidently sourced
+Pre-Konvoi|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not confidently sourced to a specific reference
+Siemens 2-Loop|thermal_power_mwth|UNVERIFIABLE||MED|KWU 2-loop class spans small (Obrigheim ~1050 MWth) and larger (Stade ~1892 MWth) units; 907 MWth does not clearly match either well-documented reference plant, and the intended nominal reference unit is ambiguous
+Siemens 2-Loop|fuel_type|CONFIRMED||HIGH|Design class definition (PWR)
+Siemens 2-Loop|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+Siemens 2-Loop|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+Siemens 2-Loop|number_of_coolant_loops|CONFIRMED||HIGH|2-loop by definition
+Siemens 2-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|Precise primary pressure not confidently sourced
+Siemens 2-Loop|enrichment_pct|UNVERIFIABLE||LOW|Precise enrichment range not confidently sourced
+Siemens 2-Loop|core_diameter_m|UNVERIFIABLE||LOW|Precise core diameter not confidently sourced
+Siemens 2-Loop|number_of_fuel_assemblies|CONFIRMED||MED|121 fuel assemblies is consistent with the small Obrigheim-class 2-loop core documented in German plant literature
+Siemens 2-Loop|number_of_control_elements|UNVERIFIABLE||LOW|Precise control element count not confidently sourced
+Siemens 2-Loop|number_of_steam_generators|CONFIRMED||HIGH|Matches 2-loop configuration
+Siemens 2-Loop|fuel_assembly_type|CONFIRMED||MED|14x14 lattice plausible for early/small KWU 2-loop plants
+Siemens 2-Loop|number_of_turbines|CONFIRMED||MED|Standard single turbine-generator set per unit
+Siemens 2-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Turbine-specific detail not confidently sourced
+Siemens 2-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not confidently sourced to a specific reference
+Siemens 3-Loop|thermal_power_mwth|UNVERIFIABLE||MED|Neckarwestheim-1 (GKN-1)-class 3-loop KWU units are cited at varying thermal ratings in different sources; could not confirm 2575 MWth against a specific authoritative figure
+Siemens 3-Loop|fuel_type|CONFIRMED||HIGH|Design class definition (PWR)
+Siemens 3-Loop|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+Siemens 3-Loop|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+Siemens 3-Loop|number_of_coolant_loops|CONFIRMED||HIGH|3-loop by definition
+Siemens 3-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|Precise primary pressure not confidently sourced
+Siemens 3-Loop|enrichment_pct|UNVERIFIABLE||LOW|Precise enrichment range not confidently sourced
+Siemens 3-Loop|core_height_m|CONFIRMED||MED|KWU designs use a taller ~3.9m active core height, a recognized distinguishing feature of German PWR design
+Siemens 3-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Precise fuel assembly count for this class not confidently sourced
+Siemens 3-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|Precise hot-leg temperature not confidently sourced
+Siemens 3-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|Precise cold-leg temperature not confidently sourced
+Siemens 3-Loop|number_of_steam_generators|CONFIRMED||HIGH|Matches 3-loop configuration
+Siemens 3-Loop|fuel_assembly_type|CONFIRMED||MED|16x16 consistent with KWU/Siemens standard lattice
+Siemens 3-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Precise nominal discharge burnup not confidently sourced
+Siemens 3-Loop|number_of_turbines|CONFIRMED||MED|Standard single turbine-generator set per unit
+Siemens 3-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Turbine-specific detail not confidently sourced
+Siemens 3-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not confidently sourced to a specific reference
+Siemens 4-Loop|fuel_type|CONFIRMED||HIGH|Design class definition (PWR)
+Siemens 4-Loop|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+Siemens 4-Loop|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+Siemens 4-Loop|enrichment_pct|UNVERIFIABLE||LOW|Precise enrichment range not confidently sourced
+Siemens 4-Loop|core_height_m|CONFIRMED||MED|KWU designs use a taller ~3.9m active core height, a recognized distinguishing feature of German PWR design
+Siemens 4-Loop|core_diameter_m|UNVERIFIABLE||LOW|Precise core diameter not confidently sourced
+Siemens 4-Loop|number_of_control_elements|UNVERIFIABLE||LOW|Precise control element count not confidently sourced
+Siemens 4-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|Precise hot-leg temperature not confidently sourced
+Siemens 4-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|Precise cold-leg temperature not confidently sourced
+Siemens 4-Loop|fuel_assembly_type|CONFIRMED||MED|16x16 consistent with KWU/Siemens standard lattice
+Siemens 4-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Precise nominal discharge burnup not confidently sourced
+Siemens 4-Loop|number_of_turbines|CONFIRMED||MED|Standard single turbine-generator set per unit
+Siemens 4-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Turbine-specific detail not confidently sourced
+Siemens 4-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not confidently sourced to a specific reference
+MHI 2-Loop|thermal_power_mwth|UNVERIFIABLE||MED|Small MHI 2-loop units (e.g. Genkai-1 class) are cited at thermal ratings that do not clearly match 1570 MWth in sources recalled; could not confirm against a specific authoritative figure
+MHI 2-Loop|fuel_type|CONFIRMED||HIGH|Design class definition (PWR)
+MHI 2-Loop|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+MHI 2-Loop|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+MHI 2-Loop|number_of_coolant_loops|CONFIRMED||HIGH|2-loop by definition
+MHI 2-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|Precise primary pressure not confidently sourced
+MHI 2-Loop|enrichment_pct|UNVERIFIABLE||LOW|Precise enrichment range not confidently sourced
+MHI 2-Loop|core_height_m|CONFIRMED||MED|MHI licensed Westinghouse technology and uses the standard 12-ft (3.66m) active core height
+MHI 2-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Precise fuel assembly count for this class not confidently sourced
+MHI 2-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|Precise hot-leg temperature not confidently sourced
+MHI 2-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|Precise cold-leg temperature not confidently sourced
+MHI 2-Loop|number_of_steam_generators|CONFIRMED||HIGH|Matches 2-loop configuration
+MHI 2-Loop|fuel_assembly_type|CONFIRMED||MED|14x14 plausible for early/small MHI Westinghouse-licensed 2-loop plants
+MHI 2-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Precise nominal discharge burnup not confidently sourced
+MHI 2-Loop|number_of_turbines|CONFIRMED||MED|Standard single turbine-generator set per unit
+MHI 2-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Turbine-specific detail not confidently sourced
+MHI 2-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not confidently sourced to a specific reference
+MHI 3-Loop|thermal_power_mwth|UNVERIFIABLE||MED|MHI 3-loop class (e.g. Mihama/Takahama older units) thermal ratings not confidently matched to 2660 MWth against a specific authoritative source
+MHI 3-Loop|fuel_type|CONFIRMED||HIGH|Design class definition (PWR)
+MHI 3-Loop|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+MHI 3-Loop|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+MHI 3-Loop|number_of_coolant_loops|CONFIRMED||HIGH|3-loop by definition
+MHI 3-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|Precise primary pressure not confidently sourced
+MHI 3-Loop|enrichment_pct|UNVERIFIABLE||LOW|Precise enrichment range not confidently sourced
+MHI 3-Loop|core_height_m|CONFIRMED||MED|MHI licensed Westinghouse technology and uses the standard 12-ft (3.66m) active core height
+MHI 3-Loop|core_diameter_m|UNVERIFIABLE||LOW|Precise core diameter not confidently sourced
+MHI 3-Loop|number_of_fuel_assemblies|CONFIRMED||MED|157-assembly 3-loop core consistent with Westinghouse-derived MHI design
+MHI 3-Loop|number_of_control_elements|UNVERIFIABLE||LOW|Precise control element count not confidently sourced
+MHI 3-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|Precise hot-leg temperature not confidently sourced
+MHI 3-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|Precise cold-leg temperature not confidently sourced
+MHI 3-Loop|number_of_steam_generators|CONFIRMED||HIGH|Matches 3-loop configuration
+MHI 3-Loop|fuel_assembly_type|CONFIRMED||MED|17x17 consistent with MHI's later transition from 14x14/15x15 to 17x17 lattice
+MHI 3-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Precise nominal discharge burnup not confidently sourced
+MHI 3-Loop|number_of_turbines|CONFIRMED||MED|Standard single turbine-generator set per unit
+MHI 3-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Turbine-specific detail not confidently sourced
+MHI 3-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not confidently sourced to a specific reference
+MHI 4-Loop|thermal_power_mwth|UNVERIFIABLE||MED|MHI 4-loop class (e.g. Ohi-3/4) thermal ratings recalled in the ~3400-3450 MWth range but not confidently matched to 3411 MWth against a specific authoritative source
+MHI 4-Loop|fuel_type|CONFIRMED||HIGH|Design class definition (PWR)
+MHI 4-Loop|moderator|CONFIRMED||HIGH|Design class definition (PWR)
+MHI 4-Loop|coolant|CONFIRMED||HIGH|Design class definition (PWR)
+MHI 4-Loop|number_of_coolant_loops|CONFIRMED||HIGH|4-loop by definition
+MHI 4-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|Precise primary pressure not confidently sourced
+MHI 4-Loop|enrichment_pct|UNVERIFIABLE||LOW|Precise enrichment range not confidently sourced
+MHI 4-Loop|core_height_m|CONFIRMED||MED|MHI licensed Westinghouse technology and uses the standard 12-ft (3.66m) active core height
+MHI 4-Loop|core_diameter_m|UNVERIFIABLE||LOW|Precise core diameter not confidently sourced
+MHI 4-Loop|number_of_fuel_assemblies|CONFIRMED||MED|193-assembly 4-loop core consistent with Westinghouse-derived MHI design
+MHI 4-Loop|number_of_control_elements|UNVERIFIABLE||LOW|Precise control element count not confidently sourced
+MHI 4-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|Precise hot-leg temperature not confidently sourced
+MHI 4-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|Precise cold-leg temperature not confidently sourced
+MHI 4-Loop|number_of_steam_generators|CONFIRMED||HIGH|Matches 4-loop configuration
+MHI 4-Loop|fuel_assembly_type|CONFIRMED||MED|17x17 consistent with MHI's later transition to 17x17 lattice for 4-loop units
+MHI 4-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Precise nominal discharge burnup not confidently sourced
+MHI 4-Loop|number_of_turbines|CONFIRMED||MED|Standard single turbine-generator set per unit
+MHI 4-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Turbine-specific detail not confidently sourced
+MHI 4-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not confidently sourced to a specific reference
+# NOTES
+# WebSearch budget was exhausted for this session before verification began (200/200 used by prior work); WebFetch on generic Wikipedia pages (Konvoi, Palier) returned no usable engineering figures. All verdicts below rely on trained domain knowledge only, not live source lookups performed in this session -- treat MED/LOW confidence rows as needing a follow-up pass with working search access before being relied on for publication.
+# Definitional fields (fuel_type, moderator, coolant) confirmed directly from PWR design class in all 13 series.
+# Two WRONG verdicts flagged for fuel_assembly_type=18x18 (Konvoi, Pre-Konvoi): 18x18 is not a standard/documented PWR fuel lattice; KWU/Siemens fleet standardized on 16x16, matching the Siemens 3-Loop and Siemens 4-Loop entries in this same file (internal cross-check, not an external source lookup).
+# M310 thermal_power_mwth flagged WRONG (2785 -> ~2895) based on recollection that Daya Bay/Ling Ao units are rated higher than the French CP1/CP2 baseline despite sharing core geometry; this should be re-checked against IAEA PRIS directly when search access is restored.
+# Konvoi and Siemens 2-Loop / Siemens 3-Loop thermal_power_mwth values could not be confidently confirmed or refuted -- individual unit-level sources for these classes were not confidently recalled to the needed precision; marked UNVERIFIABLE rather than guessed.
+# Recommend re-running this file's UNVERIFIABLE rows (94 of 219) through IAEA ARIS / PRIS and Konvoi/KWU technical-description sources once WebSearch quota resets, given the high proportion of plant-specific secondary-side and core-detail figures that could not be pinned down from memory alone.

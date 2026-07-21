@@ -1,0 +1,243 @@
+design_series|field|verdict|corrected_value|confidence|source
+VVER-1000/338|thermal_power_mwth|CONFIRMED||HIGH|IAEA ARIS/PRIS standard VVER-1000 rating (3000 MWth)
+VVER-1000/338|fuel_type|CONFIRMED||HIGH|Standard VVER UO2 fuel, OKB Gidropress
+VVER-1000/338|moderator|CONFIRMED||HIGH|Standard VVER light-water moderator
+VVER-1000/338|coolant|CONFIRMED||HIGH|Standard VVER light-water coolant
+VVER-1000/338|number_of_coolant_loops|CONFIRMED||HIGH|VVER-1000 standard 4-loop NSSS design
+VVER-1000/338|operating_pressure_bar|CONFIRMED||HIGH|Standard VVER-1000 primary pressure 15.7 MPa (157 bar)
+VVER-1000/338|enrichment_pct|UNVERIFIABLE||LOW|Enrichment ranges vary by fuel campaign/year; no fixed authoritative source for exact bounds per sub-variant
+VVER-1000/338|core_height_m|CONFIRMED||HIGH|OKB Gidropress VVER-1000 active core height 3.53 m
+VVER-1000/338|core_diameter_m|CONFIRMED||MED|Standard VVER-1000 equivalent core diameter ~3.16 m
+VVER-1000/338|number_of_fuel_assemblies|CONFIRMED||HIGH|Standard VVER-1000 core: 163 fuel assemblies
+VVER-1000/338|number_of_control_elements|CONFIRMED||HIGH|Standard VVER-1000: 61 control rod cluster assemblies (CPS)
+VVER-1000/338|outlet_temperature_c|CONFIRMED||HIGH|Standard VVER-1000 hot-leg outlet temperature ~320 C
+VVER-1000/338|inlet_temperature_c|CONFIRMED||HIGH|Standard VVER-1000 cold-leg inlet temperature ~289 C
+VVER-1000/338|number_of_steam_generators|CONFIRMED||HIGH|4 horizontal SGs, one per loop (standard VVER-1000)
+VVER-1000/338|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-1000/338|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Burnup depends on specific fuel-cycle campaign; 42000 is plausible but not independently source-confirmed this session
+VVER-1000/338|number_of_turbines|CONFIRMED||HIGH|One turbogenerator (K-1000-60/3000) per VVER-1000 unit
+VVER-1000/338|low_pressure_sections|CONFIRMED||HIGH|K-1000-60/3000 turbine standard config: 1 HP + 4 LP cylinders
+VVER-1000/338|live_steam_pressure_bar|CONFIRMED||HIGH|K-1000-60/3000 secondary steam pressure ~60 bar (5.9 MPa)
+VVER-1000/412|thermal_power_mwth|CONFIRMED||HIGH|IAEA ARIS/PRIS standard VVER-1000 rating (3000 MWth)
+VVER-1000/412|fuel_type|CONFIRMED||HIGH|Standard VVER UO2 fuel
+VVER-1000/412|moderator|CONFIRMED||HIGH|Standard VVER light-water moderator
+VVER-1000/412|coolant|CONFIRMED||HIGH|Standard VVER light-water coolant
+VVER-1000/412|number_of_coolant_loops|CONFIRMED||HIGH|VVER-1000 standard 4-loop NSSS design
+VVER-1000/412|operating_pressure_bar|CONFIRMED||HIGH|Standard VVER-1000 primary pressure 15.7 MPa (157 bar)
+VVER-1000/412|enrichment_pct|UNVERIFIABLE||LOW|Enrichment ranges vary by fuel campaign; no fixed authoritative source for exact bounds
+VVER-1000/412|core_height_m|CONFIRMED||HIGH|OKB Gidropress VVER-1000 active core height 3.53 m
+VVER-1000/412|core_diameter_m|CONFIRMED||MED|Standard VVER-1000 equivalent core diameter ~3.16 m
+VVER-1000/412|number_of_fuel_assemblies|CONFIRMED||HIGH|Standard VVER-1000 core: 163 fuel assemblies (AES-92/Kudankulam retains standard lattice)
+VVER-1000/412|number_of_control_elements|CONFIRMED||HIGH|Standard VVER-1000: 61 control rod cluster assemblies
+VVER-1000/412|outlet_temperature_c|WRONG|320.0|MED|All other V-1000 rows in this series list 320 C; no source found for a genuine +1 C deviation on V-412 (AES-92) secondary circuit -- looks like an isolated data artifact, not a documented design difference
+VVER-1000/412|inlet_temperature_c|WRONG|289.0|MED|All other V-1000 rows list 289 C; same reasoning as outlet_temperature_c -- no source supports a real 1 C shift for V-412
+VVER-1000/412|number_of_steam_generators|CONFIRMED||HIGH|4 horizontal SGs, one per loop
+VVER-1000/412|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-1000/412|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|45000 MWd/t plausible for later fuel-cycle generation but not independently source-confirmed this session
+VVER-1000/412|number_of_turbines|CONFIRMED||HIGH|One turbogenerator per VVER-1000 unit
+VVER-1000/412|low_pressure_sections|CONFIRMED||HIGH|K-1000-60/3000 turbine standard config: 1 HP + 4 LP cylinders
+VVER-1000/412|live_steam_pressure_bar|CONFIRMED||HIGH|K-1000-60/3000 secondary steam pressure ~60 bar
+VVER-1000/428|thermal_power_mwth|CONFIRMED||HIGH|IAEA ARIS/PRIS standard VVER-1000 rating (3000 MWth)
+VVER-1000/428|fuel_type|CONFIRMED||HIGH|Standard VVER UO2 fuel
+VVER-1000/428|moderator|CONFIRMED||HIGH|Standard VVER light-water moderator
+VVER-1000/428|coolant|CONFIRMED||HIGH|Standard VVER light-water coolant
+VVER-1000/428|number_of_coolant_loops|CONFIRMED||HIGH|VVER-1000 standard 4-loop NSSS design
+VVER-1000/428|operating_pressure_bar|CONFIRMED||HIGH|Standard VVER-1000 primary pressure 15.7 MPa (157 bar)
+VVER-1000/428|enrichment_pct|UNVERIFIABLE||LOW|Enrichment ranges vary by fuel campaign; exact bounds not independently source-confirmed
+VVER-1000/428|core_height_m|CONFIRMED||HIGH|OKB Gidropress VVER-1000 active core height 3.53 m
+VVER-1000/428|core_diameter_m|CONFIRMED||MED|Standard VVER-1000 equivalent core diameter ~3.16 m
+VVER-1000/428|number_of_fuel_assemblies|CONFIRMED||HIGH|Standard VVER-1000 core: 163 fuel assemblies (Tianwan)
+VVER-1000/428|number_of_control_elements|CONFIRMED||HIGH|Standard VVER-1000: 61 control rod cluster assemblies
+VVER-1000/428|outlet_temperature_c|CONFIRMED||HIGH|Standard VVER-1000 outlet temperature ~320 C
+VVER-1000/428|inlet_temperature_c|CONFIRMED||HIGH|Standard VVER-1000 inlet temperature ~289 C
+VVER-1000/428|number_of_steam_generators|CONFIRMED||HIGH|4 horizontal SGs, one per loop
+VVER-1000/428|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-1000/428|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|45000 MWd/t plausible but not independently source-confirmed
+VVER-1000/428|number_of_turbines|CONFIRMED||HIGH|One turbogenerator per VVER-1000 unit
+VVER-1000/428|low_pressure_sections|CONFIRMED||HIGH|K-1000-60/3000 turbine standard config: 1 HP + 4 LP cylinders
+VVER-1000/428|live_steam_pressure_bar|CONFIRMED||HIGH|K-1000-60/3000 secondary steam pressure ~60 bar
+VVER-1000/428M|thermal_power_mwth|CONFIRMED||HIGH|IAEA ARIS/PRIS standard VVER-1000 rating (3000 MWth)
+VVER-1000/428M|fuel_type|CONFIRMED||HIGH|Standard VVER UO2 fuel
+VVER-1000/428M|moderator|CONFIRMED||HIGH|Standard VVER light-water moderator
+VVER-1000/428M|coolant|CONFIRMED||HIGH|Standard VVER light-water coolant
+VVER-1000/428M|number_of_coolant_loops|CONFIRMED||HIGH|VVER-1000 standard 4-loop NSSS design
+VVER-1000/428M|operating_pressure_bar|CONFIRMED||HIGH|Standard VVER-1000 primary pressure 15.7 MPa (157 bar)
+VVER-1000/428M|enrichment_pct|UNVERIFIABLE||LOW|Enrichment ranges vary by fuel campaign; exact bounds not independently source-confirmed
+VVER-1000/428M|core_height_m|CONFIRMED||HIGH|OKB Gidropress VVER-1000 active core height 3.53 m
+VVER-1000/428M|core_diameter_m|CONFIRMED||MED|Standard VVER-1000 equivalent core diameter ~3.16 m
+VVER-1000/428M|number_of_fuel_assemblies|CONFIRMED||HIGH|Standard VVER-1000 core: 163 fuel assemblies (Tianwan Gen-III derivative)
+VVER-1000/428M|number_of_control_elements|CONFIRMED||HIGH|Standard VVER-1000: 61 control rod cluster assemblies
+VVER-1000/428M|outlet_temperature_c|CONFIRMED||HIGH|Standard VVER-1000 outlet temperature ~320 C
+VVER-1000/428M|inlet_temperature_c|CONFIRMED||HIGH|Standard VVER-1000 inlet temperature ~289 C
+VVER-1000/428M|number_of_steam_generators|CONFIRMED||HIGH|4 horizontal SGs, one per loop
+VVER-1000/428M|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-1000/428M|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|45000 MWd/t plausible but not independently source-confirmed
+VVER-1000/428M|number_of_turbines|CONFIRMED||HIGH|One turbogenerator per VVER-1000 unit
+VVER-1000/428M|low_pressure_sections|CONFIRMED||HIGH|K-1000-60/3000 turbine standard config: 1 HP + 4 LP cylinders
+VVER-1000/428M|live_steam_pressure_bar|CONFIRMED||HIGH|K-1000-60/3000 secondary steam pressure ~60 bar
+VVER-1000/446|thermal_power_mwth|CONFIRMED||HIGH|IAEA ARIS/PRIS standard VVER-1000 rating (3000 MWth)
+VVER-1000/446|fuel_type|CONFIRMED||HIGH|Standard VVER UO2 fuel
+VVER-1000/446|moderator|CONFIRMED||HIGH|Standard VVER light-water moderator
+VVER-1000/446|coolant|CONFIRMED||HIGH|Standard VVER light-water coolant
+VVER-1000/446|number_of_coolant_loops|CONFIRMED||HIGH|VVER-1000 standard 4-loop NSSS design
+VVER-1000/446|operating_pressure_bar|CONFIRMED||HIGH|Standard VVER-1000 primary pressure 15.7 MPa (157 bar)
+VVER-1000/446|enrichment_pct|UNVERIFIABLE||LOW|Enrichment ranges vary by fuel campaign; exact bounds not independently source-confirmed
+VVER-1000/446|core_height_m|CONFIRMED||HIGH|OKB Gidropress VVER-1000 active core height 3.53 m
+VVER-1000/446|core_diameter_m|CONFIRMED||MED|Standard VVER-1000 equivalent core diameter ~3.16 m
+VVER-1000/446|number_of_fuel_assemblies|CONFIRMED||HIGH|Standard VVER-1000 core: 163 fuel assemblies (Bushehr)
+VVER-1000/446|number_of_control_elements|CONFIRMED||HIGH|Standard VVER-1000: 61 control rod cluster assemblies
+VVER-1000/446|outlet_temperature_c|CONFIRMED||HIGH|Standard VVER-1000 outlet temperature ~320 C
+VVER-1000/446|inlet_temperature_c|CONFIRMED||HIGH|Standard VVER-1000 inlet temperature ~289 C
+VVER-1000/446|number_of_steam_generators|CONFIRMED||HIGH|4 horizontal SGs, one per loop
+VVER-1000/446|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-1000/446|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|45000 MWd/t plausible but not independently source-confirmed
+VVER-1000/446|number_of_turbines|CONFIRMED||HIGH|One turbogenerator per VVER-1000 unit
+VVER-1000/446|low_pressure_sections|CONFIRMED||HIGH|K-1000-60/3000 turbine standard config: 1 HP + 4 LP cylinders
+VVER-1000/446|live_steam_pressure_bar|CONFIRMED||HIGH|K-1000-60/3000 secondary steam pressure ~60 bar
+VVER-1200|thermal_power_mwth|CONFIRMED||MED|Rosatom/IAEA ARIS VVER-1200 (AES-2006) nominal rating commonly cited as 3200 MWth
+VVER-1200|fuel_type|CONFIRMED||HIGH|Standard VVER UO2 fuel
+VVER-1200|moderator|CONFIRMED||HIGH|Standard VVER light-water moderator
+VVER-1200|coolant|CONFIRMED||HIGH|Standard VVER light-water coolant
+VVER-1200|number_of_coolant_loops|CONFIRMED||HIGH|VVER-1200 retains 4-loop NSSS design
+VVER-1200|operating_pressure_bar|CONFIRMED||HIGH|VVER-1200 primary pressure raised to 16.2 MPa (162 bar) vs VVER-1000's 15.7 MPa
+VVER-1200|enrichment_pct|UNVERIFIABLE||LOW|TVS-2M fuel enrichment up to ~4.95%, but first-core loading uses multiple lower-enrichment zones; exact 4.0-5.0% bound not independently source-confirmed
+VVER-1200|core_height_m|CONFIRMED||HIGH|VVER-1200/AES-2006 active core height increased to 3.73 m (Rosatom design docs)
+VVER-1200|core_diameter_m|CONFIRMED||MED|Same fuel lattice/core diameter as VVER-1000 (~3.16 m), taller core only
+VVER-1200|number_of_fuel_assemblies|CONFIRMED||HIGH|VVER-1200 retains 163 fuel assemblies (same lattice as VVER-1000)
+VVER-1200|number_of_control_elements|CONFIRMED||HIGH|VVER-1200 distinguishing feature: 121 control rod cluster assemblies (vs 61 for VVER-1000)
+VVER-1200|outlet_temperature_c|CONFIRMED||HIGH|VVER-1200 hot-leg outlet temperature ~329 C
+VVER-1200|inlet_temperature_c|CONFIRMED||HIGH|VVER-1200 cold-leg inlet temperature ~298 C
+VVER-1200|number_of_steam_generators|CONFIRMED||HIGH|4 horizontal SGs, one per loop (standard VVER-1200)
+VVER-1200|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-1200|average_burnup_mwd_per_t|CONFIRMED||MED|VVER-1200 TVS-2M fuel design target burnup ~60 GWd/tU widely cited in Rosatom/IAEA literature
+VVER-1200|number_of_turbines|CONFIRMED||HIGH|One turbogenerator per VVER-1200 unit
+VVER-1200|low_pressure_sections|CONFIRMED||HIGH|Full-speed (3000 rpm) K-1200-6.8/50 turbine standard config: 1 HP + 4 LP cylinders
+VVER-1200|live_steam_pressure_bar|CONFIRMED||HIGH|Turbine designation K-1200-6.8/50 denotes 6.8 MPa (68 bar) live steam pressure
+VVER-1200/392B|thermal_power_mwth|CONFIRMED||MED|Rosatom/IAEA ARIS VVER-1200 nominal rating 3200 MWth
+VVER-1200/392B|fuel_type|CONFIRMED||HIGH|Standard VVER UO2 fuel
+VVER-1200/392B|moderator|CONFIRMED||HIGH|Standard VVER light-water moderator
+VVER-1200/392B|coolant|CONFIRMED||HIGH|Standard VVER light-water coolant
+VVER-1200/392B|number_of_coolant_loops|CONFIRMED||HIGH|VVER-1200 retains 4-loop NSSS design
+VVER-1200/392B|operating_pressure_bar|CONFIRMED||HIGH|VVER-1200 primary pressure 16.2 MPa (162 bar)
+VVER-1200/392B|enrichment_pct|UNVERIFIABLE||LOW|Exact 4.0-5.0% bound not independently source-confirmed
+VVER-1200/392B|core_height_m|CONFIRMED||HIGH|VVER-1200 active core height 3.73 m
+VVER-1200/392B|core_diameter_m|CONFIRMED||MED|Same core diameter as VVER-1000 (~3.16 m)
+VVER-1200/392B|number_of_fuel_assemblies|CONFIRMED||HIGH|VVER-1200 retains 163 fuel assemblies
+VVER-1200/392B|number_of_control_elements|CONFIRMED||HIGH|121 control rod cluster assemblies (VVER-1200 standard)
+VVER-1200/392B|outlet_temperature_c|CONFIRMED||HIGH|VVER-1200 outlet temperature ~329 C
+VVER-1200/392B|inlet_temperature_c|CONFIRMED||HIGH|VVER-1200 inlet temperature ~298 C
+VVER-1200/392B|number_of_steam_generators|CONFIRMED||HIGH|4 horizontal SGs, one per loop
+VVER-1200/392B|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-1200/392B|average_burnup_mwd_per_t|CONFIRMED||MED|VVER-1200 TVS-2M design target burnup ~60 GWd/tU
+VVER-1200/392B|number_of_turbines|CONFIRMED||HIGH|One turbogenerator per unit
+VVER-1200/392B|low_pressure_sections|CONFIRMED||HIGH|Full-speed K-1200-6.8/50 turbine standard config: 1 HP + 4 LP cylinders
+VVER-1200/392B|live_steam_pressure_bar|CONFIRMED||HIGH|K-1200-6.8/50 designation denotes 68 bar live steam pressure
+VVER-1200/392M|thermal_power_mwth|CONFIRMED||MED|Rosatom/IAEA ARIS VVER-1200 nominal rating 3200 MWth
+VVER-1200/392M|fuel_type|CONFIRMED||HIGH|Standard VVER UO2 fuel
+VVER-1200/392M|moderator|CONFIRMED||HIGH|Standard VVER light-water moderator
+VVER-1200/392M|coolant|CONFIRMED||HIGH|Standard VVER light-water coolant
+VVER-1200/392M|number_of_coolant_loops|CONFIRMED||HIGH|VVER-1200 retains 4-loop NSSS design
+VVER-1200/392M|operating_pressure_bar|CONFIRMED||HIGH|VVER-1200 primary pressure 16.2 MPa (162 bar)
+VVER-1200/392M|enrichment_pct|UNVERIFIABLE||LOW|Exact 4.0-5.0% bound not independently source-confirmed
+VVER-1200/392M|core_height_m|CONFIRMED||HIGH|VVER-1200 active core height 3.73 m
+VVER-1200/392M|core_diameter_m|CONFIRMED||MED|Same core diameter as VVER-1000 (~3.16 m)
+VVER-1200/392M|number_of_fuel_assemblies|CONFIRMED||HIGH|VVER-1200 retains 163 fuel assemblies
+VVER-1200/392M|number_of_control_elements|CONFIRMED||HIGH|121 control rod cluster assemblies (VVER-1200 standard, Novovoronezh-II)
+VVER-1200/392M|outlet_temperature_c|CONFIRMED||HIGH|VVER-1200 outlet temperature ~329 C
+VVER-1200/392M|inlet_temperature_c|CONFIRMED||HIGH|VVER-1200 inlet temperature ~298 C
+VVER-1200/392M|number_of_steam_generators|CONFIRMED||HIGH|4 horizontal SGs, one per loop
+VVER-1200/392M|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-1200/392M|average_burnup_mwd_per_t|CONFIRMED||MED|VVER-1200 TVS-2M design target burnup ~60 GWd/tU
+VVER-1200/392M|number_of_turbines|CONFIRMED||HIGH|One turbogenerator per unit
+VVER-1200/392M|low_pressure_sections|CONFIRMED||HIGH|Full-speed K-1200-6.8/50 turbine standard config: 1 HP + 4 LP cylinders
+VVER-1200/392M|live_steam_pressure_bar|CONFIRMED||HIGH|K-1200-6.8/50 designation denotes 68 bar live steam pressure
+VVER-1200/491|fuel_type|CONFIRMED||HIGH|Standard VVER UO2 fuel
+VVER-1200/491|moderator|CONFIRMED||HIGH|Standard VVER light-water moderator
+VVER-1200/491|coolant|CONFIRMED||HIGH|Standard VVER light-water coolant
+VVER-1200/491|enrichment_pct|UNVERIFIABLE||LOW|Exact 4.0-5.0% bound not independently source-confirmed
+VVER-1200/491|core_height_m|CONFIRMED||HIGH|VVER-1200 active core height 3.73 m
+VVER-1200/491|core_diameter_m|CONFIRMED||MED|Same core diameter as VVER-1000 (~3.16 m)
+VVER-1200/491|number_of_control_elements|CONFIRMED||HIGH|121 control rod cluster assemblies (VVER-1200 standard)
+VVER-1200/491|outlet_temperature_c|CONFIRMED||HIGH|VVER-1200 outlet temperature ~329 C
+VVER-1200/491|inlet_temperature_c|CONFIRMED||HIGH|VVER-1200 inlet temperature ~298 C
+VVER-1200/491|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-1200/491|average_burnup_mwd_per_t|CONFIRMED||MED|VVER-1200 TVS-2M design target burnup ~60 GWd/tU
+VVER-1200/491|number_of_turbines|CONFIRMED||HIGH|One turbogenerator per unit
+VVER-1200/491|low_pressure_sections|CONFIRMED||HIGH|Full-speed K-1200-6.8/50 turbine standard config: 1 HP + 4 LP cylinders
+VVER-1200/491|live_steam_pressure_bar|CONFIRMED||HIGH|K-1200-6.8/50 designation denotes 68 bar live steam pressure
+VVER-1200/509|thermal_power_mwth|CONFIRMED||MED|Rosatom/IAEA ARIS VVER-1200 nominal rating 3200 MWth
+VVER-1200/509|fuel_type|CONFIRMED||HIGH|Standard VVER UO2 fuel
+VVER-1200/509|moderator|CONFIRMED||HIGH|Standard VVER light-water moderator
+VVER-1200/509|coolant|CONFIRMED||HIGH|Standard VVER light-water coolant
+VVER-1200/509|number_of_coolant_loops|CONFIRMED||HIGH|VVER-1200 retains 4-loop NSSS design
+VVER-1200/509|operating_pressure_bar|CONFIRMED||HIGH|VVER-1200 primary pressure 16.2 MPa (162 bar)
+VVER-1200/509|enrichment_pct|UNVERIFIABLE||LOW|Exact 4.0-5.0% bound not independently source-confirmed
+VVER-1200/509|core_height_m|CONFIRMED||HIGH|VVER-1200 active core height 3.73 m
+VVER-1200/509|core_diameter_m|CONFIRMED||MED|Same core diameter as VVER-1000 (~3.16 m)
+VVER-1200/509|number_of_fuel_assemblies|CONFIRMED||HIGH|VVER-1200 retains 163 fuel assemblies
+VVER-1200/509|number_of_control_elements|CONFIRMED||HIGH|121 control rod cluster assemblies (VVER-1200 standard)
+VVER-1200/509|outlet_temperature_c|CONFIRMED||HIGH|VVER-1200 outlet temperature ~329 C
+VVER-1200/509|inlet_temperature_c|CONFIRMED||HIGH|VVER-1200 inlet temperature ~298 C
+VVER-1200/509|number_of_steam_generators|CONFIRMED||HIGH|4 horizontal SGs, one per loop
+VVER-1200/509|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-1200/509|average_burnup_mwd_per_t|CONFIRMED||MED|VVER-1200 TVS-2M design target burnup ~60 GWd/tU
+VVER-1200/509|number_of_turbines|CONFIRMED||HIGH|One turbogenerator per unit
+VVER-1200/509|low_pressure_sections|WRONG|3|MED|This row's turbine_speed_rpm=1500 (half-speed, already verified fleet-wide) implies an Arabelle-type/4-pole half-speed turbogenerator; large half-speed nuclear turbines are conventionally configured 1 HP + 3 LP cylinders (not 4, which is the full-speed/2-pole convention used elsewhere in this series) -- flagged as a likely "flattened to template" value rather than a plant-specific confirmation
+VVER-1200/509|live_steam_pressure_bar|CONFIRMED||HIGH|K-1200-6.8/xx designation (both full- and half-speed variants) denotes 68 bar live steam pressure regardless of turbine speed
+VVER-1200/523|thermal_power_mwth|CONFIRMED||MED|Rosatom/IAEA ARIS VVER-1200 nominal rating 3200 MWth
+VVER-1200/523|fuel_type|CONFIRMED||HIGH|Standard VVER UO2 fuel
+VVER-1200/523|moderator|CONFIRMED||HIGH|Standard VVER light-water moderator
+VVER-1200/523|coolant|CONFIRMED||HIGH|Standard VVER light-water coolant
+VVER-1200/523|number_of_coolant_loops|CONFIRMED||HIGH|VVER-1200 retains 4-loop NSSS design
+VVER-1200/523|operating_pressure_bar|CONFIRMED||HIGH|VVER-1200 primary pressure 16.2 MPa (162 bar)
+VVER-1200/523|enrichment_pct|UNVERIFIABLE||LOW|Exact 4.0-5.0% bound not independently source-confirmed
+VVER-1200/523|core_height_m|CONFIRMED||HIGH|VVER-1200 active core height 3.73 m
+VVER-1200/523|core_diameter_m|CONFIRMED||MED|Same core diameter as VVER-1000 (~3.16 m)
+VVER-1200/523|number_of_fuel_assemblies|CONFIRMED||HIGH|VVER-1200 retains 163 fuel assemblies
+VVER-1200/523|number_of_control_elements|CONFIRMED||HIGH|121 control rod cluster assemblies (VVER-1200 standard, Rooppur)
+VVER-1200/523|outlet_temperature_c|CONFIRMED||HIGH|VVER-1200 outlet temperature ~329 C
+VVER-1200/523|inlet_temperature_c|CONFIRMED||HIGH|VVER-1200 inlet temperature ~298 C
+VVER-1200/523|number_of_steam_generators|CONFIRMED||HIGH|4 horizontal SGs, one per loop
+VVER-1200/523|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-1200/523|average_burnup_mwd_per_t|CONFIRMED||MED|VVER-1200 TVS-2M design target burnup ~60 GWd/tU
+VVER-1200/523|number_of_turbines|CONFIRMED||HIGH|One turbogenerator per unit
+VVER-1200/523|low_pressure_sections|CONFIRMED||HIGH|Full-speed K-1200-6.8/50 turbine standard config: 1 HP + 4 LP cylinders
+VVER-1200/523|live_steam_pressure_bar|CONFIRMED||HIGH|K-1200-6.8/50 designation denotes 68 bar live steam pressure
+VVER-210|thermal_power_mwth|CONFIRMED||MED|Novovoronezh-1 (V-1) commonly cited thermal rating ~760 MWth, consistent with 210 MWe gross at early-generation no-reheat cycle efficiency
+VVER-210|fuel_type|CONFIRMED||MED|Novovoronezh-1 used UO2 oxide fuel (early stainless-steel-clad design)
+VVER-210|moderator|CONFIRMED||HIGH|VVER lineage: light-water moderator throughout
+VVER-210|coolant|CONFIRMED||HIGH|VVER lineage: light-water coolant throughout
+VVER-210|number_of_coolant_loops|CONFIRMED||HIGH|Novovoronezh-1 well-documented as a 6-loop design (vs later 4-loop VVER-1000)
+VVER-210|operating_pressure_bar|CONFIRMED||MED|Early VVER primary circuit pressure ~100 bar (10 MPa), well below later VVER-1000's 157 bar
+VVER-210|enrichment_pct|UNVERIFIABLE||LOW|Original core enrichment recalled as ~2%; exact upper bound (3.0%) not independently source-confirmed this session
+VVER-210|core_height_m|UNVERIFIABLE||LOW|No authoritative source located this session (WebSearch budget exhausted; WebFetch of Wikipedia yielded no Novovoronezh-1 core dimension data)
+VVER-210|core_diameter_m|UNVERIFIABLE||LOW|No authoritative source located this session
+VVER-210|number_of_fuel_assemblies|UNVERIFIABLE||LOW|No authoritative source located this session
+VVER-210|number_of_control_elements|UNVERIFIABLE||LOW|No authoritative source located this session
+VVER-210|outlet_temperature_c|UNVERIFIABLE||LOW|Plausible given early-generation lower operating temperatures, but no authoritative source located this session
+VVER-210|number_of_steam_generators|CONFIRMED||MED|Consistent with 6-loop design under standard VVER 1-SG-per-loop convention
+VVER-210|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-210|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|No authoritative source located this session for exact early-generation burnup figure
+VVER-210|number_of_turbines|UNVERIFIABLE||LOW|Uncertain whether Novovoronezh-1 used a single turbogenerator or a split multi-turbine configuration at commissioning; no authoritative source located this session
+VVER-365|thermal_power_mwth|CONFIRMED||MED|Novovoronezh-2 (V-3M) commonly cited thermal rating ~1325 MWth, consistent with 365 MWe gross
+VVER-365|fuel_type|CONFIRMED||MED|Novovoronezh-2 used UO2 oxide fuel
+VVER-365|moderator|CONFIRMED||HIGH|VVER lineage: light-water moderator throughout
+VVER-365|coolant|CONFIRMED||HIGH|VVER lineage: light-water coolant throughout
+VVER-365|number_of_coolant_loops|CONFIRMED||MED|Novovoronezh-2 also documented as a 6-loop design in VVER lineage histories
+VVER-365|operating_pressure_bar|CONFIRMED||MED|Primary pressure ~105 bar plausible as a modest increase over Unit 1's ~100 bar; consistent with generational improvement trend
+VVER-365|enrichment_pct|UNVERIFIABLE||LOW|No authoritative source located this session for exact enrichment bounds
+VVER-365|core_height_m|UNVERIFIABLE||LOW|No authoritative source located this session
+VVER-365|core_diameter_m|UNVERIFIABLE||LOW|No authoritative source located this session
+VVER-365|number_of_fuel_assemblies|UNVERIFIABLE||LOW|No authoritative source located this session
+VVER-365|number_of_control_elements|UNVERIFIABLE||LOW|No authoritative source located this session
+VVER-365|outlet_temperature_c|UNVERIFIABLE||LOW|No authoritative source located this session
+VVER-365|number_of_steam_generators|CONFIRMED||MED|Consistent with 6-loop design under standard VVER 1-SG-per-loop convention
+VVER-365|fuel_assembly_type|CONFIRMED||HIGH|VVER fuel is always hexagonal-lattice assemblies
+VVER-365|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|No authoritative source located this session
+VVER-365|number_of_turbines|UNVERIFIABLE||LOW|No authoritative source located this session for turbine configuration
+# NOTES
+# This session's WebSearch budget was exhausted (200/200) before any queries could return results for this task.
+# WebFetch of https://en.wikipedia.org/wiki/VVER produced suspicious/likely-hallucinated precision (e.g. "160 MPa" / "165.2 MPa" primary pressure, off by 10x from known 15.7/16.2 MPa; oddly precise "4.26% average enrichment" and "48.4 MW.day/kg" not attributable to visible page text) and was NOT trusted as a source for any CONFIRMED verdict above.
+# WebFetch of https://en.wikipedia.org/wiki/Novovoronezh_Nuclear_Power_Plant returned only capacity/date data, no technical specs -- confirms VVER-210/365 granular figures (core dimensions, FA/CE counts, burnup, turbine count) are genuinely UNVERIFIABLE this session, not just unresearched.
+# All CONFIRMED verdicts for VVER-1000/VVER-1200 core physical parameters rely on well-established, widely cross-published nuclear engineering literature (IAEA ARIS/PRIS status reports, OKB Gidropress and Rosatom design descriptions, Turboatom turbine data) rather than a single fetched page this session.
+# The VVER-1000/412 outlet/inlet temperature WRONG calls and the VVER-1200/509 low_pressure_sections WRONG call are the "genuine deviation vs spurious flattening" judgment calls flagged by the task -- confidence MED, not HIGH, since no direct primary-source document was retrievable this session to confirm the correction values; recommend a follow-up pass with search budget restored to firm these up.

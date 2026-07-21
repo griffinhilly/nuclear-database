@@ -1,0 +1,14 @@
+design_series|thermal_power_mwth|fuel_type|moderator|coolant|number_of_coolant_loops|operating_pressure_bar|enrichment_pct|core_height_m|core_diameter_m|number_of_fuel_assemblies|number_of_control_elements|outlet_temperature_c|inlet_temperature_c|number_of_steam_generators|fuel_assembly_type|average_burnup_mwd_per_t|source|number_of_turbines|turbine_speed_rpm|low_pressure_sections|live_steam_pressure_bar
+APR1400|3983.0|UO2|Light water|Light water|2|155.0|4.5-5.0|3.81|3.65|241|93|324.0|291.0|2|16x16|60000.0|IAEA PRIS, KHNP, Wikipedia, NRC|1|1800|3|68.0
+OPR-1000|2815.0|UO2|Light water|Light water|2|155.0|4.0-4.5|3.81|3.12|177|73|324.0|296.0|2|16x16|45000.0|IAEA PRIS, KHNP, Wikipedia|1|1800|2|65.0
+ACPR-1000|3150.0|UO2|Light water|Light water|3|155.0|3.7-4.5|3.66|3.04|157|48|325.0|289.0|3|17x17|45000.0|IAEA PRIS, CGN, Wikipedia|1|1500|3|58.0
+CAP1000|3400.0|UO2|Light water|Light water|2|155.0|4.5-5.0|4.27|3.04|157|53|321.0|281.0|2|17x17|52000.0|IAEA PRIS, SNERDI, Wikipedia|1|1500|3|57.0
+CAP1400|4040.0|UO2|Light water|Light water|2|155.0|4.5-5.0|4.27|3.37|193|69|323.0|282.0|2|17x17|52000.0|IAEA PRIS, SNERDI, Wikipedia|1|1500|3|68.0
+CNP-1000|2895.0|UO2|Light water|Light water|3|155.0|3.2-4.0|3.66|3.04|157|48|325.0|289.0|3|17x17|40000.0|IAEA PRIS, CNNC, Wikipedia|1|1500|3|57.0
+CNP-300|1000.0|UO2|Light water|Light water|2|155.0|2.4-3.0|2.9|None|121|None|310.0|281.0|2|15x15|30000.0|IAEA PRIS, CNNC, Wikipedia|1|1500|2|55.0
+CNP-600|1930.0|UO2|Light water|Light water|2|155.0|3.0-3.7|3.66|None|121|33|323.0|289.0|2|14x14|35000.0|IAEA PRIS, CNNC, Wikipedia|1|1500|3|55.0
+CPR-1000|2895.0|UO2|Light water|Light water|3|155.0|3.7-4.5|3.66|3.04|157|48|325.0|289.0|3|17x17|45000.0|IAEA PRIS, CGN, Wikipedia|1|1500|3|57.0
+HPR1000|3050.0|UO2|Light water|Light water|3|155.0|4.45|3.66|3.16|177|60|326.0|290.0|3|17x17|52000.0|IAEA PRIS, CGN, CNNC, Wikipedia; thermal corrected 2026-07 audit (HPR1000 design paper, Engineering)|1|1500|3|68.0
+VVER-1000/187|3000.0|UO2|Light water|Light water|4|None|None|3.55|None|163|109|320.0|289.0|4|Hexagonal|None|IAEA PRIS, Wikipedia; V-187 control-assembly count (109, reduced to 61 in serial V-320) per MDEP/Gidropress VVER-1000 comparison; remaining fields pending sourced values; turbine speed corrected 2026-07 sweep (cited)|2|3000|None|None
+VVER-1000/302|3000.0|UO2|Light water|Light water|4|157.0|3.3-4.4|3.53|3.16|163|61|320.0|289.0|4|Hexagonal|40000.0|IAEA PRIS, Wikipedia; turbine speed corrected 2026-07 sweep (cited)|1|3000|4|60.0
+VVER-1000/320|3000.0|UO2|Light water|Light water|4|157.0|3.3-4.4|3.53|3.16|163|61|320.0|289.0|4|Hexagonal|42000.0|IAEA PRIS, Wikipedia; turbine speed corrected 2026-07 audit (full-speed machines)|1|3000|4|60.0

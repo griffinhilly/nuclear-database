@@ -1,0 +1,14 @@
+design_series|thermal_power_mwth|fuel_type|moderator|coolant|number_of_coolant_loops|operating_pressure_bar|enrichment_pct|core_height_m|core_diameter_m|number_of_fuel_assemblies|number_of_control_elements|outlet_temperature_c|inlet_temperature_c|number_of_steam_generators|fuel_assembly_type|average_burnup_mwd_per_t|source|number_of_turbines|turbine_speed_rpm|low_pressure_sections|live_steam_pressure_bar
+CP2|2785.0|UO2|Light water|Light water|3|155.0|3.1-4.0|3.66|3.04|157|48|323.0|286.0|3|17x17|33000.0|IAEA PRIS, EDF, Wikipedia; thermal corrected 2026-07 audit (PRIS palier CPY)|1|1500|3|57.0
+EPR|4590.0|UO2|Light water|Light water|4|155.0|4.0-5.0|4.2|3.77|241|89|330.0|296.0|4|17x17|60000.0|IAEA PRIS, Framatome, EDF, Wikipedia|1|1500|3|78.0
+M310|2785.0|UO2|Light water|Light water|3|155.0|3.1-4.0|3.66|3.04|157|48|325.0|289.0|3|17x17|38000.0|IAEA PRIS, EDF, Framatome|1|1500|3|58.0
+N4|4270.0|UO2|Light water|Light water|4|155.0|3.5-4.5|4.27|3.47|205|73|330.0|292.0|4|17x17|52000.0|IAEA PRIS, EDF, Framatome|1|1500|3|73.0
+P4|3817.0|UO2|Light water|Light water|4|155.0|3.1-4.0|3.66|3.37|193|53|329.0|292.0|4|17x17|42000.0|IAEA PRIS, EDF, Wikipedia|1|1500|3|60.0
+Konvoi|3765.0|UO2|Light water|Light water|4|158.0|3.5-4.5|3.9|3.52|193|61|327.0|292.0|4|18x18|50000.0|IAEA PRIS, Wikipedia, KTA|1|1500|3|63.0
+Pre-Konvoi|3765.0|UO2|Light water|Light water|4|158.0|3.5-4.5|3.9|3.52|193|53|326.0|292.0|4|18x18|45000.0|IAEA PRIS, Wikipedia|1|1500|3|63.0
+Siemens 2-Loop|907.0|UO2|Light water|Light water|2|155.0|3.0-3.5|None|2.44|121|29|None|None|2|14x14|None|IAEA PRIS, Wikipedia|1|1500|2|55.0
+Siemens 3-Loop|2575.0|UO2|Light water|Light water|3|155.0|3.0-4.0|3.9|None|177|None|322.0|290.0|3|16x16|40000.0|IAEA PRIS, Wikipedia|1|1500|2|58.0
+Siemens 4-Loop|3765.0|UO2|Light water|Light water|4|157.0|3.0-4.5|3.9|3.52|193|48|325.0|292.0|4|16x16|45000.0|IAEA PRIS, Wikipedia; thermal corrected 2026-07 audit (Konvoi design value)|1|1500|3|60.0
+MHI 2-Loop|1570.0|UO2|Light water|Light water|2|155.0|3.0-4.0|3.66|None|121|None|317.0|282.0|2|14x14|33000.0|IAEA PRIS, Wikipedia; turbine speed corrected 2026-07 sweep (60 Hz zone; Tomari units 1500)|1|1800|2|56.0
+MHI 3-Loop|2660.0|UO2|Light water|Light water|3|155.0|3.0-4.5|3.66|3.04|157|48|323.0|289.0|3|17x17|40000.0|IAEA PRIS, Wikipedia; turbine speed corrected 2026-07 sweep (60 Hz zone; Tomari units 1500)|1|1800|3|58.0
+MHI 4-Loop|3411.0|UO2|Light water|Light water|4|155.0|3.5-4.5|3.66|3.37|193|53|325.0|289.0|4|17x17|45000.0|IAEA PRIS, Wikipedia; turbine speed corrected 2026-07 sweep (60 Hz zone; Tomari units 1500)|1|1800|3|63.0

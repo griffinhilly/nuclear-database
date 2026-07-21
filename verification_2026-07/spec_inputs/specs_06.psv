@@ -1,0 +1,14 @@
+design_series|thermal_power_mwth|fuel_type|moderator|coolant|number_of_coolant_loops|operating_pressure_bar|enrichment_pct|core_height_m|core_diameter_m|number_of_fuel_assemblies|number_of_control_elements|outlet_temperature_c|inlet_temperature_c|number_of_steam_generators|fuel_assembly_type|average_burnup_mwd_per_t|source|number_of_turbines|turbine_speed_rpm|low_pressure_sections|live_steam_pressure_bar
+VVER-440/179|1375.0|UO2|Light water|Light water|6|124.0|3.3-3.6|2.5|2.88|349|73|301.0|267.0|6|Hexagonal|29000.0|IAEA PRIS, Wikipedia; turbine speed corrected 2026-07 sweep (cited)|2|3000|2|44.0
+VVER-440/213|1375.0|UO2|Light water|Light water|6|124.0|3.3-4.4|2.5|2.88|349|73|301.0|267.0|6|Hexagonal|35000.0|IAEA PRIS, Wikipedia; turbine speed corrected 2026-07 audit (full-speed machines)|2|3000|2|44.0
+VVER-440/230|1375.0|UO2|Light water|Light water|6|124.0|3.3-3.6|2.5|2.88|349|73|301.0|267.0|6|Hexagonal|29000.0|IAEA PRIS, Wikipedia; turbine speed corrected 2026-07 audit (full-speed machines)|2|3000|2|44.0
+VVER-440/270|1375.0|UO2|Light water|Light water|6|124.0|3.3-3.6|2.5|2.88|349|73|301.0|267.0|6|Hexagonal|None|IAEA PRIS, Wikipedia; turbine speed corrected 2026-07 sweep (cited)|2|3000|2|44.0
+CANDU|None|Natural UO2|Heavy water|Heavy water|None|100.0|Natural|None|None|None|None|None|None|None|None|7500.0|IAEA PRIS, AECL, Wikipedia; turbine speed nulled 2026-07 sweep (mixed-grid or undocumented)|1|None|3|47.0
+CANDU 500|1750.0|Natural UO2|Heavy water|Heavy water|2|100.0|Natural|None|5.94|380|None|305.0|265.0|4|37-element bundle|7500.0|IAEA PRIS, AECL, Wikipedia|1|1800|3|47.0
+CANDU 6|2064.0|Natural UO2|Heavy water|Heavy water|2|100.0|Natural|5.94|6.28|380|21|310.0|266.0|4|37-element bundle|7500.0|IAEA PRIS, AECL, Wikipedia|1|1800|3|47.0
+CANDU 750|2650.0|Natural UO2|Heavy water|Heavy water|2|100.0|Natural|None|None|480|None|310.0|266.0|4|37-element bundle|7500.0|IAEA PRIS, AECL, Wikipedia|1|1800|3|47.0
+CANDU 850|2750.0|Natural UO2|Heavy water|Heavy water|2|100.0|Natural|None|None|480|None|312.0|266.0|8|37-element bundle|7500.0|IAEA PRIS, AECL, Wikipedia|1|1800|3|47.0
+BLWR-250|None|UO2|Light water|Light water|None|None|None|None|None|None|None|None|None|None|None|None|IAEA PRIS; turbine speed nulled 2026-07 sweep (mixed-grid or undocumented)|1|None|None|None
+IPHWR|754.5|Natural UO2|Heavy water|Heavy water|2|85.0|Natural|5.0|6.4|306|14|293.0|249.0|4|19-element bundle|6700.0|IAEA PRIS, NPCIL, Wikipedia; thermal+pressure corrected 2026-07 audit (IAEA ARIS SR-74)|1|1500|2|43.0
+KWU PHWR|1179.0|UO2|Heavy water|Heavy water|2|115.0|0.85|5.3|None|253|None|300.0|265.0|2|37-rod cluster|6000.0|IAEA PRIS, Wikipedia|1|1500|3|47.0
+PHWR|None|Natural UO2|Heavy water|Heavy water|None|100.0|Natural|None|None|None|None|None|None|None|None|7000.0|IAEA PRIS, Wikipedia|1|1500|3|45.0

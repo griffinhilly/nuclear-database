@@ -1,0 +1,14 @@
+design_series|thermal_power_mwth|fuel_type|moderator|coolant|number_of_coolant_loops|operating_pressure_bar|enrichment_pct|core_height_m|core_diameter_m|number_of_fuel_assemblies|number_of_control_elements|outlet_temperature_c|inlet_temperature_c|number_of_steam_generators|fuel_assembly_type|average_burnup_mwd_per_t|source|number_of_turbines|turbine_speed_rpm|low_pressure_sections|live_steam_pressure_bar
+BWR/1|None|UO2|Light water|Light water|4|70.0|2.5-4.0|None|None|None|None|286.0|None|None|None|None|IAEA PRIS, NRC Technical Reports; turbine speed nulled 2026-07 sweep (mixed-grid or undocumented)|1|None|2|65.0
+BWR/2|1800.0|UO2|Light water|Light water|5|70.0|2.5-4.0|3.66|None|368|137|286.0|216.0|None|7x7|None|IAEA PRIS, NRC Technical Reports|1|1800|2|65.0
+BWR/3|2527.0|UO2|Light water|Light water|2|70.3|2.5-4.0|3.66|None|548|137|286.0|216.0|None|7x7|None|IAEA PRIS, NRC Technical Reports; thermal corrected 2026-07 audit (Dresden 2/3 original license)|1|1800|3|67.0
+BWR/4|3293.0|UO2|Light water|Light water|2|70.3|2.5-5.0|3.66|None|764|185|286.0|216.0|None|8x8|35000.0|IAEA PRIS, NRC Technical Reports|1|1800|3|67.0
+BWR/5|3323.0|UO2|Light water|Light water|2|70.3|2.5-5.0|3.66|None|764|185|288.0|216.0|None|8x8|40000.0|IAEA PRIS, NRC Technical Reports; thermal corrected 2026-07 audit (LaSalle original rating)|1|1800|4|67.0
+BWR/6|3579.0|UO2|Light water|Light water|2|71.7|3.0-5.0|3.81|None|748|177|288.0|216.0|None|8x8|45000.0|IAEA PRIS, NRC Technical Reports|1|1800|4|67.0
+BWR/69|2575.0|UO2|Light water|Light water|0|70.0|2.5-3.5|3.71|4.87|592|205|286.0|None|None|9x9|40000.0|IAEA PRIS, Wikipedia; fuel count corrected 2026-07 audit (Isar 1, was Kruemmel's)|1|1500|2|65.0
+BWR/72|3840.0|UO2|Light water|Light water|0|70.0|2.8|3.71|4.818|784|193|286.0|None|None|None|27500.0|Gundremmingen collaborator data, IAEA PRIS|1|1500|2|65.8
+BWR/75|3300.0|UO2|Light water|Light water|0|70.0|3.0-4.5|3.68|None|700|None|286.0|None|None|10x10|None|IAEA PRIS, Wikipedia|1|1500|2|65.0
+BWR/G1|1375.0|UO2|Light water|Light water|2|70.0|2.5-3.5|3.66|None|None|None|286.0|None|None|8x8|None|IAEA PRIS, Wikipedia|1|1500|2|65.0
+BWR/G2|1800.0|UO2|Light water|Light water|2|70.0|2.5-3.5|3.66|None|None|None|286.0|None|None|8x8|None|IAEA PRIS, Wikipedia|1|1500|2|65.0
+BWR/G3|2500.0|UO2|Light water|Light water|2|70.0|3.0-4.0|3.68|None|676|None|286.0|None|None|8x8|None|IAEA PRIS, Wikipedia|1|1500|2|65.0
+ABWR|3926.0|UO2|Light water|Light water|0|71.7|3.0-5.0|3.71|5.16|872|205|287.0|215.0|None|9x9|45000.0|IAEA PRIS, Wikipedia, GE-Hitachi documentation|1|1500|4|67.0

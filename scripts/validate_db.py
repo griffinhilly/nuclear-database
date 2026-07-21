@@ -16,6 +16,7 @@ Checks:
  10. Cooling-type enum (all non-NULL values in the 6-value set)
  11. Uniform cooling across 4+ unit plants (advisory review candidates, non-blocking)
 """
+import os
 import sqlite3
 import sys
 import argparse
@@ -355,6 +356,46 @@ def main():
         issues += len(rows)
     else:
         print("  OK: no generation rows above 105% CF vs historical gross capacity")
+
+    # 15. Vendor-field drift guard (constants audit 2026-07): every non-NULL
+    # supply-chain value in reactor_details must appear as a visible verdict in
+    # verification_2026-07/final_verdicts.psv. A hit means some session wrote
+    # an unattested value back into a verified field. When Noah/Dirk attest new
+    # values, append them to final_verdicts.psv (visible=yes) in the same change.
+    print()
+    print("=" * 60)
+    print("15. VENDOR-FIELD DRIFT GUARD (unattested values in reactor_details)")
+    print("=" * 60)
+    verdicts_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                                 "verification_2026-07", "final_verdicts.psv")
+    if not os.path.exists(verdicts_path):
+        print(f"  FAIL: whitelist file missing: {verdicts_path}")
+        issues += 1
+    else:
+        whitelist = set()
+        with open(verdicts_path, encoding="utf-8") as vf:
+            for ln in vf:
+                p = ln.rstrip("\n").split("|")
+                if len(p) >= 7 and p[6] == "yes":
+                    whitelist.add((int(p[0]), p[3]))
+        colmap = {"constructor": "constructor", "architect_engineer": "architect_engineer",
+                  "turbine_supplier": "turbine_supplier",
+                  "rpv_manufacturer": "pressure_vessel_manufacturer"}
+        drift = []
+        for field, col in colmap.items():
+            for r in conn.execute(
+                    f"SELECT d.reactor_id, r.plant_name, r.unit_number, d.{col} AS val "
+                    f"FROM reactor_details d JOIN reactors r ON r.id = d.reactor_id "
+                    f"WHERE d.{col} IS NOT NULL"):
+                if (r["reactor_id"], field) not in whitelist:
+                    drift.append((r["plant_name"], r["unit_number"], field, r["val"]))
+        if drift:
+            print(f"  FAIL: {len(drift)} unattested vendor value(s) present:")
+            for plant, unit, field, val in drift[:20]:
+                print(f"    {plant} {unit} | {field} = {val}")
+            issues += len(drift)
+        else:
+            print("  OK: all non-NULL vendor fields are attested in final_verdicts.psv")
 
     # Summary
     print()
