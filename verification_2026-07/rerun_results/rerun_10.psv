@@ -1,0 +1,110 @@
+design_series|field|verdict|corrected_value|confidence|source
+AP1000|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not surfaced in any document retrieved this session (Wikipedia AP1000/Sanmen/Vogtle pages lacked burnup)
+AP1000|coolant|CONFIRMED||MED|Wikipedia AP1000 + Sanmen Nuclear Power Station: described as pressurized water reactor (light-water coolant)
+AP1000|core_height_m|UNVERIFIABLE||LOW|Core height not present in retrieved AP1000 sources this session
+AP1000|fuel_assembly_type|UNVERIFIABLE||LOW|17x17 array not stated in retrieved AP1000 sources this session
+AP1000|fuel_type|UNVERIFIABLE||LOW|UO2 not explicitly stated in retrieved AP1000 sources (PWR type does not by itself entail UO2)
+AP1000|moderator|CONFIRMED||MED|Wikipedia AP1000: pressurized water reactor (light-water moderator)
+AP1000|number_of_coolant_loops|CONFIRMED||MED|Wikipedia AP1000: "two cooling loops"
+AP1000|number_of_fuel_assemblies|UNVERIFIABLE||LOW|157 not stated in retrieved AP1000 sources this session
+AP1000|number_of_steam_generators|CONFIRMED||MED|Wikipedia AP1000: two-loop design (one SG per loop = 2 SG)
+AP1000|thermal_power_mwth|CONFIRMED||HIGH|Wikipedia Sanmen Nuclear Power Station and Vogtle: AP1000 thermal capacity "3400 MWth"
+BWR/5|coolant|CONFIRMED||MED|Wikipedia Boiling water reactor: "water is thus used both as a coolant and as a moderator"
+BWR/5|fuel_type|UNVERIFIABLE||LOW|Retrieved BWR article says "low-enriched uranium"; UO2/oxide not explicitly stated
+BWR/5|moderator|CONFIRMED||MED|Wikipedia Boiling water reactor: water used as coolant and moderator
+BWR/5|number_of_control_elements|UNVERIFIABLE||LOW|185 control-rod count not surfaced in retrieved sources this session
+BWR/5|number_of_fuel_assemblies|UNVERIFIABLE||LOW|764 not confirmed; BWR article only gives "up to ~800 assemblies"
+BWR/5|thermal_power_mwth|UNVERIFIABLE||LOW|BWR/5 series spans many ratings (DB: 1593-3988 MWth across Shika/Laguna Verde/Kashiwazaki/LaSalle/Nine Mile Point 2); no single design value externally sourced; likely MIXED
+CANDU 500|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Pickering burnup not surfaced in retrieved Pickering/CANDU pages
+CANDU 500|coolant|CONFIRMED||MED|Wikipedia CANDU reactor: heavy water coolant (series=Pickering CANDU-500)
+CANDU 500|core_diameter_m|UNVERIFIABLE||LOW|Core diameter not present in retrieved Pickering/CANDU sources
+CANDU 500|enrichment_pct|CONFIRMED||MED|Wikipedia CANDU reactor: natural uranium fuel
+CANDU 500|fuel_assembly_type|UNVERIFIABLE||LOW|CANDU article gives "28 or 37 element bundles"; cannot confirm Pickering uses 37 (Pickering historically used 28-element bundles)
+CANDU 500|fuel_type|CONFIRMED||MED|Wikipedia CANDU reactor: natural uranium UO2 (ceramic uranium oxide pellets)
+CANDU 500|inlet_temperature_c|UNVERIFIABLE||LOW|Coolant inlet temperature not in retrieved Pickering/CANDU sources
+CANDU 500|live_steam_pressure_bar|UNVERIFIABLE||LOW|Live steam pressure not in retrieved sources this session
+CANDU 500|low_pressure_sections|UNVERIFIABLE||LOW|Turbine LP-section count not in retrieved sources
+CANDU 500|moderator|CONFIRMED||MED|Wikipedia CANDU reactor: heavy water moderator
+CANDU 500|number_of_coolant_loops|UNVERIFIABLE||LOW|Loop count not explicitly in retrieved Pickering/CANDU sources
+CANDU 500|number_of_fuel_assemblies|UNVERIFIABLE||LOW|CANDU article channel counts garbled for Pickering ("232-380"); CANDU 6 is 380, Pickering commonly ~390; not pinned
+CANDU 500|number_of_steam_generators|UNVERIFIABLE||LOW|SG count not in retrieved Pickering sources
+CANDU 500|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not in retrieved Pickering sources
+CANDU 500|operating_pressure_bar|UNVERIFIABLE||LOW|Operating pressure not in retrieved sources
+CANDU 500|outlet_temperature_c|UNVERIFIABLE||LOW|Coolant outlet temperature not in retrieved sources
+CANDU 500|thermal_power_mwth|CONFIRMED||MED|Wikipedia Pickering Nuclear Generating Station: "1744 MWth" per unit (1750 is rounded design value)
+CANDU 500|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not in retrieved sources
+CE Pre-System 80|coolant|CONFIRMED||MED|Wikipedia Calvert Cliffs: Combustion Engineering pressurized water reactors (light-water coolant)
+CE Pre-System 80|fuel_type|UNVERIFIABLE||LOW|UO2/oxide not explicitly stated in retrieved CE sources this session
+CE Pre-System 80|moderator|CONFIRMED||MED|Wikipedia Calvert Cliffs: PWR (light-water moderator)
+CE Pre-System 80|number_of_fuel_assemblies|UNVERIFIABLE||LOW|217 not externally sourced; series mixes CE plants with different cores (Calvert Cliffs-class 217, System-80 Palo Verde/San Onofre/Waterford 241, Fort Calhoun smaller) - likely MIXED
+HPR1000|number_of_coolant_loops|CONFIRMED||MED|Wikipedia Hualong One: "three-loop" PWR design
+HPR1000|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia Hualong One: "177 assembly core design"
+HPR1000|thermal_power_mwth|UNVERIFIABLE||LOW|Hualong One article gives no thermal figure; DB shows plant variation 2905-3190 MWth (Fuqing vs Taipingling/Zhangzhou); 3050 not externally sourced
+KWU PHWR|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Atucha burnup not surfaced in retrieved Atucha page
+KWU PHWR|coolant|CONFIRMED||MED|Wikipedia Atucha: PHWR KWU, heavy water coolant/moderator
+KWU PHWR|core_height_m|UNVERIFIABLE||LOW|Core height not in retrieved Atucha page
+KWU PHWR|enrichment_pct|CONFIRMED||MED|Wikipedia Atucha: Atucha I fuel "enriched uranium (0.85% of 235U)"
+KWU PHWR|fuel_assembly_type|UNVERIFIABLE||LOW|37-rod cluster not stated in retrieved Atucha page
+KWU PHWR|fuel_type|CONFIRMED||MED|Wikipedia Atucha: uranium (natural + slightly enriched) PHWR fuel
+KWU PHWR|inlet_temperature_c|UNVERIFIABLE||LOW|Coolant inlet temp not in retrieved Atucha page
+KWU PHWR|live_steam_pressure_bar|UNVERIFIABLE||LOW|Live steam pressure not in retrieved Atucha page
+KWU PHWR|low_pressure_sections|UNVERIFIABLE||LOW|Turbine LP-section count not in retrieved sources
+KWU PHWR|moderator|CONFIRMED||MED|Wikipedia Atucha: heavy water moderator
+KWU PHWR|number_of_coolant_loops|UNVERIFIABLE||LOW|Loop count not in retrieved Atucha page
+KWU PHWR|number_of_fuel_assemblies|UNVERIFIABLE||LOW|253 not in retrieved Atucha page (Atucha I commonly cited ~252 channels; unconfirmed)
+KWU PHWR|number_of_steam_generators|UNVERIFIABLE||LOW|SG count not in retrieved Atucha page
+KWU PHWR|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not in retrieved Atucha page
+KWU PHWR|operating_pressure_bar|UNVERIFIABLE||LOW|Operating pressure not in retrieved Atucha page
+KWU PHWR|outlet_temperature_c|UNVERIFIABLE||LOW|Coolant outlet temp not in retrieved Atucha page
+KWU PHWR|thermal_power_mwth|WRONG|MIXED (Atucha I 1179 / Atucha II 2175 MWth)|MED|Wikipedia Atucha: Atucha I "1,179 MWth", Atucha II "2,175 MWth" - series spans genuinely different thermal ratings
+KWU PHWR|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not in retrieved Atucha page
+Konvoi|coolant|CONFIRMED||MED|Wikipedia Emsland/Konvoi: German Konvoi PWR (light-water coolant)
+Konvoi|fuel_assembly_type|CONFIRMED||MED|Wikipedia Emsland: "18x18-24 fuel assembly array typical of Konvoi designs"
+Konvoi|moderator|CONFIRMED||MED|Wikipedia Emsland/Konvoi: PWR (light-water moderator)
+Konvoi|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia Emsland: "reactor had 193 fuel elements"
+OCR|coolant|CONFIRMED||MED|Wikipedia Piqua Nuclear Power Facility: organically cooled/moderated, terphenyl coolant
+OCR|thermal_power_mwth|CONFIRMED||MED|Wikipedia Piqua: "45.5-megawatt (thermal)" reactor (45 is rounded)
+PHWR-700|average_burnup_mwd_per_t|CONFIRMED||MED|Wikipedia IPHWR-700: average burnup "~7050 MW-day/ton" (7000 rounded)
+PHWR-700|coolant|CONFIRMED||MED|Wikipedia IPHWR-700: coolant heavy water (D2O)
+PHWR-700|enrichment_pct|CONFIRMED||MED|Wikipedia IPHWR-700: "Sintered Natural UO2", 0.7% U-235 (natural)
+PHWR-700|fuel_type|CONFIRMED||MED|Wikipedia IPHWR-700: "Sintered Natural UO2 pellets"
+PHWR-700|inlet_temperature_c|CONFIRMED||MED|Wikipedia IPHWR-700: core coolant inlet "266 C"
+PHWR-700|moderator|CONFIRMED||MED|Wikipedia IPHWR-700: moderator heavy water (D2O)
+PHWR-700|number_of_coolant_loops|UNVERIFIABLE||LOW|Loop count not explicitly stated in retrieved IPHWR-700 page
+PHWR-700|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia IPHWR-700: "4704 fuel bundles in 392 channels" (392 fuel channels)
+PHWR-700|outlet_temperature_c|CONFIRMED||MED|Wikipedia IPHWR-700: core coolant outlet "310 C"
+PHWR-700|thermal_power_mwth|CONFIRMED||MED|Wikipedia IPHWR-700: thermal "2166 MWth"
+Super-Phenix|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Burnup not in retrieved Superphenix (en/fr) pages
+Super-Phenix|coolant|CONFIRMED||MED|Wikipedia Superphenix (en/fr): liquid sodium coolant
+Super-Phenix|core_diameter_m|UNVERIFIABLE||LOW|Core diameter not in retrieved Superphenix pages
+Super-Phenix|core_height_m|UNVERIFIABLE||LOW|Core height not in retrieved Superphenix pages
+Super-Phenix|fuel_assembly_type|UNVERIFIABLE||LOW|Hexagonal assembly type not explicitly in retrieved Superphenix pages
+Super-Phenix|fuel_type|CONFIRMED||MED|Wikipedia Superphenix (en): fast breeder fueled with uranium/plutonium (MOX)
+Super-Phenix|inlet_temperature_c|UNVERIFIABLE||LOW|Sodium inlet temp not stated (only ~550 C outlet given)
+Super-Phenix|low_pressure_sections|UNVERIFIABLE||LOW|Turbine LP-section count not in retrieved pages
+Super-Phenix|number_of_control_elements|UNVERIFIABLE||LOW|Control-rod count not in retrieved pages
+Super-Phenix|number_of_coolant_loops|CONFIRMED||MED|Wikipedia Superphenix (fr): "quatre circuits secondaires" (four secondary sodium loops)
+Super-Phenix|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia Superphenix (fr): "364 assemblages combustible"
+Super-Phenix|number_of_steam_generators|UNVERIFIABLE||LOW|SG count not explicitly stated (4 secondary loops implied but not confirmed)
+Super-Phenix|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not in retrieved pages
+Super-Phenix|outlet_temperature_c|CONFIRMED||MED|Wikipedia Superphenix (fr): sodium at "550 C" (545 within basis/rounding)
+Super-Phenix|thermal_power_mwth|CONFIRMED||HIGH|Wikipedia Superphenix (en+fr): "3000 MW thermiques"
+Super-Phenix|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not in retrieved pages
+VVER-1000/187|coolant|CONFIRMED||MED|Wikipedia VVER: light-water PWR
+VVER-1000/187|fuel_assembly_type|CONFIRMED||MED|Wikipedia VVER: hexagonal fuel assemblies
+VVER-1000/187|moderator|CONFIRMED||MED|Wikipedia VVER: light-water moderator
+VVER-1000/187|number_of_coolant_loops|CONFIRMED||MED|Wikipedia VVER: VVER-1000 "four-loop configuration"
+VVER-1000/187|number_of_steam_generators|CONFIRMED||MED|Wikipedia VVER: VVER-1000 "four steam generators"
+VVER-1000/187|thermal_power_mwth|CONFIRMED||MED|Wikipedia VVER: VVER-1000 "3,000 MWth"
+VVER-440/213|coolant|CONFIRMED||MED|Wikipedia VVER: light-water PWR
+VVER-440/213|core_diameter_m|CONFIRMED||MED|Wikipedia VVER: VVER-440/213 "~2.88 meters equivalent diameter"
+VVER-440/213|fuel_assembly_type|CONFIRMED||MED|Wikipedia VVER: "349 hexagonal fuel assemblies"
+VVER-440/213|fuel_type|CONFIRMED||MED|Wikipedia VVER: "low-enriched uranium dioxide"
+VVER-440/213|low_pressure_sections|UNVERIFIABLE||LOW|Turbine LP-section count not in retrieved VVER page
+VVER-440/213|moderator|CONFIRMED||MED|Wikipedia VVER: light-water moderator
+VVER-440/213|number_of_coolant_loops|CONFIRMED||MED|Wikipedia VVER: VVER-440/213 "Six coolant loops"
+VVER-440/213|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia VVER: "349 hexagonal fuel assemblies"
+VVER-440/213|number_of_steam_generators|CONFIRMED||MED|Wikipedia VVER: "six coolant loops, each with a horizontal steam generator" (6 SG)
+VVER-440/213|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not stated in retrieved VVER page
+VVER-440/213|thermal_power_mwth|CONFIRMED||MED|Wikipedia VVER: VVER-440/213 "1,375 MWth" (design nominal; some units later uprated)
+VVER-440/213|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not stated in retrieved VVER page

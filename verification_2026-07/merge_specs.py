@@ -39,6 +39,49 @@ def read_psv(path):
     with open(path, encoding="utf-8") as f:
         return list(csv.DictReader(f, delimiter="|"))
 
+# 60 Hz nuclear countries (all others in the DB are 50 Hz; Japan is mixed by zone)
+HZ60 = {"USA", "Canada", "Mexico", "Brazil", "South Korea", "Taiwan"}
+
+def series_identity(dbpath=None):
+    """design_series -> (plants, countries). The identity map every entity
+    check runs against — a correction sourced to a plant outside this list,
+    or a grid-dependent value inconsistent with these countries, is rejected.
+    Added 2026-07-22 after the SNUPPS collision (series=Sizewell B, but a
+    Wolf Creek-sourced 'correction' was accepted)."""
+    import sqlite3
+    db = sqlite3.connect(dbpath or os.path.join(HERE, "..", "nuclear_reactors.db"))
+    ident = {}
+    for s, p, c in db.execute(
+        "SELECT r.design_series, r.plant_name, co.name FROM reactors r "
+        "JOIN countries co ON r.country_id = co.id WHERE r.design_series IS NOT NULL"):
+        ident.setdefault(s, (set(), set()))
+        ident[s][0].add(p); ident[s][1].add(c)
+    return ident
+
+def entity_violations(updates, ident):
+    """Deterministic entity checks on proposed corrections."""
+    bad = []
+    for (series, field), val, src in updates:
+        plants, countries = ident.get(series, (set(), set()))
+        if field == "turbine_speed_rpm" and val.strip() in ("1500", "1800", "3000", "3600"):
+            rpm = int(val)
+            japan_mixed = countries == {"Japan"}
+            if not japan_mixed:
+                is60 = countries <= HZ60
+                is50 = not (countries & HZ60)
+                if is60 and rpm in (1500, 3000):
+                    bad.append(f"{series}/{field}={rpm}: 50Hz value but series countries {sorted(countries)} are 60Hz")
+                if is50 and rpm in (1800, 3600):
+                    bad.append(f"{series}/{field}={rpm}: 60Hz value but series countries {sorted(countries)} are 50Hz")
+        # source names a plant that is not a member of this series
+        for other_series, (op, oc) in ident.items():
+            if other_series == series: continue
+            for plant in op - plants:
+                if len(plant) > 5 and plant.lower() in src.lower():
+                    bad.append(f"{series}/{field}: source cites '{plant}' which belongs to series {other_series}, not {series}")
+                    break
+    return bad
+
 def main():
     problems, all_rows, batch_stats = [], [], {}
     inputs = sorted(glob.glob(os.path.join(HERE, "spec_inputs", "specs_*.psv")))
@@ -106,6 +149,19 @@ def main():
     updates = [r for r in all_rows if r["verdict"] == "WRONG"]
     nulls = [r for r in all_rows if r["verdict"] == "UNVERIFIABLE"
              or (r["verdict"] == "CONFIRMED" and r["confidence"] == "LOW")]
+    # Entity gate (2026-07-22): reject corrections that collide with the
+    # series' actual member plants / grid frequency
+    ident = series_identity()
+    viol = entity_violations(
+        [((r["design_series"], r["field"]), r["corrected_value"], r["source"]) for r in updates], ident)
+    if viol:
+        print("\n=== ENTITY-GATE REJECTIONS (excluded from draft; review manually) ===")
+        rejected_keys = set()
+        for v in viol:
+            print(" -", v)
+            rejected_keys.add(v.split("/")[0])
+        updates = [r for r in updates
+                   if not any(v.startswith(f"{r['design_series']}/{r['field']}") for v in viol)]
     blocked = [r for r in all_rows if r["verdict"] == "BLOCKED"]
     rerun = os.path.join(HERE, "spec_rerun_manifest.psv")
     with open(rerun, "w", newline="", encoding="utf-8") as f:

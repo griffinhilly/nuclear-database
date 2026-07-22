@@ -1,0 +1,111 @@
+design_series|field|verdict|corrected_value|confidence|source
+B&W Raised-Loop|coolant|CONFIRMED||MED|en.wikipedia.org Three Mile Island / Oconee Nuclear Station (Babcock & Wilcox PWR = light water coolant)
+B&W Raised-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|B&W plant pages retrieved (TMI, Oconee, Davis-Besse, Arkansas Nuclear One) do not state 15x15 lattice; WebSearch unavailable
+B&W Raised-Loop|fuel_type|CONFIRMED||MED|en.wikipedia.org Three Mile Island Nuclear Generating Station (UO2 fuel confirmed)
+B&W Raised-Loop|moderator|CONFIRMED||MED|en.wikipedia.org Three Mile Island / Oconee (PWR = light water moderator)
+B&W Raised-Loop|number_of_coolant_loops|CONFIRMED||MED|en.wikipedia.org Three Mile Island (2-loop B&W design)
+B&W Raised-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|retrieved B&W plant pages do not state 177-assembly count; WebSearch unavailable
+B&W Raised-Loop|number_of_steam_generators|CONFIRMED||MED|en.wikipedia.org Three Mile Island (2 once-through steam generators)
+BN-600|coolant|CONFIRMED||HIGH|en.wikipedia.org BN-600 reactor + world-nuclear.org Fast Neutron Reactors (liquid sodium)
+BN-600|core_diameter_m|CONFIRMED||MED|en.wikipedia.org BN-600 reactor (core dia 81 in = 2.057 m, rounds to 2.06)
+BN-600|enrichment_pct|CONFIRMED||HIGH|en.wikipedia.org BN-600 reactor (17-26% U-235)
+BN-600|fuel_type|CONFIRMED||HIGH|world-nuclear.org Fast Neutron Reactors (uranium oxide fuel, enriched 17/21/26%)
+BN-600|live_steam_pressure_bar|UNVERIFIABLE||LOW|retrieved BN-600 sources (Wikipedia, WNA) do not state live steam pressure; WebSearch unavailable
+BN-600|number_of_control_elements|CONFIRMED||HIGH|en.wikipedia.org BN-600 reactor (27 total: 19 shim, 2 auto, 6 emergency)
+BN-600|number_of_coolant_loops|CONFIRMED||HIGH|en.wikipedia.org BN-600 reactor (three independent circulation loops)
+BN-600|number_of_steam_generators|CONFIRMED||HIGH|en.wikipedia.org BN-600 reactor (three, one per loop)
+BN-600|outlet_temperature_c|CONFIRMED||HIGH|en.wikipedia.org BN-600 (550C max) + world-nuclear.org (525-550C outlet)
+BN-600|thermal_power_mwth|CONFIRMED||HIGH|world-nuclear.org Fast Neutron Reactors (1470 MWth)
+CNP-1000|core_height_m|UNVERIFIABLE||LOW|en.wikipedia.org CNP-1000 does not state core height; design not built; WebSearch unavailable
+CNP-1000|fuel_assembly_type|UNVERIFIABLE||LOW|en.wikipedia.org CNP-1000 does not state fuel lattice; WebSearch unavailable
+CNP-1000|number_of_coolant_loops|CONFIRMED||MED|en.wikipedia.org CNP-1000 (three-loop design)
+CNP-1000|number_of_fuel_assemblies|UNVERIFIABLE||LOW|en.wikipedia.org CNP-1000 does not state assembly count; WebSearch unavailable
+IPHWR|average_burnup_mwd_per_t|CONFIRMED||HIGH|en.wikipedia.org IPHWR-220 (avg fuel burnup 6700 MWd/ton)
+IPHWR|coolant|CONFIRMED||HIGH|en.wikipedia.org IPHWR-220 (primary coolant heavy water D2O)
+IPHWR|core_diameter_m|UNVERIFIABLE||LOW|en.wikipedia.org IPHWR-220 gives equivalent active-core diameter 4.51 m; DB 6.4 likely calandria-shell basis, cannot confirm
+IPHWR|core_height_m|CONFIRMED||MED|en.wikipedia.org IPHWR-220 (active core height 508.5 cm = 5.09 m ~ 5.0)
+IPHWR|enrichment_pct|CONFIRMED||HIGH|en.wikipedia.org IPHWR-220 (0.7% U-235, natural)
+IPHWR|fuel_assembly_type|CONFIRMED||HIGH|en.wikipedia.org IPHWR-220 (19 elements in 3 rings)
+IPHWR|fuel_type|CONFIRMED||HIGH|en.wikipedia.org IPHWR-220 (sintered natural UO2 pellets)
+IPHWR|inlet_temperature_c|CONFIRMED||HIGH|en.wikipedia.org IPHWR-220 (core inlet 249C)
+IPHWR|live_steam_pressure_bar|UNVERIFIABLE||LOW|en.wikipedia.org IPHWR-220 does not state secondary/live steam pressure; WebSearch unavailable
+IPHWR|low_pressure_sections|UNVERIFIABLE||LOW|retrieved source has no turbine LP-section data; WebSearch unavailable
+IPHWR|moderator|CONFIRMED||HIGH|en.wikipedia.org IPHWR-220 (moderator heavy water)
+IPHWR|number_of_control_elements|UNVERIFIABLE||LOW|en.wikipedia.org IPHWR-220 does not give control-rod count; WebSearch unavailable
+IPHWR|number_of_coolant_loops|UNVERIFIABLE||LOW|en.wikipedia.org IPHWR-220 does not state coolant loop count; WebSearch unavailable
+IPHWR|number_of_fuel_assemblies|CONFIRMED||MED|en.wikipedia.org IPHWR-220 (3672 total bundles = 306 fuel channels x 12; 306 = channel count)
+IPHWR|number_of_steam_generators|UNVERIFIABLE||LOW|en.wikipedia.org IPHWR-220 does not state SG/boiler count; WebSearch unavailable
+IPHWR|number_of_turbines|UNVERIFIABLE||LOW|retrieved source has no turbine count; WebSearch unavailable
+IPHWR|operating_pressure_bar|CONFIRMED||HIGH|en.wikipedia.org IPHWR-220 (87 kgf/cm2 gauge = 85.3 bar ~ 85.0)
+IPHWR|outlet_temperature_c|CONFIRMED||HIGH|en.wikipedia.org IPHWR-220 (core outlet 293.4C ~ 293.0)
+IPHWR|thermal_power_mwth|CONFIRMED||HIGH|en.wikipedia.org IPHWR-220 (754.5 MWth)
+IPHWR|turbine_speed_rpm|UNVERIFIABLE||LOW|retrieved source has no turbine speed; WebSearch unavailable
+KLT-40S|coolant|CONFIRMED||HIGH|en.wikipedia.org KLT-40 (pressurized water reactor, water coolant)
+KLT-40S|moderator|CONFIRMED||HIGH|en.wikipedia.org KLT-40 (water moderator, PWR)
+KLT-40S|thermal_power_mwth|CONFIRMED||HIGH|en.wikipedia.org KLT-40 (150 MW thermal)
+KNK|coolant|CONFIRMED||HIGH|world-nuclear.org Fast Neutron Reactors (KNK-II sodium coolant)
+KNK|fuel_type|UNVERIFIABLE||LOW|KNK Wikipedia (EN and DE) are stubs with no fuel data; WebSearch unavailable
+KNK|inlet_temperature_c|UNVERIFIABLE||LOW|KNK Wikipedia stubs have no temperature data; WebSearch unavailable
+KNK|number_of_coolant_loops|UNVERIFIABLE||LOW|KNK Wikipedia stubs have no loop data; WebSearch unavailable
+KNK|number_of_steam_generators|UNVERIFIABLE||LOW|KNK Wikipedia stubs have no SG data; WebSearch unavailable
+KNK|number_of_turbines|UNVERIFIABLE||LOW|KNK Wikipedia stubs have no turbine data; WebSearch unavailable
+KNK|outlet_temperature_c|UNVERIFIABLE||LOW|KNK Wikipedia stubs have no temperature data; WebSearch unavailable
+KNK|thermal_power_mwth|CONFIRMED||HIGH|world-nuclear.org Fast Neutron Reactors (KNK-II 58 MWth)
+KNK|turbine_speed_rpm|UNVERIFIABLE||LOW|KNK Wikipedia stubs have no turbine data; WebSearch unavailable
+MHI 3-Loop|coolant|CONFIRMED||HIGH|en.wikipedia.org Ikata Nuclear Power Plant (Mitsubishi PWR, light water coolant)
+MHI 3-Loop|moderator|CONFIRMED||HIGH|en.wikipedia.org Ikata Nuclear Power Plant (light water moderator)
+MHI 3-Loop|number_of_coolant_loops|CONFIRMED||HIGH|en.wikipedia.org Ikata (Unit 3 Mitsubishi 3-loop plant)
+MHI 3-Loop|number_of_steam_generators|CONFIRMED||MED|en.wikipedia.org Ikata (3-loop configuration = 3 steam generators)
+Monju|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|retrieved Monju sources (Wikipedia, WNA) do not state burnup; WebSearch unavailable
+Monju|coolant|CONFIRMED||HIGH|en.wikipedia.org Monju + world-nuclear.org (sodium-cooled)
+Monju|core_diameter_m|UNVERIFIABLE||LOW|retrieved Monju sources do not state core diameter; WebSearch unavailable
+Monju|core_height_m|UNVERIFIABLE||LOW|retrieved Monju sources do not state core height; WebSearch unavailable
+Monju|fuel_assembly_type|UNVERIFIABLE||LOW|retrieved Monju sources do not state assembly shape; WebSearch unavailable
+Monju|fuel_type|CONFIRMED||HIGH|en.wikipedia.org Monju + world-nuclear.org (MOX mixed U/Pu oxide)
+Monju|inlet_temperature_c|UNVERIFIABLE||LOW|retrieved Monju sources do not state inlet temperature; WebSearch unavailable
+Monju|low_pressure_sections|UNVERIFIABLE||LOW|retrieved Monju sources have no turbine LP-section data; WebSearch unavailable
+Monju|number_of_control_elements|UNVERIFIABLE||LOW|retrieved Monju sources do not state control-rod count; WebSearch unavailable
+Monju|number_of_coolant_loops|CONFIRMED||HIGH|en.wikipedia.org Monju (three primary coolant loops)
+Monju|number_of_fuel_assemblies|CONFIRMED||HIGH|world-nuclear.org Fast Neutron Reactors (198 MOX fuel assemblies)
+Monju|number_of_steam_generators|UNVERIFIABLE||LOW|retrieved Monju sources do not state SG count; WebSearch unavailable
+Monju|number_of_turbines|UNVERIFIABLE||LOW|retrieved Monju sources do not state turbine count; WebSearch unavailable
+Monju|outlet_temperature_c|UNVERIFIABLE||LOW|retrieved Monju sources do not state outlet temperature; WebSearch unavailable
+Monju|thermal_power_mwth|CONFIRMED||HIGH|en.wikipedia.org Monju + world-nuclear.org (714 MWth)
+Pre-Konvoi|coolant|CONFIRMED||HIGH|en.wikipedia.org Grafenrheinfeld (Vor-Konvoi PWR, light water coolant)
+Pre-Konvoi|moderator|CONFIRMED||HIGH|en.wikipedia.org Grafenrheinfeld (PWR, light water moderator)
+VVER-1000/320|coolant|CONFIRMED||HIGH|en.wikipedia.org VVER (water serves as coolant and moderator)
+VVER-1000/320|enrichment_pct|CONFIRMED||MED|en.wikipedia.org VVER (VVER-1000 ~4.26% avg U-235, within 3.3-4.4 range)
+VVER-1000/320|fuel_assembly_type|CONFIRMED||HIGH|en.wikipedia.org VVER (hexagonal fuel assemblies)
+VVER-1000/320|live_steam_pressure_bar|CONFIRMED||HIGH|en.wikipedia.org VVER (60.0 bar live steam pressure before turbine)
+VVER-1000/320|moderator|CONFIRMED||HIGH|en.wikipedia.org VVER (water serves as moderator)
+VVER-1000/320|number_of_control_elements|UNVERIFIABLE||LOW|en.wikipedia.org VVER does not give VVER-1000 control-rod count; WebSearch unavailable
+VVER-1000/320|number_of_coolant_loops|CONFIRMED||HIGH|en.wikipedia.org VVER (VVER-1000 four-loop system)
+VVER-1000/320|number_of_fuel_assemblies|CONFIRMED||HIGH|en.wikipedia.org VVER (163 hexagonal assemblies)
+VVER-1000/320|number_of_steam_generators|CONFIRMED||HIGH|en.wikipedia.org VVER (four steam generators, one per loop)
+VVER-1000/320|number_of_turbines|UNVERIFIABLE||LOW|retrieved VVER source does not state turbine count; WebSearch unavailable
+VVER-1000/320|operating_pressure_bar|CONFIRMED||MED|en.wikipedia.org VVER (primary ~160 bar; 157 bar = 15.7 MPa nominal, rounding basis)
+VVER-1000/320|outlet_temperature_c|CONFIRMED||MED|en.wikipedia.org VVER (core outlet 319C ~ 320)
+VVER-1000/320|thermal_power_mwth|CONFIRMED||HIGH|en.wikipedia.org VVER (VVER-1000 3000 MWth)
+VVER-1200/509|coolant|CONFIRMED||HIGH|en.wikipedia.org VVER (water coolant and moderator)
+VVER-1200/509|core_height_m|UNVERIFIABLE||LOW|no reliable retrieved figure for V-509 core height; WebSearch unavailable
+VVER-1200/509|enrichment_pct|UNVERIFIABLE||LOW|no reliable retrieved figure for V-509 enrichment; WebSearch unavailable
+VVER-1200/509|fuel_assembly_type|CONFIRMED||HIGH|en.wikipedia.org VVER (hexagonal fuel assemblies)
+VVER-1200/509|fuel_type|UNVERIFIABLE||LOW|retrieved VVER source does not explicitly state UO2 for VVER-1200; WebSearch unavailable
+VVER-1200/509|inlet_temperature_c|UNVERIFIABLE||LOW|no reliable retrieved figure for V-509 inlet temp; WebSearch unavailable
+VVER-1200/509|live_steam_pressure_bar|UNVERIFIABLE||LOW|no reliable retrieved figure for V-509 live steam pressure; WebSearch unavailable
+VVER-1200/509|moderator|CONFIRMED||HIGH|en.wikipedia.org VVER (water moderator)
+VVER-1200/509|number_of_control_elements|UNVERIFIABLE||LOW|no retrieved figure for V-509 control-rod count; WebSearch unavailable
+VVER-1200/509|number_of_coolant_loops|CONFIRMED||MED|en.wikipedia.org VVER (VVER-1200 four-loop, evolution of VVER-1000)
+VVER-1200/509|number_of_fuel_assemblies|CONFIRMED||MED|en.wikipedia.org VVER (163 hexagonal assemblies)
+VVER-1200/509|number_of_steam_generators|CONFIRMED||MED|en.wikipedia.org VVER (4-loop = 4 horizontal steam generators)
+VVER-1200/509|number_of_turbines|UNVERIFIABLE||LOW|no retrieved figure for V-509 turbine count; WebSearch unavailable
+VVER-1200/509|operating_pressure_bar|UNVERIFIABLE||LOW|no reliable retrieved figure confirming 162 bar for V-509 (fetch cited ~165 as model estimate); WebSearch unavailable
+VVER-1200/509|outlet_temperature_c|UNVERIFIABLE||LOW|no reliable retrieved figure for V-509 outlet temp; WebSearch unavailable
+VVER-1200/509|thermal_power_mwth|UNVERIFIABLE||LOW|no reliable retrieved thermal-power figure for V-509 (fetch estimate ~3212 flagged approximate); WebSearch unavailable
+VVER-1200/509|turbine_speed_rpm|UNVERIFIABLE||LOW|no retrieved figure for V-509 turbine speed; WebSearch unavailable
+W 3-Loop|coolant|CONFIRMED||MED|en.wikipedia.org Surry Nuclear Power Plant (Westinghouse 3-loop PWR, light water)
+W 3-Loop|fuel_type|UNVERIFIABLE||LOW|en.wikipedia.org Surry does not explicitly state UO2 fuel; WebSearch unavailable
+W 3-Loop|moderator|CONFIRMED||MED|en.wikipedia.org Surry (Westinghouse PWR, light water moderator)
+W 3-Loop|number_of_coolant_loops|CONFIRMED||HIGH|en.wikipedia.org Surry (3-loop Westinghouse PWR)
+W 3-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|en.wikipedia.org Surry does not state 157-assembly count; WebSearch unavailable
+W 3-Loop|number_of_steam_generators|CONFIRMED||MED|en.wikipedia.org Surry (3-loop = 3 steam generators)

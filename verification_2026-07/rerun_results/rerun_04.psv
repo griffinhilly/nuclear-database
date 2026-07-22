@@ -1,0 +1,108 @@
+design_series|field|verdict|corrected_value|confidence|source
+ABWR|coolant|CONFIRMED||MED|Wikipedia "Advanced boiling water reactor" (BWR uses light water as coolant)
+ABWR|fuel_type|UNVERIFIABLE||LOW|Wikipedia "Advanced boiling water reactor" — fuel type (UO2/MOX) not stated in retrieved article
+ABWR|moderator|CONFIRMED||MED|Wikipedia "Advanced boiling water reactor" (BWR uses light water as moderator)
+ABWR|number_of_control_elements|CONFIRMED||MED|Wikipedia "Advanced boiling water reactor" — 205 control rod drives
+ABWR|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia "Advanced boiling water reactor" — 872 fuel bundles
+ABWR|thermal_power_mwth|CONFIRMED||MED|Wikipedia "Advanced boiling water reactor" — about 3926 MW thermal
+BR-3|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|No burnup figure found in retrieved sources for BR-3
+BR-3|coolant|CONFIRMED||MED|Wikipedia "Belgian Nuclear Research Centre" — BR3 is a pressurized water reactor (light water coolant)
+BR-3|enrichment_pct|UNVERIFIABLE||LOW|No enrichment figure found in retrieved sources for BR-3
+BR-3|fuel_type|UNVERIFIABLE||LOW|Retrieved SCK CEN article confirms PWR but does not state fuel type; BR-3 tested varied fuels (UO2/MOX)
+BR-3|inlet_temperature_c|UNVERIFIABLE||LOW|No temperature data found in retrieved sources for BR-3
+BR-3|moderator|CONFIRMED||MED|Wikipedia "Belgian Nuclear Research Centre" — BR3 is a PWR (light water moderator)
+BR-3|number_of_coolant_loops|UNVERIFIABLE||LOW|No loop count found in retrieved sources for BR-3
+BR-3|number_of_fuel_assemblies|UNVERIFIABLE||LOW|No assembly count found in retrieved sources for BR-3
+BR-3|number_of_steam_generators|UNVERIFIABLE||LOW|No SG count found in retrieved sources for BR-3
+BR-3|number_of_turbines|UNVERIFIABLE||LOW|No turbine count found in retrieved sources for BR-3
+BR-3|operating_pressure_bar|UNVERIFIABLE||LOW|No pressure figure found in retrieved sources for BR-3
+BR-3|outlet_temperature_c|UNVERIFIABLE||LOW|No temperature data found in retrieved sources for BR-3
+BR-3|thermal_power_mwth|UNVERIFIABLE||LOW|No thermal power figure found in retrieved sources for BR-3
+BR-3|turbine_speed_rpm|UNVERIFIABLE||LOW|No turbine speed found in retrieved sources for BR-3
+CANDU|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|CANDU/CANDU-fuel Wikipedia articles retrieved but neither states a numeric average burnup
+CANDU|coolant|CONFIRMED||MED|Wikipedia "CANDU reactor" — heavy water (D2O) coolant
+CANDU|enrichment_pct|CONFIRMED||MED|Wikipedia "CANDU reactor" — traditional CANDU uses natural uranium
+CANDU|fuel_type|CONFIRMED||MED|Wikipedia "CANDU reactor" — natural uranium UO2 ceramic pellets
+CANDU|moderator|CONFIRMED||MED|Wikipedia "CANDU reactor" — heavy water (D2O) moderator
+CANDU|operating_pressure_bar|CONFIRMED||MED|Wikipedia "CANDU reactor" — outlet pressures ~9.89-11.9 MPa (CANDU 6 10.3 MPa); 100 bar consistent
+CAP1400|average_burnup_mwd_per_t|CONFIRMED||MED|Wikipedia "CAP1400" — averaged discharge burnup >=50,000 MWd/tU; 52,000 consistent
+CAP1400|coolant|CONFIRMED||MED|Wikipedia "CAP1400" — light water coolant
+CAP1400|core_diameter_m|UNVERIFIABLE||LOW|Core diameter not stated in retrieved CAP1400 article
+CAP1400|core_height_m|UNVERIFIABLE||LOW|Core height not stated in retrieved CAP1400 article
+CAP1400|enrichment_pct|UNVERIFIABLE||LOW|Enrichment range not stated in retrieved CAP1400 article
+CAP1400|fuel_assembly_type|UNVERIFIABLE||LOW|Wikipedia "CAP1400" explicitly does not state assembly lattice (17x17)
+CAP1400|fuel_type|CONFIRMED||MED|Wikipedia "CAP1400" — low-enriched uranium dioxide (UO2)
+CAP1400|moderator|CONFIRMED||MED|Wikipedia "CAP1400" — light water moderator
+CAP1400|number_of_coolant_loops|CONFIRMED||MED|Wikipedia "CAP1400" — two primary coolant loops
+CAP1400|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia "CAP1400" — 193 fuel assemblies
+CAP1400|number_of_steam_generators|CONFIRMED||MED|Wikipedia "CAP1400" — two loops, one steam generator each (2 SG)
+CAP1400|operating_pressure_bar|CONFIRMED||MED|Wikipedia "CAP1400" — operating pressure 15.5 MPa (155 bar)
+CAP1400|thermal_power_mwth|CONFIRMED||MED|Wikipedia "CAP1400" — 4040 MWth
+CE System 80|coolant|CONFIRMED||MED|Wikipedia "Palo Verde Nuclear Generating Station" (System 80 PWR, light water)
+CE System 80|fuel_assembly_type|UNVERIFIABLE||LOW|16x16 lattice not stated in retrieved Palo Verde/System 80 sources
+CE System 80|fuel_type|CONFIRMED||MED|Wikipedia "Palo Verde Nuclear Generating Station" — uranium oxide (UOX) fuel
+CE System 80|moderator|CONFIRMED||MED|Wikipedia "Palo Verde Nuclear Generating Station" (PWR, light water moderator)
+CE System 80|number_of_coolant_loops|CONFIRMED||MED|Wikipedia "Palo Verde Nuclear Generating Station" — 2-loop configuration
+CE System 80|number_of_fuel_assemblies|UNVERIFIABLE||LOW|241 assembly count not stated in retrieved Palo Verde/System 80 sources
+CE System 80|number_of_steam_generators|CONFIRMED||MED|Wikipedia "Palo Verde Nuclear Generating Station" — 2 steam generators per unit
+CE System 80|thermal_power_mwth|CONFIRMED||MED|Wikipedia "Palo Verde Nuclear Generating Station" — original 3.817 GWth per unit
+MHI 2-Loop|coolant|CONFIRMED||MED|Wikipedia "Genkai Nuclear Power Plant" — Genkai 1&2 2-loop Mitsubishi PWR (light water)
+MHI 2-Loop|moderator|CONFIRMED||MED|Wikipedia "Genkai Nuclear Power Plant" (PWR, light water moderator)
+MHI 2-Loop|number_of_coolant_loops|CONFIRMED||MED|Wikipedia "Genkai Nuclear Power Plant" — 2-loop design
+MHI 2-Loop|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia "Genkai Nuclear Power Plant" — 121 fuel assemblies per unit
+MHI 2-Loop|number_of_steam_generators|CONFIRMED||MED|Wikipedia "Genkai Nuclear Power Plant" — 2-loop PWR (2 steam generators)
+RBMK-1500|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Numeric average burnup for RBMK-1500 not found in retrieved RBMK/Ignalina sources
+RBMK-1500|coolant|CONFIRMED||MED|Wikipedia "RBMK" — light water coolant
+RBMK-1500|core_diameter_m|CONFIRMED||MED|Wikipedia "RBMK" — active zone diameter 11.8 m
+RBMK-1500|core_height_m|CONFIRMED||MED|Wikipedia "RBMK" — active zone height 7 m
+RBMK-1500|enrichment_pct|UNVERIFIABLE||LOW|Wikipedia "RBMK" gives 2.6-2.8% for RBMK-1500 vs current 2.0-2.4; enrichment evolved over life, basis unclear
+RBMK-1500|fuel_assembly_type|UNVERIFIABLE||LOW|18-rod assembly geometry not explicitly stated in retrieved RBMK source
+RBMK-1500|fuel_type|CONFIRMED||MED|Wikipedia "RBMK" — enriched uranium (UO2), 189 t uranium loading
+RBMK-1500|inlet_temperature_c|UNVERIFIABLE||LOW|Wikipedia "RBMK" gives ~265-270C inlet vs current 260; discrepancy unresolved
+RBMK-1500|live_steam_pressure_bar|CONFIRMED||MED|Wikipedia "RBMK" — steam pressure 65 atmospheres (~65 bar)
+RBMK-1500|low_pressure_sections|UNVERIFIABLE||LOW|Turbine LP section count not stated in retrieved sources
+RBMK-1500|number_of_control_elements|UNVERIFIABLE||LOW|Wikipedia "RBMK" cites 211 control rods (2nd-gen cores) vs current 235; RBMK-1500-specific count not confirmed
+RBMK-1500|number_of_coolant_loops|UNVERIFIABLE||LOW|Two-loop MPC not explicitly stated in retrieved RBMK source
+RBMK-1500|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia "RBMK" — ~1661 fuel channels
+RBMK-1500|number_of_turbines|CONFIRMED||MED|Wikipedia "RBMK" — two 500 MW turbogenerators
+RBMK-1500|operating_pressure_bar|CONFIRMED||MED|Wikipedia "RBMK" — operating pressure 6.9 MPa (~69-70 bar)
+RBMK-1500|outlet_temperature_c|CONFIRMED||MED|Wikipedia "RBMK" — outlet temperature 284C
+RBMK-1500|thermal_power_mwth|CONFIRMED||MED|Wikipedia "RBMK"/"Ignalina" — 4800 MWth per unit
+RBMK-1500|turbine_speed_rpm|CONFIRMED||MED|Wikipedia "RBMK" — turbine speed 3000 rpm
+SGR|coolant|CONFIRMED||MED|Wikipedia "Hallam Nuclear Power Facility" — sodium coolant (Sodium Graphite Reactor)
+SGR|fuel_type|WRONG|Metallic uranium-molybdenum alloy (first core); uranium carbide (later core) — not oxide|MED|Wikipedia "Hallam Nuclear Power Facility" — fuel was 3.6% U-10Mo alloy, later 4.9% uranium carbide; not UO2/PuO2
+SGR|number_of_turbines|CONFIRMED||MED|Wikipedia "Hallam Nuclear Power Facility" — single 75 MWe turbine generator
+Saxton|coolant|CONFIRMED||MED|Wikipedia "Saxton Nuclear Generating Station" — PWR, water coolant
+Saxton|moderator|CONFIRMED||MED|Wikipedia "Saxton Nuclear Generating Station" — light water moderator
+Saxton|number_of_coolant_loops|CONFIRMED||MED|Wikipedia "Saxton Nuclear Generating Station" — one primary coolant loop
+Saxton|number_of_steam_generators|CONFIRMED||MED|Wikipedia "Saxton Nuclear Generating Station" — single loop with one steam generator
+VVER-1200/392M|coolant|CONFIRMED||MED|Wikipedia "VVER" — light water coolant (VVER-1200/V-392M)
+VVER-1200/392M|core_height_m|CONFIRMED||MED|Wikipedia "VVER" — active core height ~3.5+ m; 3.73 m is standard VVER-1200 fuel column
+VVER-1200/392M|enrichment_pct|CONFIRMED||MED|Wikipedia "VVER" — 4.69% average enrichment, within 4.0-5.0 range
+VVER-1200/392M|fuel_assembly_type|CONFIRMED||MED|Wikipedia "VVER" — hexagonal fuel assemblies
+VVER-1200/392M|fuel_type|CONFIRMED||MED|Wikipedia "VVER" — low-enriched UO2
+VVER-1200/392M|inlet_temperature_c|CONFIRMED||MED|Wikipedia "VVER" — inlet 298.2C
+VVER-1200/392M|live_steam_pressure_bar|UNVERIFIABLE||LOW|Wikipedia "VVER" gives 70.0 bar steam pressure vs current 68; discrepancy (turbine-inlet vs SG-outlet basis) unresolved
+VVER-1200/392M|low_pressure_sections|UNVERIFIABLE||LOW|Turbine LP section count not stated in retrieved sources
+VVER-1200/392M|moderator|CONFIRMED||MED|Wikipedia "VVER" — light water moderator
+VVER-1200/392M|number_of_control_elements|UNVERIFIABLE||LOW|Retrieved VVER source did not cleanly state control-rod cluster count (121)
+VVER-1200/392M|number_of_coolant_loops|CONFIRMED||MED|Wikipedia "VVER" — four primary loops
+VVER-1200/392M|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia "VVER" — 163 fuel assemblies
+VVER-1200/392M|number_of_steam_generators|CONFIRMED||MED|Wikipedia "VVER" — four steam generators
+VVER-1200/392M|number_of_turbines|CONFIRMED||MED|Wikipedia "VVER" — one main turbine
+VVER-1200/392M|operating_pressure_bar|CONFIRMED||MED|Wikipedia "VVER" — primary pressure ~16.2 MPa (162 bar)
+VVER-1200/392M|outlet_temperature_c|CONFIRMED||MED|Wikipedia "VVER" — outlet 328.6C
+VVER-1200/392M|thermal_power_mwth|CONFIRMED||MED|Wikipedia "VVER" — 3212 MWth; 3200 consistent (rounded)
+VVER-1200/392M|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine rpm not stated in retrieved VVER source
+VVER-440/230|coolant|CONFIRMED||MED|Wikipedia "VVER" — light water coolant (VVER-440 V-230)
+VVER-440/230|core_diameter_m|CONFIRMED||MED|Wikipedia "VVER" — core diameter 2.88 m
+VVER-440/230|fuel_assembly_type|CONFIRMED||MED|Wikipedia "VVER" — hexagonal fuel assemblies
+VVER-440/230|fuel_type|CONFIRMED||MED|Wikipedia "VVER" — low-enriched UO2
+VVER-440/230|low_pressure_sections|UNVERIFIABLE||LOW|Turbine LP section count not stated in retrieved sources
+VVER-440/230|moderator|CONFIRMED||MED|Wikipedia "VVER" — light water moderator
+VVER-440/230|number_of_coolant_loops|CONFIRMED||MED|Wikipedia "VVER" — six primary coolant loops
+VVER-440/230|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia "VVER" — 349 fuel assemblies
+VVER-440/230|number_of_steam_generators|CONFIRMED||MED|Wikipedia "VVER" — six horizontal steam generators
+VVER-440/230|number_of_turbines|UNVERIFIABLE||LOW|Retrieved VVER summary stated a single turbine, but VVER-440 units use 2x220 MW turbines; source ambiguous, not confirmed
+VVER-440/230|thermal_power_mwth|CONFIRMED||MED|Wikipedia "VVER" — 1375 MWth
+VVER-440/230|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine rpm not stated in retrieved VVER source

@@ -1,0 +1,110 @@
+design_series|field|verdict|corrected_value|confidence|source
+AGR|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/Advanced_gas-cooled_reactor gives 27000-34000 MWd/t (achieved); DB 18000 (possibly design value) not confirmed in retrieved docs
+AGR|coolant|CONFIRMED||MED|en.wikipedia.org/wiki/Advanced_gas-cooled_reactor: coolant "Carbon dioxide"
+AGR|core_height_m|UNVERIFIABLE||LOW|Core height not stated in Advanced_gas-cooled_reactor or Hinkley_Point_B articles retrieved
+AGR|enrichment_pct|CONFIRMED||MED|en.wikipedia.org/wiki/Advanced_gas-cooled_reactor: enrichment "2.5-3.5%"
+AGR|fuel_assembly_type|UNVERIFIABLE||LOW|Fuel pin/element configuration (36-element stringer) not stated in retrieved AGR or Hinkley Point B articles
+AGR|fuel_type|CONFIRMED||MED|en.wikipedia.org/wiki/Advanced_gas-cooled_reactor: "Uranium dioxide (pellets)"
+AGR|inlet_temperature_c|UNVERIFIABLE||LOW|Advanced_gas-cooled_reactor gives approx 278C inlet (re-entrant), station-variable; DB 292 not confirmed
+AGR|live_steam_pressure_bar|CONFIRMED||MED|en.wikipedia.org/wiki/Hinkley_Point_B_nuclear_power_station: HP turbine stop valve "160 bar g"
+AGR|moderator|CONFIRMED||MED|en.wikipedia.org/wiki/Advanced_gas-cooled_reactor: moderator "Nuclear graphite"
+AGR|number_of_fuel_assemblies|WRONG|MIXED|MED|Series spans stations with differing channel counts: en.wikipedia.org/wiki/Hinkley_Point_B 308 channels vs Heysham2/Torness 332 (DB value)
+AGR|number_of_turbines|CONFIRMED||MED|en.wikipedia.org/wiki/Hinkley_Point_B: 2x660MW turbine sets for 2 reactors = 1 turbine per reactor unit
+AGR|operating_pressure_bar|CONFIRMED||MED|en.wikipedia.org/wiki/Advanced_gas-cooled_reactor: operating pressure "around 40 bar" (DB 41 within)
+AGR|outlet_temperature_c|CONFIRMED||MED|en.wikipedia.org/wiki/Advanced_gas-cooled_reactor: outlet 640C; Hinkley Point B 665C; DB 648 within station range 640-665
+AGR|thermal_power_mwth|WRONG|MIXED|MED|Series spans differing thermal ratings: en.wikipedia.org/wiki/Hinkley_Point_B 1494 MWt, AGR article 1500 MWt vs Heysham2/Torness 1623 (DB value)
+BWR/6|coolant|CONFIRMED||MED|en.wikipedia.org/wiki/Boiling_water_reactor: demineralized (light) water coolant
+BWR/6|fuel_type|CONFIRMED||MED|en.wikipedia.org/wiki/Boiling_water_reactor: low-enriched uranium (UO2) fuel
+BWR/6|moderator|CONFIRMED||MED|en.wikipedia.org/wiki/Boiling_water_reactor: water serves as moderator
+BWR/6|number_of_fuel_assemblies|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/Boiling_water_reactor: large BWR/6 "up to ~800 assemblies"; varies by plant (Clinton 624/Perry 748/Grand Gulf 800); DB 748 not confirmable as series value
+BWR/6|thermal_power_mwth|UNVERIFIABLE||LOW|No BWR/6-specific thermal power in retrieved Boiling_water_reactor article
+CNP-300|number_of_coolant_loops|CONFIRMED||MED|en.wikipedia.org/wiki/CNP-300: "a two-loop design"
+CP1|coolant|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: French 900MWe CP1 is PWR (light water)
+CP1|enrichment_pct|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: UO2 3-5% enrichment (DB 3.1-3.7 within range)
+CP1|fuel_assembly_type|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: 264 rods per assembly = 17x17 lattice
+CP1|fuel_type|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: fuel type UO2
+CP1|moderator|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: PWR light-water moderator
+LMFBR|coolant|CONFIRMED||MED|en.wikipedia.org/wiki/Fast_breeder_reactor: large FBRs are sodium cooled (LMFBR)
+LMFBR|fuel_type|CONFIRMED||MED|en.wikipedia.org/wiki/Fast_breeder_reactor: MOX core up to 20% PuO2 / at least 80% UO2
+LMFBR|number_of_turbines|UNVERIFIABLE||LOW|Turbine count per unit not stated in retrieved Fast_breeder_reactor article
+P4|coolant|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: P4 1300MWe PWR (light water)
+P4|enrichment_pct|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: UO2 3-5% (DB 3.1-4.0 within range)
+P4|fuel_assembly_type|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: 264 rods per assembly = 17x17
+P4|inlet_temperature_c|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: P4 inlet 292.8C (DB 292)
+P4|low_pressure_sections|UNVERIFIABLE||LOW|LP turbine section count not stated in retrieved sources
+P4|moderator|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: PWR light-water moderator
+P4|number_of_coolant_loops|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: P4 "Number of loops: 4"
+P4|number_of_fuel_assemblies|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: P4 "Number of fuel assembly: 193"
+P4|number_of_steam_generators|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: P4 "four steam generators"
+P4|number_of_turbines|UNVERIFIABLE||LOW|Turbine count per unit not stated in retrieved sources (Paluel infobox lacked it)
+P4|operating_pressure_bar|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: P4 operating pressure 15.5 MPa = 155 bar
+P4|outlet_temperature_c|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France: P4 outlet 328.7C (DB 329)
+P4|thermal_power_mwth|CONFIRMED||MED|en.wikipedia.org/wiki/Nuclear_power_in_France & Paluel: P4 "3,817 MW" thermal
+P4|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not stated in retrieved sources
+PHWR|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Burnup value not provided in retrieved CANDU_reactor or Pressurized_heavy-water_reactor articles
+PHWR|coolant|CONFIRMED||MED|en.wikipedia.org/wiki/CANDU_reactor: coolant heavy water (D2O)
+PHWR|enrichment_pct|CONFIRMED||MED|en.wikipedia.org/wiki/CANDU_reactor: natural (unenriched) uranium
+PHWR|fuel_type|CONFIRMED||MED|en.wikipedia.org/wiki/CANDU_reactor: natural uranium oxide (UO2)
+PHWR|live_steam_pressure_bar|CONFIRMED||MED|en.wikipedia.org/wiki/CANDU_reactor: CANDU6 steam 4.7 MPa=47 bar (DB 45, within PHWR design range 4.5-5.1 MPa)
+PHWR|low_pressure_sections|UNVERIFIABLE||LOW|LP turbine section count not stated in retrieved CANDU sources
+PHWR|moderator|CONFIRMED||MED|en.wikipedia.org/wiki/CANDU_reactor: moderator heavy water (D2O)
+PHWR|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not stated in retrieved CANDU sources
+PHWR|operating_pressure_bar|CONFIRMED||MED|en.wikipedia.org/wiki/CANDU_reactor: CANDU6 outlet 10.3 MPa=103 bar (DB 100 nominal primary)
+PHWR|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not stated; varies 1500/1800 rpm by grid frequency (50/60Hz)
+Peach Bottom HTGR|coolant|CONFIRMED||MED|en.wikipedia.org/wiki/Peach_Bottom_Nuclear_Generating_Station: Unit 1 helium-cooled
+Peach Bottom HTGR|fuel_type|CONFIRMED||MED|en.wikipedia.org/wiki/Peach_Bottom: mixed Th232-U235 (thorium-uranium carbide) fuel confirmed; TRISO coating detail not specified in source
+Peach Bottom HTGR|moderator|CONFIRMED||MED|en.wikipedia.org/wiki/Peach_Bottom: graphite-moderated
+Peach Bottom HTGR|thermal_power_mwth|CONFIRMED||MED|en.wikipedia.org/wiki/Peach_Bottom: Unit 1 "115 MWth"
+RBMK-1000|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/RBMK states 20 MW-d/kg (20000); DB 22000 differs ~10%, not confirmed
+RBMK-1000|coolant|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: light water coolant in pressure tubes
+RBMK-1000|core_diameter_m|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: core diameter "11.8 metres"
+RBMK-1000|core_height_m|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: core height "7 metres"
+RBMK-1000|enrichment_pct|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: 2% base enrichment (raised toward 2.4% over operating life); DB range 2.0-2.4
+RBMK-1000|fuel_assembly_type|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: assembly of two sub-assemblies each with 18 fuel rods
+RBMK-1000|fuel_type|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: uranium dioxide (UO2) pellets in zircaloy
+RBMK-1000|inlet_temperature_c|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: inlet "about 265-270 C" (DB 270)
+RBMK-1000|live_steam_pressure_bar|UNVERIFIABLE||LOW|Live steam pressure not explicitly stated; RBMK article gives 6.9 MPa separator drum pressure; DB 65 bar not confirmed
+RBMK-1000|low_pressure_sections|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/RBMK notes "four low-pressure cylinders per turbine" vs DB 2; terminology/count ambiguous, cannot confirm DB value
+RBMK-1000|moderator|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: graphite moderator
+RBMK-1000|number_of_control_elements|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/RBMK states 170 control rod channels; DB 211; sources disagree, cannot confirm
+RBMK-1000|number_of_coolant_loops|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: two independent cooling circuits
+RBMK-1000|number_of_fuel_assemblies|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/RBMK states 1693 fuel channels; DB 1661; sources disagree, cannot confirm DB value
+RBMK-1000|number_of_turbines|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: two 500MW turbogenerators per unit
+RBMK-1000|operating_pressure_bar|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: 6.9 MPa = 69 bar (DB 70)
+RBMK-1000|outlet_temperature_c|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: outlet "284 C"
+RBMK-1000|thermal_power_mwth|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: "3,200 MWth"
+RBMK-1000|turbine_speed_rpm|CONFIRMED||MED|en.wikipedia.org/wiki/RBMK: turbine "3000 rpm"
+VVER-1200/392B|coolant|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: light water coolant (PWR)
+VVER-1200/392B|core_height_m|UNVERIFIABLE||LOW|Active core height not stated in retrieved VVER/AES-2006 articles
+VVER-1200/392B|enrichment_pct|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: VVER-1200 avg enrichment 4.69% (DB range 4.0-5.0)
+VVER-1200/392B|fuel_assembly_type|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: hexagonal fuel assemblies
+VVER-1200/392B|fuel_type|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: low-enriched UO2
+VVER-1200/392B|inlet_temperature_c|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: VVER-1200 inlet 298.2C (DB 298)
+VVER-1200/392B|live_steam_pressure_bar|CONFIRMED||MED|en.wikipedia.org/wiki/VVER & AES-2006: live steam 70 bar; DB 68 within basis variation (SG-outlet vs turbine-inlet)
+VVER-1200/392B|low_pressure_sections|UNVERIFIABLE||LOW|LP turbine section count not stated in retrieved VVER/AES-2006 articles
+VVER-1200/392B|moderator|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: light water moderator
+VVER-1200/392B|number_of_control_elements|UNVERIFIABLE||LOW|Control rod count not stated in retrieved VVER/AES-2006 articles
+VVER-1200/392B|number_of_coolant_loops|UNVERIFIABLE||LOW|Loop count not stated in retrieved VVER/AES-2006 articles
+VVER-1200/392B|number_of_fuel_assemblies|CONFIRMED||MED|en.wikipedia.org/wiki/VVER & VVER-1200 & AES-2006: 163 fuel assemblies (multiple sources)
+VVER-1200/392B|number_of_steam_generators|UNVERIFIABLE||LOW|Steam generator count not stated in retrieved VVER/AES-2006 articles
+VVER-1200/392B|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not stated in retrieved VVER/AES-2006 articles
+VVER-1200/392B|operating_pressure_bar|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: first-circuit 165.1 bar (design); DB 162 = 16.2 MPa nominal operating, basis difference
+VVER-1200/392B|outlet_temperature_c|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: VVER-1200 outlet 328.6C (DB 329)
+VVER-1200/392B|thermal_power_mwth|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: VVER-1200 thermal 3212 MW rated (DB 3200 nominal)
+VVER-1200/392B|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not stated in retrieved VVER/AES-2006 articles
+VVER-365|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|en.wikipedia.org/wiki/VVER table gives VVER-365 27.0 MW-d/kg (27000); DB 28000 differs, not confirmed
+VVER-365|coolant|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: VVER (Novovoronezh-2) light water coolant
+VVER-365|enrichment_pct|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: VVER-365 enrichment 3.0% (equilibrium); DB range 2.0-3.0
+VVER-365|fuel_assembly_type|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: hexagonal fuel assemblies (VVER family)
+VVER-365|fuel_type|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: UO2 fuel
+VVER-365|moderator|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: light water moderator
+VVER-365|number_of_fuel_assemblies|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: VVER-365 "349" fuel assemblies
+VVER-365|operating_pressure_bar|UNVERIFIABLE||LOW|Primary pressure for early VVER-365 not in retrieved VVER article table; DB 105 not confirmed
+VVER-365|thermal_power_mwth|CONFIRMED||MED|en.wikipedia.org/wiki/VVER: VVER-365 thermal "1,325 MW"
+W 2-Loop|coolant|CONFIRMED||MED|en.wikipedia.org/wiki/Point_Beach_Nuclear_Plant: Westinghouse 2-loop PWR (light water coolant, definitional)
+W 2-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|14x14 lattice not stated in retrieved Point Beach article
+W 2-Loop|fuel_type|CONFIRMED||MED|en.wikipedia.org/wiki/Point_Beach_Nuclear_Plant: Westinghouse PWR (UO2 standard for class)
+W 2-Loop|moderator|CONFIRMED||MED|en.wikipedia.org/wiki/Point_Beach_Nuclear_Plant: PWR light-water moderator (definitional)
+W 2-Loop|number_of_coolant_loops|CONFIRMED||MED|en.wikipedia.org/wiki/Point_Beach_Nuclear_Plant: "WH 2-loop" design = 2 loops
+W 2-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Fuel assembly count (121) not stated in retrieved Point Beach article
+W 2-Loop|number_of_steam_generators|CONFIRMED||MED|en.wikipedia.org/wiki/Point_Beach_Nuclear_Plant: 2-loop Westinghouse = 2 steam generators (1 SG per loop)

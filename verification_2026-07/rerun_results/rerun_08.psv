@@ -1,0 +1,110 @@
+design_series|field|verdict|corrected_value|confidence|source
+AMB-100|coolant|CONFIRMED||MED|Wikipedia Beloyarsk NPP: AMB-100 described as graphite-moderated boiling water reactor (light water coolant)
+AMB-100|enrichment_pct|CONFIRMED||MED|Wikipedia Beloyarsk NPP: fuel enrichment 1.8%
+AMB-100|fuel_type|UNVERIFIABLE||LOW|Not stated in retrieved Wikipedia Beloyarsk NPP article; UO2 not confirmed this session
+AMB-100|moderator|CONFIRMED||MED|Wikipedia Beloyarsk NPP: graphite-moderated
+AMB-100|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not stated in retrieved sources
+AMB-100|thermal_power_mwth|CONFIRMED||MED|Wikipedia Beloyarsk NPP: ~285 MWth (~100 MWe)
+AMB-100|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not stated in retrieved sources
+AVR|coolant|CONFIRMED||MED|Wikipedia AVR reactor: coolant Helium
+AVR|core_diameter_m|UNVERIFIABLE||LOW|Core diameter not stated in retrieved AVR article
+AVR|core_height_m|UNVERIFIABLE||LOW|Core height not stated in retrieved AVR article
+AVR|enrichment_pct|UNVERIFIABLE||LOW|Enrichment not stated in retrieved AVR article
+AVR|fuel_assembly_type|CONFIRMED||MED|Wikipedia AVR reactor: ~100,000 fuel element pebbles (pebble bed); 60mm dia not explicitly stated
+AVR|fuel_type|CONFIRMED||MED|Wikipedia AVR reactor: TRISO oxide particles (1983-1988) and thorium fuels used (also BISO carbide earlier)
+AVR|inlet_temperature_c|UNVERIFIABLE||LOW|Inlet temp not stated in retrieved AVR article
+AVR|moderator|CONFIRMED||MED|Wikipedia AVR reactor: moderator Graphite
+AVR|number_of_control_elements|UNVERIFIABLE||LOW|Control rod count not stated in retrieved AVR article
+AVR|number_of_coolant_loops|UNVERIFIABLE||LOW|Coolant loop count not stated in retrieved AVR article
+AVR|number_of_steam_generators|UNVERIFIABLE||LOW|SG count not stated in retrieved AVR article
+AVR|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not stated in retrieved AVR article
+AVR|operating_pressure_bar|UNVERIFIABLE||LOW|Operating pressure not stated in retrieved AVR article
+AVR|outlet_temperature_c|CONFIRMED||MED|Wikipedia AVR reactor: 950 C outlet achieved Feb 1974
+AVR|thermal_power_mwth|CONFIRMED||MED|Wikipedia AVR reactor: 46 MWt (15 MWe)
+AVR|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not stated in retrieved AVR article
+Agesta|coolant|CONFIRMED||MED|Wikipedia Agesta NPP: pressurized heavy water reactor (heavy water coolant)
+Agesta|enrichment_pct|CONFIRMED||MED|Wikipedia Agesta NPP: fueled with natural uranium
+Agesta|moderator|CONFIRMED||MED|Wikipedia Agesta NPP: heavy water moderation
+Agesta|thermal_power_mwth|UNVERIFIABLE||LOW|Retrieved article gives only 12 MWe; thermal 68 MWth not stated
+BN-800|coolant|CONFIRMED||MED|Wikipedia BN-800 reactor: liquid sodium
+BN-800|core_diameter_m|UNVERIFIABLE||LOW|Core diameter not in retrieved BN-800 infobox
+BN-800|core_height_m|UNVERIFIABLE||LOW|Core height not in retrieved BN-800 infobox
+BN-800|fuel_type|CONFIRMED||MED|Wikipedia BN-800 reactor: fuel includes MOX (U+Pu)
+BN-800|number_of_coolant_loops|CONFIRMED||MED|Wikipedia BN-800 reactor: three-circuit coolant arrangement
+BN-800|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not in retrieved BN-800 article
+BN-800|outlet_temperature_c|UNVERIFIABLE||LOW|Outlet temp not in retrieved BN-800 article
+BN-800|thermal_power_mwth|CONFIRMED||MED|Wikipedia BN-800 reactor: 2100 MWth
+BWR/G2|coolant|CONFIRMED||MED|Wikipedia Boiling water reactor: demineralized light water coolant
+BWR/G2|fuel_type|CONFIRMED||MED|Wikipedia Boiling water reactor: uranium oxide (UO2) fuel pellets
+BWR/G2|moderator|CONFIRMED||MED|Wikipedia Boiling water reactor: water used as coolant and moderator
+CANDU 850|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Burnup not stated in retrieved CANDU/Darlington articles
+CANDU 850|coolant|CONFIRMED||MED|Wikipedia CANDU reactor / Darlington: heavy water (D2O) coolant
+CANDU 850|enrichment_pct|CONFIRMED||MED|Wikipedia CANDU reactor: unenriched natural uranium
+CANDU 850|fuel_assembly_type|CONFIRMED||MED|Wikipedia CANDU reactor: 37-element bundle
+CANDU 850|fuel_type|CONFIRMED||MED|Wikipedia CANDU reactor: natural uranium oxide (UO2)
+CANDU 850|inlet_temperature_c|UNVERIFIABLE||LOW|Inlet temp not stated in retrieved CANDU articles
+CANDU 850|live_steam_pressure_bar|UNVERIFIABLE||LOW|Live steam pressure not stated in retrieved articles
+CANDU 850|low_pressure_sections|UNVERIFIABLE||LOW|LP turbine section count not stated in retrieved articles
+CANDU 850|moderator|CONFIRMED||MED|Wikipedia CANDU reactor / Darlington: heavy water moderator
+CANDU 850|number_of_coolant_loops|UNVERIFIABLE||LOW|CANDU article notes 4 heat transport pumps; 2-loop count not explicit
+CANDU 850|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Fuel channel count (480) not stated in retrieved Darlington article
+CANDU 850|number_of_steam_generators|UNVERIFIABLE||LOW|SG count not retrieved; Darlington=4 vs Bruce=8, plant mapping of series unresolved
+CANDU 850|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not stated in retrieved articles
+CANDU 850|operating_pressure_bar|CONFIRMED||MED|Wikipedia CANDU reactor: 10.3 MPa (~103 bar); DB 100 bar consistent within rounding/loop location
+CANDU 850|outlet_temperature_c|CONFIRMED||MED|Wikipedia CANDU reactor: 312 C outlet
+CANDU 850|thermal_power_mwth|WRONG|2776|MED|Wikipedia Darlington: units labeled "4 x CANDU 850" rated 4 x 2776 MWth (DB value 2750 differs)
+CANDU 850|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not stated in retrieved articles
+CNP-600|number_of_coolant_loops|UNVERIFIABLE||LOW|Loop count not stated in retrieved Qinshan article
+CNP-600|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Fuel assembly count not stated in retrieved Qinshan article
+CVTR|coolant|CONFIRMED||MED|Wikipedia Carolinas-Virginia Tube Reactor: heavy water primary coolant
+CVTR|enrichment_pct|CONFIRMED||MED|Wikipedia CVTR: fuel enriched 1.5% and 2% U-235
+CVTR|moderator|CONFIRMED||MED|Wikipedia CVTR: heavy water moderator tank
+CVTR|thermal_power_mwth|CONFIRMED||MED|Wikipedia CVTR: ~65 MWth thermal output (19 MWe gross)
+N4|coolant|CONFIRMED||MED|Wikipedia Civaux (N4 PWR) + PWR article: light water primary coolant
+N4|core_diameter_m|UNVERIFIABLE||LOW|Core diameter not stated in retrieved N4/Chooz/Civaux articles
+N4|core_height_m|UNVERIFIABLE||LOW|Core height not stated in retrieved articles
+N4|fuel_assembly_type|UNVERIFIABLE||LOW|17x17 assembly not stated in retrieved articles
+N4|fuel_type|CONFIRMED||MED|Wikipedia PWR article: UO2 fuel (N4 confirmed PWR via Civaux)
+N4|moderator|CONFIRMED||MED|Wikipedia PWR article: light water moderator
+N4|number_of_coolant_loops|UNVERIFIABLE||LOW|Loop count not stated in retrieved N4/Chooz/Civaux articles
+N4|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Fuel assembly count (205) not stated in retrieved articles
+N4|number_of_steam_generators|UNVERIFIABLE||LOW|SG count not stated in retrieved articles
+N4|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not stated in retrieved articles
+N4|operating_pressure_bar|CONFIRMED||MED|Wikipedia PWR article: primary pressure 150-160 bar (DB 155 within range)
+N4|thermal_power_mwth|UNVERIFIABLE||LOW|Thermal 4270 not stated; retrieved sources give only ~1450-1500 MWe net
+PFR|coolant|CONFIRMED||MED|Wikipedia PFR/Dounreay: cooled by liquid sodium
+PFR|fuel_assembly_type|UNVERIFIABLE||LOW|Hexagonal assembly not stated in retrieved PFR articles
+PFR|fuel_type|CONFIRMED||MED|Wikipedia PFR/Dounreay: fuelled with MOX
+PFR|inlet_temperature_c|UNVERIFIABLE||LOW|Inlet sodium temp not stated in retrieved PFR articles
+PFR|low_pressure_sections|UNVERIFIABLE||LOW|LP turbine section count not stated in retrieved articles
+PFR|number_of_coolant_loops|CONFIRMED||MED|Wikipedia Dounreay: three cooling circuits
+PFR|number_of_steam_generators|CONFIRMED||MED|Wikipedia Dounreay: sodium-water steam generators per cooling circuit (3 circuits)
+PFR|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not stated in retrieved PFR articles
+PFR|outlet_temperature_c|UNVERIFIABLE||LOW|Outlet sodium temp not stated in retrieved PFR articles
+PFR|thermal_power_mwth|UNVERIFIABLE||LOW|Retrieved sources cite 500 MWt (1976 milestone) + 250 MWe design; 600 MWth design not explicitly stated
+PFR|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not stated in retrieved PFR articles
+PLWBR|coolant|CONFIRMED||MED|Wikipedia Shippingport: light water coolant (LWBR core)
+PLWBR|fuel_assembly_type|CONFIRMED||MED|Wikipedia Shippingport: seed-and-blanket configuration
+PLWBR|fuel_type|CONFIRMED||MED|Wikipedia Shippingport: thorium dioxide and uranium-233 oxide fuel
+PLWBR|moderator|CONFIRMED||MED|Wikipedia Shippingport: light water moderated thermal breeder
+PLWBR|number_of_coolant_loops|CONFIRMED||MED|Wikipedia Shippingport: four steam generators/loops
+PLWBR|number_of_steam_generators|CONFIRMED||MED|Wikipedia Shippingport: four steam generators
+VVER-1000/428M|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Generic VVER-1000 avg burnup 48.4 MWd/kg differs from DB 45000; 428M-specific value not retrieved
+VVER-1000/428M|coolant|CONFIRMED||MED|Wikipedia VVER: liquid light water coolant
+VVER-1000/428M|core_height_m|CONFIRMED||MED|Wikipedia VVER: active core height 3.50 m (DB 3.53 consistent)
+VVER-1000/428M|enrichment_pct|CONFIRMED||MED|Wikipedia VVER: average enrichment 4.26% (within DB range 3.6-4.4)
+VVER-1000/428M|fuel_assembly_type|CONFIRMED||MED|Wikipedia VVER: hexagonal fuel assemblies
+VVER-1000/428M|fuel_type|CONFIRMED||MED|Wikipedia VVER: uranium dioxide (UO2)
+VVER-1000/428M|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER: core inlet 289 C
+VVER-1000/428M|live_steam_pressure_bar|UNVERIFIABLE||LOW|Secondary/live steam pressure not stated in retrieved VVER article
+VVER-1000/428M|low_pressure_sections|UNVERIFIABLE||LOW|LP turbine section count not stated in retrieved articles
+VVER-1000/428M|moderator|CONFIRMED||MED|Wikipedia VVER: light water moderator
+VVER-1000/428M|number_of_control_elements|UNVERIFIABLE||LOW|Control rod count not provided in retrieved VVER article
+VVER-1000/428M|number_of_coolant_loops|CONFIRMED||MED|Wikipedia VVER: four primary loops
+VVER-1000/428M|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia VVER: 163 fuel assemblies
+VVER-1000/428M|number_of_steam_generators|CONFIRMED||MED|Wikipedia VVER: four steam generators (one per loop)
+VVER-1000/428M|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not stated in retrieved VVER/Tianwan articles
+VVER-1000/428M|operating_pressure_bar|CONFIRMED||MED|Wikipedia VVER: primary pressure ~15.7-16 MPa (~157-160 bar), DB 157 consistent
+VVER-1000/428M|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER: core outlet 319 C (DB 320 consistent)
+VVER-1000/428M|thermal_power_mwth|CONFIRMED||MED|Wikipedia VVER + Tianwan NPP: VVER-1000/428 rated 3000 MWth
+VVER-1000/428M|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not stated in retrieved articles

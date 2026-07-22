@@ -1,0 +1,13 @@
+design_series|field|corrected_value|source|entity_gate
+AGR|number_of_fuel_assemblies|MIXED|Series spans stations with differing channel counts: en.wikipedia.org/wiki/Hinkley_Point_B 308 channels vs Heysham2/Torness 332 (DB value)|PASS
+AGR|thermal_power_mwth|MIXED|Series spans differing thermal ratings: en.wikipedia.org/wiki/Hinkley_Point_B 1494 MWt, AGR article 1500 MWt vs Heysham2/Torness 1623 (DB value)|PASS
+AMB-200|enrichment_pct|3.0|en.wikipedia.org/wiki/Beloyarsk_Nuclear_Power_Station (AMB-200 fuel enriched to 3.0%; DB 2.0 not supported)|PASS
+AMB-200|number_of_turbines|2|en.wikipedia.org/wiki/Beloyarsk_Nuclear_Power_Station (AMB-200/Unit 2 had two turbines; DB 1)|PASS
+CANDU 850|thermal_power_mwth|2776|"Wikipedia Darlington: units labeled ""4 x CANDU 850"" rated 4 x 2776 MWth (DB value 2750 differs)"|PASS
+DFR|thermal_power_mwth|60.0|Wikipedia: Dounreay (designed for and reached 60 MWt in July 1963; DB value 72 contradicts)|PASS
+KWU PHWR|thermal_power_mwth|MIXED (Atucha I 1179 / Atucha II 2175 MWth)|"Wikipedia Atucha: Atucha I ""1,179 MWth"", Atucha II ""2,175 MWth"" - series spans genuinely different thermal ratings"|PASS
+Magnox|core_diameter_m|MIXED|Wikipedia Magnox (core diameter varies by station: Calder Hall 9.45 m, Oldbury 12.8 m, Wylfa 17.4 m)|PASS
+Magnox|core_height_m|MIXED|Wikipedia Magnox (core height varies: Calder Hall 6.4 m, Oldbury 8.5 m, Wylfa 9.2 m)|PASS
+Magnox|number_of_control_elements|MIXED|Wikipedia Magnox (control rod count varies: 48 at Calder Hall and Chapelcross; differs by station)|PASS
+RBMK|low_pressure_sections|4|Wikipedia RBMK (K-500-65/3000 turbine has four low-pressure cylinders)|PASS
+SGR|fuel_type|Metallic uranium-molybdenum alloy (first core); uranium carbide (later core) — not oxide|"Wikipedia ""Hallam Nuclear Power Facility"" — fuel was 3.6% U-10Mo alloy, later 4.9% uranium carbide; not UO2/PuO2"|PASS

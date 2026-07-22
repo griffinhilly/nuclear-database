@@ -1,0 +1,111 @@
+design_series|field|current_value|origin
+B&W Raised-Loop|coolant|Light water|re-attest
+B&W Raised-Loop|fuel_assembly_type|15x15|re-attest
+B&W Raised-Loop|fuel_type|UO2|re-attest
+B&W Raised-Loop|moderator|Light water|re-attest
+B&W Raised-Loop|number_of_coolant_loops|2|re-attest
+B&W Raised-Loop|number_of_fuel_assemblies|177|re-attest
+B&W Raised-Loop|number_of_steam_generators|2|re-attest
+BN-600|coolant|Sodium|re-attest
+BN-600|core_diameter_m|2.06|re-attest
+BN-600|enrichment_pct|17-26|re-attest
+BN-600|fuel_type|UO2|re-attest
+BN-600|live_steam_pressure_bar|130.0|re-attest
+BN-600|number_of_control_elements|27|re-attest
+BN-600|number_of_coolant_loops|3|re-attest
+BN-600|number_of_steam_generators|3|re-attest
+BN-600|outlet_temperature_c|550.0|re-attest
+BN-600|thermal_power_mwth|1470.0|re-attest
+CNP-1000|core_height_m|3.66|re-attest
+CNP-1000|fuel_assembly_type|17x17|re-attest
+CNP-1000|number_of_coolant_loops|3|re-attest
+CNP-1000|number_of_fuel_assemblies|157|re-attest
+IPHWR|average_burnup_mwd_per_t|6700.0|first-verify
+IPHWR|coolant|Heavy water|first-verify
+IPHWR|core_diameter_m|6.4|first-verify
+IPHWR|core_height_m|5.0|first-verify
+IPHWR|enrichment_pct|Natural|first-verify
+IPHWR|fuel_assembly_type|19-element bundle|first-verify
+IPHWR|fuel_type|Natural UO2|first-verify
+IPHWR|inlet_temperature_c|249.0|first-verify
+IPHWR|live_steam_pressure_bar|43.0|first-verify
+IPHWR|low_pressure_sections|2|first-verify
+IPHWR|moderator|Heavy water|first-verify
+IPHWR|number_of_control_elements|14|first-verify
+IPHWR|number_of_coolant_loops|2|first-verify
+IPHWR|number_of_fuel_assemblies|306|first-verify
+IPHWR|number_of_steam_generators|4|first-verify
+IPHWR|number_of_turbines|1|first-verify
+IPHWR|operating_pressure_bar|85.0|first-verify
+IPHWR|outlet_temperature_c|293.0|first-verify
+IPHWR|thermal_power_mwth|754.5|first-verify
+IPHWR|turbine_speed_rpm|1500|first-verify
+KLT-40S|coolant|Light water|re-attest
+KLT-40S|moderator|Light water|re-attest
+KLT-40S|thermal_power_mwth|150.0|re-attest
+KNK|coolant|Sodium|first-verify
+KNK|fuel_type|UO2/PuO2|first-verify
+KNK|inlet_temperature_c|360.0|first-verify
+KNK|number_of_coolant_loops|2|first-verify
+KNK|number_of_steam_generators|2|first-verify
+KNK|number_of_turbines|1|first-verify
+KNK|outlet_temperature_c|520.0|first-verify
+KNK|thermal_power_mwth|58.0|first-verify
+KNK|turbine_speed_rpm|3000|first-verify
+MHI 3-Loop|coolant|Light water|re-attest
+MHI 3-Loop|moderator|Light water|re-attest
+MHI 3-Loop|number_of_coolant_loops|3|re-attest
+MHI 3-Loop|number_of_steam_generators|3|re-attest
+Monju|average_burnup_mwd_per_t|80000.0|first-verify
+Monju|coolant|Sodium|first-verify
+Monju|core_diameter_m|1.8|first-verify
+Monju|core_height_m|0.93|first-verify
+Monju|fuel_assembly_type|Hexagonal|first-verify
+Monju|fuel_type|MOX (UO2/PuO2)|first-verify
+Monju|inlet_temperature_c|397.0|first-verify
+Monju|low_pressure_sections|2|first-verify
+Monju|number_of_control_elements|19|first-verify
+Monju|number_of_coolant_loops|3|first-verify
+Monju|number_of_fuel_assemblies|198|first-verify
+Monju|number_of_steam_generators|3|first-verify
+Monju|number_of_turbines|1|first-verify
+Monju|outlet_temperature_c|529.0|first-verify
+Monju|thermal_power_mwth|714.0|first-verify
+Pre-Konvoi|coolant|Light water|re-attest
+Pre-Konvoi|moderator|Light water|re-attest
+VVER-1000/320|coolant|Light water|re-attest
+VVER-1000/320|enrichment_pct|3.3-4.4|re-attest
+VVER-1000/320|fuel_assembly_type|Hexagonal|re-attest
+VVER-1000/320|live_steam_pressure_bar|60.0|re-attest
+VVER-1000/320|moderator|Light water|re-attest
+VVER-1000/320|number_of_control_elements|61|re-attest
+VVER-1000/320|number_of_coolant_loops|4|re-attest
+VVER-1000/320|number_of_fuel_assemblies|163|re-attest
+VVER-1000/320|number_of_steam_generators|4|re-attest
+VVER-1000/320|number_of_turbines|1|re-attest
+VVER-1000/320|operating_pressure_bar|157.0|re-attest
+VVER-1000/320|outlet_temperature_c|320.0|re-attest
+VVER-1000/320|thermal_power_mwth|3000.0|re-attest
+VVER-1200/509|coolant|Light water|re-attest
+VVER-1200/509|core_height_m|3.73|re-attest
+VVER-1200/509|enrichment_pct|4.0-5.0|re-attest
+VVER-1200/509|fuel_assembly_type|Hexagonal|re-attest
+VVER-1200/509|fuel_type|UO2|re-attest
+VVER-1200/509|inlet_temperature_c|298.0|re-attest
+VVER-1200/509|live_steam_pressure_bar|68.0|re-attest
+VVER-1200/509|moderator|Light water|re-attest
+VVER-1200/509|number_of_control_elements|121|re-attest
+VVER-1200/509|number_of_coolant_loops|4|re-attest
+VVER-1200/509|number_of_fuel_assemblies|163|re-attest
+VVER-1200/509|number_of_steam_generators|4|re-attest
+VVER-1200/509|number_of_turbines|1|re-attest
+VVER-1200/509|operating_pressure_bar|162.0|re-attest
+VVER-1200/509|outlet_temperature_c|329.0|re-attest
+VVER-1200/509|thermal_power_mwth|3200.0|re-attest
+VVER-1200/509|turbine_speed_rpm|1500|re-attest
+W 3-Loop|coolant|Light water|re-attest
+W 3-Loop|fuel_type|UO2|re-attest
+W 3-Loop|moderator|Light water|re-attest
+W 3-Loop|number_of_coolant_loops|3|re-attest
+W 3-Loop|number_of_fuel_assemblies|157|re-attest
+W 3-Loop|number_of_steam_generators|3|re-attest

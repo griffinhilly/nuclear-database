@@ -1,0 +1,110 @@
+design_series|field|verdict|corrected_value|confidence|source
+B&W 2-Loop|coolant|CONFIRMED||MED|Wikipedia: Muelheim-Kaerlich Nuclear Power Plant (confirmed pressurized water reactor => light water coolant)
+B&W 2-Loop|fuel_type|CONFIRMED||MED|Wikipedia: Muelheim-Kaerlich Nuclear Power Plant (PWR fuel is UO2)
+B&W 2-Loop|moderator|CONFIRMED||MED|Wikipedia: Muelheim-Kaerlich Nuclear Power Plant (PWR => light water moderator)
+BLWR-250|fuel_type|CONFIRMED||MED|Wikipedia: Gentilly (CANDU-BLW prototype) + Wikipedia: CANDU reactor (UO2 fuel)
+BLWR-250|number_of_turbines|UNVERIFIABLE||LOW|Wikipedia: Gentilly article does not state turbine count
+BWR/3|coolant|CONFIRMED||MED|Wikipedia: Boiling water reactor (water as coolant)
+BWR/3|fuel_type|CONFIRMED||MED|Wikipedia: Boiling water reactor (low-enriched UO2 fuel)
+BWR/3|moderator|CONFIRMED||MED|Wikipedia: Boiling water reactor (water as neutron moderator)
+BWR/4|coolant|CONFIRMED||HIGH|Wikipedia: Browns Ferry + Boiling water reactor (water coolant)
+BWR/4|fuel_type|CONFIRMED||MED|Wikipedia: Boiling water reactor (low-enriched UO2)
+BWR/4|moderator|CONFIRMED||HIGH|Wikipedia: Boiling water reactor (water moderator)
+BWR/4|number_of_control_elements|WRONG|MIXED|MED|Series spans core sizes: Wikipedia Vermont Yankee (89 control rods) vs 185-class 251-inch BWR/4 (Browns Ferry) - varies by unit
+BWR/4|number_of_fuel_assemblies|WRONG|MIXED|HIGH|Series spans core sizes: Wikipedia Vermont Yankee (368 assemblies) vs Browns Ferry-class (764) - varies by unit
+BWR/4|thermal_power_mwth|WRONG|MIXED|HIGH|Series spans sizes: Wikipedia Vermont Yankee (1593 MWth orig) vs Browns Ferry (3293 MWth orig) vs Duane Arnold (1912 MWth)
+CANDU 6|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Wikipedia: CANDU reactor does not state average burnup value
+CANDU 6|coolant|CONFIRMED||HIGH|Wikipedia: CANDU reactor (heavy water D2O coolant)
+CANDU 6|core_height_m|UNVERIFIABLE||LOW|Wikipedia: CANDU reactor does not state core height
+CANDU 6|enrichment_pct|CONFIRMED||HIGH|Wikipedia: CANDU reactor (natural uranium, ~0.7% U-235)
+CANDU 6|fuel_assembly_type|CONFIRMED||HIGH|Wikipedia: CANDU reactor (37 fuel elements per bundle)
+CANDU 6|fuel_type|CONFIRMED||HIGH|Wikipedia: CANDU reactor (natural uranium UO2)
+CANDU 6|inlet_temperature_c|UNVERIFIABLE||LOW|Wikipedia: CANDU reactor gives outlet only, not inlet temperature
+CANDU 6|moderator|CONFIRMED||HIGH|Wikipedia: CANDU reactor (heavy water moderator in calandria)
+CANDU 6|number_of_coolant_loops|UNVERIFIABLE||LOW|Wikipedia: CANDU reactor states 4 heat transport pumps, does not confirm 2 loops
+CANDU 6|number_of_fuel_assemblies|CONFIRMED||HIGH|Wikipedia: CANDU reactor (380 pressure tubes / fuel channels)
+CANDU 6|number_of_steam_generators|CONFIRMED||HIGH|Wikipedia: CANDU reactor (4 steam generators)
+CANDU 6|operating_pressure_bar|CONFIRMED||MED|Wikipedia: CANDU reactor (10.3 MPa = 103 bar outlet)
+CANDU 6|outlet_temperature_c|CONFIRMED||MED|Wikipedia: CANDU reactor (outlet 312C; DB 310 within variation)
+CANDU 6|thermal_power_mwth|CONFIRMED||MED|Wikipedia: CANDU reactor (net ~2060 MWth to steam cycle; DB 2064)
+CP2|coolant|CONFIRMED||MED|Wikipedia: Cruas Nuclear Power Plant (pressurized water reactor => light water)
+CP2|core_height_m|UNVERIFIABLE||LOW|No spec source retrieved this session (fr.wiki palier page 404; Cruas page lacks core detail)
+CP2|enrichment_pct|UNVERIFIABLE||LOW|No spec source retrieved this session
+CP2|fuel_assembly_type|UNVERIFIABLE||LOW|No spec source retrieved this session
+CP2|fuel_type|CONFIRMED||MED|Wikipedia: Cruas Nuclear Power Plant (PWR => UO2 fuel)
+CP2|inlet_temperature_c|UNVERIFIABLE||LOW|No spec source retrieved this session
+CP2|moderator|CONFIRMED||MED|Wikipedia: Cruas Nuclear Power Plant (PWR => light water moderator)
+CP2|number_of_coolant_loops|UNVERIFIABLE||LOW|No loop-count source retrieved this session
+CP2|number_of_fuel_assemblies|UNVERIFIABLE||LOW|No spec source retrieved this session
+CP2|number_of_steam_generators|UNVERIFIABLE||LOW|No spec source retrieved this session
+CP2|operating_pressure_bar|UNVERIFIABLE||LOW|No spec source retrieved this session
+CP2|outlet_temperature_c|UNVERIFIABLE||LOW|No spec source retrieved this session
+CP2|thermal_power_mwth|UNVERIFIABLE||LOW|No thermal-power source retrieved this session (Cruas page gives 956 MWe electrical only)
+DFR|coolant|CONFIRMED||HIGH|Wikipedia: Dounreay (primary/secondary molten sodium-potassium NaK circuits)
+DFR|fuel_type|CONFIRMED||HIGH|Wikipedia: Dounreay (uranium metal stabilised with molybdenum)
+DFR|number_of_coolant_loops|CONFIRMED||HIGH|Wikipedia: Dounreay (24 primary coolant loops)
+DFR|number_of_turbines|UNVERIFIABLE||LOW|Wikipedia: Dounreay does not state turbine count
+DFR|outlet_temperature_c|UNVERIFIABLE||LOW|Wikipedia: Dounreay does not state coolant outlet temperature
+DFR|thermal_power_mwth|WRONG|60.0|MED|Wikipedia: Dounreay (designed for and reached 60 MWt in July 1963; DB value 72 contradicts)
+MHI 4-Loop|coolant|CONFIRMED||MED|Wikipedia: Oi + Genkai Nuclear Power Plant (Mitsubishi PWR, pressurized water)
+MHI 4-Loop|moderator|CONFIRMED||MED|Wikipedia: Oi Nuclear Power Plant (PWR => light water moderator)
+MHI 4-Loop|number_of_coolant_loops|CONFIRMED||MED|Wikipedia: Oi Nuclear Power Plant (Mitsubishi 4-loop PWR)
+MHI 4-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Assembly count not stated in retrieved Oi/Genkai pages
+MHI 4-Loop|number_of_steam_generators|CONFIRMED||MED|Wikipedia: Oi Nuclear Power Plant (4-loop PWR => 4 steam generators)
+SNUPPS|coolant|CONFIRMED||HIGH|Wikipedia: Sizewell B nuclear power station (water coolant)
+SNUPPS|fuel_assembly_type|UNVERIFIABLE||LOW|17x17 array not stated in retrieved Sizewell B page
+SNUPPS|fuel_type|CONFIRMED||MED|Wikipedia: Sizewell B (enriched uranium => UO2)
+SNUPPS|moderator|CONFIRMED||HIGH|Wikipedia: Sizewell B nuclear power station (water moderator)
+SNUPPS|number_of_coolant_loops|CONFIRMED||HIGH|Wikipedia: Sizewell B (4 loops, SNUPPS design)
+SNUPPS|number_of_fuel_assemblies|UNVERIFIABLE||LOW|193 assemblies not stated in retrieved Sizewell B page
+SNUPPS|number_of_steam_generators|CONFIRMED||MED|Wikipedia: Sizewell B (4-loop PWR => 4 steam generators)
+SNUPPS|thermal_power_mwth|WRONG|3425.0|MED|Wikipedia: Sizewell B (3425 MWt original, uprated 3479; DB 3411 does not match plant value)
+VVER-1000/338|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Burnup not stated in retrieved VVER article
+VVER-1000/338|coolant|CONFIRMED||MED|Wikipedia: VVER (VVER-1000 light water coolant)
+VVER-1000/338|core_height_m|CONFIRMED||MED|Wikipedia: VVER (VVER-1000 core height 3.50m; DB 3.53 within variation)
+VVER-1000/338|enrichment_pct|CONFIRMED||MED|Wikipedia: VVER (VVER-1000 avg ~4.26%, within 3.3-4.4 range)
+VVER-1000/338|fuel_assembly_type|CONFIRMED||HIGH|Wikipedia: VVER (163 hexagonal assemblies)
+VVER-1000/338|fuel_type|CONFIRMED||HIGH|Wikipedia: VVER (low-enriched UO2)
+VVER-1000/338|inlet_temperature_c|CONFIRMED||MED|Wikipedia: VVER (VVER-1000 inlet 289C)
+VVER-1000/338|live_steam_pressure_bar|UNVERIFIABLE||LOW|Live steam pressure not stated in retrieved VVER article
+VVER-1000/338|low_pressure_sections|UNVERIFIABLE||LOW|Turbine LP sections not stated in retrieved sources
+VVER-1000/338|moderator|CONFIRMED||MED|Wikipedia: VVER (VVER-1000 light water moderator)
+VVER-1000/338|number_of_control_elements|UNVERIFIABLE||LOW|Control element count not stated in retrieved sources
+VVER-1000/338|number_of_coolant_loops|CONFIRMED||HIGH|Wikipedia: VVER (VVER-1000 4 primary loops)
+VVER-1000/338|number_of_fuel_assemblies|CONFIRMED||HIGH|Wikipedia: VVER (163 assemblies)
+VVER-1000/338|number_of_steam_generators|CONFIRMED||HIGH|Wikipedia: VVER (VVER-1000 4 steam generators)
+VVER-1000/338|number_of_turbines|CONFIRMED||MED|Wikipedia: VVER (VVER-1000 one turbine)
+VVER-1000/338|operating_pressure_bar|CONFIRMED||MED|Wikipedia: VVER (VVER-1000 ~16.0 MPa design; DB 157 = 15.7 MPa operating)
+VVER-1000/338|outlet_temperature_c|CONFIRMED||MED|Wikipedia: VVER (VVER-1000 outlet 319C; DB 320 within variation)
+VVER-1000/338|thermal_power_mwth|CONFIRMED||HIGH|Wikipedia: VVER (VVER-1000 3000 MWth)
+VVER-1000/338|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not stated in retrieved sources
+VVER-1200/491|coolant|CONFIRMED||MED|Wikipedia: VVER / VVER-1200 (light water coolant)
+VVER-1200/491|core_height_m|CONFIRMED||HIGH|Wikipedia: VVER-1200 (active core height ~3.73 m)
+VVER-1200/491|enrichment_pct|CONFIRMED||MED|Wikipedia: VVER-1200 (avg ~4.69%, within 4.0-5.0 range)
+VVER-1200/491|fuel_assembly_type|CONFIRMED||HIGH|Wikipedia: VVER-1200 (163 hexagonal assemblies)
+VVER-1200/491|fuel_type|CONFIRMED||HIGH|Wikipedia: VVER-1200 (low-enriched UO2)
+VVER-1200/491|inlet_temperature_c|CONFIRMED||HIGH|Wikipedia: VVER-1200 (inlet 298.2C)
+VVER-1200/491|live_steam_pressure_bar|CONFIRMED||MED|Wikipedia: VVER-1200 (live steam 70.0 bar; DB 68 within variation)
+VVER-1200/491|low_pressure_sections|UNVERIFIABLE||LOW|Turbine LP sections not stated in retrieved sources
+VVER-1200/491|moderator|CONFIRMED||MED|Wikipedia: VVER-1200 (light water moderator)
+VVER-1200/491|number_of_control_elements|UNVERIFIABLE||LOW|Control element count not stated in retrieved sources
+VVER-1200/491|number_of_coolant_loops|CONFIRMED||HIGH|Wikipedia: VVER (VVER-1200 4 primary loops)
+VVER-1200/491|number_of_fuel_assemblies|CONFIRMED||HIGH|Wikipedia: VVER-1200 (163 assemblies)
+VVER-1200/491|number_of_steam_generators|CONFIRMED||MED|Wikipedia: VVER (VVER-1200 4-loop => 4 steam generators)
+VVER-1200/491|number_of_turbines|CONFIRMED||MED|Wikipedia: VVER (VVER-1200 one turbine)
+VVER-1200/491|operating_pressure_bar|CONFIRMED||MED|Wikipedia: VVER-1200 (16.51 MPa design; DB 162 = 16.2 MPa operating)
+VVER-1200/491|outlet_temperature_c|CONFIRMED||HIGH|Wikipedia: VVER-1200 (outlet 328.6C; DB 329)
+VVER-1200/491|thermal_power_mwth|CONFIRMED||MED|Wikipedia: VVER-1200 (class 3212 MWth; DB 3200 is V-491 rated figure)
+VVER-1200/491|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not stated; Leningrad-II V-491 may use half-speed 1500 rpm - unverifiable from retrieved sources
+VVER-440/270|coolant|CONFIRMED||HIGH|Wikipedia: VVER-440 (water coolant)
+VVER-440/270|core_diameter_m|CONFIRMED||HIGH|Wikipedia: VVER-440 (equivalent core diameter 2.88 m)
+VVER-440/270|fuel_assembly_type|CONFIRMED||HIGH|Wikipedia: VVER-440 (hexagonal assemblies)
+VVER-440/270|fuel_type|CONFIRMED||HIGH|Wikipedia: VVER-440 (UO2, avg 3.5% enrichment)
+VVER-440/270|low_pressure_sections|UNVERIFIABLE||LOW|Turbine LP sections not stated in retrieved sources
+VVER-440/270|moderator|CONFIRMED||HIGH|Wikipedia: VVER-440 (water as coolant and moderator)
+VVER-440/270|number_of_coolant_loops|CONFIRMED||HIGH|Wikipedia: VVER-440 (six primary coolant loops)
+VVER-440/270|number_of_fuel_assemblies|CONFIRMED||HIGH|Wikipedia: VVER-440 (349 fuel assemblies)
+VVER-440/270|number_of_steam_generators|CONFIRMED||HIGH|Wikipedia: VVER-440 (six horizontal steam generators)
+VVER-440/270|number_of_turbines|UNVERIFIABLE||LOW|Turbine count not stated in retrieved VVER-440/Armenian pages
+VVER-440/270|thermal_power_mwth|CONFIRMED||HIGH|Wikipedia: VVER-440 + Armenian NPP (1375 MWt)
+VVER-440/270|turbine_speed_rpm|UNVERIFIABLE||LOW|Turbine speed not stated in retrieved sources

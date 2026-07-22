@@ -1,0 +1,110 @@
+design_series|field|current_value|origin
+ATR|coolant|Light water|re-attest
+BREST-OD-300|coolant|Lead|re-attest
+BREST-OD-300|core_height_m|1.1|re-attest
+BREST-OD-300|number_of_coolant_loops|4|re-attest
+BREST-OD-300|outlet_temperature_c|535.0|re-attest
+BREST-OD-300|thermal_power_mwth|700.0|re-attest
+CFR-600|coolant|Sodium|first-verify
+CFR-600|fuel_assembly_type|Hexagonal|first-verify
+CFR-600|fuel_type|MOX (UO2/PuO2)|first-verify
+CFR-600|inlet_temperature_c|395.0|first-verify
+CFR-600|number_of_coolant_loops|2|first-verify
+CFR-600|number_of_steam_generators|4|first-verify
+CFR-600|number_of_turbines|1|first-verify
+CFR-600|outlet_temperature_c|550.0|first-verify
+CFR-600|thermal_power_mwth|1500.0|first-verify
+CFR-600|turbine_speed_rpm|3000|first-verify
+CP0|coolant|Light water|re-attest
+CP0|enrichment_pct|3.1-3.7|re-attest
+CP0|fuel_assembly_type|17x17|re-attest
+CP0|fuel_type|UO2|re-attest
+CP0|moderator|Light water|re-attest
+CPR-1000|core_height_m|3.66|re-attest
+CPR-1000|fuel_assembly_type|17x17|re-attest
+CPR-1000|number_of_coolant_loops|3|re-attest
+CPR-1000|number_of_fuel_assemblies|157|re-attest
+CPR-1000|number_of_steam_generators|3|re-attest
+CPR-1000|operating_pressure_bar|155.0|re-attest
+CPR-1000|outlet_temperature_c|325.0|re-attest
+Fort St. Vrain|average_burnup_mwd_per_t|100000.0|first-verify
+Fort St. Vrain|coolant|Helium|first-verify
+Fort St. Vrain|core_diameter_m|5.94|first-verify
+Fort St. Vrain|core_height_m|4.75|first-verify
+Fort St. Vrain|enrichment_pct|93|first-verify
+Fort St. Vrain|fuel_assembly_type|Hexagonal graphite block|first-verify
+Fort St. Vrain|fuel_type|TRISO UC2/ThC2|first-verify
+Fort St. Vrain|inlet_temperature_c|405.0|first-verify
+Fort St. Vrain|low_pressure_sections|2|first-verify
+Fort St. Vrain|moderator|Graphite|first-verify
+Fort St. Vrain|number_of_control_elements|37|first-verify
+Fort St. Vrain|number_of_coolant_loops|2|first-verify
+Fort St. Vrain|number_of_fuel_assemblies|1482|first-verify
+Fort St. Vrain|number_of_steam_generators|2|first-verify
+Fort St. Vrain|number_of_turbines|1|first-verify
+Fort St. Vrain|operating_pressure_bar|48.0|first-verify
+Fort St. Vrain|outlet_temperature_c|785.0|first-verify
+Fort St. Vrain|thermal_power_mwth|842.0|first-verify
+Fort St. Vrain|turbine_speed_rpm|3600|first-verify
+KS 150|coolant|CO2|re-attest
+KS 150|enrichment_pct|Natural|re-attest
+KS 150|moderator|Heavy water|re-attest
+PFBR|average_burnup_mwd_per_t|100000.0|re-attest
+PFBR|coolant|Sodium|re-attest
+PFBR|fuel_type|MOX (UO2/PuO2)|re-attest
+PFBR|thermal_power_mwth|1250.0|re-attest
+RBMK|average_burnup_mwd_per_t|20000.0|first-verify
+RBMK|coolant|Light water|first-verify
+RBMK|core_diameter_m|11.8|first-verify
+RBMK|core_height_m|7.0|first-verify
+RBMK|enrichment_pct|2.0-2.4|first-verify
+RBMK|fuel_assembly_type|18-rod fuel assembly|first-verify
+RBMK|fuel_type|UO2|first-verify
+RBMK|inlet_temperature_c|270.0|first-verify
+RBMK|live_steam_pressure_bar|65.0|first-verify
+RBMK|low_pressure_sections|2|first-verify
+RBMK|moderator|Graphite|first-verify
+RBMK|number_of_turbines|2|first-verify
+RBMK|operating_pressure_bar|70.0|first-verify
+RBMK|outlet_temperature_c|284.0|first-verify
+RBMK|turbine_speed_rpm|3000|first-verify
+VVER-1200|coolant|Light water|re-attest
+VVER-1200|core_height_m|3.73|re-attest
+VVER-1200|enrichment_pct|4.0-5.0|re-attest
+VVER-1200|fuel_assembly_type|Hexagonal|re-attest
+VVER-1200|fuel_type|UO2|re-attest
+VVER-1200|inlet_temperature_c|298.0|re-attest
+VVER-1200|live_steam_pressure_bar|68.0|re-attest
+VVER-1200|low_pressure_sections|4|re-attest
+VVER-1200|moderator|Light water|re-attest
+VVER-1200|number_of_control_elements|121|re-attest
+VVER-1200|number_of_coolant_loops|4|re-attest
+VVER-1200|number_of_fuel_assemblies|163|re-attest
+VVER-1200|number_of_steam_generators|4|re-attest
+VVER-1200|number_of_turbines|1|re-attest
+VVER-1200|operating_pressure_bar|162.0|re-attest
+VVER-1200|outlet_temperature_c|329.0|re-attest
+VVER-1200|thermal_power_mwth|3200.0|re-attest
+VVER-1200|turbine_speed_rpm|3000|re-attest
+VVER-210|coolant|Light water|re-attest
+VVER-210|core_height_m|2.5|re-attest
+VVER-210|enrichment_pct|2.0-3.0|re-attest
+VVER-210|fuel_assembly_type|Hexagonal|re-attest
+VVER-210|fuel_type|UO2|re-attest
+VVER-210|moderator|Light water|re-attest
+VVER-210|operating_pressure_bar|100.0|re-attest
+VVER-210|outlet_temperature_c|270.0|re-attest
+VVER-210|thermal_power_mwth|760.0|re-attest
+VVER-440/179|coolant|Light water|re-attest
+VVER-440/179|core_diameter_m|2.88|re-attest
+VVER-440/179|fuel_assembly_type|Hexagonal|re-attest
+VVER-440/179|fuel_type|UO2|re-attest
+VVER-440/179|low_pressure_sections|2|re-attest
+VVER-440/179|moderator|Light water|re-attest
+VVER-440/179|number_of_control_elements|73|re-attest
+VVER-440/179|number_of_coolant_loops|6|re-attest
+VVER-440/179|number_of_fuel_assemblies|349|re-attest
+VVER-440/179|number_of_steam_generators|6|re-attest
+VVER-440/179|number_of_turbines|2|re-attest
+VVER-440/179|thermal_power_mwth|1375.0|re-attest
+VVER-440/179|turbine_speed_rpm|3000|re-attest

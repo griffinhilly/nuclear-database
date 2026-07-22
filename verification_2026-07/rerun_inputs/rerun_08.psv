@@ -1,0 +1,110 @@
+design_series|field|current_value|origin
+AMB-100|coolant|Light water|first-verify
+AMB-100|enrichment_pct|1.8|first-verify
+AMB-100|fuel_type|UO2|first-verify
+AMB-100|moderator|Graphite|first-verify
+AMB-100|number_of_turbines|1|first-verify
+AMB-100|thermal_power_mwth|285.0|first-verify
+AMB-100|turbine_speed_rpm|3000|first-verify
+AVR|coolant|Helium|first-verify
+AVR|core_diameter_m|3.0|first-verify
+AVR|core_height_m|2.8|first-verify
+AVR|enrichment_pct|93|first-verify
+AVR|fuel_assembly_type|Pebble (60mm diameter)|first-verify
+AVR|fuel_type|TRISO UO2/ThO2 pebbles|first-verify
+AVR|inlet_temperature_c|270.0|first-verify
+AVR|moderator|Graphite|first-verify
+AVR|number_of_control_elements|4|first-verify
+AVR|number_of_coolant_loops|2|first-verify
+AVR|number_of_steam_generators|2|first-verify
+AVR|number_of_turbines|1|first-verify
+AVR|operating_pressure_bar|11.0|first-verify
+AVR|outlet_temperature_c|950.0|first-verify
+AVR|thermal_power_mwth|46.0|first-verify
+AVR|turbine_speed_rpm|3000|first-verify
+Agesta|coolant|Heavy water|re-attest
+Agesta|enrichment_pct|Natural|re-attest
+Agesta|moderator|Heavy water|re-attest
+Agesta|thermal_power_mwth|68.0|re-attest
+BN-800|coolant|Sodium|re-attest
+BN-800|core_diameter_m|2.56|re-attest
+BN-800|core_height_m|0.88|re-attest
+BN-800|fuel_type|MOX (UO2/PuO2)|re-attest
+BN-800|number_of_coolant_loops|3|re-attest
+BN-800|number_of_turbines|1|re-attest
+BN-800|outlet_temperature_c|547.0|re-attest
+BN-800|thermal_power_mwth|2100.0|re-attest
+BWR/G2|coolant|Light water|re-attest
+BWR/G2|fuel_type|UO2|re-attest
+BWR/G2|moderator|Light water|re-attest
+CANDU 850|average_burnup_mwd_per_t|7500.0|first-verify
+CANDU 850|coolant|Heavy water|first-verify
+CANDU 850|enrichment_pct|Natural|first-verify
+CANDU 850|fuel_assembly_type|37-element bundle|first-verify
+CANDU 850|fuel_type|Natural UO2|first-verify
+CANDU 850|inlet_temperature_c|266.0|first-verify
+CANDU 850|live_steam_pressure_bar|47.0|first-verify
+CANDU 850|low_pressure_sections|3|first-verify
+CANDU 850|moderator|Heavy water|first-verify
+CANDU 850|number_of_coolant_loops|2|first-verify
+CANDU 850|number_of_fuel_assemblies|480|first-verify
+CANDU 850|number_of_steam_generators|8|first-verify
+CANDU 850|number_of_turbines|1|first-verify
+CANDU 850|operating_pressure_bar|100.0|first-verify
+CANDU 850|outlet_temperature_c|312.0|first-verify
+CANDU 850|thermal_power_mwth|2750.0|first-verify
+CANDU 850|turbine_speed_rpm|1800|first-verify
+CNP-600|number_of_coolant_loops|2|re-attest
+CNP-600|number_of_fuel_assemblies|121|re-attest
+CVTR|coolant|Heavy water|re-attest
+CVTR|enrichment_pct|1.5-2.0|re-attest
+CVTR|moderator|Heavy water|re-attest
+CVTR|thermal_power_mwth|65.0|re-attest
+N4|coolant|Light water|re-attest
+N4|core_diameter_m|3.47|re-attest
+N4|core_height_m|4.27|re-attest
+N4|fuel_assembly_type|17x17|re-attest
+N4|fuel_type|UO2|re-attest
+N4|moderator|Light water|re-attest
+N4|number_of_coolant_loops|4|re-attest
+N4|number_of_fuel_assemblies|205|re-attest
+N4|number_of_steam_generators|4|re-attest
+N4|number_of_turbines|1|re-attest
+N4|operating_pressure_bar|155.0|re-attest
+N4|thermal_power_mwth|4270.0|re-attest
+PFR|coolant|Sodium|first-verify
+PFR|fuel_assembly_type|Hexagonal|first-verify
+PFR|fuel_type|MOX (UO2/PuO2)|first-verify
+PFR|inlet_temperature_c|400.0|first-verify
+PFR|low_pressure_sections|2|first-verify
+PFR|number_of_coolant_loops|3|first-verify
+PFR|number_of_steam_generators|3|first-verify
+PFR|number_of_turbines|1|first-verify
+PFR|outlet_temperature_c|560.0|first-verify
+PFR|thermal_power_mwth|600.0|first-verify
+PFR|turbine_speed_rpm|3000|first-verify
+PLWBR|coolant|Light water|re-attest
+PLWBR|fuel_assembly_type|Seed-blanket|re-attest
+PLWBR|fuel_type|ThO2/UO2 (U-233)|re-attest
+PLWBR|moderator|Light water|re-attest
+PLWBR|number_of_coolant_loops|4|re-attest
+PLWBR|number_of_steam_generators|4|re-attest
+VVER-1000/428M|average_burnup_mwd_per_t|45000.0|re-attest
+VVER-1000/428M|coolant|Light water|re-attest
+VVER-1000/428M|core_height_m|3.53|re-attest
+VVER-1000/428M|enrichment_pct|3.6-4.4|re-attest
+VVER-1000/428M|fuel_assembly_type|Hexagonal|re-attest
+VVER-1000/428M|fuel_type|UO2|re-attest
+VVER-1000/428M|inlet_temperature_c|289.0|re-attest
+VVER-1000/428M|live_steam_pressure_bar|60.0|re-attest
+VVER-1000/428M|low_pressure_sections|4|re-attest
+VVER-1000/428M|moderator|Light water|re-attest
+VVER-1000/428M|number_of_control_elements|61|re-attest
+VVER-1000/428M|number_of_coolant_loops|4|re-attest
+VVER-1000/428M|number_of_fuel_assemblies|163|re-attest
+VVER-1000/428M|number_of_steam_generators|4|re-attest
+VVER-1000/428M|number_of_turbines|1|re-attest
+VVER-1000/428M|operating_pressure_bar|157.0|re-attest
+VVER-1000/428M|outlet_temperature_c|320.0|re-attest
+VVER-1000/428M|thermal_power_mwth|3000.0|re-attest
+VVER-1000/428M|turbine_speed_rpm|3000|re-attest

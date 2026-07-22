@@ -1,0 +1,110 @@
+design_series|field|verdict|corrected_value|confidence|source
+AM-1|coolant|CONFIRMED||MED|Wikipedia: Obninsk Nuclear Power Plant (coolant = water)
+AM-1|core_diameter_m|UNVERIFIABLE||LOW|Not stated in Obninsk NPP / RBMK articles retrieved
+AM-1|core_height_m|UNVERIFIABLE||LOW|Not stated in retrieved sources
+AM-1|enrichment_pct|CONFIRMED||MED|Wikipedia: Obninsk NPP ("5% enriched uranium")
+AM-1|fuel_type|UNVERIFIABLE||LOW|Fuel designation (UO2) not stated in retrieved sources; AM-1 fuel form not confirmed this session
+AM-1|moderator|CONFIRMED||MED|Wikipedia: Obninsk NPP / RBMK (graphite moderator)
+AM-1|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Not stated in retrieved sources
+AM-1|number_of_turbines|UNVERIFIABLE||LOW|Not stated in retrieved sources
+AM-1|operating_pressure_bar|UNVERIFIABLE||LOW|Not stated in retrieved sources
+AM-1|outlet_temperature_c|UNVERIFIABLE||LOW|Not stated in retrieved sources
+AM-1|thermal_power_mwth|CONFIRMED||MED|Wikipedia: Obninsk NPP / RBMK ("30 MW thermal power")
+B&W Lowered-Loop|coolant|CONFIRMED||MED|Wikipedia PWR; Oconee (model B&W LLP = Lowered-Loop Plant) is a PWR
+B&W Lowered-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|15x15 not stated in retrieved Oconee/PWR/B&W sources
+B&W Lowered-Loop|fuel_type|CONFIRMED||MED|Wikipedia PWR (enriched uranium dioxide fuel)
+B&W Lowered-Loop|moderator|CONFIRMED||MED|Wikipedia PWR (light water moderator)
+B&W Lowered-Loop|number_of_coolant_loops|UNVERIFIABLE||LOW|2 not stated in retrieved sources
+B&W Lowered-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|177 not stated in retrieved sources
+B&W Lowered-Loop|number_of_steam_generators|UNVERIFIABLE||LOW|Not stated in retrieved sources
+B&W Lowered-Loop|thermal_power_mwth|UNVERIFIABLE||LOW|Wikipedia Oconee (B&W LLP) shows 2610 MWth current; 2568 (original design) not sourced this session
+BN-20|fuel_type|UNVERIFIABLE||LOW|Entity BN-20 not identifiable in retrieved sources (List of nuclear reactors lists BN-350/600/800/1200 only)
+BN-20|thermal_power_mwth|UNVERIFIABLE||LOW|Entity BN-20 not identifiable in retrieved sources
+BWR/1|coolant|CONFIRMED||MED|Wikipedia BWR ("demineralized water as a coolant and neutron moderator")
+BWR/1|fuel_type|CONFIRMED||MED|Wikipedia BWR (low-enriched uranium oxide fuel)
+BWR/1|moderator|CONFIRMED||MED|Wikipedia BWR (water moderator)
+BWR/69|coolant|CONFIRMED||MED|BWR by designation; Wikipedia BWR (water coolant)
+BWR/69|fuel_type|CONFIRMED||MED|Wikipedia BWR (uranium oxide fuel)
+BWR/69|moderator|CONFIRMED||MED|Wikipedia BWR (water moderator)
+BWR/69|number_of_fuel_assemblies|UNVERIFIABLE||LOW|592 not sourced this session
+BWR/69|thermal_power_mwth|UNVERIFIABLE||LOW|2575 not sourced this session (Isar/Philippsburg/Krummel articles lacked MWth)
+BWR/75|coolant|CONFIRMED||MED|Wikipedia Forsmark (ABB Atom BWR 75, water coolant)
+BWR/75|fuel_type|CONFIRMED||MED|Wikipedia BWR (uranium oxide fuel)
+BWR/75|moderator|CONFIRMED||MED|Wikipedia Forsmark / BWR (water moderator)
+EGP-6|coolant|CONFIRMED||MED|Wikipedia EGP-6 (coolant = water)
+EGP-6|core_diameter_m|UNVERIFIABLE||LOW|Not stated in retrieved sources
+EGP-6|core_height_m|UNVERIFIABLE||LOW|Not stated in retrieved sources
+EGP-6|enrichment_pct|UNVERIFIABLE||LOW|EGP-6-specific enrichment not stated in retrieved sources
+EGP-6|fuel_type|UNVERIFIABLE||LOW|Not stated in retrieved sources
+EGP-6|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not stated in retrieved sources
+EGP-6|low_pressure_sections|UNVERIFIABLE||LOW|Not stated in retrieved sources
+EGP-6|moderator|CONFIRMED||MED|Wikipedia EGP-6 / RBMK (graphite moderator)
+EGP-6|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Not stated in retrieved sources
+EGP-6|number_of_turbines|UNVERIFIABLE||LOW|Not stated in retrieved sources
+EGP-6|operating_pressure_bar|UNVERIFIABLE||LOW|Not stated in retrieved sources
+EGP-6|outlet_temperature_c|UNVERIFIABLE||LOW|Not stated in retrieved sources
+EGP-6|thermal_power_mwth|CONFIRMED||MED|Wikipedia EGP-6 ("62 MW thermal power")
+EGP-6|turbine_speed_rpm|UNVERIFIABLE||LOW|Not stated in retrieved sources
+OPR-1000|coolant|CONFIRMED||MED|Wikipedia OPR-1000 (PWR, light water)
+OPR-1000|core_diameter_m|UNVERIFIABLE||LOW|Not stated in retrieved sources
+OPR-1000|core_height_m|UNVERIFIABLE||LOW|Not stated in retrieved sources
+OPR-1000|fuel_assembly_type|UNVERIFIABLE||LOW|16x16 not stated in retrieved OPR-1000/System 80 sources
+OPR-1000|fuel_type|CONFIRMED||MED|Wikipedia PWR (uranium dioxide fuel)
+OPR-1000|moderator|CONFIRMED||MED|Wikipedia OPR-1000 (PWR, light water moderator)
+OPR-1000|number_of_control_elements|UNVERIFIABLE||LOW|73 not stated in retrieved sources
+OPR-1000|number_of_coolant_loops|CONFIRMED||MED|Wikipedia OPR-1000 ("two-loop 1000 MWe PWR")
+OPR-1000|number_of_fuel_assemblies|UNVERIFIABLE||LOW|177 not stated in retrieved sources
+OPR-1000|number_of_steam_generators|CONFIRMED||MED|Wikipedia OPR-1000 (two-loop) + PWR (one SG per loop) => 2
+OPR-1000|number_of_turbines|UNVERIFIABLE||LOW|Not stated in retrieved sources
+OPR-1000|operating_pressure_bar|CONFIRMED||MED|Wikipedia PWR (primary coolant 150-160 bar)
+OPR-1000|turbine_speed_rpm|UNVERIFIABLE||LOW|Not stated in retrieved sources
+SGHWR|coolant|CONFIRMED||MED|Wikipedia SGHWR ("normal 'light' water as the coolant")
+SGHWR|fuel_assembly_type|UNVERIFIABLE||LOW|36-rod cluster not stated in retrieved sources
+SGHWR|fuel_type|CONFIRMED||MED|Wikipedia SGHWR (enriched uranium oxide fuel)
+SGHWR|moderator|CONFIRMED||MED|Wikipedia SGHWR ("heavy water as the neutron moderator")
+SGHWR|number_of_fuel_assemblies|UNVERIFIABLE||LOW|104 not stated in retrieved sources
+VVER-1000/412|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Wikipedia VVER generic average 48.4 MWd/kg; 45000 (V-412 specific) not sourced
+VVER-1000/412|coolant|CONFIRMED||MED|Wikipedia VVER (light water)
+VVER-1000/412|core_height_m|UNVERIFIABLE||LOW|Wikipedia VVER generic active height 3.50 m; 3.53 (V-412) not confirmed
+VVER-1000/412|enrichment_pct|CONFIRMED||MED|Wikipedia VVER (avg 4.26% falls within stated 3.6-4.4 loading range)
+VVER-1000/412|fuel_assembly_type|CONFIRMED||MED|Wikipedia VVER (hexagonal fuel assemblies)
+VVER-1000/412|fuel_type|CONFIRMED||MED|Wikipedia VVER (uranium dioxide)
+VVER-1000/412|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER (inlet 289C ~= 290)
+VVER-1000/412|live_steam_pressure_bar|CONFIRMED||MED|Wikipedia VVER (steam pressure 60.0 bar)
+VVER-1000/412|low_pressure_sections|UNVERIFIABLE||LOW|Not stated in retrieved sources
+VVER-1000/412|moderator|CONFIRMED||MED|Wikipedia VVER (light water)
+VVER-1000/412|number_of_control_elements|UNVERIFIABLE||LOW|61 not stated in retrieved sources
+VVER-1000/412|number_of_coolant_loops|CONFIRMED||MED|Wikipedia VVER (four primary coolant loops)
+VVER-1000/412|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia VVER (163 fuel assemblies)
+VVER-1000/412|number_of_steam_generators|CONFIRMED||MED|Wikipedia VVER (4 steam generators, one per loop)
+VVER-1000/412|number_of_turbines|UNVERIFIABLE||LOW|Not stated in retrieved sources
+VVER-1000/412|operating_pressure_bar|UNVERIFIABLE||LOW|Wikipedia VVER states 160 bar; 157 (15.7 MPa) not confirmed exactly
+VVER-1000/412|outlet_temperature_c|UNVERIFIABLE||LOW|Wikipedia VVER generic outlet 319C; 321 (V-412) not confirmed
+VVER-1000/412|thermal_power_mwth|CONFIRMED||MED|Wikipedia VVER ("Thermal output, MW: 3000")
+VVER-1000/412|turbine_speed_rpm|UNVERIFIABLE||LOW|Not stated in retrieved sources
+VVER-1200/523|coolant|CONFIRMED||MED|Wikipedia VVER-1200 (light water)
+VVER-1200/523|core_height_m|UNVERIFIABLE||LOW|3.73 not stated in retrieved sources
+VVER-1200/523|enrichment_pct|CONFIRMED||MED|Wikipedia VVER-1200 (avg 4.69% falls within stated 4.0-5.0 range)
+VVER-1200/523|fuel_assembly_type|CONFIRMED||MED|Wikipedia VVER-1200 (hexagonal, 163 assemblies)
+VVER-1200/523|fuel_type|CONFIRMED||MED|Wikipedia VVER-1200 (uranium dioxide, UO2)
+VVER-1200/523|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER-1200 (inlet 298.2C ~= 298)
+VVER-1200/523|live_steam_pressure_bar|UNVERIFIABLE||LOW|Wikipedia VVER-1200 states 70 bar; 68 not confirmed
+VVER-1200/523|low_pressure_sections|UNVERIFIABLE||LOW|Not stated in retrieved sources
+VVER-1200/523|moderator|CONFIRMED||MED|Wikipedia VVER-1200 (light water)
+VVER-1200/523|number_of_control_elements|UNVERIFIABLE||LOW|121 not stated in retrieved sources
+VVER-1200/523|number_of_coolant_loops|CONFIRMED||MED|Wikipedia VVER-1200 (four primary cooling loops)
+VVER-1200/523|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia VVER-1200 (163 fuel assemblies)
+VVER-1200/523|number_of_steam_generators|CONFIRMED||MED|Wikipedia VVER-1200 (four steam generators)
+VVER-1200/523|number_of_turbines|UNVERIFIABLE||LOW|Not stated in retrieved sources
+VVER-1200/523|operating_pressure_bar|CONFIRMED||MED|Wikipedia VVER-1200 (~160 bar primary; 16.2 MPa consistent)
+VVER-1200/523|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER-1200 (outlet 328.6C ~= 329)
+VVER-1200/523|thermal_power_mwth|CONFIRMED||MED|Wikipedia VVER-1200 (3212 MWth ~= 3200 nominal)
+VVER-1200/523|turbine_speed_rpm|UNVERIFIABLE||LOW|Not stated in retrieved sources
+W 4-Loop|coolant|CONFIRMED||MED|Wikipedia PWR / Vogtle / Seabrook (Westinghouse 4-loop PWR, light water)
+W 4-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|17x17 not confirmed specifically (Wikipedia PWR gives 14x14-17x17 range)
+W 4-Loop|fuel_type|CONFIRMED||MED|Wikipedia PWR (uranium dioxide fuel)
+W 4-Loop|moderator|CONFIRMED||MED|Wikipedia PWR (light water moderator)
+W 4-Loop|number_of_coolant_loops|CONFIRMED||MED|Wikipedia Vogtle/Seabrook (Westinghouse 4-loop / WH 4LP)
+W 4-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|193 not stated in retrieved sources
+W 4-Loop|number_of_steam_generators|CONFIRMED||MED|4-loop design + PWR (one SG per loop) => 4
+W 4-Loop|thermal_power_mwth|UNVERIFIABLE||LOW|Wikipedia Vogtle 3626 / Seabrook 3648 MWth (uprated); 3411 (original design) not sourced this session

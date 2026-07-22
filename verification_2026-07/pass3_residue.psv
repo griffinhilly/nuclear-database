@@ -1,0 +1,282 @@
+design_series|field
+AGR|average_burnup_mwd_per_t
+AGR|core_height_m
+AGR|fuel_assembly_type
+AGR|inlet_temperature_c
+AM-1|core_diameter_m
+AM-1|core_height_m
+AM-1|fuel_type
+AM-1|number_of_fuel_assemblies
+AM-1|number_of_turbines
+AM-1|operating_pressure_bar
+AM-1|outlet_temperature_c
+AMB-100|fuel_type
+AMB-100|number_of_turbines
+AMB-100|turbine_speed_rpm
+AMB-200|fuel_type
+AMB-200|moderator
+AMB-200|thermal_power_mwth
+AMB-200|turbine_speed_rpm
+APR1400|core_diameter_m
+APR1400|low_pressure_sections
+APR1400|number_of_turbines
+APR1400|turbine_speed_rpm
+AVR|core_diameter_m
+AVR|core_height_m
+AVR|enrichment_pct
+AVR|inlet_temperature_c
+AVR|number_of_control_elements
+AVR|number_of_coolant_loops
+AVR|number_of_steam_generators
+AVR|number_of_turbines
+AVR|operating_pressure_bar
+AVR|turbine_speed_rpm
+BLWR-250|number_of_turbines
+BN-20|fuel_type
+BN-20|thermal_power_mwth
+BN-350|fuel_type
+BN-350|inlet_temperature_c
+BN-350|number_of_steam_generators
+BN-350|number_of_turbines
+BN-350|outlet_temperature_c
+BN-350|thermal_power_mwth
+BN-350|turbine_speed_rpm
+BN-600|live_steam_pressure_bar
+BN-800|core_diameter_m
+BN-800|core_height_m
+BN-800|number_of_turbines
+BN-800|outlet_temperature_c
+BR-3|average_burnup_mwd_per_t
+BR-3|enrichment_pct
+BR-3|fuel_type
+BR-3|inlet_temperature_c
+BR-3|number_of_coolant_loops
+BR-3|number_of_fuel_assemblies
+BR-3|number_of_steam_generators
+BR-3|number_of_turbines
+BR-3|operating_pressure_bar
+BR-3|outlet_temperature_c
+BR-3|thermal_power_mwth
+BR-3|turbine_speed_rpm
+BWR/5|number_of_control_elements
+BWR/5|number_of_fuel_assemblies
+CANDU 500|average_burnup_mwd_per_t
+CANDU 500|core_diameter_m
+CANDU 500|fuel_assembly_type
+CANDU 500|inlet_temperature_c
+CANDU 500|live_steam_pressure_bar
+CANDU 500|low_pressure_sections
+CANDU 500|number_of_coolant_loops
+CANDU 500|number_of_fuel_assemblies
+CANDU 500|number_of_steam_generators
+CANDU 500|number_of_turbines
+CANDU 500|operating_pressure_bar
+CANDU 500|outlet_temperature_c
+CANDU 500|turbine_speed_rpm
+CANDU 750|average_burnup_mwd_per_t
+CANDU 750|inlet_temperature_c
+CANDU 750|low_pressure_sections
+CANDU 750|number_of_fuel_assemblies
+CANDU 750|number_of_steam_generators
+CANDU 750|number_of_turbines
+CANDU 750|thermal_power_mwth
+CANDU 750|turbine_speed_rpm
+CANDU 850|average_burnup_mwd_per_t
+CANDU 850|inlet_temperature_c
+CANDU 850|live_steam_pressure_bar
+CANDU 850|low_pressure_sections
+CANDU 850|number_of_coolant_loops
+CANDU 850|number_of_fuel_assemblies
+CANDU 850|number_of_steam_generators
+CANDU 850|number_of_turbines
+CANDU 850|turbine_speed_rpm
+CAP1400|core_diameter_m
+CE Pre-System 80|fuel_type
+CE System 80|fuel_assembly_type
+CFR-600|fuel_assembly_type
+CFR-600|inlet_temperature_c
+CFR-600|number_of_coolant_loops
+CFR-600|number_of_steam_generators
+CFR-600|number_of_turbines
+CFR-600|outlet_temperature_c
+CFR-600|turbine_speed_rpm
+CP0|fuel_assembly_type
+CP0|fuel_type
+CP2|fuel_assembly_type
+DFR|number_of_turbines
+DFR|outlet_temperature_c
+EGP-6|core_diameter_m
+EGP-6|core_height_m
+EGP-6|enrichment_pct
+EGP-6|fuel_type
+EGP-6|live_steam_pressure_bar
+EGP-6|low_pressure_sections
+EGP-6|number_of_fuel_assemblies
+EGP-6|number_of_turbines
+EGP-6|operating_pressure_bar
+EGP-6|outlet_temperature_c
+EGP-6|turbine_speed_rpm
+EL-4|thermal_power_mwth
+Fort St. Vrain|average_burnup_mwd_per_t
+Fort St. Vrain|core_diameter_m
+Fort St. Vrain|core_height_m
+Fort St. Vrain|enrichment_pct
+Fort St. Vrain|inlet_temperature_c
+Fort St. Vrain|low_pressure_sections
+Fort St. Vrain|number_of_control_elements
+Fort St. Vrain|number_of_coolant_loops
+Fort St. Vrain|number_of_fuel_assemblies
+Fort St. Vrain|number_of_steam_generators
+Fort St. Vrain|number_of_turbines
+Fort St. Vrain|operating_pressure_bar
+Fort St. Vrain|outlet_temperature_c
+Fort St. Vrain|turbine_speed_rpm
+HPR1000|thermal_power_mwth
+HTR-PM|average_burnup_mwd_per_t
+HTR-PM|core_diameter_m
+HTR-PM|core_height_m
+HTR-PM|enrichment_pct
+HTR-PM|fuel_assembly_type
+HTR-PM|fuel_type
+HTR-PM|inlet_temperature_c
+HTR-PM|low_pressure_sections
+HTR-PM|number_of_coolant_loops
+HTR-PM|number_of_steam_generators
+HTR-PM|operating_pressure_bar
+HTR-PM|outlet_temperature_c
+HTR-PM|turbine_speed_rpm
+IPHWR|core_diameter_m
+IPHWR|live_steam_pressure_bar
+IPHWR|low_pressure_sections
+IPHWR|number_of_control_elements
+IPHWR|number_of_coolant_loops
+IPHWR|number_of_steam_generators
+IPHWR|number_of_turbines
+IPHWR|turbine_speed_rpm
+KNK|fuel_type
+KNK|inlet_temperature_c
+KNK|number_of_coolant_loops
+KNK|number_of_steam_generators
+KNK|number_of_turbines
+KNK|outlet_temperature_c
+KNK|turbine_speed_rpm
+KWU PHWR|average_burnup_mwd_per_t
+KWU PHWR|core_height_m
+KWU PHWR|fuel_assembly_type
+KWU PHWR|inlet_temperature_c
+KWU PHWR|live_steam_pressure_bar
+KWU PHWR|low_pressure_sections
+KWU PHWR|number_of_coolant_loops
+KWU PHWR|number_of_fuel_assemblies
+KWU PHWR|number_of_steam_generators
+KWU PHWR|number_of_turbines
+KWU PHWR|operating_pressure_bar
+KWU PHWR|outlet_temperature_c
+KWU PHWR|turbine_speed_rpm
+LMFBR|number_of_turbines
+Magnox|low_pressure_sections
+Magnox|outlet_temperature_c
+Magnox|turbine_speed_rpm
+Monju|average_burnup_mwd_per_t
+Monju|core_diameter_m
+Monju|core_height_m
+Monju|fuel_assembly_type
+Monju|inlet_temperature_c
+Monju|low_pressure_sections
+Monju|number_of_control_elements
+Monju|number_of_steam_generators
+Monju|number_of_turbines
+Monju|outlet_temperature_c
+OPR-1000|core_diameter_m
+OPR-1000|core_height_m
+OPR-1000|number_of_control_elements
+OPR-1000|number_of_fuel_assemblies
+OPR-1000|number_of_turbines
+OPR-1000|turbine_speed_rpm
+PFR|fuel_assembly_type
+PFR|inlet_temperature_c
+PFR|low_pressure_sections
+PFR|number_of_turbines
+PFR|outlet_temperature_c
+PFR|thermal_power_mwth
+PFR|turbine_speed_rpm
+PHWR|average_burnup_mwd_per_t
+PHWR|low_pressure_sections
+PHWR|number_of_turbines
+PHWR|turbine_speed_rpm
+Phenix|average_burnup_mwd_per_t
+Phenix|core_diameter_m
+Phenix|core_height_m
+Phenix|fuel_assembly_type
+Phenix|inlet_temperature_c
+Phenix|low_pressure_sections
+Phenix|number_of_control_elements
+Phenix|number_of_coolant_loops
+Phenix|number_of_fuel_assemblies
+Phenix|number_of_steam_generators
+Phenix|number_of_turbines
+Phenix|outlet_temperature_c
+Phenix|thermal_power_mwth
+Phenix|turbine_speed_rpm
+RBMK-1000|average_burnup_mwd_per_t
+RBMK-1000|live_steam_pressure_bar
+RBMK-1000|low_pressure_sections
+RBMK-1000|number_of_control_elements
+RBMK-1000|number_of_fuel_assemblies
+RBMK-1500|average_burnup_mwd_per_t
+RBMK-1500|enrichment_pct
+RBMK-1500|fuel_assembly_type
+RBMK-1500|inlet_temperature_c
+RBMK-1500|low_pressure_sections
+RBMK-1500|number_of_control_elements
+RBMK-1500|number_of_coolant_loops
+SGHWR|number_of_fuel_assemblies
+Super-Phenix|average_burnup_mwd_per_t
+Super-Phenix|core_diameter_m
+Super-Phenix|core_height_m
+Super-Phenix|fuel_assembly_type
+Super-Phenix|inlet_temperature_c
+Super-Phenix|low_pressure_sections
+Super-Phenix|number_of_control_elements
+Super-Phenix|number_of_steam_generators
+Super-Phenix|number_of_turbines
+Super-Phenix|turbine_speed_rpm
+UNGG|low_pressure_sections
+UNGG|outlet_temperature_c
+VVER-1000/412|operating_pressure_bar
+VVER-1000/428|operating_pressure_bar
+VVER-1200|low_pressure_sections
+VVER-1200|number_of_control_elements
+VVER-1200|number_of_turbines
+VVER-1200|turbine_speed_rpm
+VVER-1200/392B|low_pressure_sections
+VVER-1200/392B|number_of_control_elements
+VVER-1200/392B|number_of_steam_generators
+VVER-1200/392M|live_steam_pressure_bar
+VVER-1200/392M|low_pressure_sections
+VVER-1200/392M|number_of_control_elements
+VVER-1200/392M|turbine_speed_rpm
+VVER-1200/491|low_pressure_sections
+VVER-1200/491|number_of_control_elements
+VVER-1200/491|turbine_speed_rpm
+VVER-1200/509|live_steam_pressure_bar
+VVER-1200/509|number_of_turbines
+VVER-1200/509|turbine_speed_rpm
+VVER-1200/523|live_steam_pressure_bar
+VVER-1200/523|low_pressure_sections
+VVER-1200/523|number_of_control_elements
+VVER-1200/523|number_of_turbines
+VVER-1200/523|turbine_speed_rpm
+VVER-440/179|low_pressure_sections
+VVER-440/179|turbine_speed_rpm
+VVER-440/213|low_pressure_sections
+VVER-440/213|number_of_turbines
+VVER-440/213|turbine_speed_rpm
+VVER-440/230|low_pressure_sections
+VVER-440/230|number_of_turbines
+VVER-440/230|turbine_speed_rpm
+VVER-440/270|low_pressure_sections
+VVER-440/270|number_of_turbines
+VVER-440/270|turbine_speed_rpm
+W 3-Loop|fuel_type
+W 4-Loop|number_of_steam_generators

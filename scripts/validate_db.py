@@ -397,6 +397,30 @@ def main():
         else:
             print("  OK: all non-NULL vendor fields are attested in final_verdicts.psv")
 
+    # 16. Type strays in design_series_specs numeric columns (2026-07-22):
+    # SQLite's flexible typing let a "MIXED (...)" annotation string land in
+    # thermal_power_mwth and pass a full validation run. Any TEXT value in a
+    # REAL/INTEGER-declared spec column is corruption.
+    print()
+    print("=" * 60)
+    print("16. TYPE STRAYS IN design_series_specs NUMERIC COLUMNS")
+    print("=" * 60)
+    num_cols = [r["name"] for r in conn.execute("PRAGMA table_info(design_series_specs)")
+                if r["type"].upper() in ("REAL", "INTEGER", "INT", "NUMERIC")]
+    strays = []
+    for col in num_cols:
+        for r in conn.execute(
+                f"SELECT design_series, {col} AS val FROM design_series_specs "
+                f"WHERE {col} IS NOT NULL AND typeof({col}) = 'text'"):
+            strays.append((r["design_series"], col, r["val"]))
+    if strays:
+        print(f"  FAIL: {len(strays)} text value(s) in numeric spec column(s):")
+        for s, col, val in strays[:20]:
+            print(f"    {s} | {col} = {val!r}")
+        issues += len(strays)
+    else:
+        print(f"  OK: no type strays across {len(num_cols)} numeric columns")
+
     # Summary
     print()
     print("=" * 60)

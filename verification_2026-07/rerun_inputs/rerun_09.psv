@@ -1,0 +1,110 @@
+design_series|field|current_value|origin
+AMB-200|coolant|Light water|first-verify
+AMB-200|enrichment_pct|2.0|first-verify
+AMB-200|fuel_type|UO2|first-verify
+AMB-200|moderator|Graphite|first-verify
+AMB-200|number_of_turbines|1|first-verify
+AMB-200|thermal_power_mwth|530.0|first-verify
+AMB-200|turbine_speed_rpm|3000|first-verify
+BWR/72|coolant|Light water|re-attest
+BWR/72|fuel_type|UO2|re-attest
+BWR/72|moderator|Light water|re-attest
+BWR/72|thermal_power_mwth|3840.0|re-attest
+BWR/G3|coolant|Light water|re-attest
+BWR/G3|fuel_type|UO2|re-attest
+BWR/G3|moderator|Light water|re-attest
+CAP1000|coolant|Light water|re-attest
+CAP1000|core_height_m|4.27|re-attest
+CAP1000|fuel_assembly_type|17x17|re-attest
+CAP1000|moderator|Light water|re-attest
+CAP1000|number_of_control_elements|53|re-attest
+CAP1000|number_of_coolant_loops|2|re-attest
+CAP1000|number_of_fuel_assemblies|157|re-attest
+CAP1000|number_of_steam_generators|2|re-attest
+EL-4|coolant|CO2|re-attest
+EL-4|fuel_type|UO2|re-attest
+EL-4|moderator|Heavy water|re-attest
+EL-4|thermal_power_mwth|250.0|re-attest
+HTR-PM|average_burnup_mwd_per_t|90000.0|first-verify
+HTR-PM|coolant|Helium|first-verify
+HTR-PM|core_diameter_m|3.0|first-verify
+HTR-PM|core_height_m|11.0|first-verify
+HTR-PM|enrichment_pct|8.5|first-verify
+HTR-PM|fuel_assembly_type|Pebble (60mm diameter)|first-verify
+HTR-PM|fuel_type|TRISO UO2 pebbles|first-verify
+HTR-PM|inlet_temperature_c|250.0|first-verify
+HTR-PM|low_pressure_sections|2|first-verify
+HTR-PM|moderator|Graphite|first-verify
+HTR-PM|number_of_coolant_loops|1|first-verify
+HTR-PM|number_of_steam_generators|1|first-verify
+HTR-PM|number_of_turbines|1|first-verify
+HTR-PM|operating_pressure_bar|70.0|first-verify
+HTR-PM|outlet_temperature_c|750.0|first-verify
+HTR-PM|thermal_power_mwth|250.0|first-verify
+HTR-PM|turbine_speed_rpm|3000|first-verify
+HWGCR|coolant|CO2|re-attest
+HWGCR|moderator|Heavy water|re-attest
+Phenix|average_burnup_mwd_per_t|100000.0|first-verify
+Phenix|coolant|Sodium|first-verify
+Phenix|core_diameter_m|1.4|first-verify
+Phenix|core_height_m|0.85|first-verify
+Phenix|fuel_assembly_type|Hexagonal|first-verify
+Phenix|fuel_type|MOX (UO2/PuO2)|first-verify
+Phenix|inlet_temperature_c|400.0|first-verify
+Phenix|low_pressure_sections|2|first-verify
+Phenix|number_of_control_elements|6|first-verify
+Phenix|number_of_coolant_loops|3|first-verify
+Phenix|number_of_fuel_assemblies|103|first-verify
+Phenix|number_of_steam_generators|3|first-verify
+Phenix|number_of_turbines|1|first-verify
+Phenix|outlet_temperature_c|560.0|first-verify
+Phenix|thermal_power_mwth|563.0|first-verify
+Phenix|turbine_speed_rpm|3000|first-verify
+THTR-300|coolant|Helium|re-attest
+THTR-300|core_diameter_m|5.6|re-attest
+THTR-300|core_height_m|6.0|re-attest
+THTR-300|enrichment_pct|93|re-attest
+THTR-300|fuel_assembly_type|Pebble (60mm diameter)|re-attest
+THTR-300|fuel_type|TRISO UO2/ThO2 pebbles|re-attest
+THTR-300|inlet_temperature_c|250.0|re-attest
+THTR-300|moderator|Graphite|re-attest
+THTR-300|number_of_coolant_loops|6|re-attest
+THTR-300|number_of_steam_generators|6|re-attest
+THTR-300|outlet_temperature_c|750.0|re-attest
+THTR-300|thermal_power_mwth|750.0|re-attest
+UNGG|coolant|CO2|re-attest
+UNGG|enrichment_pct|Natural|re-attest
+UNGG|fuel_type|Natural metallic uranium|re-attest
+UNGG|low_pressure_sections|2|first-verify
+UNGG|moderator|Graphite|re-attest
+UNGG|outlet_temperature_c|400.0|re-attest
+VVER-1000/302|coolant|Light water|re-attest
+VVER-1000/302|fuel_assembly_type|Hexagonal|re-attest
+VVER-1000/302|live_steam_pressure_bar|60.0|re-attest
+VVER-1000/302|moderator|Light water|re-attest
+VVER-1000/302|number_of_control_elements|61|re-attest
+VVER-1000/302|number_of_coolant_loops|4|re-attest
+VVER-1000/302|number_of_fuel_assemblies|163|re-attest
+VVER-1000/302|number_of_steam_generators|4|re-attest
+VVER-1000/302|number_of_turbines|1|re-attest
+VVER-1000/302|operating_pressure_bar|157.0|re-attest
+VVER-1000/302|thermal_power_mwth|3000.0|re-attest
+VVER-1000/446|average_burnup_mwd_per_t|45000.0|re-attest
+VVER-1000/446|coolant|Light water|re-attest
+VVER-1000/446|core_height_m|3.53|re-attest
+VVER-1000/446|enrichment_pct|3.6-4.4|re-attest
+VVER-1000/446|fuel_assembly_type|Hexagonal|re-attest
+VVER-1000/446|fuel_type|UO2|re-attest
+VVER-1000/446|inlet_temperature_c|289.0|re-attest
+VVER-1000/446|live_steam_pressure_bar|60.0|re-attest
+VVER-1000/446|low_pressure_sections|4|re-attest
+VVER-1000/446|moderator|Light water|re-attest
+VVER-1000/446|number_of_control_elements|61|re-attest
+VVER-1000/446|number_of_coolant_loops|4|re-attest
+VVER-1000/446|number_of_fuel_assemblies|163|re-attest
+VVER-1000/446|number_of_steam_generators|4|re-attest
+VVER-1000/446|number_of_turbines|1|re-attest
+VVER-1000/446|operating_pressure_bar|157.0|re-attest
+VVER-1000/446|outlet_temperature_c|320.0|re-attest
+VVER-1000/446|thermal_power_mwth|3000.0|re-attest
+VVER-1000/446|turbine_speed_rpm|3000|re-attest

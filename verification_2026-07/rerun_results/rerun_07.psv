@@ -1,0 +1,110 @@
+design_series|field|verdict|corrected_value|confidence|source
+ACPR-1000|coolant|CONFIRMED||MED|Wikipedia CPR-1000/ACPR-1000 (light-water PWR)
+ACPR-1000|enrichment_pct|CONFIRMED||MED|Wikipedia CPR-1000 (fuel enriched to 4.5% U-235; 3.7-4.5 range consistent)
+ACPR-1000|fuel_assembly_type|CONFIRMED||MED|Wikipedia CPR-1000 (AREVA 17x17 AFA 3G M5)
+ACPR-1000|moderator|CONFIRMED||MED|Wikipedia CPR-1000/ACPR-1000 (light-water PWR)
+ACPR-1000|number_of_coolant_loops|CONFIRMED||MED|Wikipedia CPR-1000/ACPR-1000 (three-loop configuration)
+ACPR-1000|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia CPR-1000/ACPR-1000 (157 fuel assemblies)
+ACPR-1000|number_of_steam_generators|CONFIRMED||MED|Wikipedia CPR-1000 (three loops, three steam generators)
+APR1400|coolant|CONFIRMED||MED|Wikipedia APR-1400 (pressurized light-water reactor)
+APR1400|core_diameter_m|UNVERIFIABLE||LOW|Not in retrieved sources; APR1400 IAEA ARIS PDF returned 404
+APR1400|core_height_m|UNVERIFIABLE||LOW|Not in retrieved sources; APR1400 IAEA ARIS PDF returned 404
+APR1400|enrichment_pct|UNVERIFIABLE||LOW|Wikipedia APR-1400 gives core avg 2.6 w/o only; max-range 4.5-5.0 not confirmed this session
+APR1400|fuel_assembly_type|CONFIRMED||MED|Wikipedia APR-1400 (236 fuel rods in 16x16 array)
+APR1400|fuel_type|CONFIRMED||MED|Wikipedia APR-1400 (uranium dioxide)
+APR1400|low_pressure_sections|UNVERIFIABLE||LOW|Not in retrieved sources
+APR1400|moderator|CONFIRMED||MED|Wikipedia APR-1400 (light-water PWR)
+APR1400|number_of_control_elements|CONFIRMED||MED|Wikipedia APR-1400 (93 control element assemblies)
+APR1400|number_of_coolant_loops|CONFIRMED||MED|Wikipedia APR-1400 (two reactor coolant loops)
+APR1400|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia APR-1400 (241 fuel assemblies)
+APR1400|number_of_steam_generators|CONFIRMED||MED|Wikipedia APR-1400 (two steam generators)
+APR1400|number_of_turbines|UNVERIFIABLE||LOW|Not in retrieved sources
+APR1400|operating_pressure_bar|UNVERIFIABLE||LOW|Not in retrieved sources (ARIS PDF 404)
+APR1400|thermal_power_mwth|CONFIRMED||MED|Wikipedia APR-1400 (3983 MW thermal, 4000 MW nominal)
+APR1400|turbine_speed_rpm|UNVERIFIABLE||LOW|Not in retrieved sources
+BN-350|fuel_type|UNVERIFIABLE||LOW|Wikipedia BN-350 does not state fuel composition
+BN-350|inlet_temperature_c|UNVERIFIABLE||LOW|Not in retrieved sources
+BN-350|number_of_coolant_loops|CONFIRMED||MED|Wikipedia BN-350 (first circuit = five active plus one reserve loop = 6)
+BN-350|number_of_steam_generators|UNVERIFIABLE||LOW|Wikipedia BN-350 does not state steam generator count
+BN-350|number_of_turbines|UNVERIFIABLE||LOW|Not in retrieved sources
+BN-350|outlet_temperature_c|UNVERIFIABLE||LOW|Not in retrieved sources
+BN-350|thermal_power_mwth|UNVERIFIABLE||LOW|Wikipedia BN-350 gives 350 MWe only, not thermal power
+BN-350|turbine_speed_rpm|UNVERIFIABLE||LOW|Not in retrieved sources
+BWR/2|coolant|CONFIRMED||MED|Wikipedia Boiling water reactor (water is coolant and moderator)
+BWR/2|fuel_type|CONFIRMED||MED|Wikipedia BWR (low-enriched uranium fuel; UO2 is the standard BWR fuel form)
+BWR/2|moderator|CONFIRMED||MED|Wikipedia BWR (water used as coolant and moderator)
+BWR/G1|coolant|CONFIRMED||MED|Wikipedia Boiling water reactor (water is coolant and moderator)
+BWR/G1|fuel_type|CONFIRMED||MED|Wikipedia BWR (low-enriched uranium; UO2 standard BWR fuel form)
+BWR/G1|moderator|CONFIRMED||MED|Wikipedia BWR (water used as coolant and moderator)
+CANDU 750|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not in retrieved CANDU sources this session
+CANDU 750|coolant|CONFIRMED||MED|Wikipedia CANDU reactor (D2O heavy water coolant)
+CANDU 750|enrichment_pct|CONFIRMED||MED|Wikipedia CANDU (runs on unenriched natural uranium)
+CANDU 750|fuel_assembly_type|CONFIRMED||MED|Wikipedia CANDU (37 fuel elements per bundle)
+CANDU 750|fuel_type|CONFIRMED||MED|Wikipedia CANDU (natural uranium UO2)
+CANDU 750|inlet_temperature_c|UNVERIFIABLE||LOW|Wikipedia CANDU 6 gives outlet temp only, not inlet
+CANDU 750|live_steam_pressure_bar|CONFIRMED||MED|Wikipedia CANDU 6 (steam pressure 4.7 MPa = 47 bar)
+CANDU 750|low_pressure_sections|UNVERIFIABLE||LOW|Not in retrieved sources
+CANDU 750|moderator|CONFIRMED||MED|Wikipedia CANDU (D2O heavy water moderator)
+CANDU 750|number_of_coolant_loops|CONFIRMED||MED|Wikipedia CANDU (figure-of-eight two-loop heat transport system)
+CANDU 750|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Entity uncertain: Wikipedia CANDU 6 = 380 fuel channels; 480 indicates a Bruce/Darlington-class unit; cannot confirm which CANDU maps to series CANDU 750
+CANDU 750|number_of_steam_generators|UNVERIFIABLE||LOW|Entity uncertain: CANDU 6 = 4 SG but Bruce-class = 8; series identity unresolved
+CANDU 750|number_of_turbines|UNVERIFIABLE||LOW|Not in retrieved sources
+CANDU 750|operating_pressure_bar|CONFIRMED||MED|Wikipedia CANDU 6 (reactor outlet pressure 10.3 MPa; ~100 bar header pressure)
+CANDU 750|outlet_temperature_c|CONFIRMED||MED|Wikipedia CANDU 6 (reactor outlet temperature 312 C ~ 310)
+CANDU 750|thermal_power_mwth|UNVERIFIABLE||LOW|Entity uncertain: CANDU 6 ~2060 MWth net; 2650 matches neither CANDU 6 nor Bruce-class cleanly
+CANDU 750|turbine_speed_rpm|UNVERIFIABLE||LOW|Not in retrieved sources
+CAREM|coolant|CONFIRMED||MED|Wikipedia CAREM (integral light-water PWR, natural circulation)
+CAREM|fuel_type|CONFIRMED||MED|Wikipedia CAREM (uranium oxide, 3.4% U-235 enrichment)
+EPR|coolant|CONFIRMED||MED|Wikipedia EPR (four-loop light-water PWR)
+EPR|core_height_m|CONFIRMED||MED|Wikipedia EPR (active core height 4.2 m)
+EPR|enrichment_pct|CONFIRMED||MED|Wikipedia EPR (average enrichment 4.95%; 4.0-5.0 range consistent)
+EPR|fuel_assembly_type|CONFIRMED||MED|Wikipedia EPR (265 fuel rods per assembly = 17x17 lattice)
+EPR|fuel_type|CONFIRMED||MED|Wikipedia EPR (uranium dioxide, MOX)
+EPR|low_pressure_sections|UNVERIFIABLE||LOW|Not in retrieved sources
+EPR|moderator|CONFIRMED||MED|Wikipedia EPR (light-water PWR)
+EPR|number_of_control_elements|UNVERIFIABLE||LOW|Not in retrieved sources
+EPR|number_of_coolant_loops|CONFIRMED||MED|Wikipedia EPR (four independent loops)
+EPR|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia EPR (241 fuel assemblies)
+EPR|number_of_steam_generators|CONFIRMED||MED|Wikipedia EPR (one steam generator per loop, four total)
+EPR|thermal_power_mwth|CONFIRMED||MED|Wikipedia EPR (4590 MW thermal)
+M310|coolant|CONFIRMED||MED|Wikipedia CPR-1000 (M310 = French 900 MWe three-loop light-water PWR)
+M310|fuel_assembly_type|CONFIRMED||MED|Wikipedia CPR-1000 (M310-derived 17x17 assemblies)
+M310|moderator|CONFIRMED||MED|Wikipedia CPR-1000 (M310 light-water PWR)
+M310|number_of_coolant_loops|CONFIRMED||MED|Wikipedia CPR-1000 (M310 = three cooling loop design)
+M310|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia CPR-1000 (M310-derived, 157 fuel assemblies)
+M310|number_of_steam_generators|CONFIRMED||MED|Wikipedia CPR-1000 (three loops, three steam generators)
+Magnox|coolant|CONFIRMED||MED|Wikipedia Magnox (carbon dioxide gas coolant)
+Magnox|core_diameter_m|WRONG|MIXED|MED|Wikipedia Magnox (core diameter varies by station: Calder Hall 9.45 m, Oldbury 12.8 m, Wylfa 17.4 m)
+Magnox|core_height_m|WRONG|MIXED|MED|Wikipedia Magnox (core height varies: Calder Hall 6.4 m, Oldbury 8.5 m, Wylfa 9.2 m)
+Magnox|enrichment_pct|CONFIRMED||MED|Wikipedia Magnox (natural uranium, unenriched)
+Magnox|fuel_assembly_type|CONFIRMED||MED|Wikipedia Magnox (Magnox alloy-clad fuel elements)
+Magnox|fuel_type|CONFIRMED||MED|Wikipedia Magnox (natural uranium metal)
+Magnox|low_pressure_sections|UNVERIFIABLE||LOW|Not in retrieved sources
+Magnox|moderator|CONFIRMED||MED|Wikipedia Magnox (graphite moderator)
+Magnox|number_of_control_elements|WRONG|MIXED|MED|Wikipedia Magnox (control rod count varies: 48 at Calder Hall and Chapelcross; differs by station)
+Magnox|outlet_temperature_c|UNVERIFIABLE||LOW|Wikipedia Magnox cites a 360 C gas-temperature limit; later stations reportedly ran higher (~400 C); single series value unconfirmed
+Magnox|turbine_speed_rpm|UNVERIFIABLE||LOW|Not in retrieved sources
+VVER-1000/428|average_burnup_mwd_per_t|CONFIRMED||MED|Wikipedia VVER (VVER-1000 burnup ~48.4 MWd/kg; 45000 MWd/t within documented range)
+VVER-1000/428|coolant|CONFIRMED||MED|Wikipedia VVER (light water coolant)
+VVER-1000/428|core_height_m|CONFIRMED||MED|Wikipedia VVER (core height 3.50 m; 3.53 standard VVER-1000)
+VVER-1000/428|enrichment_pct|CONFIRMED||MED|Wikipedia VVER (avg enrichment ~4.26%; 3.6-4.4 range consistent)
+VVER-1000/428|fuel_assembly_type|CONFIRMED||MED|Wikipedia VVER (hexagonal fuel assemblies)
+VVER-1000/428|fuel_type|CONFIRMED||MED|Wikipedia VVER (low-enriched UO2)
+VVER-1000/428|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER (coolant inlet 289 C)
+VVER-1000/428|live_steam_pressure_bar|CONFIRMED||MED|Wikipedia VVER (steam pressure 60.0 bar)
+VVER-1000/428|low_pressure_sections|UNVERIFIABLE||LOW|Not in retrieved sources
+VVER-1000/428|moderator|CONFIRMED||MED|Wikipedia VVER (light water moderator)
+VVER-1000/428|number_of_control_elements|UNVERIFIABLE||LOW|Not in retrieved sources (Tianwan page lacked detail)
+VVER-1000/428|number_of_coolant_loops|CONFIRMED||MED|Wikipedia VVER (four-loop system)
+VVER-1000/428|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia VVER (163 fuel assemblies)
+VVER-1000/428|number_of_steam_generators|CONFIRMED||MED|Wikipedia VVER (four steam generators)
+VVER-1000/428|number_of_turbines|UNVERIFIABLE||LOW|Not in retrieved sources (Tianwan page lacked detail)
+VVER-1000/428|operating_pressure_bar|UNVERIFIABLE||LOW|Wikipedia VVER gives 160 bar primary / 165.1 bar pressurizer; DB 157 (15.7 MPa nominal) not independently confirmed this session
+VVER-1000/428|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER (coolant outlet 319 C ~ 320)
+VVER-1000/428|thermal_power_mwth|CONFIRMED||MED|Wikipedia VVER (3000 MW thermal)
+VVER-1000/428|turbine_speed_rpm|UNVERIFIABLE||LOW|Not in retrieved sources
+W 1-Loop|coolant|CONFIRMED||MED|Wikipedia Jose Cabrera Nuclear Power Station (single-loop Westinghouse PWR, light water)
+W 1-Loop|fuel_type|CONFIRMED||MED|Wikipedia Jose Cabrera (Westinghouse PWR; UO2 standard PWR fuel form)
+W 1-Loop|moderator|CONFIRMED||MED|Wikipedia Jose Cabrera (single-loop Westinghouse PWR, light water moderator)
+W 1-Loop|number_of_coolant_loops|CONFIRMED||MED|Wikipedia Jose Cabrera (single-loop PWR)
+W 1-Loop|number_of_steam_generators|CONFIRMED||MED|Wikipedia Jose Cabrera (single-loop PWR implies one steam generator)
