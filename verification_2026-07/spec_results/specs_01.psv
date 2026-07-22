@@ -1,0 +1,208 @@
+design_series|field|verdict|corrected_value|confidence|source
+BWR/1|fuel_type|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/1|moderator|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/1|coolant|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/1|number_of_coolant_loops|UNVERIFIABLE||LOW|No BWR/1-specific primary document retrieved this session
+BWR/1|operating_pressure_bar|UNVERIFIABLE||LOW|No BWR/1-specific primary document retrieved this session
+BWR/1|enrichment_pct|UNVERIFIABLE||LOW|No BWR/1-specific primary document retrieved this session
+BWR/1|outlet_temperature_c|UNVERIFIABLE||LOW|No BWR/1-specific primary document retrieved this session
+BWR/1|number_of_turbines|UNVERIFIABLE||LOW|No BWR/1-specific primary document retrieved this session
+BWR/1|low_pressure_sections|UNVERIFIABLE||LOW|No BWR/1-specific primary document retrieved this session
+BWR/1|live_steam_pressure_bar|UNVERIFIABLE||LOW|No BWR/1-specific primary document retrieved this session
+BWR/2|thermal_power_mwth|UNVERIFIABLE||LOW|WebSearch on Oyster Creek/Nine Mile Point 1 (BWR/2 plants) returned differing as-operated values (1930 MWt Oyster Creek uprated, ~1850 MWt Nine Mile Pt 1) not on same basis as a generic BWR/2 line rating; no generic-line document found
+BWR/2|fuel_type|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/2|moderator|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/2|coolant|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/2|number_of_coolant_loops|UNVERIFIABLE||LOW|No BWR/2-specific primary document retrieved this session
+BWR/2|operating_pressure_bar|UNVERIFIABLE||LOW|No BWR/2-specific primary document retrieved this session
+BWR/2|enrichment_pct|UNVERIFIABLE||LOW|No BWR/2-specific primary document retrieved this session
+BWR/2|core_height_m|UNVERIFIABLE||LOW|No BWR/2-specific primary document retrieved this session
+BWR/2|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Oyster Creek search returned ~560 assemblies (as-operated, post-uprate), not directly comparable to a generic BWR/2 design value of 368; basis mismatch, not confirmed either way
+BWR/2|number_of_control_elements|UNVERIFIABLE||LOW|No BWR/2-specific primary document retrieved this session
+BWR/2|outlet_temperature_c|UNVERIFIABLE||LOW|No BWR/2-specific primary document retrieved this session
+BWR/2|inlet_temperature_c|UNVERIFIABLE||LOW|No BWR/2-specific primary document retrieved this session
+BWR/2|fuel_assembly_type|UNVERIFIABLE||LOW|No BWR/2-specific primary document retrieved this session
+BWR/2|number_of_turbines|UNVERIFIABLE||LOW|No BWR/2-specific primary document retrieved this session
+BWR/2|turbine_speed_rpm|UNVERIFIABLE||LOW|No BWR/2-specific primary document retrieved this session
+BWR/2|low_pressure_sections|UNVERIFIABLE||LOW|No BWR/2-specific primary document retrieved this session
+BWR/2|live_steam_pressure_bar|UNVERIFIABLE||LOW|No BWR/2-specific primary document retrieved this session
+BWR/3|thermal_power_mwth|UNVERIFIABLE||LOW|WebSearch confirms Dresden 2/3 and Quad Cities (BWR/3 plants) currently operate at 2957 MWt post-uprate, consistent with the DB note that 2527 MWt is the pre-uprate original license value, but no document giving the 2527 figure explicitly was retrieved
+BWR/3|fuel_type|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/3|moderator|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/3|coolant|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/3|number_of_coolant_loops|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/3|operating_pressure_bar|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/3|enrichment_pct|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/3|core_height_m|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/3|number_of_fuel_assemblies|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/3|number_of_control_elements|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/3|outlet_temperature_c|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/3|inlet_temperature_c|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/3|fuel_assembly_type|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/3|number_of_turbines|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/3|turbine_speed_rpm|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/3|low_pressure_sections|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/3|live_steam_pressure_bar|UNVERIFIABLE||LOW|No BWR/3-specific primary document retrieved this session
+BWR/4|thermal_power_mwth|CONFIRMED||HIGH|NRC "GE BWR/4 Technology - 1.8 Thermal Limits" (ML11258A297); Susquehanna SSES-FSAR (ML18122A329) lists 764-assembly BWR/4 core at this rating
+BWR/4|fuel_type|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/4|moderator|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/4|coolant|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/4|number_of_coolant_loops|UNVERIFIABLE||LOW|No BWR/4-specific primary document retrieved this session
+BWR/4|operating_pressure_bar|UNVERIFIABLE||LOW|No BWR/4-specific primary document retrieved this session
+BWR/4|enrichment_pct|UNVERIFIABLE||LOW|No BWR/4-specific primary document retrieved this session
+BWR/4|core_height_m|UNVERIFIABLE||LOW|No BWR/4-specific primary document retrieved this session
+BWR/4|number_of_fuel_assemblies|CONFIRMED||HIGH|Susquehanna SSES-FSAR (NRC ML18122A329): BWR/4 core, 764 fuel assemblies
+BWR/4|number_of_control_elements|CONFIRMED||HIGH|Susquehanna SSES-FSAR (NRC ML18122A329): 185 control rods
+BWR/4|outlet_temperature_c|UNVERIFIABLE||LOW|No BWR/4-specific primary document retrieved this session
+BWR/4|inlet_temperature_c|UNVERIFIABLE||LOW|No BWR/4-specific primary document retrieved this session
+BWR/4|fuel_assembly_type|UNVERIFIABLE||LOW|No BWR/4-specific primary document retrieved this session
+BWR/4|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|No BWR/4-specific primary document retrieved this session
+BWR/4|number_of_turbines|UNVERIFIABLE||LOW|No BWR/4-specific primary document retrieved this session
+BWR/4|turbine_speed_rpm|UNVERIFIABLE||LOW|No BWR/4-specific primary document retrieved this session
+BWR/4|low_pressure_sections|UNVERIFIABLE||LOW|No BWR/4-specific primary document retrieved this session
+BWR/4|live_steam_pressure_bar|UNVERIFIABLE||LOW|No BWR/4-specific primary document retrieved this session
+BWR/5|thermal_power_mwth|CONFIRMED||HIGH|NRC BWR thermal limits reference plus MIT OCW 22.06 "BWR Description" lecture (LaSalle, BWR/5): 3323 MWth
+BWR/5|fuel_type|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/5|moderator|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/5|coolant|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/5|number_of_coolant_loops|UNVERIFIABLE||LOW|No BWR/5-specific primary document retrieved this session
+BWR/5|operating_pressure_bar|UNVERIFIABLE||LOW|No BWR/5-specific primary document retrieved this session
+BWR/5|enrichment_pct|UNVERIFIABLE||LOW|No BWR/5-specific primary document retrieved this session
+BWR/5|core_height_m|UNVERIFIABLE||LOW|No BWR/5-specific primary document retrieved this session
+BWR/5|number_of_fuel_assemblies|CONFIRMED||HIGH|MIT OCW 22.06 BWR Description lecture; ORNL/TM-1999/247 SCALE-4 Analysis of LaSalle: 764 fuel assemblies
+BWR/5|number_of_control_elements|CONFIRMED||HIGH|ORNL/TM-1999/247 SCALE-4 Analysis of LaSalle: 185 control blades
+BWR/5|outlet_temperature_c|UNVERIFIABLE||LOW|No BWR/5-specific primary document retrieved this session
+BWR/5|inlet_temperature_c|UNVERIFIABLE||LOW|No BWR/5-specific primary document retrieved this session
+BWR/5|fuel_assembly_type|UNVERIFIABLE||LOW|No BWR/5-specific primary document retrieved this session
+BWR/5|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|No BWR/5-specific primary document retrieved this session
+BWR/5|number_of_turbines|UNVERIFIABLE||LOW|No BWR/5-specific primary document retrieved this session
+BWR/5|turbine_speed_rpm|UNVERIFIABLE||LOW|No BWR/5-specific primary document retrieved this session
+BWR/5|low_pressure_sections|UNVERIFIABLE||LOW|No BWR/5-specific primary document retrieved this session
+BWR/5|live_steam_pressure_bar|UNVERIFIABLE||LOW|No BWR/5-specific primary document retrieved this session
+BWR/6|thermal_power_mwth|CONFIRMED||HIGH|NRC "Estimation of Carbon-14 in Nuclear Power Plant Gaseous Effluents" (ML101650129) cites BWR/6 reference plant at 3579 MWt / 748 fuel assemblies
+BWR/6|fuel_type|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/6|moderator|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/6|coolant|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/6|number_of_coolant_loops|UNVERIFIABLE||LOW|No BWR/6-specific primary document retrieved this session
+BWR/6|operating_pressure_bar|UNVERIFIABLE||LOW|No BWR/6-specific primary document retrieved this session
+BWR/6|enrichment_pct|UNVERIFIABLE||LOW|No BWR/6-specific primary document retrieved this session
+BWR/6|core_height_m|UNVERIFIABLE||LOW|Search found conflicting active-fuel-length figures for the BWR/6-derived ABWR (3.7 m and 3.81 m cited in different documents); no single authoritative figure confirmed for BWR/6 itself
+BWR/6|number_of_fuel_assemblies|CONFIRMED||HIGH|NRC ML101650129 (Carbon-14 effluent estimation reference plant): 748 fuel assemblies
+BWR/6|number_of_control_elements|UNVERIFIABLE||LOW|No BWR/6-specific primary document retrieved this session
+BWR/6|outlet_temperature_c|UNVERIFIABLE||LOW|No BWR/6-specific primary document retrieved this session
+BWR/6|inlet_temperature_c|UNVERIFIABLE||LOW|No BWR/6-specific primary document retrieved this session
+BWR/6|fuel_assembly_type|UNVERIFIABLE||LOW|No BWR/6-specific primary document retrieved this session
+BWR/6|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|No BWR/6-specific primary document retrieved this session
+BWR/6|number_of_turbines|UNVERIFIABLE||LOW|No BWR/6-specific primary document retrieved this session
+BWR/6|turbine_speed_rpm|UNVERIFIABLE||LOW|No BWR/6-specific primary document retrieved this session
+BWR/6|low_pressure_sections|UNVERIFIABLE||LOW|No BWR/6-specific primary document retrieved this session
+BWR/6|live_steam_pressure_bar|UNVERIFIABLE||LOW|No BWR/6-specific primary document retrieved this session
+BWR/69|thermal_power_mwth|CONFIRMED||HIGH|nuklearesicherheit.de Isar 1 nuclear power plant profile (BWR-69/KWU design): 2,575 MWth
+BWR/69|fuel_type|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/69|moderator|CONFIRMED||HIGH|nuklearesicherheit.de Isar 1 profile: light-water moderated and cooled KWU BWR
+BWR/69|coolant|CONFIRMED||HIGH|nuklearesicherheit.de Isar 1 profile: light-water moderated and cooled KWU BWR
+BWR/69|number_of_coolant_loops|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/69|operating_pressure_bar|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/69|enrichment_pct|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/69|core_height_m|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/69|core_diameter_m|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/69|number_of_fuel_assemblies|CONFIRMED||HIGH|nuklearesicherheit.de Isar 1 profile: 592 fuel elements in the core (cross-checked against Isar 2/PWR figure of 336 to rule out unit conflation)
+BWR/69|number_of_control_elements|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/69|outlet_temperature_c|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/69|fuel_assembly_type|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/69|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/69|number_of_turbines|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/69|turbine_speed_rpm|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/69|low_pressure_sections|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/69|live_steam_pressure_bar|UNVERIFIABLE||LOW|No BWR/69-specific primary document retrieved this session
+BWR/72|thermal_power_mwth|CONFIRMED||HIGH|INIS-IAEA "Description of unit B and unit C at Gundremmingen nuclear power station (KRB II)"; nuklearesicherheit.de Gundremmingen B profile: KWU SWR 72 line, 3840 MWt
+BWR/72|fuel_type|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/72|moderator|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/72|coolant|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/72|operating_pressure_bar|UNVERIFIABLE||LOW|No BWR/72-specific primary document retrieved this session
+BWR/72|enrichment_pct|UNVERIFIABLE||LOW|No BWR/72-specific primary document retrieved this session
+BWR/72|core_height_m|UNVERIFIABLE||LOW|No BWR/72-specific primary document retrieved this session
+BWR/72|core_diameter_m|UNVERIFIABLE||LOW|No BWR/72-specific primary document retrieved this session
+BWR/72|number_of_fuel_assemblies|UNVERIFIABLE||LOW|INIS/nuklearesicherheit.de sources confirmed thermal power and unit description but did not state a fuel assembly count for Gundremmingen B/C
+BWR/72|number_of_control_elements|UNVERIFIABLE||LOW|No BWR/72-specific primary document retrieved this session
+BWR/72|outlet_temperature_c|UNVERIFIABLE||LOW|No BWR/72-specific primary document retrieved this session
+BWR/72|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|No BWR/72-specific primary document retrieved this session
+BWR/72|number_of_turbines|UNVERIFIABLE||LOW|No BWR/72-specific primary document retrieved this session
+BWR/72|turbine_speed_rpm|UNVERIFIABLE||LOW|No BWR/72-specific primary document retrieved this session
+BWR/72|low_pressure_sections|UNVERIFIABLE||LOW|No BWR/72-specific primary document retrieved this session
+BWR/72|live_steam_pressure_bar|UNVERIFIABLE||LOW|No BWR/72-specific primary document retrieved this session
+BWR/75|thermal_power_mwth|UNVERIFIABLE||LOW|No document explicitly using the "BWR/75" designation with matching thermal power was retrieved this session
+BWR/75|fuel_type|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/75|moderator|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/75|coolant|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+BWR/75|operating_pressure_bar|UNVERIFIABLE||LOW|No BWR/75-specific primary document retrieved this session
+BWR/75|enrichment_pct|UNVERIFIABLE||LOW|No BWR/75-specific primary document retrieved this session
+BWR/75|core_height_m|UNVERIFIABLE||LOW|No BWR/75-specific primary document retrieved this session
+BWR/75|number_of_fuel_assemblies|UNVERIFIABLE||LOW|No BWR/75-specific primary document retrieved this session
+BWR/75|outlet_temperature_c|UNVERIFIABLE||LOW|No BWR/75-specific primary document retrieved this session
+BWR/75|fuel_assembly_type|UNVERIFIABLE||LOW|Search confirms 10x10 is a real modern GE/KWU BWR fuel lattice generation, but no document tied it specifically to a "BWR/75" designation
+BWR/75|number_of_turbines|UNVERIFIABLE||LOW|No BWR/75-specific primary document retrieved this session
+BWR/75|turbine_speed_rpm|UNVERIFIABLE||LOW|No BWR/75-specific primary document retrieved this session
+BWR/75|low_pressure_sections|UNVERIFIABLE||LOW|No BWR/75-specific primary document retrieved this session
+BWR/75|live_steam_pressure_bar|UNVERIFIABLE||LOW|No BWR/75-specific primary document retrieved this session
+BWR/G1|thermal_power_mwth|UNVERIFIABLE||LOW|"BWR/G1" designation itself was not found in any retrieved source this session (targeted search for the exact term returned no matches)
+BWR/G1|fuel_type|CONFIRMED||MED|IAEA/WNA definitional (any real BWR uses UO2), but the "BWR/G1" series name could not itself be independently located
+BWR/G1|moderator|CONFIRMED||MED|IAEA/WNA definitional (any real BWR is light-water moderated), but the "BWR/G1" series name could not itself be independently located
+BWR/G1|coolant|CONFIRMED||MED|IAEA/WNA definitional (any real BWR is light-water cooled), but the "BWR/G1" series name could not itself be independently located
+BWR/G1|number_of_coolant_loops|UNVERIFIABLE||LOW|"BWR/G1" designation not found in any retrieved source
+BWR/G1|operating_pressure_bar|UNVERIFIABLE||LOW|"BWR/G1" designation not found in any retrieved source
+BWR/G1|enrichment_pct|UNVERIFIABLE||LOW|"BWR/G1" designation not found in any retrieved source
+BWR/G1|core_height_m|UNVERIFIABLE||LOW|"BWR/G1" designation not found in any retrieved source
+BWR/G1|outlet_temperature_c|UNVERIFIABLE||LOW|"BWR/G1" designation not found in any retrieved source
+BWR/G1|fuel_assembly_type|UNVERIFIABLE||LOW|"BWR/G1" designation not found in any retrieved source
+BWR/G1|number_of_turbines|UNVERIFIABLE||LOW|"BWR/G1" designation not found in any retrieved source
+BWR/G1|turbine_speed_rpm|UNVERIFIABLE||LOW|"BWR/G1" designation not found in any retrieved source
+BWR/G1|low_pressure_sections|UNVERIFIABLE||LOW|"BWR/G1" designation not found in any retrieved source
+BWR/G1|live_steam_pressure_bar|UNVERIFIABLE||LOW|"BWR/G1" designation not found in any retrieved source
+BWR/G2|thermal_power_mwth|UNVERIFIABLE||LOW|"BWR/G2" designation itself was not found in any retrieved source this session
+BWR/G2|fuel_type|CONFIRMED||MED|IAEA/WNA definitional (any real BWR uses UO2), but the "BWR/G2" series name could not itself be independently located
+BWR/G2|moderator|CONFIRMED||MED|IAEA/WNA definitional (any real BWR is light-water moderated), but the "BWR/G2" series name could not itself be independently located
+BWR/G2|coolant|CONFIRMED||MED|IAEA/WNA definitional (any real BWR is light-water cooled), but the "BWR/G2" series name could not itself be independently located
+BWR/G2|number_of_coolant_loops|UNVERIFIABLE||LOW|"BWR/G2" designation not found in any retrieved source
+BWR/G2|operating_pressure_bar|UNVERIFIABLE||LOW|"BWR/G2" designation not found in any retrieved source
+BWR/G2|enrichment_pct|UNVERIFIABLE||LOW|"BWR/G2" designation not found in any retrieved source
+BWR/G2|core_height_m|UNVERIFIABLE||LOW|"BWR/G2" designation not found in any retrieved source
+BWR/G2|outlet_temperature_c|UNVERIFIABLE||LOW|"BWR/G2" designation not found in any retrieved source
+BWR/G2|fuel_assembly_type|UNVERIFIABLE||LOW|"BWR/G2" designation not found in any retrieved source
+BWR/G2|number_of_turbines|UNVERIFIABLE||LOW|"BWR/G2" designation not found in any retrieved source
+BWR/G2|turbine_speed_rpm|UNVERIFIABLE||LOW|"BWR/G2" designation not found in any retrieved source
+BWR/G2|low_pressure_sections|UNVERIFIABLE||LOW|"BWR/G2" designation not found in any retrieved source
+BWR/G2|live_steam_pressure_bar|UNVERIFIABLE||LOW|"BWR/G2" designation not found in any retrieved source
+BWR/G3|thermal_power_mwth|UNVERIFIABLE||LOW|"BWR/G3" designation itself was not found in any retrieved source this session
+BWR/G3|fuel_type|CONFIRMED||MED|IAEA/WNA definitional (any real BWR uses UO2), but the "BWR/G3" series name could not itself be independently located
+BWR/G3|moderator|CONFIRMED||MED|IAEA/WNA definitional (any real BWR is light-water moderated), but the "BWR/G3" series name could not itself be independently located
+BWR/G3|coolant|CONFIRMED||MED|IAEA/WNA definitional (any real BWR is light-water cooled), but the "BWR/G3" series name could not itself be independently located
+BWR/G3|number_of_coolant_loops|UNVERIFIABLE||LOW|"BWR/G3" designation not found in any retrieved source
+BWR/G3|operating_pressure_bar|UNVERIFIABLE||LOW|"BWR/G3" designation not found in any retrieved source
+BWR/G3|enrichment_pct|UNVERIFIABLE||LOW|"BWR/G3" designation not found in any retrieved source
+BWR/G3|core_height_m|UNVERIFIABLE||LOW|"BWR/G3" designation not found in any retrieved source
+BWR/G3|number_of_fuel_assemblies|UNVERIFIABLE||LOW|"BWR/G3" designation not found in any retrieved source
+BWR/G3|outlet_temperature_c|UNVERIFIABLE||LOW|"BWR/G3" designation not found in any retrieved source
+BWR/G3|fuel_assembly_type|UNVERIFIABLE||LOW|"BWR/G3" designation not found in any retrieved source
+BWR/G3|number_of_turbines|UNVERIFIABLE||LOW|"BWR/G3" designation not found in any retrieved source
+BWR/G3|turbine_speed_rpm|UNVERIFIABLE||LOW|"BWR/G3" designation not found in any retrieved source
+BWR/G3|low_pressure_sections|UNVERIFIABLE||LOW|"BWR/G3" designation not found in any retrieved source
+BWR/G3|live_steam_pressure_bar|UNVERIFIABLE||LOW|"BWR/G3" designation not found in any retrieved source
+ABWR|thermal_power_mwth|CONFIRMED||HIGH|ANS/local.ans.org "ABWR, ESBWR and PRISM" (Sawyer/Boardman, 2015); GE-Hitachi ABWR technical overview: 3926 MWt rated power
+ABWR|fuel_type|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+ABWR|moderator|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+ABWR|coolant|CONFIRMED||HIGH|IAEA "Boiling water reactor" emergency reference page; WNA "Nuclear Power Reactors"
+ABWR|operating_pressure_bar|UNVERIFIABLE||LOW|No ABWR-specific primary document retrieved this session
+ABWR|enrichment_pct|UNVERIFIABLE||LOW|No ABWR-specific primary document retrieved this session
+ABWR|core_height_m|UNVERIFIABLE||LOW|Conflicting active-fuel-length figures found (3.7 m vs 3.81 m cited in different technical sources); DB value of 3.71 m is close to but not exactly matched by either, no single authoritative figure confirmed
+ABWR|core_diameter_m|UNVERIFIABLE||LOW|No ABWR-specific primary document retrieved this session
+ABWR|number_of_fuel_assemblies|CONFIRMED||HIGH|ANS "ABWR, ESBWR and PRISM" presentation; GE-Hitachi ABWR overview: 872 fuel assemblies (54,064 total fuel rods)
+ABWR|number_of_control_elements|CONFIRMED||HIGH|ANS "ABWR, ESBWR and PRISM" presentation: 205 cruciform control rods
+ABWR|outlet_temperature_c|UNVERIFIABLE||LOW|No ABWR-specific primary document retrieved this session
+ABWR|inlet_temperature_c|UNVERIFIABLE||LOW|No ABWR-specific primary document retrieved this session
+ABWR|fuel_assembly_type|UNVERIFIABLE||LOW|Search snippet referenced an "ABWR P8x8R" 8x8 fuel assembly, but this designation is more likely a legacy BWR/4-6 product (P8x8R = pre-pressurized 8x8 retrofit) rather than ABWR-specific; ABWR is widely associated with 9x9 (GE11/GE14) fuel but no primary ABWR document confirming 9x9 was retrieved this session — potential conflict flagged for a follow-up targeted search, not resolved to WRONG or CONFIRMED
+ABWR|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|No ABWR-specific primary document retrieved this session
+ABWR|number_of_turbines|UNVERIFIABLE||LOW|No ABWR-specific primary document retrieved this session
+ABWR|turbine_speed_rpm|UNVERIFIABLE||LOW|No ABWR-specific primary document retrieved this session
+ABWR|low_pressure_sections|UNVERIFIABLE||LOW|No ABWR-specific primary document retrieved this session
+ABWR|live_steam_pressure_bar|UNVERIFIABLE||LOW|No ABWR-specific primary document retrieved this session

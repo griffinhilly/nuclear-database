@@ -1,0 +1,168 @@
+design_series|field|verdict|corrected_value|confidence|source
+BN-600|thermal_power_mwth|CONFIRMED|None|HIGH|GEN-IV Int'l Forum webinar "BN-600 and BN-800 Operating Experience" (Pakhomov, IPPE, 2018) - "thermal power of 1470 thermal megawatts"
+BN-600|fuel_type|CONFIRMED|None|HIGH|Same IPPE webinar - references "uranium oxide burnup design level" fuel program
+BN-600|coolant|CONFIRMED|None|HIGH|Same IPPE webinar - sodium fast reactor, "sodium temperature in the outlet from the core"
+BN-600|number_of_coolant_loops|CONFIRMED|None|HIGH|Same IPPE webinar - "three circuits: primary, secondary and tertiary circuits, and the three loops for each circuit"
+BN-600|enrichment_pct|CONFIRMED|None|MED|Wikipedia: BN-600 reactor - "enriched to between 17-26% 235U"
+BN-600|core_height_m|WRONG|1.03|MED|Wikipedia: BN-600 reactor - core height listed as "1.03 metres (3 ft 5 in)"
+BN-600|core_diameter_m|CONFIRMED|None|MED|Wikipedia: BN-600 reactor - core diameter listed as "2.05 metres (6 ft 9 in)", consistent with DB value within rounding
+BN-600|number_of_fuel_assemblies|WRONG|369|MED|Wikipedia: BN-600 reactor - "369 fuel assemblies, mounted vertically"
+BN-600|number_of_control_elements|CONFIRMED|None|MED|Wikipedia: BN-600 reactor - "27 reactivity control elements including 19 shimming rods, two automatic control rods, and six automatic emergency shut-down rods"
+BN-600|outlet_temperature_c|CONFIRMED|None|HIGH|GEN-IV/IPPE webinar - "sodium temperature in the outlet from the core is 550-degree Celsius"; Wikipedia lists max operating temp 550C
+BN-600|inlet_temperature_c|UNVERIFIABLE|None|LOW|Searched IPPE webinar and Wikipedia BN-600 extract; neither retrieved source stated a core inlet temperature value
+BN-600|number_of_steam_generators|CONFIRMED|None|HIGH|GEN-IV/IPPE webinar - three loops, each with its own steam generator (8 sections/3 modules each = 24 modules total, one steam generator per loop)
+BN-600|fuel_assembly_type|UNVERIFIABLE|None|LOW|No retrieved source this session confirmed hexagonal geometry for BN-600 fuel assemblies
+BN-600|average_burnup_mwd_per_t|UNVERIFIABLE|None|LOW|Retrieved sources (IPPE webinar, HandWiki mirror) state burnup only in % heavy atoms (11.1-11.8%), no MWd/t figure found
+BN-600|number_of_turbines|WRONG|3|MED|WebSearch result summarizing IAEA ARIS/INIS BN-600 technical data - "three turbines of the K-200-12.8-3 type and three electric generators of the TGV-200M type"
+BN-600|turbine_speed_rpm|UNVERIFIABLE|None|LOW|No retrieved source this session stated an explicit rpm figure for BN-600 turbines
+BN-600|low_pressure_sections|UNVERIFIABLE|None|LOW|No retrieved source this session addressed number of low-pressure turbine sections
+BN-600|live_steam_pressure_bar|CONFIRMED|None|MED|WebSearch result citing turbine model designation K-200-12.8-3 (12.8 MPa = ~128 bar), consistent with DB value of 130 bar within rounding
+BN-800|thermal_power_mwth|CONFIRMED|None|HIGH|GEN-IV Int'l Forum webinar "BN-600 and BN-800 Operating Experience" (Pakhomov, IPPE, 2018) - "reactor thermal power is 2100"
+BN-800|fuel_type|CONFIRMED|None|MED|Same IPPE webinar - "currently a hybrid core is used in the BN-800 reactor. It includes both MOX-fuel and uranium dioxide-fuel"
+BN-800|coolant|CONFIRMED|None|HIGH|Same IPPE webinar - sodium fast reactor
+BN-800|number_of_coolant_loops|CONFIRMED|None|HIGH|Same IPPE webinar - "we have 3 circulation pumps and 3 loops"
+BN-800|core_height_m|CONFIRMED|None|MED|Same IPPE webinar - "core height is less than 1 meter... not as high as BN-600" (qualitative, consistent with DB's 0.88m)
+BN-800|core_diameter_m|CONFIRMED|None|MED|Same IPPE webinar - "the diameter of the core is 2.5 meters"
+BN-800|number_of_fuel_assemblies|UNVERIFIABLE|None|LOW|IPPE webinar did not state a fuel assembly count
+BN-800|number_of_control_elements|UNVERIFIABLE|None|LOW|IPPE webinar did not state a control element count
+BN-800|outlet_temperature_c|CONFIRMED|None|HIGH|Same IPPE webinar - "the parameters of the coolant temperature are very close to BN-600, the outlet is 547"
+BN-800|inlet_temperature_c|UNVERIFIABLE|None|LOW|IPPE webinar gives only secondary-loop steam generator sodium temps (inlet 505C/outlet 308C), a different measurement point than reactor core inlet; no core inlet figure retrieved
+BN-800|number_of_steam_generators|WRONG|3|MED|Same IPPE webinar - explicit "3 loops"; "in BN-800 we have 10 steam generator sections in each loop. We call all these 10 sections like one steam generator" = one steam generator per loop, i.e. 3 total, not 4
+BN-800|fuel_assembly_type|UNVERIFIABLE|None|LOW|IPPE webinar did not state fuel assembly geometry
+BN-800|average_burnup_mwd_per_t|UNVERIFIABLE|None|LOW|IPPE webinar did not state a burnup figure for BN-800
+BN-800|number_of_turbines|CONFIRMED|None|HIGH|Same IPPE webinar - explicit design difference vs BN-600: "one turbine generator for all the three heat-removal loops"
+BN-800|turbine_speed_rpm|UNVERIFIABLE|None|LOW|IPPE webinar did not state turbine rpm
+BN-800|low_pressure_sections|UNVERIFIABLE|None|LOW|IPPE webinar did not state number of low-pressure turbine sections
+BN-800|live_steam_pressure_bar|UNVERIFIABLE|None|LOW|IPPE webinar did not state live steam pressure
+CFR-600|thermal_power_mwth|BLOCKED|None|None|WebSearch quota exhausted mid-batch before this design series could be researched
+CFR-600|fuel_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+CFR-600|coolant|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+CFR-600|number_of_coolant_loops|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+CFR-600|outlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+CFR-600|inlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+CFR-600|number_of_steam_generators|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+CFR-600|fuel_assembly_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+CFR-600|number_of_turbines|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+CFR-600|turbine_speed_rpm|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+DFR|thermal_power_mwth|BLOCKED|None|None|WebSearch quota exhausted mid-batch before this design series could be researched
+DFR|fuel_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+DFR|coolant|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+DFR|number_of_coolant_loops|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+DFR|outlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+DFR|number_of_turbines|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+LMFBR|fuel_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch before this design series could be researched
+LMFBR|coolant|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+LMFBR|number_of_turbines|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|thermal_power_mwth|BLOCKED|None|None|WebSearch quota exhausted mid-batch before this design series could be researched
+Monju|fuel_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|coolant|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|number_of_coolant_loops|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|core_height_m|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|core_diameter_m|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|number_of_fuel_assemblies|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|number_of_control_elements|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|outlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|inlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|number_of_steam_generators|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|fuel_assembly_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|average_burnup_mwd_per_t|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|number_of_turbines|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Monju|low_pressure_sections|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+PFR|thermal_power_mwth|BLOCKED|None|None|WebSearch quota exhausted mid-batch before this design series could be researched
+PFR|fuel_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+PFR|coolant|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+PFR|number_of_coolant_loops|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+PFR|outlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+PFR|inlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+PFR|number_of_steam_generators|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+PFR|fuel_assembly_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+PFR|number_of_turbines|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+PFR|turbine_speed_rpm|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+PFR|low_pressure_sections|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|thermal_power_mwth|BLOCKED|None|None|WebSearch quota exhausted mid-batch before this design series could be researched
+Phenix|fuel_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|coolant|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|number_of_coolant_loops|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|core_height_m|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|core_diameter_m|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|number_of_fuel_assemblies|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|number_of_control_elements|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|outlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|inlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|number_of_steam_generators|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|fuel_assembly_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|average_burnup_mwd_per_t|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|number_of_turbines|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|turbine_speed_rpm|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Phenix|low_pressure_sections|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+SGR|fuel_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch before this design series could be researched
+SGR|coolant|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+SGR|number_of_turbines|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|thermal_power_mwth|BLOCKED|None|None|WebSearch quota exhausted mid-batch before this design series could be researched
+Super-Phenix|fuel_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|coolant|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|number_of_coolant_loops|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|core_height_m|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|core_diameter_m|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|number_of_fuel_assemblies|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|number_of_control_elements|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|outlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|inlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|number_of_steam_generators|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|fuel_assembly_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|average_burnup_mwd_per_t|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|number_of_turbines|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|turbine_speed_rpm|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Super-Phenix|low_pressure_sections|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|thermal_power_mwth|BLOCKED|None|None|WebSearch quota exhausted mid-batch before this design series could be researched
+AVR|fuel_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|moderator|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|coolant|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|number_of_coolant_loops|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|operating_pressure_bar|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|enrichment_pct|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|core_height_m|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|core_diameter_m|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|number_of_control_elements|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|outlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|inlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|number_of_steam_generators|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|fuel_assembly_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|number_of_turbines|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+AVR|turbine_speed_rpm|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|thermal_power_mwth|BLOCKED|None|None|WebSearch quota exhausted mid-batch before this design series could be researched
+Fort St. Vrain|fuel_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|moderator|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|coolant|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|number_of_coolant_loops|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|operating_pressure_bar|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|enrichment_pct|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|core_height_m|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|core_diameter_m|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|number_of_fuel_assemblies|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|number_of_control_elements|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|outlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|inlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|number_of_steam_generators|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|fuel_assembly_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|average_burnup_mwd_per_t|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|number_of_turbines|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|turbine_speed_rpm|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+Fort St. Vrain|low_pressure_sections|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|thermal_power_mwth|BLOCKED|None|None|WebSearch quota exhausted mid-batch before this design series could be researched
+HTR-PM|fuel_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|moderator|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|coolant|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|number_of_coolant_loops|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|operating_pressure_bar|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|enrichment_pct|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|core_height_m|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|core_diameter_m|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|outlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|inlet_temperature_c|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|number_of_steam_generators|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|fuel_assembly_type|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|average_burnup_mwd_per_t|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|number_of_turbines|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|turbine_speed_rpm|BLOCKED|None|None|WebSearch quota exhausted mid-batch
+HTR-PM|low_pressure_sections|BLOCKED|None|None|WebSearch quota exhausted mid-batch

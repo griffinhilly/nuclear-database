@@ -1,0 +1,136 @@
+design_series|field|verdict|corrected_value|confidence|source
+Peach Bottom HTGR|thermal_power_mwth|CONFIRMED|None|HIGH|Wikipedia: Peach Bottom Unit 1 (115 MWth)
+Peach Bottom HTGR|fuel_type|CONFIRMED|None|MED|Wikipedia: Peach Bottom Unit 1 (Th-232/U-235 mixed carbide fuel)
+Peach Bottom HTGR|moderator|CONFIRMED|None|MED|Wikipedia: Peach Bottom Unit 1 (nuclear graphite)
+Peach Bottom HTGR|coolant|CONFIRMED|None|HIGH|Wikipedia: Peach Bottom Unit 1 (helium)
+Peach Bottom HTGR|number_of_coolant_loops|UNVERIFIABLE|None|LOW|Searched (INEEL/EXT-03-00103 fuel summary, Wikipedia); no authoritative loop count found
+Peach Bottom HTGR|operating_pressure_bar|UNVERIFIABLE|None|LOW|Searched; only an unconfirmed ~2.5 MPa (~25 bar) figure surfaced, not precisely attested against 24 bar
+Peach Bottom HTGR|enrichment_pct|UNVERIFIABLE|None|LOW|Searched (Wikipedia, INEEL summary); no explicit enrichment percentage retrieved for Peach Bottom specifically
+Peach Bottom HTGR|core_height_m|UNVERIFIABLE|None|LOW|Searched; no core height figure retrieved
+Peach Bottom HTGR|core_diameter_m|UNVERIFIABLE|None|LOW|Searched; no core diameter figure retrieved
+Peach Bottom HTGR|number_of_fuel_assemblies|UNVERIFIABLE|None|LOW|Searched; no fuel element count retrieved
+Peach Bottom HTGR|number_of_control_elements|UNVERIFIABLE|None|LOW|Searched; no control element count retrieved
+Peach Bottom HTGR|outlet_temperature_c|UNVERIFIABLE|None|LOW|Conflicting retrieved values: Wikipedia states 700C outlet, another synthesized result states 750C; neither confirms 725C
+Peach Bottom HTGR|inlet_temperature_c|UNVERIFIABLE|None|LOW|Only an unconfirmed 377C figure surfaced from a non-specific synthesis; not a clean match or contradiction of 344C
+Peach Bottom HTGR|number_of_steam_generators|UNVERIFIABLE|None|LOW|Searched; no steam generator count retrieved
+Peach Bottom HTGR|fuel_assembly_type|UNVERIFIABLE|None|LOW|Searched; no specific fuel assembly geometry confirmed
+Peach Bottom HTGR|number_of_turbines|UNVERIFIABLE|None|LOW|Searched; no turbine count retrieved
+Peach Bottom HTGR|turbine_speed_rpm|UNVERIFIABLE|None|LOW|Searched; no turbine speed retrieved
+THTR-300|thermal_power_mwth|CONFIRMED|None|MED|IAEA PRIS THTR-300 reactor details (lists 760 MWt gross rated) + general technical description citing 750 MWt core thermal output; DB value matches the core-thermal-output figure
+THTR-300|fuel_type|CONFIRMED|None|HIGH|IAEA Bulletin/HTGR status article + technical description of THTR-300 pebble fuel ((Th,U)O2 TRISO-coated particles)
+THTR-300|moderator|CONFIRMED|None|HIGH|Technical description of THTR-300 (graphite pebble bed)
+THTR-300|coolant|CONFIRMED|None|HIGH|Technical description of THTR-300 (helium)
+THTR-300|number_of_coolant_loops|CONFIRMED|None|MED|Technical description of THTR-300 (six helium blowers/circulation loops)
+THTR-300|operating_pressure_bar|WRONG|39|MED|Technical description of THTR-300 helium circuit (39 bar cited consistently across sources)
+THTR-300|enrichment_pct|CONFIRMED|None|HIGH|Technical description of THTR-300 fuel pebbles (93% enriched U-235)
+THTR-300|core_height_m|CONFIRMED|None|MED|Technical description of THTR-300 core geometry (6.0 m core height)
+THTR-300|core_diameter_m|CONFIRMED|None|MED|Technical description of THTR-300 core geometry (5.6 m core diameter)
+THTR-300|number_of_control_elements|UNVERIFIABLE|None|LOW|Searched; no control element count retrieved
+THTR-300|outlet_temperature_c|CONFIRMED|None|MED|Technical description of THTR-300 helium circuit (750C outlet, consistent across two independent retrievals)
+THTR-300|inlet_temperature_c|CONFIRMED|None|MED|Technical description of THTR-300 helium circuit (250C inlet, consistent across two independent retrievals)
+THTR-300|number_of_steam_generators|CONFIRMED|None|HIGH|Technical description of THTR-300 steam generator system (six steam generator units, explicit)
+THTR-300|fuel_assembly_type|CONFIRMED|None|HIGH|Technical description of THTR-300 fuel pebbles (60mm diameter spherical fuel elements)
+THTR-300|number_of_turbines|UNVERIFIABLE|None|LOW|Searched; no turbine count specifically attested for THTR-300
+THTR-300|turbine_speed_rpm|UNVERIFIABLE|None|LOW|Searched; 3000 rpm is generic for 50Hz grids but not specifically attested for THTR-300
+THTR-300|low_pressure_sections|UNVERIFIABLE|None|LOW|Searched; no turbine LP section count retrieved
+EL-4|thermal_power_mwth|CONFIRMED|None|MED|Global Energy Monitor: Brennilis nuclear power plant (250 MWt)
+EL-4|fuel_type|CONFIRMED|None|MED|Global Energy Monitor / Wikipedia: Brennilis Nuclear Power Plant (natural uranium oxide fuel in pressure tubes)
+EL-4|moderator|CONFIRMED|None|HIGH|Global Energy Monitor: Brennilis nuclear power plant (heavy water moderated)
+EL-4|coolant|CONFIRMED|None|HIGH|Global Energy Monitor: Brennilis nuclear power plant (CO2)
+EL-4|operating_pressure_bar|UNVERIFIABLE|None|LOW|Searched; no operating pressure figure retrieved
+EL-4|enrichment_pct|WRONG|Natural (non-enriched)|MED|Global Energy Monitor / Wikipedia: Brennilis Nuclear Power Plant (explicitly describes non-enriched/natural uranium fuel, contradicting the 1.4-1.6% DB value)
+EL-4|outlet_temperature_c|UNVERIFIABLE|None|LOW|Searched; no outlet temperature figure retrieved
+EL-4|inlet_temperature_c|UNVERIFIABLE|None|LOW|Searched; no inlet temperature figure retrieved
+EL-4|number_of_turbines|UNVERIFIABLE|None|LOW|Searched; no turbine count retrieved
+EL-4|turbine_speed_rpm|UNVERIFIABLE|None|LOW|Searched; no turbine speed retrieved
+HWGCR|thermal_power_mwth|UNVERIFIABLE|None|LOW|"HWGCR" as a generic design-series label is ambiguous between EL-4 and A-1/KS-150 class members; no source ties this generic entry to a specific 250 MWt unit
+HWGCR|fuel_type|UNVERIFIABLE|None|LOW|Same ambiguity as thermal_power; no source specific to this generic series entry
+HWGCR|moderator|CONFIRMED|None|MED|Definitional for the HWGCR reactor class (heavy-water moderated), per general HWGCR search results
+HWGCR|coolant|CONFIRMED|None|MED|Definitional for the HWGCR reactor class (CO2/gas cooled), per general HWGCR search results
+HWGCR|enrichment_pct|UNVERIFIABLE|None|LOW|Class-level HWGCR units (A-1, EL-4) are natural-uranium fueled but no source ties this generic row specifically
+HWGCR|number_of_turbines|UNVERIFIABLE|None|LOW|Searched; no turbine count retrieved
+HWGCR|turbine_speed_rpm|UNVERIFIABLE|None|LOW|Searched; no turbine speed retrieved
+KS 150|thermal_power_mwth|UNVERIFIABLE|None|LOW|Wikipedia: KS 150 gives only 143 MWe electrical output, no MWt figure; a separately surfaced "150 MW" snippet appears to conflate the reactor's name with its thermal rating and is not reliable
+KS 150|fuel_type|WRONG|Natural uranium metal (unenriched)|HIGH|Wikipedia: KS 150 (explicitly "unenriched metal uranium," not oxide fuel)
+KS 150|moderator|CONFIRMED|None|HIGH|Wikipedia: KS 150 (heavy water moderator)
+KS 150|coolant|CONFIRMED|None|HIGH|Wikipedia: KS 150 (CO2 gas primary coolant)
+KS 150|operating_pressure_bar|WRONG|54|MED|Wikipedia: KS 150 (coolant exit pressure 5.4 MPa / ~54 atm; note possible basis mismatch vs. a design/rated pressure)
+KS 150|enrichment_pct|CONFIRMED|None|HIGH|Wikipedia: KS 150 (unenriched/natural uranium)
+KS 150|outlet_temperature_c|WRONG|426|MED|Wikipedia: KS 150 (coolant exit temperature 426C)
+KS 150|number_of_turbines|WRONG|3|MED|Wikipedia: KS 150 ("three turbogenerators")
+ATR|thermal_power_mwth|WRONG|250|HIGH|Wikipedia: Advanced Test Reactor + OSTI: "The Advanced Test Reactor" (osti.gov/servlets/purl/2448209) both state 250 MW(t)
+ATR|fuel_type|UNVERIFIABLE|None|LOW|Confirmed as highly enriched uranium fuel elements, but exact chemical compound (vs. DB's "UO2") not attested in retrieved sources
+ATR|moderator|WRONG|Light water (beryllium reflected)|HIGH|Wikipedia: Advanced Test Reactor + OSTI/science.gov synthesis (light-water moderated, beryllium-reflected; not heavy water)
+ATR|coolant|CONFIRMED|None|HIGH|Wikipedia: Advanced Test Reactor (light water)
+ATR|operating_pressure_bar|WRONG|26.9|MED|Wikipedia: Advanced Test Reactor (operating pressure up to 2.69 MPa)
+ATR|enrichment_pct|WRONG|~93 (HEU)|MED|OSTI/science.gov synthesis on Advanced Test Reactor (40 highly enriched uranium fuel elements; not the DB's 2.0%)
+ATR|number_of_fuel_assemblies|WRONG|40|HIGH|Wikipedia: Advanced Test Reactor + OSTI synthesis (both state 40 fuel elements, not 224)
+ATR|outlet_temperature_c|WRONG|71|MED|Wikipedia: Advanced Test Reactor (coolant outlet temperature 71C)
+ATR|fuel_assembly_type|UNVERIFIABLE|None|LOW|Searched; serpentine plate-type elements described generally, but "28-element cluster" not specifically attested
+ATR|number_of_turbines|UNVERIFIABLE|None|LOW|ATR is described in all retrieved sources as a materials-test research reactor (no power generation mentioned); absence of turbine mention is suggestive but not confirmed
+ATR|turbine_speed_rpm|UNVERIFIABLE|None|LOW|Same as number_of_turbines
+ATR|low_pressure_sections|UNVERIFIABLE|None|LOW|Searched; no turbine LP section count retrieved
+Agesta|thermal_power_mwth|CONFIRMED|None|MED|Vattenfall history: "Agesta power plant" / WNA Sweden profile (68 MW district heat output)
+Agesta|fuel_type|UNVERIFIABLE|None|LOW|Natural uranium fuel confirmed but oxide chemical form not explicitly stated in retrieved sources
+Agesta|moderator|CONFIRMED|None|HIGH|Vattenfall history / WNA Sweden profile (heavy water moderated)
+Agesta|coolant|CONFIRMED|None|MED|Vattenfall history / WNA Sweden profile (heavy water reactor design)
+Agesta|enrichment_pct|CONFIRMED|None|HIGH|Vattenfall history / WNA Sweden profile (natural uranium fuel, explicit)
+BR-3|thermal_power_mwth|BLOCKED|None|LOW|WebSearch budget exhausted mid-batch before this row could be verified; no retrieval attempted successfully
+BR-3|fuel_type|BLOCKED|None|LOW|Search unavailable mid-batch
+BR-3|moderator|BLOCKED|None|LOW|Search unavailable mid-batch
+BR-3|coolant|BLOCKED|None|LOW|Search unavailable mid-batch
+BR-3|number_of_coolant_loops|BLOCKED|None|LOW|Search unavailable mid-batch
+BR-3|operating_pressure_bar|BLOCKED|None|LOW|Search unavailable mid-batch
+BR-3|enrichment_pct|BLOCKED|None|LOW|Search unavailable mid-batch
+BR-3|number_of_fuel_assemblies|BLOCKED|None|LOW|Search unavailable mid-batch
+BR-3|outlet_temperature_c|BLOCKED|None|LOW|Search unavailable mid-batch
+BR-3|inlet_temperature_c|BLOCKED|None|LOW|Search unavailable mid-batch
+BR-3|number_of_steam_generators|BLOCKED|None|LOW|Search unavailable mid-batch
+BR-3|average_burnup_mwd_per_t|BLOCKED|None|LOW|Search unavailable mid-batch
+BR-3|number_of_turbines|BLOCKED|None|LOW|Search unavailable mid-batch
+BR-3|turbine_speed_rpm|BLOCKED|None|LOW|Search unavailable mid-batch
+CVTR|thermal_power_mwth|CONFIRMED|None|HIGH|Wikipedia: Carolinas-Virginia Tube Reactor (65 MWth)
+CVTR|fuel_type|UNVERIFIABLE|None|LOW|Enriched uranium fuel confirmed; chemical form (UO2) not explicitly stated in retrieved source
+CVTR|moderator|CONFIRMED|None|HIGH|Wikipedia: Carolinas-Virginia Tube Reactor (heavy water moderator tank)
+CVTR|coolant|CONFIRMED|None|MED|Wikipedia: Carolinas-Virginia Tube Reactor (pressurized heavy water primary loop coolant)
+CVTR|enrichment_pct|CONFIRMED|None|HIGH|Wikipedia: Carolinas-Virginia Tube Reactor (12 tubes at 1.5% U-235, 24 tubes at 2% U-235 - matches DB's 1.5-2.0 range exactly)
+CVTR|number_of_turbines|UNVERIFIABLE|None|LOW|Searched; steam turbine confirmed present but count not specified
+CVTR|turbine_speed_rpm|UNVERIFIABLE|None|LOW|Searched; no turbine speed retrieved
+KNK|thermal_power_mwth|BLOCKED|None|LOW|WebSearch budget exhausted mid-batch before this row could be verified; no retrieval attempted successfully
+KNK|fuel_type|BLOCKED|None|LOW|Search unavailable mid-batch
+KNK|coolant|BLOCKED|None|LOW|Search unavailable mid-batch
+KNK|number_of_coolant_loops|BLOCKED|None|LOW|Search unavailable mid-batch
+KNK|outlet_temperature_c|BLOCKED|None|LOW|Search unavailable mid-batch
+KNK|inlet_temperature_c|BLOCKED|None|LOW|Search unavailable mid-batch
+KNK|number_of_steam_generators|BLOCKED|None|LOW|Search unavailable mid-batch
+KNK|number_of_turbines|BLOCKED|None|LOW|Search unavailable mid-batch
+KNK|turbine_speed_rpm|BLOCKED|None|LOW|Search unavailable mid-batch
+OCR|thermal_power_mwth|CONFIRMED|None|HIGH|Wikipedia: Piqua Nuclear Generating Station (45.5 MWt, matches DB's 45.0)
+OCR|fuel_type|UNVERIFIABLE|None|LOW|Searched; uranium fuel confirmed but "UO2" chemical form not explicitly stated
+OCR|moderator|WRONG|Organic (terphenyl)|HIGH|Wikipedia: Piqua Nuclear Generating Station (organically cooled AND moderated - terphenyl serves as both coolant and moderator, contradicting the DB's "Light water" moderator)
+OCR|coolant|CONFIRMED|None|HIGH|Wikipedia: Piqua Nuclear Generating Station (terphenyl organic coolant)
+OCR|number_of_turbines|UNVERIFIABLE|None|LOW|Searched; no turbine count retrieved
+PFBR|thermal_power_mwth|CONFIRMED|None|MED|Wikipedia: Prototype Fast Breeder Reactor (1253 MWt, close match to DB's 1250)
+PFBR|fuel_type|CONFIRMED|None|HIGH|Wikipedia: Prototype Fast Breeder Reactor (MOX, PuO2/UO2 mixture)
+PFBR|coolant|CONFIRMED|None|HIGH|Wikipedia: Prototype Fast Breeder Reactor (1,750 tonnes sodium coolant)
+PFBR|number_of_coolant_loops|UNVERIFIABLE|None|LOW|Searched; loop count not specified in retrieved source
+PFBR|core_height_m|UNVERIFIABLE|None|LOW|Searched; core height not specified in retrieved source
+PFBR|number_of_fuel_assemblies|UNVERIFIABLE|None|LOW|Searched; fuel assembly count not specified in retrieved source
+PFBR|number_of_control_elements|UNVERIFIABLE|None|LOW|Searched; control element count not specified in retrieved source
+PFBR|outlet_temperature_c|UNVERIFIABLE|None|LOW|Searched; outlet temperature not specified in retrieved source
+PFBR|inlet_temperature_c|UNVERIFIABLE|None|LOW|Searched; inlet temperature not specified in retrieved source
+PFBR|number_of_steam_generators|UNVERIFIABLE|None|LOW|Searched; steam generator count not specified in retrieved source
+PFBR|fuel_assembly_type|UNVERIFIABLE|None|LOW|Searched; hexagonal assembly geometry plausible for sodium-cooled fast reactors but not explicitly attested
+PFBR|average_burnup_mwd_per_t|CONFIRMED|None|MED|Wikipedia: Prototype Fast Breeder Reactor (100 GWd/t expected burnup, matches DB's 100000 MWd/t)
+PFBR|number_of_turbines|UNVERIFIABLE|None|LOW|Searched; turbine count not specified in retrieved source
+PFBR|turbine_speed_rpm|UNVERIFIABLE|None|LOW|Searched; turbine speed not specified in retrieved source
+PFBR|low_pressure_sections|UNVERIFIABLE|None|LOW|Searched; LP section count not specified in retrieved source
+PLWBR|thermal_power_mwth|WRONG|236|MED|Wikipedia: Shippingport Atomic Power Station (LWBR/PLWBR third core operated at 236 MWt, not 240)
+PLWBR|fuel_type|CONFIRMED|None|MED|Wikipedia: Shippingport Atomic Power Station (ThO2/U-233O2 pellets)
+PLWBR|moderator|CONFIRMED|None|HIGH|Wikipedia: Shippingport Atomic Power Station (light water moderated)
+PLWBR|coolant|CONFIRMED|None|HIGH|Wikipedia: Shippingport Atomic Power Station (light water coolant)
+PLWBR|number_of_coolant_loops|CONFIRMED|None|MED|Wikipedia: Shippingport Atomic Power Station (plant configuration with four steam generator loops)
+PLWBR|operating_pressure_bar|UNVERIFIABLE|None|LOW|Searched; operating pressure not specified in retrieved source
+PLWBR|number_of_steam_generators|CONFIRMED|None|HIGH|Wikipedia: Shippingport Atomic Power Station ("four steam generators, pressurizer and reactor")
+PLWBR|fuel_assembly_type|CONFIRMED|None|HIGH|Wikipedia: Shippingport Atomic Power Station (seed-and-blanket core design, matches DB's "Seed-blanket")
+PLWBR|number_of_turbines|UNVERIFIABLE|None|LOW|Searched; turbine count not specified in retrieved source

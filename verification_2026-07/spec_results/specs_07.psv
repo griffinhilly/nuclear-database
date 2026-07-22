@@ -1,0 +1,160 @@
+design_series|field|verdict|corrected_value|confidence|source
+PHWR-700|thermal_power_mwth|CONFIRMED||HIGH|Wikipedia/Grokipedia: IPHWR-700 (thermal power 2166 MWth, electric 700 MWe)
+PHWR-700|fuel_type|CONFIRMED||HIGH|Grokipedia/Wikipedia IPHWR-700; INIS "Advanced Fuel Bundles for PHWRs" (natural uranium dioxide fuel)
+PHWR-700|moderator|CONFIRMED||HIGH|Wikipedia IPHWR-700 (horizontal calandria vessel, heavy water moderator)
+PHWR-700|coolant|CONFIRMED||HIGH|Wikipedia IPHWR-700 (heavy water primary heat transport system)
+PHWR-700|number_of_coolant_loops|CONFIRMED||HIGH|IAEA/Wikipedia IPHWR-700 description: "two loops of Primary Heat Transport (PHTS) system"
+PHWR-700|operating_pressure_bar|UNVERIFIABLE||LOW|Searched (multiple queries on IPHWR-700 PHTS pressure); no authoritative source returned a specific bar value
+PHWR-700|enrichment_pct|CONFIRMED||HIGH|Wikipedia/Grokipedia IPHWR-700 (natural uranium fuel cycle, no enrichment)
+PHWR-700|number_of_fuel_assemblies|CONFIRMED||HIGH|Wikipedia/handwiki IPHWR-700 (392 fuel channels in calandria)
+PHWR-700|outlet_temperature_c|CONFIRMED||HIGH|Wikipedia/researchgate IPHWR-700 primary system data (core coolant outlet 310C)
+PHWR-700|inlet_temperature_c|CONFIRMED||HIGH|Wikipedia/researchgate IPHWR-700 primary system data (core coolant inlet 266C)
+PHWR-700|number_of_steam_generators|UNVERIFIABLE||LOW|Searched; confirmed 2 PHTS loops but no source specified exact steam generator count of 4
+PHWR-700|fuel_assembly_type|WRONG|37-element bundle|HIGH|NSI (nuclearscaling.org) IPHWR-700 profile; ResearchGate "The future 700 MWe pressurized heavy water reactor" - 700 MWe and 540 MWe PHWRs use 37-element fuel bundles; 19-element bundles are used only in 220 MWe PHWRs
+PHWR-700|average_burnup_mwd_per_t|CONFIRMED||MED|WebSearch synthesis of IPHWR-700 fuel-cycle sources: "average fuel burnup around 7,000 MWd/t when using natural uranium fuel"
+PHWR-700|number_of_turbines|UNVERIFIABLE||LOW|Not confirmed by any retrieved IPHWR-700 source
+PHWR-700|turbine_speed_rpm|UNVERIFIABLE||LOW|Not confirmed by any retrieved IPHWR-700 source (only generic 1500rpm/50Hz engineering background found, not IPHWR-700-specific)
+PHWR-700|low_pressure_sections|UNVERIFIABLE||LOW|Not confirmed by any retrieved IPHWR-700 source
+PHWR-700|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not confirmed by any retrieved IPHWR-700 source
+AGR|thermal_power_mwth|CONFIRMED||HIGH|Web search on Torness nuclear power station: "Torness has a thermal capacity of 2 x 1623 MWt"
+AGR|fuel_type|CONFIRMED||HIGH|Wikipedia Advanced Gas-cooled Reactor (uranium dioxide pellets, 2.5-3.5% enriched)
+AGR|moderator|CONFIRMED||HIGH|Wikipedia Advanced Gas-cooled Reactor (graphite moderator)
+AGR|coolant|CONFIRMED||HIGH|Wikipedia Advanced Gas-cooled Reactor (carbon dioxide coolant)
+AGR|operating_pressure_bar|CONFIRMED||MED|Wikipedia Advanced Gas-cooled Reactor: "pressure of around 40 bar"; corroborated by second search giving 41 bar mean pressure
+AGR|enrichment_pct|CONFIRMED||HIGH|Wikipedia Advanced Gas-cooled Reactor (2.5-3.5% enriched uranium dioxide)
+AGR|core_height_m|CONFIRMED||HIGH|Web search: Heysham II/Torness AGR technical description (active core height 8.3 m); Hinkley B also cited at 8.3 m
+AGR|core_diameter_m|WRONG|9.5|MED|Web search: Heysham II/Torness AGR technical description (active core diameter 9.5 m) - DB value 9.3 does not match either Hinkley B (9.1m) or Heysham II/Torness (9.5m) variant that matches on all other fields (1623 MWth, 332 channels)
+AGR|number_of_fuel_assemblies|CONFIRMED||HIGH|Web search: Heysham II/Torness AGR technical description (332 fuel channels)
+AGR|outlet_temperature_c|CONFIRMED||HIGH|Wikipedia Advanced Gas-cooled Reactor (mean hot coolant temperature designed as 648C); corroborated by second source (292C in / 645C out at 41 bar)
+AGR|inlet_temperature_c|CONFIRMED||HIGH|WebSearch synthesis of AGR design parameters: "CO2 inlet temperatures of 292C"
+AGR|number_of_steam_generators|UNVERIFIABLE||LOW|Only "four boiler quadrants" confirmed (large.stanford.edu AGR description); exact total boiler/steam-generator unit count of 8 not confirmed
+AGR|fuel_assembly_type|CONFIRMED||MED|WebSearch synthesis of AGR fuel design (36 stainless-steel-clad fuel pins per element, assemblies referred to as "stringers" in AGR literature)
+AGR|average_burnup_mwd_per_t|CONFIRMED||HIGH|WebSearch on Hinkley Point B burnup: "fuel enabling higher burn-up rates of up to 18,000 MWd/tU"; UK AGR fleet historically achieved 18,000-23,000 MWd/MTU
+AGR|number_of_turbines|CONFIRMED||MED|WebSearch synthesis: "turbo-alternators rated for 660 MWe" - one per reactor unit at Heysham II/Torness
+AGR|turbine_speed_rpm|UNVERIFIABLE||LOW|Only generic engineering background found (50Hz grid full-speed = 3000rpm); no AGR-specific source confirmed this figure
+AGR|low_pressure_sections|UNVERIFIABLE||LOW|Not confirmed by any retrieved AGR source
+AGR|live_steam_pressure_bar|CONFIRMED||HIGH|OSTI: "Heysham II/Torness AGR Steam Generators" (A.N. Charcharos) - "steam is generated at 538C/160 bar(a)"
+Magnox|fuel_type|CONFIRMED||HIGH|WebSearch synthesis (INEEL/Lyncean "Farewell Magnox"): natural uranium metal fuel rods clad in Mg-0.8Al-0.004Be (Magnox) alloy
+Magnox|moderator|CONFIRMED||HIGH|WebSearch synthesis (INEEL/Lyncean "Farewell Magnox"): fuel rods embedded in graphite bricks
+Magnox|coolant|CONFIRMED||HIGH|WebSearch synthesis (INEEL/Lyncean "Farewell Magnox"): hot CO2 gas coolant at 4.3 MPa
+Magnox|enrichment_pct|CONFIRMED||HIGH|WebSearch synthesis (INEEL/Lyncean "Farewell Magnox"): natural uranium fuel
+Magnox|core_height_m|BLOCKED||LOW|Search budget exhausted before this field could be queried
+Magnox|core_diameter_m|BLOCKED||LOW|Search budget exhausted before this field could be queried
+Magnox|number_of_control_elements|BLOCKED||LOW|Search budget exhausted before this field could be queried
+Magnox|outlet_temperature_c|CONFIRMED||MED|WebSearch synthesis (INEEL/Lyncean "Farewell Magnox"): outlet temperatures around 400C design (later derated to 360-380C operationally due to mild-steel corrosion issues - basis caveat: design vs later-life operating value)
+Magnox|inlet_temperature_c|UNVERIFIABLE||LOW|Searched; no source returned a specific inlet temperature value
+Magnox|fuel_assembly_type|CONFIRMED||HIGH|WebSearch synthesis (INEEL/Lyncean "Farewell Magnox"): Magnox-alloy-clad fuel rods/elements (defining feature of the design)
+Magnox|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Searched; sources confirm Magnox had comparatively low burnup but no source returned the specific 3500 MWd/t figure
+Magnox|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this field could be queried
+Magnox|low_pressure_sections|BLOCKED||LOW|Search budget exhausted before this field could be queried
+UNGG|fuel_type|CONFIRMED||MED|Wikipedia/Grokipedia UNGG reactor: natural uranium fuel, graphite moderator, CO2 coolant design
+UNGG|moderator|CONFIRMED||MED|Wikipedia/Grokipedia UNGG reactor (graphite moderator)
+UNGG|coolant|CONFIRMED||MED|Wikipedia/Grokipedia UNGG reactor (carbon dioxide coolant)
+UNGG|enrichment_pct|CONFIRMED||MED|Wikipedia/Grokipedia UNGG reactor (natural uranium fuel)
+UNGG|outlet_temperature_c|CONFIRMED||MED|WebSearch synthesis on UNGG design: outlet temperatures limited to ~400C by graphite radiolysis; design level 414C reduced to 360-400C in later operation
+UNGG|inlet_temperature_c|UNVERIFIABLE||LOW|Searched; no source returned a specific inlet temperature value
+UNGG|fuel_assembly_type|WRONG|Magnesium-zirconium alloy clad fuel element|MED|Wikipedia UNGG reactor (comparison of fuel cladding materials): UNGG fuel cladding was a magnesium-zirconium alloy, in contrast to the magnesium-aluminium alloy (Magnox) cladding used in the British design - DB value "Graphite-clad fuel element" does not match
+UNGG|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|A search result referenced a burnup figure of approximately 6.5 GWd/tU for UNGG (higher than DB's 3500), but this could not be tied to one specific named authoritative document this session, so it is flagged as a discrepancy worth re-checking rather than confirmed WRONG
+UNGG|low_pressure_sections|BLOCKED||LOW|Search budget exhausted before this field could be queried
+AM-1|thermal_power_mwth|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AM-1|fuel_type|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AM-1|moderator|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AM-1|coolant|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AM-1|operating_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AM-1|enrichment_pct|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AM-1|core_height_m|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AM-1|core_diameter_m|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AM-1|number_of_fuel_assemblies|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AM-1|outlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AM-1|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-100|thermal_power_mwth|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-100|fuel_type|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-100|moderator|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-100|coolant|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-100|enrichment_pct|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-100|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-100|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-200|thermal_power_mwth|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-200|fuel_type|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-200|moderator|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-200|coolant|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-200|enrichment_pct|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-200|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row could be queried
+AMB-200|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|thermal_power_mwth|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|fuel_type|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|moderator|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|coolant|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|operating_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|enrichment_pct|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|core_height_m|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|core_diameter_m|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|number_of_fuel_assemblies|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|outlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|low_pressure_sections|BLOCKED||LOW|Search budget exhausted before this row could be queried
+EGP-6|live_steam_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|fuel_type|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|moderator|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|coolant|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|operating_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|enrichment_pct|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|core_height_m|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|core_diameter_m|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|outlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|inlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|fuel_assembly_type|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|average_burnup_mwd_per_t|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|low_pressure_sections|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK|live_steam_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|thermal_power_mwth|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|fuel_type|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|moderator|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|coolant|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|number_of_coolant_loops|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|operating_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|enrichment_pct|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|core_height_m|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|core_diameter_m|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|number_of_fuel_assemblies|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|number_of_control_elements|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|outlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|inlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|fuel_assembly_type|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|average_burnup_mwd_per_t|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|low_pressure_sections|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1000|live_steam_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|thermal_power_mwth|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|fuel_type|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|moderator|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|coolant|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|number_of_coolant_loops|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|operating_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|enrichment_pct|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|core_height_m|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|core_diameter_m|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|number_of_fuel_assemblies|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|number_of_control_elements|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|outlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|inlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|fuel_assembly_type|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|average_burnup_mwd_per_t|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|low_pressure_sections|BLOCKED||LOW|Search budget exhausted before this row could be queried
+RBMK-1500|live_steam_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row could be queried
+BN-20|thermal_power_mwth|BLOCKED||LOW|Search budget exhausted before this row could be queried
+BN-20|fuel_type|BLOCKED||LOW|Search budget exhausted before this row could be queried
+BN-350|thermal_power_mwth|BLOCKED||LOW|Search budget exhausted before this row could be queried
+BN-350|fuel_type|BLOCKED||LOW|Search budget exhausted before this row could be queried
+BN-350|number_of_coolant_loops|BLOCKED||LOW|Search budget exhausted before this row could be queried
+BN-350|outlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row could be queried
+BN-350|inlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row could be queried
+BN-350|number_of_steam_generators|BLOCKED||LOW|Search budget exhausted before this row could be queried
+BN-350|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row could be queried
+BN-350|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this row could be queried

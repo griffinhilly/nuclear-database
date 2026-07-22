@@ -1,0 +1,255 @@
+design_series|field|verdict|corrected_value|confidence|source
+AP1000|thermal_power_mwth|CONFIRMED||HIGH|NRC AP1000 Design Control Document Tier 2 (nrc.gov/docs/ML0715/ML071580895.pdf) / Westinghouse AP1000 overview page
+AP1000|fuel_type|CONFIRMED||HIGH|NRC AP1000 DCD Tier 2 Ch.4
+AP1000|moderator|CONFIRMED||HIGH|NRC AP1000 DCD Tier 2 Ch.4 (standard PWR light-water moderator)
+AP1000|coolant|CONFIRMED||HIGH|NRC AP1000 DCD Tier 2 Ch.4
+AP1000|number_of_coolant_loops|CONFIRMED||HIGH|Westinghouse AP1000 PWR overview (westinghousenuclear.com)
+AP1000|operating_pressure_bar|UNVERIFIABLE||LOW|Searched NRC AP1000 DCD Tier 2 Ch.4 material; retrieved snippets did not state operating pressure explicitly this session
+AP1000|enrichment_pct|UNVERIFIABLE||LOW|NRC AP1000 DCD Tier 2 (ML071580897, ML11171A446) retrieved snippets state initial core loading graded 2.35/3.40/4.45 wt%, not a clean 4.5-5.0 range; insufficient to confirm or overturn DB value with confidence
+AP1000|core_height_m|CONFIRMED||HIGH|NRC AP1000 DCD Tier 2 Ch.4 (fuel assembly active stack length 426.72 cm = 4.2672 m)
+AP1000|core_diameter_m|UNVERIFIABLE||LOW|Not found in retrieved NRC AP1000 DCD snippets this session
+AP1000|number_of_fuel_assemblies|CONFIRMED||HIGH|NRC AP1000 DCD Tier 2 Ch.4 / Westinghouse AP1000 overview (157 assemblies, 17x17XL RFA)
+AP1000|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved NRC AP1000 DCD snippets this session
+AP1000|outlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved NRC AP1000 DCD snippets this session
+AP1000|inlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved NRC AP1000 DCD snippets this session
+AP1000|number_of_steam_generators|CONFIRMED||MED|Westinghouse AP1000 overview (2-loop design implies 2 SGs)
+AP1000|fuel_assembly_type|CONFIRMED||HIGH|NRC AP1000 DCD Tier 2 Ch.4 (17x17XL Robust Fuel Assembly)
+AP1000|average_burnup_mwd_per_t|CONFIRMED||HIGH|NRC WCAP-12488-P-A referenced in AP1000 DCD (max fuel rod average burnup 60,000 MWD/MTU)
+AP1000|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+AP1000|turbine_speed_rpm|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+AP1000|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+AP1000|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+SNUPPS|thermal_power_mwth|CONFIRMED||HIGH|nucleartourist.com "The SNUPPS units - Callaway and Wolf Creek"; Wikipedia SNUPPS
+SNUPPS|fuel_type|CONFIRMED||MED|Wikipedia SNUPPS / standard Westinghouse 4-loop PWR fuel
+SNUPPS|moderator|CONFIRMED||MED|standard PWR design, Wikipedia SNUPPS
+SNUPPS|coolant|CONFIRMED||MED|standard PWR design, Wikipedia SNUPPS
+SNUPPS|number_of_coolant_loops|CONFIRMED||HIGH|Wikipedia SNUPPS (4-loop Westinghouse design)
+SNUPPS|operating_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+SNUPPS|enrichment_pct|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+SNUPPS|core_height_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+SNUPPS|core_diameter_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+SNUPPS|number_of_fuel_assemblies|CONFIRMED||HIGH|nucleartourist.com SNUPPS page (193 fuel assemblies, 17x17 array, 264 rods)
+SNUPPS|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+SNUPPS|outlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+SNUPPS|inlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+SNUPPS|number_of_steam_generators|CONFIRMED||MED|4-loop Westinghouse design standard (4 SGs), Wikipedia SNUPPS
+SNUPPS|fuel_assembly_type|CONFIRMED||HIGH|nucleartourist.com SNUPPS page (17x17 array)
+SNUPPS|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+SNUPPS|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+SNUPPS|turbine_speed_rpm|WRONG|1800|HIGH|Wolf Creek Updated Safety Analysis Report (NRC ML2116/ML21168A101) / nucleartourist.com SNUPPS page: "main generator at Wolf Creek is a GE 1,800 rpm, three-phase, 60-cycle synchronous unit." DB value 3000 rpm is inconsistent with a 60 Hz US plant (3000 rpm implies a 50 Hz 2-pole turbine) and matches the exact self-attested "corrected 2026-07 sweep (cited)" pattern flagged as a hallucination risk in project MEMORY.md.
+SNUPPS|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+SNUPPS|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 1-Loop|thermal_power_mwth|UNVERIFIABLE||LOW|Searched for a Westinghouse 1-loop reactor class (ResearchGate fig7_342527409 confirms the 1/2/3/4-loop Westinghouse classification exists) but no authoritative source gave a specific thermal power for the 1-loop class this session
+W 1-Loop|fuel_type|CONFIRMED||MED|Standard Westinghouse PWR fuel type (UO2), ResearchGate Westinghouse loop-design figure context
+W 1-Loop|moderator|CONFIRMED||MED|Standard PWR design
+W 1-Loop|coolant|CONFIRMED||MED|Standard PWR design
+W 1-Loop|number_of_coolant_loops|CONFIRMED||MED|ResearchGate "Westinghouse PWR designs: (a) 1-loop..." figure confirms a distinct 1-loop Westinghouse design class exists
+W 1-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 1-Loop|enrichment_pct|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 1-Loop|core_diameter_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 1-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 1-Loop|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 1-Loop|number_of_steam_generators|CONFIRMED||MED|Single-loop design implies 1 SG, consistent with Westinghouse loop-design nomenclature
+W 1-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|Not found in retrieved snippets this session (DB claims 14x14; not confirmed or contradicted)
+W 1-Loop|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 1-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|No authoritative source found for this field this session. FLAG: DB source annotation cites "(50 Hz grid)" as justification for 1500 rpm, but this design class (like all other Westinghouse loop-family rows in this batch) is a US 60 Hz design lineage — a 50 Hz justification is internally inconsistent with the rest of the family and matches the self-attested "corrected 2026-07 sweep" hallucination pattern flagged in project MEMORY.md. Could not confirm a corrected value from a retrieved source, so marking UNVERIFIABLE rather than WRONG, but recommend manual review.
+W 1-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 1-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 2-Loop|thermal_power_mwth|UNVERIFIABLE||LOW|Actual W 2-loop plants (Ginna, Kewaunee, Point Beach, Prairie Island) vary in rated thermal power (~1520-1800 MWt); no single authoritative "class" value of 1650 MWt found this session
+W 2-Loop|fuel_type|CONFIRMED||MED|Standard PWR UO2 fuel, xylenepower.com Westinghouse PWR overview
+W 2-Loop|moderator|CONFIRMED||MED|Standard PWR design
+W 2-Loop|coolant|CONFIRMED||MED|Standard PWR design
+W 2-Loop|number_of_coolant_loops|CONFIRMED||HIGH|xylenepower.com Westinghouse PWR overview: two-loop units (Ginna, Kewaunee, Point Beach 1&2, Prairie Island 1&2)
+W 2-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 2-Loop|enrichment_pct|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 2-Loop|core_height_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 2-Loop|core_diameter_m|UNVERIFIABLE||LOW|xylenepower.com gives reactor vessel internal diameter (132 in = 3.35 m) for 2-loop plants, not core diameter specifically; not a like-for-like match to DB's 2.44 m core diameter, so not usable to confirm or contradict
+W 2-Loop|number_of_fuel_assemblies|CONFIRMED||HIGH|xylenepower.com Westinghouse PWR overview: two-loop plants have 121 fuel assemblies
+W 2-Loop|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 2-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 2-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 2-Loop|number_of_steam_generators|CONFIRMED||MED|2-loop design implies 2 SGs
+W 2-Loop|fuel_assembly_type|CONFIRMED||HIGH|xylenepower.com Westinghouse PWR overview: two-loop plants use 14x14 fuel assemblies
+W 2-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 2-Loop|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 2-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 2-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 2-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 3-Loop|thermal_power_mwth|UNVERIFIABLE||LOW|Search found only generic statement that Westinghouse 3-loop plants are "approximately 750 MWe" output-class; no MWt figure retrieved matching 2785 this session
+W 3-Loop|fuel_type|CONFIRMED||MED|Standard PWR UO2 fuel
+W 3-Loop|moderator|CONFIRMED||MED|Standard PWR design
+W 3-Loop|coolant|CONFIRMED||MED|Standard PWR design
+W 3-Loop|number_of_coolant_loops|CONFIRMED||HIGH|xylenepower.com Westinghouse PWR overview: 3-loop plant class described explicitly
+W 3-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 3-Loop|enrichment_pct|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 3-Loop|core_height_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 3-Loop|core_diameter_m|UNVERIFIABLE||LOW|xylenepower.com gives vessel internal diameter for 3-loop plants (159 in = 3.99 m), a different metric than core diameter; not usable to confirm DB's 3.37 m core diameter value
+W 3-Loop|number_of_fuel_assemblies|CONFIRMED||HIGH|xylenepower.com Westinghouse PWR overview: 3-loop plants contain 157 fuel assemblies
+W 3-Loop|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 3-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 3-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 3-Loop|number_of_steam_generators|CONFIRMED||MED|3-loop design implies 3 SGs
+W 3-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|xylenepower.com did not specify lattice for 3-loop class this session (DB claims 17x17, plausible but not confirmed)
+W 3-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 3-Loop|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 3-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 3-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 3-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 4-Loop|thermal_power_mwth|CONFIRMED||HIGH|xylenepower.com / general Westinghouse 4-loop PWR overview: "Westinghouse 4-Loop PWR is a 3411 MWth NPP"
+W 4-Loop|fuel_type|CONFIRMED||MED|Standard PWR UO2 fuel
+W 4-Loop|moderator|CONFIRMED||MED|Standard PWR design
+W 4-Loop|coolant|CONFIRMED||MED|Standard PWR design
+W 4-Loop|number_of_coolant_loops|CONFIRMED||HIGH|xylenepower.com Westinghouse PWR overview (4-loop design class)
+W 4-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 4-Loop|enrichment_pct|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 4-Loop|core_height_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 4-Loop|core_diameter_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 4-Loop|number_of_fuel_assemblies|CONFIRMED||HIGH|xylenepower.com / SNUPPS source: 4-loop Westinghouse core has 193 fuel assemblies (17x17)
+W 4-Loop|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 4-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 4-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 4-Loop|number_of_steam_generators|CONFIRMED||MED|4-loop design implies 4 SGs
+W 4-Loop|fuel_assembly_type|CONFIRMED||HIGH|xylenepower.com Westinghouse PWR overview: 4-loop core uses 17x17 lattice
+W 4-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 4-Loop|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 4-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 4-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+W 4-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|thermal_power_mwth|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|fuel_type|CONFIRMED||MED|Standard PWR UO2 fuel
+CE Pre-System 80|moderator|CONFIRMED||MED|Standard PWR design
+CE Pre-System 80|coolant|CONFIRMED||MED|Standard PWR design
+CE Pre-System 80|number_of_coolant_loops|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|operating_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|enrichment_pct|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|core_height_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|core_diameter_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|number_of_fuel_assemblies|CONFIRMED||HIGH|Grokipedia "System 80" page / NRC CE Technology Cross Training material: Pre-System 80 CE cores (San Onofre 2&3, Waterford 3, ANO-2 class) have 217 fuel assemblies, distinct from the 241-assembly System 80 core
+CE Pre-System 80|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|outlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|inlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|number_of_steam_generators|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|fuel_assembly_type|UNVERIFIABLE||LOW|Not found a source confirming 14x14 lattice for Pre-System 80 specifically this session; DB value neither confirmed nor contradicted
+CE Pre-System 80|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|turbine_speed_rpm|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE Pre-System 80|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE System 80|thermal_power_mwth|CONFIRMED||HIGH|INIS-IAEA record "System 80: combustion engineering's standard 3800-MWt PWR"; ANS Nuclear Newswire "Project 81" article and Duke Power Project 81 application cite 3817 MWt/1280 MWe per unit
+CE System 80|fuel_type|CONFIRMED||HIGH|Grokipedia/System 80 Wikipedia: UO2 pellets, Zircaloy-4 clad
+CE System 80|moderator|CONFIRMED||MED|Standard PWR design
+CE System 80|coolant|CONFIRMED||MED|Standard PWR design
+CE System 80|number_of_coolant_loops|CONFIRMED||HIGH|Wikipedia/Grokipedia System 80: two-loop primary system with vertical U-tube steam generators
+CE System 80|operating_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE System 80|enrichment_pct|UNVERIFIABLE||LOW|Wikipedia/Grokipedia System 80 gives a broad 2-5% UO2 enrichment range for the fuel design generally, not specific enough to confirm DB's 3.5-5.0 range
+CE System 80|core_height_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE System 80|core_diameter_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE System 80|number_of_fuel_assemblies|CONFIRMED||HIGH|Westinghouse CE16NGF data sheet / nucleartourist.com Palo Verde page: System 80 core (Palo Verde, Yonggwang) has 241 fuel assemblies in 16x16 lattice
+CE System 80|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE System 80|outlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE System 80|inlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE System 80|number_of_steam_generators|CONFIRMED||MED|2-loop design implies 2 SGs (Wikipedia/Grokipedia System 80)
+CE System 80|fuel_assembly_type|CONFIRMED||HIGH|Westinghouse CE16NGF data sheet: System 80 core uses 16x16 fuel assembly lattice
+CE System 80|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not found a System-80-specific burnup figure this session (a related patent snippet mentions burnups "up to 50,000 MWd/tU" for CE-style fuel generally, not confirmed as System 80's own design value)
+CE System 80|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE System 80|turbine_speed_rpm|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE System 80|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CE System 80|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|thermal_power_mwth|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|fuel_type|CONFIRMED||MED|Standard PWR UO2 fuel
+B&W 2-Loop|moderator|CONFIRMED||MED|Standard PWR design
+B&W 2-Loop|coolant|CONFIRMED||MED|Standard PWR design
+B&W 2-Loop|number_of_coolant_loops|UNVERIFIABLE||LOW|NRC B&W Cross Training material describes the standard 177-FA B&W plant as having 2 reactor coolant loops, but this row (205 FA, 16x16) does not match the 177-FA/15x15 family retrieved this session, so loop count not independently confirmed for this specific variant
+B&W 2-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|enrichment_pct|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|core_height_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|core_diameter_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|All retrieved B&W sources this session describe the 177-FA family (Oconee, ANO-1, TMI-1, Davis-Besse, Crystal River); no source found for a distinct 205-FA/16x16 B&W design this session
+B&W 2-Loop|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|number_of_steam_generators|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|No source found this session confirming 16x16 lattice for any B&W design (all retrieved B&W sources reference 15x15 Mark-B assemblies for the 177-FA family)
+B&W 2-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W 2-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Lowered-Loop|thermal_power_mwth|CONFIRMED||HIGH|Wikipedia Crystal River Nuclear Plant: "thermal capacity of 2568 MW" (Crystal River 3 is a B&W lowered-loop, 177-FA plant)
+B&W Lowered-Loop|fuel_type|CONFIRMED||MED|Standard PWR UO2 fuel
+B&W Lowered-Loop|moderator|CONFIRMED||MED|Standard PWR design
+B&W Lowered-Loop|coolant|CONFIRMED||MED|Standard PWR design
+B&W Lowered-Loop|number_of_coolant_loops|CONFIRMED||HIGH|NRC B&W Pressurized Water Reactor Cross Training Course Manual (ML11221A353): B&W 177-FA plant has 2 reactor coolant loops
+B&W Lowered-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Lowered-Loop|enrichment_pct|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Lowered-Loop|core_height_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Lowered-Loop|core_diameter_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Lowered-Loop|number_of_fuel_assemblies|CONFIRMED||HIGH|NRC B&W Cross Training material: operating B&W plants (Oconee, ANO-1, TMI-1, Davis-Besse, Crystal River 3) all use 177 fuel assemblies
+B&W Lowered-Loop|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Lowered-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Lowered-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Lowered-Loop|number_of_steam_generators|CONFIRMED||MED|NRC B&W Cross Training material: 2-loop plant, one SG per loop (2 SGs total)
+B&W Lowered-Loop|fuel_assembly_type|CONFIRMED||HIGH|NRC B&W Cross Training material: 177-FA plants use Mark-B series assemblies, 15x15 rod array
+B&W Lowered-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Lowered-Loop|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Lowered-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Lowered-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Lowered-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Raised-Loop|thermal_power_mwth|UNVERIFIABLE||LOW|NRC "Small Break LOCA Analysis for B&W 177FA Raised Loop" (ML20213D965) confirms the raised-loop 177-FA design exists but retrieved snippet did not give the specific 2772 MWt figure
+B&W Raised-Loop|fuel_type|CONFIRMED||MED|Standard PWR UO2 fuel
+B&W Raised-Loop|moderator|CONFIRMED||MED|Standard PWR design
+B&W Raised-Loop|coolant|CONFIRMED||MED|Standard PWR design
+B&W Raised-Loop|number_of_coolant_loops|CONFIRMED||HIGH|NRC B&W Cross Training material: 177-FA plant (raised-loop variant, e.g. Davis-Besse) has 2 reactor coolant loops
+B&W Raised-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Raised-Loop|enrichment_pct|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Raised-Loop|core_height_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Raised-Loop|core_diameter_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Raised-Loop|number_of_fuel_assemblies|CONFIRMED||HIGH|NRC "B&W 177FA Raised Loop" SBLOCA analysis (ML20213D965): raised-loop plants are part of the 177-FA family
+B&W Raised-Loop|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Raised-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Raised-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Raised-Loop|number_of_steam_generators|CONFIRMED||MED|2-loop plant, one SG per loop (2 SGs total)
+B&W Raised-Loop|fuel_assembly_type|CONFIRMED||HIGH|NRC B&W Cross Training material: Mark-B series assemblies, 15x15 rod array, used across the 177-FA family including raised-loop plants
+B&W Raised-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Raised-Loop|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Raised-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Raised-Loop|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+B&W Raised-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP0|thermal_power_mwth|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP0|fuel_type|CONFIRMED||MED|Standard PWR UO2 fuel
+CP0|moderator|CONFIRMED||MED|Standard PWR design
+CP0|coolant|CONFIRMED||MED|Standard PWR design
+CP0|number_of_coolant_loops|UNVERIFIABLE||LOW|CP0/CP1 are French adaptations of the Westinghouse 3-loop design (ASN annual report Ch.12, Wikipedia "Palier CP0/CPY") but a specific loop-count figure was not directly retrieved this session for CP0 itself
+CP0|enrichment_pct|CONFIRMED||MED|ASN annual report Ch.12 (reglementation-controle.asnr.fr): fuel rods "weakly enriched to 3.25%", which falls within DB's stated 3.1-3.7% range
+CP0|core_height_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP0|core_diameter_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP0|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Retrieved ASN document snippet referenced "52 fuel assemblies" in a context (likely partial reload batch, not full core) that could not be reconciled with DB's 157; insufficient to confirm or contradict full-core count
+CP0|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP0|outlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP0|inlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP0|number_of_steam_generators|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP0|fuel_assembly_type|CONFIRMED||MED|ASN annual report Ch.12: fuel assemblies of 264 rods, consistent with 17x17 lattice
+CP0|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP0|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP0|turbine_speed_rpm|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP0|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP0|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|thermal_power_mwth|UNVERIFIABLE||LOW|Could not retrieve an authoritative document this session stating 2785 MWt for CP1 specifically. FLAG: DB source annotation reads "thermal corrected 2026-07 audit (PRIS palier CPY)" — this is a self-attested "correction" of the exact type flagged as a hallucination risk in project MEMORY.md (a source column written by the same process that wrote the value is self-attestation, not verification). The value is plausible (identical to the W 3-Loop row's 2785 MWt, consistent with CP1 being a French derivative of the Westinghouse 3-loop design per ASN annual report Ch.12), but plausibility by analogy is not a retrieved source, so marking UNVERIFIABLE rather than CONFIRMED.
+CP1|fuel_type|CONFIRMED||MED|Standard PWR UO2 fuel
+CP1|moderator|CONFIRMED||MED|Standard PWR design
+CP1|coolant|CONFIRMED||MED|Standard PWR design
+CP1|number_of_coolant_loops|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|enrichment_pct|CONFIRMED||MED|ASN annual report Ch.12: fuel enriched to 3.25%, within DB's stated 3.1-3.7% range (same fuel family as CP0)
+CP1|core_height_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|core_diameter_m|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|number_of_fuel_assemblies|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|number_of_control_elements|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|outlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|inlet_temperature_c|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|number_of_steam_generators|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|fuel_assembly_type|CONFIRMED||MED|ASN annual report Ch.12: 264-rod assemblies, consistent with 17x17 lattice (same family as CP0)
+CP1|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|number_of_turbines|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|turbine_speed_rpm|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|low_pressure_sections|UNVERIFIABLE||LOW|Not found in retrieved snippets this session
+CP1|live_steam_pressure_bar|UNVERIFIABLE||LOW|Not found in retrieved snippets this session

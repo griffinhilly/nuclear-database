@@ -1,0 +1,261 @@
+design_series|field|verdict|corrected_value|confidence|source
+APR1400|thermal_power_mwth|CONFIRMED|None|MED|NRC APR1400 DCD Tier 2 Ch.4 (search-result reference confirming "3983 MWt" rated core thermal power; distinct from the rounded 4000 MWt NSSS marketing figure cited elsewhere)
+APR1400|fuel_type|CONFIRMED|None|HIGH|IAEA CN-164-3S09 "Design Characteristics of APR1400" (Hangon Kim) — UO2 fuel pellets
+APR1400|moderator|CONFIRMED|None|HIGH|IAEA/NRC APR1400 descriptions — pressurized light-water reactor
+APR1400|coolant|CONFIRMED|None|HIGH|IAEA/NRC APR1400 descriptions — pressurized light-water reactor
+APR1400|number_of_coolant_loops|CONFIRMED|None|HIGH|IAEA CN-164-3S09 — "NSSS contains two primary coolant loops"
+APR1400|operating_pressure_bar|CONFIRMED|None|HIGH|IAEA CN-164-3S09 — RCS nominal pressure 2250 psia (158.2 kgf/cm2A ~ 155.1 bar)
+APR1400|enrichment_pct|CONFIRMED|None|MED|Grokipedia APR-1400 page citing NRC DCD — enrichment "up to 4.95 w/o"; matches upper bound of claimed 4.5-5.0 range, lower bound not independently confirmed
+APR1400|core_height_m|CONFIRMED|None|HIGH|ResearchGate/NRC-sourced core design table — active height 3.810 m
+APR1400|core_diameter_m|CONFIRMED|None|HIGH|Same table — core diameter 3.647 m (rounds to 3.65 m)
+APR1400|number_of_fuel_assemblies|CONFIRMED|None|HIGH|IAEA CN-164-3S09 and NRC FSER Ch.4 — 241 fuel assemblies
+APR1400|number_of_control_elements|CONFIRMED|None|HIGH|IAEA CN-164-3S09 — 93 Control Element Assemblies
+APR1400|outlet_temperature_c|UNVERIFIABLE|None|LOW|No document with this exact figure was retrieved; only generic "typical PWR" language found, not APR1400-specific
+APR1400|inlet_temperature_c|UNVERIFIABLE|None|LOW|No APR1400-specific source found
+APR1400|number_of_steam_generators|CONFIRMED|None|HIGH|IAEA CN-164-3S09 — two coolant loops, one SG per loop (cross-checked via yumpu APR1400 vs OPR1000 comparison doc citing 13,102 SG tubes for APR1400)
+APR1400|fuel_assembly_type|CONFIRMED|None|HIGH|IAEA CN-164-3S09 — 16x16 fuel assembly array
+APR1400|average_burnup_mwd_per_t|WRONG|55000.0|MED|IAEA CN-164-3S09 states "batch average burn-up of 55,000 MWD/MTU"; 60,000 MWD/MTU figures found elsewhere refer to maximum/rod-peak burnup, not average — basis mismatch
+APR1400|number_of_turbines|CONFIRMED|None|HIGH|Modern Power Systems/NS Energy APR1400 turbine article — single tandem-compound turbine-generator train
+APR1400|turbine_speed_rpm|CONFIRMED|None|HIGH|Modern Power Systems APR1400 turbine article — 1800 rpm
+APR1400|low_pressure_sections|CONFIRMED|None|HIGH|Modern Power Systems APR1400 turbine article — "one HP and three LP turbine sections"
+APR1400|live_steam_pressure_bar|WRONG|66.3|MED|Modern Power Systems/NS Energy APR1400 turbine article — throttle pressure 962 psia = 66.3 bar (not 68.0 bar)
+OPR-1000|thermal_power_mwth|WRONG|2825.0|HIGH|IAEA PRIS Reactor Details pages for Hanbit-3 and Hanul-3 (OPR-1000 units) both list thermal capacity 2825 MWt
+OPR-1000|fuel_type|CONFIRMED|None|MED|Fuel-assembly literature on OPR-1000 (16x16 UO2 pellet fuel rod arrays); no single primary vendor doc retrieved stating "UO2" verbatim
+OPR-1000|moderator|CONFIRMED|None|HIGH|Wikipedia/IAEA — OPR-1000 is a two-loop PWR
+OPR-1000|coolant|CONFIRMED|None|HIGH|Wikipedia/IAEA — OPR-1000 is a two-loop PWR
+OPR-1000|number_of_coolant_loops|CONFIRMED|None|HIGH|Wikipedia OPR-1000 — "two-loop 1000 MWe PWR"
+OPR-1000|operating_pressure_bar|CONFIRMED|None|HIGH|KNS (Korean Nuclear Society) "Development of SPACE Input Model of OPR1000 Plant" paper — RCS pressure 155.1 bar (2250 psia)
+OPR-1000|enrichment_pct|UNVERIFIABLE|None|LOW|Search results referenced varying study-specific enrichments (~3.4%-4.1%); no single authoritative nominal-design source matched claimed 4.0-4.5 range
+OPR-1000|core_height_m|BLOCKED|None|None|Targeted search query rejected mid-task (session WebSearch budget exhausted before this query could run)
+OPR-1000|core_diameter_m|BLOCKED|None|None|Same — search rejected due to exhausted WebSearch budget
+OPR-1000|number_of_fuel_assemblies|CONFIRMED|None|HIGH|Fuel-assembly literature search — OPR1000 core "composed of 177 fuel assemblies"
+OPR-1000|number_of_control_elements|CONFIRMED|None|HIGH|Same source — "73 control element assemblies"
+OPR-1000|outlet_temperature_c|UNVERIFIABLE|None|LOW|No OPR-1000-specific document found with this exact figure; only generic PWR-class temperature ranges retrieved
+OPR-1000|inlet_temperature_c|UNVERIFIABLE|None|LOW|No OPR-1000-specific source found
+OPR-1000|number_of_steam_generators|CONFIRMED|None|HIGH|Two-loop design (one SG per loop); cross-checked via yumpu APR1400-vs-OPR1000 doc citing 8,340 SG tubes for OPR1000
+OPR-1000|fuel_assembly_type|CONFIRMED|None|HIGH|ResearchGate/fuel literature — 236 fuel rods in 16x16 array
+OPR-1000|average_burnup_mwd_per_t|UNVERIFIABLE|None|LOW|No specific average-burnup figure retrieved despite multiple search attempts
+OPR-1000|number_of_turbines|CONFIRMED|None|HIGH|Modern Power Systems APR1400 turbine article (comparative) — OPR1000 uses a single 1000 MW Doosan turbine-generator
+OPR-1000|turbine_speed_rpm|CONFIRMED|None|HIGH|Same source — "Both designs operate at 1800 rpm"
+OPR-1000|low_pressure_sections|WRONG|3|HIGH|Modern Power Systems/NS Energy APR1400 turbine article, explicit: "Both the OPR1000 and APR1400 are of the solid coupled, tandem compound design with one HP and three LP turbine sections"
+OPR-1000|live_steam_pressure_bar|UNVERIFIABLE|None|LOW|No OPR-1000-specific throttle/live-steam pressure figure found; only generic ~1000 psia PWR-class statements retrieved
+ACPR-1000|thermal_power_mwth|UNVERIFIABLE|None|LOW|No source found this session stating ACPR-1000 thermal power in MWth
+ACPR-1000|fuel_type|UNVERIFIABLE|None|LOW|No explicit UO2 statement retrieved for ACPR-1000 this session
+ACPR-1000|moderator|CONFIRMED|None|MED|Wikipedia CPR-1000/ACPR-1000 article + NEI Magazine "Chinese reactor design evolution" describe design as pressurized water reactor
+ACPR-1000|coolant|CONFIRMED|None|MED|Wikipedia CPR-1000/ACPR-1000 article + NEI Magazine "Chinese reactor design evolution" (PWR, light water coolant)
+ACPR-1000|number_of_coolant_loops|CONFIRMED|None|HIGH|Wikipedia CPR-1000/ACPR-1000 article and NEI Magazine "Chinese reactor design evolution" both state three-loop design
+ACPR-1000|operating_pressure_bar|UNVERIFIABLE|None|LOW|No source found this session for ACPR-1000 operating pressure
+ACPR-1000|enrichment_pct|CONFIRMED|None|MED|Wikipedia CPR-1000 article states 4.5% U-235 enrichment (predecessor/same fuel family as ACPR-1000, upper bound of claimed range)
+ACPR-1000|core_height_m|WRONG|4.27|MED|Wikipedia CPR-1000/ACPR-1000 article and NEI Magazine "Chinese reactor design evolution" both state ACPR-1000 fuel active length is 14 ft (4.267 m), not 12 ft (3.66 m, the CPR-1000 predecessor's height)
+ACPR-1000|core_diameter_m|UNVERIFIABLE|None|LOW|No source found this session
+ACPR-1000|number_of_fuel_assemblies|CONFIRMED|None|HIGH|Wikipedia CPR-1000/ACPR-1000 article and NEI Magazine article both state 157 fuel assemblies
+ACPR-1000|number_of_control_elements|UNVERIFIABLE|None|LOW|No source found this session
+ACPR-1000|outlet_temperature_c|UNVERIFIABLE|None|LOW|Search returned an unsourced figure (324C) not traceable to any specific retrieved ACPR-1000 document; discarded per zero-doubt rule
+ACPR-1000|inlet_temperature_c|UNVERIFIABLE|None|LOW|Same as outlet_temperature_c - no traceable source
+ACPR-1000|number_of_steam_generators|CONFIRMED|None|MED|NEI Magazine "Chinese reactor design evolution" + Wikipedia CPR-1000 article: three-loop design with one steam generator per loop
+ACPR-1000|fuel_assembly_type|CONFIRMED|None|MED|Wikipedia CPR-1000 article states 17x17 (AREVA AFA 3G M5) fuel assembly design for the CPR-1000/ACPR-1000 family
+ACPR-1000|average_burnup_mwd_per_t|UNVERIFIABLE|None|LOW|No source found this session
+ACPR-1000|number_of_turbines|UNVERIFIABLE|None|LOW|No source found this session
+ACPR-1000|turbine_speed_rpm|UNVERIFIABLE|None|LOW|No source found this session
+ACPR-1000|low_pressure_sections|UNVERIFIABLE|None|LOW|No source found this session
+ACPR-1000|live_steam_pressure_bar|UNVERIFIABLE|None|LOW|No source found this session
+CAP1000|thermal_power_mwth|UNVERIFIABLE|None|LOW|Power Technology AP1000 profile states AP1000 gross thermal power 3415 MWt (differs from claimed 3400); no CAP1000-specific figure retrieved and CAP1000 differs from AP1000, so basis not confirmed
+CAP1000|fuel_type|UNVERIFIABLE|None|LOW|No explicit UO2 statement retrieved for CAP1000 this session
+CAP1000|moderator|CONFIRMED|None|MED|Grokipedia/Wikipedia AP1000 sources and Power Technology describe CAP1000 as localized Westinghouse AP1000 pressurized water reactor
+CAP1000|coolant|CONFIRMED|None|MED|Same sources as moderator - PWR, light water coolant
+CAP1000|number_of_coolant_loops|CONFIRMED|None|HIGH|Power Technology AP1000 profile and Wikipedia AP1000 article state two-loop design; CAP1000 is the localized AP1000 clone
+CAP1000|operating_pressure_bar|UNVERIFIABLE|None|LOW|No CAP1000-specific source found this session
+CAP1000|enrichment_pct|UNVERIFIABLE|None|LOW|No CAP1000-specific enrichment figure retrieved this session
+CAP1000|core_height_m|CONFIRMED|None|MED|NRC AP1000 Design Control Document (via NRC.gov/OSTI search results): 157 17x17 fuel assemblies with 14 ft active fuel length (4.267 m); CAP1000 uses same core design
+CAP1000|core_diameter_m|UNVERIFIABLE|None|LOW|No source found this session
+CAP1000|number_of_fuel_assemblies|CONFIRMED|None|HIGH|Power Technology AP1000 profile and NRC AP1000 DCD both state 157-fuel-assembly core; CAP1000 shares this core design
+CAP1000|number_of_control_elements|CONFIRMED|None|MED|DOE/OSTI document states 53 control rods in AP1000 vs 45 in AP600; CAP1000 shares AP1000 core design
+CAP1000|outlet_temperature_c|UNVERIFIABLE|None|LOW|No source found this session
+CAP1000|inlet_temperature_c|UNVERIFIABLE|None|LOW|No source found this session
+CAP1000|number_of_steam_generators|CONFIRMED|None|HIGH|Westinghouse/ASME source states AP1000 NSSS configuration has two Delta-125 steam generators; CAP1000 shares this NSSS design
+CAP1000|fuel_assembly_type|CONFIRMED|None|HIGH|NRC AP1000 Design Control Document: "157 17x17 fuel assemblies with a 14 foot active fuel length"
+CAP1000|average_burnup_mwd_per_t|UNVERIFIABLE|None|LOW|No CAP1000-specific burnup figure retrieved this session
+CAP1000|number_of_turbines|UNVERIFIABLE|None|LOW|No source found this session
+CAP1000|turbine_speed_rpm|UNVERIFIABLE|None|LOW|No source found this session
+CAP1000|low_pressure_sections|UNVERIFIABLE|None|LOW|No source found this session
+CAP1000|live_steam_pressure_bar|UNVERIFIABLE|None|LOW|No source found this session
+CAP1400|thermal_power_mwth|CONFIRMED|None|MED|Wikipedia CAP1400 article, NEI Magazine "Chinese reactor design evolution," and ResearchGate "General Design and Technology Innovations of CAP1400" all state 4040 MWth
+CAP1400|fuel_type|CONFIRMED|None|MED|ResearchGate/ScienceDirect-derived summary of "General Design and Technology Innovations of CAP1400": sintered UO2 ceramic fuel pellets
+CAP1400|moderator|CONFIRMED|None|MED|Multiple sources (Wikipedia, NEI Magazine, ResearchGate) describe CAP1400 as an advanced passive PWR, light-water moderated
+CAP1400|coolant|CONFIRMED|None|MED|Same sources - light water coolant PWR design
+CAP1400|number_of_coolant_loops|CONFIRMED|None|HIGH|Wikipedia CAP1400 article and NEI Magazine article both state two-loop design
+CAP1400|operating_pressure_bar|CONFIRMED|None|MED|Wikipedia CAP1400 article: operating pressure 15.5 MPa (155 bar)
+CAP1400|enrichment_pct|CONFIRMED|None|MED|ResearchGate/ScienceDirect-derived summary ("General Design and Technology Innovations of CAP1400"): fuel enriched up to 4.95 wt% U-235, within claimed 4.5-5.0% range
+CAP1400|core_height_m|CONFIRMED|None|HIGH|ResearchGate/ScienceDirect-derived summary: active core height 4,267 mm (4.27 m)
+CAP1400|core_diameter_m|CONFIRMED|None|HIGH|Same source: equivalent core diameter 3,370 mm (3.37 m)
+CAP1400|number_of_fuel_assemblies|CONFIRMED|None|HIGH|Wikipedia CAP1400, NEI Magazine, and ResearchGate all state 193 fuel assemblies
+CAP1400|number_of_control_elements|UNVERIFIABLE|None|LOW|A search snippet (ASME ICONE conference proceedings on CAP1400 CRDM cooling) suggested 41 regulating + 48 shutdown = 89 control rod assemblies, conflicting with claimed 69, but source could not be directly fetched/verified this session, so treated as unconfirmed rather than definitively WRONG
+CAP1400|outlet_temperature_c|UNVERIFIABLE|None|LOW|Wikipedia CAP1400 only gives coolant AVERAGE temperature (304C), not separate inlet/outlet split; cannot confirm or refute 323C specifically
+CAP1400|inlet_temperature_c|UNVERIFIABLE|None|LOW|Same basis as outlet_temperature_c - only average temperature found, not inlet specifically
+CAP1400|number_of_steam_generators|CONFIRMED|None|MED|Two-loop design confirmed (Wikipedia, NEI); AP1000-family NSSS (CAP1400 core lineage) explicitly uses one SG per loop, i.e. 2 total
+CAP1400|fuel_assembly_type|CONFIRMED|None|HIGH|ResearchGate/ScienceDirect-derived summary: square 17x17 rod array fuel assembly
+CAP1400|average_burnup_mwd_per_t|CONFIRMED|None|MED|Wikipedia CAP1400 article states average discharge burnup >=50,000 MWd/tU, consistent with claimed 52,000 (a separate ResearchGate-derived figure stated >53,000, a minor discrepancy across secondary sources)
+CAP1400|number_of_turbines|UNVERIFIABLE|None|LOW|No source found this session
+CAP1400|turbine_speed_rpm|UNVERIFIABLE|None|LOW|No source found this session
+CAP1400|low_pressure_sections|UNVERIFIABLE|None|LOW|No source found this session
+CAP1400|live_steam_pressure_bar|WRONG|60.1|MED|Wikipedia CAP1400 article states steam pressure at steam generator = 6.01 MPa (60.1 bar), not 68.0 bar
+CNP-1000|thermal_power_mwth|WRONG|2905.0|HIGH|IAEA PRIS Fuqing-1 Reactor Details page (pris.iaea.org ReactorDetails.aspx?current=937)
+CNP-1000|fuel_type|UNVERIFIABLE|None|LOW|No source retrieved this session stating fuel type explicitly
+CNP-1000|moderator|UNVERIFIABLE|None|LOW|No source retrieved this session stating moderator explicitly
+CNP-1000|coolant|UNVERIFIABLE|None|LOW|No source retrieved this session stating coolant explicitly
+CNP-1000|number_of_coolant_loops|CONFIRMED|None|MED|Wikipedia "CNP / ACP nuclear reactors" - "three-loop 1000 MW version"
+CNP-1000|operating_pressure_bar|UNVERIFIABLE|None|LOW|No CNP-1000-specific source found; 155 bar only confirmed for CPR-1000/Ling Ao
+CNP-1000|enrichment_pct|UNVERIFIABLE|None|LOW|No source found
+CNP-1000|core_height_m|CONFIRMED|None|MED|Wikipedia "CNP / ACP nuclear reactors" - fuel active length 12 ft (~3.66m), AFA 3G M5 17x17
+CNP-1000|core_diameter_m|UNVERIFIABLE|None|LOW|No source found
+CNP-1000|number_of_fuel_assemblies|CONFIRMED|None|MED|Wikipedia "CNP / ACP nuclear reactors" - "157 fuel assemblies"
+CNP-1000|number_of_control_elements|UNVERIFIABLE|None|LOW|No source found
+CNP-1000|outlet_temperature_c|UNVERIFIABLE|None|LOW|No CNP-1000-specific source; 325C only confirmed for Ling Ao/CPR-1000
+CNP-1000|inlet_temperature_c|UNVERIFIABLE|None|LOW|No CNP-1000-specific source found
+CNP-1000|number_of_steam_generators|UNVERIFIABLE|None|LOW|Not explicitly stated for CNP-1000 (3-loop design implies 3 but not directly confirmed)
+CNP-1000|fuel_assembly_type|CONFIRMED|None|MED|Wikipedia "CNP / ACP nuclear reactors" - AREVA's 17x17 AFA 3G M5
+CNP-1000|average_burnup_mwd_per_t|UNVERIFIABLE|None|LOW|No source found
+CNP-1000|number_of_turbines|UNVERIFIABLE|None|LOW|No source found
+CNP-1000|turbine_speed_rpm|UNVERIFIABLE|None|LOW|No source found
+CNP-1000|low_pressure_sections|UNVERIFIABLE|None|LOW|No source found
+CNP-1000|live_steam_pressure_bar|UNVERIFIABLE|None|LOW|No source found
+CNP-300|thermal_power_mwth|WRONG|999.0|MED|Wikipedia "CNP-300" - "thermal capacity of 999 MW" (one source cited 966 MW as alternate figure)
+CNP-300|fuel_type|UNVERIFIABLE|None|LOW|No source found
+CNP-300|moderator|UNVERIFIABLE|None|LOW|No source found
+CNP-300|coolant|UNVERIFIABLE|None|LOW|No source found
+CNP-300|number_of_coolant_loops|CONFIRMED|None|MED|Wikipedia "CNP-300" - "two-loop design" (one source described alternate single-loop framing)
+CNP-300|operating_pressure_bar|UNVERIFIABLE|None|LOW|No source found
+CNP-300|enrichment_pct|UNVERIFIABLE|None|LOW|No source found
+CNP-300|core_height_m|UNVERIFIABLE|None|LOW|No source found
+CNP-300|core_diameter_m|UNVERIFIABLE|None|LOW|No source found; claimed value already None
+CNP-300|number_of_fuel_assemblies|UNVERIFIABLE|None|LOW|Wikipedia/search explicitly stated no fuel assembly count found for CNP-300 (121 belongs to CNP-600 per comparison note)
+CNP-300|number_of_control_elements|UNVERIFIABLE|None|LOW|No source found; claimed value already None
+CNP-300|outlet_temperature_c|UNVERIFIABLE|None|LOW|No source found
+CNP-300|inlet_temperature_c|UNVERIFIABLE|None|LOW|No source found
+CNP-300|number_of_steam_generators|UNVERIFIABLE|None|LOW|Not explicitly stated (2-loop design suggests 2 but not directly confirmed)
+CNP-300|fuel_assembly_type|UNVERIFIABLE|None|LOW|No source found
+CNP-300|average_burnup_mwd_per_t|UNVERIFIABLE|None|LOW|No source found
+CNP-300|number_of_turbines|UNVERIFIABLE|None|LOW|No source found
+CNP-300|turbine_speed_rpm|UNVERIFIABLE|None|LOW|No source found
+CNP-300|low_pressure_sections|UNVERIFIABLE|None|LOW|No source found
+CNP-300|live_steam_pressure_bar|UNVERIFIABLE|None|LOW|No source found
+CNP-600|thermal_power_mwth|UNVERIFIABLE|None|LOW|Wikipedia "CNP-600" gives 650 MW (appears to be electrical gross capacity, not thermal); no MWt figure found
+CNP-600|fuel_type|UNVERIFIABLE|None|LOW|No source found
+CNP-600|moderator|UNVERIFIABLE|None|LOW|No source found
+CNP-600|coolant|UNVERIFIABLE|None|LOW|No source found
+CNP-600|number_of_coolant_loops|CONFIRMED|None|MED|Wikipedia "CNP-600" - "2-loop design"
+CNP-600|operating_pressure_bar|UNVERIFIABLE|None|LOW|No source found
+CNP-600|enrichment_pct|UNVERIFIABLE|None|LOW|No source found
+CNP-600|core_height_m|UNVERIFIABLE|None|LOW|No source found
+CNP-600|core_diameter_m|UNVERIFIABLE|None|LOW|No source found; claimed value already None
+CNP-600|number_of_fuel_assemblies|CONFIRMED|None|MED|Wikipedia "CNP-600" - "121 fuel assemblies"
+CNP-600|number_of_control_elements|UNVERIFIABLE|None|LOW|No source found
+CNP-600|outlet_temperature_c|UNVERIFIABLE|None|LOW|No source found
+CNP-600|inlet_temperature_c|UNVERIFIABLE|None|LOW|No source found
+CNP-600|number_of_steam_generators|UNVERIFIABLE|None|LOW|Not explicitly stated (2-loop design suggests 2 but not directly confirmed)
+CNP-600|fuel_assembly_type|UNVERIFIABLE|None|LOW|No source found
+CNP-600|average_burnup_mwd_per_t|UNVERIFIABLE|None|LOW|No source found
+CNP-600|number_of_turbines|UNVERIFIABLE|None|LOW|No source found
+CNP-600|turbine_speed_rpm|UNVERIFIABLE|None|LOW|No source found
+CNP-600|low_pressure_sections|UNVERIFIABLE|None|LOW|No source found
+CNP-600|live_steam_pressure_bar|UNVERIFIABLE|None|LOW|No source found
+CPR-1000|thermal_power_mwth|UNVERIFIABLE|None|LOW|Searches returned only electrical figures (1080 MWe gross/1000 MWe net); no MWt figure found this session
+CPR-1000|fuel_type|UNVERIFIABLE|None|LOW|No source explicitly stated UO2 fuel type
+CPR-1000|moderator|UNVERIFIABLE|None|LOW|No source found
+CPR-1000|coolant|UNVERIFIABLE|None|LOW|No source found
+CPR-1000|number_of_coolant_loops|CONFIRMED|None|MED|Wikipedia "CPR-1000" - "three-loop design... each loop contains a steam generator and a reactor coolant pump"
+CPR-1000|operating_pressure_bar|CONFIRMED|None|MED|Mines ParisTech nuclear plant thermodynamics course page on Ling Ao/CPR-1000 - "hot primary circuit is pressurised at 155 bar"
+CPR-1000|enrichment_pct|UNVERIFIABLE|None|LOW|Wikipedia "CPR-1000" states single value "enriched to 4.5% U-235" (matches upper bound only); full 3.7-4.5 range not confirmed
+CPR-1000|core_height_m|CONFIRMED|None|MED|Wikipedia "CPR-1000" - fuel assemblies "active length 12 ft" (~3.66m)
+CPR-1000|core_diameter_m|UNVERIFIABLE|None|LOW|No source found
+CPR-1000|number_of_fuel_assemblies|CONFIRMED|None|MED|Wikipedia "CPR-1000" - "157 fuel assemblies"
+CPR-1000|number_of_control_elements|UNVERIFIABLE|None|LOW|No source found
+CPR-1000|outlet_temperature_c|CONFIRMED|None|MED|Mines ParisTech nuclear plant thermodynamics course page on Ling Ao/CPR-1000 - "temperature of the pressurized water is raised by the reactor core to about 325C"
+CPR-1000|inlet_temperature_c|UNVERIFIABLE|None|LOW|Source describes "about 290C (zero power)" vs 325C (max power), a different basis than cold-leg inlet temperature; not a direct confirmation
+CPR-1000|number_of_steam_generators|CONFIRMED|None|MED|Wikipedia "CPR-1000" - 3-loop design, "each loop contains a steam generator" implies 3
+CPR-1000|fuel_assembly_type|CONFIRMED|None|MED|Wikipedia "CPR-1000" - "AREVA's 17x17 AFA 3G M5"
+CPR-1000|average_burnup_mwd_per_t|UNVERIFIABLE|None|LOW|No source found
+CPR-1000|number_of_turbines|UNVERIFIABLE|None|LOW|No source found
+CPR-1000|turbine_speed_rpm|UNVERIFIABLE|None|LOW|No source found
+CPR-1000|low_pressure_sections|UNVERIFIABLE|None|LOW|No source found
+CPR-1000|live_steam_pressure_bar|UNVERIFIABLE|None|LOW|No source found
+HPR1000|thermal_power_mwth|CONFIRMED|None|MED|ScienceDirect "HPR1000: Advanced PWR with Active and Passive Safety" (search snippet states core generates 3050 MWth; a separate source cited 3180 MWt gross elsewhere — discrepancy not resolved)
+HPR1000|fuel_type|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|moderator|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|coolant|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|number_of_coolant_loops|CONFIRMED|None|MED|INIS/IAEA ARIS WRC Booklet aggregated search result: "HPR1000's primary circuit is composed of 3 loops"
+HPR1000|operating_pressure_bar|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|enrichment_pct|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|core_height_m|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|core_diameter_m|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|number_of_fuel_assemblies|CONFIRMED|None|MED|china.org.cn Hualong One demonstration project release + INIS "Hualong One nuclear reactor core design" record: "177 fuel assemblies"
+HPR1000|number_of_control_elements|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|outlet_temperature_c|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|inlet_temperature_c|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|number_of_steam_generators|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|fuel_assembly_type|UNVERIFIABLE|None|LOW|not retrieved this session (CF3 fuel assembly named but 17x17 lattice not confirmed)
+HPR1000|average_burnup_mwd_per_t|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|number_of_turbines|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|turbine_speed_rpm|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|low_pressure_sections|UNVERIFIABLE|None|LOW|not retrieved this session
+HPR1000|live_steam_pressure_bar|UNVERIFIABLE|None|LOW|not retrieved this session
+VVER-1000/187|thermal_power_mwth|CONFIRMED|None|MED|MDEP TR-VVERWG-06 (OECD-NEA, March 2019) p.3-4: "VVER-1000 delivers a thermal power of 3000 MW"; V-187 is the head unit of this series
+VVER-1000/187|fuel_type|UNVERIFIABLE|None|LOW|not retrieved this session
+VVER-1000/187|moderator|CONFIRMED|None|MED|MDEP TR-VVERWG-06 p.5: "water-cooled water moderated power reactor VVER-1000" (generic to series)
+VVER-1000/187|coolant|CONFIRMED|None|MED|MDEP TR-VVERWG-06 p.5 (same)
+VVER-1000/187|number_of_coolant_loops|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.5: "RCS ... comprises ... four reactor coolant loops" (generic to VVER-1000 series incl. V-187)
+VVER-1000/187|operating_pressure_bar|UNVERIFIABLE|None|LOW|claimed field already None; generic VVER-1000 nominal pressure of 157 bar found elsewhere but not confirmed specific to V-187
+VVER-1000/187|enrichment_pct|UNVERIFIABLE|None|LOW|not retrieved this session
+VVER-1000/187|core_height_m|UNVERIFIABLE|None|LOW|generic VVER-1000 active core height ~3.55m found in unattributed search synthesis, not tied to a named document — insufficient per zero-doubt rule
+VVER-1000/187|core_diameter_m|UNVERIFIABLE|None|LOW|claimed value already None; not retrieved
+VVER-1000/187|number_of_fuel_assemblies|UNVERIFIABLE|None|LOW|CONFLICT FOUND: one uncorroborated search snippet claimed V-187 has 151 fuel assemblies vs 163 standard for other VVER-1000 cores; MDEP TR-VVERWG-06 does not list V-187 separately, flagging for human review rather than declaring WRONG on single uncorroborated snippet
+VVER-1000/187|number_of_control_elements|UNVERIFIABLE|None|LOW|not retrieved this session; MDEP shows V-320=61 and V-412=121 control rods, illustrating counts vary by design revision, so 109 for V-187 could not be independently confirmed
+VVER-1000/187|outlet_temperature_c|UNVERIFIABLE|None|LOW|not retrieved specific to V-187 (MDEP gives 321C for the later V-320/Balakovo revision only)
+VVER-1000/187|inlet_temperature_c|UNVERIFIABLE|None|LOW|not retrieved this session
+VVER-1000/187|number_of_steam_generators|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.5: 4 coolant loops each with one horizontal steam generator, generic to entire VVER-1000 line incl. V-187
+VVER-1000/187|fuel_assembly_type|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.5: "Hexagonal fuel assemblies" cited as a defining VVER feature (generic to series incl. V-187)
+VVER-1000/187|average_burnup_mwd_per_t|UNVERIFIABLE|None|LOW|claimed value already None; not retrieved
+VVER-1000/187|number_of_turbines|UNVERIFIABLE|None|LOW|not retrieved this session specific to V-187
+VVER-1000/187|turbine_speed_rpm|UNVERIFIABLE|None|LOW|not retrieved specific to V-187; MDEP shows related V-412 (India) uses a 3000rpm turbine while V-320 (Balakovo reference) uses 1500rpm, so 3000rpm for V-187 is plausible but not independently confirmed
+VVER-1000/187|low_pressure_sections|UNVERIFIABLE|None|LOW|claimed value already None; not retrieved
+VVER-1000/187|live_steam_pressure_bar|UNVERIFIABLE|None|LOW|claimed value already None; not retrieved
+VVER-1000/302|thermal_power_mwth|CONFIRMED|None|MED|MDEP TR-VVERWG-06 p.3-4 (VVER-1000 series baseline 3000 MWt; V-302 is a "small series" derivative of V-187 per p.3)
+VVER-1000/302|fuel_type|UNVERIFIABLE|None|LOW|not retrieved this session
+VVER-1000/302|moderator|CONFIRMED|None|MED|MDEP TR-VVERWG-06 p.5 (generic to VVER-1000 series)
+VVER-1000/302|coolant|CONFIRMED|None|MED|MDEP TR-VVERWG-06 p.5 (generic to VVER-1000 series)
+VVER-1000/302|number_of_coolant_loops|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.5; Springer "VVER-Type Reactors of Russian Design" search snippet: "VVER1000 is a four loop system," describing V-302 lineage
+VVER-1000/302|operating_pressure_bar|CONFIRMED|None|MED|MDEP TR-VVERWG-06 p.22: "Nominal pressure in primary circuit: 15,7 MPa" (=157 bar), generic across VVER-1000 series
+VVER-1000/302|enrichment_pct|UNVERIFIABLE|None|LOW|MDEP p.20 confirms 4.4% max enrichment for the V-320 lineage, consistent with upper bound of claimed 3.3-4.4%, but 3.3% lower bound and applicability to V-302 specifically not independently confirmed
+VVER-1000/302|core_height_m|UNVERIFIABLE|None|LOW|not tied to a specific named source this session
+VVER-1000/302|core_diameter_m|UNVERIFIABLE|None|LOW|not retrieved this session
+VVER-1000/302|number_of_fuel_assemblies|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.20 table (163 fuel assemblies standard across VVER-1000 V-320/V-412/V-428); Springer chapter confirms V-302 as VVER-1000 "small series" sharing this standard core
+VVER-1000/302|number_of_control_elements|CONFIRMED|None|MED|MDEP TR-VVERWG-06 p.6/p.20: 61 CPS control-rod assemblies documented as VVER-1000 standard (explicit for V-320/Balakovo; applied to closely related V-302 with MED confidence)
+VVER-1000/302|outlet_temperature_c|UNVERIFIABLE|None|LOW|MDEP gives 321C specifically for V-320/Balakovo revision, not independently confirmed for V-302
+VVER-1000/302|inlet_temperature_c|UNVERIFIABLE|None|LOW|not retrieved this session
+VVER-1000/302|number_of_steam_generators|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.22: "4xPGV-1000M" — standard across VVER-1000 series
+VVER-1000/302|fuel_assembly_type|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.5 (generic VVER-1000 feature)
+VVER-1000/302|average_burnup_mwd_per_t|UNVERIFIABLE|None|LOW|MDEP p.20 gives max burnup 51.5 MWd/kgU for modern V-320/Balakovo fuel (TVS-2M) — not directly comparable to an "average" burnup figure for older V-302 design
+VVER-1000/302|number_of_turbines|CONFIRMED|None|MED|MDEP TR-VVERWG-06 Appendix 1 table shows single 1000 MW turbine per unit consistently across three VVER-1000 variants (V-320, V-412, V-428), supporting 1 turbine as standard for the family
+VVER-1000/302|turbine_speed_rpm|UNVERIFIABLE|None|LOW|FLAG: MDEP TR-VVERWG-06 p.27 shows related V-320 design (Balakovo, "large series" descendant of V-302) uses a "K 1000-60/1500-2" turbine — i.e. 1500 rpm, not 3000 rpm. No V-302-specific figure found, but this raises doubt about the claimed 3000 rpm value; recommend targeted follow-up
+VVER-1000/302|low_pressure_sections|UNVERIFIABLE|None|LOW|FLAG: MDEP p.27 shows related V-320 design's turbine cycle as "HPC + 3LPC" (3 low-pressure sections, not 4). No V-302-specific data found, same doubt-flag as turbine_speed_rpm above
+VVER-1000/302|live_steam_pressure_bar|CONFIRMED|None|MED|Extrapolated from MDEP p.23: Balakovo(V-320)'s current uprated nominal steam pressure is 6.27 MPa at 104% power; back-calculated to 100% design power ~6.03 MPa ~60.3 bar, consistent with claimed 60.0 bar; applied to V-302 with MED confidence since figure is extrapolated, not V-302-specific
+VVER-1000/320|thermal_power_mwth|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.20 + footnote 1: Balakovo 4 (V-320) currently runs at 3120 MWt "following modification... operated at 104% of the original design power level" — 3120/1.04=3000 MWt matches claimed design-basis value exactly
+VVER-1000/320|fuel_type|UNVERIFIABLE|None|LOW|not retrieved this session
+VVER-1000/320|moderator|CONFIRMED|None|MED|MDEP TR-VVERWG-06 p.5
+VVER-1000/320|coolant|CONFIRMED|None|MED|MDEP TR-VVERWG-06 p.5
+VVER-1000/320|number_of_coolant_loops|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.5, explicit for V-320/Balakovo
+VVER-1000/320|operating_pressure_bar|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.22: "Nominal pressure in primary circuit: 15,7 MPa" (=157 bar), explicit for Balakovo NPP Unit 4 (V-320)
+VVER-1000/320|enrichment_pct|CONFIRMED|None|MED|MDEP TR-VVERWG-06 p.20: "Max. enrichment 4.4%" for Balakovo/V-320, matching claimed upper bound; lower bound 3.3% not independently confirmed
+VVER-1000/320|core_height_m|UNVERIFIABLE|None|LOW|not in MDEP document; generic ~3.55m figure found elsewhere lacks a specific named authoritative source this session
+VVER-1000/320|core_diameter_m|UNVERIFIABLE|None|LOW|not retrieved this session
+VVER-1000/320|number_of_fuel_assemblies|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.20: "Fuel assemblies number: 163" explicit for Balakovo/V-320
+VVER-1000/320|number_of_control_elements|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.6 and p.20: "There are totally 61 CPS ARs at Balakovo 4" / "Control rods number: 61"
+VVER-1000/320|outlet_temperature_c|CONFIRMED|None|MED|MDEP TR-VVERWG-06 p.22: "Reactor outlet temperature: 321C" for Balakovo/V-320 at current 104%-uprated power; claimed 320.0C design-basis value is consistent (1C difference attributable to documented power uprate)
+VVER-1000/320|inlet_temperature_c|UNVERIFIABLE|None|LOW|not stated in MDEP document; other search results gave inconsistent ~282C figure from unrelated benchmark context
+VVER-1000/320|number_of_steam_generators|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.22: "4xPGV-1000M" explicit for Balakovo/V-320
+VVER-1000/320|fuel_assembly_type|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.5 (generic "Hexagonal" classification); p.20 additionally names the specific product as TVS-2M
+VVER-1000/320|average_burnup_mwd_per_t|UNVERIFIABLE|None|MED|MDEP TR-VVERWG-06 p.20 gives "Max burn-up 51.5 MW-day/kgU" for Balakovo/V-320 — this is a maximum, not the average the claimed field specifies; claimed 42000 is plausible relative to the 51,500 max but not independently confirmed
+VVER-1000/320|number_of_turbines|CONFIRMED|None|HIGH|MDEP TR-VVERWG-06 p.27: "Type: K 1000-60/1500-2" — single turbine per unit, explicit for Balakovo/V-320
+VVER-1000/320|turbine_speed_rpm|WRONG|1500|HIGH|MDEP TR-VVERWG-06 Appendix 1 p.27, "Turbine" row: Balakovo (V-320) turbine type is "K 1000-60/1500-2" (1500 rpm), directly contrasted in the same table with Kudankulam's (V-412) "K 1000-60/3000-2" (3000 rpm), confirming the "1500" designator is turbine speed. Claimed 3000 rpm is incorrect for V-320 — this reverses a prior "corrected 2026-07 sweep" value noted in the source column, which appears to have been wrong
+VVER-1000/320|low_pressure_sections|WRONG|3|HIGH|MDEP TR-VVERWG-06 Appendix 1 p.27, "Thermal cycle" row: Balakovo/V-320 = "HPC + 3LPC" (1 High Pressure Cylinder + 3 Low Pressure Cylinders/sections). Claimed value of 4 is incorrect; correct value is 3 — reverses a prior "corrected 2026-07 audit" value noted in the source column
+VVER-1000/320|live_steam_pressure_bar|CONFIRMED|None|MED|Extrapolated from MDEP TR-VVERWG-06 p.23: nominal steam pressure 6.27 MPa at Balakovo's current 104%-uprated power; back-calculated to 100% design power ~6.03 MPa ~60.3 bar, consistent with claimed 60.0 bar design-basis value

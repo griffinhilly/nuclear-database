@@ -1,0 +1,255 @@
+design_series|field|verdict|corrected_value|confidence|source
+VVER-1000/338|thermal_power_mwth|CONFIRMED||HIGH|Hindawi/Wiley "Neutronic Performance of the VVER-1000 Reactor" (3000 MWth, 163 assemblies) cross-checked with ResearchGate VVER-1000 specifications table
+VVER-1000/338|fuel_type|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper (UO2 fuel, light water cooled/moderated)
+VVER-1000/338|moderator|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper (light water moderator)
+VVER-1000/338|coolant|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper (light water coolant, four circulation loops)
+VVER-1000/338|number_of_coolant_loops|CONFIRMED||HIGH|ResearchGate VVER-1000 specs + MDEP TR-VVERWG-06 (four coolant loops, four steam generators)
+VVER-1000/338|operating_pressure_bar|CONFIRMED||HIGH|WebSearch synthesis of thermal-hydraulic/INIS VVER-1000 literature: primary circuit pressure 15.7 MPa = 157 bar, consistent across sources
+VVER-1000/338|enrichment_pct|CONFIRMED||MED|Wikipedia "VVER" technical specifications table (VVER-1000 enrichment 4.26%, falls within DB's 3.3-4.4% range)
+VVER-1000/338|core_height_m|CONFIRMED||MED|Wikipedia "VVER" technical specifications table (VVER-1000 core height 3.50 m vs DB 3.53 m, consistent within rounding)
+VVER-1000/338|core_diameter_m|UNVERIFIABLE||LOW|Searched ResearchGate/OECD-NEA VVER-1000 core geometry papers; found fuel pitch (23.6cm) and core height but no explicit 3.16 m diameter figure
+VVER-1000/338|number_of_fuel_assemblies|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper + Wikipedia VVER table (163 hexagonal fuel assemblies)
+VVER-1000/338|number_of_control_elements|CONFIRMED||HIGH|WebSearch synthesis of VVER-1000 control rod literature (OSTI WWER-1000 control rod materials doc): 61 control rod cluster assemblies, 18 rods each
+VVER-1000/338|outlet_temperature_c|CONFIRMED||MED|Wikipedia "VVER" technical specifications table (VVER-1000 core coolant outlet 319C vs DB 320C, within rounding)
+VVER-1000/338|inlet_temperature_c|CONFIRMED||MED|Wikipedia "VVER" technical specifications table (VVER-1000 core coolant inlet 289C, exact match)
+VVER-1000/338|number_of_steam_generators|CONFIRMED||HIGH|MDEP TR-VVERWG-06 comparison report + ResearchGate VVER-1000 specs (four loops, four steam generators)
+VVER-1000/338|fuel_assembly_type|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper (163 hexagonal fuel assemblies)
+VVER-1000/338|average_burnup_mwd_per_t|CONFIRMED||MED|OSTI "Advanced Fuel Cycles for VVER-1000 Reactors" (four-year cycle average discharge burnup ~42 MWd/kgHM = 42000 MWd/t; broader target range 40000-50000 MWd/t)
+VVER-1000/338|number_of_turbines|CONFIRMED||HIGH|INIS-IAEA record for "K-1000-60/3000 LMZ steam turbine for NPP" (single tandem turbine per VVER-1000 unit)
+VVER-1000/338|turbine_speed_rpm|CONFIRMED||HIGH|INIS-IAEA "K-1000-60/3000 LMZ steam turbine" record (3000 rpm turbine for VVER-1000)
+VVER-1000/338|low_pressure_sections|CONFIRMED||HIGH|INIS-IAEA "K-1000-60/3000 LMZ steam turbine" record (HP cylinder + four low-pressure cylinders symmetric about HP)
+VVER-1000/338|live_steam_pressure_bar|CONFIRMED||MED|INIS-IAEA "K-1000-60/3000" turbine designation (60 kgf/cm2 nominal live steam pressure, ~58.8-60 bar depending on unit conversion)
+VVER-1000/412|thermal_power_mwth|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper + ResearchGate VVER-1000 specs table
+VVER-1000/412|fuel_type|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/412|moderator|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/412|coolant|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/412|number_of_coolant_loops|CONFIRMED||HIGH|MDEP TR-VVERWG-06 comparison report
+VVER-1000/412|operating_pressure_bar|CONFIRMED||HIGH|VVER-1000 primary circuit pressure literature synthesis (15.7 MPa = 157 bar)
+VVER-1000/412|enrichment_pct|CONFIRMED||MED|Wikipedia VVER table (4.26% falls within DB's 3.6-4.4% range)
+VVER-1000/412|core_height_m|CONFIRMED||MED|Wikipedia VVER table (3.50 m vs DB 3.53 m)
+VVER-1000/412|core_diameter_m|UNVERIFIABLE||LOW|No explicit 3.16 m figure found in retrieved VVER-1000 core geometry sources
+VVER-1000/412|number_of_fuel_assemblies|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper + Wikipedia VVER table
+VVER-1000/412|number_of_control_elements|CONFIRMED||HIGH|OSTI WWER-1000 control rod materials document (61 control rod cluster assemblies)
+VVER-1000/412|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (319C vs DB 321C)
+VVER-1000/412|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (289C vs DB 290C)
+VVER-1000/412|number_of_steam_generators|CONFIRMED||HIGH|MDEP TR-VVERWG-06 comparison report
+VVER-1000/412|fuel_assembly_type|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/412|average_burnup_mwd_per_t|CONFIRMED||MED|OSTI "Advanced Fuel Cycles for VVER-1000 Reactors" (design target range 40000-50000 MWd/t)
+VVER-1000/412|number_of_turbines|CONFIRMED||HIGH|INIS-IAEA K-1000-60/3000 turbine record
+VVER-1000/412|turbine_speed_rpm|CONFIRMED||HIGH|INIS-IAEA K-1000-60/3000 turbine record
+VVER-1000/412|low_pressure_sections|CONFIRMED||HIGH|INIS-IAEA K-1000-60/3000 turbine record (four LP cylinders)
+VVER-1000/412|live_steam_pressure_bar|CONFIRMED||MED|INIS-IAEA K-1000-60/3000 turbine designation
+VVER-1000/428|thermal_power_mwth|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper + ResearchGate VVER-1000 specs table
+VVER-1000/428|fuel_type|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/428|moderator|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/428|coolant|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/428|number_of_coolant_loops|CONFIRMED||HIGH|MDEP TR-VVERWG-06 comparison report
+VVER-1000/428|operating_pressure_bar|CONFIRMED||HIGH|VVER-1000 primary circuit pressure literature synthesis (15.7 MPa = 157 bar)
+VVER-1000/428|enrichment_pct|CONFIRMED||MED|Wikipedia VVER table (4.26% falls within DB's 3.6-4.4% range)
+VVER-1000/428|core_height_m|CONFIRMED||MED|Wikipedia VVER table (3.50 m vs DB 3.53 m)
+VVER-1000/428|core_diameter_m|UNVERIFIABLE||LOW|No explicit 3.16 m figure found in retrieved VVER-1000 core geometry sources
+VVER-1000/428|number_of_fuel_assemblies|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper + Wikipedia VVER table
+VVER-1000/428|number_of_control_elements|CONFIRMED||HIGH|OSTI WWER-1000 control rod materials document (61 control rod cluster assemblies)
+VVER-1000/428|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (319C vs DB 320C)
+VVER-1000/428|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (289C, exact match)
+VVER-1000/428|number_of_steam_generators|CONFIRMED||HIGH|MDEP TR-VVERWG-06 comparison report
+VVER-1000/428|fuel_assembly_type|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/428|average_burnup_mwd_per_t|CONFIRMED||MED|OSTI "Advanced Fuel Cycles for VVER-1000 Reactors" (design target range 40000-50000 MWd/t)
+VVER-1000/428|number_of_turbines|CONFIRMED||HIGH|INIS-IAEA K-1000-60/3000 turbine record
+VVER-1000/428|turbine_speed_rpm|CONFIRMED||HIGH|INIS-IAEA K-1000-60/3000 turbine record
+VVER-1000/428|low_pressure_sections|CONFIRMED||HIGH|INIS-IAEA K-1000-60/3000 turbine record (four LP cylinders)
+VVER-1000/428|live_steam_pressure_bar|CONFIRMED||MED|INIS-IAEA K-1000-60/3000 turbine designation
+VVER-1000/428M|thermal_power_mwth|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper + ResearchGate VVER-1000 specs table
+VVER-1000/428M|fuel_type|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/428M|moderator|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/428M|coolant|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/428M|number_of_coolant_loops|CONFIRMED||HIGH|MDEP TR-VVERWG-06 comparison report
+VVER-1000/428M|operating_pressure_bar|CONFIRMED||HIGH|VVER-1000 primary circuit pressure literature synthesis (15.7 MPa = 157 bar)
+VVER-1000/428M|enrichment_pct|CONFIRMED||MED|Wikipedia VVER table (4.26% falls within DB's 3.6-4.4% range)
+VVER-1000/428M|core_height_m|CONFIRMED||MED|Wikipedia VVER table (3.50 m vs DB 3.53 m)
+VVER-1000/428M|core_diameter_m|UNVERIFIABLE||LOW|No explicit 3.16 m figure found in retrieved VVER-1000 core geometry sources
+VVER-1000/428M|number_of_fuel_assemblies|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper + Wikipedia VVER table
+VVER-1000/428M|number_of_control_elements|CONFIRMED||HIGH|OSTI WWER-1000 control rod materials document (61 control rod cluster assemblies)
+VVER-1000/428M|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (319C vs DB 320C)
+VVER-1000/428M|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (289C, exact match)
+VVER-1000/428M|number_of_steam_generators|CONFIRMED||HIGH|MDEP TR-VVERWG-06 comparison report
+VVER-1000/428M|fuel_assembly_type|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/428M|average_burnup_mwd_per_t|CONFIRMED||MED|OSTI "Advanced Fuel Cycles for VVER-1000 Reactors" (design target range 40000-50000 MWd/t)
+VVER-1000/428M|number_of_turbines|CONFIRMED||HIGH|INIS-IAEA K-1000-60/3000 turbine record
+VVER-1000/428M|turbine_speed_rpm|CONFIRMED||HIGH|INIS-IAEA K-1000-60/3000 turbine record
+VVER-1000/428M|low_pressure_sections|CONFIRMED||HIGH|INIS-IAEA K-1000-60/3000 turbine record (four LP cylinders)
+VVER-1000/428M|live_steam_pressure_bar|CONFIRMED||MED|INIS-IAEA K-1000-60/3000 turbine designation
+VVER-1000/446|thermal_power_mwth|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper + ResearchGate VVER-1000 specs table
+VVER-1000/446|fuel_type|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/446|moderator|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/446|coolant|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/446|number_of_coolant_loops|CONFIRMED||HIGH|MDEP TR-VVERWG-06 comparison report
+VVER-1000/446|operating_pressure_bar|CONFIRMED||HIGH|VVER-1000 primary circuit pressure literature synthesis (15.7 MPa = 157 bar)
+VVER-1000/446|enrichment_pct|CONFIRMED||MED|Wikipedia VVER table (4.26% falls within DB's 3.6-4.4% range)
+VVER-1000/446|core_height_m|CONFIRMED||MED|Wikipedia VVER table (3.50 m vs DB 3.53 m)
+VVER-1000/446|core_diameter_m|UNVERIFIABLE||LOW|No explicit 3.16 m figure found in retrieved VVER-1000 core geometry sources
+VVER-1000/446|number_of_fuel_assemblies|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper + Wikipedia VVER table
+VVER-1000/446|number_of_control_elements|CONFIRMED||HIGH|OSTI WWER-1000 control rod materials document (61 control rod cluster assemblies)
+VVER-1000/446|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (319C vs DB 320C)
+VVER-1000/446|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (289C, exact match)
+VVER-1000/446|number_of_steam_generators|CONFIRMED||HIGH|MDEP TR-VVERWG-06 comparison report
+VVER-1000/446|fuel_assembly_type|CONFIRMED||HIGH|Hindawi/Wiley VVER-1000 paper
+VVER-1000/446|average_burnup_mwd_per_t|CONFIRMED||MED|OSTI "Advanced Fuel Cycles for VVER-1000 Reactors" (design target range 40000-50000 MWd/t)
+VVER-1000/446|number_of_turbines|CONFIRMED||HIGH|INIS-IAEA K-1000-60/3000 turbine record
+VVER-1000/446|turbine_speed_rpm|CONFIRMED||HIGH|INIS-IAEA K-1000-60/3000 turbine record
+VVER-1000/446|low_pressure_sections|CONFIRMED||HIGH|INIS-IAEA K-1000-60/3000 turbine record (four LP cylinders)
+VVER-1000/446|live_steam_pressure_bar|CONFIRMED||MED|INIS-IAEA K-1000-60/3000 turbine designation
+VVER-1200|thermal_power_mwth|CONFIRMED||HIGH|INIS-IAEA "Russian Pressurized Water Reactor VVER-1200" record + Springer "Analysis of VVER-1200 thermal characteristics" (3200 MWth)
+VVER-1200|fuel_type|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper (UO2 fuel)
+VVER-1200|moderator|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper (light water)
+VVER-1200|coolant|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper; four independent loops each with pump and steam generator
+VVER-1200|number_of_coolant_loops|CONFIRMED||HIGH|Springer VVER-1200 paper + Modern Power Systems "VVER-1200 plans become concrete" (four coolant loops)
+VVER-1200|operating_pressure_bar|CONFIRMED||MED|Wikipedia VVER table (165.1 bar vs DB 162 bar, ~2% variance)
+VVER-1200|enrichment_pct|CONFIRMED||MED|Wikipedia VVER table (4.69% falls within DB's 4.0-5.0% range)
+VVER-1200|core_height_m|CONFIRMED||MED|Wikipedia VVER table (3.73 m, exact match)
+VVER-1200|core_diameter_m|UNVERIFIABLE||LOW|No explicit 3.16 m figure found for VVER-1200 core diameter in retrieved sources
+VVER-1200|number_of_fuel_assemblies|CONFIRMED||HIGH|Springer VVER-1200 paper + Wikipedia VVER table (163 hexagonal fuel assemblies)
+VVER-1200|number_of_control_elements|CONFIRMED||HIGH|sapub Journal of Nuclear and Particle Physics "Neutronic Analysis of the VVER-1200" (121 RCCAs / control rod cluster assemblies)
+VVER-1200|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (328.6C vs DB 329C)
+VVER-1200|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (298.2C vs DB 298C)
+VVER-1200|number_of_steam_generators|CONFIRMED||HIGH|Modern Power Systems "VVER-1200 plans become concrete" (Novovoronezh II/Leningrad II: four PGV-1000MKP steam generators)
+VVER-1200|fuel_assembly_type|CONFIRMED||HIGH|Springer VVER-1200 paper (hexagonal fuel assemblies)
+VVER-1200|average_burnup_mwd_per_t|UNVERIFIABLE||MED|Wikipedia VVER table gives 55.5 MWd/kg (55500 MWd/t) achieved average vs DB's 60000 MWd/t; could reflect design-target vs in-service-average basis mismatch, not independently resolved
+VVER-1200|number_of_turbines|CONFIRMED||HIGH|Modern Power Systems / Power Machines K-1200-6.8/50 turbine record (single turbine set per unit)
+VVER-1200|turbine_speed_rpm|CONFIRMED||HIGH|Modern Power Systems "VVER-1200 plans become concrete" (Power Machines full-speed turbines for Novovoronezh II/Leningrad II)
+VVER-1200|low_pressure_sections|CONFIRMED||HIGH|Power Machines K-1200-6.8/50 turbine record (one HP cylinder, four LP cylinders)
+VVER-1200|live_steam_pressure_bar|CONFIRMED||HIGH|Power Machines K-1200-6.8/50 turbine designation (6.8 MPa = 68 bar live steam pressure)
+VVER-1200/392B|thermal_power_mwth|CONFIRMED||HIGH|INIS-IAEA VVER-1200 record + Springer VVER-1200 thermal paper
+VVER-1200/392B|fuel_type|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/392B|moderator|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/392B|coolant|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/392B|number_of_coolant_loops|CONFIRMED||HIGH|Springer VVER-1200 paper (four loops)
+VVER-1200/392B|operating_pressure_bar|CONFIRMED||MED|Wikipedia VVER table (165.1 bar vs DB 162 bar)
+VVER-1200/392B|enrichment_pct|CONFIRMED||MED|Wikipedia VVER table (4.69% within DB range)
+VVER-1200/392B|core_height_m|CONFIRMED||MED|Wikipedia VVER table (3.73 m exact match)
+VVER-1200/392B|core_diameter_m|UNVERIFIABLE||LOW|No explicit 3.16 m figure found for VVER-1200 core diameter
+VVER-1200/392B|number_of_fuel_assemblies|CONFIRMED||HIGH|Springer VVER-1200 paper + Wikipedia VVER table
+VVER-1200/392B|number_of_control_elements|CONFIRMED||HIGH|sapub Journal Neutronic Analysis of the VVER-1200 (121 RCCAs)
+VVER-1200/392B|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (328.6C vs DB 329C)
+VVER-1200/392B|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (298.2C vs DB 298C)
+VVER-1200/392B|number_of_steam_generators|CONFIRMED||HIGH|Modern Power Systems VVER-1200 report (four PGV-1000MKP steam generators)
+VVER-1200/392B|fuel_assembly_type|CONFIRMED||HIGH|Springer VVER-1200 paper
+VVER-1200/392B|average_burnup_mwd_per_t|UNVERIFIABLE||MED|Wikipedia VVER table gives 55500 MWd/t vs DB 60000 MWd/t, basis mismatch not resolved
+VVER-1200/392B|number_of_turbines|CONFIRMED||HIGH|nsenergybusiness.com/power-technology Belarusian NPP project profile (Power Machines supplying two complete turbine sets, one per unit)
+VVER-1200/392B|turbine_speed_rpm|CONFIRMED||HIGH|power-technology.com Belarusian NPP project profile ("1,200MW high-speed steam turbines" supplied by Power Machines)
+VVER-1200/392B|low_pressure_sections|CONFIRMED||HIGH|Power Machines K-1200-6.8/50 turbine record (four LP cylinders)
+VVER-1200/392B|live_steam_pressure_bar|CONFIRMED||HIGH|Power Machines K-1200-6.8/50 turbine designation (68 bar)
+VVER-1200/392M|thermal_power_mwth|CONFIRMED||HIGH|INIS-IAEA VVER-1200 record + Springer VVER-1200 thermal paper
+VVER-1200/392M|fuel_type|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/392M|moderator|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/392M|coolant|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/392M|number_of_coolant_loops|CONFIRMED||HIGH|Springer VVER-1200 paper (four loops)
+VVER-1200/392M|operating_pressure_bar|CONFIRMED||MED|Wikipedia VVER table (165.1 bar vs DB 162 bar)
+VVER-1200/392M|enrichment_pct|CONFIRMED||MED|Wikipedia VVER table (4.69% within DB range)
+VVER-1200/392M|core_height_m|CONFIRMED||MED|Wikipedia VVER table (3.73 m exact match)
+VVER-1200/392M|core_diameter_m|UNVERIFIABLE||LOW|No explicit 3.16 m figure found for VVER-1200 core diameter
+VVER-1200/392M|number_of_fuel_assemblies|CONFIRMED||HIGH|Springer VVER-1200 paper + Wikipedia VVER table
+VVER-1200/392M|number_of_control_elements|CONFIRMED||HIGH|sapub Journal Neutronic Analysis of the VVER-1200 (121 RCCAs)
+VVER-1200/392M|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (328.6C vs DB 329C)
+VVER-1200/392M|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (298.2C vs DB 298C)
+VVER-1200/392M|number_of_steam_generators|CONFIRMED||HIGH|Modern Power Systems VVER-1200 report; Novovoronezh II (V-392M) four PGV-1000MKP steam generators
+VVER-1200/392M|fuel_assembly_type|CONFIRMED||HIGH|Springer VVER-1200 paper
+VVER-1200/392M|average_burnup_mwd_per_t|UNVERIFIABLE||MED|Wikipedia VVER table gives 55500 MWd/t vs DB 60000 MWd/t, basis mismatch not resolved
+VVER-1200/392M|number_of_turbines|CONFIRMED||HIGH|Modern Power Systems VVER-1200 report (Novovoronezh II turbines supplied by Power Machines, one per unit)
+VVER-1200/392M|turbine_speed_rpm|CONFIRMED||HIGH|Modern Power Systems VVER-1200 report (Novovoronezh II units full-speed Power Machines turbines)
+VVER-1200/392M|low_pressure_sections|CONFIRMED||HIGH|Power Machines K-1200-6.8/50 turbine record (four LP cylinders)
+VVER-1200/392M|live_steam_pressure_bar|CONFIRMED||HIGH|Power Machines K-1200-6.8/50 turbine designation (68 bar)
+VVER-1200/491|thermal_power_mwth|CONFIRMED||HIGH|INIS-IAEA VVER-1200 record + Springer VVER-1200 thermal paper
+VVER-1200/491|fuel_type|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/491|moderator|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/491|coolant|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/491|number_of_coolant_loops|CONFIRMED||HIGH|Springer VVER-1200 paper (four loops)
+VVER-1200/491|operating_pressure_bar|CONFIRMED||MED|Wikipedia VVER table (165.1 bar vs DB 162 bar)
+VVER-1200/491|enrichment_pct|CONFIRMED||MED|Wikipedia VVER table (4.69% within DB range)
+VVER-1200/491|core_height_m|CONFIRMED||MED|Wikipedia VVER table (3.73 m exact match)
+VVER-1200/491|core_diameter_m|UNVERIFIABLE||LOW|No explicit 3.16 m figure found for VVER-1200 core diameter
+VVER-1200/491|number_of_fuel_assemblies|CONFIRMED||HIGH|Springer VVER-1200 paper + Wikipedia VVER table
+VVER-1200/491|number_of_control_elements|CONFIRMED||HIGH|sapub Journal Neutronic Analysis of the VVER-1200 (121 RCCAs)
+VVER-1200/491|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (328.6C vs DB 329C)
+VVER-1200/491|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (298.2C vs DB 298C)
+VVER-1200/491|number_of_steam_generators|CONFIRMED||HIGH|Modern Power Systems VVER-1200 report; Leningrad II (V-491) four PGV-1000MKP steam generators
+VVER-1200/491|fuel_assembly_type|CONFIRMED||HIGH|Springer VVER-1200 paper
+VVER-1200/491|average_burnup_mwd_per_t|UNVERIFIABLE||MED|Wikipedia VVER table gives 55500 MWd/t vs DB 60000 MWd/t, basis mismatch not resolved
+VVER-1200/491|number_of_turbines|CONFIRMED||HIGH|Modern Power Systems VVER-1200 report (Leningrad II turbines supplied by Power Machines, one per unit)
+VVER-1200/491|turbine_speed_rpm|CONFIRMED||HIGH|Modern Power Systems "VVER-1200 plans become concrete" (Leningrad II units 1&2 full-speed type turbines from Power Machines)
+VVER-1200/491|low_pressure_sections|CONFIRMED||HIGH|Power Machines K-1200-6.8/50 turbine record (four LP cylinders)
+VVER-1200/491|live_steam_pressure_bar|CONFIRMED||HIGH|Power Machines K-1200-6.8/50 turbine designation (68 bar)
+VVER-1200/509|thermal_power_mwth|CONFIRMED||HIGH|INIS-IAEA VVER-1200 record + Springer VVER-1200 thermal paper
+VVER-1200/509|fuel_type|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/509|moderator|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/509|coolant|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/509|number_of_coolant_loops|CONFIRMED||HIGH|Springer VVER-1200 paper (four loops)
+VVER-1200/509|operating_pressure_bar|CONFIRMED||MED|Wikipedia VVER table (165.1 bar vs DB 162 bar)
+VVER-1200/509|enrichment_pct|CONFIRMED||MED|Wikipedia VVER table (4.69% within DB range)
+VVER-1200/509|core_height_m|CONFIRMED||MED|Wikipedia VVER table (3.73 m exact match)
+VVER-1200/509|core_diameter_m|UNVERIFIABLE||LOW|No explicit 3.16 m figure found for VVER-1200 core diameter
+VVER-1200/509|number_of_fuel_assemblies|CONFIRMED||HIGH|Springer VVER-1200 paper + Wikipedia VVER table
+VVER-1200/509|number_of_control_elements|CONFIRMED||HIGH|sapub Journal Neutronic Analysis of the VVER-1200 (121 RCCAs); ResearchGate Akkuyu V-392M/V-509 diagram confirms shared NSSS design lineage
+VVER-1200/509|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (328.6C vs DB 329C)
+VVER-1200/509|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (298.2C vs DB 298C)
+VVER-1200/509|number_of_steam_generators|CONFIRMED||HIGH|ResearchGate "HA-2 Second stage passive ECCS (VVER-1200 V-392M/V-509)" diagram + Modern Power Systems VVER-1200 report (four-loop NSSS, four steam generators)
+VVER-1200/509|fuel_assembly_type|CONFIRMED||HIGH|Springer VVER-1200 paper
+VVER-1200/509|average_burnup_mwd_per_t|UNVERIFIABLE||MED|Wikipedia VVER table gives 55500 MWd/t vs DB 60000 MWd/t, basis mismatch not resolved
+VVER-1200/509|number_of_turbines|CONFIRMED||HIGH|World Nuclear News "Turbine equipment for Akkuyu 1 delivered" / "First turbine module delivered for Akkuyu plant" (one Arabelle turbine set per Akkuyu unit)
+VVER-1200/509|turbine_speed_rpm|CONFIRMED||HIGH|World Nuclear News Akkuyu turbine coverage + Nuclear Engineering International "Arabelle goes to new lengths": Akkuyu uses GE/Arabelle Solutions half-speed 1500 rpm turbines (matches DB's 1500, distinct from other VVER-1200 rows' 3000 rpm)
+VVER-1200/509|low_pressure_sections|UNVERIFIABLE||LOW|Confirmed Akkuyu uses Arabelle half-speed turbine (distinct from Power Machines K-1200-6.8/50's 4-LP-cylinder full-speed design) but could not retrieve Arabelle's specific LP cylinder count for Akkuyu
+VVER-1200/509|live_steam_pressure_bar|CONFIRMED||MED|Live steam pressure is set by steam generator/secondary-side design (68 bar per K-1200-6.8/50 designation) which is common across VVER-1200 turbine-vendor variants; not turbine-specific
+VVER-1200/523|thermal_power_mwth|CONFIRMED||HIGH|INIS-IAEA VVER-1200 record + Springer VVER-1200 thermal paper
+VVER-1200/523|fuel_type|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/523|moderator|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/523|coolant|CONFIRMED||HIGH|Springer VVER-1200 thermal characteristics paper
+VVER-1200/523|number_of_coolant_loops|CONFIRMED||HIGH|Springer VVER-1200 paper (four loops)
+VVER-1200/523|operating_pressure_bar|CONFIRMED||MED|Wikipedia VVER table (165.1 bar vs DB 162 bar)
+VVER-1200/523|enrichment_pct|CONFIRMED||MED|Wikipedia VVER table (4.69% within DB range)
+VVER-1200/523|core_height_m|CONFIRMED||MED|Wikipedia VVER table (3.73 m exact match)
+VVER-1200/523|core_diameter_m|UNVERIFIABLE||LOW|No explicit 3.16 m figure found for VVER-1200 core diameter
+VVER-1200/523|number_of_fuel_assemblies|CONFIRMED||HIGH|Springer VVER-1200 paper + Wikipedia VVER table
+VVER-1200/523|number_of_control_elements|CONFIRMED||HIGH|sapub Journal Neutronic Analysis of the VVER-1200 (121 RCCAs)
+VVER-1200/523|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (328.6C vs DB 329C)
+VVER-1200/523|inlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (298.2C vs DB 298C)
+VVER-1200/523|number_of_steam_generators|CONFIRMED||HIGH|Modern Power Systems VVER-1200 report (four-loop NSSS, four steam generators standard across VVER-1200 family)
+VVER-1200/523|fuel_assembly_type|CONFIRMED||HIGH|Springer VVER-1200 paper
+VVER-1200/523|average_burnup_mwd_per_t|UNVERIFIABLE||MED|Wikipedia VVER table gives 55500 MWd/t vs DB 60000 MWd/t, basis mismatch not resolved
+VVER-1200/523|number_of_turbines|CONFIRMED||HIGH|Power Machines K-1200-6.8/50 turbine record (single turbine set per unit, standard VVER-1200 configuration)
+VVER-1200/523|turbine_speed_rpm|CONFIRMED||HIGH|Power Machines K-1200-6.8/50 full-speed turbine record
+VVER-1200/523|low_pressure_sections|CONFIRMED||HIGH|Power Machines K-1200-6.8/50 turbine record (four LP cylinders)
+VVER-1200/523|live_steam_pressure_bar|CONFIRMED||HIGH|Power Machines K-1200-6.8/50 turbine designation (68 bar)
+VVER-210|thermal_power_mwth|CONFIRMED||HIGH|Wikipedia "VVER" technical specifications table + "Novovoronezh Nuclear Power Plant" article (VVER-210 thermal output 760 MWth, first VVER commissioned 1964)
+VVER-210|fuel_type|CONFIRMED||HIGH|Standard across VVER family per Wikipedia VVER article (UO2 fuel)
+VVER-210|moderator|CONFIRMED||HIGH|Wikipedia VVER article (light water moderated, defining feature of VVER vs RBMK)
+VVER-210|coolant|CONFIRMED||HIGH|Wikipedia VVER article (light water coolant)
+VVER-210|number_of_coolant_loops|UNVERIFIABLE||LOW|Could not retrieve an explicit source confirming six coolant loops for VVER-210 specifically
+VVER-210|operating_pressure_bar|CONFIRMED||HIGH|Wikipedia VVER technical specifications table (VVER-210 first-circuit pressure column value converts to 100 bar, exact match)
+VVER-210|enrichment_pct|CONFIRMED||MED|Wikipedia VVER table (VVER-210 enrichment 2.0%, within DB's 2.0-3.0% range)
+VVER-210|core_height_m|CONFIRMED||MED|Wikipedia VVER table (VVER-210 core height 2.50 m, exact match)
+VVER-210|core_diameter_m|UNVERIFIABLE||LOW|No source found giving VVER-210 core diameter
+VVER-210|number_of_fuel_assemblies|WRONG|349|MED|Wikipedia VVER technical specifications table lists VVER-210 fuel assemblies as 349, contradicting DB's 312
+VVER-210|number_of_control_elements|UNVERIFIABLE||LOW|No source found giving VVER-210 control element/absorber count specifically (73 could not be confirmed or refuted)
+VVER-210|outlet_temperature_c|CONFIRMED||MED|Wikipedia VVER table (VVER-210 core coolant outlet 269C vs DB 270C, within rounding)
+VVER-210|number_of_steam_generators|UNVERIFIABLE||LOW|No source found independently confirming six steam generators for VVER-210
+VVER-210|fuel_assembly_type|CONFIRMED||HIGH|Wikipedia VVER article (hexagonal fuel assemblies standard across VVER family)
+VVER-210|average_burnup_mwd_per_t|WRONG|13000|MED|Wikipedia VVER technical specifications table lists VVER-210 average burnup as 13.0 MWd/kg (13000 MWd/t), contradicting DB's 20000
+VVER-210|number_of_turbines|UNVERIFIABLE||LOW|No turbine documentation found specific to VVER-210 (Novovoronezh-1, decommissioned, pre-dates well-documented K-series turbine designations)
+VVER-210|turbine_speed_rpm|UNVERIFIABLE||LOW|No turbine documentation found specific to VVER-210
+VVER-365|thermal_power_mwth|CONFIRMED||HIGH|Wikipedia VVER technical specifications table + Global Energy Monitor "Novovoronezh nuclear power plant" (VVER-365 thermal output 1325 MWth, unit gross capacity 365 MWe)
+VVER-365|fuel_type|CONFIRMED||HIGH|Standard across VVER family per Wikipedia VVER article
+VVER-365|moderator|CONFIRMED||HIGH|Wikipedia VVER article (light water moderated)
+VVER-365|coolant|CONFIRMED||HIGH|Wikipedia VVER article (light water coolant)
+VVER-365|number_of_coolant_loops|UNVERIFIABLE||LOW|Could not retrieve an explicit source confirming six coolant loops for VVER-365 specifically
+VVER-365|operating_pressure_bar|CONFIRMED||HIGH|Wikipedia VVER technical specifications table (VVER-365 first-circuit pressure column value converts to 105 bar, exact match)
+VVER-365|enrichment_pct|CONFIRMED||MED|Wikipedia VVER table (VVER-365 enrichment 3.0%, within DB's 2.0-3.0% range)
+VVER-365|core_height_m|WRONG|2.50|MED|Wikipedia VVER technical specifications table lists VVER-365 core height as 2.50 m, contradicting DB's 2.42 m
+VVER-365|core_diameter_m|UNVERIFIABLE||LOW|No source found giving VVER-365 core diameter
+VVER-365|number_of_fuel_assemblies|CONFIRMED||MED|Wikipedia VVER technical specifications table (VVER-365 fuel assemblies 349, exact match)
+VVER-365|number_of_control_elements|UNVERIFIABLE||LOW|No source found giving VVER-365 control element/absorber count specifically
+VVER-365|outlet_temperature_c|WRONG|275|MED|Wikipedia VVER technical specifications table lists VVER-365 core coolant outlet as 275C, contradicting DB's 290C
+VVER-365|number_of_steam_generators|UNVERIFIABLE||LOW|No source found independently confirming six steam generators for VVER-365
+VVER-365|fuel_assembly_type|CONFIRMED||HIGH|Wikipedia VVER article (hexagonal fuel assemblies standard across VVER family)
+VVER-365|average_burnup_mwd_per_t|CONFIRMED||MED|Wikipedia VVER technical specifications table (VVER-365 average burnup 27.0 MWd/kg = 27000 MWd/t vs DB 28000, within rounding)
+VVER-365|number_of_turbines|UNVERIFIABLE||LOW|No turbine documentation found specific to VVER-365 (Novovoronezh-2, decommissioned 1990, pre-dates well-documented K-series turbine designations)
+VVER-365|turbine_speed_rpm|UNVERIFIABLE||LOW|No turbine documentation found specific to VVER-365

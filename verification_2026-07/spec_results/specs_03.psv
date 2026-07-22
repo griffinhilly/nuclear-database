@@ -1,0 +1,252 @@
+design_series|field|verdict|corrected_value|confidence|source
+CP2|thermal_power_mwth|CONFIRMED||MED|fr.wikipedia.org Palier CP0/CPY (2785 MWth)
+CP2|fuel_type|CONFIRMED||MED|fr.wikipedia.org Palier CP0/CPY (pastilles cylindriques d'UO2)
+CP2|moderator|CONFIRMED||MED|fr.wikipedia.org Palier CP0/CPY (PWR design)
+CP2|coolant|CONFIRMED||MED|fr.wikipedia.org Palier CP0/CPY (PWR design)
+CP2|number_of_coolant_loops|CONFIRMED||MED|fr.wikipedia.org Palier CP0/CPY (3 boucles)
+CP2|operating_pressure_bar|CONFIRMED||MED|fr.wikipedia.org Palier CP0/CPY (15,5 MPa)
+CP2|enrichment_pct|CONFIRMED||MED|fr.wikipedia.org Palier CP0/CPY (UO2 faiblement enrichi 3-5%, DB range within this)
+CP2|core_height_m|CONFIRMED||MED|fr.wikipedia.org Palier CP0/CPY (hauteur active 3 660 mm)
+CP2|core_diameter_m|UNVERIFIABLE||LOW|searched fr.wikipedia Palier CP0/CPY, value not stated
+CP2|number_of_fuel_assemblies|CONFIRMED||MED|fr.wikipedia.org Palier CP0/CPY (157 assemblages)
+CP2|number_of_control_elements|WRONG|57|MED|fr.wikipedia.org Palier CP0/CPY (57 grappes de commande, not 48)
+CP2|outlet_temperature_c|CONFIRMED||MED|fr.wikipedia.org Palier CP0/CPY (323,2 C)
+CP2|inlet_temperature_c|CONFIRMED||MED|fr.wikipedia.org Palier CP0/CPY (286 C)
+CP2|number_of_steam_generators|CONFIRMED||MED|fr.wikipedia.org Palier CP0/CPY (3 GV)
+CP2|fuel_assembly_type|CONFIRMED||MED|WebSearch CPR-1000/M310 lineage (17x17 AFA 3G, same French 900MW/157-assembly class)
+CP2|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|searched fr.wikipedia Palier CP0/CPY, value not stated
+CP2|number_of_turbines|UNVERIFIABLE||LOW|searched fr.wikipedia Palier CP0/CPY, value not stated
+CP2|turbine_speed_rpm|UNVERIFIABLE||LOW|searched fr.wikipedia Palier CP0/CPY, rpm not stated
+CP2|low_pressure_sections|WRONG|2|MED|fr.wikipedia.org Palier CP0/CPY (CP1 has 3 LP bodies, CP2 has 2)
+CP2|live_steam_pressure_bar|UNVERIFIABLE||LOW|searched fr.wikipedia Palier CP0/CPY, value not stated
+EPR|thermal_power_mwth|CONFIRMED||MED|WebSearch of NRC U.S. EPR FSAR Tier 2 Ch.4 references (4590 MWt)
+EPR|fuel_type|CONFIRMED||MED|WebSearch NRC EPR FSAR references (UO2 pellets, zirconium clad)
+EPR|moderator|CONFIRMED||MED|WebSearch NRC EPR FSAR references (PWR, light water)
+EPR|coolant|CONFIRMED||MED|WebSearch NRC EPR FSAR references (PWR, light water)
+EPR|number_of_coolant_loops|CONFIRMED||MED|WebSearch NRC EPR FSAR references (4-loop design)
+EPR|operating_pressure_bar|UNVERIFIABLE||LOW|searched, only generic PWR pressure figure found, not EPR-specific
+EPR|enrichment_pct|CONFIRMED||MED|WebSearch NRC EPR FSAR references (average enrichment ~4.95%)
+EPR|core_height_m|CONFIRMED||MED|WebSearch NRC EPR FSAR references (active core height 420 cm)
+EPR|core_diameter_m|UNVERIFIABLE||LOW|searched, precise core diameter not found in retrieved sources
+EPR|number_of_fuel_assemblies|CONFIRMED||MED|WebSearch NRC EPR FSAR references (241 fuel assemblies)
+EPR|number_of_control_elements|CONFIRMED||MED|WebSearch NRC EPR FSAR references (RCCAs in 89 of 241 assemblies)
+EPR|outlet_temperature_c|UNVERIFIABLE||LOW|searched, only generic PWR outlet temp (325C) found, not EPR-specific
+EPR|inlet_temperature_c|UNVERIFIABLE||LOW|searched, only generic PWR inlet temp (290C) found, not EPR-specific
+EPR|number_of_steam_generators|CONFIRMED||MED|WebSearch NRC EPR FSAR references (4-loop, 4 steam generators)
+EPR|fuel_assembly_type|CONFIRMED||MED|WebSearch NRC EPR FSAR references (17x17 array, 265 fuel rods)
+EPR|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|searched, value not found in retrieved sources
+EPR|number_of_turbines|UNVERIFIABLE||LOW|searched, value not found in retrieved sources
+EPR|turbine_speed_rpm|UNVERIFIABLE||LOW|WebSearch Modern Power Systems Arabelle article; rpm for EPR class stated ambiguously, not confirmable
+EPR|low_pressure_sections|CONFIRMED||MED|WebSearch Modern Power Systems / INIS Arabelle EPR turbine (three double-flow LP cylinders)
+EPR|live_steam_pressure_bar|UNVERIFIABLE||LOW|WebSearch (nuclear-power.com: approx 7.5 MPa, too imprecise vs DB 78 bar to confirm or refute)
+M310|thermal_power_mwth|UNVERIFIABLE||LOW|searched (M310/Daya Bay lineage), specific thermal power not found
+M310|fuel_type|UNVERIFIABLE||LOW|searched, not explicitly stated for M310
+M310|moderator|CONFIRMED||MED|WebSearch CPR-1000/M310 lineage (PWR design)
+M310|coolant|CONFIRMED||MED|WebSearch CPR-1000/M310 lineage (PWR design)
+M310|number_of_coolant_loops|CONFIRMED||MED|WebSearch CPR-1000/M310 lineage (three-loop design)
+M310|operating_pressure_bar|UNVERIFIABLE||LOW|searched, value not found
+M310|enrichment_pct|UNVERIFIABLE||LOW|searched, only derived CPR-1000 4.5% figure found, not M310 base range
+M310|core_height_m|UNVERIFIABLE||LOW|searched, value not found
+M310|core_diameter_m|UNVERIFIABLE||LOW|searched, value not found
+M310|number_of_fuel_assemblies|CONFIRMED||MED|WebSearch CPR-1000/M310 lineage (157 fuel assemblies, Daya Bay/Gravelines-derived)
+M310|number_of_control_elements|UNVERIFIABLE||LOW|searched, value not found
+M310|outlet_temperature_c|UNVERIFIABLE||LOW|searched, value not found
+M310|inlet_temperature_c|UNVERIFIABLE||LOW|searched, value not found
+M310|number_of_steam_generators|CONFIRMED||MED|structural inference from confirmed 3-loop design (one SG per loop, standard PWR)
+M310|fuel_assembly_type|CONFIRMED||MED|WebSearch CPR-1000/M310 lineage (17x17 AFA-derived design)
+M310|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|searched, value not found
+M310|number_of_turbines|UNVERIFIABLE||LOW|searched, value not found
+M310|turbine_speed_rpm|UNVERIFIABLE||LOW|searched, value not found
+M310|low_pressure_sections|UNVERIFIABLE||LOW|searched, value not found
+M310|live_steam_pressure_bar|UNVERIFIABLE||LOW|searched, value not found
+N4|thermal_power_mwth|CONFIRMED||MED|power-technology.com Civaux 1-2 profile; en.wikipedia.org N4 (nuclear reactor) (4270 MWt)
+N4|fuel_type|CONFIRMED||MED|en.wikipedia.org N4 (nuclear reactor) (low enriched UO2 pellets)
+N4|moderator|CONFIRMED||MED|en.wikipedia.org N4 (nuclear reactor) (PWR, light water)
+N4|coolant|CONFIRMED||MED|en.wikipedia.org N4 (nuclear reactor) (PWR, light water)
+N4|number_of_coolant_loops|CONFIRMED||MED|en.wikipedia.org N4 (nuclear reactor) (4 steam generators/4-loop)
+N4|operating_pressure_bar|CONFIRMED||MED|en.wikipedia.org N4 (nuclear reactor) (155 bar primary circuit)
+N4|enrichment_pct|UNVERIFIABLE||LOW|searched, value not found
+N4|core_height_m|CONFIRMED||MED|en.wikipedia.org N4 (nuclear reactor); power-technology.com Civaux (4.27 m)
+N4|core_diameter_m|CONFIRMED||MED|en.wikipedia.org N4 (nuclear reactor) (3.48 m; DB 3.47 within rounding)
+N4|number_of_fuel_assemblies|CONFIRMED||MED|power-technology.com Civaux 1-2; en.wikipedia.org N4 (205 assemblies)
+N4|number_of_control_elements|UNVERIFIABLE||LOW|searched, value not found
+N4|outlet_temperature_c|UNVERIFIABLE||LOW|searched, only secondary-side steam temp found, not primary outlet temp
+N4|inlet_temperature_c|UNVERIFIABLE||LOW|searched, value not found
+N4|number_of_steam_generators|CONFIRMED||MED|en.wikipedia.org N4 (nuclear reactor) (4 steam generators)
+N4|fuel_assembly_type|CONFIRMED||MED|en.wikipedia.org N4 (nuclear reactor) (264 rods/assembly, standard 17x17-24 design)
+N4|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|searched, value not found
+N4|number_of_turbines|CONFIRMED||MED|en.wikipedia.org N4 (nuclear reactor) (single Alstom Arabelle turbine)
+N4|turbine_speed_rpm|UNVERIFIABLE||LOW|searched, only turbine MW capacity found, not rpm
+N4|low_pressure_sections|UNVERIFIABLE||LOW|searched, value not found
+N4|live_steam_pressure_bar|WRONG|71.0|MED|en.wikipedia.org N4 (nuclear reactor) (steam conditions: 71 bar, 268.8 C)
+P4|thermal_power_mwth|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (3817 MWth)
+P4|fuel_type|UNVERIFIABLE||LOW|fr.wikipedia.org Palier P4/P'4 describes enriched uranium fuel but does not use term UO2 explicitly
+P4|moderator|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (PWR, light water)
+P4|coolant|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (PWR, light water)
+P4|number_of_coolant_loops|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (4 boucles)
+P4|operating_pressure_bar|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (15,5 MPa)
+P4|enrichment_pct|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (gestion standard 3,10%, GEMMES 4%; DB range covers this)
+P4|core_height_m|WRONG|4.27|MED|fr.wikipedia.org Palier P4/P'4 (hauteur active 4 270 mm, not 3.66 m - that is the 900MWe CP-series value)
+P4|core_diameter_m|UNVERIFIABLE||LOW|searched fr.wikipedia Palier P4/P'4, value not stated
+P4|number_of_fuel_assemblies|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (193 assemblages)
+P4|number_of_control_elements|WRONG|65|MED|fr.wikipedia.org Palier P4/P'4 (65 grappes de commande, not 53)
+P4|outlet_temperature_c|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (328,7 C)
+P4|inlet_temperature_c|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (292,8 C)
+P4|number_of_steam_generators|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (4 GV)
+P4|fuel_assembly_type|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (264 crayons/assemblage, standard 17x17 design)
+P4|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|searched, value not found
+P4|number_of_turbines|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (single Arabelle turbine, 1 HP + 3 LP bodies)
+P4|turbine_speed_rpm|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (1 500 tr/min)
+P4|low_pressure_sections|CONFIRMED||MED|fr.wikipedia.org Palier P4/P'4 (3 corps BP)
+P4|live_steam_pressure_bar|WRONG|64.8|MED|fr.wikipedia.org Palier P4/P'4 (pression vapeur sortie GV 64,8 bars, not 60.0)
+Konvoi|thermal_power_mwth|UNVERIFIABLE||LOW|IAEA PRIS Reactor Details Isar-2 (KKI 2) shows 3950 MWt for this specific uprated unit; ambiguous whether this reflects post-uprate basis vs original Konvoi design value of 3765, cannot confirm or refute cleanly
+Konvoi|fuel_type|UNVERIFIABLE||LOW|searched, not explicitly stated
+Konvoi|moderator|CONFIRMED||MED|IAEA PRIS Reactor Details Isar-2 (KKI 2) (PWR)
+Konvoi|coolant|CONFIRMED||MED|IAEA PRIS Reactor Details Isar-2 (KKI 2) (PWR)
+Konvoi|number_of_coolant_loops|UNVERIFIABLE||LOW|searched, loop count not explicitly stated in retrieved sources
+Konvoi|operating_pressure_bar|UNVERIFIABLE||LOW|searched, value not found
+Konvoi|enrichment_pct|UNVERIFIABLE||LOW|searched, value not found
+Konvoi|core_height_m|UNVERIFIABLE||LOW|searched, value not found
+Konvoi|core_diameter_m|UNVERIFIABLE||LOW|searched, value not found
+Konvoi|number_of_fuel_assemblies|CONFIRMED||MED|INIS/ResearchGate Konvoi PWR core model sources (193 fuel assemblies)
+Konvoi|number_of_control_elements|UNVERIFIABLE||LOW|searched, value not found
+Konvoi|outlet_temperature_c|UNVERIFIABLE||LOW|searched, value not found
+Konvoi|inlet_temperature_c|UNVERIFIABLE||LOW|searched, value not found
+Konvoi|number_of_steam_generators|UNVERIFIABLE||LOW|searched, value not found (loop count itself unconfirmed)
+Konvoi|fuel_assembly_type|CONFIRMED||MED|INIS/ResearchGate Konvoi PWR core model sources (18x18-24 fuel element array)
+Konvoi|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|searched, value not found
+Konvoi|number_of_turbines|UNVERIFIABLE||LOW|searched, value not found
+Konvoi|turbine_speed_rpm|UNVERIFIABLE||LOW|searched, value not found
+Konvoi|low_pressure_sections|UNVERIFIABLE||LOW|searched, value not found
+Konvoi|live_steam_pressure_bar|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|thermal_power_mwth|UNVERIFIABLE||LOW|en.wikipedia.org Pre-Konvoi article is a stub; only gives electrical MW range 1245-1410, no thermal power
+Pre-Konvoi|fuel_type|UNVERIFIABLE||LOW|en.wikipedia.org Pre-Konvoi stub, not stated
+Pre-Konvoi|moderator|CONFIRMED||MED|en.wikipedia.org Pre-Konvoi (PWR)
+Pre-Konvoi|coolant|CONFIRMED||MED|en.wikipedia.org Pre-Konvoi (PWR)
+Pre-Konvoi|number_of_coolant_loops|UNVERIFIABLE||LOW|en.wikipedia.org Pre-Konvoi stub, not stated
+Pre-Konvoi|operating_pressure_bar|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|enrichment_pct|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|core_height_m|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|core_diameter_m|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|number_of_fuel_assemblies|UNVERIFIABLE||LOW|en.wikipedia.org Pre-Konvoi stub, not stated
+Pre-Konvoi|number_of_control_elements|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|outlet_temperature_c|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|inlet_temperature_c|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|number_of_steam_generators|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|fuel_assembly_type|UNVERIFIABLE||LOW|en.wikipedia.org Pre-Konvoi stub, not stated
+Pre-Konvoi|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|number_of_turbines|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|turbine_speed_rpm|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|low_pressure_sections|UNVERIFIABLE||LOW|searched, value not found
+Pre-Konvoi|live_steam_pressure_bar|UNVERIFIABLE||LOW|searched, value not found
+Siemens 2-Loop|thermal_power_mwth|UNVERIFIABLE||LOW|not searched this session - no authoritative source retrieved for this design-series category
+Siemens 2-Loop|fuel_type|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|moderator|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|coolant|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|number_of_coolant_loops|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|enrichment_pct|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|number_of_control_elements|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|number_of_steam_generators|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|number_of_turbines|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|low_pressure_sections|UNVERIFIABLE||LOW|not searched this session
+Siemens 2-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|thermal_power_mwth|UNVERIFIABLE||LOW|not searched this session - no authoritative source retrieved for this design-series category
+Siemens 3-Loop|fuel_type|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|moderator|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|coolant|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|number_of_coolant_loops|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|enrichment_pct|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|core_height_m|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|number_of_steam_generators|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|number_of_turbines|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|low_pressure_sections|UNVERIFIABLE||LOW|not searched this session
+Siemens 3-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|thermal_power_mwth|UNVERIFIABLE||LOW|not searched this session; DB note ties this to Konvoi design value which is itself UNVERIFIABLE (see Konvoi row)
+Siemens 4-Loop|fuel_type|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|moderator|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|coolant|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|number_of_coolant_loops|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|enrichment_pct|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|core_height_m|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|core_diameter_m|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|number_of_control_elements|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|number_of_steam_generators|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|number_of_turbines|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|low_pressure_sections|UNVERIFIABLE||LOW|not searched this session
+Siemens 4-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|not searched this session
+MHI 2-Loop|thermal_power_mwth|WRONG|1650|MED|en.wikipedia.org Genkai Nuclear Power Plant (Genkai-1/2, matching 121 fuel assemblies, listed at 1650 MWth not 1570; note category spans non-identical plants e.g. Mihama-1/Tomari-1 of differing ratings, so exact category value may legitimately vary by representative unit)
+MHI 2-Loop|fuel_type|UNVERIFIABLE||LOW|searched, not explicitly stated
+MHI 2-Loop|moderator|CONFIRMED||MED|en.wikipedia.org Genkai Nuclear Power Plant (PWR)
+MHI 2-Loop|coolant|CONFIRMED||MED|en.wikipedia.org Genkai Nuclear Power Plant (PWR)
+MHI 2-Loop|number_of_coolant_loops|CONFIRMED||MED|en.wikipedia.org Genkai Nuclear Power Plant ("2 and 4-loop M type PWR")
+MHI 2-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|searched, value not found
+MHI 2-Loop|enrichment_pct|UNVERIFIABLE||LOW|searched, value not found
+MHI 2-Loop|core_height_m|UNVERIFIABLE||LOW|searched, value not found
+MHI 2-Loop|number_of_fuel_assemblies|CONFIRMED||MED|en.wikipedia.org Genkai Nuclear Power Plant (Genkai-1/2: 121 fuel assemblies)
+MHI 2-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|searched, value not found
+MHI 2-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|searched, value not found
+MHI 2-Loop|number_of_steam_generators|CONFIRMED||MED|structural inference from confirmed 2-loop design (one SG per loop, standard PWR)
+MHI 2-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|searched, lattice type not stated in retrieved sources
+MHI 2-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|searched, value not found
+MHI 2-Loop|number_of_turbines|UNVERIFIABLE||LOW|searched, value not found
+MHI 2-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|searched, rpm not found; DB's own source note flags Tomari units specifically run 1500 rpm (50Hz Hokkaido) vs 1800 rpm assumed for 60Hz-zone units like Genkai/Ikata - within-category variance not resolved by retrieved sources
+MHI 2-Loop|low_pressure_sections|UNVERIFIABLE||LOW|searched, value not found
+MHI 2-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|searched, value not found
+MHI 3-Loop|thermal_power_mwth|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|fuel_type|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|moderator|CONFIRMED||MED|WebSearch MHI PWR products page (PWR, light water)
+MHI 3-Loop|coolant|CONFIRMED||MED|WebSearch MHI PWR products page (PWR, light water)
+MHI 3-Loop|number_of_coolant_loops|CONFIRMED||MED|structural inference from "MHI 3-Loop" design-series naming, cross-referenced with confirmed MHI 2-loop/4-loop naming convention (en.wikipedia.org Genkai Nuclear Power Plant)
+MHI 3-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|enrichment_pct|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|core_height_m|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|core_diameter_m|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|number_of_fuel_assemblies|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|number_of_control_elements|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|number_of_steam_generators|CONFIRMED||MED|structural inference from 3-loop design (one SG per loop, standard PWR)
+MHI 3-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|number_of_turbines|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|low_pressure_sections|UNVERIFIABLE||LOW|not directly searched this session
+MHI 3-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|not directly searched this session
+MHI 4-Loop|thermal_power_mwth|UNVERIFIABLE||LOW|en.wikipedia.org Genkai Nuclear Power Plant shows Genkai-3/4 at 3423 MWth, close to but not identical to DB's 3411; within plausible category/uprate variance, not a clean contradiction
+MHI 4-Loop|fuel_type|UNVERIFIABLE||LOW|searched, not explicitly stated
+MHI 4-Loop|moderator|CONFIRMED||MED|en.wikipedia.org Genkai Nuclear Power Plant (PWR)
+MHI 4-Loop|coolant|CONFIRMED||MED|en.wikipedia.org Genkai Nuclear Power Plant (PWR)
+MHI 4-Loop|number_of_coolant_loops|CONFIRMED||MED|en.wikipedia.org Genkai Nuclear Power Plant ("2 and 4-loop M type PWR", Genkai-3/4 are 4-loop)
+MHI 4-Loop|operating_pressure_bar|UNVERIFIABLE||LOW|searched, value not found
+MHI 4-Loop|enrichment_pct|UNVERIFIABLE||LOW|searched, value not found
+MHI 4-Loop|core_height_m|UNVERIFIABLE||LOW|searched, value not found
+MHI 4-Loop|core_diameter_m|UNVERIFIABLE||LOW|searched, value not found
+MHI 4-Loop|number_of_fuel_assemblies|CONFIRMED||MED|en.wikipedia.org Genkai Nuclear Power Plant (Genkai-3/4: 193 fuel assemblies)
+MHI 4-Loop|number_of_control_elements|UNVERIFIABLE||LOW|searched, value not found
+MHI 4-Loop|outlet_temperature_c|UNVERIFIABLE||LOW|searched, value not found
+MHI 4-Loop|inlet_temperature_c|UNVERIFIABLE||LOW|searched, value not found
+MHI 4-Loop|number_of_steam_generators|CONFIRMED||MED|structural inference from confirmed 4-loop design (one SG per loop, standard PWR)
+MHI 4-Loop|fuel_assembly_type|UNVERIFIABLE||LOW|searched, lattice type not confirmed for this series this session
+MHI 4-Loop|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|searched, value not found
+MHI 4-Loop|number_of_turbines|UNVERIFIABLE||LOW|searched, value not found
+MHI 4-Loop|turbine_speed_rpm|UNVERIFIABLE||LOW|searched, value not found
+MHI 4-Loop|low_pressure_sections|UNVERIFIABLE||LOW|searched, value not found
+MHI 4-Loop|live_steam_pressure_bar|UNVERIFIABLE||LOW|searched, value not found

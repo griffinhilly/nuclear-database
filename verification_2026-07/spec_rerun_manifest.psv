@@ -1,0 +1,368 @@
+design_series|field|batch
+OPR-1000|core_height_m|specs_04.psv
+OPR-1000|core_diameter_m|specs_04.psv
+CANDU 500|thermal_power_mwth|specs_06.psv
+CANDU 500|fuel_type|specs_06.psv
+CANDU 500|moderator|specs_06.psv
+CANDU 500|coolant|specs_06.psv
+CANDU 500|number_of_coolant_loops|specs_06.psv
+CANDU 500|operating_pressure_bar|specs_06.psv
+CANDU 500|enrichment_pct|specs_06.psv
+CANDU 500|core_diameter_m|specs_06.psv
+CANDU 500|number_of_fuel_assemblies|specs_06.psv
+CANDU 500|outlet_temperature_c|specs_06.psv
+CANDU 500|inlet_temperature_c|specs_06.psv
+CANDU 500|number_of_steam_generators|specs_06.psv
+CANDU 500|fuel_assembly_type|specs_06.psv
+CANDU 500|average_burnup_mwd_per_t|specs_06.psv
+CANDU 500|number_of_turbines|specs_06.psv
+CANDU 500|turbine_speed_rpm|specs_06.psv
+CANDU 500|low_pressure_sections|specs_06.psv
+CANDU 500|live_steam_pressure_bar|specs_06.psv
+CANDU 750|thermal_power_mwth|specs_06.psv
+CANDU 750|fuel_type|specs_06.psv
+CANDU 750|moderator|specs_06.psv
+CANDU 750|coolant|specs_06.psv
+CANDU 750|number_of_coolant_loops|specs_06.psv
+CANDU 750|operating_pressure_bar|specs_06.psv
+CANDU 750|enrichment_pct|specs_06.psv
+CANDU 750|number_of_fuel_assemblies|specs_06.psv
+CANDU 750|outlet_temperature_c|specs_06.psv
+CANDU 750|inlet_temperature_c|specs_06.psv
+CANDU 750|number_of_steam_generators|specs_06.psv
+CANDU 750|fuel_assembly_type|specs_06.psv
+CANDU 750|average_burnup_mwd_per_t|specs_06.psv
+CANDU 750|number_of_turbines|specs_06.psv
+CANDU 750|turbine_speed_rpm|specs_06.psv
+CANDU 750|low_pressure_sections|specs_06.psv
+CANDU 750|live_steam_pressure_bar|specs_06.psv
+CANDU 850|thermal_power_mwth|specs_06.psv
+CANDU 850|fuel_type|specs_06.psv
+CANDU 850|moderator|specs_06.psv
+CANDU 850|coolant|specs_06.psv
+CANDU 850|number_of_coolant_loops|specs_06.psv
+CANDU 850|operating_pressure_bar|specs_06.psv
+CANDU 850|enrichment_pct|specs_06.psv
+CANDU 850|number_of_fuel_assemblies|specs_06.psv
+CANDU 850|outlet_temperature_c|specs_06.psv
+CANDU 850|inlet_temperature_c|specs_06.psv
+CANDU 850|number_of_steam_generators|specs_06.psv
+CANDU 850|fuel_assembly_type|specs_06.psv
+CANDU 850|average_burnup_mwd_per_t|specs_06.psv
+CANDU 850|number_of_turbines|specs_06.psv
+CANDU 850|turbine_speed_rpm|specs_06.psv
+CANDU 850|low_pressure_sections|specs_06.psv
+CANDU 850|live_steam_pressure_bar|specs_06.psv
+BLWR-250|fuel_type|specs_06.psv
+BLWR-250|number_of_turbines|specs_06.psv
+IPHWR|thermal_power_mwth|specs_06.psv
+IPHWR|fuel_type|specs_06.psv
+IPHWR|moderator|specs_06.psv
+IPHWR|coolant|specs_06.psv
+IPHWR|number_of_coolant_loops|specs_06.psv
+IPHWR|operating_pressure_bar|specs_06.psv
+IPHWR|enrichment_pct|specs_06.psv
+IPHWR|core_height_m|specs_06.psv
+IPHWR|core_diameter_m|specs_06.psv
+IPHWR|number_of_fuel_assemblies|specs_06.psv
+IPHWR|number_of_control_elements|specs_06.psv
+IPHWR|outlet_temperature_c|specs_06.psv
+IPHWR|inlet_temperature_c|specs_06.psv
+IPHWR|number_of_steam_generators|specs_06.psv
+IPHWR|fuel_assembly_type|specs_06.psv
+IPHWR|average_burnup_mwd_per_t|specs_06.psv
+IPHWR|number_of_turbines|specs_06.psv
+IPHWR|turbine_speed_rpm|specs_06.psv
+IPHWR|low_pressure_sections|specs_06.psv
+IPHWR|live_steam_pressure_bar|specs_06.psv
+KWU PHWR|thermal_power_mwth|specs_06.psv
+KWU PHWR|fuel_type|specs_06.psv
+KWU PHWR|moderator|specs_06.psv
+KWU PHWR|coolant|specs_06.psv
+KWU PHWR|number_of_coolant_loops|specs_06.psv
+KWU PHWR|operating_pressure_bar|specs_06.psv
+KWU PHWR|enrichment_pct|specs_06.psv
+KWU PHWR|core_height_m|specs_06.psv
+KWU PHWR|number_of_fuel_assemblies|specs_06.psv
+KWU PHWR|outlet_temperature_c|specs_06.psv
+KWU PHWR|inlet_temperature_c|specs_06.psv
+KWU PHWR|number_of_steam_generators|specs_06.psv
+KWU PHWR|fuel_assembly_type|specs_06.psv
+KWU PHWR|average_burnup_mwd_per_t|specs_06.psv
+KWU PHWR|number_of_turbines|specs_06.psv
+KWU PHWR|turbine_speed_rpm|specs_06.psv
+KWU PHWR|low_pressure_sections|specs_06.psv
+KWU PHWR|live_steam_pressure_bar|specs_06.psv
+PHWR|fuel_type|specs_06.psv
+PHWR|moderator|specs_06.psv
+PHWR|coolant|specs_06.psv
+PHWR|operating_pressure_bar|specs_06.psv
+PHWR|enrichment_pct|specs_06.psv
+PHWR|average_burnup_mwd_per_t|specs_06.psv
+PHWR|number_of_turbines|specs_06.psv
+PHWR|turbine_speed_rpm|specs_06.psv
+PHWR|low_pressure_sections|specs_06.psv
+PHWR|live_steam_pressure_bar|specs_06.psv
+Magnox|core_height_m|specs_07.psv
+Magnox|core_diameter_m|specs_07.psv
+Magnox|number_of_control_elements|specs_07.psv
+Magnox|turbine_speed_rpm|specs_07.psv
+Magnox|low_pressure_sections|specs_07.psv
+UNGG|low_pressure_sections|specs_07.psv
+AM-1|thermal_power_mwth|specs_07.psv
+AM-1|fuel_type|specs_07.psv
+AM-1|moderator|specs_07.psv
+AM-1|coolant|specs_07.psv
+AM-1|operating_pressure_bar|specs_07.psv
+AM-1|enrichment_pct|specs_07.psv
+AM-1|core_height_m|specs_07.psv
+AM-1|core_diameter_m|specs_07.psv
+AM-1|number_of_fuel_assemblies|specs_07.psv
+AM-1|outlet_temperature_c|specs_07.psv
+AM-1|number_of_turbines|specs_07.psv
+AMB-100|thermal_power_mwth|specs_07.psv
+AMB-100|fuel_type|specs_07.psv
+AMB-100|moderator|specs_07.psv
+AMB-100|coolant|specs_07.psv
+AMB-100|enrichment_pct|specs_07.psv
+AMB-100|number_of_turbines|specs_07.psv
+AMB-100|turbine_speed_rpm|specs_07.psv
+AMB-200|thermal_power_mwth|specs_07.psv
+AMB-200|fuel_type|specs_07.psv
+AMB-200|moderator|specs_07.psv
+AMB-200|coolant|specs_07.psv
+AMB-200|enrichment_pct|specs_07.psv
+AMB-200|number_of_turbines|specs_07.psv
+AMB-200|turbine_speed_rpm|specs_07.psv
+EGP-6|thermal_power_mwth|specs_07.psv
+EGP-6|fuel_type|specs_07.psv
+EGP-6|moderator|specs_07.psv
+EGP-6|coolant|specs_07.psv
+EGP-6|operating_pressure_bar|specs_07.psv
+EGP-6|enrichment_pct|specs_07.psv
+EGP-6|core_height_m|specs_07.psv
+EGP-6|core_diameter_m|specs_07.psv
+EGP-6|number_of_fuel_assemblies|specs_07.psv
+EGP-6|outlet_temperature_c|specs_07.psv
+EGP-6|number_of_turbines|specs_07.psv
+EGP-6|turbine_speed_rpm|specs_07.psv
+EGP-6|low_pressure_sections|specs_07.psv
+EGP-6|live_steam_pressure_bar|specs_07.psv
+RBMK|fuel_type|specs_07.psv
+RBMK|moderator|specs_07.psv
+RBMK|coolant|specs_07.psv
+RBMK|operating_pressure_bar|specs_07.psv
+RBMK|enrichment_pct|specs_07.psv
+RBMK|core_height_m|specs_07.psv
+RBMK|core_diameter_m|specs_07.psv
+RBMK|outlet_temperature_c|specs_07.psv
+RBMK|inlet_temperature_c|specs_07.psv
+RBMK|fuel_assembly_type|specs_07.psv
+RBMK|average_burnup_mwd_per_t|specs_07.psv
+RBMK|number_of_turbines|specs_07.psv
+RBMK|turbine_speed_rpm|specs_07.psv
+RBMK|low_pressure_sections|specs_07.psv
+RBMK|live_steam_pressure_bar|specs_07.psv
+RBMK-1000|thermal_power_mwth|specs_07.psv
+RBMK-1000|fuel_type|specs_07.psv
+RBMK-1000|moderator|specs_07.psv
+RBMK-1000|coolant|specs_07.psv
+RBMK-1000|number_of_coolant_loops|specs_07.psv
+RBMK-1000|operating_pressure_bar|specs_07.psv
+RBMK-1000|enrichment_pct|specs_07.psv
+RBMK-1000|core_height_m|specs_07.psv
+RBMK-1000|core_diameter_m|specs_07.psv
+RBMK-1000|number_of_fuel_assemblies|specs_07.psv
+RBMK-1000|number_of_control_elements|specs_07.psv
+RBMK-1000|outlet_temperature_c|specs_07.psv
+RBMK-1000|inlet_temperature_c|specs_07.psv
+RBMK-1000|fuel_assembly_type|specs_07.psv
+RBMK-1000|average_burnup_mwd_per_t|specs_07.psv
+RBMK-1000|number_of_turbines|specs_07.psv
+RBMK-1000|turbine_speed_rpm|specs_07.psv
+RBMK-1000|low_pressure_sections|specs_07.psv
+RBMK-1000|live_steam_pressure_bar|specs_07.psv
+RBMK-1500|thermal_power_mwth|specs_07.psv
+RBMK-1500|fuel_type|specs_07.psv
+RBMK-1500|moderator|specs_07.psv
+RBMK-1500|coolant|specs_07.psv
+RBMK-1500|number_of_coolant_loops|specs_07.psv
+RBMK-1500|operating_pressure_bar|specs_07.psv
+RBMK-1500|enrichment_pct|specs_07.psv
+RBMK-1500|core_height_m|specs_07.psv
+RBMK-1500|core_diameter_m|specs_07.psv
+RBMK-1500|number_of_fuel_assemblies|specs_07.psv
+RBMK-1500|number_of_control_elements|specs_07.psv
+RBMK-1500|outlet_temperature_c|specs_07.psv
+RBMK-1500|inlet_temperature_c|specs_07.psv
+RBMK-1500|fuel_assembly_type|specs_07.psv
+RBMK-1500|average_burnup_mwd_per_t|specs_07.psv
+RBMK-1500|number_of_turbines|specs_07.psv
+RBMK-1500|turbine_speed_rpm|specs_07.psv
+RBMK-1500|low_pressure_sections|specs_07.psv
+RBMK-1500|live_steam_pressure_bar|specs_07.psv
+BN-20|thermal_power_mwth|specs_07.psv
+BN-20|fuel_type|specs_07.psv
+BN-350|thermal_power_mwth|specs_07.psv
+BN-350|fuel_type|specs_07.psv
+BN-350|number_of_coolant_loops|specs_07.psv
+BN-350|outlet_temperature_c|specs_07.psv
+BN-350|inlet_temperature_c|specs_07.psv
+BN-350|number_of_steam_generators|specs_07.psv
+BN-350|number_of_turbines|specs_07.psv
+BN-350|turbine_speed_rpm|specs_07.psv
+CFR-600|thermal_power_mwth|specs_08.psv
+CFR-600|fuel_type|specs_08.psv
+CFR-600|coolant|specs_08.psv
+CFR-600|number_of_coolant_loops|specs_08.psv
+CFR-600|outlet_temperature_c|specs_08.psv
+CFR-600|inlet_temperature_c|specs_08.psv
+CFR-600|number_of_steam_generators|specs_08.psv
+CFR-600|fuel_assembly_type|specs_08.psv
+CFR-600|number_of_turbines|specs_08.psv
+CFR-600|turbine_speed_rpm|specs_08.psv
+DFR|thermal_power_mwth|specs_08.psv
+DFR|fuel_type|specs_08.psv
+DFR|coolant|specs_08.psv
+DFR|number_of_coolant_loops|specs_08.psv
+DFR|outlet_temperature_c|specs_08.psv
+DFR|number_of_turbines|specs_08.psv
+LMFBR|fuel_type|specs_08.psv
+LMFBR|coolant|specs_08.psv
+LMFBR|number_of_turbines|specs_08.psv
+Monju|thermal_power_mwth|specs_08.psv
+Monju|fuel_type|specs_08.psv
+Monju|coolant|specs_08.psv
+Monju|number_of_coolant_loops|specs_08.psv
+Monju|core_height_m|specs_08.psv
+Monju|core_diameter_m|specs_08.psv
+Monju|number_of_fuel_assemblies|specs_08.psv
+Monju|number_of_control_elements|specs_08.psv
+Monju|outlet_temperature_c|specs_08.psv
+Monju|inlet_temperature_c|specs_08.psv
+Monju|number_of_steam_generators|specs_08.psv
+Monju|fuel_assembly_type|specs_08.psv
+Monju|average_burnup_mwd_per_t|specs_08.psv
+Monju|number_of_turbines|specs_08.psv
+Monju|low_pressure_sections|specs_08.psv
+PFR|thermal_power_mwth|specs_08.psv
+PFR|fuel_type|specs_08.psv
+PFR|coolant|specs_08.psv
+PFR|number_of_coolant_loops|specs_08.psv
+PFR|outlet_temperature_c|specs_08.psv
+PFR|inlet_temperature_c|specs_08.psv
+PFR|number_of_steam_generators|specs_08.psv
+PFR|fuel_assembly_type|specs_08.psv
+PFR|number_of_turbines|specs_08.psv
+PFR|turbine_speed_rpm|specs_08.psv
+PFR|low_pressure_sections|specs_08.psv
+Phenix|thermal_power_mwth|specs_08.psv
+Phenix|fuel_type|specs_08.psv
+Phenix|coolant|specs_08.psv
+Phenix|number_of_coolant_loops|specs_08.psv
+Phenix|core_height_m|specs_08.psv
+Phenix|core_diameter_m|specs_08.psv
+Phenix|number_of_fuel_assemblies|specs_08.psv
+Phenix|number_of_control_elements|specs_08.psv
+Phenix|outlet_temperature_c|specs_08.psv
+Phenix|inlet_temperature_c|specs_08.psv
+Phenix|number_of_steam_generators|specs_08.psv
+Phenix|fuel_assembly_type|specs_08.psv
+Phenix|average_burnup_mwd_per_t|specs_08.psv
+Phenix|number_of_turbines|specs_08.psv
+Phenix|turbine_speed_rpm|specs_08.psv
+Phenix|low_pressure_sections|specs_08.psv
+SGR|fuel_type|specs_08.psv
+SGR|coolant|specs_08.psv
+SGR|number_of_turbines|specs_08.psv
+Super-Phenix|thermal_power_mwth|specs_08.psv
+Super-Phenix|fuel_type|specs_08.psv
+Super-Phenix|coolant|specs_08.psv
+Super-Phenix|number_of_coolant_loops|specs_08.psv
+Super-Phenix|core_height_m|specs_08.psv
+Super-Phenix|core_diameter_m|specs_08.psv
+Super-Phenix|number_of_fuel_assemblies|specs_08.psv
+Super-Phenix|number_of_control_elements|specs_08.psv
+Super-Phenix|outlet_temperature_c|specs_08.psv
+Super-Phenix|inlet_temperature_c|specs_08.psv
+Super-Phenix|number_of_steam_generators|specs_08.psv
+Super-Phenix|fuel_assembly_type|specs_08.psv
+Super-Phenix|average_burnup_mwd_per_t|specs_08.psv
+Super-Phenix|number_of_turbines|specs_08.psv
+Super-Phenix|turbine_speed_rpm|specs_08.psv
+Super-Phenix|low_pressure_sections|specs_08.psv
+AVR|thermal_power_mwth|specs_08.psv
+AVR|fuel_type|specs_08.psv
+AVR|moderator|specs_08.psv
+AVR|coolant|specs_08.psv
+AVR|number_of_coolant_loops|specs_08.psv
+AVR|operating_pressure_bar|specs_08.psv
+AVR|enrichment_pct|specs_08.psv
+AVR|core_height_m|specs_08.psv
+AVR|core_diameter_m|specs_08.psv
+AVR|number_of_control_elements|specs_08.psv
+AVR|outlet_temperature_c|specs_08.psv
+AVR|inlet_temperature_c|specs_08.psv
+AVR|number_of_steam_generators|specs_08.psv
+AVR|fuel_assembly_type|specs_08.psv
+AVR|number_of_turbines|specs_08.psv
+AVR|turbine_speed_rpm|specs_08.psv
+Fort St. Vrain|thermal_power_mwth|specs_08.psv
+Fort St. Vrain|fuel_type|specs_08.psv
+Fort St. Vrain|moderator|specs_08.psv
+Fort St. Vrain|coolant|specs_08.psv
+Fort St. Vrain|number_of_coolant_loops|specs_08.psv
+Fort St. Vrain|operating_pressure_bar|specs_08.psv
+Fort St. Vrain|enrichment_pct|specs_08.psv
+Fort St. Vrain|core_height_m|specs_08.psv
+Fort St. Vrain|core_diameter_m|specs_08.psv
+Fort St. Vrain|number_of_fuel_assemblies|specs_08.psv
+Fort St. Vrain|number_of_control_elements|specs_08.psv
+Fort St. Vrain|outlet_temperature_c|specs_08.psv
+Fort St. Vrain|inlet_temperature_c|specs_08.psv
+Fort St. Vrain|number_of_steam_generators|specs_08.psv
+Fort St. Vrain|fuel_assembly_type|specs_08.psv
+Fort St. Vrain|average_burnup_mwd_per_t|specs_08.psv
+Fort St. Vrain|number_of_turbines|specs_08.psv
+Fort St. Vrain|turbine_speed_rpm|specs_08.psv
+Fort St. Vrain|low_pressure_sections|specs_08.psv
+HTR-PM|thermal_power_mwth|specs_08.psv
+HTR-PM|fuel_type|specs_08.psv
+HTR-PM|moderator|specs_08.psv
+HTR-PM|coolant|specs_08.psv
+HTR-PM|number_of_coolant_loops|specs_08.psv
+HTR-PM|operating_pressure_bar|specs_08.psv
+HTR-PM|enrichment_pct|specs_08.psv
+HTR-PM|core_height_m|specs_08.psv
+HTR-PM|core_diameter_m|specs_08.psv
+HTR-PM|outlet_temperature_c|specs_08.psv
+HTR-PM|inlet_temperature_c|specs_08.psv
+HTR-PM|number_of_steam_generators|specs_08.psv
+HTR-PM|fuel_assembly_type|specs_08.psv
+HTR-PM|average_burnup_mwd_per_t|specs_08.psv
+HTR-PM|number_of_turbines|specs_08.psv
+HTR-PM|turbine_speed_rpm|specs_08.psv
+HTR-PM|low_pressure_sections|specs_08.psv
+BR-3|thermal_power_mwth|specs_09.psv
+BR-3|fuel_type|specs_09.psv
+BR-3|moderator|specs_09.psv
+BR-3|coolant|specs_09.psv
+BR-3|number_of_coolant_loops|specs_09.psv
+BR-3|operating_pressure_bar|specs_09.psv
+BR-3|enrichment_pct|specs_09.psv
+BR-3|number_of_fuel_assemblies|specs_09.psv
+BR-3|outlet_temperature_c|specs_09.psv
+BR-3|inlet_temperature_c|specs_09.psv
+BR-3|number_of_steam_generators|specs_09.psv
+BR-3|average_burnup_mwd_per_t|specs_09.psv
+BR-3|number_of_turbines|specs_09.psv
+BR-3|turbine_speed_rpm|specs_09.psv
+KNK|thermal_power_mwth|specs_09.psv
+KNK|fuel_type|specs_09.psv
+KNK|coolant|specs_09.psv
+KNK|number_of_coolant_loops|specs_09.psv
+KNK|outlet_temperature_c|specs_09.psv
+KNK|inlet_temperature_c|specs_09.psv
+KNK|number_of_steam_generators|specs_09.psv
+KNK|number_of_turbines|specs_09.psv
+KNK|turbine_speed_rpm|specs_09.psv

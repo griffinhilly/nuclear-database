@@ -1,0 +1,91 @@
+design_series|field|verdict|corrected_value|confidence|source
+SGHWR|thermal_power_mwth|WRONG|318.0|HIGH|IAEA PRIS Reactor Details (Winfrith SGHWR, current=239): "Thermal Power: 318 MWt"; corroborated by WNA nuclear reactor database Winfrith-SGHWR page: "Thermal Capacity: 318 MWt"
+SGHWR|fuel_type|CONFIRMED|N/A|MED|WebSearch-retrieved excerpt of UNESCO EOLSS "Heavy Water Light Water Reactors" sample chapter: "The fuel used in the Winfrith SGHWR was uranium dioxide (UO2)"
+SGHWR|moderator|CONFIRMED|N/A|MED|IAEA PRIS Winfrith SGHWR summary (via WebSearch): "direct cycle pressure tube reactor... using light water as the coolant and heavy water as the principal moderator"
+SGHWR|coolant|CONFIRMED|N/A|MED|IAEA PRIS Winfrith SGHWR summary (via WebSearch): "using light water as the coolant and heavy water as the principal moderator"
+SGHWR|operating_pressure_bar|UNVERIFIABLE|N/A|LOW|Searched OSTI "Engineering Details of SGHWR, Winfrith" bibliographic record and multiple WebSearch queries; no retrievable source stated a specific operating pressure value
+SGHWR|enrichment_pct|UNVERIFIABLE|N/A|LOW|UNESCO EOLSS excerpt states outer-zone dual-feed enrichment of 3.1%, not core-average 2.3%; no source found giving a 2.3% figure, basis mismatch prevents confirmation or correction
+SGHWR|number_of_fuel_assemblies|CONFIRMED|N/A|MED|Grokipedia "Winfrith" page (via WebSearch): "pressure-tube designs with heavy water moderation and light water cooling via 104 zirconium alloy channels"
+SGHWR|outlet_temperature_c|UNVERIFIABLE|N/A|LOW|No retrieved source (IAEA PRIS, WNA, OSTI records searched) stated a specific coolant outlet temperature for Winfrith SGHWR
+SGHWR|fuel_assembly_type|CONFIRMED|N/A|MED|WebSearch-retrieved excerpt referencing UNESCO EOLSS/OSTI SGHWR fuel material: "a 36 pin element has been used in the Winfrith SGHWR"
+SGHWR|number_of_turbines|UNVERIFIABLE|N/A|LOW|OSTI record title "SGHWR: Steam Turbine for the 100 MW(e) Prototype" (singular) found but does not explicitly state turbine count; treated as insufficient for confirmation
+SGHWR|turbine_speed_rpm|UNVERIFIABLE|N/A|LOW|No retrieved source stated turbine speed for the Winfrith SGHWR prototype
+SGHWR|low_pressure_sections|UNVERIFIABLE|N/A|LOW|No retrieved source stated low-pressure turbine section count for the Winfrith SGHWR prototype
+Saxton|thermal_power_mwth|WRONG|23.5|HIGH|Wikipedia "Saxton Nuclear Generating Station" (fetched directly): "Thermal Power: 23.5 MWth"
+Saxton|fuel_type|UNVERIFIABLE|N/A|LOW|Wikipedia "Saxton Nuclear Generating Station" describes multiple core loadings including "Mixed oxide fuels (MOX) with uranium oxide and plutonium oxide combinations"; DB value UO2 cannot be confirmed as the sole/original fuel type given documented MOX experimental cores
+Saxton|moderator|CONFIRMED|N/A|MED|Wikipedia "Saxton Nuclear Generating Station" (fetched directly): described as pressurized water reactor system, moderator/coolant water
+Saxton|coolant|CONFIRMED|N/A|MED|Wikipedia "Saxton Nuclear Generating Station" (fetched directly): pressurized water reactor coolant system
+Saxton|number_of_coolant_loops|CONFIRMED|N/A|HIGH|Wikipedia "Saxton Nuclear Generating Station" (fetched directly): "The reactor coolant system contained a single loop of piping and components"
+Saxton|operating_pressure_bar|UNVERIFIABLE|N/A|LOW|Conflicting retrieved values: Wikipedia states "Nominal reactor coolant system pressure was 2,250 psig" (~155 bar gauge) while a separate WebSearch summary cited "13.79 MPa (~2000 psia)" (~138 bar); cannot reconcile basis (gauge vs absolute) to confirm or correct DB value of 140 bar
+Saxton|enrichment_pct|UNVERIFIABLE|N/A|LOW|Wikipedia "Saxton Nuclear Generating Station" references "low enriched uranium oxide" without a specific percentage; NRC docket PDF (ML0036/ML003685273.pdf) returned HTTP 403 and could not be retrieved
+Saxton|number_of_fuel_assemblies|CONFIRMED|HIGH|N/A|Wikipedia "Saxton Nuclear Generating Station" (fetched directly): "21 assemblies in the core" in a "9x9 rod position matrix"
+Saxton|outlet_temperature_c|UNVERIFIABLE|N/A|LOW|Wikipedia "Saxton Nuclear Generating Station" gives only a reactor vessel average temperature of 493°F (256°C), not an outlet temperature; basis mismatch prevents confirming or correcting DB's 282°C
+Saxton|number_of_steam_generators|CONFIRMED|N/A|MED|Wikipedia "Saxton Nuclear Generating Station" (fetched directly): single-loop system "thus one coolant pump and one steam generator"
+Saxton|number_of_turbines|UNVERIFIABLE|N/A|LOW|Wikipedia "Saxton Nuclear Generating Station" (fetched directly) states the facility "did not have its own turbine or generator" and instead fed steam to the adjacent Saxton Steam Generating Station's turbine — basis for DB's "1" (shared vs dedicated) is ambiguous, so not confirmed or corrected outright
+BREST-OD-300|thermal_power_mwth|CONFIRMED|N/A|HIGH|Wikipedia "BREST-300" (fetched directly): "Thermal power: 700 MW"
+BREST-OD-300|fuel_type|WRONG|Mixed uranium-plutonium nitride (MNUP)|MED|Wikipedia "BREST-300" (fetched directly): "Fuel type: Nitride uranium-plutonium fuel" — DB value "Uranium nitride" omits the plutonium content of the actual mixed nitride fuel
+BREST-OD-300|coolant|CONFIRMED|N/A|HIGH|Wikipedia "BREST-300" (fetched directly): "Coolant: Lead"
+BREST-OD-300|number_of_coolant_loops|CONFIRMED|N/A|HIGH|Wikipedia "BREST-300" (fetched directly): "Loop number: 4"
+BREST-OD-300|enrichment_pct|UNVERIFIABLE|N/A|LOW|Wikipedia "BREST-300" article and other WebSearch results did not state an enrichment percentage (BREST uses plutonium-bearing nitride fuel, so a single U-235-style enrichment figure may not directly apply)
+BREST-OD-300|core_height_m|CONFIRMED|N/A|HIGH|Wikipedia "BREST-300" (fetched directly): "Core height: 1,100 millimetres (43 in)"
+BREST-OD-300|core_diameter_m|UNVERIFIABLE|N/A|LOW|Wikipedia "BREST-300" article did not state a core diameter value
+BREST-OD-300|number_of_fuel_assemblies|UNVERIFIABLE|N/A|LOW|Wikipedia "BREST-300" article did not state a fuel assembly count
+BREST-OD-300|outlet_temperature_c|CONFIRMED|N/A|MED|Wikipedia "BREST-300" (fetched directly): "Lead coolant temperature 540°C (1,004°F) on entry to the steam generator" (reactor outlet) — within rounding of DB's 535.0°C
+BREST-OD-300|inlet_temperature_c|WRONG|340.0|MED|Wikipedia "BREST-300" (fetched directly): "340°C (644°F) on exit" from the steam generator (i.e., reactor inlet) — contradicts DB's 420.0°C by a wide margin
+BREST-OD-300|number_of_steam_generators|UNVERIFIABLE|N/A|LOW|Wikipedia "BREST-300" article did not state a steam generator count
+BREST-OD-300|fuel_assembly_type|UNVERIFIABLE|N/A|LOW|Wikipedia "BREST-300" article did not describe fuel assembly geometry
+BREST-OD-300|average_burnup_mwd_per_t|UNVERIFIABLE|N/A|LOW|Wikipedia "BREST-300" article did not state a burnup figure
+BREST-OD-300|number_of_turbines|UNVERIFIABLE|N/A|LOW|No retrieved source stated turbine count for BREST-OD-300
+ACP100|thermal_power_mwth|WRONG|385.0|MED|Wikipedia "Linglong One" (fetched directly, ACP100 commercial designation): "Thermal Power: 385 MWt" with "~125 MWe" electrical output, consistent across two independent Wikipedia fetches (Linglong One page and China National Nuclear Corporation page); contradicts DB's 310.0 MWt
+ACP100|fuel_type|UNVERIFIABLE|N/A|LOW|Retrieved Wikipedia pages on ACP100/Linglong One did not state fuel chemical form
+ACP100|moderator|UNVERIFIABLE|N/A|LOW|Retrieved Wikipedia pages on ACP100/Linglong One did not state moderator
+ACP100|coolant|UNVERIFIABLE|N/A|LOW|Retrieved Wikipedia pages on ACP100/Linglong One did not state coolant explicitly (only "internal coolant system" mentioned)
+ACP100|operating_pressure_bar|UNVERIFIABLE|N/A|LOW|No retrieved source stated operating pressure for ACP100
+ACP100|enrichment_pct|UNVERIFIABLE|N/A|LOW|No retrieved source stated enrichment range for ACP100
+ACP100|core_height_m|UNVERIFIABLE|N/A|LOW|No retrieved source stated core height for ACP100
+ACP100|core_diameter_m|UNVERIFIABLE|N/A|LOW|No retrieved source stated core diameter for ACP100
+ACP100|number_of_fuel_assemblies|UNVERIFIABLE|N/A|LOW|No retrieved source stated fuel assembly count for ACP100
+ACP100|number_of_control_elements|UNVERIFIABLE|N/A|LOW|No retrieved source stated control element count for ACP100
+ACP100|outlet_temperature_c|UNVERIFIABLE|N/A|LOW|No retrieved source stated outlet temperature for ACP100
+ACP100|inlet_temperature_c|UNVERIFIABLE|N/A|LOW|No retrieved source stated inlet temperature for ACP100
+ACP100|number_of_steam_generators|UNVERIFIABLE|N/A|LOW|No retrieved source stated steam generator count for ACP100
+ACP100|fuel_assembly_type|UNVERIFIABLE|N/A|LOW|No retrieved source stated fuel assembly lattice type for ACP100
+ACP100|average_burnup_mwd_per_t|UNVERIFIABLE|N/A|LOW|No retrieved source stated burnup for ACP100
+ACP100|number_of_turbines|UNVERIFIABLE|N/A|LOW|No retrieved source stated turbine count for ACP100
+ACP100|turbine_speed_rpm|UNVERIFIABLE|N/A|LOW|No retrieved source stated turbine speed for ACP100
+ACP100|low_pressure_sections|UNVERIFIABLE|N/A|LOW|No retrieved source stated low-pressure turbine section count for ACP100
+ACP100|live_steam_pressure_bar|UNVERIFIABLE|N/A|LOW|No retrieved source stated live steam pressure for ACP100
+CAREM|thermal_power_mwth|UNVERIFIABLE|N/A|LOW|Wikipedia CAREM page (fetched directly) gave only electrical output (25 MWe for the first prototype); no thermal power (MWt) figure was stated
+CAREM|fuel_type|CONFIRMED|N/A|MED|Wikipedia CAREM page (fetched directly): "Fuel Type: uranium oxide with a 235U enrichment of 3.4%"
+CAREM|moderator|UNVERIFIABLE|N/A|LOW|Wikipedia CAREM page did not explicitly name the moderator (only "integral pressurized water reactor" with natural circulation)
+CAREM|coolant|CONFIRMED|N/A|MED|Wikipedia CAREM page (fetched directly): "Integral pressurized water reactor (PWR)... Natural circulation (no pumps required)" — coolant is light water
+CAREM|operating_pressure_bar|UNVERIFIABLE|N/A|LOW|Wikipedia CAREM page did not state an operating pressure value
+CAREM|enrichment_pct|WRONG|3.4|MED|Wikipedia CAREM page (fetched directly): "Fuel Type: uranium oxide with a 235U enrichment of 3.4%" — contradicts DB's 3.1%
+CAREM|core_height_m|UNVERIFIABLE|N/A|LOW|Wikipedia CAREM page did not state core height
+CAREM|core_diameter_m|UNVERIFIABLE|N/A|LOW|Wikipedia CAREM page did not state core diameter
+CAREM|number_of_fuel_assemblies|UNVERIFIABLE|N/A|LOW|Wikipedia CAREM page did not state fuel assembly count
+CAREM|number_of_control_elements|UNVERIFIABLE|N/A|LOW|Wikipedia CAREM page did not state control element count
+CAREM|outlet_temperature_c|UNVERIFIABLE|N/A|LOW|Wikipedia CAREM page did not state outlet temperature
+CAREM|inlet_temperature_c|UNVERIFIABLE|N/A|LOW|Wikipedia CAREM page did not state inlet temperature
+CAREM|number_of_steam_generators|UNVERIFIABLE|N/A|LOW|Wikipedia CAREM page did not state steam generator count
+CAREM|fuel_assembly_type|UNVERIFIABLE|N/A|LOW|Wikipedia CAREM page did not state fuel assembly lattice type
+CAREM|average_burnup_mwd_per_t|UNVERIFIABLE|N/A|LOW|Wikipedia CAREM page did not state burnup
+CAREM|number_of_turbines|UNVERIFIABLE|N/A|LOW|No retrieved source stated turbine count for CAREM
+CAREM|turbine_speed_rpm|UNVERIFIABLE|N/A|LOW|No retrieved source stated turbine speed for CAREM
+KLT-40S|thermal_power_mwth|CONFIRMED|N/A|HIGH|Wikipedia "KLT-40" (fetched directly): "KLT-40S: 150 MW thermal (~52 MWe at 35% efficiency)"
+KLT-40S|fuel_type|UNVERIFIABLE|N/A|LOW|Wikipedia "KLT-40" describes fuel only as "enriched uranium-235" without stating the chemical form (UO2 vs cermet)
+KLT-40S|moderator|CONFIRMED|N/A|MED|Wikipedia "KLT-40" (fetched directly): "Moderator & Coolant: Light water (pressurized water system)"
+KLT-40S|coolant|CONFIRMED|N/A|MED|Wikipedia "KLT-40" (fetched directly): "Moderator & Coolant: Light water (pressurized water system)"
+KLT-40S|number_of_coolant_loops|UNVERIFIABLE|N/A|LOW|Wikipedia "KLT-40" did not state number of coolant loops
+KLT-40S|operating_pressure_bar|UNVERIFIABLE|N/A|LOW|Wikipedia "KLT-40" did not state operating pressure
+KLT-40S|enrichment_pct|WRONG|14.1|MED|Wikipedia "KLT-40" (fetched directly): "KLT-40S: Low-enriched uranium (LEU) below 20%, averaging 14.1% enrichment" — contradicts DB's 18.6%
+KLT-40S|core_height_m|UNVERIFIABLE|N/A|LOW|Wikipedia "KLT-40" did not state core height
+KLT-40S|core_diameter_m|UNVERIFIABLE|N/A|LOW|Wikipedia "KLT-40" did not state core diameter
+KLT-40S|number_of_fuel_assemblies|UNVERIFIABLE|N/A|LOW|Wikipedia "KLT-40" did not state fuel assembly count
+KLT-40S|number_of_control_elements|UNVERIFIABLE|N/A|LOW|Wikipedia "KLT-40" did not state control element count
+KLT-40S|outlet_temperature_c|UNVERIFIABLE|N/A|LOW|Wikipedia "KLT-40" did not state outlet temperature
+KLT-40S|inlet_temperature_c|UNVERIFIABLE|N/A|LOW|Wikipedia "KLT-40" did not state inlet temperature
+KLT-40S|number_of_steam_generators|UNVERIFIABLE|N/A|LOW|Wikipedia "KLT-40" did not state steam generator count
+KLT-40S|fuel_assembly_type|UNVERIFIABLE|N/A|LOW|Wikipedia "KLT-40" did not describe fuel assembly geometry
+KLT-40S|average_burnup_mwd_per_t|UNVERIFIABLE|N/A|LOW|Wikipedia "KLT-40" did not state burnup
+KLT-40S|number_of_turbines|UNVERIFIABLE|N/A|LOW|No retrieved source stated turbine count for KLT-40S

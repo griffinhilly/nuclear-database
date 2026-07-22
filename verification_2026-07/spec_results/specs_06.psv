@@ -1,0 +1,211 @@
+design_series|field|verdict|corrected_value|confidence|source
+VVER-440/179|thermal_power_mwth|CONFIRMED||MED|Web search synthesis of VVER-440 technical literature (INIS-IAEA fuel-cycle papers): thermal power 1375 MWth
+VVER-440/179|fuel_type|CONFIRMED||HIGH|VVER-440 technical literature (INIS-IAEA, ResearchGate VVER-Type Reactors of Russian Design): UO2 fuel
+VVER-440/179|moderator|CONFIRMED||HIGH|VVER-440 technical literature: light-water moderated PWR-type design
+VVER-440/179|coolant|CONFIRMED||HIGH|VVER-440 technical literature: light water primary coolant
+VVER-440/179|number_of_coolant_loops|CONFIRMED||HIGH|Long-Term Operation of VVER Power Plants (ResearchGate/InTech): six main coolant pumps and loops
+VVER-440/179|operating_pressure_bar|WRONG|123.0|HIGH|atomeromu.mvm.hu Paks NPP "VVER-440/213 - The reactor core" + ScienceDirect VVER-440 primary circuit papers: nominal primary pressure 123 bar (12.3 MPa)
+VVER-440/179|enrichment_pct|UNVERIFIABLE||LOW|Searched INIS-IAEA VVER-440 fuel-cycle literature; found various historical enrichments (1.6/2.4/3.6/3.3/4.38%) but no source confirming a 3.3-3.6% range specific to V-179
+VVER-440/179|core_height_m|WRONG|2.42|MED|atomeromu.mvm.hu Paks NPP "VVER-440/213 - The reactor core": active core close to a cylinder of 2.42 m height (applied across VVER-440 line sharing common core envelope)
+VVER-440/179|core_diameter_m|CONFIRMED||HIGH|atomeromu.mvm.hu Paks NPP reactor core document: core diameter 2.88 m
+VVER-440/179|number_of_fuel_assemblies|CONFIRMED||MED|atomeromu.mvm.hu Paks NPP document: 312 fuel assemblies + 37 control assemblies = 349 total core positions
+VVER-440/179|number_of_control_elements|CONFIRMED||HIGH|VVER-Type Reactors of Russian Design (Springer) / VVER design-evolution search synthesis: "the original design of VVER-440 type reactors had 73 mechanical control rods" (V-179 first generation)
+VVER-440/179|outlet_temperature_c|WRONG|297.0|HIGH|atomeromu.mvm.hu Paks NPP document + ScienceDirect VVER-440 primary circuit papers: coolant warms to 297°C (hot leg/outlet)
+VVER-440/179|inlet_temperature_c|WRONG|266.0|HIGH|atomeromu.mvm.hu Paks NPP document + ScienceDirect VVER-440 primary circuit papers: cold leg (inlet) temperature 266°C
+VVER-440/179|number_of_steam_generators|CONFIRMED||HIGH|Long-Term Operation of VVER Power Plants (InTech/ResearchGate): six steam generators per unit
+VVER-440/179|fuel_assembly_type|CONFIRMED||HIGH|VVER-440 technical literature: hexagonal fuel assemblies, triangular rod lattice
+VVER-440/179|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Searched VVER-440 burnup literature; found modern uprated-cycle burnups (38.5-58.4 MWd/kgU) but no source confirming 29000 MWd/t as V-179's original design-basis burnup
+VVER-440/179|number_of_turbines|CONFIRMED||HIGH|Wikipedia "K-500-65/3000 steam turbine" article + turbine search synthesis: VVER-440 units use one pair of K-220-44 turbines
+VVER-440/179|turbine_speed_rpm|CONFIRMED||HIGH|Same source: turbine speed equal to grid frequency, 3000 rpm (50 Hz)
+VVER-440/179|low_pressure_sections|CONFIRMED||HIGH|Same source: K-220-44 turbine has one HP section and two LP sections
+VVER-440/179|live_steam_pressure_bar|WRONG|43.1|MED|Same source: steam inlet parameters 241°C and 4.31 MPa (43.1 bar) at K-220-44 turbine
+VVER-440/213|thermal_power_mwth|CONFIRMED||MED|Web search synthesis of VVER-440 technical literature: thermal power 1375 MWth
+VVER-440/213|fuel_type|CONFIRMED||HIGH|VVER-440 technical literature: UO2 fuel
+VVER-440/213|moderator|CONFIRMED||HIGH|VVER-440 technical literature: light water moderator
+VVER-440/213|coolant|CONFIRMED||HIGH|VVER-440 technical literature: light water coolant
+VVER-440/213|number_of_coolant_loops|CONFIRMED||HIGH|Long-Term Operation of VVER Power Plants: six loops, six steam generators, six main coolant pumps (V-213 design explicitly, e.g. Paks)
+VVER-440/213|operating_pressure_bar|WRONG|123.0|HIGH|atomeromu.mvm.hu Paks NPP (V-213) document: nominal primary pressure 123 bar
+VVER-440/213|enrichment_pct|UNVERIFIABLE||LOW|Searched VVER-440/213 fuel-cycle literature (INIS-IAEA); found modern reload enrichments (4.38-4.87%) but no source confirming an original 3.3-4.4% design-basis range
+VVER-440/213|core_height_m|WRONG|2.42|MED|atomeromu.mvm.hu Paks NPP (V-213) reactor-core document: active core height 2.42 m
+VVER-440/213|core_diameter_m|CONFIRMED||HIGH|atomeromu.mvm.hu Paks NPP (V-213) document: core diameter 2.88 m
+VVER-440/213|number_of_fuel_assemblies|CONFIRMED||HIGH|atomeromu.mvm.hu Paks NPP (V-213) document: 312 fuel assemblies + 37 control assemblies = 349 total
+VVER-440/213|number_of_control_elements|WRONG|37|HIGH|atomeromu.mvm.hu Paks NPP (V-213) document + INSP/PNNL VVER-440/213 profile: "altogether 37 control rods... 30 safety rods... 7 used to control power"
+VVER-440/213|outlet_temperature_c|WRONG|297.0|HIGH|atomeromu.mvm.hu Paks NPP (V-213) document: coolant discharges from core at 297°C
+VVER-440/213|inlet_temperature_c|WRONG|266.0|HIGH|atomeromu.mvm.hu Paks NPP (V-213) document + ScienceDirect VVER-440 primary circuit papers: 266°C inlet
+VVER-440/213|number_of_steam_generators|CONFIRMED||HIGH|Long-Term Operation of VVER Power Plants: six steam generators
+VVER-440/213|fuel_assembly_type|CONFIRMED||HIGH|VVER-440 technical literature: hexagonal fuel assemblies
+VVER-440/213|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Searched VVER-440/213 burnup literature; no source confirming 35000 MWd/t as the design-basis average burnup
+VVER-440/213|number_of_turbines|CONFIRMED||HIGH|K-220-44 turbine search synthesis: one pair of turbines per VVER-440 unit
+VVER-440/213|turbine_speed_rpm|CONFIRMED||HIGH|Same source: 3000 rpm
+VVER-440/213|low_pressure_sections|CONFIRMED||HIGH|Same source: two LP sections
+VVER-440/213|live_steam_pressure_bar|WRONG|43.1|MED|Same source: K-220-44 turbine inlet steam 4.31 MPa (43.1 bar)
+VVER-440/230|thermal_power_mwth|CONFIRMED||MED|Web search synthesis of VVER-440 technical literature: thermal power 1375 MWth
+VVER-440/230|fuel_type|CONFIRMED||HIGH|VVER-440 technical literature: UO2 fuel
+VVER-440/230|moderator|CONFIRMED||HIGH|VVER-440 technical literature: light water moderator
+VVER-440/230|coolant|CONFIRMED||HIGH|VVER-440 technical literature: light water coolant
+VVER-440/230|number_of_coolant_loops|CONFIRMED||HIGH|Long-Term Operation of VVER Power Plants: six loops standard to VVER-440 line including V-230
+VVER-440/230|operating_pressure_bar|WRONG|123.0|HIGH|atomeromu.mvm.hu Paks NPP document / ScienceDirect VVER-440 primary circuit papers: 123 bar nominal primary pressure
+VVER-440/230|enrichment_pct|UNVERIFIABLE||LOW|Searched VVER-440/230 fuel literature; found historical uniform enrichments of 1.6/2.4/3.6% but no source confirming 3.3-3.6% as V-230's specific design range
+VVER-440/230|core_height_m|WRONG|2.42|MED|atomeromu.mvm.hu Paks NPP document: active core height 2.42 m (common VVER-440 core envelope)
+VVER-440/230|core_diameter_m|CONFIRMED||HIGH|atomeromu.mvm.hu Paks NPP document: core diameter 2.88 m
+VVER-440/230|number_of_fuel_assemblies|CONFIRMED||MED|atomeromu.mvm.hu Paks NPP document: 349 total fuel+control assembly positions, standard across VVER-440 line
+VVER-440/230|number_of_control_elements|WRONG|37|HIGH|VVER-Type Reactors of Russian Design / design-evolution search synthesis: "In the V-230 design... the number of mechanical control rods was reduced from 73 to 37 due to introduction of boron as a moderator"
+VVER-440/230|outlet_temperature_c|WRONG|297.0|HIGH|atomeromu.mvm.hu Paks NPP document: 297°C outlet
+VVER-440/230|inlet_temperature_c|WRONG|266.0|HIGH|atomeromu.mvm.hu Paks NPP document / ScienceDirect: 266°C inlet
+VVER-440/230|number_of_steam_generators|CONFIRMED||HIGH|Long-Term Operation of VVER Power Plants: six steam generators
+VVER-440/230|fuel_assembly_type|CONFIRMED||HIGH|VVER-440 technical literature: hexagonal fuel assemblies
+VVER-440/230|average_burnup_mwd_per_t|UNVERIFIABLE||LOW|Searched VVER-440/230 burnup literature; no source confirming 29000 MWd/t as design-basis burnup
+VVER-440/230|number_of_turbines|CONFIRMED||HIGH|K-220-44 turbine search synthesis: one pair of turbines
+VVER-440/230|turbine_speed_rpm|CONFIRMED||HIGH|Same source: 3000 rpm
+VVER-440/230|low_pressure_sections|CONFIRMED||HIGH|Same source: two LP sections
+VVER-440/230|live_steam_pressure_bar|WRONG|43.1|MED|Same source: 4.31 MPa (43.1 bar) turbine inlet steam
+VVER-440/270|thermal_power_mwth|CONFIRMED||MED|Web search synthesis of VVER-440 technical literature: thermal power 1375 MWth
+VVER-440/270|fuel_type|CONFIRMED||HIGH|VVER-440 technical literature: UO2 fuel
+VVER-440/270|moderator|CONFIRMED||HIGH|VVER-440 technical literature: light water moderator
+VVER-440/270|coolant|CONFIRMED||HIGH|VVER-440 technical literature: light water coolant
+VVER-440/270|number_of_coolant_loops|CONFIRMED||HIGH|Long-Term Operation of VVER Power Plants: six loops standard to VVER-440 line
+VVER-440/270|operating_pressure_bar|WRONG|123.0|HIGH|atomeromu.mvm.hu Paks NPP document / ScienceDirect VVER-440 papers: 123 bar nominal primary pressure
+VVER-440/270|enrichment_pct|UNVERIFIABLE||LOW|Searched Loviisa/VVER-440-270 fuel literature (Westinghouse press release, fuel-assembly papers); found first/second-gen TVEL enrichments (4.0-4.87%) and a historical range 1.9-4.4% but no source confirming 3.3-3.6% as V-270's specific design range
+VVER-440/270|core_height_m|WRONG|2.42|MED|atomeromu.mvm.hu Paks NPP document: active core height 2.42 m (common VVER-440 core envelope)
+VVER-440/270|core_diameter_m|CONFIRMED||HIGH|atomeromu.mvm.hu Paks NPP document: core diameter 2.88 m
+VVER-440/270|number_of_fuel_assemblies|CONFIRMED||MED|atomeromu.mvm.hu Paks NPP document: 349 total fuel+control assembly positions, standard across VVER-440 line
+VVER-440/270|number_of_control_elements|UNVERIFIABLE||LOW|Confirmed V-213 and V-230 use 37 control rods (vs original V-179's 73), but no source specifically retrieved naming V-270 (Loviisa)'s control-rod count, so cannot confirm 73 is wrong for this specific variant without direct evidence
+VVER-440/270|outlet_temperature_c|WRONG|297.0|HIGH|atomeromu.mvm.hu Paks NPP document: 297°C outlet, standard VVER-440 value
+VVER-440/270|inlet_temperature_c|WRONG|266.0|HIGH|atomeromu.mvm.hu Paks NPP document / ScienceDirect: 266°C inlet
+VVER-440/270|number_of_steam_generators|CONFIRMED||HIGH|Long-Term Operation of VVER Power Plants: six steam generators
+VVER-440/270|fuel_assembly_type|CONFIRMED||HIGH|VVER-440 technical literature: hexagonal fuel assemblies
+VVER-440/270|number_of_turbines|CONFIRMED||HIGH|K-220-44 turbine search synthesis: one pair of turbines
+VVER-440/270|turbine_speed_rpm|CONFIRMED||HIGH|Same source: 3000 rpm
+VVER-440/270|low_pressure_sections|CONFIRMED||HIGH|Same source: two LP sections
+VVER-440/270|live_steam_pressure_bar|WRONG|43.1|MED|Same source: 4.31 MPa (43.1 bar) turbine inlet steam
+CANDU|fuel_type|CONFIRMED||HIGH|CANDU technical literature (xylenepower.com, CANFLEX/Wikipedia, INIS-IAEA): natural UO2 fuel
+CANDU|moderator|CONFIRMED||HIGH|CANDU technical literature: heavy water moderator, defining feature of CANDU design
+CANDU|coolant|CONFIRMED||HIGH|CANDU technical literature: heavy water coolant
+CANDU|operating_pressure_bar|CONFIRMED||MED|RELAP5/NRC CANDU-6 model documents + CANDU thermal-hydraulics course material: reactor outlet header pressure ~10 MPa (100 bar), standard across CANDU family
+CANDU|enrichment_pct|CONFIRMED||HIGH|CANDU fuel-cycle literature (ScienceDirect burnup papers): natural uranium, 0.711 wt% U-235, standard CANDU fuel
+CANDU|average_burnup_mwd_per_t|CONFIRMED||MED|CANDU Fuel-Management Course (canteach.candu.org) + burnup literature: typical CANDU discharge burnup ~7500 MWd/MgU (range 7200-8300 across CANDU designs)
+CANDU|number_of_turbines|UNVERIFIABLE||LOW|Searched CANDU-6 steam-generator/turbine specifications; sources covered steam generator and heat-transport detail but did not state turbine count for the generic CANDU line
+CANDU|low_pressure_sections|UNVERIFIABLE||LOW|Same search; no source found stating number of LP turbine sections for generic CANDU
+CANDU|live_steam_pressure_bar|UNVERIFIABLE||LOW|Same search; no source found stating live steam pressure for generic CANDU
+CANDU 500|thermal_power_mwth|BLOCKED||LOW|WebSearch budget exhausted before this design series could be researched (200/200 session searches used mid-batch); no fields for this row verified
+CANDU 500|fuel_type|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|moderator|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|coolant|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|number_of_coolant_loops|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|operating_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|enrichment_pct|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|core_diameter_m|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|number_of_fuel_assemblies|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|outlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|inlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|number_of_steam_generators|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|fuel_assembly_type|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|average_burnup_mwd_per_t|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|low_pressure_sections|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 500|live_steam_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row was researched
+CANDU 6|thermal_power_mwth|CONFIRMED||HIGH|NRC "Evolution of ACR Physics from CANDU 6" / INIS-IAEA CANDU-6 papers: thermal power 2064 MWt
+CANDU 6|fuel_type|CONFIRMED||HIGH|CANDU-6 technical literature: natural UO2 fuel
+CANDU 6|moderator|CONFIRMED||HIGH|CANDU-6 technical literature: heavy water moderator
+CANDU 6|coolant|CONFIRMED||HIGH|CANDU-6 technical literature: heavy water coolant
+CANDU 6|number_of_coolant_loops|CONFIRMED||HIGH|CANDU safety/thermal-hydraulics course material (canteach.candu.org): two heat-transport loops in figure-of-eight arrangement
+CANDU 6|operating_pressure_bar|CONFIRMED||HIGH|CANDU-6 thermal-hydraulics documents (NRC RELAP5 model, canteach.candu.org): reactor outlet header pressure ~10 MPa (100 bar)
+CANDU 6|enrichment_pct|CONFIRMED||HIGH|CANDU fuel literature: natural uranium (0.711 wt% U-235)
+CANDU 6|core_height_m|CONFIRMED||HIGH|CANDU Reactor Design Philosophy/canteach.candu.org: core length equals standard CANDU fuel channel length, 5.944 m
+CANDU 6|core_diameter_m|UNVERIFIABLE||MED|canteach.candu.org "Calandria" reference gives calandria shell inside diameter as 7.59 m, which may represent the vessel/moderator-tank diameter rather than the fuelled core lattice diameter (6.28 m) — basis mismatch risk per zero-doubt rule 4, so not declared WRONG; genuine core-lattice diameter not separately confirmed
+CANDU 6|number_of_fuel_assemblies|CONFIRMED||HIGH|CANDU-6 technical papers (INIS-IAEA, NRC): 380 fuel channels/pressure tubes
+CANDU 6|number_of_control_elements|UNVERIFIABLE||LOW|Searched CANDU-6 thermal-hydraulic/design documents; none of the retrieved sources stated the number of control/adjuster/shutoff rod assemblies
+CANDU 6|outlet_temperature_c|CONFIRMED||HIGH|RELAP5 CANDU-6 (Embalse) model (NRC): reactor outlet header temperature 310°C
+CANDU 6|inlet_temperature_c|CONFIRMED||HIGH|CANDU thermal-hydraulics course material (canteach.candu.org): inlet header temperature 266°C
+CANDU 6|number_of_steam_generators|CONFIRMED||HIGH|CANDU-6 design documents: 4 vertical U-tube steam generators with integral steam drum and preheater
+CANDU 6|fuel_assembly_type|CONFIRMED||MED|CANDU fuel literature: standard CANDU-6 bundle is a 37-element bundle (37-43 rod range cited generally, 37-element is the standard/legacy CANDU-6 design)
+CANDU 6|average_burnup_mwd_per_t|CONFIRMED||HIGH|CANDU Fuel-Management Course (canteach.candu.org): typical CANDU-6 discharge burnup 7500 MWd/MgU
+CANDU 6|number_of_turbines|UNVERIFIABLE||LOW|Searched CANDU-6 turbine/steam-generator specifications; no source found stating turbine count
+CANDU 6|turbine_speed_rpm|UNVERIFIABLE||LOW|Same search; no source found stating turbine speed for CANDU-6
+CANDU 6|low_pressure_sections|UNVERIFIABLE||LOW|Same search; no source found stating number of LP turbine sections
+CANDU 6|live_steam_pressure_bar|UNVERIFIABLE||LOW|Same search; no source found stating live steam pressure for CANDU-6
+CANDU 750|thermal_power_mwth|BLOCKED||LOW|Search budget exhausted before this design series' numeric fields could be researched; only its existence as a Bruce-type reactor designation was incidentally noted, not enough to verify specific values
+CANDU 750|fuel_type|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|moderator|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|coolant|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|number_of_coolant_loops|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|operating_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|enrichment_pct|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|number_of_fuel_assemblies|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|outlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|inlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|number_of_steam_generators|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|fuel_assembly_type|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|average_burnup_mwd_per_t|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|low_pressure_sections|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 750|live_steam_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|thermal_power_mwth|BLOCKED||LOW|Search budget exhausted before this design series' numeric fields could be researched; only its existence as the Darlington reactor designation was incidentally noted
+CANDU 850|fuel_type|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|moderator|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|coolant|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|number_of_coolant_loops|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|operating_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|enrichment_pct|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|number_of_fuel_assemblies|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|outlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|inlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|number_of_steam_generators|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|fuel_assembly_type|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|average_burnup_mwd_per_t|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|low_pressure_sections|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+CANDU 850|live_steam_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row was fully researched
+BLWR-250|fuel_type|BLOCKED||LOW|Search budget exhausted; this design series was never reached for research
+BLWR-250|number_of_turbines|BLOCKED||LOW|Search budget exhausted; this design series was never reached for research
+IPHWR|thermal_power_mwth|BLOCKED||LOW|Search budget exhausted exactly as this row's queries were issued (both returned "web search budget exhausted" errors); no fields verified
+IPHWR|fuel_type|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|moderator|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|coolant|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|number_of_coolant_loops|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|operating_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|enrichment_pct|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|core_height_m|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|core_diameter_m|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|number_of_fuel_assemblies|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|number_of_control_elements|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|outlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|inlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|number_of_steam_generators|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|fuel_assembly_type|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|average_burnup_mwd_per_t|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|low_pressure_sections|BLOCKED||LOW|Search budget exhausted before this row was researched
+IPHWR|live_steam_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|thermal_power_mwth|BLOCKED||LOW|Search budget exhausted exactly as this row's query was issued ("web search budget exhausted" error); no fields verified
+KWU PHWR|fuel_type|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|moderator|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|coolant|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|number_of_coolant_loops|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|operating_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|enrichment_pct|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|core_height_m|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|number_of_fuel_assemblies|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|outlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|inlet_temperature_c|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|number_of_steam_generators|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|fuel_assembly_type|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|average_burnup_mwd_per_t|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|number_of_turbines|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|low_pressure_sections|BLOCKED||LOW|Search budget exhausted before this row was researched
+KWU PHWR|live_steam_pressure_bar|BLOCKED||LOW|Search budget exhausted before this row was researched
+PHWR|fuel_type|BLOCKED||LOW|Search budget exhausted; this design series was never reached for research
+PHWR|moderator|BLOCKED||LOW|Search budget exhausted; this design series was never reached for research
+PHWR|coolant|BLOCKED||LOW|Search budget exhausted; this design series was never reached for research
+PHWR|operating_pressure_bar|BLOCKED||LOW|Search budget exhausted; this design series was never reached for research
+PHWR|enrichment_pct|BLOCKED||LOW|Search budget exhausted; this design series was never reached for research
+PHWR|average_burnup_mwd_per_t|BLOCKED||LOW|Search budget exhausted; this design series was never reached for research
+PHWR|number_of_turbines|BLOCKED||LOW|Search budget exhausted; this design series was never reached for research
+PHWR|turbine_speed_rpm|BLOCKED||LOW|Search budget exhausted; this design series was never reached for research
+PHWR|low_pressure_sections|BLOCKED||LOW|Search budget exhausted; this design series was never reached for research
+PHWR|live_steam_pressure_bar|BLOCKED||LOW|Search budget exhausted; this design series was never reached for research
