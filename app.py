@@ -129,7 +129,18 @@ def embed_map():
     """)
     rows = [[r['latitude'], r['longitude'], r['status'],
              r['gross_capacity_mw'] or 0, r['plant_name']] for r in reactors]
-    return render_template('embed_map.html', reactor_rows=rows)
+    # Per-country hover stats, keyed by the DB country name baked into the
+    # embed GeoJSON's properties.name (nuclear countries only)
+    counts = query_db("""
+        SELECT c.name AS country,
+               SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) AS op,
+               SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) AS uc
+        FROM reactors r JOIN countries c ON r.country_id = c.id
+        GROUP BY c.name
+    """)
+    country_stats = {r['country']: [r['op'], r['uc']] for r in counts}
+    return render_template('embed_map.html', reactor_rows=rows,
+                           country_stats=country_stats)
 
 # =============================================================================
 # FREE TIER API ENDPOINTS

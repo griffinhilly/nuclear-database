@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
+        /* Forma DJR Micro — the family's small-size optical cut, correct for
+           13-14px tooltip text (brand font; Display is for headlines only) */
+        @font-face {
+            font-family: 'Forma DJR Micro';
+            src: url('/static/fonts/FormaDJRMicro-Regular.woff2') format('woff2');
+            font-weight: 400; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'Forma DJR Micro';
+            src: url('/static/fonts/FormaDJRMicro-Bold.woff2') format('woff2');
+            font-weight: 700; font-style: normal; font-display: swap;
+        }
         html, body { margin: 0; padding: 0; height: 100%; }
         /* Duotone brand map: Nuclear Yellow water, yellow-accent land (designer spec) */
         #embed-map { position: absolute; inset: 0; background: #FFBF00; }
@@ -22,13 +34,38 @@
         }
         .leaflet-control-zoom a:hover { background: #FFD24D !important; }
         .leaflet-bar { border: 1px solid #C79500 !important; box-shadow: none !important; }
+        /* Country hover tooltip: flat brand card, dark grey on yellow */
+        .country-tip {
+            background: #474853 !important; color: #FFFFFF !important;
+            border: none !important; border-radius: 0 !important;
+            box-shadow: none !important; padding: 8px 12px !important;
+            font-family: 'Forma DJR Micro', Arial, Helvetica, sans-serif;
+            font-size: 13px; line-height: 1.5;
+            letter-spacing: 0.15em;   /* 15% tracking per Griffin 2026-07-23 */
+        }
+        .country-tip::before { display: none; }  /* no arrow — flat card */
+        .country-tip .tip-name { font-weight: bold; font-size: 14px; }
+        .country-tip .tip-uc { color: #C5D7E7; }  /* powder blue echoes UC dots */
+        /* Cooperative-zoom hint (shown on plain scroll, like Google Maps embeds) */
+        #zoom-hint {
+            position: absolute; inset: 0; z-index: 800;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(71, 72, 83, 0.55);
+            color: #FFFFFF; font-family: 'Forma DJR Micro', Arial, sans-serif;
+            font-size: 15px; letter-spacing: 0.15em; text-align: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s;
+        }
+        #zoom-hint.show { opacity: 1; }
     </style>
 </head>
 <body>
     <div id="embed-map"></div>
+    <div id="zoom-hint">Use Ctrl + scroll to zoom the map<br>(&#8984; + scroll on Mac &middot; pinch on touch)</div>
     <script>
         // rows: [lat, lng, status, capacity_mw, plant_name]
         const rows = {{ reactor_rows | tojson }};
+        // country -> [operational_count, under_construction_count]
+        const countryStats = {{ country_stats | tojson }};
 
         const statusColors = {
             'Operational':         '#40774A',  // Forest Green
@@ -50,6 +87,26 @@
             worldCopyJump: false
         });
         map.attributionControl.setPrefix(false);
+        window.embedMap = map;   // QA hook: lets CDP eval compute container points
+
+        // Cooperative zoom: Ctrl/Cmd+wheel zooms around the cursor; plain wheel
+        // scrolls the host page and briefly shows a hint. Double-click zoom,
+        // pinch (touchZoom), and keyboard +/- (once focused) are Leaflet
+        // defaults and stay enabled.
+        const hint = document.getElementById('zoom-hint');
+        let hintTimer = null;
+        document.getElementById('embed-map').addEventListener('wheel', e => {
+            if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();   // keep the browser from page-zooming
+                const dir = e.deltaY < 0 ? 1 : -1;
+                map.setZoomAround(map.mouseEventToContainerPoint(e),
+                                  map.getZoom() + dir * 0.5);
+            } else {
+                hint.classList.add('show');
+                clearTimeout(hintTimer);
+                hintTimer = setTimeout(() => hint.classList.remove('show'), 1200);
+            }
+        }, { passive: false });
 
         // Panning is bounded by the full reactor fleet…
         let minLat = 90, maxLat = -90, minLng = 180, maxLng = -180;
@@ -74,16 +131,37 @@
         // Flat country choropleth — no raster tiles (Natural Earth 110m, public
         // domain). Colors sampled from the Figma prototype (Jul 21): nuclear
         // countries (properties.n=1, baked from the DB) darker than the rest.
+        const baseStyle = f => ({
+            fillColor: f.properties.n ? '#C79500' : '#EBB000',
+            fillOpacity: 1,
+            color: '#FFBF00', weight: 0.5    // faint borders in the bg yellow
+        });
+        const hoverStyle = f => ({
+            fillColor: f.properties.n ? '#996A00' : '#D9A300',  // one step darker
+            fillOpacity: 1, color: '#FFBF00', weight: 1
+        });
+        function tipHtml(p) {
+            let html = '<div class="tip-name">' + p.name + '</div>';
+            if (p.n) {
+                const [op, uc] = countryStats[p.name] || [0, 0];
+                html += '<div>Reactors in operation: <b>' + op + '</b></div>';
+                if (uc > 0) html += '<div class="tip-uc">Under construction: <b>' + uc + '</b></div>';
+            } else {
+                html += '<div>No nuclear reactors</div>';
+            }
+            return html;
+        }
         fetch('/static/ne_110m_countries_nuclear.geojson')
             .then(r => r.json())
             .then(countries => {
                 L.geoJSON(countries, {
-                    style: f => ({
-                        fillColor: f.properties.n ? '#C79500' : '#EBB000',
-                        fillOpacity: 1,
-                        color: '#FFBF00', weight: 0.5,   // faint borders in the bg yellow
-                        interactive: false
-                    })
+                    style: baseStyle,
+                    onEachFeature: (f, layer) => {
+                        layer.bindTooltip(tipHtml(f.properties),
+                            { sticky: true, className: 'country-tip', direction: 'top', offset: [0, -6] });
+                        layer.on('mouseover', () => layer.setStyle(hoverStyle(f)));
+                        layer.on('mouseout',  () => layer.setStyle(baseStyle(f)));
+                    }
                 }).addTo(map).bringToBack();
             });
         map.attributionControl.addAttribution('Natural Earth');
