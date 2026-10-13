@@ -1,6 +1,6 @@
 # Nuclear Database — Orientation
 
-A Flask web app tracking the world's nuclear reactor fleet: 738 reactors across 39 countries with specs, generation history (1954-2025), geographic coordinates, design lineages, and 123 planned projects. All data verified against IAEA PRIS and cross-checked with WNA. Live at [nuclear-database.fly.dev](https://nuclear-database.fly.dev/).
+A Flask web app tracking the world's nuclear reactor fleet: 743 reactors across 39 countries with specs, generation history (1954-2025), geographic coordinates, design lineages, and 121 planned projects. Structured fields re-aligned to the IAEA PRIS API in the Oct 2026 audit (`docs/audit-plan-2026-10.md`, local); cross-checked with WNA. Live at [nuclear-database.fly.dev](https://nuclear-database.fly.dev/).
 
 ## Codebase Shape
 

@@ -1,6 +1,9 @@
 # Nuclear Database — Memory
 
-## Current State (Jul 2026)
+## Current State (Oct 2026)
+- **Oct 13 audit (migrations 022-028)**: 743 reactors (420 Operational, 80 UC, 21 Suspended, 222 Shutdown), 121 planned. PRIS moved to a JSON API (`pris-stats.iaea.org`) — old scrapers dead. Batches: PRIS fills (operator, first criticality, pris_id for 296), guarded PRIS capacity/date alignment, 5 missing UC units, 475 PRIS turbine suppliers (whitelisted), 25 Sonnet-researched fixes with script-verified quotes, 4 status updates. Lessons: PRIS itself has errors (Xuwei-1 net 729 vs gross 1208) — always guard; changing gross without capacity_changes rewrites historical CF (Wolsong 3/4 derate caught by the CF<=105% guard); agent "quotes" assembled from tables are not sources — re-find every quote by script (`scripts/quote_check.py`). 27 batch-C items held (mostly Soviet-era Russian dates).
+
+## Earlier State (Jul 2026)
 - **Generation data through 2025** (backfilled Jul 6: 93.3% of operational fleet for 2025; 2024 raw total 2426.2 TWh, 2025 raw total 2622.8 TWh). Cooling audit complete (per-unit, US fleet). All entity descriptions complete (0 missing). pris_id integrity repaired + guarded (validator checks 12-14); ground-truth map `pris_id_map_2026-07.json`.
 - **Constants audit + vendor verification (Jul 20-21, migrations 016-018)**: design-spec fixes (turbine-speed class + 9 values), planned_reactors fixes (Duwayhin fabrication), and the **zero-doubt policy** (Griffin): reactor_details vendor fields show ONLY per-reactor-verified values (902 visible, 2,043 NULLed, originals in `reactor_details_unverified_archive`). 593 sourced corrections await Noah/Dirk (`verification_2026-07/noah_dirk_consult_2026-07.md` — their attestations are gospel; append to `final_verdicts.psv` visible=yes in the same change that writes the DB, or validator check 15 fails). Ledger: `constants_audit_2026-07.md`. Design-spec completion pass (migration 019) staged+paused — resume protocol in PLAN.md.
 
