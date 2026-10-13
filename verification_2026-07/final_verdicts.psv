@@ -397,11 +397,11 @@ reactor_id|plant|unit|field|verdict|confidence|visible|corrected_value|source
 99|Taipingling|2|turbine_supplier|UNVERIFIABLE|LOW|no||same as Taipingling Unit 1
 100|Taishan|1|architect_engineer|WRONG|LOW|no|EDF / CGN (Taishan Joint Venture partners)|Taishan Nuclear Power Joint Venture Company = CGN + EDF; no source confirms a distinct "CNPEC" AE entity (see NOTES on CNPEC)
 100|Taishan|1|constructor|CONFIRMED|MED|yes||en.wikipedia.org/wiki/Taishan_Nuclear_Power_Plant - Areva (Framatome) contracted to develop the nuclear island
-100|Taishan|1|rpv_manufacturer|WRONG|HIGH|no|Framatome (Areva NP)|en.wikipedia.org/wiki/Taishan_Nuclear_Power_Plant - Areva/Framatome contracted for the nuclear island including the reactor; Mitsubishi Heavy Industries has no documented role in Taishan's EPR supply chain
+100|Taishan|1|rpv_manufacturer|CORRECTED|HIGH|yes|Mitsubishi Heavy Industries|world-nuclear-news.org/articles/construction-milestone-at-taishan-2-epr ("the pressure vessel from Mitsubishi Heavy Industries (MHI) of Japan"); power-technology.com Taishan project page; Nucleopedia. 2026-10-13 replaces July WRONG/Framatome (designer-vs-fabricator error); migration 022
 100|Taishan|1|turbine_supplier|CONFIRMED|HIGH|yes||world-nuclear.org China country profile - "The Arabelle steam turbines and 1750 MWe generators were purchased separately from Alstom and Dongfang Electric Co respectively" (turbine=Alstom, generator=Dongfang)
 101|Taishan|2|architect_engineer|WRONG|LOW|no|EDF / CGN (Taishan Joint Venture partners)|same as Taishan Unit 1
 101|Taishan|2|constructor|CONFIRMED|MED|yes||same as Taishan Unit 1
-101|Taishan|2|rpv_manufacturer|WRONG|HIGH|no|Framatome (Areva NP)|same as Taishan Unit 1
+101|Taishan|2|rpv_manufacturer|CORRECTED|HIGH|yes|Dongfang Electric|world-nuclear-news.org/articles/construction-milestone-at-taishan-2-epr ("the pressure vessel by Dongfang Electric Co (DEC)"); Nucleopedia. 2026-10-13 replaces July WRONG/Framatome; migration 022
 101|Taishan|2|turbine_supplier|CONFIRMED|HIGH|yes||same as Taishan Unit 1
 102|Tianwan|1|architect_engineer|UNVERIFIABLE|LOW|no||not directly confirmed; plausible convention (Atomenergoproekt=Russian design institute, JNPC=Jiangsu Nuclear Power Corp local partner) but no source names this pairing explicitly
 102|Tianwan|1|constructor|CONFIRMED|HIGH|yes||en.wikipedia.org/wiki/Tianwan_Nuclear_Power_Plant - Atomstroyexport supplied VVER-1000/428 units 1-2

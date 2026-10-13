@@ -89,9 +89,9 @@ goes back on the site as verified.
 | Sanmen | 2 | constructor | State Nuclear Power Technology Corporation (SNPTC) | MED | same reasoning as Sanmen 1 |
 | Sanmen | 2 | rpv_manufacturer | China First Heavy Industries (CFHI) | HIGH | Wikipedia AP1000 article: "CFHI manufactured the first domestically produced AP1000 RPV, for the second AP1000 unit of Sanmen" (2014) — DB value appears copied from Unit 1 |
 | Taishan | 1 | architect_engineer | EDF / CGN (Taishan Joint Venture partners) | LOW | Taishan Nuclear Power Joint Venture Company = CGN + EDF; no source confirms a distinct "CNPEC" AE entity (see NOTES on CNPEC) |
-| Taishan | 1 | rpv_manufacturer | Framatome (Areva NP) | HIGH | en.wikipedia.org/wiki/Taishan_Nuclear_Power_Plant - Areva/Framatome contracted for the nuclear island including the reactor; Mitsubishi Heavy Industries has no documented role in Taishan's EPR supply chain |
+| Taishan | 1 | rpv_manufacturer | ~~Framatome (Areva NP)~~ WITHDRAWN 2026-10-13 — correct value is Mitsubishi Heavy Industries (already applied, migration 022) | — | world-nuclear-news.org/articles/construction-milestone-at-taishan-2-epr |
 | Taishan | 2 | architect_engineer | EDF / CGN (Taishan Joint Venture partners) | LOW | same as Taishan Unit 1 |
-| Taishan | 2 | rpv_manufacturer | Framatome (Areva NP) | HIGH | same as Taishan Unit 1 |
+| Taishan | 2 | rpv_manufacturer | ~~Framatome (Areva NP)~~ WITHDRAWN 2026-10-13 — correct value is Dongfang Electric (already applied, migration 022) | — | world-nuclear-news.org/articles/construction-milestone-at-taishan-2-epr |
 | Tianwan | 5 | architect_engineer | CNPE / JNPC | MED | same source - no CGN or "CNPEC" involvement documented for Tianwan; ACPR-1000 is a co-developed design but the Tianwan site itself is CNNC-side |
 | Tianwan | 5 | constructor | CNNC (via China Nuclear Power Engineering Co., Ltd. / CNPE) | HIGH | en.wikipedia.org/wiki/Tianwan_Nuclear_Power_Plant - "Units 5-6: Constructor: China Nuclear Power Engineering, Ltd. (CNPE)"; Tianwan site ownership is CNNC/JNPC/Rosatom, not CGN - this is a CNNC/CGN misattribution |
 | Tianwan | 6 | architect_engineer | CNPE / JNPC | MED | same as Tianwan Unit 5 |
