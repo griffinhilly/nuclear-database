@@ -159,7 +159,7 @@
 
             <!-- Country Breakdown Chart -->
             <div class="card" style="margin-top: 24px;">
-                <h2>Country Breakdown (Top 15 by Capacity)</h2>
+                <h2 id="country-chart-title">Country Breakdown (Top 15 by Capacity)</h2>
                 <div class="chart-container">
                     <canvas id="country-chart"></canvas>
                 </div>
@@ -176,6 +176,7 @@
             <!-- Generation History Chart (conditional) -->
             <div class="card" style="margin-top: 24px;" id="generation-card">
                 <h2>Generation History</h2>
+                <p id="generation-note" style="color: #6B6E7B; font-size: 0.85rem; margin: -8px 0 12px;">Shows the full generation history of the reactors that are currently in this status, including years before their status changed.</p>
                 <div class="chart-container">
                     <canvas id="generation-chart"></canvas>
                 </div>
@@ -203,7 +204,7 @@
     {% include '_reg_footer.html' %}
 
     <script>
-        const STATUS_NAME = "{{ status_name }}";
+        const STATUS_NAME = {{ status_name|tojson }};
 
         const statusColors = {
             'Operational': '#40774A',
@@ -449,11 +450,11 @@
 
             currentReactors = reactors;
 
-            const bgColor = statusColors[status.name] || '#474853';
-            const txtColor = statusTextColors[status.name] || '#fff';
+            const bgColor = statusColors[status.status] || '#474853';
+            const txtColor = statusTextColors[status.status] || '#fff';
 
             // Header
-            document.getElementById('status-name').textContent = status.name;
+            document.getElementById('status-name').textContent = status.status;
             const badge = document.getElementById('status-badge');
             badge.textContent = `${status.total_count} reactors`;
             badge.style.background = bgColor;
@@ -566,7 +567,9 @@
                     '<p style="text-align: center; color: #6B6E7B; padding: 100px 0;">Location data not available</p>';
             }
 
-            // Country breakdown chart
+            // Country breakdown chart: capacity of the reactors in this status, sorted by it (server-side)
+            const capacityLabel = status.status === 'Operational' ? 'Operating Capacity' : `Capacity of ${status.status} Reactors`;
+            document.getElementById('country-chart-title').textContent = `Country Breakdown (Top 15 by ${capacityLabel})`;
             if (countryBreakdown && countryBreakdown.length > 0) {
                 const top15 = countryBreakdown.slice(0, 15);
                 new Chart(document.getElementById('country-chart'), {
@@ -574,7 +577,7 @@
                     data: {
                         labels: top15.map(c => c.country),
                         datasets: [{
-                            label: 'Capacity (GW)',
+                            label: `${capacityLabel} (GW, gross)`,
                             data: top15.map(c => c.capacity_gw),
                             backgroundColor: bgColor,
                             borderRadius: 0
@@ -598,7 +601,7 @@
                             x: {
                                 grid: { color: '#E8E8EB' },
                                 ticks: { color: '#6B6E7B' },
-                                title: { display: true, text: 'GW', color: '#6B6E7B' }
+                                title: { display: true, text: `${capacityLabel} (GW, gross)`, color: '#6B6E7B' }
                             },
                             y: {
                                 grid: { display: false },

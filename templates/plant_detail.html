@@ -199,7 +199,7 @@
     {% include '_reg_footer.html' %}
 
     <script>
-        const PLANT_NAME = "{{ plant_name }}";
+        const PLANT_NAME = {{ plant_name|tojson }};
 
         function formatAge(ageYears) {
             if (!ageYears) return '--';

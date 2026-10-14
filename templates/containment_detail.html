@@ -235,7 +235,7 @@
                 Containment structures are the final barrier between a nuclear reactor's radioactive materials and the environment.
                 Evolving from the simple steel spheres of the 1950s to the double-walled reinforced concrete structures of modern plants,
                 containment design reflects the nuclear industry's deepening understanding of severe accident scenarios.
-                The 9 containment types below represent distinct engineering philosophies for managing reactor overpressure events.
+                The {{ containment_type_count }} containment types below represent distinct engineering philosophies for managing reactor overpressure events.
             </p>
         </div>
     </div>
@@ -306,6 +306,8 @@
             'Ice Condenser': '#C7D9E8',
             'Subatmospheric': '#40774A'
         };
+
+        const FALLBACK_TYPE_COLOR = '#9FC3A5';  // types not listed above (e.g. Pre-Mark I)
 
         const statusColors = {
             'Operational': '#40774A',
@@ -518,7 +520,7 @@
 
             const bounds = [];
             reactorsWithCoords.forEach(r => {
-                const color = activeType ? (statusColors[r.status] || '#3F55C5') : (typeColors[r.containment_type] || '#3F55C5');
+                const color = activeType ? (statusColors[r.status] || '#3F55C5') : (typeColors[r.containment_type] || FALLBACK_TYPE_COLOR);
                 bounds.push([r.latitude, r.longitude]);
                 L.circleMarker([r.latitude, r.longitude], {
                     radius: 7, fillColor: color, color: '#fff', weight: 1, opacity: 0.8, fillOpacity: 0.7

@@ -144,7 +144,7 @@
 
             <!-- Country Breakdown Chart -->
             <div class="card" style="margin-top: 24px;">
-                <h2>Country Breakdown (Top 15 by Capacity)</h2>
+                <h2>Country Breakdown (Top 15 by Operating Capacity)</h2>
                 <div class="chart-container">
                     <canvas id="country-chart"></canvas>
                 </div>
@@ -468,6 +468,10 @@
                     <span class="stat-value">${tech.under_construction}</span>
                 </div>
                 <div class="stat-row">
+                    <span class="stat-label">Suspended</span>
+                    <span class="stat-value">${tech.suspended}</span>
+                </div>
+                <div class="stat-row">
                     <span class="stat-label">Permanently Shutdown</span>
                     <span class="stat-value">${tech.shutdown}</span>
                 </div>
@@ -532,15 +536,16 @@
                     '<p style="text-align: center; color: #6B6E7B; padding: 100px 0;">Location data not available</p>';
             }
 
-            // Country breakdown chart
-            if (countryBreakdown && countryBreakdown.length > 0) {
-                const top15 = countryBreakdown.slice(0, 15);
+            // Country breakdown chart: operating units only, sorted by operating capacity (server-side)
+            const operatingBreakdown = (countryBreakdown || []).filter(c => c.operational > 0);
+            if (operatingBreakdown.length > 0) {
+                const top15 = operatingBreakdown.slice(0, 15);
                 new Chart(document.getElementById('country-chart'), {
                     type: 'bar',
                     data: {
                         labels: top15.map(c => c.country),
                         datasets: [{
-                            label: 'Capacity (GW)',
+                            label: 'Operating capacity (GW, gross)',
                             data: top15.map(c => c.capacity_gw),
                             backgroundColor: '#3F55C5',
                             borderRadius: 0
@@ -555,7 +560,7 @@
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => {
-                                        return `${top15[ctx.dataIndex].count} reactors`;
+                                        return `${top15[ctx.dataIndex].operational} operating reactors`;
                                     }
                                 }
                             }
@@ -566,7 +571,7 @@
                                 ticks: { color: '#6B6E7B' },
                                 title: {
                                     display: true,
-                                    text: 'GW',
+                                    text: 'Operating capacity (GW, gross)',
                                     color: '#6B6E7B'
                                 }
                             },
@@ -589,7 +594,7 @@
                 });
             } else {
                 document.getElementById('country-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No country data available</p>';
+                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No operating reactors of this technology</p>';
             }
 
             // Generation chart

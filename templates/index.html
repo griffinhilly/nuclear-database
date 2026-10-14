@@ -38,7 +38,7 @@
             </div>
             <div class="stat-card" data-stat="capacity">
                 <div class="stat-value" id="stat-capacity">--</div>
-                <div class="stat-label">Capacity (GW)</div>
+                <div class="stat-label">Capacity (GW, gross)</div>
             </div>
             <div class="stat-card" data-stat="construction">
                 <div class="stat-value" id="stat-construction">--</div>
@@ -51,7 +51,7 @@
             </div>
             <div class="stat-card" data-stat="countries">
                 <div class="stat-value" id="stat-countries">--</div>
-                <div class="stat-label">Countries</div>
+                <div class="stat-label">Countries Operating</div>
             </div>
             <div class="stat-card" data-stat="age">
                 <div class="stat-value" id="stat-age">--</div>
@@ -103,7 +103,7 @@
                     <div>
                         <div style="font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--reg-grey-dark); opacity: 0.7; margin-bottom: 10px;">Featured</div>
                         <h2 style="color: var(--reg-grey-dark); font-family: var(--font-sans); font-size: 1.5rem; font-weight: 500; margin-bottom: 8px; letter-spacing: -0.01em;">Reactor Design Lineages</h2>
-                        <p style="color: var(--reg-grey-dark); opacity: 0.78; font-size: 0.95rem; max-width: 70ch;">Explore 24 design families and 123 reactor series &mdash; from the first prototypes to Gen III+ and Gen IV. Interactive family tree visualizations trace the evolution of each design.</p>
+                        <p style="color: var(--reg-grey-dark); opacity: 0.78; font-size: 0.95rem; max-width: 70ch;">Explore {{ lineage.families }} design families and {{ lineage.series }} reactor series &mdash; from the first prototypes to Gen III+ and Gen IV. Interactive family tree visualizations trace the evolution of each design.</p>
                     </div>
                     <span style="color: var(--reg-grey-dark); font-size: 2rem; margin-left: 30px; flex-shrink: 0;">&rarr;</span>
                 </div>
@@ -161,7 +161,7 @@
                         <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
                         <th data-sort="country">Country <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="country">&#9698;</span></th>
                         <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
-                        <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
+                        <th data-sort="capacity"><span id="capacity-header">Capacity (MW)</span> <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
                         <th data-sort="status">Status <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="status">&#9698;</span></th>
                         <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="date">&#9698;</span></th>
                     </tr>
@@ -190,6 +190,7 @@
         <div class="modal-content" style="max-width: 950px;">
             <button class="modal-close" onclick="closeModal('construction-modal')">&times;</button>
             <h2>Reactors Under Construction</h2>
+            <p id="construction-note" style="color: #6B6E7B; font-size: 0.85rem; margin: 0 0 10px;"></p>
             <div id="construction-map" class="modal-map-container"></div>
         </div>
     </div>
@@ -199,7 +200,9 @@
         <div class="modal-content" style="max-width: 950px;">
             <button class="modal-close" onclick="closeModal('countries-modal')">&times;</button>
             <h2>Nuclear Power Countries</h2>
+            <p id="countries-note" style="color: #6B6E7B; font-size: 0.85rem; margin: 0 0 10px;"></p>
             <div id="countries-map" class="modal-map-container"></div>
+            <div id="countries-legend" style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-size: 0.8rem; color: #474853;"></div>
         </div>
     </div>
 
@@ -262,20 +265,15 @@
                 document.getElementById('stat-capacity').textContent = stats.global_statistics.operational.capacity_gw;
                 document.getElementById('stat-construction').textContent = stats.global_statistics.under_construction;
                 const gen = stats.global_statistics.generation;
-                if (gen && gen.adjusted_twh) {
-                    const roundedTwh = Math.round(gen.adjusted_twh);
-                    const value = gen.is_estimated ? `~${roundedTwh.toLocaleString()}` : roundedTwh.toLocaleString();
-                    document.getElementById('stat-generation').textContent = value;
-                    const label = gen.is_estimated
-                        ? `${gen.year} Generation (TWh est, ${gen.coverage_pct}% reporting)`
-                        : `${gen.year} Generation (TWh)`;
-                    document.getElementById('stat-generation-label').textContent = label;
+                if (gen && gen.twh) {
+                    document.getElementById('stat-generation').textContent = Math.round(gen.twh).toLocaleString();
+                    document.getElementById('stat-generation-label').textContent = `${gen.year} Generation (TWh)`;
                     document.getElementById('stat-generation-source').innerHTML =
-                        '<a href="/sources">PRIS</a>';
+                        '<a href="/sources">Ember / Energy Institute</a>';
                 } else {
                     document.getElementById('stat-generation').textContent = '--';
                 }
-                document.getElementById('stat-countries').textContent = stats.data_coverage.countries;
+                document.getElementById('stat-countries').textContent = stats.global_statistics.operating_countries;
                 document.getElementById('stat-age').textContent = stats.global_statistics.average_fleet_age_years;
 
                 // Load charts
@@ -347,7 +345,7 @@
             const data = await fetchAPI('/api/countries');
 
             const top10 = data.countries
-                .sort((a, b) => b.operational - a.operational)
+                .sort((a, b) => b.capacity_gw - a.capacity_gw)
                 .slice(0, 10);
 
             const countryChart = new Chart(document.getElementById('country-chart'), {
@@ -355,8 +353,8 @@
                 data: {
                     labels: top10.map(c => c.name),
                     datasets: [{
-                        label: 'Operational Reactors',
-                        data: top10.map(c => c.operational),
+                        label: 'Operating capacity (GW, gross)',
+                        data: top10.map(c => c.capacity_gw),
                         backgroundColor: colors.primary,
                         borderRadius: 4
                     }]
@@ -366,12 +364,18 @@
                     maintainAspectRatio: false,
                     indexAxis: 'y',
                     plugins: {
-                        legend: { display: false }
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => `${top10[ctx.dataIndex].capacity_gw} GW gross, ${top10[ctx.dataIndex].operational} reactors`
+                            }
+                        }
                     },
                     scales: {
                         x: {
                             grid: { color: '#E8E8EB' },
-                            ticks: { color: '#6B6E7B' }
+                            ticks: { color: '#6B6E7B' },
+                            title: { display: true, text: 'Operating capacity (GW, gross)', color: '#6B6E7B' }
                         },
                         y: {
                             grid: { display: false },
@@ -420,7 +424,7 @@
                         legend: { display: false },
                         subtitle: {
                             display: true,
-                            text: 'Sources: [PRIS] nuclear generation (coverage-adjusted), [EI-SR] global electricity',
+                            text: 'Source: [EMBER] and [EI-SR] via Our World in Data (nuclear and total electricity generation)',
                             color: '#6B6E7B',
                             font: { size: 11 },
                             padding: { bottom: 10 }
@@ -512,24 +516,48 @@
         }
 
         // Capacity history chart
+        // History + projection: the past is a solid line ending in a dot at today's value; the
+        // projection continues from that dot as a dashed line (no vertical "today" rule).
+        function withProjection(history, projection, field) {
+            const proj = (projection && projection.years) ? projection.years.filter(p => p.year > history[history.length - 1].year) : [];
+            const labels = history.map(d => d.year).concat(proj.map(p => p.year));
+            const past = history.map(d => d[field]).concat(proj.map(() => null));
+            const future = history.map((d, i) => i === history.length - 1 ? d[field] : null).concat(proj.map(p => p[field]));
+            const dot = (r) => labels.map((_, i) => i === history.length - 1 ? 5 : r);
+            return { labels, past, future, dot, hasProjection: proj.length > 0, todayIndex: history.length - 1 };
+        }
+
         async function loadCapacityChart() {
             const data = await fetchAPI('/api/capacity/history');
             const history = data.history;
+            const series = withProjection(history, data.projection, 'capacity_gw');
+            const projYears = data.projection ? data.projection.years : [];
 
             new Chart(document.getElementById('capacity-chart'), {
                 type: 'line',
                 data: {
-                    labels: history.map(d => d.year),
+                    labels: series.labels,
                     datasets: [{
                         label: 'Installed Capacity (GW)',
-                        data: history.map(d => d.capacity_gw),
+                        data: series.past,
                         borderColor: colors.forest,
                         backgroundColor: 'rgba(64, 119, 74, 0.10)',
                         fill: true,
                         tension: 0.3,
-                        pointRadius: 0,
+                        pointRadius: series.dot(0),
                         pointHoverRadius: 5,
-                        pointBackgroundColor: colors.yellow
+                        pointBackgroundColor: colors.forest,
+                        pointBorderColor: colors.forest
+                    }, {
+                        label: 'Projected',
+                        data: series.future,
+                        borderColor: colors.forest,
+                        borderDash: [6, 4],
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.3,
+                        pointRadius: 0,
+                        pointHoverRadius: 4
                     }]
                 },
                 options: {
@@ -539,15 +567,21 @@
                         legend: { display: false },
                         subtitle: {
                             display: true,
-                            text: 'Source: [PRIS] reactor dates + capacity changes',
+                            text: ['Source: [PRIS] reactor dates and capacities (gross), at year end. Reactors IAEA now lists as suspended drop out from their suspension date; reactors idle for years and later restarted (e.g. Japan 2012-15) count throughout.',
+                                   'Dashed: projection from reactors under construction; closures not included.'],
                             color: '#9498A4',
                             font: { size: 11 },
                             padding: { bottom: 10 }
                         },
                         tooltip: {
+                            filter: (item) => item.raw !== null && !(item.datasetIndex === 1 && item.dataIndex === series.todayIndex),
                             callbacks: {
-                                label: (ctx) => `${history[ctx.dataIndex].capacity_gw} GW`,
-                                afterLabel: (ctx) => `${history[ctx.dataIndex].reactor_count} reactors`
+                                label: (ctx) => ctx.datasetIndex === 1 ? `Projected: ${ctx.raw} GW` : `${ctx.raw} GW`,
+                                afterLabel: (ctx) => {
+                                    if (ctx.datasetIndex === 0) return `${history[ctx.dataIndex].reactor_count} reactors`;
+                                    const p = projYears.find(y => y.year === series.labels[ctx.dataIndex]);
+                                    return p && ctx.dataIndex !== series.todayIndex ? `${p.operational} reactors (projected)` : '';
+                                }
                             }
                         }
                     },
@@ -723,7 +757,7 @@
             name:       { type: 'text',     field: r => `${r.plant_name || r.project_name || ''}-${r.unit_number || ''}` },
             country:    { type: 'checkbox', field: r => r.country || '-' },
             technology: { type: 'checkbox', field: r => r.technology || '-' },
-            capacity:   { type: 'range',    field: r => r.gross_capacity_mw || 0 },
+            capacity:   { type: 'range',    field: r => (r.capacity_mw ?? r.gross_capacity_mw) || 0 },
             status:     { type: 'checkbox', field: r => r.status || r.likelihood || '-' },
             date:       { type: 'text',     field: r => r.commercial_operation || r.expected_online || r.permanent_shutdown || '' }
         };
@@ -767,8 +801,8 @@
                             valB = (b.technology || '').toLowerCase();
                             break;
                         case 'capacity':
-                            valA = a.gross_capacity_mw || 0;
-                            valB = b.gross_capacity_mw || 0;
+                            valA = (a.capacity_mw ?? a.gross_capacity_mw) || 0;
+                            valB = (b.capacity_mw ?? b.gross_capacity_mw) || 0;
                             break;
                         case 'status':
                             valA = (a.status || a.likelihood || '').toLowerCase();
@@ -936,6 +970,9 @@
 
             loading.style.display = 'block';
             table.style.display = 'none';
+            // Planned units: net capacity where reported, else gross (same basis as the planned pages)
+            document.getElementById('capacity-header').textContent =
+                tab === 'planned' ? 'Capacity (MW, net; gross if no net)' : 'Capacity (MW, gross)';
 
             // Toggle search/filter controls
             searchControls.style.display = tab === 'search' ? 'flex' : 'none';
@@ -1082,7 +1119,7 @@
                     <td><strong>${r.project_name}-${r.unit_number || '?'}</strong></td>
                     <td>${r.country || '-'}</td>
                     <td>${r.technology || '-'}</td>
-                    <td>${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() : '-'}</td>
+                    <td>${r.capacity_mw ? r.capacity_mw.toLocaleString() + (r.capacity_basis === 'gross' ? ' <span style="color:#888">(gross)</span>' : '') : '-'}</td>
                     <td><span class="status-badge status-planned">${r.likelihood || 'Planned'}</span></td>
                     <td>${r.expected_online || '-'}</td>
                 </tr>
@@ -1150,31 +1187,57 @@
             const filtered = statKey === 'generation'
                 ? data.filter(d => d[config.field] > 0)
                 : data.filter(d => d.operational > 0);
+            const isLine = statKey !== 'generation';
+            const series = isLine
+                ? withProjection(filtered, statsHistoryCache.projection, config.field)
+                : { labels: filtered.map(d => d.year), past: filtered.map(d => d[config.field]), future: [], dot: () => 2, hasProjection: false };
+            const datasets = [{
+                label: config.title,
+                data: series.past,
+                borderColor: config.color,
+                backgroundColor: isLine ? `${config.color}22` : config.color,
+                fill: isLine,
+                tension: 0.3,
+                pointRadius: series.dot(2),
+                pointBackgroundColor: config.color,
+                borderRadius: isLine ? 0 : 2
+            }];
+            if (series.hasProjection) {
+                datasets.push({
+                    label: 'Projected',
+                    data: series.future,
+                    borderColor: config.color,
+                    borderDash: [6, 4],
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 0
+                });
+            }
 
             if (modalChart) modalChart.destroy();
             modalChart = new Chart(document.getElementById('modal-chart'), {
-                type: statKey === 'generation' ? 'bar' : 'line',
+                type: isLine ? 'line' : 'bar',
                 data: {
-                    labels: filtered.map(d => d.year),
-                    datasets: [{
-                        label: config.title,
-                        data: filtered.map(d => d[config.field]),
-                        borderColor: config.color,
-                        backgroundColor: statKey === 'generation' ? config.color : `${config.color}22`,
-                        fill: statKey !== 'generation',
-                        tension: 0.3,
-                        pointRadius: 2,
-                        borderRadius: statKey === 'generation' ? 2 : 0
-                    }]
+                    labels: series.labels,
+                    datasets: datasets
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { display: false },
+                        subtitle: {
+                            display: series.hasProjection,
+                            text: series.hasProjection ? statsHistoryCache.projection.method : '',
+                            color: '#6B6E7B',
+                            font: { size: 11 },
+                            padding: { bottom: 10 }
+                        },
                         tooltip: {
+                            filter: (item) => item.raw !== null && !(item.datasetIndex === 1 && item.dataIndex === series.todayIndex),
                             callbacks: {
-                                label: (ctx) => `${ctx.raw.toLocaleString()}${config.unit}`
+                                label: (ctx) => `${ctx.datasetIndex === 1 ? 'Projected: ' : ''}${ctx.raw.toLocaleString()}${config.unit}`
                             }
                         }
                     },
@@ -1216,6 +1279,10 @@
 
                 try {
                     const data = await fetchAPI('/api/construction-map');
+                    const missing = data.units_without_coordinates || [];
+                    document.getElementById('construction-note').textContent =
+                        `${data.units_mapped} of ${data.units_total} units under construction shown` +
+                        (missing.length ? ` (${missing.length} without coordinates: ${missing.join(', ')}).` : '.');
                     data.sites.forEach(site => {
                         const radius = Math.max(6, Math.sqrt(site.total_capacity_mw / 50));
                         const reactorList = site.reactors.map(r =>
@@ -1302,34 +1369,63 @@
                         else if (g.type === 'MultiPolygon') g.coordinates.forEach(p => p.forEach(fixRing));
                     });
 
-                    L.geoJSON(geojson, {
-                        style: (feature) => {
-                            const id = feature.id;
-                            const country = numericLookup[id];
-                            return {
-                                fillColor: country ? '#3F55C5' : '#F6F6F6',
-                                weight: 1,
-                                color: '#D6D6DA',
-                                fillOpacity: country ? 0.55 : 0.3
-                            };
-                        },
+                    // Same rule as the "Countries Operating" card: a country is operating if it has
+                    // at least one reactor with status Operational. Countries with none operating but
+                    // some under construction get a separate "building" style. scripts/site_consistency.py
+                    // checks that the operating count here equals the card.
+                    const isOperating = c => c.operational > 0;
+                    const isBuilding = c => c.operational === 0 && c.under_construction > 0;
+                    const ramp = [  // operating capacity, GW gross
+                        { min: 30, opacity: 0.9, label: '30+ GW' },
+                        { min: 10, opacity: 0.7, label: '10-30 GW' },
+                        { min: 2, opacity: 0.5, label: '2-10 GW' },
+                        { min: 0, opacity: 0.32, label: 'under 2 GW' }
+                    ];
+                    const buildingStyle = { fillColor: '#FFC100', fillOpacity: 0.75, color: '#474853', weight: 1.5, dashArray: '4 3' };
+                    const countryStyle = (country) => {
+                        if (country && isOperating(country)) {
+                            const step = ramp.find(s => country.capacity_gw >= s.min);
+                            return { fillColor: '#3F55C5', fillOpacity: step.opacity, color: '#D6D6DA', weight: 1 };
+                        }
+                        if (country && isBuilding(country)) return buildingStyle;
+                        return { fillColor: '#F6F6F6', fillOpacity: 0.3, color: '#D6D6DA', weight: 1 };
+                    };
+
+                    const shown = Object.values(numericLookup);
+                    const nOperating = shown.filter(isOperating).length;
+                    const building = shown.filter(isBuilding);
+                    const allBuildingFirst = building.every(c => !c.former_units);
+                    const buildingLabel = allBuildingFirst ? 'Building first reactor' : 'Building, none operating';
+                    document.getElementById('countries-note').textContent =
+                        `${nOperating} countries operate nuclear reactors` +
+                        (building.length
+                            ? `; ${building.length} more ${allBuildingFirst ? 'are building their first' : 'are building but operate none'} (${building.map(c => c.name).join(', ')}).`
+                            : '.');
+                    document.getElementById('countries-legend').innerHTML =
+                        ramp.map(s => `<span><span style="display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:5px;background:rgba(63,85,197,${s.opacity});border:1px solid #D6D6DA;"></span>Operating, ${s.label}</span>`).join('') +
+                        `<span><span style="display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:5px;background:rgba(255,193,0,0.75);border:1.5px dashed #474853;"></span>${buildingLabel}</span>`;
+
+                    const geoLayer = L.geoJSON(geojson, {
+                        style: (feature) => countryStyle(numericLookup[feature.id]),
                         onEachFeature: (feature, layer) => {
                             const country = numericLookup[feature.id];
                             if (country) {
                                 layer.bindTooltip(
                                     `<strong>${country.name}</strong><br>` +
-                                    `Operational: ${country.operational}<br>` +
-                                    `Capacity: ${country.capacity_gw} GW`,
+                                    (isOperating(country)
+                                        ? `Operational: ${country.operational}<br>Capacity: ${country.capacity_gw} GW`
+                                        : buildingLabel) +
+                                    (country.under_construction ? `<br>Under construction: ${country.under_construction}` : ''),
                                     { sticky: true }
                                 );
                                 layer.on('click', () => {
                                     window.location.href = `/country/${encodeURIComponent(country.name)}`;
                                 });
                                 layer.on('mouseover', function() {
-                                    this.setStyle({ fillOpacity: 0.85, weight: 2 });
+                                    this.setStyle({ fillOpacity: 0.95, weight: 2 });
                                 });
                                 layer.on('mouseout', function() {
-                                    this.setStyle({ fillOpacity: 0.6, weight: 1 });
+                                    geoLayer.resetStyle(this);
                                 });
                             }
                         }

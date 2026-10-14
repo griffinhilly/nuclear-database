@@ -310,6 +310,10 @@
     {% include '_reg_footer.html' %}
 
     <script>
+        function escapeHtml(v) {
+            return String(v).replace(/[&<>"']/g, ch => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[ch]));
+        }
+
         const API_KEY = 'demo-key-12345';
         const REACTOR_ID = {{ reactor_id }};
 
@@ -318,6 +322,19 @@
             const years = Math.floor(ageYears);
             const days = Math.round((ageYears - years) * 365.25);
             return `${years} Years, ${days} Days`;
+        }
+
+        // Helper to build a stat row, returns empty string if value is null/undefined.
+        // Top level: the design-specs card and the reactor-details card both use it, and
+        // 28 reactors have details but no design_series_specs row.
+        function specRow(label, value, suffix) {
+            if (value == null) return '';
+            let display = value;
+            if (suffix) display = value.toLocaleString() + ' ' + suffix;
+            return `<div class="stat-row">
+                <span class="stat-label">${label}</span>
+                <span class="stat-value">${display}</span>
+            </div>`;
         }
 
         async function loadReactorDetails() {
@@ -429,6 +446,13 @@
                     <span class="stat-label">Commercial Operation</span>
                     <span class="stat-value">${reactor.commercial_operation || '--'}</span>
                 </div>
+                ${reactor.status === 'Under Construction' ? `
+                <div class="stat-row">
+                    <span class="stat-label">Expected Operation</span>
+                    <span class="stat-value">${reactor.expected_status === 'PAUSED' ? 'Construction paused'
+                        : (reactor.expected_operation ? escapeHtml(reactor.expected_operation) : 'No date announced')}${reactor.expected_source
+                        ? ` <a href="${escapeHtml(reactor.expected_source)}" target="_blank" rel="noopener" style="font-size: 0.8em;">source</a>` : ''}</span>
+                </div>` : ''}
                 ${reactor.permanent_shutdown ? `
                 <div class="stat-row">
                     <span class="stat-label">Shutdown</span>
@@ -512,17 +536,6 @@
             // Design series technical specs
             if (data.design_specs) {
                 const ds = data.design_specs;
-
-                // Helper to build a stat row, returns empty string if value is null/undefined
-                function specRow(label, value, suffix) {
-                    if (value == null) return '';
-                    let display = value;
-                    if (suffix) display = value.toLocaleString() + ' ' + suffix;
-                    return `<div class="stat-row">
-                        <span class="stat-label">${label}</span>
-                        <span class="stat-value">${display}</span>
-                    </div>`;
-                }
 
                 // Source note HTML
                 const sourceNote = `<div class="spec-note">Typical values for ${ds.design_series} design` +

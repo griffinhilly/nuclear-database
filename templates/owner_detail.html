@@ -176,7 +176,7 @@
     {% include '_reg_footer.html' %}
 
     <script>
-        const OWNER_NAME = "{{ owner_name }}";
+        const OWNER_NAME = {{ owner_name|tojson }};
 
         let currentReactors = [];
         let currentSort = { column: null, ascending: true };
@@ -476,6 +476,10 @@
                 <div class="stat-row">
                     <span class="stat-label">Under Construction</span>
                     <span class="stat-value">${owner.under_construction}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Suspended</span>
+                    <span class="stat-value">${owner.suspended}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Permanently Shutdown</span>

@@ -172,7 +172,7 @@
 
             <!-- Country Breakdown -->
             <div class="card" style="margin-top: 24px;">
-                <h2>Country Breakdown</h2>
+                <h2>Country Breakdown (all statuses)</h2>
                 <div class="chart-container">
                     <canvas id="country-chart"></canvas>
                 </div>
@@ -183,7 +183,7 @@
     {% include '_reg_footer.html' %}
 
     <script>
-        const SUPPLIER_NAME = "{{ supplier_name }}";
+        const SUPPLIER_NAME = {{ supplier_name|tojson }};
 
         let currentReactors = [];
         let currentSort = { column: null, ascending: true };
@@ -416,7 +416,7 @@
             // Header
             document.getElementById('supplier-name').textContent = supplier.name;
             document.getElementById('supplier-subtitle').textContent =
-                `${supplier.operational} operational reactors | ${supplier.capacity_gw} GW total capacity`;
+                `${supplier.operational} operational reactors | ${supplier.capacity_gw} GW operating capacity`;
 
             if (data.description) {
                 document.getElementById('supplier-description').textContent = data.description;
@@ -437,7 +437,7 @@
                 </div>
                 <div class="mini-stat">
                     <div class="mini-stat-value">${supplier.capacity_gw}</div>
-                    <div class="mini-stat-label">Capacity (GW)</div>
+                    <div class="mini-stat-label">Operating capacity (GW)</div>
                 </div>
                 <div class="mini-stat">
                     <div class="mini-stat-value">${supplier.avg_age || '--'}</div>
@@ -476,6 +476,10 @@
                 <div class="stat-row">
                     <span class="stat-label">Under Construction</span>
                     <span class="stat-value">${supplier.under_construction}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Suspended</span>
+                    <span class="stat-value">${supplier.suspended}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Permanently Shutdown</span>
@@ -603,7 +607,7 @@
                     data: {
                         labels: top15.map(c => c.country),
                         datasets: [{
-                            label: 'Capacity (GW)',
+                            label: 'Capacity, all statuses (GW, gross)',
                             data: top15.map(c => c.capacity_gw),
                             backgroundColor: '#3F55C5',
                             borderRadius: 0
@@ -618,7 +622,7 @@
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => {
-                                        return `${top15[ctx.dataIndex].count} reactors`;
+                                        return `${top15[ctx.dataIndex].count} reactors (all statuses)`;
                                     }
                                 }
                             }
@@ -629,7 +633,7 @@
                                 ticks: { color: '#6B6E7B' },
                                 title: {
                                     display: true,
-                                    text: 'GW',
+                                    text: 'GW, all statuses (gross)',
                                     color: '#6B6E7B'
                                 }
                             },

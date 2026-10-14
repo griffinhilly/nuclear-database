@@ -178,7 +178,8 @@
             <table>
                 <tr><td>[PRIS]</td><td>IAEA Power Reactor Information System &mdash; primary source for reactor specifications, status, and generation data</td></tr>
                 <tr><td>[WNA]</td><td>World Nuclear Association country and technology profiles &mdash; supplementary reactor data, planned projects</td></tr>
-                <tr><td>[EI-SR]</td><td>Energy Institute Statistical Review of World Energy &mdash; global electricity generation totals</td></tr>
+                <tr><td>[EI-SR]</td><td>Energy Institute Statistical Review of World Energy &mdash; world nuclear and total electricity generation (before 2000)</td></tr>
+                <tr><td>[EMBER]</td><td>Ember Yearly Electricity Data &mdash; world nuclear and total electricity generation (2000 onward)</td></tr>
                 <tr><td>[WP]</td><td>Wikipedia &mdash; cross-reference for reactor histories, shutdown dates, ownership</td></tr>
                 <tr><td>[NRC]</td><td>U.S. Nuclear Regulatory Commission &mdash; U.S. reactor licensing and status</td></tr>
                 <tr><td>[CNEA]</td><td>China Nuclear Energy Association &mdash; Chinese reactor fleet data</td></tr>
@@ -225,14 +226,29 @@
                 <div class="source-url"><a href="https://www.energyinst.org/statistical-review" target="_blank">https://www.energyinst.org/statistical-review</a></div>
                 <div class="source-desc">
                     Formerly the BP Statistical Review of World Energy, now published by the Energy Institute.
-                    Used for global total electricity generation figures (TWh, gross) to compute nuclear's share
-                    of global electricity. Series accessed via
-                    <a href="https://ourworldindata.org/grapher/electricity-generation" target="_blank">Our World in Data</a>
-                    (retrieved July 2026).
+                    Used, together with Ember from 2000 onward, for world nuclear generation and world total
+                    electricity generation (TWh, gross). Series accessed via Our World in Data
+                    (<a href="https://ourworldindata.org/grapher/nuclear-energy-generation" target="_blank">nuclear</a>,
+                    <a href="https://ourworldindata.org/grapher/electricity-generation" target="_blank">total</a>;
+                    retrieved 14 October 2026).
                 </div>
                 <div class="source-covers">
-                    <strong>Covers:</strong> Global electricity generation by year (1985&ndash;2025 &mdash; the EI series
-                    begins in 1985), used in the "Nuclear Share of Global Electricity" chart.
+                    <strong>Covers:</strong> The homepage generation figure, the generation history chart, and the
+                    "Nuclear Share of Global Electricity" chart (1985&ndash;2025).
+                </div>
+            </div>
+
+            <div class="source-card">
+                <span class="source-code">EMBER</span>
+                <span class="source-name">Ember &mdash; Yearly Electricity Data</span>
+                <div class="source-url"><a href="https://ember-energy.org/data/yearly-electricity-data/" target="_blank">https://ember-energy.org/data/yearly-electricity-data/</a></div>
+                <div class="source-desc">
+                    Annual electricity generation by country and source, from 2000 (1990 for Europe). Combined with
+                    [EI-SR] for earlier years by Our World in Data: &ldquo;Ember (2026); Energy Institute &ndash;
+                    Statistical Review of World Energy (2026) &ndash; with major processing by Our World in Data.&rdquo;
+                </div>
+                <div class="source-covers">
+                    <strong>Covers:</strong> World and country nuclear generation totals, 2000&ndash;2025.
                 </div>
             </div>
         </div>
@@ -288,37 +304,33 @@
             <h2>Methodology Notes</h2>
 
             <div class="methodology-card">
-                <h3>Generation Data Coverage Adjustment</h3>
+                <h3>World Generation Totals</h3>
                 <p>
-                    Annual electricity generation data comes from IAEA PRIS <span style="color: var(--accent); font-weight: 600;">[PRIS]</span>.
-                    However, not all operational reactors report generation data for every year. For recent years
-                    (particularly 2022&ndash;2025), only a subset of the global fleet reports.
+                    World nuclear generation on the homepage comes from a published series
+                    <span style="color: var(--accent); font-weight: 600;">[EMBER]</span>
+                    <span style="color: var(--accent); font-weight: 600;">[EI-SR]</span>,
+                    not from adding up our reactor-level records. Reactor-level generation
+                    <span style="color: var(--accent); font-weight: 600;">[PRIS]</span>
+                    is incomplete for recent years, so a sum would undercount, and scaling it up by
+                    reporting coverage overstated the 2025 total by about 5%.
                 </p>
                 <p>
-                    To estimate total global nuclear generation, we apply a <strong>coverage adjustment</strong>:
-                </p>
-                <p style="padding-left: 20px;">
-                    <code>Adjusted TWh = Raw TWh x (Operational Reactors / Reporting Reactors)</code>
-                </p>
-                <p>
-                    This assumes non-reporting reactors generate at the same average rate as reporting ones.
-                    The dashboard displays the coverage percentage and raw vs. adjusted figures for transparency.
+                    Reactor, plant and country pages still show reactor-level generation where we have it.
                 </p>
             </div>
 
             <div class="methodology-card">
                 <h3>Nuclear Share of Global Electricity</h3>
                 <p>
-                    The annual share chart divides coverage-adjusted nuclear generation
-                    <span style="color: var(--accent); font-weight: 600;">[PRIS]</span>
-                    by total global electricity generation
-                    <span style="color: var(--accent); font-weight: 600;">[EI-SR]</span>
-                    for each year from 1970 to 2024.
+                    The annual share chart divides world nuclear generation by world total electricity
+                    generation, both from the same published series
+                    <span style="color: var(--accent); font-weight: 600;">[EMBER]</span>
+                    <span style="color: var(--accent); font-weight: 600;">[EI-SR]</span>,
+                    for each year from 1985 to 2025. Both are gross generation, so the share is like for like.
                 </p>
                 <p>
                     Global electricity totals are from the Energy Institute Statistical Review of World Energy
-                    (formerly BP Statistical Review). Nuclear generation uses PRIS data with coverage adjustment
-                    as described above.
+                    (formerly BP Statistical Review) and Ember.
                 </p>
             </div>
 
@@ -360,9 +372,10 @@
             <div class="methodology-card">
                 <h3>Reactor Age</h3>
                 <p>
-                    Reactor age is computed from the <strong>commercial operation date</strong> recorded in PRIS,
-                    not the grid connection date or construction start date. Ages are computed dynamically
-                    at query time.
+                    Reactor age is measured from the <strong>first grid connection</strong> recorded in PRIS
+                    (the IAEA convention), falling back to the commercial operation date when no grid connection
+                    date is recorded. It is not measured from the construction start. For shut-down reactors, age
+                    stops at the permanent shutdown date. Ages are computed dynamically at query time.
                 </p>
             </div>
 
@@ -383,11 +396,11 @@
 
             <div class="source-card">
                 <div class="source-desc">
-                    <p><strong>Reactor specifications and status:</strong> Verified against IAEA PRIS, WNA, and Wikipedia as of March 2026.</p>
-                    <p style="margin-top: 6px;"><strong>Generation data:</strong> IAEA PRIS annual electricity generation, 1954&ndash;2025.</p>
-                    <p style="margin-top: 6px;"><strong>Global electricity totals:</strong> Energy Institute Statistical Review (via Our World in Data), 1985&ndash;2025.</p>
+                    <p><strong>Reactor specifications and status:</strong> Checked against the IAEA PRIS database in October 2026; earlier checks against WNA and Wikipedia.</p>
+                    <p style="margin-top: 6px;"><strong>Reactor-level generation:</strong> IAEA PRIS annual electricity generation, 1954&ndash;2025 (incomplete for recent years).</p>
+                    <p style="margin-top: 6px;"><strong>World generation totals:</strong> Ember and Energy Institute Statistical Review (via Our World in Data), retrieved 14 October 2026.</p>
                     <p style="margin-top: 6px;"><strong>Planned reactors:</strong> WNA, IAEA PRIS, and news sources as of March 2026.</p>
-                    <p style="margin-top: 6px;"><strong>Under construction:</strong> 66 reactors verified against IAEA PRIS (March 2026).</p>
+                    <p style="margin-top: 6px;"><strong>Under construction:</strong> Checked against IAEA PRIS (October 2026).</p>
                 </div>
             </div>
         </div>

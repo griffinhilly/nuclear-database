@@ -267,7 +267,7 @@
     {% include '_reg_footer.html' %}
 
     <script>
-        const PROJECT_NAME = "{{ project_name }}";
+        const PROJECT_NAME = {{ project_name|tojson }};
 
         async function loadPlannedDetails() {
             try {
@@ -297,7 +297,10 @@
             }
 
             // Quick stats
-            const totalCapacity = units.reduce((s, u) => s + (u.net_capacity_mw || 0), 0);
+            // Net capacity where reported, else gross: the same basis as the homepage Planned tab
+            const totalCapacity = units.reduce((s, u) => s + (u.capacity_mw || 0), 0);
+            const anyGross = units.some(u => u.capacity_basis === 'gross');
+            const capBasis = anyGross ? 'MW, net; gross if no net' : 'MW, net';
             const likelihoodClass = plant.likelihood === 'High' ? 'likelihood-high'
                 : plant.likelihood === 'Medium' ? 'likelihood-medium' : 'likelihood-low';
 
@@ -307,12 +310,12 @@
                     <div class="mini-stat-label">Planned Units</div>
                 </div>
                 <div class="mini-stat">
-                    <div class="mini-stat-value">${units[0].net_capacity_mw ? units[0].net_capacity_mw.toLocaleString() : '--'}</div>
-                    <div class="mini-stat-label">Net Capacity / Unit (MW)</div>
+                    <div class="mini-stat-value">${units[0].capacity_mw ? units[0].capacity_mw.toLocaleString() : '--'}</div>
+                    <div class="mini-stat-label">Capacity / Unit (${units[0].capacity_basis === 'gross' ? 'MW, gross' : 'MW, net'})</div>
                 </div>
                 <div class="mini-stat">
                     <div class="mini-stat-value">${totalCapacity ? totalCapacity.toLocaleString() : '--'}</div>
-                    <div class="mini-stat-label">Total Net Capacity (MW)</div>
+                    <div class="mini-stat-label">Total Capacity (${capBasis})</div>
                 </div>
                 <div class="mini-stat">
                     <div class="mini-stat-value">${plant.expected_online || '--'}</div>

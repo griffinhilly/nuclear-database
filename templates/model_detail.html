@@ -266,7 +266,7 @@
     {% include '_reg_footer.html' %}
 
     <script>
-        const MODEL_NAME = "{{ model_name }}";
+        const MODEL_NAME = {{ model_name|tojson }};
 
         const REG_SERIES = ['#3F55C5', '#40774A', '#E06336', '#9FC3A5', '#FFC100', '#C7D9E8', '#474853'];
 
@@ -559,6 +559,10 @@
                 <div class="stat-row">
                     <span class="stat-label">Under Construction</span>
                     <span class="stat-value">${model.under_construction}</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Suspended</span>
+                    <span class="stat-value">${model.suspended}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Permanently Shutdown</span>

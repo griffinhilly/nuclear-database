@@ -8,6 +8,7 @@ import os
 import sys
 import sqlite3
 from flask import Flask, jsonify, request, render_template, redirect
+from datetime import datetime
 from functools import wraps
 from pathlib import Path
 
@@ -103,15 +104,49 @@ def require_api_key(tier='free'):
 # FRONTEND ROUTES
 # =============================================================================
 
+def last_updated_label():
+    """Footer "Last updated": month of the latest applied migration, e.g. 'October 2026'."""
+    try:
+        row = query_db("SELECT MAX(applied_at) AS d FROM _migrations")
+        if row and row[0]['d']:
+            return datetime.strptime(row[0]['d'][:10], '%Y-%m-%d').strftime('%B %Y')
+    except (sqlite3.Error, ValueError):
+        pass
+    return 'October 2026'
+
+
+@app.context_processor
+def inject_last_updated():
+    return {'last_updated': last_updated_label()}
+
+
+def lineage_counts():
+    """Design-family and series counts shown as text on the homepage and /lineages.
+
+    series = distinct reactors.design_series with at least one reactor (classified or not);
+    unclassified = reactors whose design_series has no design_series_info row.
+    """
+    row = query_db("""
+        SELECT (SELECT COUNT(DISTINCT dsi.lineage_id) FROM design_series_info dsi
+                JOIN reactors r ON r.design_series = dsi.design_series) AS families,
+               (SELECT COUNT(DISTINCT design_series) FROM reactors
+                WHERE design_series IS NOT NULL AND design_series != '') AS series,
+               (SELECT MIN(dsi.first_commercial_year) FROM design_series_info dsi
+                JOIN reactors r ON r.design_series = dsi.design_series) AS first_year
+    """)[0]
+    row['span_years'] = datetime.now().year - row['first_year'] if row['first_year'] else None
+    return row
+
+
 @app.route('/')
 def home():
     """Redirect to dashboard."""
-    return render_template('index.html')
+    return render_template('index.html', lineage=lineage_counts())
 
 @app.route('/dashboard')
 def dashboard():
     """Serve the main dashboard."""
-    return render_template('index.html')
+    return render_template('index.html', lineage=lineage_counts())
 
 @app.route('/sources')
 def sources():
@@ -143,63 +178,169 @@ def embed_map():
                            country_stats=country_stats)
 
 # =============================================================================
+# FLEET-OVER-TIME RULES (shared by every history chart and headline number)
+# =============================================================================
+
+# A reactor counts as operating in year Y if it is operating at the END of Y (the IAEA
+# year-end convention): it started (commercial operation, else grid connection) by then and
+# had not been permanently shut down or suspended by then. Reactors that were idle for years
+# and later restarted (e.g. Japan 2012-2015) count throughout, as IAEA counts them. With this rule the current-year count equals
+# the number of reactors with status 'Operational'; scripts/site_consistency.py
+# checks that and the other cross-chart agreements.
+OPERATING_IN_YEAR_SQL = """
+    COALESCE(r.commercial_operation, r.grid_connection) <= :year_end
+    AND (r.permanent_shutdown IS NULL OR r.permanent_shutdown > :year_end)
+    AND (r.suspended_since IS NULL OR r.suspended_since > :year_end)
+"""
+# Under construction at the end of Y: construction started, not yet operating, not abandoned.
+UNDER_CONSTRUCTION_IN_YEAR_SQL = """
+    r.construction_start <= :year_end
+    AND (COALESCE(r.commercial_operation, r.grid_connection) IS NULL
+         OR COALESCE(r.commercial_operation, r.grid_connection) > :year_end)
+    AND (r.permanent_shutdown IS NULL OR r.permanent_shutdown > :year_end)
+"""
+# Gross MW in effect at the end of Y: the current rating for the current year (so history
+# charts end exactly on the stat cards); for past years the latest capacity_changes record by
+# then, else the current rating. Reactors without change records carry today's rating back in time.
+CAPACITY_AT_YEAR_END_SQL = """
+    CASE WHEN :year_end >= DATE('now') THEN r.gross_capacity_mw ELSE
+    COALESCE((SELECT cc.gross_capacity_mw FROM capacity_changes cc
+              WHERE cc.reactor_id = r.id AND cc.effective_date <= :year_end
+                AND cc.gross_capacity_mw IS NOT NULL
+              ORDER BY cc.effective_date DESC LIMIT 1), r.gross_capacity_mw) END
+"""
+# Age is computed from first grid connection (IAEA PRIS convention), never read from the
+# stored reactors.age_years column, which is not maintained (NULL for 34 newer units).
+EXTERNAL_GENERATION_SOURCE = 'Ember and Energy Institute Statistical Review, via Our World in Data'
+
+
+AGE_SQL = ("(CASE WHEN COALESCE(r.grid_connection, r.commercial_operation) <= DATE('now') THEN "
+           "(JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation))) / 365.25 "
+           "END)")  # NULL for reactors not yet connected, so averages skip them
+
+
+def year_params(year):
+    return {'year_start': f'{year}-01-01', 'year_end': f'{year}-12-31'}
+
+
+# Projection: under-construction reactors only (no closures: we hold no sourced closure dates).
+# A unit enters service in its expected_operation year (sourced announcement, migration 032) if it
+# has one; paused units (expected_status 'PAUSED') are left out; otherwise construction start plus
+# the median build time (construction start to grid) of its country's units connected since
+# 2010 (world median if the country has fewer than 3). Units already past that point enter next
+# year. Units building for more than PROJECTION_STALLED_YEARS without an announced date are
+# left out (some are paused, some nearly done; without an announced date we cannot tell which).
+PROJECTION_STALLED_YEARS = 12
+PROJECTION_METHOD = ('Projection: reactors under construction, at their announced start year; if none, a year after '
+                     "a sister unit's date, else their country's median build time since 2010. "
+                     'Paused projects and closures are not included.')
+
+
+def fleet_projection():
+    """Future fleet path: [{year, operational, capacity_gw}] from the current year onward."""
+    import statistics
+    now = datetime.now()
+    now_y = now.year + (now.timetuple().tm_yday - 1) / 365.25
+    frac = lambda d: int(d[:4]) + (datetime.strptime(d[:10], '%Y-%m-%d').timetuple().tm_yday - 1) / 365.25
+    built = query_db("""SELECT country_id, construction_start, grid_connection FROM reactors
+                        WHERE grid_connection >= '2010-01-01' AND construction_start IS NOT NULL""")
+    by_country = {}
+    for r in built:
+        by_country.setdefault(r['country_id'], []).append(frac(r['grid_connection']) - frac(r['construction_start']))
+    world = statistics.median(v for vs in by_country.values() for v in vs)
+    median = {k: statistics.median(v) for k, v in by_country.items() if len(v) >= 3}
+
+    adds, stalled = {}, []
+    # A unit with no announced date follows its site's latest announced sibling by a year
+    # (e.g. Hinkley Point C 2 after unit 1), rather than borrowing a median that puts it first.
+    sibling = {}
+    for r in query_db("""SELECT plant_name, MAX(CAST(substr(expected_operation, 1, 4) AS INTEGER)) AS y
+                         FROM reactors WHERE status = 'Under Construction' AND expected_operation IS NOT NULL
+                         GROUP BY plant_name"""):
+        sibling[r['plant_name']] = r['y']
+    for r in query_db("""SELECT plant_name, plant_name || ' ' || unit_number AS name, country_id, construction_start,
+                                COALESCE(expected_operation, grid_connection, commercial_operation) AS announced,
+                                expected_status, gross_capacity_mw
+                         FROM reactors WHERE status = 'Under Construction'"""):
+        if r['expected_status'] == 'PAUSED':
+            stalled.append(r['name'])
+            continue
+        if r['announced']:
+            year = max(int(r['announced'][:4]), now.year + 1)
+        elif not r['construction_start']:
+            stalled.append(r['name'])
+            continue
+        elif now_y - frac(r['construction_start']) > PROJECTION_STALLED_YEARS:
+            stalled.append(r['name'])
+            continue
+        elif r['plant_name'] in sibling:
+            year = max(sibling[r['plant_name']] + 1, now.year + 1)
+        else:
+            year = max(int(frac(r['construction_start']) + median.get(r['country_id'], world)), now.year + 1)
+        n, mw = adds.get(year, (0, 0))
+        adds[year] = (n + 1, mw + (r['gross_capacity_mw'] or 0))
+
+    p = year_params(now.year)
+    base = query_db(f"""SELECT COUNT(*) AS n, COALESCE(SUM({CAPACITY_AT_YEAR_END_SQL}), 0) AS mw
+                        FROM reactors r WHERE {OPERATING_IN_YEAR_SQL}""", p)[0]
+    n, mw = base['n'], base['mw']
+    out = [{'year': now.year, 'operational': n, 'capacity_gw': round(mw / 1000, 1)}]
+    for y in range(now.year + 1, max(adds, default=now.year) + 1):
+        dn, dmw = adds.get(y, (0, 0))
+        n, mw = n + dn, mw + dmw
+        out.append({'year': y, 'operational': n, 'capacity_gw': round(mw / 1000, 1)})
+    return {'years': out, 'method': PROJECTION_METHOD, 'left_out_long_delayed': stalled}
+
+
+def safe_fleet_projection():
+    """The projection is an extra; a bad row must never take down the history endpoints."""
+    try:
+        return fleet_projection()
+    except Exception as e:  # noqa: BLE001
+        app.logger.warning('fleet_projection failed: %s', e)
+        return None
+
+
+def external_series(series, country_code='WLD'):
+    """Published series stored in external_series (migration 029), as {year: value}."""
+    return {r['year']: r['value'] for r in query_db(
+        "SELECT year, value FROM external_series WHERE series = ? AND country_code = ? ORDER BY year",
+        (series, country_code))}
+
+
+# =============================================================================
 # FREE TIER API ENDPOINTS
 # =============================================================================
 
 @app.route('/api/stats')
 @require_api_key('free')
 def global_stats():
-    """Global nuclear statistics."""
-    stats = query_db("""
+    """Global nuclear statistics (homepage stat cards)."""
+    stats = query_db(f"""
         SELECT
             COUNT(*) as total_reactors,
             SUM(CASE WHEN status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
             SUM(CASE WHEN status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
             SUM(CASE WHEN status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
-            SUM(CASE WHEN status = 'Long-term Shutdown' THEN 1 ELSE 0 END) as long_term_shutdown,
             ROUND(SUM(CASE WHEN status = 'Operational' THEN gross_capacity_mw ELSE 0 END) / 1000, 1) as operational_gw,
-            ROUND(AVG(CASE WHEN status = 'Operational' THEN age_years END), 1) as avg_age
-        FROM reactors
+            ROUND(AVG(CASE WHEN status = 'Operational' THEN {AGE_SQL} END), 1) as avg_age,
+            COUNT(DISTINCT CASE WHEN status = 'Operational' THEN country_id END) as operating_countries,
+            COUNT(DISTINCT CASE WHEN status IN ('Operational', 'Under Construction') THEN country_id END)
+                as active_countries
+        FROM reactors r
     """)[0]
 
-    # Get the most recent year with generation data and compute coverage-adjusted estimate
-    gen_latest = query_db("""
-        SELECT
-            g.year,
-            SUM(g.electricity_gwh) as raw_total,
-            COUNT(DISTINCT g.reactor_id) as reporting
-        FROM generation_annual g
-        WHERE g.year = (SELECT MAX(year) FROM generation_annual)
-        GROUP BY g.year
-    """)
-
+    # Latest world generation from the published series, not a scaled-up sum of
+    # generation_annual rows (incomplete for recent years).
+    world_gen = external_series('nuclear_generation_twh')
     generation_info = {}
-    if gen_latest and gen_latest[0]['raw_total']:
-        year = gen_latest[0]['year']
-        raw_twh = gen_latest[0]['raw_total'] / 1000
-        reporting = gen_latest[0]['reporting']
-
-        # Count reactors operational during that year
-        operational_that_year = query_db("""
-            SELECT COUNT(*) as count FROM reactors
-            WHERE commercial_operation IS NOT NULL
-              AND commercial_operation <= ?
-              AND (permanent_shutdown IS NULL OR permanent_shutdown >= ?)
-        """, (f'{year}-12-31', f'{year}-01-01'))[0]['count']
-
-        coverage_pct = round(reporting / operational_that_year * 100, 1) if operational_that_year else 0
-        adjustment = operational_that_year / reporting if reporting < operational_that_year else 1.0
-        adjusted_twh = round(raw_twh * adjustment, 1)
-
+    if world_gen:
+        year = max(world_gen)
         generation_info = {
             'year': year,
-            'adjusted_twh': adjusted_twh,
-            'raw_twh': round(raw_twh, 1),
-            'reporting_reactors': reporting,
-            'operational_reactors': operational_that_year,
-            'coverage_pct': coverage_pct,
-            'is_estimated': coverage_pct < 90
+            'twh': round(world_gen[year], 1),
+            'source': EXTERNAL_GENERATION_SOURCE,
         }
 
     return jsonify({
@@ -207,21 +348,21 @@ def global_stats():
             'total_reactors': stats['total_reactors'],
             'operational': {
                 'count': stats['operational'],
-                'capacity_gw': stats['operational_gw']
+                'capacity_gw': stats['operational_gw'],
+                'capacity_basis': 'gross'
             },
             'under_construction': stats['under_construction'],
+            'suspended': stats['suspended'],
             'permanently_shutdown': stats['shutdown'],
             'average_fleet_age_years': stats['avg_age'],
+            'average_age_basis': 'years since first grid connection (commercial operation if none)',
+            'operating_countries': stats['operating_countries'],
             'generation': generation_info
         },
         'data_coverage': {
-            'countries': query_db("""
-                SELECT COUNT(DISTINCT c.id) as cnt FROM countries c
-                JOIN reactors r ON c.id = r.country_id
-                WHERE r.status IN ('Operational', 'Under Construction')
-            """)[0]['cnt'],
+            'countries': stats['active_countries'],
             'generation_years': '1954-2025',
-            'last_updated': '2025-12'
+            'last_updated': last_updated_label()
         }
     })
 
@@ -235,6 +376,7 @@ def list_countries():
             c.code as iso_code,
             COUNT(CASE WHEN r.status = 'Operational' THEN 1 END) as operational,
             COUNT(CASE WHEN r.status = 'Under Construction' THEN 1 END) as under_construction,
+            COUNT(CASE WHEN r.status IN ('Shutdown', 'Suspended') THEN 1 END) as former_units,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw
         FROM countries c
         LEFT JOIN reactors r ON c.id = r.country_id
@@ -255,7 +397,7 @@ def country_summary(country):
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000, 1) as capacity_gw,
-            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN (CASE WHEN COALESCE(r.grid_connection, r.commercial_operation) <= DATE('now') THEN (JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation))) / 365.25 END) END), 1) as avg_age
         FROM reactors r
         JOIN countries c ON r.country_id = c.id
         WHERE LOWER(c.name) = LOWER(?)
@@ -281,7 +423,7 @@ def country_detail(country):
             SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
             SUM(CASE WHEN r.status = 'Long-term Shutdown' THEN 1 ELSE 0 END) as long_term_shutdown,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
-            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN (CASE WHEN COALESCE(r.grid_connection, r.commercial_operation) <= DATE('now') THEN (JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation))) / 365.25 END) END), 1) as avg_age
         FROM reactors r
         JOIN countries c ON r.country_id = c.id
         WHERE LOWER(c.name) = LOWER(?)
@@ -370,22 +512,23 @@ def list_technologies():
 @require_api_key('free')
 def age_distribution():
     """Operational reactor count by age bracket."""
-    brackets = query_db("""
+    brackets = query_db(f"""
         SELECT
             CASE
-                WHEN age_years < 10 THEN '0-9'
-                WHEN age_years < 20 THEN '10-19'
-                WHEN age_years < 30 THEN '20-29'
-                WHEN age_years < 40 THEN '30-39'
-                WHEN age_years < 50 THEN '40-49'
+                WHEN age < 10 THEN '0-9'
+                WHEN age < 20 THEN '10-19'
+                WHEN age < 30 THEN '20-29'
+                WHEN age < 40 THEN '30-39'
+                WHEN age < 50 THEN '40-49'
                 ELSE '50+'
             END as bracket,
             COUNT(*) as count,
             ROUND(SUM(gross_capacity_mw) / 1000.0, 1) as capacity_gw
-        FROM reactors
-        WHERE status = 'Operational' AND age_years IS NOT NULL
+        FROM (SELECT {AGE_SQL} AS age, r.gross_capacity_mw FROM reactors r
+              WHERE r.status = 'Operational')
+        WHERE age IS NOT NULL
         GROUP BY bracket
-        ORDER BY MIN(age_years)
+        ORDER BY MIN(age)
     """)
     return jsonify({'brackets': brackets})
 
@@ -394,7 +537,7 @@ def age_distribution():
 @require_api_key('free')
 def construction_map():
     """Under-construction reactor sites for mapping."""
-    reactors = query_db("""
+    all_uc = query_db("""
         SELECT r.plant_name, r.unit_number, c.name as country,
                t.code as technology, r.gross_capacity_mw,
                r.latitude, r.longitude
@@ -402,9 +545,11 @@ def construction_map():
         LEFT JOIN countries c ON r.country_id = c.id
         LEFT JOIN technologies t ON r.technology_id = t.id
         WHERE r.status = 'Under Construction'
-          AND r.latitude IS NOT NULL AND r.longitude IS NOT NULL
         ORDER BY r.plant_name, r.unit_number
     """)
+    reactors = [r for r in all_uc if r['latitude'] is not None and r['longitude'] is not None]
+    unmapped = [f"{r['plant_name']}-{r['unit_number']}" for r in all_uc
+                if r['latitude'] is None or r['longitude'] is None]
 
     # Group by site (plant_name)
     sites = {}
@@ -426,7 +571,9 @@ def construction_map():
         })
         sites[key]['total_capacity_mw'] += r['gross_capacity_mw'] or 0
 
-    return jsonify({'sites': list(sites.values()), 'count': len(sites)})
+    return jsonify({'sites': list(sites.values()), 'count': len(sites),
+                    'units_total': len(all_uc), 'units_mapped': len(reactors),
+                    'units_without_coordinates': unmapped})
 
 
 @app.route('/api/reactors/count')
@@ -507,12 +654,13 @@ def get_reactor(reactor_id):
                t.code as technology, t.name as technology_name,
                r.thermal_capacity_mw, r.gross_capacity_mw, r.net_capacity_mw,
                r.status, r.commercial_operation, r.permanent_shutdown,
-               ROUND((JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(r.commercial_operation)) / 365.25, 2) as age_years,
+               ROUND((CASE WHEN COALESCE(r.grid_connection, r.commercial_operation) <= DATE('now') THEN (JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation))) / 365.25 END), 2) as age_years,
                r.latitude, r.longitude,
                r.design_series, r.containment_type,
                m.name as model, s.name as supplier,
                r.owner, r.operator,
                r.construction_start, r.first_criticality, r.grid_connection,
+               r.expected_operation, r.expected_status, r.expected_source,
                dl.slug as lineage_slug, dl.name as lineage_name
         FROM reactors r
         LEFT JOIN countries c ON r.country_id = c.id
@@ -632,7 +780,7 @@ def plant_detail(plant_name):
                t.code as technology, t.name as technology_name,
                r.thermal_capacity_mw, r.gross_capacity_mw, r.net_capacity_mw,
                r.status, r.commercial_operation, r.permanent_shutdown,
-               ROUND((JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(r.commercial_operation)) / 365.25, 2) as age_years,
+               ROUND((CASE WHEN COALESCE(r.grid_connection, r.commercial_operation) <= DATE('now') THEN (JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation))) / 365.25 END), 2) as age_years,
                r.latitude, r.longitude, r.owner, r.operator,
                m.name as model, s.name as supplier
         FROM reactors r
@@ -739,12 +887,13 @@ def model_detail(model_name):
         SELECT
             m.name,
             t.code as technology_code,
-            COUNT(*) as total,
+            COUNT(r.id) as total,
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+            SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
             SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
-            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN (CASE WHEN COALESCE(r.grid_connection, r.commercial_operation) <= DATE('now') THEN (JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation))) / 365.25 END) END), 1) as avg_age
         FROM models m
         LEFT JOIN reactors r ON m.id = r.model_id
         LEFT JOIN technologies t ON m.technology_id = t.id
@@ -776,9 +925,10 @@ def model_detail(model_name):
                         COUNT(*) as total,
                         SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
                         SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+                        SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
                         SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
                         ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
-                        ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+                        ROUND(AVG(CASE WHEN r.status = 'Operational' THEN (CASE WHEN COALESCE(r.grid_connection, r.commercial_operation) <= DATE('now') THEN (JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation))) / 365.25 END) END), 1) as avg_age
                     FROM reactors r
                     LEFT JOIN technologies t ON r.technology_id = t.id
                     WHERE LOWER(r.design_series) = LOWER(?)
@@ -798,9 +948,10 @@ def model_detail(model_name):
                 COUNT(*) as total,
                 SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
                 SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+                SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
                 SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
                 ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
-                ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+                ROUND(AVG(CASE WHEN r.status = 'Operational' THEN (CASE WHEN COALESCE(r.grid_connection, r.commercial_operation) <= DATE('now') THEN (JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation))) / 365.25 END) END), 1) as avg_age
             FROM reactors r
             LEFT JOIN technologies t ON r.technology_id = t.id
             WHERE LOWER(r.design_series) = LOWER(?)
@@ -840,7 +991,7 @@ def model_detail(model_name):
                r.gross_capacity_mw, r.status, r.commercial_operation,
                r.permanent_shutdown, r.latitude, r.longitude
         FROM reactors r
-        JOIN models m ON r.model_id = m.id
+        LEFT JOIN models m ON r.model_id = m.id
         LEFT JOIN countries c ON r.country_id = c.id
         LEFT JOIN technologies t ON r.technology_id = t.id
         WHERE {where_clause}
@@ -947,12 +1098,13 @@ def technology_detail(tech_code):
             t.code,
             t.name as full_name,
             t.description,
-            COUNT(*) as total,
+            COUNT(r.id) as total,
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+            SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
             SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
-            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN (CASE WHEN COALESCE(r.grid_connection, r.commercial_operation) <= DATE('now') THEN (JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation))) / 365.25 END) END), 1) as avg_age
         FROM technologies t
         LEFT JOIN reactors r ON t.id = r.technology_id
         WHERE UPPER(t.code) = UPPER(?)
@@ -997,16 +1149,18 @@ def technology_detail(tech_code):
             c.name COLLATE NOCASE, r.plant_name, r.unit_number
     """, (tech_code,))
 
-    # Country breakdown (all statuses)
+    # Country breakdown: count = all statuses; operational / capacity_gw = operating units only.
+    # Sorted by operating capacity (the chart is "Top 15 by Operating Capacity").
     country_breakdown = query_db("""
         SELECT c.name as country, COUNT(*) as count,
-               ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw
+               SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
+               ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw
         FROM reactors r
         JOIN technologies t ON r.technology_id = t.id
         LEFT JOIN countries c ON r.country_id = c.id
         WHERE UPPER(t.code) = UPPER(?)
         GROUP BY c.name
-        ORDER BY count DESC
+        ORDER BY capacity_gw DESC, count DESC
     """, (tech_code,))
 
     return jsonify({
@@ -1016,12 +1170,12 @@ def technology_detail(tech_code):
         'country_breakdown': country_breakdown
     })
 
-@app.route('/owner/<owner_name>')
+@app.route('/owner/<path:owner_name>')
 def owner_detail_page(owner_name):
     """Serve the owner detail page."""
     return render_template('owner_detail.html', owner_name=owner_name)
 
-@app.route('/api/owners/<owner_name>/detail')
+@app.route('/api/owners/<path:owner_name>/detail')
 @require_api_key('free')
 def owner_detail(owner_name):
     """Detailed owner page data: summary stats, generation history, reactor list, country/technology breakdowns."""
@@ -1032,9 +1186,10 @@ def owner_detail(owner_name):
             COUNT(*) as total,
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+            SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
             SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
             ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
-            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age,
+            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN (CASE WHEN COALESCE(r.grid_connection, r.commercial_operation) <= DATE('now') THEN (JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation))) / 365.25 END) END), 1) as avg_age,
             COUNT(DISTINCT r.country_id) as countries
         FROM reactors r
         WHERE r.owner COLLATE NOCASE = ?
@@ -1127,7 +1282,7 @@ def status_detail(status):
             r.status,
             COUNT(*) as total_count,
             ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw,
-            ROUND(AVG(r.age_years), 1) as avg_age,
+            ROUND(AVG((CASE WHEN COALESCE(r.grid_connection, r.commercial_operation) <= DATE('now') THEN (JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation))) / 365.25 END)), 1) as avg_age,
             COUNT(DISTINCT r.country_id) as countries
         FROM reactors r
         WHERE r.status = ?
@@ -1171,7 +1326,7 @@ def status_detail(status):
         LEFT JOIN countries c ON r.country_id = c.id
         WHERE r.status = ?
         GROUP BY c.name
-        ORDER BY count DESC
+        ORDER BY capacity_gw DESC, count DESC
     """, (status,))
 
     # Technology mix
@@ -1209,12 +1364,14 @@ def supplier_detail(supplier_name):
     stats = query_db("""
         SELECT
             s.name,
-            COUNT(*) as total,
+            COUNT(r.id) as total,
             SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) as operational,
             SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) as under_construction,
+            SUM(CASE WHEN r.status = 'Suspended' THEN 1 ELSE 0 END) as suspended,
             SUM(CASE WHEN r.status = 'Shutdown' THEN 1 ELSE 0 END) as shutdown,
-            ROUND(SUM(r.gross_capacity_mw) / 1000.0, 1) as capacity_gw,
-            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN r.age_years END), 1) as avg_age
+            ROUND(SUM(CASE WHEN r.status = 'Operational' THEN r.gross_capacity_mw ELSE 0 END) / 1000.0, 1) as capacity_gw,
+            ROUND(COALESCE(SUM(r.gross_capacity_mw), 0) / 1000.0, 1) as capacity_gw_all_statuses,
+            ROUND(AVG(CASE WHEN r.status = 'Operational' THEN (CASE WHEN COALESCE(r.grid_connection, r.commercial_operation) <= DATE('now') THEN (JULIANDAY(COALESCE(r.permanent_shutdown, 'now')) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation))) / 365.25 END) END), 1) as avg_age
         FROM suppliers s
         LEFT JOIN reactors r ON s.id = r.supplier_id
         WHERE LOWER(s.name) = LOWER(?)
@@ -1364,7 +1521,10 @@ def planned_reactors():
     """Get planned reactors."""
     reactors = query_db("""
         SELECT p.project_name, p.unit_number, c.name as country,
-               t.code as technology, p.model, p.gross_capacity_mw,
+               t.code as technology, p.model, p.gross_capacity_mw, p.net_capacity_mw,
+               COALESCE(p.net_capacity_mw, p.gross_capacity_mw) as capacity_mw,
+               CASE WHEN p.net_capacity_mw IS NOT NULL THEN 'net'
+                    WHEN p.gross_capacity_mw IS NOT NULL THEN 'gross' END as capacity_basis,
                p.vendor, p.expected_online, p.likelihood
         FROM planned_reactors p
         LEFT JOIN countries c ON p.country_id = c.id
@@ -1475,6 +1635,9 @@ def planned_detail(project_name):
             'model': u['model'],
             'gross_capacity_mw': u['gross_capacity_mw'],
             'net_capacity_mw': u['net_capacity_mw'],
+            # Same basis as the homepage Planned tab: net if reported, else gross
+            'capacity_mw': u['net_capacity_mw'] if u['net_capacity_mw'] is not None else u['gross_capacity_mw'],
+            'capacity_basis': 'net' if u['net_capacity_mw'] is not None else ('gross' if u['gross_capacity_mw'] is not None else None),
             'vendor': u['vendor'],
             'vendor_country': u['vendor_country'],
             'expected_online': u['expected_online'],
@@ -1488,249 +1651,85 @@ def planned_detail(project_name):
 @app.route('/api/stats/history')
 @require_api_key('free')
 def stats_history():
-    """Year-by-year historical stats for dashboard stat cards."""
-    conn = get_db()
-    cursor = conn.cursor()
+    """Year-by-year historical stats for dashboard stat cards.
 
-    # Get year range from commercial_operation dates
-    cursor.execute("""
-        SELECT MIN(CAST(substr(commercial_operation, 1, 4) AS INTEGER)),
-               MAX(CAST(substr(commercial_operation, 1, 4) AS INTEGER))
-        FROM reactors WHERE commercial_operation IS NOT NULL
-    """)
-    min_year, max_year = cursor.fetchone()
-    if not min_year:
-        conn.close()
+    Uses the shared fleet-over-time rules (OPERATING_IN_YEAR_SQL etc.), so the
+    current-year point matches the stat cards. Ends at the current year: no projection.
+    """
+    first = query_db("""SELECT MIN(CAST(substr(COALESCE(commercial_operation, grid_connection), 1, 4) AS INTEGER)) AS y
+                        FROM reactors""")[0]['y']
+    if not first:
         return jsonify({'years': []})
+    world_gen = external_series('nuclear_generation_twh')
 
     years = []
-    for year in range(min_year, max_year + 1):
-        year_end = f'{year}-12-31'
-        year_start = f'{year}-01-01'
-
-        # Operational reactors and capacity at end of year
-        cursor.execute("""
-            SELECT COUNT(*) as count,
-                   ROUND(COALESCE(SUM(gross_capacity_mw), 0) / 1000.0, 1) as capacity_gw,
-                   COUNT(DISTINCT country_id) as countries
-            FROM reactors
-            WHERE commercial_operation IS NOT NULL
-              AND commercial_operation <= ?
-              AND (permanent_shutdown IS NULL OR permanent_shutdown >= ?)
-        """, (year_end, year_start))
-        row = dict(cursor.fetchone())
-
-        # Under construction at end of year (reactors that had not yet started operating)
-        cursor.execute("""
-            SELECT COUNT(*) as count
-            FROM reactors
-            WHERE commercial_operation IS NOT NULL
-              AND commercial_operation > ?
-              AND (permanent_shutdown IS NULL OR permanent_shutdown >= ?)
-        """, (year_end, year_start))
-        uc = cursor.fetchone()[0]
-
-        # Generation for this year
-        cursor.execute("""
-            SELECT ROUND(COALESCE(SUM(electricity_gwh), 0) / 1000.0, 1) as twh,
-                   COUNT(DISTINCT reactor_id) as reporting
-            FROM generation_annual
-            WHERE year = ?
-        """, (year,))
-        gen_row = cursor.fetchone()
-        gen_twh = gen_row[0] if gen_row else 0
-        gen_reporting = gen_row[1] if gen_row else 0
-
-        # Coverage-adjust generation if needed
-        operational_count = row['count']
-        if gen_reporting > 0 and gen_reporting < operational_count:
-            gen_twh = round(gen_twh * (operational_count / gen_reporting), 1)
-
+    for year in range(first, datetime.now().year + 1):
+        p = year_params(year)
+        row = query_db(f"""
+            SELECT COUNT(*) AS count,
+                   ROUND(COALESCE(SUM({CAPACITY_AT_YEAR_END_SQL}), 0) / 1000.0, 1) AS capacity_gw,
+                   COUNT(DISTINCT r.country_id) AS countries,
+                   ROUND(AVG((JULIANDAY(:year_end) - JULIANDAY(COALESCE(r.grid_connection, r.commercial_operation)))
+                             / 365.25), 1) AS avg_age
+            FROM reactors r WHERE {OPERATING_IN_YEAR_SQL}
+        """, p)[0]
+        uc = query_db(f"SELECT COUNT(*) AS n FROM reactors r WHERE {UNDER_CONSTRUCTION_IN_YEAR_SQL}", p)[0]['n']
         years.append({
             'year': year,
             'operational': row['count'],
             'capacity_gw': row['capacity_gw'],
             'countries': row['countries'],
             'under_construction': uc,
-            'generation_twh': gen_twh
+            'generation_twh': round(world_gen[year], 1) if year in world_gen else None,
+            'avg_age': row['avg_age'] or 0
         })
 
-    conn.close()
-
-    # Compute average age per year
-    for entry in years:
-        y = entry['year']
-        ages = query_db("""
-            SELECT ROUND(AVG(
-                (JULIANDAY(? || '-12-31') - JULIANDAY(commercial_operation)) / 365.25
-            ), 1) as avg_age
-            FROM reactors
-            WHERE commercial_operation IS NOT NULL
-              AND commercial_operation <= ?
-              AND (permanent_shutdown IS NULL OR permanent_shutdown >= ?)
-        """, (str(y), f'{y}-12-31', f'{y}-01-01'))
-        entry['avg_age'] = ages[0]['avg_age'] if ages and ages[0]['avg_age'] else 0
-
-    return jsonify({'years': years})
+    return jsonify({'years': years, 'generation_source': EXTERNAL_GENERATION_SOURCE,
+                    'projection': safe_fleet_projection()})
 
 
 @app.route('/api/generation/decades')
 @require_api_key('free')
 def generation_decades():
-    """Coverage-adjusted average annual nuclear generation by decade."""
-    conn = get_db()
-    cursor = conn.cursor()
-
-    # Define decades: label, start year, end year
-    decades = [
-        ('1970s', 1970, 1979),
-        ('1980s', 1980, 1989),
-        ('1990s', 1990, 1999),
-        ('2000s', 2000, 2009),
-        ('2010s', 2010, 2019),
-        ('2020s', 2020, 2025),
-    ]
-
+    """Average annual world nuclear generation by decade, from the published series."""
+    world_gen = external_series('nuclear_generation_twh')
+    decades = [('1970s', 1970, 1979), ('1980s', 1980, 1989), ('1990s', 1990, 1999),
+               ('2000s', 2000, 2009), ('2010s', 2010, 2019), ('2020s', 2020, 2029)]
     result = []
-
     for label, start, end in decades:
-        yearly_adjusted = []
-
-        for year in range(start, end + 1):
-            # Raw generation sum and count of reactors with data this year
-            cursor.execute("""
-                SELECT COALESCE(SUM(electricity_gwh), 0) as raw_gwh,
-                       COUNT(DISTINCT reactor_id) as reporting
-                FROM generation_annual
-                WHERE year = ?
-            """, (year,))
-            row = cursor.fetchone()
-            raw_gwh = row[0]
-            reporting = row[1]
-
-            if reporting == 0:
-                continue
-
-            # Count reactors that were operational during this year:
-            # commercial_operation <= end of year AND
-            # (no permanent_shutdown OR permanent_shutdown > start of year)
-            year_start = f'{year}-01-01'
-            year_end = f'{year}-12-31'
-            cursor.execute("""
-                SELECT COUNT(*) FROM reactors
-                WHERE commercial_operation IS NOT NULL
-                  AND commercial_operation <= ?
-                  AND (permanent_shutdown IS NULL OR permanent_shutdown >= ?)
-            """, (year_end, year_start))
-            operational = cursor.fetchone()[0]
-
-            if operational == 0:
-                continue
-
-            # Scale up: if only 112 of 430 reactors report, estimate full fleet
-            adjustment = operational / reporting if reporting < operational else 1.0
-            adjusted_twh = (raw_gwh / 1000.0) * adjustment
-            yearly_adjusted.append({
-                'year': year,
-                'raw_twh': round(raw_gwh / 1000.0, 1),
-                'reporting': reporting,
-                'operational': operational,
-                'adjusted_twh': round(adjusted_twh, 1)
-            })
-
-        if not yearly_adjusted:
+        yearly = [{'year': y, 'twh': round(world_gen[y], 1)} for y in range(start, end + 1) if y in world_gen]
+        if not yearly:
             continue
-
-        avg_annual = sum(y['adjusted_twh'] for y in yearly_adjusted) / len(yearly_adjusted)
-        years_covered = len(yearly_adjusted)
-        total_years = end - start + 1
-
         result.append({
             'decade': label,
-            'avg_annual_twh': round(avg_annual, 1),
-            'years_with_data': years_covered,
-            'total_years': total_years,
-            'is_partial': end >= 2025,
-            'yearly_detail': yearly_adjusted
+            'avg_annual_twh': round(sum(y['twh'] for y in yearly) / len(yearly), 1),
+            'years_with_data': len(yearly),
+            'total_years': end - start + 1,
+            'is_partial': len(yearly) < end - start + 1,
+            'yearly_detail': yearly
         })
-
-    conn.close()
-
-    return jsonify({
-        'decades': result,
-        'note': 'Adjusted for reporting coverage. 2020s based on available years projected at annual rate.'
-    })
+    return jsonify({'decades': result, 'source': EXTERNAL_GENERATION_SOURCE})
 
 
 @app.route('/api/generation/annual')
 @require_api_key('free')
 def generation_annual_share():
-    """Annual nuclear generation and share of global electricity."""
-    conn = get_db()
-    cursor = conn.cursor()
+    """Annual world nuclear generation and its share of world electricity.
 
-    # Global electricity generation by year (TWh, gross) — Energy Institute
-    # Statistical Review of World Energy, accessed via Our World in Data
-    # (grapher: electricity-generation, World; retrieved 2026-07-06).
-    # The EI series begins in 1985; years before that have no denominator
-    # and the share endpoint returns share_pct = None for them.
-    # NOTE: the previous 1970-2024 series here did NOT match EI's published
-    # values (7-15% low, drifting) and was replaced wholesale — see the
-    # 2026-07-06 rebase commit.
-    global_electricity_twh = {
-        1985: 9886, 1986: 10181, 1987: 10671, 1988: 11141, 1989: 11658,
-        1990: 11961, 1991: 12223, 1992: 12336, 1993: 12600, 1994: 12924,
-        1995: 13382, 1996: 13797, 1997: 14129, 1998: 14511, 1999: 14926,
-        2000: 15279, 2001: 15501, 2002: 16050, 2003: 16628, 2004: 17415,
-        2005: 18134, 2006: 18839, 2007: 19714, 2008: 20103, 2009: 19944,
-        2010: 21264, 2011: 21972, 2012: 22516, 2013: 23155, 2014: 23747,
-        2015: 24002, 2016: 24695, 2017: 25441, 2018: 26464, 2019: 26832,
-        2020: 26723, 2021: 28259, 2022: 28918, 2023: 29665, 2024: 30930,
-        2025: 31772,
-    }
-
-    result = []
-    for year in range(1985, 2026):
-        cursor.execute("""
-            SELECT COALESCE(SUM(electricity_gwh), 0) as raw_gwh,
-                   COUNT(DISTINCT reactor_id) as reporting
-            FROM generation_annual WHERE year = ?
-        """, (year,))
-        row = cursor.fetchone()
-        raw_gwh, reporting = row[0], row[1]
-        if reporting == 0:
-            continue
-
-        year_start = f'{year}-01-01'
-        year_end = f'{year}-12-31'
-        cursor.execute("""
-            SELECT COUNT(*) FROM reactors
-            WHERE commercial_operation IS NOT NULL
-              AND commercial_operation <= ?
-              AND (permanent_shutdown IS NULL OR permanent_shutdown >= ?)
-        """, (year_end, year_start))
-        operational = cursor.fetchone()[0]
-        if operational == 0:
-            continue
-
-        adjustment = operational / reporting if reporting < operational else 1.0
-        nuclear_twh = round((raw_gwh / 1000.0) * adjustment, 1)
-        global_twh = global_electricity_twh.get(year)
-        share_pct = round(nuclear_twh / global_twh * 100, 1) if global_twh else None
-
-        result.append({
-            'year': year,
-            'nuclear_twh': nuclear_twh,
-            'global_twh': global_twh,
-            'share_pct': share_pct,
-            'reporting_reactors': reporting,
-            'operational_reactors': operational
-        })
-
-    conn.close()
+    Numerator and denominator come from the same published dataset (external_series,
+    migration 029), so the share is like-for-like (both gross generation).
+    """
+    nuclear = external_series('nuclear_generation_twh')
+    total = external_series('electricity_generation_twh')
+    result = [{
+        'year': y,
+        'nuclear_twh': round(nuclear[y], 1),
+        'global_twh': round(total[y], 1),
+        'share_pct': round(nuclear[y] / total[y] * 100, 1),
+    } for y in sorted(nuclear) if y >= 1985 and total.get(y)]
     return jsonify({
         'annual': result,
-        'source': 'Nuclear: IAEA PRIS (coverage-adjusted). Global electricity: IEA/EI Statistical Review.'
+        'source': EXTERNAL_GENERATION_SOURCE + ' (nuclear and total electricity generation).'
     })
 
 
@@ -1902,59 +1901,40 @@ def capacity_history():
     country = request.args.get('country')
     technology = request.args.get('technology')
 
-    conn = get_db()
-    cursor = conn.cursor()
-
     # Build filter clauses
     joins = ""
     where_extra = ""
-    filter_params = []
     if country:
         joins += " JOIN countries c ON r.country_id = c.id"
-        where_extra += " AND LOWER(c.name) = LOWER(?)"
-        filter_params.append(country)
+        where_extra += " AND LOWER(c.name) = LOWER(:country)"
     if technology:
         joins += " JOIN technologies t ON r.technology_id = t.id"
-        where_extra += " AND UPPER(t.code) = UPPER(?)"
-        filter_params.append(technology)
+        where_extra += " AND UPPER(t.code) = UPPER(:technology)"
 
+    # From the first year with an operating reactor to the current year. Years with none
+    # operating (e.g. Germany after April 2023) are 0, so the last point matches the cards.
     result = []
-    for year in range(1954, 2027):
-        year_end = f'{year}-12-31'
-        year_start = f'{year}-01-01'
-
-        sql = f"""
+    for year in range(1954, datetime.now().year + 1):
+        params = dict(year_params(year), country=country, technology=technology)
+        row = query_db(f"""
             SELECT COUNT(*) as reactor_count,
-                   ROUND(SUM(
-                       COALESCE(
-                           (SELECT cc.gross_capacity_mw
-                            FROM capacity_changes cc
-                            WHERE cc.reactor_id = r.id
-                              AND cc.effective_date <= ?
-                            ORDER BY cc.effective_date DESC
-                            LIMIT 1),
-                           r.gross_capacity_mw
-                       )
-                   ) / 1000.0, 1) as capacity_gw
+                   ROUND(SUM({CAPACITY_AT_YEAR_END_SQL}) / 1000.0, 1) as capacity_gw
             FROM reactors r
             {joins}
-            WHERE r.commercial_operation IS NOT NULL
-              AND r.commercial_operation <= ?
-              AND (r.permanent_shutdown IS NULL OR r.permanent_shutdown >= ?)
+            WHERE {OPERATING_IN_YEAR_SQL}
               {where_extra}
-        """
-        params = [year_end, year_end, year_start] + filter_params
-        cursor.execute(sql, params)
-        row = cursor.fetchone()
-        if row['reactor_count'] > 0:
+        """, params)[0]
+        if row['reactor_count'] > 0 or result:
             result.append({
                 'year': year,
                 'reactor_count': row['reactor_count'],
-                'capacity_gw': row['capacity_gw']
+                'capacity_gw': row['capacity_gw'] or 0.0
             })
 
-    conn.close()
-    return jsonify({'history': result})
+    out = {'history': result}
+    if not country and not technology:
+        out['projection'] = safe_fleet_projection()
+    return jsonify(out)
 
 
 @app.route('/api/data/validation')
@@ -2044,7 +2024,7 @@ def print_validation_report():
 @app.route('/lineages')
 def lineages_page():
     """Serve the lineage listing page."""
-    return render_template('lineages.html')
+    return render_template('lineages.html', lineage=lineage_counts())
 
 @app.route('/lineage/<slug>')
 def lineage_detail_page(slug):
@@ -2071,7 +2051,27 @@ def lineages_list():
         GROUP BY dl.id
         ORDER BY COUNT(r.id) DESC
     """)
-    return jsonify({'lineages': lineages})
+    # Reactors whose design_series has no design_series_info row (no lineage assigned yet).
+    # Listed as-is so /lineages totals equal the reactor count; no lineage is inferred.
+    unclassified_reactors = query_db("""
+        SELECT r.id, r.plant_name, r.unit_number, r.design_series, r.status, r.gross_capacity_mw
+        FROM reactors r
+        LEFT JOIN design_series_info dsi ON r.design_series = dsi.design_series
+        WHERE dsi.id IS NULL
+        ORDER BY r.design_series, r.plant_name, r.unit_number
+    """)
+    u = unclassified_reactors
+    unclassified = {
+        'reactor_count': len(u),
+        'operational': sum(1 for r in u if r['status'] == 'Operational'),
+        'under_construction': sum(1 for r in u if r['status'] == 'Under Construction'),
+        'suspended': sum(1 for r in u if r['status'] == 'Suspended'),
+        'shutdown': sum(1 for r in u if r['status'] == 'Shutdown'),
+        'capacity_gw': round(sum(r['gross_capacity_mw'] or 0 for r in u if r['status'] == 'Operational') / 1000.0, 1),
+        'series': sorted({r['design_series'] or '(no design series)' for r in u}),
+        'reactors': u,
+    }
+    return jsonify({'lineages': lineages, 'unclassified': unclassified})
 
 @app.route('/api/lineages/<slug>/detail')
 @require_api_key('free')
@@ -2155,7 +2155,9 @@ def lineage_detail(slug):
 @app.route('/containment')
 def containment_page():
     """Serve the containment types overview page."""
-    return render_template('containment_detail.html')
+    n_types = query_db("""SELECT COUNT(DISTINCT containment_type) AS n FROM reactors
+                         WHERE containment_type IS NOT NULL AND containment_type != ''""")[0]['n']
+    return render_template('containment_detail.html', containment_type_count=n_types)
 
 @app.route('/containment/<containment_type>')
 def containment_detail_page(containment_type):
