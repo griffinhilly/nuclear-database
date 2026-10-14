@@ -6,7 +6,7 @@
     <title>Reactor Details &mdash; Global Nuclear Database</title>
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 
     <!-- Leaflet for maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -15,6 +15,10 @@
 
     <!-- REG shared brand stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <script src="{{ url_for('static', filename='reg-brand.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 
     <style>
         /* Page-specific overrides — reactor detail */
@@ -29,7 +33,7 @@
             color: var(--text-secondary);
             text-decoration: none;
             margin-left: 18px;
-            font-weight: 500;
+            font-weight: 400;
         }
         #plant-back-link a.back-link:hover { color: var(--accent); }
 
@@ -39,6 +43,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 24px;
             margin: 30px 0;
+            align-items: start;   /* cards keep their own height; no stretched empty boxes */
         }
         @media (max-width: 768px) {
             .detail-grid { grid-template-columns: 1fr; }
@@ -53,13 +58,13 @@
         .card h2 {
             font-family: var(--font-sans);
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 400;
             color: var(--reg-grey-dark);
             margin-bottom: 18px;
             padding: 0 0 10px 14px;
             border-bottom: 1px solid var(--hairline);
             position: relative;
-            letter-spacing: -0.005em;
+            letter-spacing: 0.01em;
         }
         .card h2::before {
             content: "";
@@ -82,14 +87,14 @@
 
         .stat-label {
             color: var(--text-secondary);
-            font-size: 0.68rem;
+            font-size: var(--label-min);
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 400;
         }
         .stat-value {
             color: var(--reg-grey-dark);
-            font-weight: 500;
+            font-weight: 400;
             font-size: 0.95rem;
             text-align: right;
         }
@@ -101,7 +106,7 @@
         .reg-page-title .status-badge {
             margin-left: 12px;
             vertical-align: middle;
-            font-size: 0.65rem;
+            font-size: var(--label-min);
         }
 
         /* Map (override default reg-css 500px to 300px for detail card) */
@@ -132,8 +137,8 @@
         }
         .gen-table th {
             color: var(--reg-grey-dark);
-            font-size: 0.66rem;
-            font-weight: 500;
+            font-size: var(--label-min);
+            font-weight: 400;
             letter-spacing: 0.18em;
             text-transform: uppercase;
             background: var(--reg-grey-light);
@@ -157,8 +162,9 @@
         }
         .card-collapsible h2::after {
             content: '\25B8';
-            font-size: 0.8rem;
-            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1;
+            color: var(--reg-grey-dark);
             transition: transform 0.2s;
             position: static;
             background: none;
@@ -166,6 +172,7 @@
             height: auto;
         }
         .card-collapsible.expanded h2::after { content: '\25BE'; }
+        .card-collapsible:not(.expanded) h2 { margin-bottom: 0; }
         .card-collapsible .card-body { display: none; }
         .card-collapsible.expanded .card-body { display: block; }
 
@@ -251,19 +258,21 @@
                 <!-- Capacity History (shown only when data exists) -->
                 <div class="card" id="capacity-history-card" style="display: none;">
                     <h2>Capacity History</h2>
-                    <table class="gen-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Type</th>
-                                <th>Gross (MW)</th>
-                                <th>Net (MW)</th>
-                                <th>Notes</th>
-                            </tr>
-                        </thead>
-                        <tbody id="capacity-history-table">
-                        </tbody>
-                    </table>
+                    <div class="table-scroll">
+                        <table class="gen-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Gross (MW)</th>
+                                    <th>Net (MW)</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="capacity-history-table">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Location Map -->
@@ -291,18 +300,20 @@
             <!-- Generation History Table -->
             <div class="card" style="margin-top: 24px;">
                 <h2>Annual Generation Data</h2>
-                <table class="gen-table">
-                    <thead>
-                        <tr>
-                            <th>Year</th>
-                            <th>Generation (GWh)</th>
-                            <th>Capacity Factor (%)</th>
-                            <th id="ref-capacity-header" style="display: none;">Reference Capacity (MW)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="generation-table">
-                    </tbody>
-                </table>
+                <div class="table-scroll">
+                    <table class="gen-table">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Generation (GWh)</th>
+                                <th>Capacity Factor (%)</th>
+                                <th id="ref-capacity-header" style="display: none;">Reference Capacity (MW)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="generation-table">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -363,7 +374,7 @@
                 ${reactor.plant_name}-${reactor.unit_number}
                 <span class="status-badge status-${reactor.status === 'Operational' ? 'operational' : reactor.status === 'Under Construction' ? 'construction' : reactor.status === 'Suspended' ? 'suspended' : reactor.status === 'Long-term Shutdown' ? 'longterm' : 'shutdown'}">${reactor.status}</span>
             `;
-            document.getElementById('reactor-location').innerHTML = `<a href="/country/${encodeURIComponent(reactor.country)}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted #9498A4;">${reactor.country}</a> | <a href="/technology/${encodeURIComponent(reactor.technology)}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted #9498A4;">${reactor.technology_name || reactor.technology}</a>`;
+            document.getElementById('reactor-location').innerHTML = `<a href="/country/${encodeURIComponent(reactor.country)}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted var(--text-muted);">${reactor.country}</a> | <a href="/technology/${encodeURIComponent(reactor.technology)}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted var(--text-muted);">${reactor.technology_name || reactor.technology}</a>`;
             document.getElementById('plant-back-link').innerHTML =
                 `<a href="/plant/${encodeURIComponent(reactor.plant_name)}" class="back-link">&larr; ${reactor.plant_name} Plant</a>`;
 
@@ -520,11 +531,11 @@
             // Capacity history
             if (capacityChanges.length > 0) {
                 const typeLabels = {initial: 'Initial', uprate: 'Uprate', derate: 'Derate', restart: 'Restart'};
-                const typeColors = {initial: '#6B6E7B', uprate: '#40774A', derate: '#B33A20', restart: '#3F55C5'};
+                const typeColors = {initial: REG.text2, uprate: REG.forest, derate: REG.danger, restart: REG.cobalt};
                 document.getElementById('capacity-history-table').innerHTML = capacityChanges.map(cc => `
                     <tr>
                         <td>${cc.effective_date}</td>
-                        <td><span style="color: ${typeColors[cc.change_type] || '#6B6E7B'}; font-weight: 600;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
+                        <td><span style="color: ${typeColors[cc.change_type] || REG.text2}; font-weight: 700;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
                         <td>${cc.gross_capacity_mw.toLocaleString()}</td>
                         <td>${cc.net_capacity_mw ? cc.net_capacity_mw.toLocaleString() : '--'}</td>
                         <td style="color: var(--text-secondary); font-size: 0.85rem;">${cc.notes || ''}</td>
@@ -608,23 +619,23 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#40774A',
-                    'Under Construction': '#FFC100',
-                    'Suspended': '#E06336',
-                    'Long-term Shutdown': '#9FC3A5',
-                    'Shutdown': '#474853'
+                    'Operational': REG.forest,
+                    'Under Construction': REG.yellow,
+                    'Suspended': REG.vermilion,
+                    'Long-term Shutdown': REG.sage,
+                    'Shutdown': REG.greyDark
                 };
 
                 L.circleMarker([reactor.latitude, reactor.longitude], {
                     radius: 12,
-                    fillColor: statusColors[reactor.status] || '#3F55C5',
+                    fillColor: statusColors[reactor.status] || REG.cobalt,
                     color: '#fff',
                     weight: 2,
                     opacity: 1,
                     fillOpacity: 0.8
                 }).addTo(map);
             } else {
-                document.getElementById('reactor-map').innerHTML = '<p style="text-align: center; color: #6B6E7B; padding: 100px 0;">Location data not available</p>';
+                document.getElementById('reactor-map').innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 100px 0;">Location data not available</p>';
             }
 
             // Generation chart
@@ -637,7 +648,7 @@
                         datasets: [{
                             label: 'Generation (GWh)',
                             data: sortedHistory.map(h => h.electricity_gwh),
-                            backgroundColor: '#3F55C5',
+                            backgroundColor: REG.cobalt,
                             borderRadius: 0
                         }]
                     },
@@ -645,17 +656,17 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { display: false, labels: { color: '#474853' } }
+                            legend: { display: false, labels: { color: REG.greyDark } }
                         },
                         scales: {
                             x: {
-                                grid: { color: '#E8E8EB' },
-                                ticks: { color: '#6B6E7B' }
+                                grid: { color: REG.grid },
+                                ticks: { color: REG.text2 }
                             },
                             y: {
-                                grid: { color: '#E8E8EB' },
+                                grid: { color: REG.grid },
                                 ticks: {
-                                    color: '#6B6E7B',
+                                    color: REG.text2,
                                     callback: (val) => val.toLocaleString()
                                 }
                             }
@@ -677,8 +688,8 @@
                     </tr>
                 `).join('');
             } else {
-                document.getElementById('generation-chart').parentElement.innerHTML = '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No generation data available</p>';
-                document.getElementById('generation-table').innerHTML = '<tr><td colspan="3" style="text-align: center; color: #6B6E7B;">No data available</td></tr>';
+                document.getElementById('generation-chart').parentElement.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 80px 0;">No generation data available</p>';
+                document.getElementById('generation-table').innerHTML = '<tr><td colspan="3" style="text-align: center; color: var(--text-secondary);">No data available</td></tr>';
             }
 
             // Toggle collapsible cards

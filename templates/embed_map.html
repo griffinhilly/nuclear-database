@@ -6,19 +6,10 @@
     <title>World Nuclear Database — Reactor Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap" />
     <style>
-        /* Forma DJR Micro — the family's small-size optical cut, correct for
-           13-14px tooltip text (brand font; Display is for headlines only) */
-        @font-face {
-            font-family: 'Forma DJR Micro';
-            src: url('/static/fonts/FormaDJRMicro-Regular.woff2') format('woff2');
-            font-weight: 400; font-style: normal; font-display: swap;
-        }
-        @font-face {
-            font-family: 'Forma DJR Micro';
-            src: url('/static/fonts/FormaDJRMicro-Bold.woff2') format('woff2');
-            font-weight: 700; font-style: normal; font-display: swap;
-        }
+        /* Brand face Forma DJR Micro is used only where the reader has it installed; we hold no
+           web licence to serve it (2026-10-14), so visitors get Public Sans (open licence). */
         html, body { margin: 0; padding: 0; height: 100%; }
         /* Duotone brand map: Nuclear Yellow water, yellow-accent land (designer spec) */
         #embed-map { position: absolute; inset: 0; background: #FFBF00; }
@@ -39,7 +30,7 @@
             background: #474853 !important; color: #FFFFFF !important;
             border: none !important; border-radius: 0 !important;
             box-shadow: none !important; padding: 8px 12px !important;
-            font-family: 'Forma DJR Micro', Arial, Helvetica, sans-serif;
+            font-family: 'Forma DJR Micro', 'Public Sans', Arial, Helvetica, sans-serif;
             font-size: 13px; line-height: 1.5;
             letter-spacing: 0.15em;   /* 15% tracking per Griffin 2026-07-23 */
         }
@@ -51,7 +42,7 @@
             position: absolute; inset: 0; z-index: 800;
             display: flex; align-items: center; justify-content: center;
             background: rgba(71, 72, 83, 0.55);
-            color: #FFFFFF; font-family: 'Forma DJR Micro', Arial, sans-serif;
+            color: #FFFFFF; font-family: 'Forma DJR Micro', 'Public Sans', Arial, sans-serif;
             font-size: 15px; letter-spacing: 0.15em; text-align: center;
             opacity: 0; pointer-events: none; transition: opacity 0.3s;
         }

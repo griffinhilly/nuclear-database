@@ -8,6 +8,10 @@
 
     <!-- REG shared brand stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <script src="{{ url_for('static', filename='reg-brand.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 
     <style>
         /* Page-specific overrides — design lineages */
@@ -28,7 +32,7 @@
             color: var(--text-secondary);
             cursor: pointer;
             font-size: 0.78rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.16em;
             text-transform: uppercase;
             font-family: var(--font-sans);
@@ -77,22 +81,22 @@
             font-family: var(--font-sans);
             color: var(--reg-grey-dark);
             font-size: 1.05rem;
-            font-weight: 500;
-            letter-spacing: -0.005em;
+            font-weight: 400;
+            letter-spacing: 0.01em;
             margin: 0;
         }
 
         .lineage-card .tech-badge {
             display: inline-block;
             padding: 3px 10px;
-            font-size: 0.65rem;
-            font-weight: 500;
+            font-size: var(--label-min);
+            font-weight: 400;
             letter-spacing: 0.16em;
             text-transform: uppercase;
             background: var(--reg-grey-dark);
             color: #fff;
             white-space: nowrap;
-            font-family: 'Courier New', monospace;
+            font-family: var(--font-micro);
         }
 
         .lineage-card .origin {
@@ -132,22 +136,22 @@
         .lineage-card .stat-num {
             font-family: var(--font-display);
             font-size: 1.4rem;
-            font-weight: 300;
+            font-weight: 400;
             color: var(--reg-grey-dark);
             line-height: 1;
-            letter-spacing: -0.01em;
+            letter-spacing: 0.01em;
         }
 
         .lineage-card .stat-num.op { color: var(--reg-green-forest); }
-        .lineage-card .stat-num.uc { color: var(--reg-yellow); }
+        .lineage-card .stat-num.uc { color: var(--reg-yellow-accent); }   /* yellow is a field colour; its accent is the text colour (p10) */
 
         .lineage-card .stat-lbl {
-            font-size: 0.6rem;
+            font-size: var(--label-min);
             color: var(--text-secondary);
             letter-spacing: 0.18em;
             text-transform: uppercase;
             margin-top: 8px;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         @media (max-width: 768px) {

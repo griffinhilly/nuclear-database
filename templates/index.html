@@ -6,7 +6,7 @@
     <title>Global Nuclear Database</title>
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 
     <!-- Leaflet for maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -17,6 +17,10 @@
 
 
     <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <script src="{{ url_for('static', filename='reg-brand.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 </head>
 <body>
     {% include '_reg_nav.html' %}
@@ -99,10 +103,10 @@
         <!-- Design Lineages callout — yellow left-rule accent (§11) -->
         <section style="margin: 50px 0;">
             <a href="/lineages" style="display: block; text-decoration: none; color: inherit;">
-                <div style="background: var(--reg-blue-powder); border-left: 6px solid var(--reg-yellow); padding: 32px 36px; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; cursor: pointer;" onmouseover="this.style.background='#B8CFE3'" onmouseout="this.style.background='var(--reg-blue-powder)'">
+                <div style="background: var(--reg-blue-powder); border-left: 6px solid var(--reg-yellow); padding: 32px 36px; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; cursor: pointer;" onmouseover="this.style.background='var(--reg-powder-hover)'" onmouseout="this.style.background='var(--reg-blue-powder)'">
                     <div>
-                        <div style="font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--reg-grey-dark); opacity: 0.7; margin-bottom: 10px;">Featured</div>
-                        <h2 style="color: var(--reg-grey-dark); font-family: var(--font-sans); font-size: 1.5rem; font-weight: 500; margin-bottom: 8px; letter-spacing: -0.01em;">Reactor Design Lineages</h2>
+                        <div style="font-size: var(--label-min); letter-spacing: 0.28em; text-transform: uppercase; color: var(--reg-grey-dark); opacity: 0.7; margin-bottom: 10px;">Featured</div>
+                        <h2 style="color: var(--reg-grey-dark); font-family: var(--font-sans); font-size: 1.5rem; font-weight: 400; margin-bottom: 8px; letter-spacing: 0.01em;">Reactor Design Lineages</h2>
                         <p style="color: var(--reg-grey-dark); opacity: 0.78; font-size: 0.95rem; max-width: 70ch;">Explore {{ lineage.families }} design families and {{ lineage.series }} reactor series &mdash; from the first prototypes to Gen III+ and Gen IV. Interactive family tree visualizations trace the evolution of each design.</p>
                     </div>
                     <span style="color: var(--reg-grey-dark); font-size: 2rem; margin-left: 30px; flex-shrink: 0;">&rarr;</span>
@@ -114,11 +118,11 @@
         <section class="map-section">
             <h2 class="section-title">Reactor Locations</h2>
             <div style="margin-bottom: 14px; display: flex; gap: 6px; flex-wrap: wrap;">
-                <button class="map-filter-btn active" data-filter="all" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--reg-grey-dark); background: var(--reg-grey-dark); color: #fff; cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 500;">All</button>
-                <button class="map-filter-btn" data-filter="Operational" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 500;">Operational</button>
-                <button class="map-filter-btn" data-filter="Under Construction" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 500;">Under Construction</button>
-                <button class="map-filter-btn" data-filter="Suspended" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 500;">Suspended</button>
-                <button class="map-filter-btn" data-filter="Shutdown" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 500;">Shutdown</button>
+                <button class="map-filter-btn active" data-filter="all" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--reg-grey-dark); background: var(--reg-grey-dark); color: #fff; cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 400;">All</button>
+                <button class="map-filter-btn" data-filter="Operational" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 400;">Operational</button>
+                <button class="map-filter-btn" data-filter="Under Construction" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 400;">Under Construction</button>
+                <button class="map-filter-btn" data-filter="Suspended" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 400;">Suspended</button>
+                <button class="map-filter-btn" data-filter="Shutdown" style="padding: 7px 16px; border-radius: 0; border: 1px solid var(--hairline); background: #fff; color: var(--reg-grey-dark); cursor: pointer; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-sans); font-weight: 400;">Shutdown</button>
             </div>
             <div id="reactor-map"></div>
         </section>
@@ -155,20 +159,22 @@
                 Loading data...
             </div>
 
-            <table class="data-table" id="reactor-table" style="display: none;">
-                <thead>
-                    <tr>
-                        <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
-                        <th data-sort="country">Country <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="country">&#9698;</span></th>
-                        <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
-                        <th data-sort="capacity"><span id="capacity-header">Capacity (MW)</span> <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
-                        <th data-sort="status">Status <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="status">&#9698;</span></th>
-                        <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="date">&#9698;</span></th>
-                    </tr>
-                </thead>
-                <tbody id="table-body">
-                </tbody>
-            </table>
+            <div class="table-scroll">
+                <table class="data-table" id="reactor-table" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
+                            <th data-sort="country">Country <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="country">&#9698;</span></th>
+                            <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
+                            <th data-sort="capacity"><span id="capacity-header">Capacity (MW)</span> <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
+                            <th data-sort="status">Status <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="status">&#9698;</span></th>
+                            <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="date">&#9698;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
+            </div>
         </section>
     </div>
 
@@ -190,7 +196,7 @@
         <div class="modal-content" style="max-width: 950px;">
             <button class="modal-close" onclick="closeModal('construction-modal')">&times;</button>
             <h2>Reactors Under Construction</h2>
-            <p id="construction-note" style="color: #6B6E7B; font-size: 0.85rem; margin: 0 0 10px;"></p>
+            <p id="construction-note" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0 0 10px;"></p>
             <div id="construction-map" class="modal-map-container"></div>
         </div>
     </div>
@@ -200,9 +206,9 @@
         <div class="modal-content" style="max-width: 950px;">
             <button class="modal-close" onclick="closeModal('countries-modal')">&times;</button>
             <h2>Nuclear Power Countries</h2>
-            <p id="countries-note" style="color: #6B6E7B; font-size: 0.85rem; margin: 0 0 10px;"></p>
+            <p id="countries-note" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0 0 10px;"></p>
             <div id="countries-map" class="modal-map-container"></div>
-            <div id="countries-legend" style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-size: 0.8rem; color: #474853;"></div>
+            <div id="countries-legend" style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-size: 0.8rem; color: var(--reg-grey-dark);"></div>
         </div>
     </div>
 
@@ -222,27 +228,24 @@
         const API_BASE = '';  // Same origin
         const API_KEY = 'demo-key-12345';  // Demo key for development
 
-        // REG brand palette (per /Users/madihilly/REG_Branding/STYLE/style-guide.md §4)
+        // REG brand palette — values come from reg.css via static/reg-brand.js (Brandbook v2 p8)
         const colors = {
-            yellow: '#FFC100',
-            vermilion: '#E06336',
-            cobalt: '#3F55C5',
-            forest: '#40774A',
-            sage: '#9FC3A5',
-            powder: '#C7D9E8',
-            greyDark: '#474853',
-            greyLight: '#F6F6F6',
+            yellow: REG.yellow,
+            vermilion: REG.vermilion,
+            cobalt: REG.cobalt,
+            forest: REG.forest,
+            sage: REG.sage,
+            powder: REG.powder,
+            greyDark: REG.greyDark,
+            greyLight: REG.greyLight,
             // Semantic
-            primary: '#3F55C5',     // accent (cobalt) for charts
-            secondary: '#40774A',   // forest
-            success: '#40774A',
-            warning: '#E06336',
-            danger: '#B33A20',
-            // Categorical chart series — cobalt → forest → vermilion → sage → yellow → powder → grey
-            chart: [
-                '#3F55C5', '#40774A', '#E06336', '#9FC3A5', '#FFC100',
-                '#C7D9E8', '#474853', '#6B6E7B', '#7B8FD8', '#88A88E'
-            ]
+            primary: REG.cobalt,     // accent (cobalt) for charts
+            secondary: REG.forest,   // forest
+            success: REG.forest,
+            warning: REG.vermilion,
+            danger: REG.danger,
+            // Categorical chart series — brand colours, then the p8 accents (navy, brown, slate, ochre)
+            chart: REG.categorical
         };
 
         // Fetch helper
@@ -318,7 +321,7 @@
                     plugins: {
                         legend: {
                             position: 'right',
-                            labels: { color: '#474853', padding: 15 }
+                            labels: { color: REG.greyDark, padding: 15 }
                         },
                         tooltip: {
                             callbacks: {
@@ -356,7 +359,7 @@
                         label: 'Operating capacity (GW, gross)',
                         data: top10.map(c => c.capacity_gw),
                         backgroundColor: colors.primary,
-                        borderRadius: 4
+                        borderRadius: 0
                     }]
                 },
                 options: {
@@ -373,13 +376,13 @@
                     },
                     scales: {
                         x: {
-                            grid: { color: '#E8E8EB' },
-                            ticks: { color: '#6B6E7B' },
-                            title: { display: true, text: 'Operating capacity (GW, gross)', color: '#6B6E7B' }
+                            grid: { color: REG.grid },
+                            ticks: { color: REG.text2 },
+                            title: { display: true, text: 'Operating capacity (GW, gross)', color: REG.text2 }
                         },
                         y: {
                             grid: { display: false },
-                            ticks: { color: '#474853' }
+                            ticks: { color: REG.greyDark }
                         }
                     },
                     onClick: (event, elements) => {
@@ -409,7 +412,7 @@
                         label: 'Nuclear Share (%)',
                         data: annual.map(d => d.share_pct),
                         borderColor: colors.primary,
-                        backgroundColor: 'rgba(63, 85, 197, 0.10)',
+                        backgroundColor: REG.rgba('cobalt', 0.10),
                         fill: true,
                         tension: 0.3,
                         pointRadius: 0,
@@ -425,7 +428,7 @@
                         subtitle: {
                             display: true,
                             text: 'Source: [EMBER] and [EI-SR] via Our World in Data (nuclear and total electricity generation)',
-                            color: '#6B6E7B',
+                            color: REG.text2,
                             font: { size: 11 },
                             padding: { bottom: 10 }
                         },
@@ -444,22 +447,22 @@
                     },
                     scales: {
                         x: {
-                            grid: { color: '#E8E8EB' },
+                            grid: { color: REG.grid },
                             ticks: {
-                                color: '#6B6E7B',
+                                color: REG.text2,
                                 maxTicksLimit: 12
                             }
                         },
                         y: {
-                            grid: { color: '#E8E8EB' },
+                            grid: { color: REG.grid },
                             ticks: {
-                                color: '#6B6E7B',
+                                color: REG.text2,
                                 callback: (val) => val + '%'
                             },
                             title: {
                                 display: true,
                                 text: '% of Global Electricity',
-                                color: '#6B6E7B'
+                                color: REG.text2
                             }
                         }
                     }
@@ -478,7 +481,7 @@
                 'Suspended':           colors.vermilion,
                 'Long-term Shutdown':  colors.sage,
                 'Shutdown':  colors.greyDark,
-                'Unknown':             '#D6D6DA'
+                'Unknown':             REG.hairline
             };
 
             const statusChart = new Chart(document.getElementById('status-chart'), {
@@ -487,7 +490,7 @@
                     labels: data.by_status.map(s => s.status),
                     datasets: [{
                         data: data.by_status.map(s => s.count),
-                        backgroundColor: data.by_status.map(s => statusColors[s.status] || '#D6D6DA'),
+                        backgroundColor: data.by_status.map(s => statusColors[s.status] || REG.hairline),
                         borderColor: '#ffffff',
                         borderWidth: 2
                     }]
@@ -498,7 +501,7 @@
                     plugins: {
                         legend: {
                             position: 'right',
-                            labels: { color: '#474853', padding: 15, font: { size: 12 } }
+                            labels: { color: REG.greyDark, padding: 15, font: { size: 12 } }
                         }
                     },
                     onClick: (event, elements) => {
@@ -541,7 +544,7 @@
                         label: 'Installed Capacity (GW)',
                         data: series.past,
                         borderColor: colors.forest,
-                        backgroundColor: 'rgba(64, 119, 74, 0.10)',
+                        backgroundColor: REG.rgba('forest', 0.10),
                         fill: true,
                         tension: 0.3,
                         pointRadius: series.dot(0),
@@ -569,7 +572,7 @@
                             display: true,
                             text: ['Source: [PRIS] reactor dates and capacities (gross), at year end. Reactors IAEA now lists as suspended drop out from their suspension date; reactors idle for years and later restarted (e.g. Japan 2012-15) count throughout.',
                                    'Dashed: projection from reactors under construction; closures not included.'],
-                            color: '#9498A4',
+                            color: REG.muted,
                             font: { size: 11 },
                             padding: { bottom: 10 }
                         },
@@ -587,13 +590,13 @@
                     },
                     scales: {
                         x: {
-                            grid: { color: '#E8E8EB' },
-                            ticks: { color: '#6B6E7B', maxTicksLimit: 12 }
+                            grid: { color: REG.grid },
+                            ticks: { color: REG.text2, maxTicksLimit: 12 }
                         },
                         y: {
-                            grid: { color: '#E8E8EB' },
+                            grid: { color: REG.grid },
                             ticks: {
-                                color: '#6B6E7B',
+                                color: REG.text2,
                                 callback: (val) => val + ' GW'
                             }
                         }
@@ -608,11 +611,11 @@
         let allMapData = null;
 
         const statusColors = {
-            'Operational':         '#40774A',  // forest
-            'Under Construction':  '#FFC100',  // yellow
-            'Suspended':           '#E06336',  // vermilion
-            'Long-term Shutdown':  '#9FC3A5',  // sage
-            'Shutdown':  '#474853'   // grey-dark
+            'Operational':         REG.forest,  // forest
+            'Under Construction':  REG.yellow,  // yellow
+            'Suspended':           REG.vermilion,  // vermilion
+            'Long-term Shutdown':  REG.sage,  // sage
+            'Shutdown':  REG.greyDark   // grey-dark
         };
 
         const statusPriority = {
@@ -647,13 +650,13 @@
                     document.querySelectorAll('.map-filter-btn').forEach(b => {
                         b.classList.remove('active');
                         b.style.background = '#fff';
-                        b.style.color = '#474853';
-                        b.style.borderColor = '#D6D6DA';
+                        b.style.color = REG.greyDark;
+                        b.style.borderColor = REG.hairline;
                     });
                     btn.classList.add('active');
-                    btn.style.background = '#474853';
+                    btn.style.background = REG.greyDark;
                     btn.style.color = '#fff';
-                    btn.style.borderColor = '#474853';
+                    btn.style.borderColor = REG.greyDark;
                     renderMapMarkers(btn.dataset.filter);
                 });
             });
@@ -685,7 +688,7 @@
                 const bestStatus = site.reactors.reduce((best, r) => {
                     return (statusPriority[r.status] || 99) < (statusPriority[best] || 99) ? r.status : best;
                 }, site.reactors[0].status);
-                const color = statusColors[bestStatus] || '#3F55C5';
+                const color = statusColors[bestStatus] || REG.cobalt;
 
                 // Capacity of matching reactors for marker size
                 const totalCapacity = matchingReactors.reduce((sum, r) => sum + (r.capacity_mw || 0), 0);
@@ -700,10 +703,10 @@
 
                 const popupLines = Object.entries(plants).map(([pn, units]) => {
                     const unitList = units.map(r => {
-                        const statusDot = `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${statusColors[r.status] || '#999'};margin-right:4px;"></span>`;
+                        const statusDot = `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${statusColors[r.status] || REG.muted};margin-right:4px;"></span>`;
                         return `${statusDot}${r.name} - ${r.technology || '?'} - ${r.capacity_mw || '?'} MW`;
                     }).join('<br>');
-                    return `<strong><a href="/plant/${encodeURIComponent(pn)}" style="color: #3F55C5; text-decoration: none;">${pn}</a></strong> (${units.length} unit${units.length !== 1 ? 's' : ''})<br>${unitList}`;
+                    return `<strong><a href="/plant/${encodeURIComponent(pn)}" style="color: var(--reg-blue-cobalt); text-decoration: none;">${pn}</a></strong> (${units.length} unit${units.length !== 1 ? 's' : ''})<br>${unitList}`;
                 }).join('<br><br>');
 
                 L.circleMarker([site.lat, site.lng], {
@@ -714,7 +717,7 @@
                     opacity: 0.8,
                     fillOpacity: 0.7
                 })
-                .bindPopup(`<a href="/country/${encodeURIComponent(site.reactors[0].country)}" style="color: #6B6E7B; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;">${site.reactors[0].country}</a><br><br>${popupLines}`)
+                .bindPopup(`<a href="/country/${encodeURIComponent(site.reactors[0].country)}" style="color: var(--text-secondary); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;">${site.reactors[0].country}</a><br><br>${popupLines}`)
                 .addTo(mapMarkers);
             });
         }
@@ -1096,7 +1099,7 @@
 
                 let dateCol = r.commercial_operation || '-';
                 if (r.status === 'Shutdown' && r.permanent_shutdown) {
-                    dateCol = `<span style="color:#888">Shut down:</span> ${r.permanent_shutdown}`;
+                    dateCol = `<span style="color:var(--text-muted)">Shut down:</span> ${r.permanent_shutdown}`;
                 }
 
                 return `
@@ -1119,7 +1122,7 @@
                     <td><strong>${r.project_name}-${r.unit_number || '?'}</strong></td>
                     <td>${r.country || '-'}</td>
                     <td>${r.technology || '-'}</td>
-                    <td>${r.capacity_mw ? r.capacity_mw.toLocaleString() + (r.capacity_basis === 'gross' ? ' <span style="color:#888">(gross)</span>' : '') : '-'}</td>
+                    <td>${r.capacity_mw ? r.capacity_mw.toLocaleString() + (r.capacity_basis === 'gross' ? ' <span style="color:var(--text-muted)">(gross)</span>' : '') : '-'}</td>
                     <td><span class="status-badge status-planned">${r.likelihood || 'Planned'}</span></td>
                     <td>${r.expected_online || '-'}</td>
                 </tr>
@@ -1165,9 +1168,9 @@
         let statsHistoryCache = null;
 
         const statConfig = {
-            operational:  { title: 'Operational Reactors Over Time', field: 'operational', color: '#3F55C5', unit: '' },
-            capacity:     { title: 'Total Operational Capacity Over Time', field: 'capacity_gw', color: '#3F55C5', unit: ' GW' },
-            generation:   { title: 'Annual Nuclear Generation Over Time', field: 'generation_twh', color: '#40774A', unit: ' TWh' }
+            operational:  { title: 'Operational Reactors Over Time', field: 'operational', color: REG.cobalt, unit: '' },
+            capacity:     { title: 'Total Operational Capacity Over Time', field: 'capacity_gw', color: REG.cobalt, unit: ' GW' },
+            generation:   { title: 'Annual Nuclear Generation Over Time', field: 'generation_twh', color: REG.forest, unit: ' TWh' }
         };
 
         // Generic time-series modal (operational, capacity, generation)
@@ -1230,7 +1233,7 @@
                         subtitle: {
                             display: series.hasProjection,
                             text: series.hasProjection ? statsHistoryCache.projection.method : '',
-                            color: '#6B6E7B',
+                            color: REG.text2,
                             font: { size: 11 },
                             padding: { bottom: 10 }
                         },
@@ -1243,13 +1246,13 @@
                     },
                     scales: {
                         x: {
-                            grid: { color: '#E8E8EB' },
-                            ticks: { color: '#6B6E7B', maxTicksLimit: 15 }
+                            grid: { color: REG.grid },
+                            ticks: { color: REG.text2, maxTicksLimit: 15 }
                         },
                         y: {
-                            grid: { color: '#E8E8EB' },
+                            grid: { color: REG.grid },
                             ticks: {
-                                color: '#6B6E7B',
+                                color: REG.text2,
                                 callback: (val) => val.toLocaleString()
                             },
                             beginAtZero: true
@@ -1291,8 +1294,8 @@
 
                         L.circleMarker([site.latitude, site.longitude], {
                             radius: radius,
-                            fillColor: '#FFC100',
-                            color: '#474853',
+                            fillColor: REG.yellow,
+                            color: REG.greyDark,
                             weight: 1.25,
                             fillOpacity: 0.85
                         })
@@ -1381,14 +1384,14 @@
                         { min: 2, opacity: 0.5, label: '2-10 GW' },
                         { min: 0, opacity: 0.32, label: 'under 2 GW' }
                     ];
-                    const buildingStyle = { fillColor: '#FFC100', fillOpacity: 0.75, color: '#474853', weight: 1.5, dashArray: '4 3' };
+                    const buildingStyle = { fillColor: REG.yellow, fillOpacity: 0.75, color: REG.greyDark, weight: 1.5, dashArray: '4 3' };
                     const countryStyle = (country) => {
                         if (country && isOperating(country)) {
                             const step = ramp.find(s => country.capacity_gw >= s.min);
-                            return { fillColor: '#3F55C5', fillOpacity: step.opacity, color: '#D6D6DA', weight: 1 };
+                            return { fillColor: REG.cobalt, fillOpacity: step.opacity, color: REG.hairline, weight: 1 };
                         }
                         if (country && isBuilding(country)) return buildingStyle;
-                        return { fillColor: '#F6F6F6', fillOpacity: 0.3, color: '#D6D6DA', weight: 1 };
+                        return { fillColor: REG.greyLight, fillOpacity: 0.3, color: REG.hairline, weight: 1 };
                     };
 
                     const shown = Object.values(numericLookup);
@@ -1402,8 +1405,8 @@
                             ? `; ${building.length} more ${allBuildingFirst ? 'are building their first' : 'are building but operate none'} (${building.map(c => c.name).join(', ')}).`
                             : '.');
                     document.getElementById('countries-legend').innerHTML =
-                        ramp.map(s => `<span><span style="display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:5px;background:rgba(63,85,197,${s.opacity});border:1px solid #D6D6DA;"></span>Operating, ${s.label}</span>`).join('') +
-                        `<span><span style="display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:5px;background:rgba(255,193,0,0.75);border:1.5px dashed #474853;"></span>${buildingLabel}</span>`;
+                        ramp.map(s => `<span><span style="display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:5px;background:${REG.rgba('cobalt', s.opacity)};border:1px solid var(--hairline);"></span>Operating, ${s.label}</span>`).join('') +
+                        `<span><span style="display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:5px;background:${REG.rgba('yellow', 0.75)};border:1.5px dashed var(--reg-grey-dark);"></span>${buildingLabel}</span>`;
 
                     const geoLayer = L.geoJSON(geojson, {
                         style: (feature) => countryStyle(numericLookup[feature.id]),
@@ -1453,7 +1456,7 @@
                         datasets: [{
                             label: 'Reactors',
                             data: data.brackets.map(b => b.count),
-                            backgroundColor: '#3F55C5',
+                            backgroundColor: REG.cobalt,
                             borderRadius: 0
                         }]
                     },
@@ -1474,15 +1477,15 @@
                         scales: {
                             x: {
                                 grid: { display: false },
-                                ticks: { color: '#6B6E7B' }
+                                ticks: { color: REG.text2 }
                             },
                             y: {
-                                grid: { color: '#E8E8EB' },
-                                ticks: { color: '#6B6E7B' },
+                                grid: { color: REG.grid },
+                                ticks: { color: REG.text2 },
                                 title: {
                                     display: true,
                                     text: 'Number of Reactors',
-                                    color: '#6B6E7B'
+                                    color: REG.text2
                                 }
                             }
                         }

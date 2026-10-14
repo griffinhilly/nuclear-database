@@ -9,7 +9,7 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -18,6 +18,10 @@
 
     <!-- REG shared brand stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <script src="{{ url_for('static', filename='reg-brand.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 
     <style>
         /* Page-specific overrides — lineage detail */
@@ -42,7 +46,7 @@
             font-family: var(--font-sans);
             color: var(--reg-grey-dark);
             font-size: 0.78rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.18em;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -59,16 +63,19 @@
         }
         .stat-row:last-child { border-bottom: none; }
         .stat-row .stat-label { color: var(--text-secondary); }
-        .stat-row .stat-value { color: var(--reg-grey-dark); font-weight: 500; }
+        .stat-row .stat-value { color: var(--reg-grey-dark); font-weight: 400; }
         .stat-row .stat-value.highlight { color: var(--accent); }
 
         /* Tree visualization */
         .tree-card { grid-column: 1 / -1; }
 
+        /* Tall trees scroll inside a fixed window that opens on the first designs,
+           instead of showing ~550px of empty card above them. */
         #tree-container {
-            overflow-x: auto;
-            overflow-y: hidden;
+            overflow: auto;
+            max-height: 440px;
         }
+        @media (max-width: 600px) { #tree-container { max-height: 280px; } }
         #tree-container svg { display: block; }
 
         .tree-node rect {
@@ -108,7 +115,7 @@
             letter-spacing: 0.16em;
             text-transform: uppercase;
             color: var(--text-secondary);
-            font-weight: 500;
+            font-weight: 400;
         }
         .tree-legend-swatch {
             width: 14px;
@@ -133,7 +140,7 @@
             color: var(--text-secondary);
             font-family: var(--font-sans);
         }
-        .tree-tooltip strong { color: var(--reg-grey-dark); font-weight: 500; }
+        .tree-tooltip strong { color: var(--reg-grey-dark); font-weight: 400; }
 
         /* Map */
         #lineage-map {
@@ -214,19 +221,21 @@
             <!-- Reactor Table -->
             <div class="card" style="margin-top: 30px;">
                 <h2 id="reactor-table-title">Reactors</h2>
-                <table class="data-table" id="reactor-table">
-                    <thead>
-                        <tr>
-                            <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span></th>
-                            <th data-sort="series">Design Series <span class="sort-icon">&#8597;</span></th>
-                            <th data-sort="country">Country <span class="sort-icon">&#8597;</span></th>
-                            <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span></th>
-                            <th data-sort="status">Status <span class="sort-icon">&#8597;</span></th>
-                            <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span></th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-body"></tbody>
-                </table>
+                <div class="table-scroll">
+                    <table class="data-table" id="reactor-table">
+                        <thead>
+                            <tr>
+                                <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span></th>
+                                <th data-sort="series">Design Series <span class="sort-icon">&#8597;</span></th>
+                                <th data-sort="country">Country <span class="sort-icon">&#8597;</span></th>
+                                <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span></th>
+                                <th data-sort="status">Status <span class="sort-icon">&#8597;</span></th>
+                                <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -238,11 +247,11 @@
 
         // Generation colors (REG palette)
         const genColors = {
-            'Gen I':   '#D6D6DA',
-            'Gen II':  '#C7D9E8',
-            'Gen III': '#3F55C5',
-            'Gen III+':'#3F55C5',
-            'Gen IV':  '#E06336'
+            'Gen I':   REG.hairline,
+            'Gen II':  REG.powder,
+            'Gen III': REG.cobalt,
+            'Gen III+':REG.navy,
+            'Gen IV':  REG.vermilion
         };
 
         let currentReactors = [];
@@ -347,16 +356,16 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#40774A',
-                    'Under Construction': '#FFC100',
-                    'Suspended': '#E06336',
-                    'Shutdown': '#474853',
-                    'Long-term Shutdown': '#9FC3A5'
+                    'Operational': REG.forest,
+                    'Under Construction': REG.yellow,
+                    'Suspended': REG.vermilion,
+                    'Shutdown': REG.greyDark,
+                    'Long-term Shutdown': REG.sage
                 };
 
                 const bounds = [];
                 withCoords.forEach(r => {
-                    const color = statusColors[r.status] || '#3F55C5';
+                    const color = statusColors[r.status] || REG.cobalt;
                     bounds.push([r.latitude, r.longitude]);
                     L.circleMarker([r.latitude, r.longitude], {
                         radius: 6,
@@ -367,8 +376,8 @@
                         fillOpacity: 0.7
                     })
                     .bindPopup(`
-                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color:#3F55C5">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        <a href="/country/${encodeURIComponent(r.country)}" style="color:#6B6E7B">${r.country}</a> | ${r.design_series}<br>
+                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color:var(--reg-blue-cobalt)">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color:var(--text-secondary)">${r.country}</a> | ${r.design_series}<br>
                         <a href="/status/${encodeURIComponent(r.status)}" style="color:${color}; text-decoration:none">${r.status}</a>
                     `)
                     .addTo(map);
@@ -376,7 +385,7 @@
                 map.fitBounds(bounds, { padding: [20, 20] });
             } else {
                 document.getElementById('lineage-map').innerHTML =
-                    '<p style="text-align:center;color:#6B6E7B;padding:100px 0;">No location data</p>';
+                    '<p style="text-align:center;color:var(--text-secondary);padding:100px 0;">No location data</p>';
             }
 
             // Country chart
@@ -389,7 +398,7 @@
                         datasets: [{
                             label: 'Capacity (GW)',
                             data: top15.map(c => c.capacity_gw),
-                            backgroundColor: '#3F55C5',
+                            backgroundColor: REG.cobalt,
                             borderRadius: 0
                         }]
                     },
@@ -398,7 +407,7 @@
                         maintainAspectRatio: false,
                         indexAxis: 'y',
                         plugins: {
-                            legend: { display: false, labels: { color: '#474853' } },
+                            legend: { display: false, labels: { color: REG.greyDark } },
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => `${top15[ctx.dataIndex].count} reactors`
@@ -407,13 +416,13 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#E8E8EB' },
-                                ticks: { color: '#6B6E7B' },
-                                title: { display: true, text: 'GW', color: '#6B6E7B' }
+                                grid: { color: REG.grid },
+                                ticks: { color: REG.text2 },
+                                title: { display: true, text: 'GW', color: REG.text2 }
                             },
                             y: {
                                 grid: { display: false },
-                                ticks: { color: '#474853' }
+                                ticks: { color: REG.greyDark }
                             }
                         },
                         onClick: (event, elements) => {
@@ -429,7 +438,7 @@
                 });
             } else {
                 document.getElementById('country-chart').parentElement.innerHTML =
-                    '<p style="text-align:center;color:#6B6E7B;padding:80px 0;">No operational reactors</p>';
+                    '<p style="text-align:center;color:var(--text-secondary);padding:80px 0;">No operational reactors</p>';
             }
 
             // Reactor table
@@ -544,7 +553,7 @@
                 .attr('height', nodeH)
                 .attr('rx', 0)
                 .attr('ry', 0)
-                .attr('fill', d => genColors[d.data.generation_label] || '#D6D6DA');
+                .attr('fill', d => genColors[d.data.generation_label] || REG.hairline);
 
             // Series name
             nodes.append('text')
@@ -552,11 +561,11 @@
                 .attr('y', 22)
                 .attr('text-anchor', 'middle')
                 .attr('font-size', '13px')
-                .attr('font-weight', '500')
+                .attr('font-weight', '400')
                 .attr('fill', d => {
                     const label = d.data.generation_label || '';
                     // Light fills (Gen I grey, Gen II powder blue) get dark text
-                    return (label === 'Gen I' || label === 'Gen II' || !label) ? '#474853' : '#fff';
+                    return (label === 'Gen I' || label === 'Gen II' || !label) ? REG.greyDark : '#fff';
                 })
                 .text(d => d.data.design_series);
 
@@ -568,7 +577,7 @@
                 .attr('font-size', '11px')
                 .attr('fill', d => {
                     const label = d.data.generation_label || '';
-                    return (label === 'Gen I' || label === 'Gen II' || !label) ? '#6B6E7B' : 'rgba(255,255,255,0.85)';
+                    return (label === 'Gen I' || label === 'Gen II' || !label) ? REG.text2 : 'rgba(255,255,255,0.85)';
                 })
                 .text(d => `${d.data.reactor_count} reactor${d.data.reactor_count !== 1 ? 's' : ''}`);
 
@@ -576,10 +585,10 @@
                 .attr('x', nodeW / 2)
                 .attr('y', 56)
                 .attr('text-anchor', 'middle')
-                .attr('font-size', '10px')
+                .attr('font-size', '11px')
                 .attr('fill', d => {
                     const label = d.data.generation_label || '';
-                    return (label === 'Gen I' || label === 'Gen II' || !label) ? '#9498A4' : 'rgba(255,255,255,0.7)';
+                    return (label === 'Gen I' || label === 'Gen II' || !label) ? REG.muted : 'rgba(255,255,255,0.7)';
                 })
                 .text(d => {
                     const parts = [];
@@ -623,6 +632,14 @@
             const genOrder = ['Gen I', 'Gen II', 'Gen III', 'Gen III+', 'Gen IV'];
             const sortedGens = genOrder.filter(g => usedGens.includes(g));
 
+            // Open the scroll window on the earliest designs (leftmost column), centred vertically.
+            const firstCol = hierarchy.descendants().filter(d => !d.data._virtual);
+            const minDepth = Math.min(...firstCol.map(d => d.depth));
+            const col = firstCol.filter(d => d.depth === minDepth);
+            const midX = col.reduce((a, d) => a + d.x, 0) / col.length;
+            const rowY = marginTop - minX + 20 + midX + nodeH / 2;
+            container.scrollTop = Math.max(0, rowY - container.clientHeight / 2);
+
             document.getElementById('tree-legend').innerHTML = sortedGens.map(gen => `
                 <div class="tree-legend-item">
                     <div class="tree-legend-swatch" style="background:${genColors[gen]}"></div>
@@ -646,7 +663,7 @@
                 else statusClass = 'shutdown';
 
                 const dateCol = r.status === 'Shutdown' && r.permanent_shutdown
-                    ? `<span style="color:#6B6E7B">Shut:</span> ${r.permanent_shutdown}`
+                    ? `<span style="color:var(--text-secondary)">Shut:</span> ${r.permanent_shutdown}`
                     : (r.commercial_operation || '-');
 
                 return `

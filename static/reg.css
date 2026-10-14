@@ -1,52 +1,74 @@
 /* ============================================================
    Radiant Energy Group — shared brand stylesheet
-   Source of truth: /Users/madihilly/REG_Branding/STYLE/style-guide.md
+   Source of truth: reg/STYLE/Brandbook_Radiant Energy Group_v2.pdf (2026-05-27),
+   summarised in reg/STYLE/style-guide.md. Charts read these tokens via static/reg-brand.js.
    ============================================================ */
 
-/* Open-source fallbacks for Forma DJR Display (commercial).
-   When a Forma DJR license is in place, drop a @font-face block above. */
-@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+/* Web font: Public Sans (open licence). Forma DJR is the brand face, but no licence on
+   file allows self-hosting it (Display: DJR desktop licence; Text/Micro: Adobe Fonts EULA).
+   Machines with Forma installed still get it through the stacks below. */
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,700;1,400&display=swap");
 
 :root {
-    /* REG brand palette (2026-04) */
-    --reg-yellow:       #FFC100;
-    --reg-vermilion:    #E06336;
-    --reg-blue-cobalt:  #3F55C5;
+    /* REG brand palette — Brandbook v2 p8 */
+    --reg-yellow:       #FFBF00;   /* primary */
+    --reg-grey-light:   #F4F4F4;   /* primary — layout background */
+    --reg-grey-dark:    #474853;   /* primary — logo and text */
+    --reg-blue-cobalt:  #3F55C3;   /* secondary */
+    --reg-vermilion:    #DF6336;
+    --reg-blue-powder:  #C5D7E7;
     --reg-green-forest: #40774A;
-    --reg-green-sage:   #9FC3A5;
-    --reg-blue-powder:  #C7D9E8;
-    --reg-grey-light:   #F6F6F6;
-    --reg-grey-dark:    #474853;
+    --reg-green-sage:   #9DC1A3;
+    /* Accents — only over/with their own parent colour (p8, p10) */
+    --reg-yellow-accent:    #996A00;
+    --reg-cobalt-accent:    #1E2C5B;   /* navy */
+    --reg-vermilion-accent: #77331E;   /* brown */
+    --reg-powder-accent:    #6E787F;   /* slate */
+    --reg-forest-accent:    #162819;
+    --reg-sage-accent:      #49594B;
+
+    /* Tints of brand colours (not new hues) */
+    --reg-grey-dark-80: #6C6D75;   /* 80% dark grey: 5.1:1 on white, 4.7:1 on light grey */
+    --reg-grey-dark-20: #DADADD;   /* 20% dark grey: hairlines */
+    --reg-grey-dark-12: #E9E9EA;   /* 12% dark grey: chart grid */
+    --reg-grey-dark-10: #EDEDEE;
+    --reg-powder-40:    #E8EFF5;   /* 40% powder: hover fill */
+    --reg-powder-hover: #B1C2D0;   /* powder, brightness -10% */
 
     /* Semantic mappings */
     --bg-primary:    #ffffff;
     --bg-card:       var(--reg-grey-light);
-    --bg-card-alt:   #ECECEC;
-    --bg-hover:      #E8EBF1;
+    --bg-card-alt:   var(--reg-grey-dark-10);
+    --bg-hover:      var(--reg-powder-40);
     --text-primary:  var(--reg-grey-dark);
-    --text-secondary:#6B6E7B;
-    --text-muted:    #9498A4;
+    --text-secondary:var(--reg-grey-dark-80);
+    --text-muted:    var(--reg-grey-dark-80);
     --accent:        var(--reg-blue-cobalt);
-    --accent-light:  rgba(63, 85, 197, 0.08);
+    --accent-light:  rgba(63, 85, 195, 0.08);
     --primary:       var(--reg-yellow);
-    --border:        #E2E2E5;
-    --hairline:      #D6D6DA;
+    --border:        var(--reg-grey-dark-20);
+    --hairline:      var(--reg-grey-dark-20);
     --success:       var(--reg-green-forest);
     --warning:       var(--reg-vermilion);
-    --danger:        #B33A20;
-    --chart-grid:    #E8E8EB;
-    --chart-text:    #6B6E7B;
+    --danger:        var(--reg-vermilion-accent);
+    --chart-grid:    var(--reg-grey-dark-12);
+    --chart-text:    var(--reg-grey-dark-80);
     --chart-legend:  var(--reg-grey-dark);
 
-    /* Typography — Forma DJR Display is canonical (commercial, license required).
-       Fallback stack per style-guide §3.3. Public Sans is the closest free match. */
-    --font-brand: "Forma DJR Display", "Forma DJR Text",
-                  "Söhne", "Neue Haas Grotesk Display",
-                  "Public Sans", "Inter",
-                  -apple-system, BlinkMacSystemFont, system-ui, "Helvetica Neue", Arial, sans-serif;
-    /* Aliases retained for backward compatibility — both resolve to --font-brand now */
-    --font-sans:    var(--font-brand);
-    --font-display: var(--font-brand);
+    /* Typography — Forma DJR (p9) with REG's optical-size convention:
+       Display for big numerals and the hero, Text for body, Micro for small labels.
+       Public Sans is the shipped web font for visitors without Forma. */
+    --font-display: "Forma DJR Display", "Forma DJR Deck", "Forma DJR Text",
+                    "Public Sans", -apple-system, BlinkMacSystemFont, system-ui, "Helvetica Neue", Arial, sans-serif;
+    --font-text:    "Forma DJR Text",
+                    "Public Sans", -apple-system, BlinkMacSystemFont, system-ui, "Helvetica Neue", Arial, sans-serif;
+    --font-micro:   "Forma DJR Micro", "Forma DJR Text",
+                    "Public Sans", -apple-system, BlinkMacSystemFont, system-ui, "Helvetica Neue", Arial, sans-serif;
+    /* Aliases retained for backward compatibility */
+    --font-brand:   var(--font-text);
+    --font-sans:    var(--font-text);
+
+    --label-min:    0.6875rem;     /* 11px floor for any visible label */
 }
 
 /* Reset ------------------------------------------------------ */
@@ -57,9 +79,13 @@ body {
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.55;
-    font-feature-settings: "ss01", "cv11";
+    letter-spacing: 0.025em;           /* REG house spec for Text/Micro */
+    /* Tabular figures everywhere: columns line up, and Forma's tight "~2" and "-1"
+       kern pairs (tilde/hyphen touching the digit) do not apply to tabular digits. */
+    font-variant-numeric: tabular-nums;
     -webkit-font-smoothing: antialiased;
 }
+button, input, select, textarea { letter-spacing: inherit; font-variant-numeric: inherit; }
 
 a { color: var(--accent); }
 
@@ -73,28 +99,32 @@ a { color: var(--accent); }
     align-items: center;
 }
 
+/* Main logo (Brandbook v2 p18). The SVG is cropped tight to the artwork, so the
+   protection area (one "A" module, ~0.3 x logo height, p19) comes from the margin.
+   44px tall = 180px wide, above the 160px digital minimum. No hover effect (p22). */
 .reg-wordmark {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
     line-height: 0;
+    margin: 0 14px 0 0;
+    flex: none;
 }
 .reg-wordmark img {
-    height: 38px;
+    height: 44px;
     width: auto;
     display: block;
 }
-.reg-wordmark:hover img { opacity: 0.85; }
 
 .reg-nav-menu {
     display: flex;
     gap: 28px;
-    font-family: var(--font-sans);
+    font-family: var(--font-micro);
     font-size: 0.78rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
 }
-.reg-nav-menu a { color: var(--reg-grey-dark); text-decoration: none; font-weight: 500; }
+.reg-nav-menu a { color: var(--reg-grey-dark); text-decoration: none; font-weight: 400; white-space: nowrap; }
 .reg-nav-menu a:hover { color: var(--accent); }
 
 /* Hero — solid yellow tone-on-tone (front page only, §8.1, §11) */
@@ -106,7 +136,7 @@ a { color: var(--accent); }
 }
 .reg-hero-inner { max-width: 1400px; margin: 0 auto; }
 .reg-hero-eyebrow {
-    font-family: var(--font-sans);
+    font-family: var(--font-micro);
     font-size: 0.7rem;
     letter-spacing: 0.32em;
     text-transform: uppercase;
@@ -116,19 +146,18 @@ a { color: var(--accent); }
 }
 .reg-hero h1 {
     font-family: var(--font-display);
-    font-size: clamp(2.4rem, 5.2vw, 4.4rem);
-    font-weight: 500;
-    line-height: 0.96;
-    letter-spacing: -0.005em;
+    font-size: clamp(2.2rem, 4.8vw, 4.1rem);
+    font-weight: 400;                  /* p9 title: Display Regular, uppercase, wide tracking */
+    line-height: 1.02;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--reg-grey-dark);
     margin-bottom: 28px;
-    max-width: 18ch;
+    max-width: 22ch;
 }
 .reg-hero-rule {
     height: 1px;
-    background: var(--reg-grey-dark);
-    opacity: 0.55;
+    background: var(--reg-yellow-accent);   /* lines over yellow use its accent (p10) */
     margin: 28px 0 20px;
     max-width: 480px;
 }
@@ -151,23 +180,23 @@ a { color: var(--accent); }
 
 .reg-back-link {
     display: inline-block;
-    font-family: var(--font-sans);
+    font-family: var(--font-micro);
     font-size: 0.7rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--text-secondary);
     text-decoration: none;
     margin-bottom: 18px;
-    font-weight: 500;
+    font-weight: 400;
 }
 .reg-back-link:hover { color: var(--accent); }
 
 .reg-page-title {
-    font-family: var(--font-sans);
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-weight: 400;
     font-size: clamp(1.7rem, 2.8vw, 2.3rem);
     line-height: 1.1;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
     color: var(--reg-grey-dark);
     padding-left: 16px;
     border-left: 5px solid var(--reg-yellow);
@@ -206,8 +235,8 @@ a { color: var(--accent); }
     grid-template-columns: repeat(4, 1fr);
 }
 .reg-pillar-strip span {
-    font-family: var(--font-brand);
-    font-size: 0.66rem;
+    font-family: var(--font-micro);
+    font-size: var(--label-min);
     letter-spacing: 0.28em;
     line-height: 1.55;
     text-transform: uppercase;
@@ -228,15 +257,15 @@ a { color: var(--accent); }
 
 /* Section title with yellow pipe accent (§7) ---------------- */
 .section-title {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     font-size: 1.35rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--reg-grey-dark);
     margin-bottom: 28px;
     padding: 0 0 14px 16px;
     border-bottom: 1px solid var(--hairline);
     position: relative;
-    letter-spacing: -0.005em;
+    letter-spacing: 0.01em;
 }
 .section-title::before {
     content: "";
@@ -272,23 +301,30 @@ a { color: var(--accent); }
 .stat-value {
     font-family: var(--font-display);
     font-size: 3.2rem;
-    font-weight: 300;
+    font-weight: 400;                  /* Display has Regular/Italic/Bold only (p9) */
     color: var(--reg-grey-dark);
     line-height: 1;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
+    /* Big numerals keep proportional figures (tabular ones look gappy at this size);
+       kerning off instead, which opens Forma's tight "~2" pair (audit (c)). */
+    font-variant-numeric: proportional-nums;
+    font-kerning: none;
+    overflow-wrap: anywhere;
 }
 .stat-label {
     color: var(--text-secondary);
-    font-size: 0.65rem;
-    letter-spacing: 0.22em;
+    font-family: var(--font-micro);
+    font-size: var(--label-min);
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-top: 14px;
-    font-weight: 500;
+    font-weight: 400;
 }
 .stat-source {
     color: var(--text-muted);
-    font-size: 0.6rem;
-    letter-spacing: 0.14em;
+    font-family: var(--font-micro);
+    font-size: var(--label-min);
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-top: 6px;
 }
@@ -326,18 +362,37 @@ a { color: var(--accent); }
 .mini-stat-value {
     font-family: var(--font-display);
     font-size: 1.95rem;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--reg-grey-dark);
     line-height: 1;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
+    /* Big numerals keep proportional figures (tabular ones look gappy at this size);
+       kerning off instead, which opens Forma's tight "~2" pair (audit (c)). */
+    font-variant-numeric: proportional-nums;
+    font-kerning: none;
+    overflow-wrap: anywhere;
 }
 .mini-stat-label {
     color: var(--text-secondary);
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
+    font-family: var(--font-micro);
+    font-size: var(--label-min);
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     margin-top: 10px;
-    font-weight: 500;
+    font-weight: 400;
+}
+
+/* Label/value rows inside detail cards. Pages that style .stat-row themselves
+   override this; without it, values inherited the 3.2rem hero numeral size. */
+.stat-row { gap: 16px; }
+.stat-row .stat-label { margin-top: 0; flex: none; max-width: 50%; }
+.stat-row .stat-value {
+    font-family: var(--font-text);
+    font-size: inherit;
+    line-height: 1.4;
+    text-align: right;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 /* Charts ---------------------------------------------------- */
@@ -359,8 +414,8 @@ a { color: var(--accent); }
     color: var(--reg-grey-dark);
     margin-bottom: 22px;
     font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: -0.005em;
+    font-weight: 400;
+    letter-spacing: 0.01em;
 }
 .chart-container {
     position: relative;
@@ -400,7 +455,7 @@ a { color: var(--accent); }
     color: #fff;
     border: none;
     border-radius: 0;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 0.78rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -428,10 +483,11 @@ a { color: var(--accent); }
 .data-table th {
     background: var(--reg-grey-light);
     color: var(--reg-grey-dark);
-    font-weight: 500;
+    font-family: var(--font-micro);
+    font-weight: 400;
     text-transform: uppercase;
     font-size: 0.7rem;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     cursor: pointer;
     user-select: none;
     transition: background 0.2s;
@@ -445,7 +501,7 @@ a { color: var(--accent); }
 .data-table a.reactor-link {
     color: var(--accent);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
 }
 .data-table a.reactor-link:hover { text-decoration: underline; }
 
@@ -454,16 +510,19 @@ a { color: var(--accent); }
     display: inline-block;
     padding: 3px 10px;
     border-radius: 0;
+    font-family: var(--font-micro);
     font-size: 0.7rem;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     border: 1px solid transparent;
+    white-space: nowrap;
 }
 .status-operational { background: var(--reg-green-forest); color: #fff; }
 .status-construction{ background: var(--reg-yellow);       color: var(--reg-grey-dark); }
 .status-shutdown    { background: var(--reg-grey-dark);    color: #fff; }
-.status-suspended   { background: var(--reg-vermilion);    color: #fff; }
+/* White on vermilion is 3.5:1 (fails AA at badge size); outline in the vermilion family instead */
+.status-suspended   { background: #fff; color: var(--reg-vermilion-accent); border-color: var(--reg-vermilion); }
 .status-longterm    { background: var(--reg-green-sage);   color: var(--reg-grey-dark); }
 .status-planned     { background: var(--reg-blue-powder);  color: var(--reg-grey-dark); }
 
@@ -474,6 +533,8 @@ a { color: var(--accent); }
     margin-bottom: 22px;
     border-bottom: 1px solid var(--hairline);
     padding-bottom: 0;
+    overflow-x: auto;                  /* phones: scroll the tab row, not the page */
+    scrollbar-width: thin;
 }
 .tab-btn {
     padding: 12px 18px;
@@ -482,11 +543,13 @@ a { color: var(--accent); }
     border: none;
     cursor: pointer;
     font-size: 0.78rem;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    font-family: var(--font-sans);
+    font-family: var(--font-micro);
     transition: color 0.2s;
+    white-space: nowrap;
+    flex: none;
     border-bottom: 2px solid transparent;
     margin-bottom: -1px;
 }
@@ -579,8 +642,8 @@ a { color: var(--accent); }
     color: var(--reg-grey-dark);
     margin-bottom: 20px;
     font-size: 1.15rem;
-    font-weight: 500;
-    letter-spacing: -0.005em;
+    font-weight: 400;
+    letter-spacing: 0.01em;
     padding-left: 12px;
     border-left: 3px solid var(--reg-yellow);
 }
@@ -630,8 +693,8 @@ a { color: var(--accent); }
     border-bottom: 1px solid var(--hairline);
 }
 .reg-footer-pillars span {
-    font-family: var(--font-brand);
-    font-size: 0.66rem;
+    font-family: var(--font-micro);
+    font-size: var(--label-min);
     letter-spacing: 0.28em;
     line-height: 1.55;
     text-transform: uppercase;
@@ -652,18 +715,24 @@ a { color: var(--accent); }
 .reg-footer-meta a:hover { text-decoration: underline; }
 .reg-footer-meta .meta-line {
     margin-top: 8px;
-    font-size: 0.68rem;
+    font-family: var(--font-micro);
+    font-size: var(--label-min);
     color: var(--text-muted);
     letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
+/* Wide tables scroll inside their own box on narrow screens ------ */
+.table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table-scroll > .data-table { min-width: 640px; }
+.map-section { margin-bottom: 50px; }
+
 /* Responsive ------------------------------------------------ */
 @media (max-width: 768px) {
     .reg-nav { padding: 14px 18px; }
-    .reg-nav-menu { gap: 16px; font-size: 0.66rem; }
+    .reg-nav-menu { gap: 16px; font-size: var(--label-min); }
     .reg-hero { padding: 50px 18px 44px; }
-    .reg-hero h1 { font-size: 2.2rem; }
+    .reg-hero h1 { font-size: 2.1rem; letter-spacing: 0.06em; }
     .reg-pillar-strip-inner { grid-template-columns: repeat(2, 1fr); }
     .reg-pillar-strip span:nth-child(2) { border-right: none; }
     .reg-pillar-strip span { padding: 8px 8px; }
@@ -673,4 +742,19 @@ a { color: var(--accent); }
     .chart-container { height: 250px; }
     #reactor-map, .reg-map { height: 350px; }
     .reg-page-header { padding: 28px 18px 24px; }
+}
+/* Phones: logo on its own row (keeps the 160px minimum and its clear space),
+   menu on a second row — the old one-row layout ran "DESIGN LINEAGES" into the wordmark. */
+@media (max-width: 600px) {
+    .reg-nav { flex-wrap: wrap; row-gap: 14px; }
+    .reg-wordmark img { height: 40px; }
+    .reg-nav-menu { width: 100%; gap: 20px; }
+    .container { padding: 16px; }
+    /* Two-up stat rows: no right rule on the row's last cell, no bottom rule on the last row */
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .mini-stat { border-bottom: 1px solid var(--hairline); }
+    .mini-stat:nth-child(2n) { border-right: none; }
+    .mini-stat:nth-child(odd):nth-last-child(-n+2),
+    .mini-stat:nth-child(odd):nth-last-child(-n+2) ~ .mini-stat { border-bottom: none; }
+    .data-table th, .data-table td { padding: 10px 10px; }
 }

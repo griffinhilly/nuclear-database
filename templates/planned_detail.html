@@ -11,6 +11,10 @@
 
     <!-- REG shared brand stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <script src="{{ url_for('static', filename='reg-brand.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 
     <style>
         /* Page-specific overrides — planned plant detail */
@@ -37,7 +41,7 @@
         .card h2 {
             font-family: var(--font-sans);
             font-size: 0.78rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--reg-grey-dark);
@@ -69,12 +73,12 @@
             font-size: 0.7rem;
             letter-spacing: 0.16em;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 400;
             flex-shrink: 0;
         }
         .stat-row .stat-value {
             color: var(--reg-grey-dark);
-            font-weight: 500;
+            font-weight: 400;
             font-size: 0.95rem;
             text-align: right;
         }
@@ -123,7 +127,7 @@
         }
         .timeline-date {
             font-size: 0.72rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--reg-grey-dark);
@@ -159,7 +163,7 @@
          * not reactor lifecycle state, so they live here rather than in reg.css) */
         .likelihood-high   { background: var(--reg-green-forest); color: #fff; }
         .likelihood-medium { background: var(--reg-yellow);       color: var(--reg-grey-dark); }
-        .likelihood-low    { background: var(--reg-grey-mid, #6B6E7B); color: #fff; }
+        .likelihood-low    { background: var(--reg-grey-mid, var(--text-secondary)); color: #fff; }
 
         /* Page-title planned badge */
         .planned-badge {
@@ -167,7 +171,7 @@
             margin-left: 10px;
             padding: 3px 10px;
             font-size: 0.7rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.16em;
             text-transform: uppercase;
             background: var(--reg-blue-powder);
@@ -239,21 +243,23 @@
             <!-- Planned Units Table -->
             <div class="card" style="margin-top: 30px;">
                 <h2 id="units-title">Planned Units</h2>
-                <table class="data-table" id="units-table">
-                    <thead>
-                        <tr>
-                            <th>Unit</th>
-                            <th>Technology</th>
-                            <th>Model</th>
-                            <th>Gross Capacity (MW)</th>
-                            <th>Net Capacity (MW)</th>
-                            <th>Vendor</th>
-                            <th>Expected Online</th>
-                            <th>Likelihood</th>
-                        </tr>
-                    </thead>
-                    <tbody id="units-body"></tbody>
-                </table>
+                <div class="table-scroll">
+                    <table class="data-table" id="units-table">
+                        <thead>
+                            <tr>
+                                <th>Unit</th>
+                                <th>Technology</th>
+                                <th>Model</th>
+                                <th>Gross Capacity (MW)</th>
+                                <th>Net Capacity (MW)</th>
+                                <th>Vendor</th>
+                                <th>Expected Online</th>
+                                <th>Likelihood</th>
+                            </tr>
+                        </thead>
+                        <tbody id="units-body"></tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Notes -->
@@ -381,8 +387,8 @@
 
                 L.circleMarker([plant.latitude, plant.longitude], {
                     radius: 14,
-                    fillColor: getComputedStyle(document.documentElement).getPropertyValue('--reg-blue-powder').trim() || '#C7D9E8',
-                    color: getComputedStyle(document.documentElement).getPropertyValue('--reg-grey-dark').trim() || '#474853',
+                    fillColor: getComputedStyle(document.documentElement).getPropertyValue('--reg-blue-powder').trim() || REG.powder,
+                    color: getComputedStyle(document.documentElement).getPropertyValue('--reg-grey-dark').trim() || REG.greyDark,
                     weight: 2,
                     opacity: 1,
                     fillOpacity: 0.85

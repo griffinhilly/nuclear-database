@@ -6,7 +6,7 @@
     <title>Country Details - Global Nuclear Database</title>
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 
     <!-- Leaflet for maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -15,6 +15,10 @@
 
     <!-- REG shared brand stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <script src="{{ url_for('static', filename='reg-brand.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 
     <style>
         /* Page-specific overrides — country detail */
@@ -52,7 +56,7 @@
             font-size: 0.78rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 400;
             color: var(--reg-grey-dark);
             margin-bottom: 18px;
             padding-bottom: 12px;
@@ -85,7 +89,7 @@
             color: var(--reg-grey-dark);
             font-family: var(--font-sans);
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 400;
             line-height: inherit;
             letter-spacing: 0;
             text-align: right;
@@ -176,18 +180,20 @@
             <!-- Reactor Table -->
             <div class="card" style="margin-top: 24px;">
                 <h2 id="reactor-table-title">Reactors</h2>
-                <table class="data-table" id="reactor-table">
-                    <thead>
-                        <tr>
-                            <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
-                            <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
-                            <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
-                            <th data-sort="status">Status <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="status">&#9698;</span></th>
-                            <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="date">&#9698;</span></th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-body"></tbody>
-                </table>
+                <div class="table-scroll">
+                    <table class="data-table" id="reactor-table">
+                        <thead>
+                            <tr>
+                                <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
+                                <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
+                                <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
+                                <th data-sort="status">Status <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="status">&#9698;</span></th>
+                                <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="date">&#9698;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -512,16 +518,16 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#40774A',
-                    'Under Construction': '#FFC100',
-                    'Suspended': '#E06336',
-                    'Long-term Shutdown': '#9FC3A5',
-                    'Shutdown': '#474853'
+                    'Operational': REG.forest,
+                    'Under Construction': REG.yellow,
+                    'Suspended': REG.vermilion,
+                    'Long-term Shutdown': REG.sage,
+                    'Shutdown': REG.greyDark
                 };
 
                 const bounds = [];
                 reactorsWithCoords.forEach(r => {
-                    const color = statusColors[r.status] || '#3F55C5';
+                    const color = statusColors[r.status] || REG.cobalt;
                     bounds.push([r.latitude, r.longitude]);
                     L.circleMarker([r.latitude, r.longitude], {
                         radius: 8,
@@ -532,8 +538,8 @@
                         fillOpacity: 0.7
                     })
                     .bindPopup(`
-                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #3F55C5;">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        ${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" style="color: #6B6E7B;">${r.technology}</a>` : ''} | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
+                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: var(--reg-blue-cobalt);">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        ${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" style="color: var(--text-secondary);">${r.technology}</a>` : ''} | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
                         <a href="/status/${encodeURIComponent(r.status)}" style="color: ${color}; text-decoration: none;">${r.status}</a>
                     `)
                     .addTo(map);
@@ -542,7 +548,7 @@
                 map.fitBounds(bounds, { padding: [20, 20] });
             } else {
                 document.getElementById('country-map').innerHTML =
-                    '<p style="text-align: center; color: #6B6E7B; padding: 100px 0;">Location data not available</p>';
+                    '<p style="text-align: center; color: var(--text-secondary); padding: 100px 0;">Location data not available</p>';
             }
 
             // Generation chart
@@ -554,7 +560,7 @@
                         datasets: [{
                             label: 'Generation (TWh)',
                             data: history.map(h => h.total_twh),
-                            backgroundColor: '#3F55C5',
+                            backgroundColor: REG.cobalt,
                             borderRadius: 0
                         }]
                     },
@@ -562,11 +568,11 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { display: false, labels: { color: '#474853' } },
+                            legend: { display: false, labels: { color: REG.greyDark } },
                             subtitle: {
                                 display: true,
                                 text: 'Source: [PRIS]',
-                                color: '#9498A4',
+                                color: REG.muted,
                                 font: { size: 10 },
                                 padding: { bottom: 8 }
                             },
@@ -581,19 +587,19 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#E8E8EB' },
-                                ticks: { color: '#6B6E7B', maxTicksLimit: 20 }
+                                grid: { color: REG.grid },
+                                ticks: { color: REG.text2, maxTicksLimit: 20 }
                             },
                             y: {
-                                grid: { color: '#E8E8EB' },
+                                grid: { color: REG.grid },
                                 ticks: {
-                                    color: '#6B6E7B',
+                                    color: REG.text2,
                                     callback: (val) => val.toLocaleString()
                                 },
                                 title: {
                                     display: true,
                                     text: 'TWh',
-                                    color: '#6B6E7B'
+                                    color: REG.text2
                                 }
                             }
                         }
@@ -601,7 +607,7 @@
                 });
             } else {
                 document.getElementById('generation-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No generation data available</p>';
+                    '<p style="text-align: center; color: var(--text-secondary); padding: 80px 0;">No generation data available</p>';
             }
 
             // Capacity history chart
@@ -617,20 +623,20 @@
                             datasets: [{
                                 label: 'Installed Capacity (GW)',
                                 data: capHistory.map(d => d.capacity_gw),
-                                borderColor: '#40774A',
-                                backgroundColor: 'rgba(64, 119, 74, 0.1)',
+                                borderColor: REG.forest,
+                                backgroundColor: REG.rgba('forest', 0.1),
                                 fill: true,
                                 tension: 0.3,
                                 pointRadius: 0,
                                 pointHoverRadius: 5,
-                                pointBackgroundColor: '#40774A'
+                                pointBackgroundColor: REG.forest
                             }]
                         },
                         options: {
                             responsive: true,
                             maintainAspectRatio: false,
                             plugins: {
-                                legend: { display: false, labels: { color: '#474853' } },
+                                legend: { display: false, labels: { color: REG.greyDark } },
                                 tooltip: {
                                     callbacks: {
                                         label: (ctx) => `${capHistory[ctx.dataIndex].capacity_gw} GW`,
@@ -639,14 +645,14 @@
                                 }
                             },
                             scales: {
-                                x: { grid: { color: '#E8E8EB' }, ticks: { color: '#6B6E7B', maxTicksLimit: 12 } },
-                                y: { grid: { color: '#E8E8EB' }, ticks: { color: '#6B6E7B', callback: (val) => val + ' GW' } }
+                                x: { grid: { color: REG.grid }, ticks: { color: REG.text2, maxTicksLimit: 12 } },
+                                y: { grid: { color: REG.grid }, ticks: { color: REG.text2, callback: (val) => val + ' GW' } }
                             }
                         }
                     });
                 } else {
                     document.getElementById('capacity-chart').parentElement.innerHTML =
-                        '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No capacity data available</p>';
+                        '<p style="text-align: center; color: var(--text-secondary); padding: 80px 0;">No capacity data available</p>';
                 }
             } catch (e) { console.error('Capacity chart error:', e); }
 

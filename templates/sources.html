@@ -8,6 +8,10 @@
 
     <!-- REG shared brand stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <script src="{{ url_for('static', filename='reg-brand.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 
     <style>
         /* Page-specific overrides — sources & methodology */
@@ -29,13 +33,13 @@
             letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--reg-grey-dark);
-            font-weight: 500;
+            font-weight: 400;
         }
         .source-legend table { width: 100%; font-size: 0.92rem; }
         .source-legend td { padding: 5px 10px; vertical-align: top; }
         .source-legend td:first-child {
-            font-weight: 600;
-            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            font-family: var(--font-micro);
             white-space: nowrap;
             color: var(--reg-grey-dark);
             width: 88px;
@@ -45,13 +49,13 @@
         .source-section h2 {
             font-family: var(--font-sans);
             font-size: 1.25rem;
-            font-weight: 500;
+            font-weight: 400;
             color: var(--reg-grey-dark);
             margin-bottom: 22px;
             padding: 0 0 12px 14px;
             border-bottom: 1px solid var(--hairline);
             position: relative;
-            letter-spacing: -0.005em;
+            letter-spacing: 0.01em;
         }
         .source-section h2::before {
             content: "";
@@ -72,17 +76,17 @@
             display: inline-block;
             background: var(--reg-grey-dark);
             color: #fff;
-            font-weight: 500;
+            font-weight: 400;
             font-size: 0.7rem;
             letter-spacing: 0.16em;
             text-transform: uppercase;
             padding: 3px 10px;
             margin-right: 10px;
-            font-family: 'Courier New', monospace;
+            font-family: var(--font-micro);
         }
         .source-card .source-name {
             font-size: 1.05rem;
-            font-weight: 500;
+            font-weight: 400;
             color: var(--reg-grey-dark);
         }
         .source-card .source-url {
@@ -114,13 +118,13 @@
         .methodology-section h2 {
             font-family: var(--font-sans);
             font-size: 1.25rem;
-            font-weight: 500;
+            font-weight: 400;
             color: var(--reg-grey-dark);
             margin-bottom: 22px;
             padding: 0 0 12px 14px;
             border-bottom: 1px solid var(--hairline);
             position: relative;
-            letter-spacing: -0.005em;
+            letter-spacing: 0.01em;
         }
         .methodology-section h2::before {
             content: "";
@@ -138,10 +142,10 @@
         }
         .methodology-card h3 {
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 400;
             color: var(--reg-grey-dark);
             margin-bottom: 10px;
-            letter-spacing: -0.005em;
+            letter-spacing: 0.01em;
         }
         .methodology-card p {
             color: var(--text-secondary);
@@ -149,13 +153,13 @@
             margin-bottom: 8px;
             line-height: 1.6;
         }
-        .methodology-card p strong { color: var(--reg-grey-dark); font-weight: 500; }
+        .methodology-card p strong { color: var(--reg-grey-dark); font-weight: 400; }
         .methodology-card code {
             background: var(--reg-grey-light);
             border: 1px solid var(--hairline);
             padding: 2px 6px;
             font-size: 0.88rem;
-            font-family: 'Courier New', monospace;
+            font-family: var(--font-micro);
         }
     </style>
 </head>
@@ -307,10 +311,10 @@
                 <h3>World Generation Totals</h3>
                 <p>
                     World nuclear generation on the homepage comes from a published series
-                    <span style="color: var(--accent); font-weight: 600;">[EMBER]</span>
-                    <span style="color: var(--accent); font-weight: 600;">[EI-SR]</span>,
+                    <span style="color: var(--accent); font-weight: 700;">[EMBER]</span>
+                    <span style="color: var(--accent); font-weight: 700;">[EI-SR]</span>,
                     not from adding up our reactor-level records. Reactor-level generation
-                    <span style="color: var(--accent); font-weight: 600;">[PRIS]</span>
+                    <span style="color: var(--accent); font-weight: 700;">[PRIS]</span>
                     is incomplete for recent years, so a sum would undercount, and scaling it up by
                     reporting coverage overstated the 2025 total by about 5%.
                 </p>
@@ -324,8 +328,8 @@
                 <p>
                     The annual share chart divides world nuclear generation by world total electricity
                     generation, both from the same published series
-                    <span style="color: var(--accent); font-weight: 600;">[EMBER]</span>
-                    <span style="color: var(--accent); font-weight: 600;">[EI-SR]</span>,
+                    <span style="color: var(--accent); font-weight: 700;">[EMBER]</span>
+                    <span style="color: var(--accent); font-weight: 700;">[EI-SR]</span>,
                     for each year from 1985 to 2025. Both are gross generation, so the share is like for like.
                 </p>
                 <p>
@@ -355,18 +359,18 @@
                 <p>Reactor statuses follow IAEA PRIS conventions:</p>
                 <p><strong>Operational</strong> &mdash; Connected to grid and available for electricity generation.</p>
                 <p><strong>Under Construction</strong> &mdash; First concrete pour for the reactor building base mat has occurred
-                    <span style="color: var(--accent); font-weight: 600;">[PRIS]</span>.
+                    <span style="color: var(--accent); font-weight: 700;">[PRIS]</span>.
                     Site preparation work alone does not qualify.</p>
                 <p><strong>Suspended</strong> &mdash; Reactor has been shut down for an extended period but has not been
                     permanently closed. May be undergoing regulatory review for restart (e.g., post-Fukushima Japanese reactors)
                     or in suspended construction/operation
-                    <span style="color: var(--accent); font-weight: 600;">[PRIS]</span>.</p>
+                    <span style="color: var(--accent); font-weight: 700;">[PRIS]</span>.</p>
                 <p><strong>Shutdown</strong> &mdash; Reactor has been permanently closed with no plans for restart.
                     Includes reactors in active decommissioning.</p>
                 <p><strong>Planned</strong> &mdash; Announced or approved but first concrete has not been poured. Includes
                     projects with site licenses, vendor selections, or government commitments
-                    <span style="color: var(--accent); font-weight: 600;">[WNA]</span>
-                    <span style="color: var(--accent); font-weight: 600;">[PRIS]</span>.</p>
+                    <span style="color: var(--accent); font-weight: 700;">[WNA]</span>
+                    <span style="color: var(--accent); font-weight: 700;">[PRIS]</span>.</p>
             </div>
 
             <div class="methodology-card">

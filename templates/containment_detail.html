@@ -6,7 +6,7 @@
     <title>Containment Types - Global Nuclear Database</title>
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 
     <!-- Leaflet for maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -15,6 +15,10 @@
 
     <!-- REG shared brand stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <script src="{{ url_for('static', filename='reg-brand.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 
     <style>
         /* Page-specific overrides — containment detail */
@@ -56,15 +60,15 @@
             font-family: var(--font-sans);
             color: var(--reg-grey-dark);
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 400;
             margin: 0;
-            letter-spacing: -0.005em;
+            letter-spacing: 0.01em;
         }
 
         .type-card .reactor-count {
             padding: 3px 10px;
-            font-size: 0.65rem;
-            font-weight: 500;
+            font-size: var(--label-min);
+            font-weight: 400;
             letter-spacing: 0.16em;
             text-transform: uppercase;
             background: var(--reg-grey-light);
@@ -96,20 +100,20 @@
         .type-card .stat-num {
             font-family: var(--font-display);
             font-size: 1.3rem;
-            font-weight: 300;
+            font-weight: 400;
             color: var(--reg-grey-dark);
             line-height: 1;
-            letter-spacing: -0.01em;
+            letter-spacing: 0.01em;
         }
         .type-card .stat-num.op { color: var(--reg-green-forest); }
         .type-card .stat-num.uc { color: var(--reg-yellow); }
         .type-card .stat-lbl {
-            font-size: 0.6rem;
+            font-size: var(--label-min);
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.18em;
             margin-top: 6px;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         /* Filter bar (containment type toggles) */
@@ -127,7 +131,7 @@
             color: var(--text-secondary);
             cursor: pointer;
             font-size: 0.7rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.16em;
             text-transform: uppercase;
             font-family: var(--font-sans);
@@ -152,11 +156,11 @@
             font-family: var(--font-sans);
             color: var(--reg-grey-dark);
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 400;
             margin-bottom: 20px;
             padding-bottom: 12px;
             border-bottom: 1px solid var(--hairline);
-            letter-spacing: -0.005em;
+            letter-spacing: 0.01em;
         }
         .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0; }
         @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } .type-grid { grid-template-columns: 1fr; } }
@@ -177,9 +181,9 @@
             font-family: var(--font-sans);
             color: var(--reg-grey-dark);
             font-size: 1.2rem;
-            font-weight: 500;
+            font-weight: 400;
             margin-bottom: 14px;
-            letter-spacing: -0.005em;
+            letter-spacing: 0.01em;
         }
 
         .active-type-detail .full-description {
@@ -203,9 +207,9 @@
             font-size: 0.7rem;
             letter-spacing: 0.16em;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 400;
         }
-        .active-type-detail .stat-value { color: var(--reg-grey-dark); font-weight: 500; }
+        .active-type-detail .stat-value { color: var(--reg-grey-dark); font-weight: 400; }
         .active-type-detail .stat-value.highlight { color: var(--accent); }
 
         .clear-filter {
@@ -217,7 +221,7 @@
             text-transform: uppercase;
             cursor: pointer;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         .clear-filter:hover { color: var(--accent); }
@@ -266,19 +270,21 @@
             <!-- Reactor table -->
             <div class="card" style="margin-top: 30px;">
                 <h2 id="reactor-table-title">Reactors</h2>
-                <table class="data-table" id="reactor-table">
-                    <thead>
-                        <tr>
-                            <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
-                            <th data-sort="country">Country <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="country">&#9698;</span></th>
-                            <th data-sort="containment">Containment <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="containment">&#9698;</span></th>
-                            <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
-                            <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
-                            <th data-sort="status">Status <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="status">&#9698;</span></th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-body"></tbody>
-                </table>
+                <div class="table-scroll">
+                    <table class="data-table" id="reactor-table">
+                        <thead>
+                            <tr>
+                                <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
+                                <th data-sort="country">Country <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="country">&#9698;</span></th>
+                                <th data-sort="containment">Containment <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="containment">&#9698;</span></th>
+                                <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
+                                <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
+                                <th data-sort="status">Status <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="status">&#9698;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -296,24 +302,24 @@
         let currentFilters = {};
 
         const typeColors = {
-            'Large Dry': '#3F55C5',
-            'Large Dry (Double)': '#3F55C5',
-            'Mark I': '#B33A20',
-            'Mark II': '#E06336',
-            'Mark III': '#FFC100',
-            'Spherical Double': '#474853',
-            'Pressure Suppression': '#3F55C5',
-            'Ice Condenser': '#C7D9E8',
-            'Subatmospheric': '#40774A'
+            'Large Dry': REG.cobalt,
+            'Large Dry (Double)': REG.cobalt,
+            'Mark I': REG.danger,
+            'Mark II': REG.vermilion,
+            'Mark III': REG.yellow,
+            'Spherical Double': REG.greyDark,
+            'Pressure Suppression': REG.cobalt,
+            'Ice Condenser': REG.powder,
+            'Subatmospheric': REG.forest
         };
 
-        const FALLBACK_TYPE_COLOR = '#9FC3A5';  // types not listed above (e.g. Pre-Mark I)
+        const FALLBACK_TYPE_COLOR = REG.sage;  // types not listed above (e.g. Pre-Mark I)
 
         const statusColors = {
-            'Operational': '#40774A',
-            'Under Construction': '#FFC100',
-            'Suspended': '#E06336',
-            'Shutdown': '#474853'
+            'Operational': REG.forest,
+            'Under Construction': REG.yellow,
+            'Suspended': REG.vermilion,
+            'Shutdown': REG.greyDark
         };
 
         const filterConfig = {
@@ -520,18 +526,18 @@
 
             const bounds = [];
             reactorsWithCoords.forEach(r => {
-                const color = activeType ? (statusColors[r.status] || '#3F55C5') : (typeColors[r.containment_type] || FALLBACK_TYPE_COLOR);
+                const color = activeType ? (statusColors[r.status] || REG.cobalt) : (typeColors[r.containment_type] || FALLBACK_TYPE_COLOR);
                 bounds.push([r.latitude, r.longitude]);
                 L.circleMarker([r.latitude, r.longitude], {
                     radius: 7, fillColor: color, color: '#fff', weight: 1, opacity: 0.8, fillOpacity: 0.7
                 })
                 .bindPopup(`
-                    <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #3F55C5;">${r.plant_name}-${r.unit_number}</a></strong><br>
-                    <a href="/country/${encodeURIComponent(r.country)}" style="color: #6B6E7B;">${r.country}</a> |
+                    <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: var(--reg-blue-cobalt);">${r.plant_name}-${r.unit_number}</a></strong><br>
+                    <a href="/country/${encodeURIComponent(r.country)}" style="color: var(--text-secondary);">${r.country}</a> |
                     ${r.containment_type}<br>
-                    ${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" style="color: #6B6E7B;">${r.technology}</a> | ` : ''}
+                    ${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" style="color: var(--text-secondary);">${r.technology}</a> | ` : ''}
                     ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
-                    <span style="color: ${statusColors[r.status] || '#6B6E7B'};">${r.status}</span>
+                    <span style="color: ${statusColors[r.status] || REG.text2};">${r.status}</span>
                 `)
                 .addTo(markerLayer);
             });

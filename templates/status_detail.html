@@ -6,7 +6,7 @@
     <title>Status Details - Global Nuclear Database</title>
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 
     <!-- Leaflet for maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -15,6 +15,10 @@
 
     <!-- REG shared brand stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <script src="{{ url_for('static', filename='reg-brand.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 
     <style>
         /* Page-specific overrides — status detail */
@@ -24,7 +28,7 @@
             padding: 4px 12px;
             border-radius: 0;
             font-size: 0.7rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.16em;
             text-transform: uppercase;
             border: 1px solid transparent;
@@ -58,7 +62,7 @@
             font-family: var(--font-sans);
             color: var(--reg-grey-dark);
             font-size: 0.78rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.18em;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -84,7 +88,7 @@
 
         .stat-value {
             color: var(--reg-grey-dark);
-            font-weight: 500;
+            font-weight: 400;
         }
 
         .stat-value.highlight {
@@ -176,7 +180,7 @@
             <!-- Generation History Chart (conditional) -->
             <div class="card" style="margin-top: 24px;" id="generation-card">
                 <h2>Generation History</h2>
-                <p id="generation-note" style="color: #6B6E7B; font-size: 0.85rem; margin: -8px 0 12px;">Shows the full generation history of the reactors that are currently in this status, including years before their status changed.</p>
+                <p id="generation-note" style="color: var(--text-secondary); font-size: 0.85rem; margin: -8px 0 12px;">Shows the full generation history of the reactors that are currently in this status, including years before their status changed.</p>
                 <div class="chart-container">
                     <canvas id="generation-chart"></canvas>
                 </div>
@@ -185,18 +189,20 @@
             <!-- Reactor Table -->
             <div class="card" style="margin-top: 24px;">
                 <h2 id="reactor-table-title">Reactors</h2>
-                <table class="data-table" id="reactor-table">
-                    <thead>
-                        <tr>
-                            <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
-                            <th data-sort="country">Country <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="country">&#9698;</span></th>
-                            <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
-                            <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
-                            <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="date">&#9698;</span></th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-body"></tbody>
-                </table>
+                <div class="table-scroll">
+                    <table class="data-table" id="reactor-table">
+                        <thead>
+                            <tr>
+                                <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
+                                <th data-sort="country">Country <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="country">&#9698;</span></th>
+                                <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
+                                <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
+                                <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="date">&#9698;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -207,21 +213,21 @@
         const STATUS_NAME = {{ status_name|tojson }};
 
         const statusColors = {
-            'Operational': '#40774A',
-            'Under Construction': '#FFC100',
-            'Suspended': '#E06336',
-            'Long-term Shutdown': '#9FC3A5',
-            'Shutdown': '#474853',
-            'Unknown': '#ECECEC'
+            'Operational': REG.forest,
+            'Under Construction': REG.yellow,
+            'Suspended': REG.vermilion,
+            'Long-term Shutdown': REG.sage,
+            'Shutdown': REG.greyDark,
+            'Unknown': REG.cardAlt
         };
 
         const statusTextColors = {
             'Operational': '#fff',
-            'Under Construction': '#474853',
+            'Under Construction': REG.greyDark,
             'Suspended': '#fff',
             'Shutdown': '#fff',
-            'Long-term Shutdown': '#474853',
-            'Unknown': '#474853'
+            'Long-term Shutdown': REG.greyDark,
+            'Unknown': REG.greyDark
         };
 
         // Statuses that have meaningful generation data
@@ -450,7 +456,7 @@
 
             currentReactors = reactors;
 
-            const bgColor = statusColors[status.status] || '#474853';
+            const bgColor = statusColors[status.status] || REG.greyDark;
             const txtColor = statusTextColors[status.status] || '#fff';
 
             // Header
@@ -553,9 +559,9 @@
                         fillOpacity: 0.7
                     })
                     .bindPopup(`
-                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #3F55C5;">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        <a href="/country/${encodeURIComponent(r.country)}" style="color: #6B6E7B;">${r.country}</a> |
-                        ${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" style="color: #6B6E7B;">${r.technology}</a> | ` : ''}
+                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: var(--reg-blue-cobalt);">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color: var(--text-secondary);">${r.country}</a> |
+                        ${r.technology ? `<a href="/technology/${encodeURIComponent(r.technology)}" style="color: var(--text-secondary);">${r.technology}</a> | ` : ''}
                         ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}
                     `)
                     .addTo(map);
@@ -564,7 +570,7 @@
                 map.fitBounds(bounds, { padding: [20, 20] });
             } else {
                 document.getElementById('status-map').innerHTML =
-                    '<p style="text-align: center; color: #6B6E7B; padding: 100px 0;">Location data not available</p>';
+                    '<p style="text-align: center; color: var(--text-secondary); padding: 100px 0;">Location data not available</p>';
             }
 
             // Country breakdown chart: capacity of the reactors in this status, sorted by it (server-side)
@@ -588,7 +594,7 @@
                         maintainAspectRatio: false,
                         indexAxis: 'y',
                         plugins: {
-                            legend: { display: false, labels: { color: '#474853' } },
+                            legend: { display: false, labels: { color: REG.greyDark } },
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => {
@@ -599,13 +605,13 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#E8E8EB' },
-                                ticks: { color: '#6B6E7B' },
-                                title: { display: true, text: `${capacityLabel} (GW, gross)`, color: '#6B6E7B' }
+                                grid: { color: REG.grid },
+                                ticks: { color: REG.text2 },
+                                title: { display: true, text: `${capacityLabel} (GW, gross)`, color: REG.text2 }
                             },
                             y: {
                                 grid: { display: false },
-                                ticks: { color: '#474853' }
+                                ticks: { color: REG.greyDark }
                             }
                         },
                         onClick: (event, elements) => {
@@ -621,12 +627,12 @@
                 });
             } else {
                 document.getElementById('country-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No country data available</p>';
+                    '<p style="text-align: center; color: var(--text-secondary); padding: 80px 0;">No country data available</p>';
             }
 
             // Technology mix chart
             if (technologyMix && technologyMix.length > 0) {
-                const techColors = ['#3F55C5', '#40774A', '#E06336', '#9FC3A5', '#FFC100', '#C7D9E8', '#474853'];
+                const techColors = [REG.cobalt, REG.forest, REG.vermilion, REG.sage, REG.yellow, REG.powder, REG.greyDark];
                 new Chart(document.getElementById('tech-chart'), {
                     type: 'bar',
                     data: {
@@ -643,7 +649,7 @@
                         maintainAspectRatio: false,
                         indexAxis: 'y',
                         plugins: {
-                            legend: { display: false, labels: { color: '#474853' } },
+                            legend: { display: false, labels: { color: REG.greyDark } },
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => {
@@ -654,13 +660,13 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#E8E8EB' },
-                                ticks: { color: '#6B6E7B' },
-                                title: { display: true, text: 'GW', color: '#6B6E7B' }
+                                grid: { color: REG.grid },
+                                ticks: { color: REG.text2 },
+                                title: { display: true, text: 'GW', color: REG.text2 }
                             },
                             y: {
                                 grid: { display: false },
-                                ticks: { color: '#474853' }
+                                ticks: { color: REG.greyDark }
                             }
                         },
                         onClick: (event, elements) => {
@@ -677,7 +683,7 @@
                 });
             } else {
                 document.getElementById('tech-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No technology data available</p>';
+                    '<p style="text-align: center; color: var(--text-secondary); padding: 80px 0;">No technology data available</p>';
             }
 
             // Generation chart — only for Operational / Shutdown
@@ -699,7 +705,7 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { display: false, labels: { color: '#474853' } },
+                            legend: { display: false, labels: { color: REG.greyDark } },
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => {
@@ -710,23 +716,23 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#E8E8EB' },
-                                ticks: { color: '#6B6E7B', maxTicksLimit: 20 }
+                                grid: { color: REG.grid },
+                                ticks: { color: REG.text2, maxTicksLimit: 20 }
                             },
                             y: {
-                                grid: { color: '#E8E8EB' },
+                                grid: { color: REG.grid },
                                 ticks: {
-                                    color: '#6B6E7B',
+                                    color: REG.text2,
                                     callback: (val) => val.toLocaleString()
                                 },
-                                title: { display: true, text: 'TWh', color: '#6B6E7B' }
+                                title: { display: true, text: 'TWh', color: REG.text2 }
                             }
                         }
                     }
                 });
             } else {
                 document.getElementById('generation-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No generation data available</p>';
+                    '<p style="text-align: center; color: var(--text-secondary); padding: 80px 0;">No generation data available</p>';
             }
 
             // Reactor table
@@ -743,7 +749,7 @@
                     : '-';
 
                 const dateCol = r.status === 'Shutdown' && r.permanent_shutdown
-                    ? `<span style="color:#6B6E7B">Shut down:</span> ${r.permanent_shutdown}`
+                    ? `<span style="color:var(--text-secondary)">Shut down:</span> ${r.permanent_shutdown}`
                     : (r.commercial_operation || '-');
 
                 return `

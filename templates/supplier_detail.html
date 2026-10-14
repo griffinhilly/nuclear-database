@@ -6,7 +6,7 @@
     <title>Supplier Details - Global Nuclear Database</title>
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 
     <!-- Leaflet for maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -15,6 +15,10 @@
 
     <!-- REG shared brand stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <script src="{{ url_for('static', filename='reg-brand.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 
     <style>
         /* Page-specific overrides — supplier detail */
@@ -42,7 +46,7 @@
             font-family: var(--font-sans);
             color: var(--reg-grey-dark);
             font-size: 0.78rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.18em;
             text-transform: uppercase;
             margin-bottom: 18px;
@@ -75,7 +79,7 @@
         }
         .stat-value {
             color: var(--reg-grey-dark);
-            font-weight: 500;
+            font-weight: 400;
         }
         .stat-value.highlight {
             color: var(--accent);
@@ -155,19 +159,21 @@
             <!-- Reactor Table -->
             <div class="card" style="margin-top: 24px;">
                 <h2 id="reactor-table-title">Reactors</h2>
-                <table class="data-table" id="reactor-table">
-                    <thead>
-                        <tr>
-                            <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
-                            <th data-sort="country">Country <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="country">&#9698;</span></th>
-                            <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
-                            <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
-                            <th data-sort="status">Status <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="status">&#9698;</span></th>
-                            <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="date">&#9698;</span></th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-body"></tbody>
-                </table>
+                <div class="table-scroll">
+                    <table class="data-table" id="reactor-table">
+                        <thead>
+                            <tr>
+                                <th data-sort="name">Reactor <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="name">&#9698;</span></th>
+                                <th data-sort="country">Country <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="country">&#9698;</span></th>
+                                <th data-sort="technology">Technology <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="technology">&#9698;</span></th>
+                                <th data-sort="capacity">Capacity (MW) <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="capacity">&#9698;</span></th>
+                                <th data-sort="status">Status <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="status">&#9698;</span></th>
+                                <th data-sort="date">Online Date <span class="sort-icon">&#8597;</span><span class="filter-icon" data-filter="date">&#9698;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Country Breakdown -->
@@ -513,16 +519,16 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#40774A',
-                    'Under Construction': '#FFC100',
-                    'Suspended': '#E06336',
-                    'Long-term Shutdown': '#9FC3A5',
-                    'Shutdown': '#474853'
+                    'Operational': REG.forest,
+                    'Under Construction': REG.yellow,
+                    'Suspended': REG.vermilion,
+                    'Long-term Shutdown': REG.sage,
+                    'Shutdown': REG.greyDark
                 };
 
                 const bounds = [];
                 reactorsWithCoords.forEach(r => {
-                    const color = statusColors[r.status] || '#3F55C5';
+                    const color = statusColors[r.status] || REG.cobalt;
                     bounds.push([r.latitude, r.longitude]);
                     L.circleMarker([r.latitude, r.longitude], {
                         radius: 8,
@@ -533,9 +539,9 @@
                         fillOpacity: 0.7
                     })
                     .bindPopup(`
-                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: #3F55C5;">${r.plant_name}-${r.unit_number}</a></strong><br>
-                        <a href="/country/${encodeURIComponent(r.country)}" style="color: #6B6E7B;">${r.country}</a> | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
-                        <a href="/technology/${encodeURIComponent(r.technology)}" style="color: #6B6E7B;">${r.technology || ''}</a><br>
+                        <strong><a href="/plant/${encodeURIComponent(r.plant_name)}" style="color: var(--reg-blue-cobalt);">${r.plant_name}-${r.unit_number}</a></strong><br>
+                        <a href="/country/${encodeURIComponent(r.country)}" style="color: var(--text-secondary);">${r.country}</a> | ${r.gross_capacity_mw ? r.gross_capacity_mw.toLocaleString() + ' MW' : ''}<br>
+                        <a href="/technology/${encodeURIComponent(r.technology)}" style="color: var(--text-secondary);">${r.technology || ''}</a><br>
                         <a href="/status/${encodeURIComponent(r.status)}" style="color: ${color}; text-decoration: none;">${r.status}</a>
                     `)
                     .addTo(map);
@@ -544,7 +550,7 @@
                 map.fitBounds(bounds, { padding: [20, 20] });
             } else {
                 document.getElementById('supplier-map').innerHTML =
-                    '<p style="text-align: center; color: #6B6E7B; padding: 100px 0;">Location data not available</p>';
+                    '<p style="text-align: center; color: var(--text-secondary); padding: 100px 0;">Location data not available</p>';
             }
 
             // Generation chart
@@ -556,7 +562,7 @@
                         datasets: [{
                             label: 'Generation (TWh)',
                             data: history.map(h => h.total_twh),
-                            backgroundColor: '#3F55C5',
+                            backgroundColor: REG.cobalt,
                             borderRadius: 0
                         }]
                     },
@@ -564,7 +570,7 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { display: false, labels: { color: '#474853' } },
+                            legend: { display: false, labels: { color: REG.greyDark } },
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => {
@@ -576,19 +582,19 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#E8E8EB' },
-                                ticks: { color: '#6B6E7B', maxTicksLimit: 20 }
+                                grid: { color: REG.grid },
+                                ticks: { color: REG.text2, maxTicksLimit: 20 }
                             },
                             y: {
-                                grid: { color: '#E8E8EB' },
+                                grid: { color: REG.grid },
                                 ticks: {
-                                    color: '#6B6E7B',
+                                    color: REG.text2,
                                     callback: (val) => val.toLocaleString()
                                 },
                                 title: {
                                     display: true,
                                     text: 'TWh',
-                                    color: '#6B6E7B'
+                                    color: REG.text2
                                 }
                             }
                         }
@@ -596,7 +602,7 @@
                 });
             } else {
                 document.getElementById('generation-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No generation data available</p>';
+                    '<p style="text-align: center; color: var(--text-secondary); padding: 80px 0;">No generation data available</p>';
             }
 
             // Country breakdown chart
@@ -609,7 +615,7 @@
                         datasets: [{
                             label: 'Capacity, all statuses (GW, gross)',
                             data: top15.map(c => c.capacity_gw),
-                            backgroundColor: '#3F55C5',
+                            backgroundColor: REG.cobalt,
                             borderRadius: 0
                         }]
                     },
@@ -618,7 +624,7 @@
                         maintainAspectRatio: false,
                         indexAxis: 'y',
                         plugins: {
-                            legend: { display: false, labels: { color: '#474853' } },
+                            legend: { display: false, labels: { color: REG.greyDark } },
                             tooltip: {
                                 callbacks: {
                                     afterLabel: (ctx) => {
@@ -629,17 +635,17 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#E8E8EB' },
-                                ticks: { color: '#6B6E7B' },
+                                grid: { color: REG.grid },
+                                ticks: { color: REG.text2 },
                                 title: {
                                     display: true,
                                     text: 'GW, all statuses (gross)',
-                                    color: '#6B6E7B'
+                                    color: REG.text2
                                 }
                             },
                             y: {
                                 grid: { display: false },
-                                ticks: { color: '#474853' }
+                                ticks: { color: REG.greyDark }
                             }
                         },
                         onClick: (event, elements) => {
@@ -656,7 +662,7 @@
                 });
             } else {
                 document.getElementById('country-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No country data available</p>';
+                    '<p style="text-align: center; color: var(--text-secondary); padding: 80px 0;">No country data available</p>';
             }
 
             // Reactor table
@@ -676,7 +682,7 @@
                 else statusClass = 'shutdown';
 
                 const dateCol = r.status === 'Shutdown' && r.permanent_shutdown
-                    ? `<span style="color:#6B6E7B">Shut down:</span> ${r.permanent_shutdown}`
+                    ? `<span style="color:var(--text-secondary)">Shut down:</span> ${r.permanent_shutdown}`
                     : (r.commercial_operation || '-');
 
                 return `

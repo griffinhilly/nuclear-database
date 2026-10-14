@@ -6,7 +6,7 @@
     <title>Plant Details &mdash; Global Nuclear Database</title>
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 
     <!-- Leaflet for maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -15,6 +15,10 @@
 
     <!-- REG shared brand stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <script src="{{ url_for('static', filename='reg-brand.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 
     <style>
         /* Page-specific overrides — plant detail */
@@ -42,7 +46,7 @@
         .card h2 {
             font-family: var(--font-sans);
             font-size: 0.78rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--reg-grey-dark);
@@ -74,12 +78,12 @@
             font-size: 0.7rem;
             letter-spacing: 0.16em;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 400;
             flex-shrink: 0;
         }
         .stat-row .stat-value {
             color: var(--reg-grey-dark);
-            font-weight: 500;
+            font-weight: 400;
             font-size: 0.95rem;
             text-align: right;
         }
@@ -151,39 +155,43 @@
             <!-- Reactor Units Table -->
             <div class="card" style="margin-top: 30px;">
                 <h2 id="units-title">Reactor Units</h2>
-                <table class="data-table" id="units-table">
-                    <thead>
-                        <tr>
-                            <th>Unit</th>
-                            <th>Technology</th>
-                            <th>Model</th>
-                            <th>Capacity (MW)</th>
-                            <th>Status</th>
-                            <th>Online Date</th>
-                            <th>Lifetime TWh</th>
-                            <th>Avg Cap. Factor</th>
-                        </tr>
-                    </thead>
-                    <tbody id="units-body"></tbody>
-                </table>
+                <div class="table-scroll">
+                    <table class="data-table" id="units-table">
+                        <thead>
+                            <tr>
+                                <th>Unit</th>
+                                <th>Technology</th>
+                                <th>Model</th>
+                                <th>Capacity (MW)</th>
+                                <th>Status</th>
+                                <th>Online Date</th>
+                                <th>Lifetime TWh</th>
+                                <th>Avg Cap. Factor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="units-body"></tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Capacity History (shown only when data exists) -->
             <div class="card" id="capacity-history-card" style="margin-top: 30px; display: none;">
                 <h2>Capacity History</h2>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Unit</th>
-                            <th>Date</th>
-                            <th>Type</th>
-                            <th>Gross (MW)</th>
-                            <th>Net (MW)</th>
-                            <th>Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody id="capacity-history-body"></tbody>
-                </table>
+                <div class="table-scroll">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Unit</th>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Gross (MW)</th>
+                                <th>Net (MW)</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="capacity-history-body"></tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Combined Generation Chart -->
@@ -327,18 +335,18 @@
                 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
                 const statusColors = {
-                    'Operational': '#40774A',
-                    'Under Construction': '#FFC100',
-                    'Suspended': '#E06336',
-                    'Long-term Shutdown': '#9FC3A5',
-                    'Shutdown': '#474853'
+                    'Operational': REG.forest,
+                    'Under Construction': REG.yellow,
+                    'Suspended': REG.vermilion,
+                    'Long-term Shutdown': REG.sage,
+                    'Shutdown': REG.greyDark
                 };
 
                 // Single marker for the plant site
                 const primaryStatus = reactors.find(r => r.status === 'Operational')?.status || reactors[0].status;
                 L.circleMarker([plant.latitude, plant.longitude], {
                     radius: 14,
-                    fillColor: statusColors[primaryStatus] || '#3F55C5',
+                    fillColor: statusColors[primaryStatus] || REG.cobalt,
                     color: '#fff',
                     weight: 2,
                     opacity: 1,
@@ -346,7 +354,7 @@
                 }).addTo(map);
             } else {
                 document.getElementById('plant-map').innerHTML =
-                    '<p style="text-align: center; color: #6B6E7B; padding: 100px 0;">Location data not available</p>';
+                    '<p style="text-align: center; color: var(--text-secondary); padding: 100px 0;">Location data not available</p>';
             }
 
             // Reactor units table
@@ -376,12 +384,12 @@
             const capacityChanges = data.capacity_changes || [];
             if (capacityChanges.length > 0) {
                 const typeLabels = {initial: 'Initial', uprate: 'Uprate', derate: 'Derate', restart: 'Restart'};
-                const typeColors = {initial: '#6B6E7B', uprate: '#40774A', derate: '#B33A20', restart: '#3F55C5'};
+                const typeColors = {initial: REG.text2, uprate: REG.forest, derate: REG.danger, restart: REG.cobalt};
                 document.getElementById('capacity-history-body').innerHTML = capacityChanges.map(cc => `
                     <tr>
                         <td><a href="/reactor/${cc.reactor_id}" class="reactor-link">${plant.name}-${cc.unit_number}</a></td>
                         <td>${cc.effective_date}</td>
-                        <td><span style="color: ${typeColors[cc.change_type] || '#6B6E7B'}; font-weight: 500;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
+                        <td><span style="color: ${typeColors[cc.change_type] || REG.text2}; font-weight: 400;">${typeLabels[cc.change_type] || cc.change_type}</span></td>
                         <td>${cc.gross_capacity_mw.toLocaleString()}</td>
                         <td>${cc.net_capacity_mw ? cc.net_capacity_mw.toLocaleString() : '--'}</td>
                         <td style="color: var(--text-secondary); font-size: 0.85rem;">${cc.notes || ''}</td>
@@ -399,7 +407,7 @@
                         datasets: [{
                             label: 'Generation (GWh)',
                             data: history.map(h => h.total_gwh),
-                            backgroundColor: '#3F55C5',
+                            backgroundColor: REG.cobalt,
                             borderRadius: 0
                         }]
                     },
@@ -409,7 +417,7 @@
                         plugins: {
                             legend: {
                                 display: false,
-                                labels: { color: '#474853' }
+                                labels: { color: REG.greyDark }
                             },
                             tooltip: {
                                 callbacks: {
@@ -422,19 +430,19 @@
                         },
                         scales: {
                             x: {
-                                grid: { color: '#E8E8EB' },
-                                ticks: { color: '#6B6E7B', maxTicksLimit: 20 }
+                                grid: { color: REG.grid },
+                                ticks: { color: REG.text2, maxTicksLimit: 20 }
                             },
                             y: {
-                                grid: { color: '#E8E8EB' },
+                                grid: { color: REG.grid },
                                 ticks: {
-                                    color: '#6B6E7B',
+                                    color: REG.text2,
                                     callback: (val) => val.toLocaleString()
                                 },
                                 title: {
                                     display: true,
                                     text: 'GWh',
-                                    color: '#6B6E7B'
+                                    color: REG.text2
                                 }
                             }
                         }
@@ -442,7 +450,7 @@
                 });
             } else {
                 document.getElementById('generation-chart').parentElement.innerHTML =
-                    '<p style="text-align: center; color: #6B6E7B; padding: 80px 0;">No generation data available</p>';
+                    '<p style="text-align: center; color: var(--text-secondary); padding: 80px 0;">No generation data available</p>';
             }
         }
 
