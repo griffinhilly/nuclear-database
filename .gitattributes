@@ -1,0 +1,4 @@
+# Linux-run files must keep LF even on Windows checkouts (core.autocrlf=true):
+# a CRLF start.sh took the site down on 2026-10-14 ("./start.sh: No such file or directory").
+*.sh text eol=lf
+Dockerfile text eol=lf
