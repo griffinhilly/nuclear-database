@@ -54,11 +54,44 @@ ALIAS = {"bechtelpower": "Bechtel", "bechtelconstruction": "Bechtel", "stonewebs
          "siemensschuckertag": "Siemens", "brownbovericiebbcgeneralelectricconsortium": "BBC / General Electric",
          "bylorjvbouyguestravauxpublicsandlaingorourke": "Bylor", "taylorwoodrowconstruction": "Taylor Woodrow",
          "motorcolumbusingenieurunternehmungag": "Motor-Columbus", "degerforsjrnverkuddeholmsab": "Degerfors Järnverk",
-         "johnthompsonwatertubeboilers": "John Thompson"}
+         "johnthompsonwatertubeboilers": "John Thompson",
+         # wave 3
+         "hyundaiengineeringconstruction": "Hyundai E&C",
+         "hyundaiengineeringconstructionhyundaiec": "Hyundai E&C",
+         "hyundai": "Hyundai E&C",
+         "hyundaiengineeringconstructiondaelimjointventure": "Hyundai E&C / Daelim",
+         "dongahconstructionindustrial": "Dong-Ah Construction",
+         "samsungctdoosanenerbilityandhanwhaengineeringconstructionconsortium": "Samsung C&T / Doosan Enerbility / Hanwha E&C",
+         "chinazhongyuanengineeringcoltdczec": "China Zhongyuan Engineering",
+         "chinazhongyuanengineeringcorpczec": "China Zhongyuan Engineering",
+         "ishikawajimaharimaheavyindustriesihi": "IHI",
+         "chinafirstheavyindustriescfhi": "China First Heavy Industries",
+         "chinafirstheavymachinerycompanylimitedcfhi": "China First Heavy Industries",
+         "shanghaielectricnuclearpowerequipment": "Shanghai Electric",
+         "shanghaielectricnuclearpowergroup": "Shanghai Electric",
+         "larsentoubrolt": "Larsen & Toubro",
+         "izhorskiyezavodyizhoraomz": "Izhora Plants",
+         "atommashaemtechnologyrosatom": "Atommash",
+         "atommashvolgodonskbranchofaemtechnology": "Atommash",
+         "bhelbharatheavyelectricalsltd": "BHEL",
+         "bharatheavyelectricalslimitedbhel": "BHEL",
+         "bhelalstomconsortium": "Alstom-BHEL",
+         "bhelalstom": "Alstom-BHEL",
+         "bhelandalstomconsortium": "Alstom-BHEL",
+         "alstomwithdongfangelectriccorp": "Alstom / Dongfang Electric",
+         "toshibahitachi": "Toshiba / Hitachi",
+         "westinghousemitsubishiatomicpowerindustriesmapi": "Westinghouse / Mitsubishi Atomic Power Industries",
+         "mitsubishiatomicpowerindustriesmapi": "Mitsubishi Atomic Power Industries",
+         "kansaiepcogilbert": "Kansai Electric / Gilbert Associates",
+         "kansaiepcomapi": "Kansai Electric / Mitsubishi Atomic Power Industries",
+         "stpetersburgatomenergoproektspbaep": "Atomproekt"}
 # Hand decisions on single items (item_id -> value, why), shown on the review page.
 OVERRIDES = {"W1B017-10": ("Indian Point 1", "one-off B&W design (not W 4-Loop); design_series is required, and one-off "
                                              "units are named after the unit, as CVTR and Saxton are")}
 # Upheld changes held back by hand (item_id -> why), listed as skipped on the review page.
+CONV_J = "convention: the site lists the reactor vendor or owner group as builder for Japan (e.g. Toshiba, Hitachi, Mitsubishi); this change names a civil contractor. Decide the builder convention site-wide first"
+CONV_C = "convention: the site lists the reactor vendor or owner group as builder for China (e.g. CNNC, CGN); this change names a subsidiary or civil contractor. Decide the builder convention site-wide first"
+CONV_I = "convention: the site lists the reactor vendor or owner group as builder for India (e.g. NPCIL); this change names a civil contractor. Decide the builder convention site-wide first"
 BIB = "quote not on the cited biblioatom.ru page (checked 2026-10-14: page HTML has none of the quoted words); the fact matches ru.wikipedia, but that leaves one source, not two"
 HOLD = {"W2B074-17": "granularity, not an error: Grohnde is a KWU 4-loop PWR, and the house labels every KWU 4-loop unit "
                      "(incl. the other Vor-Konvoi plants Brokdorf, Grafenrheinfeld, Philippsburg 2) 'Siemens 4-Loop'; "
@@ -83,7 +116,27 @@ HOLD = {"W2B074-17": "granularity, not an error: Grohnde is a KWU 4-loop PWR, an
                      "and 3 included); clearing Flamanville 2 alone would make it the odd one out. Decide fleet-wide",
         "W5B062-11": "label collision: Vattenfall calls Forsmark 1-2 'BWR 69', but the house label BWR/69 is KWU's German line "
                      "(Brunsbuettel, Isar 1, Kruemmel, Philippsburg 1, Wuerzgassen); sister units Olkiluoto 1-2 stay BWR/G3",
-        "W5B063-02": "label collision: as Forsmark 1 (W5B062-11)"}
+        "W5B063-02": "label collision: as Forsmark 1 (W5B062-11)",
+        # wave 3: builder-convention holds
+        "W3B004-04": CONV_J,
+        "W3B004-11": CONV_J,
+        "W3B004-18": CONV_J,
+        "W3B036-09": CONV_C,
+        "W3B016-04": CONV_C,
+        "W3B016-13": CONV_C,
+        "W3B013-01": CONV_C,
+        "W3B013-08": CONV_C,
+        "W3B100-17": CONV_C,
+        "W3B060-07": CONV_C,
+        "W3B060-16": CONV_C,
+        "W3B080-04": CONV_C,
+        "W3B026-10": CONV_C,
+        "W3B024-18": CONV_I,
+        "W3B025-07": CONV_I,
+        "W3B049-07": CONV_I,
+        "W3B049-16": CONV_I,
+        "W3B053-01": CONV_I,
+        "W3B035-11": CONV_I}
 norm = lambda s: re.sub(r"[^a-z0-9]", "", (s or "").lower())
 clean = lambda s: (s or "").replace("|", "/").replace("\n", " ").strip()
 
