@@ -80,19 +80,26 @@ def check(url, quote):
 
 
 def main():
-    files = sys.argv[1:]
+    # Optional: --cols <url_col>,<quote_col> (default source_url,quote) and --out <file name>.
+    args, url_col, quote_col, out_name = sys.argv[1:], "source_url", "quote", "quote_check.tsv"
+    if "--cols" in args:
+        i = args.index("--cols"); url_col, quote_col = args[i + 1].split(","); del args[i:i + 2]
+    if "--out" in args:
+        i = args.index("--out"); out_name = args[i + 1]; del args[i:i + 2]
+    files = args
     out_rows = []
     for f in files:
         lines = Path(f).read_text(encoding="utf-8").splitlines()
         hdr = lines[0].split("|")
-        iu, iq, iv = hdr.index("source_url"), hdr.index("quote"), hdr.index("verdict")
+        iu, iq = hdr.index(url_col), hdr.index(quote_col)
+        iv = hdr.index("verdict") if "verdict" in hdr else None
         for n, line in enumerate(lines[1:], start=1):
             p = line.split("|")
-            if p[iv] in ("BLOCKED",) or not p[iu].strip():
+            if (iv is not None and p[iv] in ("BLOCKED",)) or not p[iu].strip():
                 out_rows.append([Path(f).name, n, p[iu], "NO_SOURCE", 0.0]); continue
             status, cov = check(p[iu].strip(), p[iq])
             out_rows.append([Path(f).name, n, p[iu], status, cov])
-    out = Path(files[0]).parent / "quote_check.tsv"
+    out = Path(files[0]).parent / out_name
     with open(out, "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh, delimiter="\t")
         w.writerow(["file", "row", "url", "status", "coverage"])

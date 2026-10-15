@@ -96,6 +96,7 @@
                     <div class="chart-container">
                         <canvas id="capacity-chart"></canvas>
                     </div>
+                    <p class="chart-note" id="capacity-note" hidden></p>
                 </div>
             </div>
         </section>
@@ -188,6 +189,7 @@
             <div class="modal-chart-container">
                 <canvas id="modal-chart"></canvas>
             </div>
+            <p class="chart-note" id="modal-note" hidden></p>
         </div>
     </div>
 
@@ -520,14 +522,56 @@
 
         // Capacity history chart
         // History + projection: the past is a solid line ending in a dot at today's value; the
-        // projection continues from that dot as a dashed line (no vertical "today" rule).
+        // projection fans out from that dot as a shaded range between two dashed lines, in a
+        // different colour (no vertical "today" rule). Top = optimistic, bottom = conservative.
         function withProjection(history, projection, field) {
             const proj = (projection && projection.years) ? projection.years.filter(p => p.year > history[history.length - 1].year) : [];
+            const hasRange = !!(projection && projection.has_range);
             const labels = history.map(d => d.year).concat(proj.map(p => p.year));
             const past = history.map(d => d[field]).concat(proj.map(() => null));
-            const future = history.map((d, i) => i === history.length - 1 ? d[field] : null).concat(proj.map(p => p[field]));
+            const lead = history.map((d, i) => i === history.length - 1 ? d[field] : null);
+            const future = lead.concat(proj.map(p => p[field]));
+            const futureLow = hasRange ? lead.concat(proj.map(p => p[field + '_low'])) : null;
             const dot = (r) => labels.map((_, i) => i === history.length - 1 ? 5 : r);
-            return { labels, past, future, dot, hasProjection: proj.length > 0, todayIndex: history.length - 1 };
+            return { labels, past, future, futureLow, dot, hasProjection: proj.length > 0, hasRange, todayIndex: history.length - 1 };
+        }
+
+        // Plain-text note under a chart: the range method is too long for a canvas subtitle.
+        function showProjectionNote(id, series, projection) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.hidden = !(series.hasProjection && series.hasRange);
+            el.textContent = el.hidden ? '' : projection.method;
+        }
+
+        // The projection datasets (top line, then bottom line filled up to it).
+        function projectionDatasets(series) {
+            const c = REG.ochre, sets = [{
+                label: series.hasRange ? 'Optimistic' : 'Projected',
+                data: series.future,
+                borderColor: c,
+                borderDash: [6, 4],
+                borderWidth: 2,
+                fill: false,
+                tension: 0.3,
+                pointRadius: 0,
+                pointHoverRadius: 4
+            }];
+            if (series.hasRange) {
+                sets.push({
+                    label: 'Conservative',
+                    data: series.futureLow,
+                    borderColor: c,
+                    borderDash: [2, 3],
+                    borderWidth: 2,
+                    backgroundColor: REG.rgba('ochre', 0.16),
+                    fill: '-1',
+                    tension: 0.3,
+                    pointRadius: 0,
+                    pointHoverRadius: 4
+                });
+            }
+            return sets;
         }
 
         async function loadCapacityChart() {
@@ -535,6 +579,7 @@
             const history = data.history;
             const series = withProjection(history, data.projection, 'capacity_gw');
             const projYears = data.projection ? data.projection.years : [];
+            showProjectionNote('capacity-note', series, data.projection);
 
             new Chart(document.getElementById('capacity-chart'), {
                 type: 'line',
@@ -551,17 +596,7 @@
                         pointHoverRadius: 5,
                         pointBackgroundColor: colors.forest,
                         pointBorderColor: colors.forest
-                    }, {
-                        label: 'Projected',
-                        data: series.future,
-                        borderColor: colors.forest,
-                        borderDash: [6, 4],
-                        borderWidth: 2,
-                        fill: false,
-                        tension: 0.3,
-                        pointRadius: 0,
-                        pointHoverRadius: 4
-                    }]
+                    }].concat(projectionDatasets(series))
                 },
                 options: {
                     responsive: true,
@@ -571,19 +606,20 @@
                         subtitle: {
                             display: true,
                             text: ['Source: [PRIS] reactor dates and capacities (gross), at year end. Reactors IAEA now lists as suspended drop out from their suspension date; reactors idle for years and later restarted (e.g. Japan 2012-15) count throughout.',
-                                   'Dashed: projection from reactors under construction; closures not included.'],
+                                   series.hasRange ? 'Shaded: projected range, explained below the chart.' : 'Dashed: projection from reactors under construction; closures not included.'],
                             color: REG.muted,
                             font: { size: 11 },
                             padding: { bottom: 10 }
                         },
                         tooltip: {
-                            filter: (item) => item.raw !== null && !(item.datasetIndex === 1 && item.dataIndex === series.todayIndex),
+                            filter: (item) => item.raw !== null && !(item.datasetIndex >= 1 && item.dataIndex === series.todayIndex),
                             callbacks: {
-                                label: (ctx) => ctx.datasetIndex === 1 ? `Projected: ${ctx.raw} GW` : `${ctx.raw} GW`,
+                                label: (ctx) => ctx.datasetIndex >= 1 ? `${ctx.dataset.label}: ${ctx.raw} GW` : `${ctx.raw} GW`,
                                 afterLabel: (ctx) => {
                                     if (ctx.datasetIndex === 0) return `${history[ctx.dataIndex].reactor_count} reactors`;
                                     const p = projYears.find(y => y.year === series.labels[ctx.dataIndex]);
-                                    return p && ctx.dataIndex !== series.todayIndex ? `${p.operational} reactors (projected)` : '';
+                                    if (!p || ctx.dataIndex === series.todayIndex) return '';
+                                    return `${ctx.datasetIndex === 2 ? p.operational_low : p.operational} reactors`;
                                 }
                             }
                         }
@@ -1206,18 +1242,10 @@
                 borderRadius: isLine ? 0 : 2
             }];
             if (series.hasProjection) {
-                datasets.push({
-                    label: 'Projected',
-                    data: series.future,
-                    borderColor: config.color,
-                    borderDash: [6, 4],
-                    borderWidth: 2,
-                    fill: false,
-                    tension: 0.3,
-                    pointRadius: 0
-                });
+                datasets.push(...projectionDatasets(series));
             }
 
+            showProjectionNote('modal-note', series, statsHistoryCache.projection);
             if (modalChart) modalChart.destroy();
             modalChart = new Chart(document.getElementById('modal-chart'), {
                 type: isLine ? 'line' : 'bar',
@@ -1231,16 +1259,16 @@
                     plugins: {
                         legend: { display: false },
                         subtitle: {
-                            display: series.hasProjection,
-                            text: series.hasProjection ? statsHistoryCache.projection.method : '',
+                            display: series.hasProjection && !series.hasRange,
+                            text: series.hasProjection && !series.hasRange ? statsHistoryCache.projection.method : '',
                             color: REG.text2,
                             font: { size: 11 },
                             padding: { bottom: 10 }
                         },
                         tooltip: {
-                            filter: (item) => item.raw !== null && !(item.datasetIndex === 1 && item.dataIndex === series.todayIndex),
+                            filter: (item) => item.raw !== null && !(item.datasetIndex >= 1 && item.dataIndex === series.todayIndex),
                             callbacks: {
-                                label: (ctx) => `${ctx.datasetIndex === 1 ? 'Projected: ' : ''}${ctx.raw.toLocaleString()}${config.unit}`
+                                label: (ctx) => `${ctx.datasetIndex >= 1 ? ctx.dataset.label + ': ' : ''}${ctx.raw.toLocaleString()}${config.unit}`
                             }
                         }
                     },

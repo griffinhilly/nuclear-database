@@ -304,6 +304,15 @@ def run_checks(db_path, browser=True, all_reactor_pages=False, port=5021):
             "WHERE net_capacity_mw >= gross_capacity_mw")
     bad = [b for b in bad if b[0] not in NET_EQUALS_GROSS_AS_REPORTED]
     R.check("net capacity < gross capacity", not bad, f"{bad}")
+    # Origin 2026-10-15: migration 032 recorded Guohe One 2 as CONNECTED but left it Under Construction.
+    bad = q("SELECT plant_name || ' ' || unit_number, expected_operation FROM reactors "
+            "WHERE status = 'Under Construction' AND (expected_status = 'CONNECTED' OR grid_connection IS NOT NULL)")
+    R.check("no Under Construction reactor is recorded as connected to the grid", not bad, f"{bad}")
+    bad = q("SELECT plant_name || ' ' || unit_number, planned_retirement FROM reactors "
+            "WHERE status = 'Operational' AND planned_retirement IS NOT NULL "
+            "AND CAST(substr(planned_retirement, 1, 4) AS INTEGER) < CAST(strftime('%Y', 'now') AS INTEGER)")
+    R.check("no Operational reactor has a planned retirement year in the past", not bad, f"{len(bad)}: {bad[:8]}",
+            warn_only=True)
     bad = q("SELECT plant_name || ' ' || unit_number, commercial_operation FROM reactors "
             "WHERE status = 'Under Construction' AND commercial_operation IS NOT NULL")
     R.check("Under Construction reactors hold no (expected) commercial-operation date", not bad,

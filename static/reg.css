@@ -422,6 +422,12 @@ a { color: var(--accent); }
     position: relative;
     height: 300px;
 }
+.chart-note {
+    margin: 12px 0 0;
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--reg-grey-dark);
+}
 
 /* Map ------------------------------------------------------- */
 #reactor-map,

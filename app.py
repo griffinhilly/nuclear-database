@@ -223,22 +223,41 @@ def year_params(year):
     return {'year_start': f'{year}-01-01', 'year_end': f'{year}-12-31'}
 
 
-# Projection: under-construction reactors only (no closures: we hold no sourced closure dates).
-# A unit enters service in its expected_operation year (sourced announcement, migration 032) if it
-# has one; paused units (expected_status 'PAUSED') are left out; otherwise construction start plus
-# the median build time (construction start to grid) of its country's units connected since
-# 2010 (world median if the country has fewer than 3). Units already past that point enter next
-# year. Units building for more than PROJECTION_STALLED_YEARS without an announced date are
-# left out (some are paused, some nearly done; without an announced date we cannot tell which).
+# Projection: a RANGE between two scenarios (Griffin, 2026-10-15), from today's value to
+# PROJECTION_HORIZON_YEARS ahead. Neither is a forecast; the true path should fall between them.
+#   Optimistic: every unit under construction enters service on schedule, and only closures driven
+#     by a safety condition (planned_retirement_basis 'SAFETY_CONDITION') happen.
+#     Schedule = its expected_operation year (sourced announcement, migration 032); paused units
+#     (expected_status 'PAUSED') are left out; with no date, a year after a sister unit's date, else
+#     construction start plus its country's median build time (construction start to grid) since 2010
+#     (world median if the country has fewer than 3). Units already past that point enter next year.
+#     Units building for more than PROJECTION_STALLED_YEARS without an announced date are left out.
+#   Conservative: every scheduled closure happens (any sourced basis in CLOSURE_BASES_CONSERVATIVE),
+#     and only units well into commissioning (commissioning_milestone in CONSERVATIVE_MILESTONES:
+#     hot tests done, fuel loaded, critical or connected; hot tests added by Griffin 2026-10-15)
+#     are added, at their announced year (next year if none or passed).
+# A closure dated year Y removes the unit from Y's point (year-end convention); closures dated this
+# year show from next year, so the current-year point always equals the stat cards.
 PROJECTION_STALLED_YEARS = 12
-PROJECTION_METHOD = ('Projection: reactors under construction, at their announced start year; if none, a year after '
-                     "a sister unit's date, else their country's median build time since 2010. "
-                     'Paused projects and closures are not included.')
+PROJECTION_HORIZON_YEARS = 4
+CONSERVATIVE_MILESTONES = ('GRID', 'CRITICALITY', 'FUEL_LOAD', 'HOT_TESTS')
+CLOSURE_BASES_OPTIMISTIC = ('SAFETY_CONDITION',)
+CLOSURE_BASES_CONSERVATIVE = ('SAFETY_CONDITION', 'LAW_POLICY', 'OWNER_DECISION')
+PROJECTION_METHOD = ('Shaded range. Top: every reactor under construction starts on schedule and only closures '
+                     'forced by safety or deterioration happen. Bottom: every scheduled closure happens and only '
+                     'reactors that have finished hot testing or are further along are added. Reactors not yet under construction '
+                     'are not included.')
 
 
 def fleet_projection():
-    """Future fleet path: [{year, operational, capacity_gw}] from the current year onward."""
+    """Future fleet range: years [{year, operational, capacity_gw, operational_low, capacity_gw_low}].
+
+    operational / capacity_gw are the optimistic path (kept under the old keys); *_low the conservative path.
+    """
     import statistics
+    cols = {r['name'] for r in query_db("PRAGMA table_info(reactors)")}
+    has_basis = 'planned_retirement_basis' in cols
+    has_milestone = 'commissioning_milestone' in cols
     now = datetime.now()
     now_y = now.year + (now.timetuple().tm_yday - 1) / 365.25
     frac = lambda d: int(d[:4]) + (datetime.strptime(d[:10], '%Y-%m-%d').timetuple().tm_yday - 1) / 365.25
@@ -250,7 +269,19 @@ def fleet_projection():
     world = statistics.median(v for vs in by_country.values() for v in vs)
     median = {k: statistics.median(v) for k, v in by_country.items() if len(v) >= 3}
 
-    adds, stalled = {}, []
+    end_year = now.year + PROJECTION_HORIZON_YEARS
+    changes = {'high': {}, 'low': {}}   # scenario -> year -> [dn, dmw]
+    units = {'high': [], 'low': []}     # (year, name, +/-MW) for the review page / API readers
+
+    def add(scn, year, name, mw):
+        if year > end_year:
+            return
+        c = changes[scn].setdefault(year, [0, 0])
+        c[0] += 1 if mw >= 0 else -1
+        c[1] += mw
+        units[scn].append((year, name, mw))
+
+    stalled = []
     # A unit with no announced date follows its site's latest announced sibling by a year
     # (e.g. Hinkley Point C 2 after unit 1), rather than borrowing a median that puts it first.
     sibling = {}
@@ -258,10 +289,14 @@ def fleet_projection():
                          FROM reactors WHERE status = 'Under Construction' AND expected_operation IS NOT NULL
                          GROUP BY plant_name"""):
         sibling[r['plant_name']] = r['y']
-    for r in query_db("""SELECT plant_name, plant_name || ' ' || unit_number AS name, country_id, construction_start,
-                                COALESCE(expected_operation, grid_connection, commercial_operation) AS announced,
-                                expected_status, gross_capacity_mw
-                         FROM reactors WHERE status = 'Under Construction'"""):
+    milestone_col = 'commissioning_milestone' if has_milestone else 'NULL'
+    for r in query_db(f"""SELECT plant_name, plant_name || ' ' || unit_number AS name, country_id, construction_start,
+                                 COALESCE(expected_operation, grid_connection, commercial_operation) AS announced,
+                                 expected_status, gross_capacity_mw, {milestone_col} AS milestone
+                          FROM reactors WHERE status = 'Under Construction'"""):
+        mw = r['gross_capacity_mw'] or 0
+        if r['milestone'] in CONSERVATIVE_MILESTONES:
+            add('low', max(int(r['announced'][:4]) if r['announced'] else 0, now.year + 1), r['name'], mw)
         if r['expected_status'] == 'PAUSED':
             stalled.append(r['name'])
             continue
@@ -277,19 +312,38 @@ def fleet_projection():
             year = max(sibling[r['plant_name']] + 1, now.year + 1)
         else:
             year = max(int(frac(r['construction_start']) + median.get(r['country_id'], world)), now.year + 1)
-        n, mw = adds.get(year, (0, 0))
-        adds[year] = (n + 1, mw + (r['gross_capacity_mw'] or 0))
+        add('high', year, r['name'], mw)
 
     p = year_params(now.year)
+    if has_basis:
+        # Closures apply only to reactors in today's operating count, dated after this year.
+        for r in query_db(f"""SELECT r.plant_name || ' ' || r.unit_number AS name, r.planned_retirement AS d,
+                                     r.planned_retirement_basis AS basis, {CAPACITY_AT_YEAR_END_SQL} AS mw
+                              FROM reactors r WHERE {OPERATING_IN_YEAR_SQL}
+                                AND r.planned_retirement IS NOT NULL AND r.planned_retirement_basis IS NOT NULL""", p):
+            year = int(str(r['d'])[:4])
+            if year <= now.year:
+                continue
+            if r['basis'] in CLOSURE_BASES_OPTIMISTIC:
+                add('high', year, r['name'], -(r['mw'] or 0))
+            if r['basis'] in CLOSURE_BASES_CONSERVATIVE:
+                add('low', year, r['name'], -(r['mw'] or 0))
+
     base = query_db(f"""SELECT COUNT(*) AS n, COALESCE(SUM({CAPACITY_AT_YEAR_END_SQL}), 0) AS mw
                         FROM reactors r WHERE {OPERATING_IN_YEAR_SQL}""", p)[0]
-    n, mw = base['n'], base['mw']
-    out = [{'year': now.year, 'operational': n, 'capacity_gw': round(mw / 1000, 1)}]
-    for y in range(now.year + 1, max(adds, default=now.year) + 1):
-        dn, dmw = adds.get(y, (0, 0))
-        n, mw = n + dn, mw + dmw
-        out.append({'year': y, 'operational': n, 'capacity_gw': round(mw / 1000, 1)})
-    return {'years': out, 'method': PROJECTION_METHOD, 'left_out_long_delayed': stalled}
+    n_hi = n_lo = base['n']
+    mw_hi = mw_lo = base['mw']
+    out = [{'year': now.year, 'operational': n_hi, 'capacity_gw': round(mw_hi / 1000, 1),
+            'operational_low': n_lo, 'capacity_gw_low': round(mw_lo / 1000, 1)}]
+    for y in range(now.year + 1, end_year + 1):
+        dn, dmw = changes['high'].get(y, (0, 0))
+        n_hi, mw_hi = n_hi + dn, mw_hi + dmw
+        dn, dmw = changes['low'].get(y, (0, 0))
+        n_lo, mw_lo = n_lo + dn, mw_lo + dmw
+        out.append({'year': y, 'operational': n_hi, 'capacity_gw': round(mw_hi / 1000, 1),
+                    'operational_low': n_lo, 'capacity_gw_low': round(mw_lo / 1000, 1)})
+    return {'years': out, 'method': PROJECTION_METHOD, 'has_range': has_basis and has_milestone,
+            'units': {k: sorted(v) for k, v in units.items()}, 'left_out_long_delayed': stalled}
 
 
 def safe_fleet_projection():
