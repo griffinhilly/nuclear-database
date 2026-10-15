@@ -37,14 +37,53 @@ ALIAS = {"bechtelpower": "Bechtel", "bechtelconstruction": "Bechtel", "stonewebs
          "ebascoservices": "Ebasco", "americanelectricpowerservice": "American Electric Power",
          "bwxtechnologiesincbwxt": "BWX Technologies", "imp": "IMPSA", "nucleoelectricaargentina": "Nucleoeléctrica Argentina (NA-SA)",
          "nucleoelctricaargentina": "Nucleoeléctrica Argentina (NA-SA)", "comisionfederaldeelectricidad": "Comision Federal de Electricidad",
-         "pacificgaselectric": "Pacific Gas & Electric"}
+         "pacificgaselectric": "Pacific Gas & Electric",
+         # wave 4 (2026-10-14): one spelling per firm; parentheticals dropped; house names where the DB has them
+         "titan2jsc": "Titan-2", "aeclansaldoconsortiumaac": "AECL-Ansaldo Consortium", "aeclansaldonucleare": "AECL-Ansaldo Consortium",
+         "magadanenergostroytrustbilibinonppconstructiondirectorate": "Magadanenergostroy",
+         "kursknppconstructiondirectoratenowkurskatomenergostroy": "Kursk NPP Construction Directorate",
+         "nizhnynovgorodatomenergoproektnnaep": "NIAEP", "brnomachinebuildingplantczechoslovakia": "Brno Machine-Building Plant",
+         "powermachines": "Power Machines (LMZ)", "kodajs": "Skoda Works", "atommashvolgodonsk": "Atommash",
+         "atommashaemtechnologiesvolgodonskbranch": "Atommash", "aemtechnologiesatommash": "Atommash", "aemtechnologies": "Atommash",
+         "izhorskiyezavodyizhoraplantsomzgroup": "Izhora Plants", "omzizhoraizhorskiyezavody": "Izhora Plants",
+         "izhorskiyezavody": "Izhora Plants", "izhoraplantrosatom": "Izhora Plants",
+         # wave 5
+         "lectricitdefranceedf": "EDF", "electricitdefranceedf": "EDF", "electricitedefranceedf": "EDF",
+         "rotterdamdrydockcompanyrdm": "Rotterdam Dockyard (RDM)", "rotterdamschedroogdokmijrdm": "Rotterdam Dockyard (RDM)",
+         "arabellesolutionsformerlygesteampower": "Arabelle Solutions", "siemenskwu": "Kraftwerk Union (KWU)",
+         "siemensschuckertag": "Siemens", "brownbovericiebbcgeneralelectricconsortium": "BBC / General Electric",
+         "bylorjvbouyguestravauxpublicsandlaingorourke": "Bylor", "taylorwoodrowconstruction": "Taylor Woodrow",
+         "motorcolumbusingenieurunternehmungag": "Motor-Columbus", "degerforsjrnverkuddeholmsab": "Degerfors Järnverk",
+         "johnthompsonwatertubeboilers": "John Thompson"}
 # Hand decisions on single items (item_id -> value, why), shown on the review page.
 OVERRIDES = {"W1B017-10": ("Indian Point 1", "one-off B&W design (not W 4-Loop); design_series is required, and one-off "
                                              "units are named after the unit, as CVTR and Saxton are")}
 # Upheld changes held back by hand (item_id -> why), listed as skipped on the review page.
+BIB = "quote not on the cited biblioatom.ru page (checked 2026-10-14: page HTML has none of the quoted words); the fact matches ru.wikipedia, but that leaves one source, not two"
 HOLD = {"W2B074-17": "granularity, not an error: Grohnde is a KWU 4-loop PWR, and the house labels every KWU 4-loop unit "
                      "(incl. the other Vor-Konvoi plants Brokdorf, Grafenrheinfeld, Philippsburg 2) 'Siemens 4-Loop'; "
-                     "relabel the series fleet-wide or not at all"}
+                     "relabel the series fleet-wide or not at all",
+        # wave 4: biblioatom quotes that are not on the page
+        "W4B027-04": BIB,
+        "W4B027-11": BIB,
+        "W4B027-18": BIB,
+        "W4B028-07": BIB,
+        "W4B038-04": BIB,
+        "W4B038-05": BIB,
+        "W4B038-13": BIB,
+        "W4B038-14": BIB,
+        "W4B039-04": BIB,
+        "W4B039-05": BIB,
+        "W4B039-13": BIB,
+        "W4B039-14": BIB,
+        "W4B040-05": BIB,
+        "W4B040-14": "cited quote (unit count and size) does not name the architect-engineer; " + BIB,
+        # wave 5
+        "W5B052-02": "convention, not an error: the house lists Framatome as constructor for all 64 French PWRs (Flamanville 1 "
+                     "and 3 included); clearing Flamanville 2 alone would make it the odd one out. Decide fleet-wide",
+        "W5B062-11": "label collision: Vattenfall calls Forsmark 1-2 'BWR 69', but the house label BWR/69 is KWU's German line "
+                     "(Brunsbuettel, Isar 1, Kruemmel, Philippsburg 1, Wuerzgassen); sister units Olkiluoto 1-2 stay BWR/G3",
+        "W5B063-02": "label collision: as Forsmark 1 (W5B062-11)"}
 norm = lambda s: re.sub(r"[^a-z0-9]", "", (s or "").lower())
 clean = lambda s: (s or "").replace("|", "/").replace("\n", " ").strip()
 
@@ -64,7 +103,23 @@ def house(field, v, existing):
         return v, "NEW_CONTAINMENT"  # not in house vocabulary: skipped by caller
     if field == "cooling_type":
         hit = next((c for c in COOLING if norm(c) == norm(v)), None)
-        return (hit, "exact") if hit else (v, "NEW_COOLING")  # no house category (e.g. estuary): skipped
+        if hit:
+            return hit, "exact"
+        # Unambiguous rewordings only (wave 5 proposed "Natural-draft cooling tower" for the house's
+        # "Cooling tower (natural draft)"); anything mixing once-through with a tower or reservoir stays skipped.
+        low = v.lower()
+        once = "once-through" in low or "open circuit" in low
+        if "natural" in low and "draft" in low and not once:
+            return "Cooling tower (natural draft)", "mapped"
+        if any(k in low for k in ("mechanical draft", "mechanical-draft", "forced draft", "forced-draft")) and not once:
+            return "Cooling tower (mechanical draft)", "mapped"
+        if ("cooling pond" in low or "reservoir" in low) and not once and "tower" not in low:
+            return "Cooling pond", "mapped"
+        if once and "tower" not in low and "reservoir" not in low and "pond" not in low and "estuary" not in low:
+            for k, c in (("sea", "Once-through (seawater)"), ("river", "Once-through (river)"), ("lake", "Once-through (lake)")):
+                if k in low:
+                    return c, "mapped"
+        return v, "NEW_COOLING"  # no house category (e.g. estuary, dry air cooling): skipped
     if field in ("licensed_until", "planned_retirement"):
         return v[:4], "year"  # house format is the year
     if field in VENDOR:
