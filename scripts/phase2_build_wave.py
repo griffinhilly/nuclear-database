@@ -7,7 +7,11 @@ Purpose: fleet-wide run of the three-tier agent audit validated by the pilot (do
   other item from the same plant, so siblings cannot give the answer away. DISPUTED items are left out.
 Inputs:  nuclear_reactors.db (read-only), audit/calibration.psv, audit/phase2/pilot_items.psv
 Outputs: audit/phase2/wave<N>_batches.json, audit/phase2/wave<N>_items.psv
+         With --rerun-of M: only items left BLOCKED in audit/phase2/wave<M>_ledger.psv (fleet items), with
+         wave M's calibration share, as a new wave number (values re-read from the current DB).
+         Also writes audit/phase2/wave<N>/b<NNN>.json, one small file per batch, for the workflow agents.
 Usage:   python scripts/phase2_build_wave.py --wave 1
+         python scripts/phase2_build_wave.py --wave 5 --rerun-of 2
 last_run: 2026-10-14
 """
 import argparse
@@ -43,10 +47,24 @@ SIBLINGS = ["status", "gross_capacity_mw", "net_capacity_mw", "thermal_capacity_
 BATCH = 18
 
 
+def split(w, out_batches):
+    """One small file per batch, so agents never re-read the whole (>1 MB) wave file."""
+    d = OUT / f"wave{w}"
+    d.mkdir(exist_ok=True)
+    for b in out_batches:
+        (d / f"b{b['batch']:03d}.json").write_text(json.dumps(b, ensure_ascii=False, default=str, indent=1), encoding="utf-8")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--wave", type=int, required=True)
-    w = ap.parse_args().wave
+    ap.add_argument("--rerun-of", type=int)
+    a = ap.parse_args()
+    w, src = a.wave, a.rerun_of or a.wave
+    keep = None
+    if a.rerun_of:
+        keep = {(int(r["reactor_db_id"]), r["field"]) for r in csv.DictReader(
+            open(OUT / f"wave{src}_ledger.psv", encoding="utf-8"), delimiter="|") if r["origin"] == "F" and r["verdict"] == "BLOCKED"}
     db = sqlite3.connect(f"file:{ROOT / 'nuclear_reactors.db'}?mode=ro", uri=True)
     db.row_factory = sqlite3.Row
     rows = {r["id"]: dict(r) for r in db.execute(f"""
@@ -60,12 +78,12 @@ def main():
 
     items = []
     for r in rows.values():
-        if r["country"] not in WAVES[w]:
+        if r["country"] not in WAVES[src]:
             continue
         for f in FIELDS:
             if f in ("licensed_until", "planned_retirement") and r["status"] not in ("Operational", "Suspended"):
                 continue
-            if (r["id"], f) in done:
+            if (r["id"], f) in done or (keep is not None and (r["id"], f) not in keep):
                 continue
             items.append({"origin": "F", "reactor_db_id": r["id"], "field": f, "shown": r.get(f)})
 
@@ -87,7 +105,7 @@ def main():
     cal_map = {"containment": "containment_type", "rpv_manufacturer": "pressure_vessel_manufacturer"}
     cal = [c for c in csv.DictReader(open(ROOT / "audit" / "calibration.psv", encoding="utf-8"), delimiter="|")
            if "expected=DISPUTED" not in c["trap_note"]]
-    mine = [c for k, c in enumerate(cal) if k % 4 == w - 1]
+    mine = [c for k, c in enumerate(cal) if k % 4 == src - 1]
     placed = 0
     for k, c in enumerate(mine):
         rid = int(c["reactor_db_id"])
@@ -118,6 +136,7 @@ def main():
                            "value_on_site": i["shown"]})
             out_batches.append({"batch": bi, "items": ob})
     (OUT / f"wave{w}_batches.json").write_text(json.dumps(out_batches, ensure_ascii=False, default=str), encoding="utf-8")
+    split(w, out_batches)
     print(f"wave {w}: {len(items)} fleet items + {placed}/{len(mine)} calibration in {len(batches)} batches")
 
 
