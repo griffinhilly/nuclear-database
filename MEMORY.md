@@ -1,6 +1,7 @@
 # Nuclear Database — Memory
 
 ## Current State (Oct 2026)
+- **Oct 15 release (migrations 034-039, commit 328d13c)**: 424 operating / 410.6 GW. Projection is a sourced RANGE (see PLAN). Lesson: migration 032 recorded `expected_status='CONNECTED'` for Guohe One 2 without changing `status` — the headline count stayed wrong for a day. Guarded now: site_consistency FAILs on any Under Construction unit recorded as connected. Lesson 2: review pages must be single-file (embed images) — linked screenshots don't travel.
 - **Oct 13 audit (migrations 022-028)**: 743 reactors (420 Operational, 80 UC, 21 Suspended, 222 Shutdown), 121 planned. PRIS moved to a JSON API (`pris-stats.iaea.org`) — old scrapers dead. Batches: PRIS fills (operator, first criticality, pris_id for 296), guarded PRIS capacity/date alignment, 5 missing UC units, 475 PRIS turbine suppliers (whitelisted), 25 Sonnet-researched fixes with script-verified quotes, 4 status updates. Lessons: PRIS itself has errors (Xuwei-1 net 729 vs gross 1208) — always guard; changing gross without capacity_changes rewrites historical CF (Wolsong 3/4 derate caught by the CF<=105% guard); agent "quotes" assembled from tables are not sources — re-find every quote by script (`scripts/quote_check.py`). 27 batch-C items held (mostly Soviet-era Russian dates).
 
 ## Earlier State (Jul 2026)
@@ -32,6 +33,7 @@
 Session history: see `guides/session-log.md`
 
 ## Gotchas
+- **flyctl.exe (the Oct 13 auto-updated build) is blocked by Windows Smart App Control (unsigned, Oct 15)**: "An Application Control policy has blocked this file". The March build `~/.fly/bin/flyctl.exe.old` (v0.4.19) still runs: `~/.fly/bin/flyctl.exe.old deploy <worktree path> --remote-only`. Passing the worktree path avoids cd-ing the session into it.
 - **Deploy outage 2026-10-14 (~5 min)**: deploying from a fresh `git worktree` on Windows checked out `start.sh` with CRLF (core.autocrlf=true) → every machine crash-looped ("./start.sh: No such file or directory"). Fixed by converting to LF and redeploying; `.gitattributes` now forces LF for *.sh / Dockerfile. Always check /api/stats right after a deploy.
 - **Fields with no internal-consistency check are the highest fabrication risk** — a wrong constructor/vendor name offends no validator and contradicts no other table, so it never earns an audit. Audit such fields *because* nothing can catch them. (Jul 20: 4 systematic bug classes found in never-audited heuristic fields — NSSS-vendor-as-constructor, RDM-RPV default for KWU plants, licensor-as-constructor, blanket LMZ/Izhora with pre-1998 Atomstroyexport anachronisms. Ledger: constants_audit_2026-07.md.)
 - **Agent-facing data extracts must include every column needed to judge a mismatch** — a Jul 20 sample extract omitted gross_capacity, so agents compared sources' gross MWe against DB net and produced 2 false-positive WRONGs. Include gross+net (or all sibling columns) in any verification extract.

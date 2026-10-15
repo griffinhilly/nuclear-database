@@ -37,6 +37,7 @@ Dependencies: `flask`, `gunicorn` (see `requirements.txt`). Uses Python 3.8+ wit
 git push origin main
 ~/.fly/bin/flyctl.exe deploy --remote-only   # NOT fly.exe: that symlink is 0 bytes and Windows blocks it
 ```
+- **Smart App Control blocks the current `flyctl.exe` (Oct 15)**; the March build still runs: `~/.fly/bin/flyctl.exe.old deploy ../ndb-deploy --remote-only` (pass the worktree path; don't cd the session into it).
 - **Deploy what's committed, not the working tree**: the Docker build copies files from disk, so uncommitted prototypes ship too. To deploy only HEAD: `git worktree add ../ndb-deploy HEAD`, deploy from there, then `git worktree remove`.
 - **Line endings**: `start.sh` must be LF. `.gitattributes` forces `*.sh eol=lf`; a CRLF `start.sh` crash-loops every machine ("./start.sh: No such file or directory", outage 2026-10-14). After any deploy, check `https://nuclear-database.fly.dev/api/stats`.
 
