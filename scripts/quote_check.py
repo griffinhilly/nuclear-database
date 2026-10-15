@@ -4,8 +4,9 @@ Purpose: agents must back every verdict with a URL + verbatim quote; this fetche
   checks the quote is really there, catching fabricated or paraphrased citations.
 Inputs:  one or more pipe-separated result files with columns source_url and quote.
 Outputs: <first input dir>/quote_check.tsv (file, row, url, status, coverage) + counts on stdout.
+  Pages that block curl (nrc.gov, some PDFs): re-check with scripts/quote_check_browser.py.
   status: FOUND (whole quote present), PARTIAL (>=70% of the quote's words found in order-free
-  window match), NOT_FOUND, FETCH_FAIL, PDF (not parsed), NO_QUOTE.
+  window match), NOT_FOUND, FETCH_FAIL, PDF (pdftotext failed), NO_QUOTE. PDFs are read with pdftotext.
 Usage:   python scripts/quote_check.py audit/batch_c/results_*.psv
 last_run: 2026-10-13
 """
@@ -14,6 +15,7 @@ import html
 import re
 import subprocess
 import sys
+import tempfile
 import time
 import unicodedata
 from collections import Counter
@@ -36,12 +38,18 @@ def fetch(url):
         return _cache[url]
     if not url.startswith("http"):
         url = "https://" + url
-    r = subprocess.run(["curl", "-sS", "-L", "--max-time", "40", "-A", UA, url], capture_output=True)
-    body = r.stdout
-    if r.returncode != 0 or not body:
+    r = subprocess.run(["curl", "-sS", "-L", "--max-time", "40", "-A", UA, "-w", "\n%{http_code}", url], capture_output=True)
+    body, _, code = r.stdout.rpartition(b"\n")
+    # A 4xx/5xx page (e.g. nrc.gov's "Access Denied" bot block) is a failed fetch, not a page without the quote.
+    if r.returncode != 0 or not body or not code.strip().startswith(b"2"):
         _cache[url] = None
     elif body[:5] == b"%PDF-":
-        _cache[url] = "PDF"
+        with tempfile.TemporaryDirectory() as td:
+            f = Path(td) / "d.pdf"
+            f.write_bytes(body)
+            subprocess.run(["pdftotext", str(f), str(f.with_suffix(".txt"))], capture_output=True)
+            t = f.with_suffix(".txt")
+            _cache[url] = norm(t.read_text(encoding="utf-8", errors="replace")) if t.exists() else "PDF"
     else:
         text = body.decode("utf-8", errors="replace")
         text = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", " ", text)

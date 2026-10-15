@@ -74,6 +74,8 @@ def main():
             if clean_only and contaminated:
                 continue
             exp = c["trap_note"].split(".")[0].replace("expected=", "").strip()
+            if exp == "DISPUTED":
+                continue  # answer key under human review
             got = pick(iid)
             said_wrong = got in ("WRONG", "FILL")
             if got == "BLOCKED":
