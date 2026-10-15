@@ -36,8 +36,9 @@
     --reg-powder-hover: #B1C2D0;   /* powder, brightness -10% */
 
     /* Semantic mappings */
-    --bg-primary:    #ffffff;
-    --bg-card:       var(--reg-grey-light);
+    --bg-page:       var(--reg-grey-light);   /* Brandbook v2: light grey is the main layout background (Griffin 2026-10-14) */
+    --bg-primary:    #ffffff;                 /* panels, inputs, popovers, modals stay white on the grey page */
+    --bg-card:       #ffffff;
     --bg-card-alt:   var(--reg-grey-dark-10);
     --bg-hover:      var(--reg-powder-40);
     --text-primary:  var(--reg-grey-dark);
@@ -76,7 +77,7 @@
 
 body {
     font-family: var(--font-sans);
-    background: var(--bg-primary);
+    background: var(--bg-page);
     color: var(--text-primary);
     line-height: 1.55;
     letter-spacing: 0.025em;           /* REG house spec for Text/Micro */
