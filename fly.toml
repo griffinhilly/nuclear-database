@@ -5,6 +5,7 @@ primary_region = 'ord'
 
 [env]
   DATABASE_PATH = '/data/nuclear_reactors.db'
+  SUBMISSIONS_DB_PATH = '/data/submissions.db'
 
 [http_service]
   internal_port = 8080

@@ -17,3 +17,6 @@ fetch_pris_generation.py
 reactor_coordinates.py
 query_cli.py
 api.py
+
+# Reader correction submissions (personal data; never commit)
+submissions.db

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ meta_title }}</title>
+{% include '_meta.html' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <style>
+        .contrib { max-width: 860px; margin: 0 auto; padding: 30px 16px 20px; }
+        .contrib .eyebrow { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--reg-blue-cobalt); font-weight: 600; }
+        .contrib h1 { font-size: 2rem; font-weight: 500; margin: 6px 0 12px; }
+        .contrib .lede { color: var(--text-secondary); max-width: 680px; }
+        .contrib .lede p + p { margin-top: 10px; }
+        .contrib-list { list-style: none; margin: 26px 0 10px; padding: 0; border-top: 1px solid var(--border); }
+        .contrib-list li { display: grid; grid-template-columns: 110px 1fr; gap: 4px 18px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+        .contrib-list .date { font-size: .82rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+        .contrib-list .what { color: var(--text-primary); }
+        .contrib-list .meta { grid-column: 2; font-size: .8rem; color: var(--text-secondary); }
+        .contrib-empty { margin: 26px 0; padding: 18px 20px; background: var(--bg-card); border-left: 4px solid var(--reg-yellow); }
+        @media (max-width: 560px) { .contrib-list li { grid-template-columns: 1fr; } .contrib-list .meta { grid-column: 1; } }
+    </style>
+</head>
+<body>
+{% include '_reg_nav.html' %}
+<main class="contrib">
+    <div class="eyebrow">Reader contributions</div>
+    <h1>Improved by our readers</h1>
+    <div class="lede">
+        <p>This database gets better because people who know the world's reactors tell us when something can be sharper. Every update below started as a reader's suggestion. We checked each one against a source before changing the data.</p>
+        <p>Thank you to everyone who has contributed. To suggest an update yourself, use the &ldquo;Suggest a correction&rdquo; button at the bottom of any page.</p>
+    </div>
+
+    {% if rows %}
+    <ul class="contrib-list">
+        {% for r in rows %}
+        <li>
+            <span class="date">{{ r.date }}</span>
+            <span class="what">{{ r.summary or 'Data updated' }}</span>
+            <span class="meta">
+                {% if r.page_url %}<a href="{{ r.page_url }}">{{ r.page_title or r.page_url }}</a>{% endif %}
+                {% if r.credit %} &middot; contributed by {{ r.credit }}{% else %} &middot; contributed by a reader{% endif %}
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <div class="contrib-empty">No reader updates have been published yet. Yours could be the first.</div>
+    {% endif %}
+</main>
+{% include '_reg_footer.html' %}
+</body>
+</html>

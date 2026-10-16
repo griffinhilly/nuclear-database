@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>{{ heading }} | Global Nuclear Database</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <style>
+        .err { max-width: 680px; margin: 0 auto; padding: 64px 16px 72px; }
+        .err .code { font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--reg-blue-cobalt); font-weight: 600; }
+        .err h1 { font-size: 2rem; font-weight: 500; margin: 8px 0 12px; }
+        .err p { color: var(--text-secondary); margin: 0 0 22px; }
+        .err-links { display: flex; flex-wrap: wrap; gap: 10px; }
+        .err-links a { padding: 9px 16px; border: 1px solid var(--reg-blue-cobalt); border-radius: 4px; color: var(--reg-blue-cobalt); text-decoration: none; font-size: .92rem; }
+        .err-links a.primary { background: var(--reg-blue-cobalt); color: #fff; }
+    </style>
+</head>
+<body>
+{% include '_reg_nav.html' %}
+<main class="err">
+    <div class="code">Error {{ code }}</div>
+    <h1>{{ heading }}</h1>
+    <p>{{ message }}</p>
+    <div class="err-links">
+        <a class="primary" href="/">Go to the homepage</a>
+        <a href="/lineages">Design lineages</a>
+        <a href="/sources">Sources and methods</a>
+    </div>
+</main>
+</body>
+</html>

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Nuclear Database</title>
+    <title>{{ meta_title }}</title>
+{% include '_meta.html' %}
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
@@ -228,7 +229,6 @@
     <script>
         // API Configuration
         const API_BASE = '';  // Same origin
-        const API_KEY = 'demo-key-12345';  // Demo key for development
 
         // REG brand palette — values come from reg.css via static/reg-brand.js (Brandbook v2 p8)
         const colors = {
@@ -251,12 +251,8 @@
         };
 
         // Fetch helper
-        async function fetchAPI(endpoint, requiresAuth = false) {
-            const url = requiresAuth
-                ? `${API_BASE}${endpoint}${endpoint.includes('?') ? '&' : '?'}api_key=${API_KEY}`
-                : `${API_BASE}${endpoint}`;
-
-            const response = await fetch(url);
+        async function fetchAPI(endpoint) {
+            const response = await fetch(`${API_BASE}${endpoint}`);
             if (!response.ok) throw new Error(`API error: ${response.status}`);
             return response.json();
         }
@@ -674,7 +670,7 @@
 
             try {
                 // Load ALL reactors (no status filter)
-                allMapData = await fetchAPI('/api/map', true);
+                allMapData = await fetchAPI('/api/map');
                 renderMapMarkers('all');
             } catch (error) {
                 console.error('Failed to load map data:', error);
@@ -1029,7 +1025,7 @@
                 const tech = document.getElementById('tech-filter').value;
 
                 if (tab === 'planned') {
-                    data = await fetchAPI('/api/planned', true);
+                    data = await fetchAPI('/api/planned');
                     currentReactors = data.planned_reactors;
                 } else {
                     const statusMap = {
@@ -1043,7 +1039,7 @@
                     if (country) url += `&country=${encodeURIComponent(country)}`;
                     if (tech) url += `&technology=${encodeURIComponent(tech)}`;
 
-                    data = await fetchAPI(url, true);
+                    data = await fetchAPI(url);
                     currentReactors = data.reactors;
                 }
 
@@ -1176,7 +1172,7 @@
             table.style.display = 'none';
 
             try {
-                const data = await fetchAPI(`/api/reactors/search?q=${encodeURIComponent(query)}`, true);
+                const data = await fetchAPI(`/api/reactors/search?q=${encodeURIComponent(query)}`);
                 renderReactorTable(data.results);
                 loading.style.display = 'none';
                 table.style.display = 'table';

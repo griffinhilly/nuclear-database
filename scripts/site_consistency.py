@@ -267,6 +267,7 @@ def run_checks(db_path, browser=True, all_reactor_pages=False, port=5021):
     check_static_claims(R, c, get, q, stats)
     check_chart_fields(R, get, q)
     check_planned(R, get, q)
+    check_launch_plumbing(R, c, site)
 
     # --- Data invariants the charts rely on ---
     bad = q("""SELECT r.plant_name || ' ' || r.unit_number, r.gross_capacity_mw, cc.gross_capacity_mw
@@ -456,7 +457,7 @@ def check_reactor_payloads(R, c, q):
     ids = [r[0] for r in q("SELECT id FROM reactors ORDER BY id")]
     bad, no_specs = [], []
     for rid in ids:
-        r = c.get(f"/api/reactors/{rid}?api_key=demo-key-12345")
+        r = c.get(f"/api/reactors/{rid}")
         if r.status_code != 200:
             bad.append((rid, f"HTTP {r.status_code}"))
             continue
@@ -584,9 +585,54 @@ def check_chart_fields(R, get, q):
             not unsorted, f"problems: {unsorted}")
 
 
+def check_launch_plumbing(R, c, site):
+    """Launch plumbing (2026-10-16): free API, page meta on every page type, robots, sitemap, error page."""
+    import re
+    paths = ["/", "/sources", "/lineages", "/containment", "/contributions"]
+    sm = c.get("/sitemap.xml")
+    locs = re.findall(r"<loc>([^<]+)</loc>", sm.get_data(as_text=True))
+    R.check("sitemap.xml lists every reactor page", sm.status_code == 200 and
+            sum("/reactor/" in l for l in locs) == len(site.query_db("SELECT id FROM reactors")),
+            f"HTTP {sm.status_code}, {len(locs)} urls")
+    for prefix in ["/reactor/", "/plant/", "/country/", "/technology/", "/status/", "/owner/", "/supplier/",
+                   "/model/", "/lineage/", "/planned/"]:
+        hit = next((l for l in locs if prefix in l), None)
+        if hit:
+            paths.append(re.sub(r"^https?://[^/]+", "", hit))
+    missing = []
+    for p in paths:
+        r = c.get(p)
+        html = r.get_data(as_text=True)
+        title = re.search(r"<title>([^<]+)</title>", html)
+        ok = (r.status_code == 200 and title and '<meta name="description" content="' in html
+              and 'property="og:image"' in html and 'rel="canonical"' in html)
+        if not ok:
+            missing.append((p, r.status_code))
+    R.check("every page type has its own title, description, canonical link and preview image", not missing,
+            f"{missing}")
+    titles = {p: re.search(r"<title>([^<]+)</title>", c.get(p).get_data(as_text=True)).group(1)
+              for p in paths if p.startswith(("/reactor/", "/country/", "/plant/"))}
+    R.check("detail-page titles name their subject (not a generic 'Details' title)",
+            all("Details" not in t for t in titles.values()), f"{titles}")
+    r = c.get("/robots.txt")
+    R.check("robots.txt serves and points to the sitemap", r.status_code == 200 and b"Sitemap:" in r.data,
+            f"HTTP {r.status_code}")
+    r = c.get("/no-such-page-xyz")
+    R.check("unknown pages get the branded 404", r.status_code == 404 and b"Go to the homepage" in r.data,
+            f"HTTP {r.status_code}")
+    if not site.PAID_TIER_ENABLED:
+        bad = [u for u in ["/api/reactors?limit=1", "/api/planned", "/api/map", "/api/reactors/search?q=Kori"]
+               if c.get(u).status_code != 200]
+        R.check("API is free: formerly paid endpoints answer without a key", not bad, f"{bad}")
+    retired = "demo-" + "key-"
+    hard = [p.name for p in [ROOT / "app.py", *sorted((ROOT / "templates").glob("*.html"))]
+            if retired in p.read_text(encoding="utf-8", errors="ignore")]
+    R.check("no hardcoded development key in app.py or templates", not hard, f"{hard}")
+
+
 def check_planned(R, get, q):
     """Finding 13: the homepage Planned tab and the planned pages use one capacity basis."""
-    rows = get("/api/planned?api_key=demo-key-12345")["planned_reactors"]
+    rows = get("/api/planned")["planned_reactors"]
     tab_total = sum(r.get("capacity_mw") or 0 for r in rows)
     page_total = 0
     for (name,) in q("SELECT DISTINCT project_name FROM planned_reactors"):

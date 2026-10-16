@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reactor Details &mdash; Global Nuclear Database</title>
+    <title>{{ meta_title }}</title>
+{% include '_meta.html' %}
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
@@ -325,7 +326,6 @@
             return String(v).replace(/[&<>"']/g, ch => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[ch]));
         }
 
-        const API_KEY = 'demo-key-12345';
         const REACTOR_ID = {{ reactor_id }};
 
         function formatAge(ageYears) {
@@ -350,7 +350,7 @@
 
         async function loadReactorDetails() {
             try {
-                const response = await fetch(`/api/reactors/${REACTOR_ID}?api_key=${API_KEY}`);
+                const response = await fetch(`/api/reactors/${REACTOR_ID}`);
                 if (!response.ok) {
                     throw new Error('Reactor not found');
                 }

@@ -13,9 +13,14 @@ Flask web app serving a global nuclear reactor database with 743 reactors across
 
 ## API Tiers
 
-- **Free (no key)**: `/api/stats`, `/api/countries`, `/api/countries/<country>/summary`, `/api/countries/<country>/detail`, `/api/technologies`, `/api/reactors/count`, `/api/generation/decades`, `/api/capacity/history`, `/api/data/validation`
-- **Paid (requires `X-API-Key` header or `?api_key=`)**: `/api/reactors`, `/api/reactors/<id>`, `/api/reactors/search`, `/api/query`, `/api/planned`, `/api/map`
-- Demo key for development: `demo-key-12345`
+- **The whole API is free (Griffin, 2026-10-16).** The paid tier is switched off, not deleted (`PAID_TIER_ENABLED` in app.py), because it may return. Endpoints marked `@require_api_key('paid')` (`/api/reactors`, `/api/reactors/<id>`, `/api/reactors/search`, `/api/query`, `/api/planned`, `/api/map`) need a key only when `PAID_TIER_ENABLED=1`; keys come only from Fly secrets (`API_KEY_PAID`, `API_KEY_FREE`). The old development key was printed in this public repo and no longer exists in code. Never hardcode a key again. If the paid tier returns, the homepage and reactor pages call those endpoints from the browser and need server-side data first.
+
+## Launch plumbing (2026-10-16)
+
+- **Page meta**: `page_meta()` + `inject_page_meta()` in app.py give every page its own `<title>`, description, canonical link and Open Graph / Twitter tags (`templates/_meta.html`, included after `<title>` in every public template). Detail pages render in the browser, so this is all link previews and search engines see. Preview image: `static/og-card.png`, rebuilt by `python scripts/build_og_card.py`.
+- **`SITE_URL`** (env) sets the public address for canonical links, previews and the sitemap. Set it as a Fly secret/env when the site moves to its REG address.
+- **`/robots.txt`, `/sitemap.xml`** (every reactor, plant, country, technology, status, owner, supplier, model, lineage and planned page). `/embed/map` is noindex. Branded 404/500 page: `templates/error.html`; `/api/*` errors stay JSON.
+- **Reader corrections**: "Suggest a correction" in `_reg_footer.html` → `POST /api/corrections` → `/data/submissions.db` on whichever Fly machine took the request (3 machines, one volume each). Review with `python scripts/review_submissions.py list|accept|decline` — it reads every machine through `/admin/api/submissions` (header `fly-force-instance-id`), authorized by the `ADMIN_TOKEN` Fly secret; the local copy of that credential lives in `~/.config/nuclear-database/admin_token`, never in the repo. Accepting writes a public line to `data/contributions.json`; commit + deploy publishes it on `/contributions`. The data change itself still goes through a migration.
 
 ## Running
 

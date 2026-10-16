@@ -1,4 +1,9 @@
 <footer class="reg-footer">
+    <div class="reg-correct">
+        <p>Spotted something wrong or missing on this page?
+           <button type="button" class="reg-correct-btn" id="reg-correct-open">Suggest a correction</button></p>
+        <p class="reg-correct-sub">We check every suggestion against a source. Accepted corrections are listed on the <a href="/contributions">reader contributions</a> page.</p>
+    </div>
     <div class="reg-footer-meta">
         <p>Data: <a href="https://pris.iaea.org" target="_blank">IAEA PRIS</a> &middot;
            <a href="https://world-nuclear.org" target="_blank">WNA</a> &middot;
@@ -8,3 +13,87 @@
         <p class="meta-line">Last updated {{ last_updated or 'October 2026' }} &nbsp;·&nbsp; Nuclear Reactor Database API v1.0 &nbsp;·&nbsp; Radiant Energy Group</p>
     </div>
 </footer>
+
+<dialog class="reg-correct-dialog" id="reg-correct-dialog" aria-labelledby="reg-correct-title">
+    <form id="reg-correct-form" method="dialog">
+        <h2 id="reg-correct-title">Suggest a correction</h2>
+        <p class="reg-correct-page">For: <span id="reg-correct-pagename"></span></p>
+        <label><span>What is wrong or missing? <em>(required)</em></span>
+            <textarea name="what" rows="3" required placeholder="e.g. Unit 2's grid connection date should be 14 March 1985, not 1986"></textarea></label>
+        <label><span>Correct value</span>
+            <input name="proposed" type="text" placeholder="e.g. 1985-03-14"></label>
+        <label><span>Source &mdash; where can we check it?</span>
+            <input name="source" type="text" placeholder="Link, document, or page number"></label>
+        <div class="reg-correct-row">
+            <label><span>Your name <em>(optional)</em></span><input name="name" type="text" autocomplete="name"></label>
+            <label><span>Email <em>(optional)</em></span><input name="email" type="email" autocomplete="email"></label>
+        </div>
+        <label class="reg-correct-check"><input name="credit_ok" type="checkbox"> Credit me by name on the contributions page</label>
+        <label class="reg-correct-hp" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+        <p class="reg-correct-note">We check every suggestion against a source before changing the data. Your email is used only to follow up on this suggestion and is never published.</p>
+        <p class="reg-correct-msg" id="reg-correct-msg" role="status"></p>
+        <div class="reg-correct-actions">
+            <button type="button" id="reg-correct-cancel">Cancel</button>
+            <button type="submit" class="primary" id="reg-correct-send">Send</button>
+        </div>
+    </form>
+</dialog>
+
+<style>
+.reg-correct { max-width: 1100px; margin: 0 auto 18px; padding: 16px 16px 14px; border-bottom: 1px solid var(--border, #E2E2E5); font-size: .9rem; color: var(--text-secondary, #6B6E7B); }
+.reg-correct p { margin: 2px 0; }
+.reg-correct-btn { font: inherit; font-size: .85rem; margin-left: 8px; padding: 5px 12px; border: 1px solid var(--reg-blue-cobalt, #3F55C5); color: var(--reg-blue-cobalt, #3F55C5); background: #fff; border-radius: 4px; cursor: pointer; }
+.reg-correct-btn:hover { background: var(--accent-light, rgba(63,85,197,.08)); }
+.reg-correct-sub { font-size: .8rem; }
+.reg-correct-dialog { margin: auto; border: 1px solid #D6D6DA; border-radius: 8px; padding: 0; width: min(560px, calc(100vw - 32px)); color: var(--text-primary, #474853); }
+.reg-correct-dialog::backdrop { background: rgba(30, 44, 91, .35); }
+.reg-correct-dialog form { padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 10px; }
+.reg-correct-dialog h2 { font-size: 1.15rem; margin: 0; }
+.reg-correct-page { font-size: .82rem; color: var(--text-secondary, #6B6E7B); margin: 0; }
+.reg-correct-dialog label { display: flex; flex-direction: column; gap: 4px; font-size: .85rem; font-weight: 600; }
+.reg-correct-dialog em { font-weight: 400; font-style: normal; color: var(--text-muted, #9498A4); }
+.reg-correct-dialog input[type=text], .reg-correct-dialog input[type=email], .reg-correct-dialog textarea { font: inherit; font-weight: 400; font-size: .88rem; padding: 7px 9px; border: 1px solid #D6D6DA; border-radius: 4px; }
+.reg-correct-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 520px) { .reg-correct-row { grid-template-columns: 1fr; } }
+.reg-correct-dialog .reg-correct-check { flex-direction: row; align-items: center; gap: 8px; font-weight: 400; }
+.reg-correct-hp { position: absolute; left: -9999px; }
+.reg-correct-note { font-size: .78rem; color: var(--text-secondary, #6B6E7B); margin: 0; }
+.reg-correct-msg { font-size: .85rem; margin: 0; min-height: 1em; }
+.reg-correct-actions { display: flex; justify-content: flex-end; gap: 8px; }
+.reg-correct-actions button { font: inherit; font-size: .85rem; padding: 6px 14px; border-radius: 4px; border: 1px solid #D6D6DA; background: #fff; cursor: pointer; }
+.reg-correct-actions .primary { background: var(--reg-blue-cobalt, #3F55C5); border-color: var(--reg-blue-cobalt, #3F55C5); color: #fff; }
+</style>
+<script>
+(function () {
+    const dlg = document.getElementById('reg-correct-dialog');
+    const form = document.getElementById('reg-correct-form');
+    const msg = document.getElementById('reg-correct-msg');
+    const send = document.getElementById('reg-correct-send');
+    const pageName = () => {
+        const h = document.querySelector('h1');
+        const t = h ? (h.firstChild && h.firstChild.nodeType === 3 && h.firstChild.textContent.trim()) || h.textContent : '';
+        return (t || document.title).trim().split('\n')[0].trim();
+    };
+    document.getElementById('reg-correct-open').addEventListener('click', () => {
+        document.getElementById('reg-correct-pagename').textContent = pageName().trim();
+        msg.textContent = ''; send.disabled = false; send.textContent = 'Send';
+        dlg.showModal();
+    });
+    document.getElementById('reg-correct-cancel').addEventListener('click', () => dlg.close());
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fd = new FormData(form);
+        const body = Object.fromEntries(fd.entries());
+        body.credit_ok = fd.has('credit_ok');
+        body.page_url = location.pathname + location.search;
+        body.page_title = pageName().trim();
+        send.disabled = true; send.textContent = 'Sending…';
+        try {
+            const r = await fetch('/api/corrections', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+            const j = await r.json();
+            if (j.ok) { msg.textContent = 'Thank you — we will check it against a source.'; form.reset(); send.textContent = 'Sent'; setTimeout(() => dlg.close(), 1800); }
+            else { msg.textContent = j.error || 'Something went wrong.'; send.disabled = false; send.textContent = 'Send'; }
+        } catch (err) { msg.textContent = 'Could not send — please try again.'; send.disabled = false; send.textContent = 'Send'; }
+    });
+})();
+</script>

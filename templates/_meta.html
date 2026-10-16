@@ -1,0 +1,16 @@
+{# Shared <head> meta: description, canonical link, link previews. Values come from inject_page_meta() in app.py. #}
+    <meta name="description" content="{{ meta_description }}">
+    <link rel="canonical" href="{{ meta_canonical }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Global Nuclear Database · Radiant Energy Group">
+    <meta property="og:title" content="{{ meta_og_title }}">
+    <meta property="og:description" content="{{ meta_description }}">
+    <meta property="og:url" content="{{ meta_canonical }}">
+    <meta property="og:image" content="{{ meta_image }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Global Nuclear Database: world nuclear capacity, 1954 to today">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ meta_og_title }}">
+    <meta name="twitter:description" content="{{ meta_description }}">
+    <meta name="twitter:image" content="{{ meta_image }}">

@@ -22,11 +22,20 @@ DB_PATH = Path(os.environ.get('DATABASE_PATH', BASE_DIR / "nuclear_reactors.db")
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['JSON_SORT_KEYS'] = False
 
-# API Keys (in production, use environment variables)
-VALID_API_KEYS = {
-    os.environ.get('API_KEY_PAID', 'demo-key-12345'): {'tier': 'paid', 'name': 'Demo User'},
-    os.environ.get('API_KEY_FREE', 'free-tier-key'): {'tier': 'free', 'name': 'Free User'},
-}
+# The API is free (Griffin, 2026-10-16). The paid tier is kept, switched off, in case it returns:
+# set PAID_TIER_ENABLED=1 and API_KEY_PAID / API_KEY_FREE as Fly secrets. Keys come only from
+# the environment; the old development key was printed in the public repo and must never work again.
+# If the paid tier returns, the homepage and reactor pages call paid endpoints from the browser,
+# so they would need server-side data first.
+PAID_TIER_ENABLED = os.environ.get('PAID_TIER_ENABLED') == '1'
+VALID_API_KEYS = {k: v for k, v in (
+    (os.environ.get('API_KEY_PAID'), {'tier': 'paid', 'name': 'Paid User'}),
+    (os.environ.get('API_KEY_FREE'), {'tier': 'free', 'name': 'Free User'}),
+) if k}
+
+# Public address used in canonical links, link previews and the sitemap. Set SITE_URL when the
+# site moves to its REG address; until then the request's own host is used.
+SITE_URL = os.environ.get('SITE_URL', '').rstrip('/')
 
 # =============================================================================
 # DATABASE HELPER
@@ -81,6 +90,8 @@ def require_api_key(tier='free'):
     def decorator(f):
         @wraps(f)
         def decorated_function(*args, **kwargs):
+            if not PAID_TIER_ENABLED:
+                return f(*args, **kwargs)
             api_key = request.headers.get('X-API-Key') or request.args.get('api_key')
 
             if not api_key:
@@ -118,6 +129,173 @@ def last_updated_label():
 @app.context_processor
 def inject_last_updated():
     return {'last_updated': last_updated_label()}
+
+
+# =============================================================================
+# PAGE META: titles, descriptions, canonical links and link previews
+# Detail pages render their data in the browser, so link-preview bots and search
+# engines only see what the server puts in <head>. page_meta() looks up each page's
+# subject so every page has its own title and description.
+# =============================================================================
+
+SITE_NAME = 'Global Nuclear Database'
+DEFAULT_DESCRIPTION = ("Every nuclear power reactor in the world, from 1954 to today: status, capacity, "
+                       "construction and grid dates, generation, designs and owners. Free, sourced, "
+                       "from Radiant Energy Group.")
+
+
+def site_url():
+    """Public base URL, no trailing slash (SITE_URL, else this request's host over https)."""
+    if SITE_URL:
+        return SITE_URL
+    return 'https://' + request.host if request.host and not request.host.startswith(('127.', 'localhost')) \
+        else request.host_url.rstrip('/')
+
+
+def _mw(v):
+    return f"{v:,.0f} MW" if v else None
+
+
+def page_meta():
+    """(title, description) for the current page; falls back to the site defaults."""
+    ep, va = request.endpoint, request.view_args or {}
+    try:
+        if ep == 'reactor_detail_page':
+            r = query_db("""SELECT r.plant_name, r.unit_number, c.name AS country, r.status, t.code AS tech,
+                                   r.net_capacity_mw, r.grid_connection, r.permanent_shutdown
+                            FROM reactors r LEFT JOIN countries c ON r.country_id = c.id
+                            LEFT JOIN technologies t ON r.technology_id = t.id WHERE r.id = ?""",
+                         (va.get('reactor_id'),))
+            if r:
+                r = r[0]
+                name = f"{r['plant_name']} {r['unit_number'] or ''}".strip()
+                kind = f"{r['tech']} reactor" if r['tech'] else 'nuclear reactor'
+                bits = [r['status'] or '']
+                if r['net_capacity_mw']:
+                    bits.append(f"{_mw(r['net_capacity_mw'])} net")
+                if r['grid_connection']:
+                    bits.append(f"on the grid since {r['grid_connection'][:4]}" if not r['permanent_shutdown']
+                                else f"connected {r['grid_connection'][:4]}")
+                if r['permanent_shutdown']:
+                    bits.append(f"shut down {r['permanent_shutdown'][:4]}")
+                return (f"{name}, {r['country']}",
+                        f"{name}, a {kind} in {r['country']}. {', '.join(b for b in bits if b)}. "
+                        f"Dates, capacity history and annual generation.")
+        if ep == 'plant_detail_page':
+            n = va.get('plant_name', '')
+            r = query_db("""SELECT c.name AS country, COUNT(*) AS units,
+                                   SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) AS op
+                            FROM reactors r LEFT JOIN countries c ON r.country_id = c.id
+                            WHERE r.plant_name = ? GROUP BY c.name""", (n,))
+            if r:
+                r = r[0]
+                return (f"{n} nuclear plant, {r['country']}",
+                        f"{n} nuclear power plant in {r['country']}: {r['units']} reactor unit(s), "
+                        f"{r['op']} operating. Unit-by-unit status, capacity, dates and generation.")
+        if ep == 'country_detail_page':
+            n = va.get('country', '')
+            r = query_db("""SELECT COUNT(*) AS units, SUM(CASE WHEN r.status = 'Operational' THEN 1 ELSE 0 END) AS op,
+                                   SUM(CASE WHEN r.status = 'Under Construction' THEN 1 ELSE 0 END) AS uc
+                            FROM reactors r JOIN countries c ON r.country_id = c.id WHERE c.name = ?""", (n,))
+            if r and r[0]['units']:
+                r = r[0]
+                return (f"Nuclear power in {n}",
+                        f"Nuclear power in {n}: {r['op']} operating reactors, {r['uc']} under construction, "
+                        f"{r['units']} in total since the first. Fleet history, generation and every reactor.")
+        simple = {
+            'technology_detail_page': ('tech_code', "{} reactors", "All {} nuclear reactors worldwide: fleet, history, countries and generation."),
+            'owner_detail_page': ('owner_name', "{}: nuclear reactors owned", "Nuclear reactors owned by {}: status, capacity and history."),
+            'status_detail_page': ('status', "{} nuclear reactors", "Every nuclear reactor with status {}, worldwide."),
+            'supplier_detail_page': ('supplier_name', "{}: reactors supplied", "Nuclear reactors supplied by {}: fleet, countries and history."),
+            'model_detail_page': ('model_name', "{} reactor design", "The {} reactor design: specifications and every reactor built to it."),
+            'planned_detail_page': ('project_name', "{}: planned nuclear plant", "{}: a planned nuclear power project. Units, vendor, capacity and timeline."),
+        }
+        if ep == 'lineage_detail_page':
+            r = query_db("SELECT name, description FROM design_lineages WHERE slug = ?", (va.get('slug'),))
+            if r:
+                d = (r[0]['description'] or '').split('. ')[0].strip()
+                return (f"{r[0]['name']} design lineage",
+                        (d + '.') if d else f"The {r[0]['name']} family of reactor designs.")
+        elif ep in simple:
+            key, t, d = simple[ep]
+            v = va.get(key, '')
+            return (t.format(v), d.format(v))
+    except sqlite3.Error:
+        pass
+    fixed = {
+        'home': (SITE_NAME, DEFAULT_DESCRIPTION),
+        'dashboard': (SITE_NAME, DEFAULT_DESCRIPTION),
+        'sources': ('Data sources and methods', "Where every figure in the Global Nuclear Database comes from, and how it is calculated."),
+        'lineages_page': ('Reactor design lineages', "How the world's reactor designs descend from a few vendor families, with every series and reactor."),
+        'containment_page': ('Containment types', "Reactor containment designs across the world fleet, with the reactors that use each."),
+        'contributions': ('Reader contributions', "Corrections to the Global Nuclear Database suggested by readers and checked against a source."),
+    }
+    return fixed.get(ep, (SITE_NAME, DEFAULT_DESCRIPTION))
+
+
+@app.context_processor
+def inject_page_meta():
+    if not request.endpoint or request.endpoint == 'static':
+        return {}
+    title, description = page_meta()
+    base = site_url()
+    return {
+        'meta_title': title if title == SITE_NAME else f"{title} | {SITE_NAME}",
+        'meta_og_title': title,
+        'meta_description': description,
+        'meta_canonical': base + request.path,
+        'meta_image': base + '/static/og-card.png',
+    }
+
+
+@app.route('/robots.txt')
+def robots_txt():
+    body = (f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /embed/\nDisallow: /admin/\n\n"
+            f"Sitemap: {site_url()}/sitemap.xml\n")
+    return app.response_class(body, mimetype='text/plain')
+
+
+@app.route('/sitemap.xml')
+def sitemap_xml():
+    """Every public page: home, sources, lineages, and each reactor/plant/country/... page."""
+    from urllib.parse import quote
+    from xml.sax.saxutils import escape
+    base = site_url()
+    paths = ['/', '/sources', '/lineages', '/containment', '/contributions']
+    groups = [
+        ('/reactor/', "SELECT id AS v FROM reactors ORDER BY id"),
+        ('/plant/', "SELECT DISTINCT plant_name AS v FROM reactors WHERE plant_name IS NOT NULL ORDER BY 1"),
+        ('/country/', "SELECT DISTINCT c.name AS v FROM reactors r JOIN countries c ON r.country_id = c.id ORDER BY 1"),
+        ('/technology/', "SELECT DISTINCT t.code AS v FROM reactors r JOIN technologies t ON r.technology_id = t.id ORDER BY 1"),
+        ('/status/', "SELECT DISTINCT status AS v FROM reactors WHERE status IS NOT NULL ORDER BY 1"),
+        ('/owner/', "SELECT DISTINCT owner AS v FROM reactors WHERE owner IS NOT NULL AND owner != '' ORDER BY 1"),
+        ('/supplier/', "SELECT DISTINCT s.name AS v FROM reactors r JOIN suppliers s ON r.supplier_id = s.id ORDER BY 1"),
+        ('/model/', "SELECT DISTINCT design_series AS v FROM reactors WHERE design_series IS NOT NULL AND design_series != '' ORDER BY 1"),
+        ('/lineage/', "SELECT slug AS v FROM design_lineages WHERE slug IS NOT NULL ORDER BY 1"),
+        ('/planned/', "SELECT DISTINCT project_name AS v FROM planned_reactors WHERE project_name IS NOT NULL ORDER BY 1"),
+    ]
+    for prefix, sql in groups:
+        paths += [prefix + quote(str(r['v']), safe='') for r in query_db(sql)]
+    urls = ''.join(f"<url><loc>{escape(base + p)}</loc></url>\n" for p in paths)
+    body = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + '</urlset>\n')
+    return app.response_class(body, mimetype='application/xml')
+
+
+@app.errorhandler(404)
+def not_found(e):
+    if request.path.startswith('/api/'):
+        return jsonify({'error': 'Not found', 'code': 404}), 404
+    return render_template('error.html', code=404, heading='Page not found',
+                           message="We couldn't find that page. It may have moved, or the address may be mistyped."), 404
+
+
+@app.errorhandler(500)
+def server_error(e):
+    if request.path.startswith('/api/'):
+        return jsonify({'error': 'Server error', 'code': 500}), 500
+    return render_template('error.html', code=500, heading='Something went wrong',
+                           message="The page hit an error on our side. Please try again in a minute."), 500
 
 
 def lineage_counts():
@@ -176,6 +354,112 @@ def embed_map():
     country_stats = {r['country']: [r['op'], r['uc']] for r in counts}
     return render_template('embed_map.html', reactor_rows=rows,
                            country_stats=country_stats)
+
+# =============================================================================
+# READER CORRECTIONS
+# Intake goes to a separate SQLite file, never to nuclear_reactors.db: the reactor DB is
+# replaced from the image on every deploy (start.sh) and changes only through reviewed
+# migrations. Fly runs 3 machines with one volume each, so each submission stays on the
+# machine that received it (/data/submissions.db). scripts/review_submissions.py collects
+# from every machine through the protected /admin/api endpoints (fly-force-instance-id).
+# Accepted corrections are published from data/contributions.json in the repo, so the public
+# page is the same on every machine and holds no email addresses.
+# =============================================================================
+
+SUBMISSIONS_DB_PATH = Path(os.environ.get('SUBMISSIONS_DB_PATH', BASE_DIR / 'submissions.db'))
+CONTRIBUTIONS_PATH = BASE_DIR / 'data' / 'contributions.json'
+_SUBMIT_LOG = {}   # ip -> recent submit timestamps (per-process rate limit)
+
+def submissions_db():
+    conn = sqlite3.connect(SUBMISSIONS_DB_PATH)
+    conn.row_factory = sqlite3.Row
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS submissions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+            page_url TEXT, page_title TEXT,
+            what TEXT NOT NULL,             -- what is wrong / missing
+            proposed TEXT,                  -- the correct value
+            source TEXT,                    -- where the correct value comes from
+            name TEXT, email TEXT,
+            credit_ok INTEGER DEFAULT 0,    -- may we publish the name?
+            status TEXT DEFAULT 'new',      -- new / accepted / declined
+            public_summary TEXT,            -- reviewer-written line for /contributions
+            resolved_at TEXT
+        )""")
+    return conn
+
+@app.route('/api/corrections', methods=['POST'])
+def submit_correction():
+    import time
+    data = request.get_json(silent=True) or request.form
+    if data.get('website'):                       # honeypot: bots fill every field
+        return jsonify({'ok': True})
+    what = (data.get('what') or '').strip()
+    if not what:
+        return jsonify({'ok': False, 'error': 'Please describe what should change.'}), 400
+    ip = request.headers.get('Fly-Client-IP') or request.remote_addr or '?'
+    now = time.time()
+    recent = [t for t in _SUBMIT_LOG.get(ip, []) if now - t < 3600]
+    if len(recent) >= 10:
+        return jsonify({'ok': False, 'error': 'Too many submissions — please try again later.'}), 429
+    _SUBMIT_LOG[ip] = recent + [now]
+    clip = lambda k, n: (data.get(k) or '').strip()[:n]
+    conn = submissions_db()
+    conn.execute("""INSERT INTO submissions (page_url, page_title, what, proposed, source, name, email, credit_ok)
+                    VALUES (?,?,?,?,?,?,?,?)""",
+                 (clip('page_url', 500), clip('page_title', 300), what[:4000], clip('proposed', 2000),
+                  clip('source', 2000), clip('name', 200), clip('email', 200),
+                  1 if str(data.get('credit_ok')).lower() in ('1', 'true', 'on') else 0))
+    conn.commit()
+    conn.close()
+    return jsonify({'ok': True})
+
+def load_contributions():
+    import json
+    try:
+        rows = json.loads(CONTRIBUTIONS_PATH.read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return []
+    return sorted(rows, key=lambda r: r.get('date', ''), reverse=True)
+
+@app.route('/contributions')
+def contributions():
+    """Public log of accepted reader corrections (data/contributions.json)."""
+    return render_template('contributions.html', rows=load_contributions())
+
+def admin_authorized():
+    """Bearer credential from the ADMIN_TOKEN Fly secret. Without the secret, admin routes 404."""
+    import hmac
+    expected = os.environ.get('ADMIN_TOKEN', '')
+    got = request.headers.get('Authorization', '').removeprefix('Bearer ').strip()
+    return bool(expected) and hmac.compare_digest(got, expected)
+
+@app.route('/admin/api/submissions')
+def admin_list_submissions():
+    if not admin_authorized():
+        return jsonify({'error': 'Not found', 'code': 404}), 404
+    where = '' if request.args.get('status') == 'all' else "WHERE status = 'new'"
+    conn = submissions_db()
+    rows = [dict(r) for r in conn.execute(f"SELECT * FROM submissions {where} ORDER BY id")]
+    conn.close()
+    return jsonify({'machine': os.environ.get('FLY_MACHINE_ID', 'local'), 'submissions': rows})
+
+@app.route('/admin/api/submissions/<int:sub_id>', methods=['POST'])
+def admin_resolve_submission(sub_id):
+    if not admin_authorized():
+        return jsonify({'error': 'Not found', 'code': 404}), 404
+    data = request.get_json(silent=True) or {}
+    status = data.get('status')
+    if status not in ('accepted', 'declined', 'new'):
+        return jsonify({'error': 'status must be accepted, declined or new'}), 400
+    conn = submissions_db()
+    n = conn.execute("""UPDATE submissions SET status = ?, public_summary = COALESCE(?, public_summary),
+                        resolved_at = CASE WHEN ? = 'new' THEN NULL ELSE CURRENT_TIMESTAMP END WHERE id = ?""",
+                     (status, data.get('public_summary'), status, sub_id)).rowcount
+    conn.commit()
+    conn.close()
+    return jsonify({'machine': os.environ.get('FLY_MACHINE_ID', 'local'), 'updated': n})
 
 # =============================================================================
 # FLEET-OVER-TIME RULES (shared by every history chart and headline number)

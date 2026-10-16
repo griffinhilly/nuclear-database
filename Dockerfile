@@ -9,6 +9,7 @@ COPY app.py .
 COPY nuclear_reactors.db .
 COPY templates/ templates/
 COPY static/ static/
+COPY data/ data/
 COPY start.sh .
 RUN chmod +x start.sh
 
